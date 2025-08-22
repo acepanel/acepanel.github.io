@@ -1,35 +1,35 @@
-# Manage Panel
+# 管理面板
 
-Do not stop or restart the Panel while tasks are still running, as this may cause issues.
+請勿在面板仍有任務運行時操作停止 / 重啟面板，否則可能會造成問題。
 
-- Start Panel: `systemctl start panel`
-- Stop Panel: `systemctl stop panel`
-- Restart Panel: `systemctl restart panel`
+- 啟動面板：`systemctl start panel`
+- 停止面板：`systemctl stop panel`
+- 重啟面板：`systemctl restart panel`
 
-## Panel Command Line
+## 面板命令行
 
 ```bash
 panel-cli
 ```
 
-Follow the prompts to complete the necessary commands for operation.
+可根據提示補全需要的命令進行操作。
 
-For example, to change a user's password, you can use:
+例如，要更改使用者的密碼，您可以使用：
 
 ```bash
 panel-cli user password haozi 123456
 ```
 
-This will change the password for the user `haozi` to `123456`.
+這將把使用者 `haozi` 的密碼更改為 `123456`。
 
-## Uninstall Panel
+## 卸載面板
 
-It is primarily recommended to back up data and reinstall the system, as this ensures a clean system.
+優先建議備份資料重裝系統，這樣可以保證系統純淨。
 
-If you are unable to reinstall the system, please log in to the server as `root` user and execute the following command to uninstall the Panel:
+如果您無法重裝系統，請以`root`使用者登錄伺服器，執行以下命令卸載面板：
 
 ```shell
 curl -fsLm 10 -o uninstall.sh https://dl.cdn.haozi.net/panel/uninstall.sh && bash uninstall.sh
 ```
 
-Before uninstalling the Panel, be sure to back up all data and uninstall all Panel applications in advance. Data will be **unrecoverable** after uninstallation!
+卸載面板前請務必備份好所有資料，提前卸載面板全部應用。 卸載後資料將**無法恢復**！

@@ -1,45 +1,45 @@
 ---
 layout: home
 hero:
-  name: "耗子面板"
-  text: "Simple · lightweight · efficient"
-  tagline: Enterprise server operation and maintenance management panel
+  name: "AcePanel"
+  text: "簡單 · 輕量 · 高效"
+  tagline: 企業伺服器運維管理面板
   actions:
-    - theme: brand
-      text: 🌟 Star
+    - theme: 品牌
+      text: 🌟 點亮 Star
       link: https://github.com/tnb-labs/panel
       target: _blank
     - theme: alt
-      text: Quick install
+      text: 快速安裝
       link: /quickstart/install
 features:
   - icon: ✨
-    title: Extremely low occupancy
-    details: Developed in Go language, small installation package, low occupancy, single file operation, will not affect system performance
+    title: 極低佔用
+    details: 以 Go 語言開發，安裝包小，佔用低，單文件運行，不會影響系統性能
   - icon: 🛠
-    title: Low destructiveness
-    details: Designed to minimize additional modifications to the system, we make the fewest modifications to the system among similar products
+    title: 低破壞性
+    details: 設計為盡可能減少對系統的額外修改，在同類產品中，我們對系統的修改最少
   - icon: 📅
-    title: Follow the times
-    details: The overall design is at the forefront of the times, with good compatibility with new systems, leading in the same type of products
+    title: 跟隨時代
+    details: 整體設計走在時代前沿，對新系統兼容性好，在同類產品中處於領先地位
   - icon: 🚀
-    title: Efficient operation and maintenance
-    details: Complete functions, strong customization capabilities, can quickly deploy small websites, and deploy complex applications based on customized requirements
+    title: 高效運維
+    details: 功能完善，自定義能力強，既可快速部署小型網站，也可基於定制化需求部署複雜應用
   - icon: ⛓️‍💥
-    title: Offline operation
-    details: Support offline mode, and even stop the panel process after deployment, without affecting any existing services
+    title: 離線運行
+    details: 支持離線模式，甚至可以在部署完成後停止面板進程，不會對已有服務造成任何影響
   - icon: 🛡
-    title: Safe and stable
-    details: The panel adopts a variety of industry technologies to ensure the security of the body, and has been running stably in multiple survival environments for a long time
+    title: 安全穩定
+    details: 面板採用業界多種技術保障本體安全性，已在多個生產環境中長期穩定運行
   - icon: 💽
-    title: Fully open source
-    details: Few fully open source panels, you can freely modify and develop the panel on the premise of complying with the open source agreement
+    title: 全面開源
+    details: 少有的全開源面板，您可以在遵守開源協議的前提下對面板自由修改、二次開發
   - icon: 🆓
-    title: Permanently free
-    details: Commit to the panel body will not introduce any charging/authorization functions in the future, and will be permanently free to use
+    title: 永久免費
+    details: 承諾面板本體未來不會引入任何收費/授權功能，永久免費使用
 ---
 
-## Partners
+## 合作夥伴
 
 <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;"><a href="https://www.weixiaoduo.com/" style="padding: 1rem;">
       <img width="160" src="/wxd.png" alt="WeiXiaoDuo">

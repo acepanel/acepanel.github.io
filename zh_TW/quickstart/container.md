@@ -1,25 +1,25 @@
-# Manage Containers
+# 管理容器
 
-Before starting, you need to install the Docker / Podman container engine.
+開始前需安裝 Docker / Podman 容器引擎。
 
-After the container engine is installed, you can go to the Panel's container management section to create containers (pgadmin4 is used as an example here).
+容器引擎安裝完畢後，即可前往面板容器管理處創建容器（此處以 pgadmin4 為例）。
 
-First, navigate to the Images tab to pull the required images. This may take several minutes to tens of minutes depending on your network environment.
+首先導航到鏡像選項卡拉取需要的鏡像。 視網路環境可能需要數分鐘到數十分鐘。
 
-![Pull Image](/container1.png)
+![拉取鏡像](/container1.png)
 
-After the image is pulled, navigate to the Containers tab to start creating a container.
+鏡像拉取完成後，導航到容器選項卡開始創建容器。
 
-![Create Container](/container2.png)
+![創建容器](/container2.png)
 
-Fill in the form according to the container's instructions. The pgadmin4 image used here needs to map port 80 and configure 2 default environment variables, with no need to map directories.
+表單內容按容器的說明填寫。 此處使用的 pgadmin4 鏡像需要映射 80 端口及配置 2 個默認環境變數，無需映射目錄。
 
-After the container is created, you can click the refresh button in the upper right corner and the log button on the right side of the container to check if it has started properly.
+容器創建完成後可點擊右上角刷新按鈕和容器右側的日誌按鈕檢查是否正常啟動。
 
-![Container Start](/container3.png)
+![容器啟動](/container3.png)
 
-If the container fails to start, please make corrections according to the logs.
+若容器未能啟動，請根據日誌進行修正。
 
-If you have mapped external ports, you need to go to the firewall menu to allow the corresponding ports.
+如果映射了外部端口，需要到防火牆菜單放行相應的端口。
 
-![Creation Successful](/container4.png)
+![創建成功](/container4.png)

@@ -4,34 +4,34 @@ prev: false
 next: false
 ---
 
-# Support
+# 支援
 
-## Free Forum Service
+## 免費論壇服務
 
-We provide a free forum service where you can ask questions, discuss, and share issues related to using the Panel.
+我們提供免費的論壇服務，您可以在論壇中提問、討論以及分享有關使用面板的問題。
 
-- [Moe Tom](https://tom.moe/c/technical/ratpanel)
+- [Moe Tom](https://tom.moe/c/technical/acepanel)
 
-## Paid Remote Service
+## 付費遠程服務
 
-Website errors, slow speed, malware infections? High server resource usage, configuration optimization, intrusion tracing? We provide all these services in one place.
+網站錯誤、速度慢、被感染惡意軟體？ 伺服器資源使用過高、配置優化、入侵追蹤？ 我們提供所有這些服務於一個地方。
 
-### Remote Service Price List
+### 遠程服務價格表
 
-Remote service refers to our assistance in solving your problems through remote support.
+遠程服務是指我們透過遠程支援方式協助您解決問題。
 
-| Service Name   | 描述                                                                      | Price    |
-| -------------- | ----------------------------------------------------------------------- | -------- |
-| Single Service | Limited to one service session, service ends when the issue is resolved | From ¥50 |
+| 服務名稱 | 描述               | 價格      |
+| ---- | ---------------- | ------- |
+| 單次服務 | 限於一次服務，問題解決後服務結束 | 從 ¥50 起 |
 
-### Service Process
+### 服務流程
 
-1. Contact us in advance and explain the issue
-2. We evaluate the problem, confirm whether it can be resolved, and provide an estimated price
-3. After you confirm the price, pay 50% upfront, and the service begins
-4. After service completion, you confirm everything is in order and pay the remaining amount
+1. 提前聯繫我們並解釋問題
+2. 我們將評估問題，確認是否能夠解決並提供預估價格
+3. 在您確認價格後，支付 50% 預付款，服務開始
+4. 在服務完成後，您確認一切正常並支付剩餘款項
 
-## Contact Us
+## 聯繫我們
 
-- [WeChat Work](https://work.weixin.qq.com/kfid/kfc20ea8e38b5a4e73a)
+- [企業微信](https://work.weixin.qq.com/kfid/kfc20ea8e38b5a4e73a)
 - [QQ 826896000](https://wpa.qq.com/msgrd?v=3&uin=826896000&site=qq&menu=yes)

@@ -1,28 +1,28 @@
-# Frequently Asked Questions
+# 常見問題
 
-Here are some common questions and answers about RatPanel. If you have any other questions, please feel free to ask in the [RatPanel Community](https://tom.moe/c/technical/ratpanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/tnb-labs/panel/issues).
+以下是關於 AcePanel 的一些常見問題和解答。 如果您有任何其他問題，請隨時在 [AcePanel 社區](https://tom.moe/c/technical/acepanel) 提問。 如果您發現任何 Bugs，請提交一個 [GitHub Issue](https://github.com/tnborg/panel/issues)。
 
-## Configure QUIC (HTTP3)
+## 配置 QUIC（HTTP3）
 
-RatPanel currently supports automatic QUIC configuration, but for compatibility reasons, the `Alt-Svc` header is not added by default. Browsers will not attempt to use QUIC connections without detecting the `Alt-Svc` header.
+AcePanel 目前支持自動 QUIC 配置，但出於兼容性原因，默認不添加 `Alt-Svc` 標頭。 瀏覽器在未檢測到 `Alt-Svc` 標頭時不會嘗試使用 QUIC 連接。
 
-If you are not using a CDN, you can add the configuration below to your website's rewrite rules to let browsers know that the website supports and uses QUIC connections.
+如果您不使用 CDN，可以將下述配置添加到網站的重寫規則中，以告訴瀏覽器該網站支持並使用 QUIC 連接。
 
 ```nginx
 add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
 ```
 
-If you are using a CDN or there are proxy servers in front, then QUIC needs to be enabled on the CDN / frontend.
+如果您使用 CDN 或有代理伺服器在前端，則 QUIC 需要在 CDN / 前端啟用。
 
-If the configuration still doesn't work, please check your browser version and the availability of UDP port 443.
+如果配置後仍不生效，請檢查您的瀏覽器版本和 UDP 443 端口的可用性。
 
-- According to Nginx's git commit history, all QUIC draft versions have been removed in version 1.25, so there's no need to add draft version numbers to `Alt-Svc`.
+- 根據 Nginx 的 git 提交記錄，1.25 版本下所有 QUIC 草案版本已經移除，因此 `Alt-Svc` 無需添加草案版本號。
 
-## Configure TLSv1.1 TLSv1
+## 配置 TLSv1.1 TLSv1
 
-The current Panel OpenResty is compiled with OpenSSL 3.5, which by default disables the deprecated TLSv1.1 and TLSv1 protocols.
+當前面板 OpenResty 使用 OpenSSL 3.5 版本編譯，默認禁用已棄用的 TLSv1.1 TLSv1 協議。
 
-Of course, if your business must use these two protocols, you can enable them using the SSL configuration below.
+當然，如果您的業務必須使用這兩個協議，您可以使用下述 SSL 配置啟用。
 
 ```nginx
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;
@@ -30,31 +30,31 @@ ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDS
 ssl_prefer_server_ciphers on;
 ```
 
-## Configure Reverse Proxy
+## 配置反向代理
 
-RatPanel v2.4.10+ comes with a built-in reverse proxy configuration generator, which you can access through the top right corner of the site rewrite configuration page.
+AcePanel v2.4.10+ 自帶反向代理配置生成器，您可以通過站點重寫配置頁面的右上角訪問。
 
-Note: If you encounter issues with static resources like CSS/JS not loading properly after setting up a reverse proxy, please remove the **Do not log static files** section from the site's main configuration file.
+注意：如果設置反向代理後出現 CSS/JS 等靜態資源無法正常加載的問題，請移除站點主配置文件中的 **不記錄靜態文件** 部分。
 
-## Configure Process Monitoring
+## 配置進程監控
 
-1. Install Supervisor manager and open it.
-2. Create processes that need to be monitored in the Supervisor manager (it's not recommended to use root as the running user).
-3. Common issues: [https://tom.moe/t/supervisor/3112](https://tom.moe/t/supervisor/3112)
+1. 安裝 Supervisor 管理器並打開。
+2. 在 Supervisor 管理器中創建需要被監控的進程（不建議使用 root 作為運行用戶）。
+3. 常見問題：[https://tom.moe/t/supervisor/3112](https://tom.moe/t/supervisor/3112)
 
-## Configure IPv6
+## 配置 IPv6
 
-If you want to enable IPv6 support, you need to add `[::]:80` and `[::]:443` to the website's listening address configuration.
+如果您想要啟用 IPv6 支持，您需要將 `[::]:80` 和 `[::]:443` 添加到網站的監聽地址配置。
 
-## Configure Container Image Acceleration
+## 配置容器鏡像加速
 
-Due to certain reasons, domestic users in China may be unable to connect to Docker Hub to pull container images, thus requiring image acceleration configuration.
+由於一些原因，國內用戶可能無法連接到 Docker Hub 以拉取容器鏡像，因此需要配置鏡像加速。
 
-### For Podman
+### 對於 Podman
 
-Open the Podman settings page in the Panel, and navigate to the Registry Configuration tab.
+在面板中打開 Podman 設置頁面，並導航到註冊表配置選項卡。
 
-Scroll to the bottom of the configuration file, add the following configuration and save:
+滾動到配置文件底部，添加如下配置並保存：
 
 ```
 [[registry]]
@@ -63,13 +63,13 @@ location = "docker.io"
 location = "docker.1ms.run"
 ```
 
-Where docker.1ms.run is the configured image acceleration address. You can refer to other tutorials to set up and use it.
+其中 docker.1ms.run 為配置的鏡像加速地址。 您可以參考其他教程進行設置和使用。
 
-### For Docker
+### 對於 Docker
 
-Open the Docker settings page in the Panel, and navigate to the Configuration tab.
+在面板中打開 Docker 設置頁面，並導航到配置選項卡。
 
-Add the following configuration and save:
+添加如下配置並保存：
 
 ```json
 {
@@ -77,4 +77,4 @@ Add the following configuration and save:
 }
 ```
 
-Where https://docker.1ms.run is the configured image acceleration address. You can refer to other tutorials to set up and use it.
+其中 https://docker.1ms.run 為配置的鏡像加速地址。 您可以參考其他教程進行設置和使用。

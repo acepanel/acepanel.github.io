@@ -1,40 +1,40 @@
-# Install Panel
+# 安裝面板
 
-The Panel supports mainstream systems under `amd64` | `arm64` architectures. LNMP environment installation has been tested on all systems listed in the table below.
+面板支持 `amd64` | `arm64` 架構下的主流系統。 下表中的系統均已測試 LNMP 環境安裝。
 
-It is recommended to use systems marked as **recommended**. Unless there are special circumstances, it is not recommended to use systems marked as **not recommended**.
+優先建議使用標註**推薦**的系統。 無特殊情況不建議使用標註**不推薦**的系統。
 
-For systems not listed in the table below, you can try installing on your own, but no free technical support will be provided.
+不在下表中的其他系統，可自行嘗試安裝，但不提供無償技術支持。
 
-| 系統                  | 版本                  | Note            |
-| ------------------- | ------------------- | --------------- |
-| AlmaLinux           | 9                   | Recommended     |
-| AlmaLinux           | 8                   | Not Recommended |
-| RockyLinux          | 9                   | Supported       |
-| RockyLinux          | 8                   | Not Recommended |
-| CentOS Stream       | 9                   | Not Recommended |
-| CentOS Stream       | 8                   | Not Recommended |
-| Ubuntu              | 24                  | Recommended     |
-| Ubuntu              | 22                  | Supported       |
-| Debian              | 12                  | Recommended     |
-| Debian              | 11                  | Supported       |
-| OpenCloudOS         | 9                   | Supported       |
-| TencentOS Server    | 4                   | Supported       |
-| TencentOS Server    | 3.1 | Not Recommended |
-| Alibaba Cloud Linux | 3.2 | Not Recommended |
-| Anolis              | 8                   | Not Recommended |
-| openEuler           | 22                  | Not Recommended |
+| 系統                  | 版本                  | 備註  |
+| ------------------- | ------------------- | --- |
+| AlmaLinux           | 9                   | 推薦  |
+| AlmaLinux           | 8                   | 不推薦 |
+| RockyLinux          | 9                   | 支持  |
+| RockyLinux          | 8                   | 不推薦 |
+| CentOS Stream       | 9                   | 不推薦 |
+| CentOS Stream       | 8                   | 不推薦 |
+| Ubuntu              | 24                  | 推薦  |
+| Ubuntu              | 22                  | 支持  |
+| Debian              | 12                  | 推薦  |
+| Debian              | 11                  | 支持  |
+| OpenCloudOS         | 9                   | 支持  |
+| TencentOS Server    | 4                   | 支持  |
+| TencentOS Server    | 3.1 | 不推薦 |
+| Alibaba Cloud Linux | 3.2 | 不推薦 |
+| Anolis              | 8                   | 不推薦 |
+| openEuler           | 22                  | 不推薦 |
 
-As system versions continue to update, we may also terminate support for some overly outdated systems to ensure the robustness of the Panel.
+隨著系統版本的不斷更新，我們亦可能會終止部分過於老舊的系統的支持，以保證面板的健壯性。
 
-## Start Installation
+## 開始安裝
 
-> If you need to mount partitions, please complete before installing the Panel. Cross-directory migration is not supported after Panel installation.
+> 如需掛載分區，請在安裝面板前完成。 面板安裝後不支持跨目錄遷移。
 
-Log in to the server as `root` user and run the following command to install the Panel:
+以 `root` 用戶登錄服務器，運行以下命令安裝面板：
 
 ```shell
 curl -fsLm 10 -o install.sh https://dl.cdn.haozi.net/panel/install.sh && bash install.sh
 ```
 
-Installation is usually completed within 2 minutes. Do not close the terminal during the installation process.
+一般 2 分鐘內即可完成安裝。 安裝過程中請勿關閉終端。
