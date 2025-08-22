@@ -12,11 +12,11 @@ export const config = defineConfig({
     nav: nav(),
     sidebar: [{
       text: "快速開始",
-      base: locale == 'en' ? '/quickstart' : `/${locale}/quickstart`,
+      base: locale == 'zh_CN' ? '/quickstart' : `/${locale}/quickstart`,
       items: sidebarQuickstart()
     }, {
       text: "進階指南",
-      base: locale == 'en' ? '/advanced' : `/${locale}/advanced`,
+      base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
       items: sidebarAdvanced()
     }, {
       text: "版本歷史",
@@ -24,7 +24,7 @@ export const config = defineConfig({
       items: [...versions.map((version: string) => {
         return {
           text: version,
-          link: locale == 'en' ? `/version-${version}` : `/${locale}/version-${version}`
+          link: locale == 'zh_CN' ? `/version-${version}` : `/${locale}/version-${version}`
         };
       })]
     }],
@@ -62,19 +62,19 @@ export const config = defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [{
     text: "首頁",
-    link: locale == 'en' ? '/' : `/${locale}/`
+    link: locale == 'zh_CN' ? '/' : `/${locale}/`
   }, {
     text: "文檔",
-    link: locale == 'en' ? '/quickstart/install' : `/${locale}/quickstart/install`
+    link: locale == 'zh_CN' ? '/quickstart/install' : `/${locale}/quickstart/install`
   }, {
     text: "支持",
-    link: locale == 'en' ? '/support' : `/${locale}/support`
+    link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
   }, {
     text: "🔥證書",
-    link: locale == 'en' ? '/cert' : `/${locale}/cert`
+    link: locale == 'zh_CN' ? '/cert' : `/${locale}/cert`
   }, {
     text: "關於",
-    link: locale == 'en' ? '/about' : `/${locale}/about`
+    link: locale == 'zh_CN' ? '/about' : `/${locale}/about`
   }];
 }
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {

@@ -8,14 +8,18 @@
 
 | 系统                  | 版本                  | 备注  |
 | ------------------- | ------------------- | --- |
+| AlmaLinux           | 10                  | 推荐  |
 | AlmaLinux           | 9                   | 推荐  |
 | AlmaLinux           | 8                   | 不推荐 |
+| RockyLinux          | 10                  | 支持  |
 | RockyLinux          | 9                   | 支持  |
 | RockyLinux          | 8                   | 不推荐 |
+| CentOS Stream       | 10                  | 不推荐 |
 | CentOS Stream       | 9                   | 不推荐 |
 | CentOS Stream       | 8                   | 不推荐 |
 | Ubuntu              | 24                  | 推荐  |
 | Ubuntu              | 22                  | 支持  |
+| Debian              | 13                  | 推荐  |
 | Debian              | 12                  | 推荐  |
 | Debian              | 11                  | 支持  |
 | OpenCloudOS         | 9                   | 支持  |
@@ -30,6 +34,8 @@
 ## 开始安装
 
 > 如需挂载分区，请在安装面板前完成。 面板安装后不支持跨目录迁移。
+
+**<span style="color: red;">AcePanel 推荐使用 [林枫云高性能 AMD EYPC 服务器](https://www.dkdun.cn/aff/MQZZNVHQ) 进行安装。</span>**
 
 以 `root` 用户登录服务器，运行以下命令安装面板：
 
