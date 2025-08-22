@@ -8,14 +8,17 @@ For systems not listed in the table below, you can try installing on your own, b
 
 | System              | Version | Note            |
 |---------------------|---------|-----------------|
+| AlmaLinux           | 10      | Recommended     |
 | AlmaLinux           | 9       | Recommended     |
 | AlmaLinux           | 8       | Not Recommended |
+| RockyLinux          | 10      | Supported       |
 | RockyLinux          | 9       | Supported       |
 | RockyLinux          | 8       | Not Recommended |
 | CentOS Stream       | 9       | Not Recommended |
 | CentOS Stream       | 8       | Not Recommended |
 | Ubuntu              | 24      | Recommended     |
 | Ubuntu              | 22      | Supported       |
+| Debian              | 13      | Recommended     |
 | Debian              | 12      | Recommended     |
 | Debian              | 11      | Supported       |
 | OpenCloudOS         | 9       | Supported       |
@@ -30,6 +33,8 @@ As system versions continue to update, we may also terminate support for some ov
 ## Start Installation
 
 > If you need to mount partitions, please complete before installing the Panel. Cross-directory migration is not supported after Panel installation.
+
+**<span style="color: red;">AcePanel recommends using [LFCloud high-performance AMD EYPC server](https://www.dkdun.cn/aff/MQZZNVHQ) for installation.</span>**
 
 Log in to the server as `root` user and run the following command to install the Panel:
 
