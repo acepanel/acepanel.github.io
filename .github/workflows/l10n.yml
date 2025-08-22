@@ -1,0 +1,31 @@
+name: L10n
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+concurrency:
+  group: l10n
+  cancel-in-progress: true
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  l10n:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Sync with Crowdin
+        uses: crowdin/github-action@v2
+        with:
+          config: crowdin.yml
+          upload_sources: true
+          upload_translations: false
+          download_translations: true
+          export_only_approved: true
+          create_pull_request: true
+          pull_request_title: 'l10n: sync translations with Crowdin'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}

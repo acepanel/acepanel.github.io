@@ -2,7 +2,7 @@
 
 ## Overview
 
-RatPanel provides a secure RESTful interface for interacting with the panel system. All API requests require HMAC-SHA256 signature authentication to ensure the security and integrity of communications.
+AcePanel provides a secure RESTful interface for interacting with the panel system. All API requests require HMAC-SHA256 signature authentication to ensure the security and integrity of communications.
 
 ## Basic Information
 
@@ -182,7 +182,7 @@ func HMACSHA256(data string, secret string) string {
 ```php
 <?php
 /**
- * RatPanel API Request Example (PHP)
+ * AcePanel API Request Example (PHP)
  */
 
 function signRequest($method, $url, $body, $id, $token) {
@@ -374,9 +374,9 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 /**
- * RatPanel API Request Example (Java)
+ * AcePanel API Request Example (Java)
  */
-public class RatPanelApiExample {
+public class AcePanelApiExample {
 
     public static void main(String[] args) {
         try {

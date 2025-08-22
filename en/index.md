@@ -1,13 +1,13 @@
 ---
 layout: home
 hero:
-  name: "Rat Panel"
+  name: "AcePanel"
   text: "Simple · lightweight · efficient"
   tagline: Enterprise server operation and maintenance management panel
   actions:
     - theme: brand
       text: 🌟 Star
-      link: https://github.com/tnb-labs/panel
+      link: https://github.com/tnborg/panel
       target: _blank
     - theme: alt
       text: Quick install
@@ -46,7 +46,7 @@ features:
       <img width="160" src="/wxd.png" alt="WeiXiaoDuo">
     </a>
     <a href="https://www.dkdun.cn/aff/MQZZNVHQ" style="padding: 1rem;">
-      <img width="160" src="/dk.png" alt="LinFeng Cloud">
+      <img width="160" src="/dk.png" alt="LF Cloud">
     </a>
     <a href="https://waf.pro/">
       <img width="160" src="/wafpro.png" alt="WAFPRO" style="padding: 1rem;">

@@ -1,10 +1,10 @@
 # Frequently Asked Questions
 
-Here are some common questions and answers about RatPanel. If you have any other questions, please feel free to ask in the [RatPanel Community](https://tom.moe/c/technical/ratpanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/tnb-labs/panel/issues).
+Here are some common questions and answers about AcePanel. If you have any other questions, please feel free to ask in the [AcePanel Community](https://tom.moe/c/technical/acepanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/tnborg/panel/issues).
 
 ## Configure QUIC (HTTP3)
 
-RatPanel currently supports automatic QUIC configuration, but for compatibility reasons, the `Alt-Svc` header is not added by default. Browsers will not attempt to use QUIC connections without detecting the `Alt-Svc` header.
+AcePanel currently supports automatic QUIC configuration, but for compatibility reasons, the `Alt-Svc` header is not added by default. Browsers will not attempt to use QUIC connections without detecting the `Alt-Svc` header.
 
 If you are not using a CDN, you can add the configuration below to your website's rewrite rules to let browsers know that the website supports and uses QUIC connections.
 
@@ -32,7 +32,7 @@ ssl_prefer_server_ciphers on;
 
 ## Configure Reverse Proxy
 
-RatPanel v2.4.10+ comes with a built-in reverse proxy configuration generator, which you can access through the top right corner of the site rewrite configuration page.
+AcePanel v2.4.10+ comes with a built-in reverse proxy configuration generator, which you can access through the top right corner of the site rewrite configuration page.
 
 Note: If you encounter issues with static resources like CSS/JS not loading properly after setting up a reverse proxy, please remove the **Do not log static files** section from the site's main configuration file.
 

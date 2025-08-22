@@ -23,7 +23,7 @@ The probability of serious security vulnerabilities in modern systems is low, bu
 
 ### Panel Aspects
 
-RatPanel has the same privileges as root, and improper management can cause serious security problems. You should:
+AcePanel has the same privileges as root, and improper management can cause serious security problems. You should:
 
 1. Regularly update the Panel and applications installed through it. We recommend following our channel or group to receive various update messages promptly.
 2. Prohibit weak passwords and the default 8888 port for the Panel. Passwords are strongly recommended to be generated using a random generator with more than 20 mixed characters and stored in a secure location.

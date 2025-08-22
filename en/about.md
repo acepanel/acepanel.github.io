@@ -30,7 +30,7 @@ const members = [
 
 # About
 
-RatPanel is a professional server operation and maintenance management panel dedicated to providing users with simple, efficient, and secure server management solutions.
+AcePanel is a professional server operation and maintenance management panel dedicated to providing users with simple, efficient, and secure server management solutions.
 
 | Vision                                                   | Mission                                     | Values                                            |
 |----------------------------------------------------------|---------------------------------------------|---------------------------------------------------|
