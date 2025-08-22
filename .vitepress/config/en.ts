@@ -41,7 +41,7 @@ export const config = defineConfig({
         ],
 
         editLink: {
-            pattern: 'https://github.com/ratpanel/ratpanel.github.io/edit/main/:path',
+            pattern: 'https://github.com/acepanel/acepanel.github.io/edit/main/:path',
             text: 'Edit this page on GitHub'
         },
         footer: {
