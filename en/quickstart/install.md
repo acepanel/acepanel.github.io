@@ -14,6 +14,7 @@ For systems not listed in the table below, you can try installing on your own, b
 | RockyLinux          | 10      | Supported       |
 | RockyLinux          | 9       | Supported       |
 | RockyLinux          | 8       | Not Recommended |
+| CentOS Stream       | 10      | Not Recommended |
 | CentOS Stream       | 9       | Not Recommended |
 | CentOS Stream       | 8       | Not Recommended |
 | Ubuntu              | 24      | Recommended     |
