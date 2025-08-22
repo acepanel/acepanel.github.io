@@ -1,65 +1,65 @@
-# API Reference Documentation
+# API 參考文檔
 
-## Overview
+## 概述
 
-RatPanel provides a secure RESTful interface for interacting with the panel system. All API requests require HMAC-SHA256 signature authentication to ensure the security and integrity of communications.
+AcePanel 提供了安全的 RESTful 接口，用於與面板系統進行互動。 所有 API 請求都需要進行 HMAC-SHA256 簽名認證以確保通訊的安全性和完整性。
 
-## Basic Information
+## 基本信息
 
-- **Base URL**: `http(s)://your-panel-domain/{entry}/api/`
-- **Content Type**: All requests and responses use `application/json`
-- **Character Encoding**: UTF-8
+ - **基本 URL**: `http(s)://your-panel-domain/{entry}/api/`
+ - **內容類型**: 所有請求和響應均使用 `application/json`
+ - **字符編碼**: UTF-8
 
-## Authentication Mechanism
+## 身份驗證機制
 
-The API uses the HMAC-SHA256 signature algorithm for authentication. Each request must include the following HTTP headers:
+API 使用 HMAC-SHA256 簽名算法進行身份認證。 每個請求必須包含以下 HTTP 標頭：
 
-| Header Name     | 描述                                                                                                       |
-| --------------- | -------------------------------------------------------------------------------------------------------- |
-| `Content-Type`  | Set to `application/json`                                                                                |
-| `X-Timestamp`   | Current UNIX timestamp (seconds)                                                      |
-| `Authorization` | Authentication information, format: `HMAC-SHA256 Credential={id}, Signature={signature}` |
+| 標頭名稱            | 描述                                                              |
+| --------------- | --------------------------------------------------------------- |
+| `Content-Type`  | 設置為 `application/json`                                          |
+| `X-Timestamp`   | 當前 UNIX 時間戳（秒）                                                  |
+| `Authorization` | 身份認證信息，格式為 `HMAC-SHA256 Credential={id}, Signature={signature}` |
 
-## Signature Algorithm
+## 簽名算法
 
-The signature process consists of four main steps:
+簽名過程包含四個主要步驟：
 
-### 1. Construct Canonical Request
+### 1. 構造規範化請求
 
-The canonical request string consists of the following parts, separated by newline characters (\n):
+規範化請求字符串由以下部分組成，各部分之間使用換行符（\n）分隔：
 
 ```
-HTTP Method
-Canonical Path
-Canonical Query String
-SHA256 Hash of Request Body
+HTTP 方法
+規範化路徑
+規範化查詢字符串
+請求體的 SHA256 哈希值
 ```
 
-**Note**: The canonical path should always use the path part starting with `/api/`, ignoring the entry prefix.
+**注意**：規範化路徑應始終使用 `/api/` 開頭的路徑部分，忽略入口前綴。
 
-### 2. Construct String to Sign
+### 2. 構造待簽名字符串
 
-The string to sign consists of the following parts, separated by newline characters (\n):
+待簽名字符串包含以下部分，各部分使用換行符（\n）分隔：
 
 ```
 "HMAC-SHA256"
-Timestamp
-SHA256 Hash of Canonical Request
+時間戳
+規範化請求的 SHA256 哈希值
 ```
 
-### 3. Calculate Signature
+### 3. 計算簽名
 
-Calculate HMAC-SHA256 on the string to sign using your token, then convert the result to a hexadecimal string.
+使用您的令牌（token）對待簽名字符串進行 HMAC-SHA256 計算，然後將結果轉換為十六進制字符串。
 
-### 4. Construct Authorization Header
+### 4. 構造授權頭
 
-Add the calculated signature to the `Authorization` header:
+將計算得到的簽名添加到 `Authorization` 頭：
 
 ```
-Authorization: HMAC-SHA256 Credential={id}, Signature={signature}
+授權: HMAC-SHA256 Credential={id}, Signature={signature}
 ```
 
-## Go Example
+## Go 範例
 
 ```go
 package main
@@ -77,59 +77,59 @@ import (
 )
 
 func main() {
-    // Create a request to get user information
+    // 創建一個獲取用戶信息的請求
     req, err := http.NewRequest("GET", "http://example.com/entrance/api/user/info", nil)
     if err != nil {
-        fmt.Println("Error creating request:", err)
+        fmt.Println("創建請求時出錯:", err)
         return
     }
 
-    // Set content type
+    // 設置內容類型
     req.Header.Set("Content-Type", "application/json")
     
-    // Sign request - pass your user ID and API token
+    // 簽名請求 - 傳入您的用戶 ID 和 API 令牌
     if err = SignReq(req, uint(16), "YourSecretToken"); err != nil {
-        fmt.Println("Error signing request:", err)
+        fmt.Println("簽名請求時出錯:", err)
         return
     }
 
-    // Send request
+    // 發送請求
     client := &http.Client{}
     resp, err := client.Do(req)
     if err != nil {
-        fmt.Println("Error sending request:", err)
+        fmt.Println("發送請求時出錯:", err)
         return
     }
     defer resp.Body.Close()
 
-    // Handle response
+    // 處理響應
     body, err := io.ReadAll(resp.Body)
     if err != nil {
-        fmt.Println("Error reading response:", err)
+        fmt.Println("讀取響應時出錯:", err)
         return
     }
 
-    fmt.Println("Response Status:", resp.Status)
-    fmt.Println("Response Body:", string(body))
+    fmt.Println("響應狀態:", resp.Status)
+    fmt.Println("響應內容:", string(body))
 }
 
-// SignReq signs an HTTP request
+// SignReq 對 HTTP 請求進行簽名
 func SignReq(req *http.Request, id uint, token string) error {
-    // Step 1: Construct canonical request
+    // 步驟 1：構造規範化請求
     var body []byte
     var err error
 
     if req.Body != nil {
-        // Read and save request body
+        // 讀取並保存請求體
         body, err = io.ReadAll(req.Body)
         if err != nil {
             return err
         }
-        // Restore request body for subsequent use
+        // 恢復請求體以便後續使用
         req.Body = io.NopCloser(bytes.NewReader(body))
     }
 
-    // Canonical path
+    // 規範化路徑
     canonicalPath := req.URL.Path
     if !strings.HasPrefix(canonicalPath, "/api") {
         index := strings.Index(canonicalPath, "/api")
@@ -144,7 +144,7 @@ func SignReq(req *http.Request, id uint, token string) error {
         req.URL.Query().Encode(),
         SHA256(string(body)))
 
-    // Step 2: Set timestamp and construct string to sign
+    // 步驟 2：設置時間戳並構造待簽名字符串
     timestamp := time.Now().Unix()
     req.Header.Set("X-Timestamp", fmt.Sprintf("%d", timestamp))
 
@@ -153,10 +153,10 @@ func SignReq(req *http.Request, id uint, token string) error {
         timestamp,
         SHA256(canonicalRequest))
 
-    // Step 3: Calculate signature
+    // 步驟 3：計算簽名
     signature := HMACSHA256(stringToSign, token)
 
-    // Step 4: Set Authorization header
+    // 步驟 4：設置 Authorization 頭
     authHeader := fmt.Sprintf("HMAC-SHA256 Credential=%d, Signature=%s", id, signature)
     req.Header.Set("Authorization", authHeader)
 
@@ -177,12 +177,12 @@ func HMACSHA256(data string, secret string) string {
 }
 ```
 
-## PHP Example
+## PHP 範例
 
 ```php
 <?php
 /**
- * RatPanel API Request Example (PHP)
+ * AcePanel API Request Example (PHP)
  */
 
 function signRequest($method, $url, $body, $id, $token) {
@@ -269,7 +269,7 @@ echo "Response Status Code: " . $statusCode . PHP_EOL;
 echo "Response Content: " . $response . PHP_EOL;
 ```
 
-## Python Example
+## Python 範例
 
 ```python
 import hashlib
@@ -280,28 +280,28 @@ import time
 from urllib.parse import urlparse, parse_qs
 
 def sha256_hash(text):
-    """Calculate SHA256 hash of a string"""
+    """計算字符串的 SHA256 哈希值"""
     return hashlib.sha256(text.encode('utf-8')).hexdigest()
 
 def hmac_sha256(key, message):
-    """Calculate signature using HMAC-SHA256 algorithm"""
+    """使用 HMAC-SHA256 算法計算簽名"""
     return hmac.new(key.encode('utf-8'), message.encode('utf-8'), hashlib.sha256).hexdigest()
 
 def sign_request(method, url, body, user_id, token):
-    """Generate signature for API request"""
-    # Parse URL
+    """為 API 請求生成簽名"""
+    # 解析 URL
     parsed_url = urlparse(url)
     path = parsed_url.path
     query = parsed_url.query
     
-    # Canonical path
+    # 規範化路徑
     canonical_path = path
     if not path.startswith('/api'):
         api_pos = path.find('/api')
         if api_pos != -1:
             canonical_path = path[api_pos:]
     
-    # Construct canonical request
+    # 構造規範化請求
     body_str = body if body else ""
     canonical_request = "\n".join([
         method,
@@ -310,17 +310,17 @@ def sign_request(method, url, body, user_id, token):
         sha256_hash(body_str)
     ])
     
-    # Get current timestamp
+    # 獲取當前時間戳
     timestamp = int(time.time())
     
-    # Construct string to sign
+    # 構造待簽名字符串
     string_to_sign = "\n".join([
         "HMAC-SHA256",
         str(timestamp),
         sha256_hash(canonical_request)
     ])
     
-    # Calculate signature
+    # 計算簽名
     signature = hmac_sha256(token, string_to_sign)
     
     return {
@@ -329,24 +329,24 @@ def sign_request(method, url, body, user_id, token):
         "id": user_id
     }
 
-# Example request
+# 範例請求
 api_url = "http://example.com/entrance/api/user/info"
 method = "GET"
-body = ""  # GET requests typically have no body
+body = ""  # GET 請求通常沒有請求主體
 user_id = 16
-token = "YourSecretToken"
+token = "您的秘密令牌"
 
-# Generate signature information
+# 生成簽名信息
 signing_data = sign_request(method, api_url, body, user_id, token)
 
-# Prepare HTTP headers
+# 準備 HTTP 標頭
 headers = {
     "Content-Type": "application/json",
     "X-Timestamp": str(signing_data["timestamp"]),
     "Authorization": f"HMAC-SHA256 Credential={signing_data['id']}, Signature={signing_data['signature']}"
 }
 
-# Send request
+# 發送請求
 response = requests.request(
     method=method,
     url=api_url,
@@ -354,12 +354,12 @@ response = requests.request(
     data=body
 )
 
-# Output results
-print(f"Response Status Code: {response.status_code}")
-print(f"Response Content: {response.text}")
+# 輸出結果
+print(f"響應狀態碼: {response.status_code}")
+print(f"響應內容: {response.text}")
 ```
 
-## Java Example
+## Java 範例
 
 ```java
 import java.net.URI;
@@ -374,9 +374,9 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 /**
- * RatPanel API Request Example (Java)
+ * AcePanel API Request Example (Java)
  */
-public class RatPanelApiExample {
+public class AcePanelApiExample {
 
     public static void main(String[] args) {
         try {
@@ -501,7 +501,7 @@ public class RatPanelApiExample {
 }
 ```
 
-## Node.js Example
+## Node.js 範例
 
 ```javascript
 const crypto = require('crypto');
@@ -509,40 +509,40 @@ const axios = require('axios');
 const url = require('url');
 
 /**
- * Calculate SHA256 hash of a string
- * @param {string} text The string to hash
- * @returns {string} Hash result (hexadecimal)
+ * 計算字符串的 SHA256 哈希值
+ * @param {string} text 待哈希的字符串
+ * @returns {string} 哈希結果（十六進制）
  */
 function sha256Hash(text) {
     return crypto.createHash('sha256').update(text || '').digest('hex');
 }
 
 /**
- * Calculate signature using HMAC-SHA256 algorithm
- * @param {string} key The key
- * @param {string} message The message to sign
- * @returns {string} Signature result (hexadecimal)
+ * 使用 HMAC-SHA256 算法計算簽名
+ * @param {string} key 密鑰
+ * @param {string} message 待簽名的消息
+ * @returns {string} 簽名結果（十六進制）
  */
 function hmacSha256(key, message) {
     return crypto.createHmac('sha256', key).update(message).digest('hex');
 }
 
 /**
- * Generate signature for API request
- * @param {string} method HTTP method
- * @param {string} apiUrl API URL
- * @param {string} body Request body
- * @param {number} id User ID
- * @param {string} token Secret key
- * @returns {object} Object containing signature, timestamp and ID
+ * 為 API 請求生成簽名
+ * @param {string} method HTTP 方法
+ * @param {string} apiUrl API 地址
+ * @param {string} body 請求體
+ * @param {number} id 用戶 ID
+ * @param {string} token 密鑰
+ * @returns {object} 包含簽名、時間戳和 ID 的對象
  */
 function signRequest(method, apiUrl, body, id, token) {
-    // Parse URL
+    // 解析 URL
     const parsedUrl = new url.URL(apiUrl);
     const path = parsedUrl.pathname;
-    const query = parsedUrl.search.slice(1); // Remove leading '?'
+    const query = parsedUrl.search.slice(1); // 移除開頭的 '?'
 
-    // Canonical path
+    // 規範化路徑
     let canonicalPath = path;
     if (!path.startsWith('/api')) {
         const apiPos = path.indexOf('/api');
@@ -551,7 +551,7 @@ function signRequest(method, apiUrl, body, id, token) {
         }
     }
 
-    // Construct canonical request
+    // 構造規範化請求
     const canonicalRequest = [
         method,
         canonicalPath,
@@ -559,17 +559,17 @@ function signRequest(method, apiUrl, body, id, token) {
         sha256Hash(body || '')
     ].join('\n');
 
-    // Get current timestamp
+    // 獲取當前時間戳
     const timestamp = Math.floor(Date.now() / 1000);
 
-    // Construct string to sign
+    // 構造待簽名字符串
     const stringToSign = [
         'HMAC-SHA256',
         timestamp,
         sha256Hash(canonicalRequest)
     ].join('\n');
 
-    // Calculate signature
+    // 計算簽名
     const signature = hmacSha256(token, stringToSign);
 
     return {
@@ -580,28 +580,28 @@ function signRequest(method, apiUrl, body, id, token) {
 }
 
 /**
- * Send API request
+ * 發送 API 請求
  */
 async function sendApiRequest() {
-    // Example request parameters
+    // 範例請求參數
     const apiUrl = 'http://example.com/entrance/api/user/info';
     const method = 'GET';
-    const body = ''; // GET requests typically have no body
+    const body = ''; // GET 請求通常沒有請求體
     const id = 16;
-    const token = 'YourSecretToken';
+    const token = '您的秘密令牌';
 
     try {
-        // Generate signature information
+        // 生成簽名信息
         const signingData = signRequest(method, apiUrl, body, id, token);
 
-        // Prepare HTTP headers
+        // 準備 HTTP 標頭
         const headers = {
             'Content-Type': 'application/json',
             'X-Timestamp': signingData.timestamp,
             'Authorization': `HMAC-SHA256 Credential=${signingData.id}, Signature=${signingData.signature}`
         };
 
-        // Send request
+        // 發送請求
         const response = await axios({
             method,
             url: apiUrl,
@@ -609,53 +609,53 @@ async function sendApiRequest() {
             data: body || undefined
         });
 
-        // Output results
-        console.log(`Response Status Code: ${response.status}`);
-        console.log(`Response Content: ${JSON.stringify(response.data)}`);
+        // 輸出結果
+        console.log(`響應狀態碼: ${response.status}`);
+        console.log(`響應內容: ${JSON.stringify(response.data)}`);
 
     } catch (error) {
-        console.error('Request Error:', error.message);
+        console.error('請求錯誤:', error.message);
         if (error.response) {
-            console.error(`Response Status Code: ${error.response.status}`);
-            console.error(`Response Content: ${JSON.stringify(error.response.data)}`);
+            console.error(`響應狀態碼: ${error.response.status}`);
+            console.error(`響應內容: ${JSON.stringify(error.response.data)}`);
         }
     }
 }
 
-// Execute request
+// 執行請求
 sendApiRequest();
 ```
 
-## Common Response Codes
+## 常見響應碼
 
-| HTTP Status Code | 描述                      |
-| ---------------- | ----------------------- |
-| 200              | Request successful      |
-| 401              | Authentication failed   |
-| 403              | Permission denied       |
-| 404              | Resource not found      |
-| 422              | Request parameter error |
-| 500              | Internal server error   |
+| HTTP 狀態碼 | 描述      |
+| -------- | ------- |
+| 200      | 請求成功    |
+| 401      | 身份驗證失敗  |
+| 403      | 權限不足    |
+| 404      | 資源不存在   |
+| 422      | 請求參數錯誤  |
+| 500      | 伺服器內部錯誤 |
 
-## Security Recommendations
+## 安全建議
 
-1. **Protect Your API Token**: Do not hardcode or expose your API token in client-side code
-2. **Rotate Tokens Regularly**: Change your API token regularly to enhance security
-3. **Configure IP Whitelisting**: Use IP whitelisting to restrict access in production environments
+1. **保護您的 API 令牌**：不要在客戶端代碼中硬編碼或公開您的 API 令牌
+2. **定期輪換令牌**：定期更改您的 API 令牌以提高安全性
+3. **配置 IP 白名單**：在生產環境中使用 IP 白名單限制訪問
 
-## Frequently Asked Questions
+## 常見問題解答
 
-### Signature Verification Failed
+### 簽名驗證失敗
 
-If you encounter signature verification failures, check:
+如果遇到簽名驗證失敗，請檢查：
 
-- Ensure you are using the correct API token and ID
-- Check that the client and server times are accurate; timestamp differences greater than 300 seconds will cause verification to fail
-- Ensure the request body hasn't been modified before or after signature calculation
-- Ensure the URL path is handled correctly; remember to remove the entry prefix when normalizing the path
+ - 確保使用了正確的 API 令牌和 ID
+ - 檢查客戶端和伺服器時間是否準確；時間戳之間的差異超過 300 秒將導致驗證失敗
+ - 確保請求主體在計算簽名前後沒有被修改
+ - 確保 URL 路徑處理正確；請記住在規範化路徑時要移除入口前綴
 
-### Request Timeout
+### 請求超時
 
-- Check network connection
-- Confirm server status
-- Consider increasing the client timeout settings
+ - 檢查網絡連接
+ - 確認伺服器狀態
+ - 考慮增加客戶端的超時設置

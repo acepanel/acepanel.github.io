@@ -1,13 +1,13 @@
 ---
 layout: home
 hero:
-  name: "耗子面板"
+  name: "AcePanel"
   text: "简单轻量 • 高效运维"
   tagline: 全能服务器运维管理面板
   actions:
     - theme: brand
       text: 🌟 点亮 Star
-      link: https://github.com/tnb-labs/panel
+      link: https://github.com/tnborg/panel
       target: _blank
     - theme: alt
       text: 快速安装
@@ -45,7 +45,7 @@ features:
       <img width="160" src="/wxd.png" alt="WeiXiaoDuo">
     </a>
     <a href="https://www.dkdun.cn/aff/MQZZNVHQ" style="padding: 1rem;">
-      <img width="160" src="/dk.png" alt="LinFeng Cloud">
+      <img width="160" src="/dk.png" alt="LF Cloud">
     </a>
     <a href="https://waf.pro/">
       <img width="160" src="/wafpro.png" alt="WAFPRO" style="padding: 1rem;">

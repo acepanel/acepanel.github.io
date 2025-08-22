@@ -1,25 +1,25 @@
 import { type DefaultTheme, defineConfig } from 'vitepress';
-const locale = 'en';
+const locale = "zh_TW";
 const resp = await (await fetch('https://panel.haozi.net/api/versions')).json();
 const versions = resp.data.slice(0, 10).map((item: any) => {
   return item.version;
 });
 export const config = defineConfig({
-  lang: 'en-US',
-  title: 'RatPanel',
-  description: "Simple · lightweight · efficient",
+  lang: "zh-TW",
+  title: 'AcePanel',
+  description: "簡單 · 輕量 · 高效",
   themeConfig: {
     nav: nav(),
     sidebar: [{
-      text: "Quickstart",
+      text: "快速開始",
       base: locale == 'en' ? '/quickstart' : `/${locale}/quickstart`,
       items: sidebarQuickstart()
     }, {
-      text: "Advanced",
+      text: "進階指南",
       base: locale == 'en' ? '/advanced' : `/${locale}/advanced`,
       items: sidebarAdvanced()
     }, {
-      text: "Versions",
+      text: "版本歷史",
       collapsed: true,
       items: [...versions.map((version: string) => {
         return {
@@ -29,78 +29,78 @@ export const config = defineConfig({
       })]
     }],
     editLink: {
-      pattern: 'https://github.com/ratpanel/ratpanel.github.io/edit/main/:path',
-      text: 'Edit this page on GitHub'
+      pattern: 'https://github.com/acepanel/acepanel.github.io/edit/main/:path',
+      text: "在 GitHub 上編輯此頁面"
     },
     footer: {
-      message: '<b style="font-size: larger">It is strictly forbidden to use Rat Panel for illegal activities, and our company does not provide any services to violators</b>',
-      copyright: `Copyright © 2022-${new Date().getFullYear()} Tianjin Rat Technology Co., Ltd All Rights Reserved.丨<a target="_blank" href="https://beian.miit.gov.cn/" rel="noreferrer">津ICP备2022009678号-1</a>丨<a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=12011502000848" rel="noreferrer">津公网安备12011502000848号</a>`
+      message: "<b style=\"font-size: larger\">嚴禁使用 AcePanel 進行非法活動，本公司不會向違規者提供任何服務</b>",
+      copyright: `版權 © 2022-${new Date().getFullYear()} 天津耗子科技有限公司 版權所有丨<a target="_blank" href="https://beian.miit.gov.cn/" rel="noreferrer">津ICP备2022009678號-1</a>丨<a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=12011502000848" rel="noreferrer">津公安備12011502000848號</a>`
     },
     docFooter: {
-      prev: 'Previous page',
-      next: 'Next page'
+      prev: "上一頁",
+      next: "下一頁"
     },
     outline: {
-      label: 'On this page'
+      label: "頁面導航"
     },
     lastUpdated: {
-      text: 'Last updated',
+      text: "最後更新於",
       formatOptions: {
         dateStyle: 'short',
         timeStyle: 'medium'
       }
     },
-    langMenuLabel: 'Change language',
-    returnToTopLabel: 'Return to top',
-    sidebarMenuLabel: 'Menu',
-    darkModeSwitchLabel: 'Appearance',
-    lightModeSwitchTitle: 'Switch to light theme',
-    darkModeSwitchTitle: 'Switch to dark theme',
-    skipToContentLabel: 'Skip to content'
+    langMenuLabel: "切換語言",
+    returnToTopLabel: "回到頂部",
+    sidebarMenuLabel: "菜單",
+    darkModeSwitchLabel: "主題",
+    lightModeSwitchTitle: "切換到淺色主題",
+    darkModeSwitchTitle: "切換到深色主題",
+    skipToContentLabel: "跳轉到內容"
   }
 });
 function nav(): DefaultTheme.NavItem[] {
   return [{
-    text: 'Home',
+    text: "首頁",
     link: locale == 'en' ? '/' : `/${locale}/`
   }, {
-    text: 'Document',
+    text: "文檔",
     link: locale == 'en' ? '/quickstart/install' : `/${locale}/quickstart/install`
   }, {
-    text: 'Support',
+    text: "支持",
     link: locale == 'en' ? '/support' : `/${locale}/support`
   }, {
     text: "🔥證書",
     link: locale == 'en' ? '/cert' : `/${locale}/cert`
   }, {
-    text: 'About',
+    text: "關於",
     link: locale == 'en' ? '/about' : `/${locale}/about`
   }];
 }
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
   return [{
-    text: 'Installing panel',
-    link: "/安裝"
+    text: "安裝面板",
+    link: '/install'
   }, {
-    text: 'Mounting partition',
-    link: "/磁碟"
+    text: "掛載分區",
+    link: '/disk'
   }, {
-    text: 'Managing panel',
+    text: "管理面板",
     link: '/panel'
   }, {
-    text: 'Managing container',
-    link: "/容器"
+    text: "管理容器",
+    link: '/container'
   }];
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: 'Panel API',
+    text: "面板 API",
     link: '/api'
   }, {
-    text: 'Security recommendations',
-    link: "/安全"
+    text: "安全性建議",
+    link: '/safe'
   }, {
-    text: 'FAQ',
+    text: "常見問題",
     link: '/faq'
   }];
 }

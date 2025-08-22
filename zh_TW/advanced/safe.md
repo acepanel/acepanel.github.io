@@ -1,32 +1,32 @@
-# Security Recommendations
+# 安全性建議
 
-With the following security measures, almost all hacking/malware issues can be prevented.
+透過以下安全措施，幾乎可以杜絕一切被黑/掛馬問題。
 
-### Website Aspects
+### 網站方面
 
-Based on experience, most hacking and malware incidents are caused by program vulnerabilities, unrelated to the Panel or environment. For website security, you should:
+根據以往經驗，大多數被黑和惡意程式事件都是由程序漏洞造成的，與面板或環境無關。 為了網站安全，你應該：
 
-1. Avoid using pirated programs or software, especially when you cannot determine if they have been tampered with.
-2. Regularly update website programs and software environments; don't use outdated software due to inconvenience, as their security cannot be guaranteed.
-3. Never use weak passwords for website admin areas. Passwords are strongly recommended to be generated using a random generator with more than 20 mixed characters and stored in a secure location. If possible, enable 2FA for your programs.
-4. Set up scheduled backups of all site data; don't operate without backups.
-5. PHP has disabled some high-risk functions by default; don't remove these restrictions unless absolutely necessary.
+1. 避免使用盜版程序或軟體，特別是在你無法判斷它們是否被篡改的情況下。
+2. 定期更新網站程序和軟體環境；不要因為麻煩而使用過時的軟體，因為其安全性無法保證。
+3. 網站後台禁止使用弱密碼。 密碼強烈建議使用隨機生成器生成大於20位的混合字符，並存儲在安全的位置。 如果可能，為你的程序啟用兩步驟驗證（2FA）。
+4. 設置所有網站數據的定期備份；不要在沒有備份的情況下運行。
+5. PHP預設禁用了某些高風險功能；除非絕對必要，否則不要移除這些限制。
 
-### System Aspects
+### 系統方面
 
-The probability of serious security vulnerabilities in modern systems is low, but you should still:
+現代系統出現嚴重安全漏洞的概率是很低的，但你仍應該做到：
 
-1. Regularly update system software. (Use `yum update` or `apt upgrade`).
-2. Prohibit weak passwords and the default port 22 for SSH. Passwords are strongly recommended to be generated using a random generator with more than 20 mixed characters and stored in a secure location. If possible, consider installing Fail2ban for targeted protection.
-3. Don't arbitrarily assign 777 permissions or execution permissions to the www user, as this may cause major security risks.
-4. If your service provider offers VNC server management, consider disabling SSH to solve the problem at the source.
+1. 定期更新系統軟體。 （使用 `yum update` 或 `apt upgrade`）。
+2. SSH禁止使用弱密碼和默認的22端口。 密碼強烈建議使用隨機生成器生成大於20位的混合字符，並存儲在安全的位置。 如果可能，考慮安裝Fail2ban以進行針對性保護。
+3. 不要隨意給予777權限或執行權限給www用戶，因為這可能造成重大的安全隱患。
+4. 如果你的服務提供商提供VNC伺服器管理，考慮關閉SSH以從源頭解決問題。
 
-### Panel Aspects
+### 面板方面
 
-RatPanel has the same privileges as root, and improper management can cause serious security problems. You should:
+AcePanel 擁有與 root 相同的權限，不當管理可能會造成嚴重的安全問題。 你應該做到：
 
-1. Regularly update the Panel and applications installed through it. We recommend following our channel or group to receive various update messages promptly.
-2. Prohibit weak passwords and the default 8888 port for the Panel. Passwords are strongly recommended to be generated using a random generator with more than 20 mixed characters and stored in a secure location.
-3. Consider modifying the Panel entry point and enabling HTTPS for the Panel to prevent scanner detection and man-in-the-middle attacks.
-4. Unless necessary, do not allow firewall access to internal service ports (Redis 6379, MySQL 3306, PostgreSQL 5432, etc.), as this may cause serious security risks. (Local website connections don't require firewall access; connection issues are program problems).
-5. For high-security requirements, consider stopping the Panel operation routinely and starting it only when needed (stopping the Panel will not affect websites, scheduled tasks, etc.).
+1. 定期更新面板及透過它安裝的應用。 我們建議關注我們的頻道或群組，以便及時收到各種更新消息。
+2. 面板禁止使用弱密碼和默認8888端口。 密碼強烈建議使用隨機生成器生成大於20位的混合字符，並存儲在安全的位置。
+3. 建議修改面板入口並啟用HTTPS，以防止被掃描器檢測和中間人攻擊。
+4. 除非必要，否則不允許防火牆訪問內部服務端口（Redis 6379、MySQL 3306、PostgreSQL 5432等），因為這可能造成嚴重的安全風險。 （網站本地連接不需要放行；連接問題是程序問題）。
+5. 對於安全性要求較高的情況，考慮定期停止面板運行，僅在需要時啟動（停止運行面板不會影響網站、計劃任務等）。

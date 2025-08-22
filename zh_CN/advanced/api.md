@@ -2,13 +2,13 @@
 
 ## 概述
 
-耗子面板提供了一套安全的 RESTful 接口，用于与面板系统进行交互。 所有 API 请求都需要进行 HMAC-SHA256 签名认证以确保通信的安全性和完整性。
+AcePanel 提供了一套安全的 RESTful 接口，用于与面板进行交互。 所有 API 请求都需要进行 HMAC-SHA256 签名认证以确保通信的安全性和完整性。 所有 API 请求都需要进行 HMAC-SHA256 签名认证以确保通信的安全性和完整性。
 
 ## 基础信息
 
-- **基础 URL**: `http(s)://your-panel-domain/{entry}/api/`
-- **内容类型**: 所有请求和响应均使用 `application/json`
-- **字符编码**: UTF-8
+ - **基础 URL**: `http(s)://your-panel-domain/{entry}/api/`
+ - **内容类型**: 所有请求和响应均使用 `application/json`
+ - **字符编码**: UTF-8
 
 ## 认证机制
 
@@ -182,7 +182,7 @@ func HMACSHA256(data string, secret string) string {
 ```php
 <?php
 /**
- * 耗子面板 API 请求示例 (PHP)
+ * AcePanel API 请求示例 (PHP)
  */
 
 function signRequest($method, $url, $body, $id, $token) {
@@ -374,9 +374,9 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 /**
- * 耗子面板 API 请求示例 (Java)
+ * AcePanel API 请求示例 (Java)
  */
-public class RatPanelApiExample {
+public class AcePanelApiExample {
 
     public static void main(String[] args) {
         try {
@@ -649,13 +649,13 @@ sendApiRequest();
 
 如果遇到签名验证失败，请检查：
 
-- 确保使用了正确的 API 令牌和 ID
-- 检查客户端与服务器的时间是否准确，时间戳偏差大于 300 秒会导致验证失败
-- 确保请求体在计算签名前后没有被修改
-- 确保 URL 路径处理正确，注意规范化路径时需要移除入口前缀
+ - 确保使用了正确的 API 令牌和 ID
+ - 检查客户端与服务器的时间是否准确，时间戳偏差大于 300 秒会导致验证失败
+ - 确保请求体在计算签名前后没有被修改
+ - 确保 URL 路径处理正确，注意规范化路径时需要移除入口前缀
 
 ### 请求超时
 
-- 检查网络连接
-- 确认服务器状态
-- 考虑增加客户端的超时设置
+ - 检查网络连接
+ - 确认服务器状态
+ - 考虑增加客户端的超时设置

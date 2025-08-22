@@ -4,11 +4,11 @@ prev: false
 next: false
 ---
 
-# Certificates
+# 證書
 
-If the 3-month free certificate cannot meet your needs, you can choose to purchase higher-level certificates. We offer DV single-domain certificates and DV wildcard certificates for your selection.
+如果 3 個月的免費證書無法滿足您的需求，您可以選擇購買更高級別的證書。 我們提供 DV 單域名證書和 DV 通配符證書供您選擇。
 
-Due to pricing policy restrictions, please contact our sales team directly through the group link in the upper right corner for specific prices and purchases.
+由於定價政策的限制，請通過右上角的群組鏈接直接聯繫我們的銷售團隊以獲取具體價格和購買信息。
 
 <style>
   .cert-cards-container {
@@ -119,83 +119,83 @@ Due to pricing policy restrictions, please contact our sales team directly throu
   }
 </style>
 
-## Choose Certificates
+## 選擇證書
 
 <div class="cert-cards-container">
   <div class="cert-card">
     <div class="cert-card-header">
-      <h2 class="cert-card-title">DV Single-domain Certificate</h2>
+      <h2 class="cert-card-title">DV 單域名證書</h2>
     </div>
-    <div class="cert-subtitle">Internationally recognized brand certificate</div>
-    <div class="cert-price">¥ 1X<span>/year</span></div>
+    <div class="cert-subtitle">國際知名品牌證書</div>
+    <div class="cert-price">¥ 1X<span>/年</span></div>
     <div class="cert-features">
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Domain Validation (DV) Certificate</span>
+        <span>域名驗證（DV）證書</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Supports one domain</span>
+        <span>僅支持一個域名</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>One-year validity</span>
+        <span>一年有效期</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Rapid issuance</span>
+        <span>快速頒發</span>
       </div>
-    </div><button class="cert-buy-button">Contact sales in the upper right corner</button>
+    </div><button class="cert-buy-button">右上角聯繫銷售</button>
   </div>
   <div class="cert-card">
     <div class="cert-card-header">
-      <h2 class="cert-card-title">DV Wildcard Certificate</h2>
+      <h2 class="cert-card-title">DV 通配符證書</h2>
     </div>
-    <div class="cert-subtitle">Internationally recognized brand certificate</div>
-    <div class="cert-price">¥ 1XX<span>/year</span></div>
+    <div class="cert-subtitle">國際知名品牌證書</div>
+    <div class="cert-price">¥ 1XX<span>/年</span></div>
     <div class="cert-features">
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Domain Validation (DV) Certificate</span>
+        <span>域名驗證（DV）證書</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Covers all subdomains</span>
+        <span>涵蓋所有子域</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>One-year validity</span>
+        <span>一年有效期</span>
       </div>
       <div class="cert-feature-item"><span class="cert-check-icon">✓</span>
-        <span>Rapid issuance</span>
+        <span>快速頒發</span>
       </div>
-    </div><button class="cert-buy-button">Contact sales in the upper right corner</button>
+    </div><button class="cert-buy-button">右上角聯繫銷售</button>
   </div>
 </div>
 
-## Certificate Features
+## 證書特點
 
 <div class="cert-features-section">
   <div class="cert-features-grid">
     <div class="cert-feature-card">
       <div class="cert-feature-icon">🛡️</div>
       <div class="cert-feature-content">
-        <h3>Safe and Reliable</h3>
-        <p>Uses international standards to protect website security</p>
+        <h3>安全可靠</h3>
+        <p>使用國際標準來保護網站安全</p>
       </div>
     </div>
     <div class="cert-feature-card">
       <div class="cert-feature-icon">⚡</div>
       <div class="cert-feature-content">
-        <h3>Rapid Issuance</h3>
-        <p>Simplified issuance process for quick certificate delivery</p>
+        <h3>快速簽發</h3>
+        <p>簡化簽發流程，以快速提供證書</p>
       </div>
     </div>
     <div class="cert-feature-card">
       <div class="cert-feature-icon">💳</div>
       <div class="cert-feature-content">
-        <h3>Flexible Payment</h3>
-        <p>Multiple specifications available to meet different needs</p>
+        <h3>靈活付費</h3>
+        <p>提供多種規格以滿足不同需求</p>
       </div>
     </div>
     <div class="cert-feature-card">
       <div class="cert-feature-icon">👨‍💻</div>
       <div class="cert-feature-content">
-        <h3>Professional Service</h3>
-        <p>Professional technical support ensures worry-free usage</p>
+        <h3>專業服務</h3>
+        <p>專業技術支持確保無憂使用</p>
       </div>
     </div>
   </div>
