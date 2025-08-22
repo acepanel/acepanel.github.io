@@ -7,7 +7,7 @@ const versions = resp.data.slice(0, 10).map((item: any) => {
 export const config = defineConfig({
   lang: "zh-TW",
   title: 'AcePanel',
-  description: "簡單 · 輕量 · 高效",
+  description: "簡單輕量 • 高效能運維",
   themeConfig: {
     nav: nav(),
     sidebar: [{

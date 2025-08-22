@@ -2,10 +2,10 @@
 layout: home
 hero:
   name: "AcePanel"
-  text: "簡單 · 輕量 · 高效"
+  text: "簡單輕量 • 高效能運維"
   tagline: 企業伺服器運維管理面板
   actions:
-    - theme: 品牌
+    - theme: brand
       text: 🌟 點亮 Star
       link: https://github.com/tnb-labs/panel
       target: _blank
