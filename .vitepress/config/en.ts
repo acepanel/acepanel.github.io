@@ -18,12 +18,12 @@ export const config = defineConfig({
         sidebar: [
             {
                 text: "Quickstart",
-                base: locale == 'en' ? '/quickstart' : `/${locale}/quickstart`,
+                base: locale == 'zh_CN' ? '/quickstart' : `/${locale}/quickstart`,
                 items: sidebarQuickstart()
             },
             {
                 text: "Advanced",
-                base: locale == 'en' ? '/advanced' : `/${locale}/advanced`,
+                base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
                 items: sidebarAdvanced()
             },
             {
@@ -33,7 +33,7 @@ export const config = defineConfig({
                     ...versions.map((version: string) => {
                         return {
                             text: version,
-                            link: locale == 'en' ? `/version-${version}` : `/${locale}/version-${version}`
+                            link: locale == 'zh_CN' ? `/version-${version}` : `/${locale}/version-${version}`
                         }
                     })
                 ]
@@ -76,23 +76,23 @@ function nav(): DefaultTheme.NavItem[] {
     return [
         {
             text: 'Home',
-            link: locale == 'en' ? '/' : `/${locale}/`
+            link: locale == 'zh_CN' ? '/' : `/${locale}/`
         },
         {
             text: 'Document',
-            link: locale == 'en' ? '/quickstart/install' : `/${locale}/quickstart/install`
+            link: locale == 'zh_CN' ? '/quickstart/install' : `/${locale}/quickstart/install`
         },
         {
             text: 'Support',
-            link: locale == 'en' ? '/support' : `/${locale}/support`
+            link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
         },
         {
             text: '🔥Certificate',
-            link: locale == 'en' ? '/cert' : `/${locale}/cert`
+            link: locale == 'zh_CN' ? '/cert' : `/${locale}/cert`
         },
         {
             text: 'About',
-            link: locale == 'en' ? '/about' : `/${locale}/about`
+            link: locale == 'zh_CN' ? '/about' : `/${locale}/about`
         },
     ]
 }

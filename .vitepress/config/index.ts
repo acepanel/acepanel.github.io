@@ -9,8 +9,8 @@ import {config as zh_TW} from './zh_TW'
 export default defineConfig({
     ...shared,
     locales: {
-        root: { label: 'English', ...en },
-        zh_CN: {label: '简体中文', ...zh_CN},
+        root: {label: '简体中文', ...zh_CN},
         zh_TW: {label: '繁體中文', ...zh_TW},
+        en: { label: 'English', ...en },
     },
 })

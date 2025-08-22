@@ -10,7 +10,7 @@ export const shared = defineConfig({
     title: 'AcePanel',
 
     rewrites: {
-        'en/:rest*': ':rest*'
+        'zh_CN/:rest*': ':rest*'
     },
 
     lastUpdated: true,
