@@ -9,7 +9,7 @@ const versions = resp.data.slice(0, 10).map((item: any) => {
 
 export const config = defineConfig({
     lang: 'en-US',
-    title: 'RatPanel',
+    title: 'AcePanel',
     description: "Simple · lightweight · efficient",
 
     themeConfig: {

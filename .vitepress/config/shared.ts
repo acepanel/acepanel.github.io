@@ -7,7 +7,7 @@ import {defineConfig} from "vitepress";
 import {enSearch, zh_CNSearch, zh_TWSearch} from './search'
 
 export const shared = defineConfig({
-    title: 'RatPanel',
+    title: 'AcePanel',
 
     rewrites: {
         'en/:rest*': ':rest*'
@@ -33,7 +33,7 @@ export const shared = defineConfig({
     themeConfig: {
         logo: '/logo.png',
         socialLinks: [
-            {icon: 'github', link: 'https://github.com/tnb-labs/panel'},
+            {icon: 'github', link: 'https://github.com/tnborg/panel'},
             {icon: 'tencentqq', link: 'https://jq.qq.com/?_wv=1027&k=I1oJKSTH'},
             {icon: 'wechat', link: 'https://work.weixin.qq.com/gm/d8ebf618553398d454e3378695c858b6'},
         ],
