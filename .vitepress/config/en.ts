@@ -45,7 +45,7 @@ export const config = defineConfig({
             text: 'Edit this page on GitHub'
         },
         footer: {
-            message: '<b style="font-size: larger">It is strictly forbidden to use Rat Panel for illegal activities, and our company does not provide any services to violators</b>',
+            message: '<b style="font-size: larger">It is strictly forbidden to use AcePanel for illegal activities, and our company does not provide any services to violators</b>',
             copyright: `Copyright © 2022-${new Date().getFullYear()} Tianjin Rat Technology Co., Ltd All Rights Reserved.丨<a target="_blank" href="https://beian.miit.gov.cn/" rel="noreferrer">津ICP备2022009678号-1</a>丨<a target="_blank" href="https://beian.mps.gov.cn/#/query/webSearch?code=12011502000848" rel="noreferrer">津公网安备12011502000848号</a>`
         },
         docFooter: {
