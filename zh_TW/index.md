@@ -7,11 +7,11 @@ hero:
   actions:
     - theme: brand
       text: 🌟 點亮 Star
-      link: https://github.com/tnb-labs/panel
+      link: https://github.com/tnborg/panel
       target: _blank
     - theme: alt
       text: 快速安裝
-      link: /quickstart/install
+      link: /zh_TW/quickstart/install
 features:
   - icon: ✨
     title: 極低佔用

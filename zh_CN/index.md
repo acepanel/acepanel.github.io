@@ -11,7 +11,7 @@ hero:
       target: _blank
     - theme: alt
       text: 快速安装
-      link: /zh_CN/quickstart/install
+      link: /quickstart/install
 features:
   - icon: ✨
     title: 极低占用
