@@ -9,6 +9,8 @@ import {enSearch, zh_CNSearch, zh_TWSearch} from './search'
 export const shared = defineConfig({
     title: 'AcePanel',
 
+    head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+
     rewrites: {
         'zh_CN/:rest*': ':rest*'
     },
