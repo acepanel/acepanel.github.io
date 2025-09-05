@@ -32,6 +32,7 @@ export const shared = defineConfig({
 
     themeConfig: {
         logo: '/logo.png',
+        siteTitle: false,
         socialLinks: [
             {icon: 'github', link: 'https://github.com/tnborg/panel'},
             {icon: 'tencentqq', link: 'https://jq.qq.com/?_wv=1027&k=I1oJKSTH'},
