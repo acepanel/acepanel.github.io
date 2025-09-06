@@ -27,7 +27,6 @@ For systems not listed in the table below, you can try installing on your own, b
 | TencentOS Server    | 3.1     | Not Recommended |
 | Alibaba Cloud Linux | 3.2     | Not Recommended |
 | Anolis              | 8       | Not Recommended |
-| openEuler           | 22      | Not Recommended |
 
 As system versions continue to update, we may also terminate support for some overly outdated systems to ensure the robustness of the Panel.
 
