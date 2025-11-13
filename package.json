@@ -20,6 +20,6 @@
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.15.1",
     "@shikijs/vitepress-twoslash": "^3.2.1",
     "@types/node": "^22.14.0",
-    "vitepress": "2.0.0-alpha.12"
+    "vitepress": "2.0.0-alpha.13"
   }
 }
