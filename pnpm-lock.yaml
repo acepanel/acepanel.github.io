@@ -20,10 +20,10 @@ importers:
     devDependencies:
       '@nolebase/vitepress-plugin-enhanced-mark':
         specifier: ^2.15.1
-        version: 2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))
+        version: 2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))
       '@nolebase/vitepress-plugin-enhanced-readabilities':
         specifier: ^2.15.1
-        version: 2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))
+        version: 2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))
       '@shikijs/vitepress-twoslash':
         specifier: ^3.2.1
         version: 3.15.0(typescript@5.9.3)
@@ -31,8 +31,8 @@ importers:
         specifier: ^24.0.0
         version: 24.10.1
       vitepress:
-        specifier: 2.0.0-alpha.14
-        version: 2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
+        specifier: 2.0.0-alpha.15
+        version: 2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
 
 packages:
 
@@ -1125,8 +1125,8 @@ packages:
       vite:
         optional: true
 
-  vitepress@2.0.0-alpha.14:
-    resolution: {integrity: sha512-byPDAwYGP10NvH6BVeQcVYMJ96B5LktgCpOUmDA9HdNsRJZUG5pr7pe3B/DDEy9nTzi5JyOdhYPXvhI+s5tGew==}
+  vitepress@2.0.0-alpha.15:
+    resolution: {integrity: sha512-jhjSYd10Z6RZiKOa7jy0xMVf5NB5oSc/lS3bD/QoUc6V8PrvQR5JhC9104NEt6+oTGY/ftieVWxY9v7YI+1IjA==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4
@@ -1313,25 +1313,25 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@nolebase/ui@2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
+  '@nolebase/ui@2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@iconify-json/octicon': 1.2.19
       less: 4.4.2
-      vitepress: 2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
+      vitepress: 2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
       vue: 3.5.24(typescript@5.9.3)
 
-  '@nolebase/vitepress-plugin-enhanced-mark@2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))':
+  '@nolebase/vitepress-plugin-enhanced-mark@2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))':
     dependencies:
       less: 4.4.2
-      vitepress: 2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
+      vitepress: 2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
 
-  '@nolebase/vitepress-plugin-enhanced-readabilities@2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
+  '@nolebase/vitepress-plugin-enhanced-readabilities@2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))':
     dependencies:
       '@iconify-json/carbon': 1.2.14
       '@iconify-json/icon-park-outline': 1.2.4
-      '@nolebase/ui': 2.18.2(vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))
+      '@nolebase/ui': 2.18.2(vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3))(vue@3.5.24(typescript@5.9.3))
       less: 4.4.2
-      vitepress: 2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
+      vitepress: 2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3)
     transitivePeerDependencies:
       - vue
 
@@ -2337,7 +2337,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  vitepress@2.0.0-alpha.14(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3):
+  vitepress@2.0.0-alpha.15(@types/node@24.10.1)(less@4.4.2)(postcss@8.5.6)(typescript@5.9.3):
     dependencies:
       '@docsearch/css': 4.3.2
       '@docsearch/js': 4.3.2
