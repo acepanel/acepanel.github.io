@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 🌟 Star
-      link: https://github.com/tnborg/panel
+      link: https://github.com/acepanel/panel
       target: _blank
     - theme: alt
       text: Quick install

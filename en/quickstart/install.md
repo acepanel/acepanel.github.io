@@ -1,8 +1,8 @@
 # Install Panel
 
-The Panel supports mainstream systems under `amd64` | `arm64` architectures. LNMP environment installation has been tested on all systems listed in the table below.
+AcePanel supports the latest two stable releases of mainstream `amd64` and `arm64` architecture systems. Installation of the LNMP environment has been tested on all systems listed in the table below.
 
-It is recommended to use systems marked as **recommended**. Unless there are special circumstances, it is not recommended to use systems marked as **not recommended**.
+It is recommended to use systems marked as **Recommended**. Unless there are special circumstances, it is not recommended to use systems marked as **Not Recommended**.
 
 For systems not listed in the table below, you can try installing on your own, but no free technical support will be provided.
 
@@ -10,22 +10,18 @@ For systems not listed in the table below, you can try installing on your own, b
 |---------------------|---------|-----------------|
 | AlmaLinux           | 10      | Recommended     |
 | AlmaLinux           | 9       | Recommended     |
-| AlmaLinux           | 8       | Not Recommended |
 | RockyLinux          | 10      | Supported       |
 | RockyLinux          | 9       | Supported       |
-| RockyLinux          | 8       | Not Recommended |
 | CentOS Stream       | 10      | Not Recommended |
 | CentOS Stream       | 9       | Not Recommended |
-| CentOS Stream       | 8       | Not Recommended |
 | Ubuntu              | 24      | Recommended     |
 | Ubuntu              | 22      | Supported       |
 | Debian              | 13      | Recommended     |
 | Debian              | 12      | Recommended     |
-| Debian              | 11      | Supported       |
 | OpenCloudOS         | 9       | Supported       |
 | TencentOS Server    | 4       | Supported       |
-| TencentOS Server    | 3.1     | Not Recommended |
-| Alibaba Cloud Linux | 3.2     | Not Recommended |
+| TencentOS Server    | 3       | Not Recommended |
+| Alibaba Cloud Linux | 3       | Not Recommended |
 | Anolis              | 8       | Not Recommended |
 
 As system versions continue to update, we may also terminate support for some overly outdated systems to ensure the robustness of the Panel.

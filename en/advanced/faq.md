@@ -1,6 +1,6 @@
 # Frequently Asked Questions
 
-Here are some common questions and answers about AcePanel. If you have any other questions, please feel free to ask in the [AcePanel Community](https://tom.moe/c/technical/acepanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/tnborg/panel/issues).
+Here are some common questions and answers about AcePanel. If you have any other questions, please feel free to ask in the [AcePanel Community](https://tom.moe/c/technical/acepanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/acepanel/panel/issues).
 
 ## Configure QUIC (HTTP3)
 
