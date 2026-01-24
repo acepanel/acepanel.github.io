@@ -69,5 +69,5 @@ Project initiated in mid-2022, version 1.0 released at the end of the year
 |-----------------|------------------------------------------------------------------------------------------|
 | WeChat Work     | [Click to Contact](https://work.weixin.qq.com/kfid/kfc20ea8e38b5a4e73a)                  |
 | QQ              | [826896000](https://wpa.qq.com/msgrd?v=3&uin=826896000&site=qq&menu=yes)                 |
-| Email           | [haozi@loli.email](mailto:admin@haozi.net)                                               |
+| Email           | [haozi@loli.email](mailto:haozi@loli.email)                                              |
 | Company Address | Room 206, Zhiku Building, No.1 Quanli Road, Huangzhuang Street, Wuqing District, Tianjin |
