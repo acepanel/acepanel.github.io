@@ -1,6 +1,6 @@
 # 常見問題
 
-以下是關於 AcePanel 的一些常見問題和解答。 如果您有任何其他問題，請隨時在 [AcePanel 社區](https://tom.moe/c/technical/acepanel) 提問。 如果您發現任何 Bugs，請提交一個 [GitHub Issue](https://github.com/tnborg/panel/issues)。
+以下是關於 AcePanel 的一些常見問題和解答。 如果您有任何其他問題，請隨時在 [AcePanel 社區](https://tom.moe/c/technical/acepanel) 提問。 If you find any bugs, please submit a [GitHub Issue](https://github.com/acepanel/panel/issues).
 
 ## 配置 QUIC（HTTP3）
 

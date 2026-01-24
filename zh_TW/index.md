@@ -7,7 +7,7 @@ hero:
   actions:
     - theme: brand
       text: 🌟 點亮 Star
-      link: https://github.com/tnborg/panel
+      link: https://github.com/acepanel/panel
       target: _blank
     - theme: alt
       text: 快速安裝
