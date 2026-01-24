@@ -69,5 +69,5 @@ In 2025, We focused on optimizing user experience and enhancing system stability
 | ---- | ------------------------------------------------------------------------------------------ |
 | 企業微信 | [點擊聯繫](https://work.weixin.qq.com/kfid/kfc20ea8e38b5a4e73a)                                |
 | QQ   | [826896000](https://wpa.qq.com/msgrd?v=3&uin=826896000&site=qq&menu=yes) |
-| 電子郵件 | [haozi@loli.email](mailto:admin@haozi.net)                    |
+| 電子郵件 | [haozi@loli.email](mailto:haozi@loli.email)                   |
 | 公司地址 | 天津市武清區黃莊街道泉里路1號智庫大廈206室                                                                    |

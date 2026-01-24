@@ -2,9 +2,9 @@
 
 请勿在面板仍有任务运行时操作停止 / 重启面板，否则可能会造成问题。
 
-- Start Panel: `acepanel start`
-- Stop Panel: `acepanel stop`
-- Restart Panel: `acepanel restart`
+- 启动面板：`acepanel start`
+- 停止面板：`acepanel stop`
+- 重启面板：`acepanel restart`
 
 ## 面板命令行
 

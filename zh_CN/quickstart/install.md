@@ -1,13 +1,10 @@
 # 安装面板
 
-AcePanel supports the latest two stable releases of mainstream `amd64` and `arm64` architecture systems. Installation of
-the LNMP environment has been tested on all systems listed in the table below.
+AcePanel 支持最新的两个稳定版本的主流 `amd64` 和 `arm64` 架构系统。 在下面的表格中列出的所有系统上均已测试 LNMP 环境的安装。
 
-It is recommended to use systems marked as **Recommended**. Unless there are special circumstances, it is not
-recommended to use systems marked as **Not Recommended**.
+建议使用标注为**推荐**的系统。 无特殊情况不建议使用标注**不推荐**的系统。
 
-For systems not listed in the table below, you can try installing on your own, but no free technical support will be
-provided.
+不在下表中的其他系统，可自行尝试安装，但不提供无偿技术支持。
 
 | 系统               | 版本 | 备注  |
 | ---------------- | -- | --- |
@@ -24,16 +21,13 @@ provided.
 | OpenCloudOS      | 9  | 支持  |
 | TencentOS Server | 4  | 支持  |
 
-As system versions continue to update, we may also terminate support for some overly outdated systems to ensure the
-robustness of the Panel.
+随着系统版本的不断更新，我们亦可能会终止部分过于老旧的系统的支持，以保证面板的健壮性。
 
 ## 开始安装
 
-> 如需挂载分区，请在安装面板前完成。 Directory migration is not
-> supported after Panel installation.
+> 如需挂载分区，请在安装面板前完成。 在面板安装后不支持目录迁移。
 
-**<span style="color: red;">AcePanel recommends
-using [LFCloud high-performance AMD EYPC server](https://www.dkdun.cn/aff/MQZZNVHQ) for installation.</span>**
+**<span style="color: red;">AcePanel 推荐使用 [林枫云高性能 AMD EYPC 服务器](https://www.dkdun.cn/aff/MQZZNVHQ) 进行安装。</span>**
 
 以 `root` 用户登录服务器，运行以下命令安装面板：
 
