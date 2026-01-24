@@ -1,6 +1,6 @@
 import { type DefaultTheme, defineConfig } from 'vitepress';
 const locale = "zh_CN";
-const resp = await (await fetch('https://api.acepanel.net/versions?locale=zh_CN')).json();
+const resp = await (await fetch('https://api.acepanel.net/versions?locale=en')).json();
 const versions = resp.data.slice(0, 10).map((item: any) => {
   return item.version;
 });

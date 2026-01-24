@@ -1,46 +1,44 @@
 # 安裝面板
 
-面板支持 `amd64` | `arm64` 架構下的主流系統。 下表中的系統均已測試 LNMP 環境安裝。
+AcePanel supports the latest two stable releases of mainstream `amd64` and `arm64` architecture systems. Installation of
+the LNMP environment has been tested on all systems listed in the table below.
 
-優先建議使用標註**推薦**的系統。 無特殊情況不建議使用標註**不推薦**的系統。
+It is recommended to use systems marked as **Recommended**. Unless there are special circumstances, it is not
+recommended to use systems marked as **Not Recommended**.
 
-不在下表中的其他系統，可自行嘗試安裝，但不提供無償技術支持。
+For systems not listed in the table below, you can try installing on your own, but no free technical support will be
+provided.
 
-| 系統                  | 版本                  | 備註  |
-| ------------------- | ------------------- | --- |
-| AlmaLinux           | 10                  | 推薦  |
-| AlmaLinux           | 9                   | 推薦  |
-| AlmaLinux           | 8                   | 不推薦 |
-| RockyLinux          | 10                  | 支持  |
-| RockyLinux          | 9                   | 支持  |
-| RockyLinux          | 8                   | 不推薦 |
-| CentOS Stream       | 10                  | 不推薦 |
-| CentOS Stream       | 9                   | 不推薦 |
-| CentOS Stream       | 8                   | 不推薦 |
-| Ubuntu              | 24                  | 推薦  |
-| Ubuntu              | 22                  | 支持  |
-| Debian              | 13                  | 推薦  |
-| Debian              | 12                  | 推薦  |
-| Debian              | 11                  | 支持  |
-| OpenCloudOS         | 9                   | 支持  |
-| TencentOS Server    | 4                   | 支持  |
-| TencentOS Server    | 3.1 | 不推薦 |
-| Alibaba Cloud Linux | 3.2 | 不推薦 |
-| Anolis              | 8                   | 不推薦 |
-| openEuler           | 22                  | 不推薦 |
+| 系統               | 版本 | 備註  |
+| ---------------- | -- | --- |
+| AlmaLinux        | 10 | 推薦  |
+| AlmaLinux        | 9  | 支持  |
+| RockyLinux       | 10 | 推薦  |
+| RockyLinux       | 9  | 支持  |
+| CentOS Stream    | 10 | 不推薦 |
+| CentOS Stream    | 9  | 不推薦 |
+| Ubuntu           | 24 | 推薦  |
+| Ubuntu           | 22 | 支持  |
+| Debian           | 13 | 推薦  |
+| Debian           | 12 | 支持  |
+| OpenCloudOS      | 9  | 支持  |
+| TencentOS Server | 4  | 支持  |
 
-隨著系統版本的不斷更新，我們亦可能會終止部分過於老舊的系統的支持，以保證面板的健壯性。
+As system versions continue to update, we may also terminate support for some overly outdated systems to ensure the
+robustness of the Panel.
 
 ## 開始安裝
 
-> 如需掛載分區，請在安裝面板前完成。 面板安裝後不支持跨目錄遷移。
+> 如需掛載分區，請在安裝面板前完成。 Directory migration is not
+> supported after Panel installation.
 
-**<span style="color: red;">AcePanel 推薦使用 [林楓雲高性能 AMD EYPC 伺服器](https://www.dkdun.cn/aff/MQZZNVHQ) 進行安裝。 </span>**
+**<span style="color: red;">AcePanel recommends
+using [LFCloud high-performance AMD EYPC server](https://www.dkdun.cn/aff/MQZZNVHQ) for installation.</span>**
 
 以 `root` 用戶登錄服務器，運行以下命令安裝面板：
 
 ```shell
-curl -fsLm 10 -o install.sh https://dl.cdn.haozi.net/panel/install.sh && bash install.sh
+bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 ```
 
 一般 2 分鐘內即可完成安裝。 安裝過程中請勿關閉終端。
