@@ -10,8 +10,8 @@ import { VPTeamMembers } from 'vitepress/theme'
 const members = [
   {
     avatar: 'https://weavatar.com/avatar/18e77debb1bc0000c0b50757b8f1bebb2c3e4df3d494124f776c15dbc1ebe8a5',
-    name: '耗子',
-    desc: '创始人 & CEO',
+    name: 'HaoZi',
+    desc: 'Founder & CEO',
     links: [
       { icon: 'github', link: 'https://github.com/devhaozi' },
       { icon: 'bilibili', link: 'https://space.bilibili.com/8067' }
@@ -19,8 +19,8 @@ const members = [
   },
   {
     avatar: 'https://weavatar.com/avatar/f6b23deadaa481f0b3ea75ad94f246881ed2326117efebad6f2799ea165779b9',
-    name: '靓仔',
-    desc: '技术负责人',
+    name: 'Liang Zai',
+    desc: 'Technical Director',
     links: [
       { icon: 'github', link: 'https://github.com/205125' }
     ]
@@ -30,7 +30,8 @@ const members = [
 
 # 关于
 
-AcePanel 是一款专业的服务器运维管理面板，致力于为用户提供简单、高效、安全的服务器管理解决方案。
+AcePanel is a professional server operation and maintenance management panel dedicated to providing users with simple,
+efficient, and secure server management solutions.
 
 | 愿景                | 使命            | 价值观            |
 | ----------------- | ------------- | -------------- |
@@ -41,6 +42,14 @@ AcePanel 是一款专业的服务器运维管理面板，致力于为用户提�
 <VPTeamMembers size="small" :members="members" />
 
 ## 发展历程
+
+:::timeline 2026 - 3.0 Era
+In 2026, We launched the highly anticipated version 3.0, introducing a revamped user interface and advanced features
+:::
+
+:::timeline 2025 - Steady Progress
+In 2025, We focused on optimizing user experience and enhancing system stability, releasing versions 2.4 series
+:::
 
 :::timeline 2024 - 全新起航
 面板得到了众多赞助商的支持，2024 年下半年发布了全新的 2.3 版本
@@ -60,5 +69,5 @@ AcePanel 是一款专业的服务器运维管理面板，致力于为用户提�
 | ---- | ------------------------------------------------------------------------------------------ |
 | 企业微信 | [点击联系](https://work.weixin.qq.com/kfid/kfc20ea8e38b5a4e73a)                                |
 | QQ   | [826896000](https://wpa.qq.com/msgrd?v=3&uin=826896000&site=qq&menu=yes) |
-| 电子邮件 | [admin@haozi.net](mailto:admin@haozi.net)                     |
+| 电子邮件 | [haozi@loli.email](mailto:admin@haozi.net)                    |
 | 公司地址 | 天津市武清区黄庄街道泉里路1号智库大厦206室                                                                    |
