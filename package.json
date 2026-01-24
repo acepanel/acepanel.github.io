@@ -6,9 +6,9 @@
   "author": "AcePanel contributors",
   "license": "MIT",
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
   },
   "dependencies": {
     "vitepress-markdown-timeline": "^1.2.2",
