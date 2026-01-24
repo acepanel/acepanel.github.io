@@ -1,6 +1,6 @@
 export default {
     async paths() {
-        const resp = await (await fetch('https://api.acepanel.net/versions?locale=zh_CN')).json()
+        const resp = await (await fetch('https://api.acepanel.net/versions?locale=en')).json()
         if (!resp.message || resp.message !== 'success') return []
 
         return resp.data.slice(0, 10).map((item: any) => {

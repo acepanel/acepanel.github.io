@@ -2,7 +2,7 @@ import {type DefaultTheme, defineConfig} from 'vitepress'
 
 const locale = 'en'
 
-const resp = await (await fetch('https://panel.haozi.net/api/versions')).json()
+const resp = await (await fetch('https://api.acepanel.net/versions?locale=en')).json()
 const versions = resp.data.slice(0, 10).map((item: any) => {
     return item.version
 })
