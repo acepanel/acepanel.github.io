@@ -23,8 +23,15 @@ export const config = defineConfig({
             },
             {
                 text: "Advanced",
+                collapsed: true,
                 base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
                 items: sidebarAdvanced()
+            },
+            {
+                text: "FAQ",
+                collapsed: true,
+                base: locale == 'zh_CN' ? '/faq' : `/${locale}/faq`,
+                items: sidebarFAQ()
             },
             {
                 text: "Versions",
@@ -100,37 +107,187 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: 'Installing panel',
+            text: '动态与公告',
+            collapsed: true,
+            items: [
+                { text: "AcePanel 3.0 正式发布", link: '/news/acepanel-3-release' },
+            ]
+        },
+        {
+            text: 'Introduction',
+            link: '/introduction'
+        },
+        {
+            text: 'Install',
             link: '/install'
         },
         {
-            text: 'Mounting partition',
-            link: '/disk'
+            text: 'Upgrade',
+            link: '/upgrade'
         },
         {
-            text: 'Managing panel',
-            link: '/panel'
+            text: '第一个网站',
+            link: '/first-website'
         },
         {
-            text: 'Managing container',
-            link: '/container'
+            text: '第一个容器',
+            link: '/first-container'
         },
+        {
+            text: '第一个项目',
+            link: '/first-project'
+        },
+        {
+            text: 'Command Line',
+            link: '/cli'
+        },
+        {
+            text: 'Uninstall',
+            link: '/uninstall'
+        }
     ]
 }
 
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     return [
         {
+            text: 'Security recommendations',
+            link: '/security'
+        },
+        {
+            text: "应用",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/app' },
+                { text: "原生应用", link: '/app/native' },
+                { text: "运行环境", link: '/app/environment' },
+                { text: "容器模版", link: '/app/template' }
+            ]
+        },
+        {
+            text: "容器",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/container' },
+                { text: "容器", link: '/container/container' },
+                { text: "编排", link: '/container/compose' },
+                { text: "镜像", link: '/container/image' },
+                { text: "网络", link: '/container/network' },
+                { text: "卷", link: '/container/volume' }
+            ]
+        },
+        {
+            text: "网站",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/website' },
+                { text: "反向代理", link: '/website/proxy' },
+                { text: "PHP", link: '/website/php' },
+                { text: "纯静态", link: '/website/static' }
+            ]
+        }, {
+            text: "项目",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/project' },
+                { text: "Go", link: '/project/go' },
+                { text: "Java", link: '/project/java' },
+                { text: "Node.js", link: '/project/nodejs' },
+                { text: "PHP", link: '/project/php' },
+                { text: "Python", link: '/project/python' },
+                { text: "通用", link: '/project/general' }
+            ]
+        }, {
+            text: "数据库",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/database' },
+                { text: "数据库", link: '/database/database' },
+                { text: "用户", link: '/database/user' },
+                { text: "服务器", link: '/database/server' }
+            ]
+        },{
+            text: "证书",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/cert' },
+                { text: "证书", link: '/cert/cert' },
+                { text: "账号", link: '/cert/account' },
+                { text: "DNS", link: '/cert/dns' }
+            ]
+        }, {
+            text: "监控",
+            link: '/monitor'
+        }, {
+            text: "文件",
+            link: '/file'
+        }, {
+            text: "备份",
+            link: '/backup'
+        }, {
+            text: "终端",
+            link: '/ssh'
+        }, {
+            text: "任务",
+            collapsed: true,
+            items: [
+                { text: "计划任务", link: '/task/schedule' },
+                { text: "面板任务", link: '/task/panel' }
+            ]
+        }, {
+            text: "工具箱",
+            collapsed: true,
+            items: [
+                { text: "概述", link: '/toolbox' },
+                { text: "进程", link: '/toolbox/process' },
+                { text: "系统", link: '/toolbox/system' },
+                { text: "SSH", link: '/toolbox/ssh' },
+                { text: "磁盘", link: '/toolbox/disk' },
+                { text: "日志清理", link: '/toolbox/log' },
+                { text: "Web 钩子", link: '/toolbox/webhook' },
+                { text: "跑分", link: '/toolbox/benchmark' }
+            ]
+        }, {
+            text: "设置",
+            collapsed: true,
+            items: [
+                { text: "基本设置", link: '/setting/basic' },
+                { text: "安全设置", link: '/setting/safe' },
+                { text: "用户设置", link: '/setting/user' }
+            ]
+        },
+        {
             text: 'Panel API',
             link: '/api'
         },
+    ]
+}
+
+function sidebarFAQ(): DefaultTheme.SidebarItem[] {
+    return [
         {
-            text: 'Security recommendations',
-            link: '/safe'
+            text: "Panel FAQs",
+            link: '/panel'
         },
         {
-            text: 'FAQ',
-            link: '/faq'
+            text: "Application FAQs",
+            link: '/application'
+        },
+        {
+            text: "Database FAQs",
+            link: '/database'
+        },
+        {
+            text: "Website FAQs",
+            link: '/website'
+        },
+        {
+            text: "Project FAQs",
+            link: '/project'
+        },
+        {
+            text: "Container FAQs",
+            link: '/container'
         },
     ]
 }

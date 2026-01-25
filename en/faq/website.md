@@ -1,7 +1,3 @@
-# Frequently Asked Questions
-
-Here are some common questions and answers about AcePanel. If you have any other questions, please feel free to ask in the [AcePanel Community](https://tom.moe/c/technical/acepanel). If you find any bugs, please submit a [GitHub Issue](https://github.com/acepanel/panel/issues).
-
 ## Configure QUIC (HTTP3)
 
 AcePanel currently supports automatic QUIC configuration, but for compatibility reasons, the `Alt-Svc` header is not added by default. Browsers will not attempt to use QUIC connections without detecting the `Alt-Svc` header.
@@ -30,51 +26,16 @@ ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDS
 ssl_prefer_server_ciphers on;
 ```
 
-## Configure Reverse Proxy
-
-AcePanel v2.4.10+ comes with a built-in reverse proxy configuration generator, which you can access through the top right corner of the site rewrite configuration page.
-
-Note: If you encounter issues with static resources like CSS/JS not loading properly after setting up a reverse proxy, please remove the **Do not log static files** section from the site's main configuration file.
-
-## Configure Process Monitoring
-
-1. Install Supervisor manager and open it.
-2. Create processes that need to be monitored in the Supervisor manager (it's not recommended to use root as the running user).
-3. Common issues: [https://tom.moe/t/supervisor/3112](https://tom.moe/t/supervisor/3112)
-
 ## Configure IPv6
 
 If you want to enable IPv6 support, you need to add `[::]:80` and `[::]:443` to the website's listening address configuration.
 
-## Configure Container Image Acceleration
+## CDN 配置 HTTPS 后网站是否需要开启 HTTPS？
 
-Due to certain reasons, domestic users in China may be unable to connect to Docker Hub to pull container images, thus requiring image acceleration configuration.
+取决于 CDN 侧的回源协议配置：
 
-### For Podman
-
-Open the Podman settings page in the Panel, and navigate to the Registry Configuration tab.
-
-Scroll to the bottom of the configuration file, add the following configuration and save:
-
-```
-[[registry]]
-location = "docker.io"
-[[registry.mirror]]
-location = "docker.1ms.run"
-```
-
-Where docker.1ms.run is the configured image acceleration address. You can refer to other tutorials to set up and use it.
-
-### For Docker
-
-Open the Docker settings page in the Panel, and navigate to the Configuration tab.
-
-Add the following configuration and save:
-
-```json
-{
-  "registry-mirrors": ["https://docker.1ms.run"]
-}
-```
-
-Where https://docker.1ms.run is the configured image acceleration address. You can refer to other tutorials to set up and use it.
+| CDN 回源协议 | 网站 HTTPS 配置               |
+|----------|---------------------------|
+| HTTP     | 无需开启 HTTPS                |
+| HTTPS    | 必须开启 HTTPS                |
+| 协议跟随     | 必须开启 HTTPS 且不能开启 HTTP 重定向 |
