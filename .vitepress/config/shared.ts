@@ -41,8 +41,11 @@ export const shared = defineConfig({
             {icon: 'wechat', link: 'https://work.weixin.qq.com/gm/d8ebf618553398d454e3378695c858b6'},
         ],
         search: {
-            provider: 'local',
+            provider: 'algolia',
             options: {
+                appId: 'MQBORZ4OJ4',
+                apiKey: 'b453e45194dfbd6a7342728517d5b153',
+                indexName: 'acepanel',
                 locales: {
                     ...enSearch,
                     ...zh_CNSearch,
