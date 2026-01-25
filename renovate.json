@@ -24,5 +24,7 @@
       "automerge": true
     }
   ],
-  "ignoreDeps": []
+  "ignoreDeps": [
+    "vitepress"
+  ]
 }
