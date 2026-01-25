@@ -42,21 +42,21 @@ features:
 ## 合作夥伴
 
 <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;"><a href="https://www.weixiaoduo.com/" style="padding: 1rem;">
-      <img width="160" src="/wxd.png" alt="WeiXiaoDuo">
+      <img width="160" src="/partners/wxd.png" alt="WeiXiaoDuo">
     </a>
     <a href="https://www.dkdun.cn/aff/MQZZNVHQ" style="padding: 1rem;">
-      <img width="160" src="/dk.png" alt="LinFeng Cloud">
+      <img width="160" src="/partners/dk.png" alt="LinFeng Cloud">
     </a>
     <a href="https://waf.pro/">
-      <img width="160" src="/wafpro.png" alt="WAFPRO" style="padding: 1rem;">
+      <img width="160" src="/partners/wafpro.png" alt="WAFPRO" style="padding: 1rem;">
     </a>
     <a href="https://scdn.ddunyun.com/">
-      <img width="160" src="/ddunyun.png" alt="DunYun SCDN" style="padding: 1rem;">
+      <img width="160" src="/partners/ddunyun.png" alt="DunYun SCDN" style="padding: 1rem;">
     </a>
     <a href="https://kuocai.cn/" style="padding: 1rem;">
-      <img width="160" src="/kuocai.png" alt="Kuocai CDN">
+      <img width="160" src="/partners/kuocai.png" alt="Kuocai CDN">
     </a>
     <a href="https://1ms.run/" style="padding: 1rem;">
-      <img width="160" src="/1ms.svg" alt="Millisecond Mirror">
+      <img width="160" src="/partners/1ms.svg" alt="Millisecond Mirror">
     </a>
 </div>
