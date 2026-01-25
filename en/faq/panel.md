@@ -1,71 +1,99 @@
-## 面板打不开了怎么办？
+# 面板常见问题
 
-不要慌，通常来说问题不大，按以下步骤操作即可：
+## 面板打不开
 
-首先尝试 SSH 连接服务器，如果可以连接，进入下一步；如果无法连接，直接联系服务器提供商。
+SSH 登录服务器，检查面板状态：
 
-通过 SSH 登录服务器后，首先检查 AcePanel 服务状态，执行以下命令：
-
-```bash
+```shell
 acepanel status
 ```
 
-如果提示服务已停止，尝试启动服务并再次检查状态：
+如果服务已停止，启动它：
 
-```bash
-acepanel start && sleep 3 && acepanel status
+```shell
+acepanel start
 ```
 
-如果服务无法启动，尝试修复面板并更新到最新版本：
+如果无法启动，尝试修复：
 
-```bash
+```shell
 acepanel fix && acepanel update
 ```
 
-如果服务已启动但仍无法访问面板，使用 curl 命令检查面板是否在监听端口：
+服务正常但仍无法访问，检查防火墙：
 
-```bash
-curl -I http://127.0.0.1:<your_panel_port>
-```
+```shell
+# 检查端口是否监听
+curl -I http://127.0.0.1:面板端口/
 
-将 `<your_panel_port>` 替换为您面板实际使用的端口号（默认 8888）。如果返回 HTTP 200/307 状态码，说明面板服务正常运行，可能是防火墙或网络问题导致无法访问。
-
-检查防火墙设置，确保面板端口已开放：
-
-```bash
-firewall-cmd --list-all
-```
-
-如果端口未开放，执行以下命令开放端口：
-
-```bash
-firewall-cmd --add-port=<your_panel_port>/tcp --permanent
+# 放行端口（firewalld）
+firewall-cmd --add-port=面板端口/tcp --permanent
 firewall-cmd --reload
 ```
 
-服务器的安全组设置也可能阻止访问面板端口，请登录服务器提供商的控制台检查并确保面板端口已开放。
+云服务器还需检查安全组设置。
 
-如果以上步骤均无法解决问题，建议查看面板日志获取更多信息或前往[社区发帖](https://tom.moe)联系支持获取帮助：
+查看面板日志排查问题：
 
-```bash
+```shell
 journalctl -u acepanel -n 100
-cat /opt/ace/panel/storage/logs/app.log
 ```
 
-## 无权限执行 `acepanel` 命令
+## 忘记密码/用户名/地址
 
-`acepanel` 命令必须以 root 用户运行。如果当前用户没有足够权限，请切换到 root 用户或使用 sudo 执行命令，例如：
-
-```bash
-sudo acepanel status
-```
-
-## 忘记面板管理员用户/密码/地址怎么办？
-
-最快最简单的方法是使用命令行工具重新获取管理员用户信息，执行以下命令：
-
-```bash
+```shell
 acepanel info
 ```
 
-该命令会输出面板的基本信息，包括管理员用户名、登录地址以及生成一个新的随机密码。
+输出面板地址、用户名，并生成新密码。
+
+## 修改面板端口
+
+```shell
+acepanel port 12345
+```
+
+修改后需在服务器安全组/防火墙放行新端口。
+
+## 关闭安全入口
+
+如果忘记安全入口路径：
+
+```shell
+acepanel entrance off
+```
+
+## 关闭域名/IP 绑定
+
+绑定后无法访问面板：
+
+```shell
+acepanel bind-domain off
+acepanel bind-ip off
+```
+
+## 关闭两步验证
+
+```shell
+acepanel user 2fa admin
+```
+
+## 证书错误
+
+面板默认使用自签名证书，浏览器会提示不安全，点击「继续访问」即可。
+
+申请正式证书：
+
+```shell
+acepanel https generate
+```
+
+需要确保服务器 IP 80 端口可直接访问。
+
+## acepanel 命令无权限
+
+必须以 root 用户执行，或使用 sudo：
+
+```shell
+sudo acepanel status
+```

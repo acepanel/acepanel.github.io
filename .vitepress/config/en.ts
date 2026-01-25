@@ -151,10 +151,6 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: 'Security recommendations',
-            link: '/security'
-        },
-        {
             text: "应用",
             collapsed: true,
             items: [
@@ -260,6 +256,10 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
             text: 'Panel API',
             link: '/api'
         },
+        {
+            text: 'Security recommendations',
+            link: '/security'
+        }
     ]
 }
 
