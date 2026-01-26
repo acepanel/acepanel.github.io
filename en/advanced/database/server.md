@@ -1,86 +1,86 @@
-# 服务器管理
+# Server Management
 
-服务器管理页面用于管理数据库服务器连接，支持本地和远程数据库服务器。
+The server management page is used to manage database server connections, supporting both local and remote database servers.
 
-## 服务器列表
+## Server List
 
-进入 **数据库** > **服务器** 标签页查看服务器列表。
+Go to **Database** > **Server** tab to view the server list.
 
-![服务器列表](/images/database/database-server.png)
+![Server List](/images/database/database-server.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **类型**：数据库类型（MySQL/PostgreSQL）
-- **名称**：服务器名称
-- **用户名**：管理员用户名
-- **密码**：管理员密码
-- **主机**：服务器地址和端口
-- **注释**：备注信息
-- **状态**：连接状态
-- **更新日期**：最后更新时间
-- **操作**：终端、同步、修改、删除
+- **Type**: Database type (MySQL/PostgreSQL)
+- **Name**: Server name
+- **Username**: Administrator username
+- **Password**: Administrator password
+- **Host**: Server address and port
+- **Comment**: Remarks
+- **Status**: Connection status
+- **Update Date**: Last update time
+- **Actions**: Terminal, sync, modify, delete
 
-## 本地服务器
+## Local Server
 
-安装数据库软件后，AcePanel 会自动添加本地服务器，此类服务器不支持自行删除：
+After installing database software, AcePanel will automatically add local servers. These servers cannot be deleted by users:
 
-- **local_mysql**：本地 Percona/MySQL/MariaDB 服务器
-- **local_postgresql**：本地 PostgreSQL 服务器
+- **local_mysql**: Local Percona/MySQL/MariaDB server
+- **local_postgresql**: Local PostgreSQL server
 
-## 添加远程服务器
+## Add Remote Server
 
-1. 点击 **添加服务器** 按钮
-2. 填写配置：
-   - **类型**：选择数据库类型
-   - **名称**：服务器名称（用于标识）
-   - **主机**：服务器地址
-   - **端口**：数据库端口
-   - **用户名**：管理员用户名
-   - **密码**：管理员密码
-3. 点击添加
+1. Click the **Add Server** button
+2. Fill in the configuration:
+   - **Type**: Select database type
+   - **Name**: Server name (for identification)
+   - **Host**: Server address
+   - **Port**: Database port
+   - **Username**: Administrator username
+   - **Password**: Administrator password
+3. Click Add
 
-### 远程服务器使用场景
+### Remote Server Use Cases
 
-- 连接云数据库（如阿里云 RDS、腾讯云 CDB）
-- 连接容器中的数据库服务
-- 连接其他服务器上的数据库
-- 数据库读写分离架构
+- Connect to cloud databases (such as Alibaba Cloud RDS, Tencent Cloud CDB)
+- Connect to database services in containers
+- Connect to databases on other servers
+- Database read-write separation architecture
 
-## 服务器操作
+## Server Operations
 
-### 终端
+### Terminal
 
-点击 **终端** 按钮打开数据库命令行终端，可以直接执行 SQL 语句。
+Click the **Terminal** button to open the database command line terminal, where you can directly execute SQL statements.
 
-### 同步
+### Sync
 
-点击 **同步** 按钮同步数据库和用户信息。当直接在数据库中创建了数据库或用户时，可以使用此功能同步到面板。
+Click the **Sync** button to synchronize database and user information. When databases or users are created directly in the database, you can use this function to sync to the panel.
 
-### 修改
+### Modify
 
-点击 **修改** 按钮可以修改服务器连接信息，如密码、主机地址等。
+Click the **Modify** button to modify server connection information, such as password, host address, etc.
 
-### 删除
+### Delete
 
-点击 **删除** 按钮删除服务器配置。
+Click the **Delete** button to delete the server configuration.
 
-::: warning 注意
-删除服务器配置不会删除实际的数据库服务，只是从面板中移除该服务器的管理。
+::: warning Note
+Deleting the server configuration will not delete the actual database service, it only removes the server management from the panel.
 :::
 
-## 连接测试
+## Connection Test
 
-添加或修改服务器后，系统会自动测试连接。如果连接失败，请检查：
+After adding or modifying a server, the system will automatically test the connection. If the connection fails, please check:
 
-1. 服务器地址和端口是否正确
-2. 用户名和密码是否正确
-3. 防火墙是否允许连接
-4. 数据库服务是否正常运行
-5. 数据库用户是否允许从当前主机连接
+1. Whether the server address and port are correct
+2. Whether the username and password are correct
+3. Whether the firewall allows the connection
+4. Whether the database service is running normally
+5. Whether the database user is allowed to connect from the current host
 
-## 默认端口
+## Default Ports
 
-| 数据库                   | 默认端口 |
-|-----------------------|----------|
-| Percona/MySQL/MariaDB | 3306 |
-| PostgreSQL            | 5432 |
+| Database                | Default Port |
+|-------------------------|--------------|
+| Percona/MySQL/MariaDB   | 3306 |
+| PostgreSQL              | 5432 |

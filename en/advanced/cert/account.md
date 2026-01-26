@@ -1,84 +1,84 @@
-# 账户管理
+# Account Management
 
-账户管理页面用于管理 ACME 账户，ACME 账户用于向证书颁发机构申请证书。
+The account management page is used to manage ACME accounts. ACME accounts are used to apply for certificates from certificate authorities.
 
-## 账户列表
+## Account List
 
-进入 **证书** > **账户** 标签页查看账户列表。
+Go to **Certificate** > **Account** tab to view the account list.
 
-![账户列表](/images/cert/cert-account.png)
+![Account List](/images/cert/cert-account.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **邮箱**：账户邮箱
-- **CA**：证书颁发机构
-- **密钥类型**：账户密钥类型
-- **操作**：修改、删除
+- **Email**: Account email
+- **CA**: Certificate Authority
+- **Key Type**: Account key type
+- **Actions**: Modify, delete
 
-## 创建账户
+## Create Account
 
-1. 点击 **创建账户** 按钮
-2. 填写配置：
-   - **邮箱**：用于接收证书相关通知
-   - **CA**：选择证书颁发机构
-   - **密钥类型**：选择密钥算法
-   - **KID**：可选，部分 CA 需要提供 KID
-   - **HMAC**：可选，部分 CA 需要提供 HMAC 密钥
-3. 点击创建
+1. Click the **Create Account** button
+2. Fill in the configuration:
+   - **Email**: Used to receive certificate-related notifications
+   - **CA**: Select certificate authority
+   - **Key Type**: Select key algorithm
+   - **KID**: Optional, some CAs require KID
+   - **HMAC**: Optional, some CAs require HMAC key
+3. Click Create
 
-### 证书颁发机构（CA）
+### Certificate Authority (CA)
 
-| CA            | 说明                   |
-|---------------|----------------------|
-| Let's Encrypt | 最流行的免费 CA，证书有效期 90 天 |
-| LiteSSL       | TrustAsia 提供的免费证书服务  |
-| Google        | 谷歌的免费证书服务            |
-| GoogleCN      | AcePanel 提供的谷歌证书服务镜像 |
-| ZeroSSL       | 免费 CA，证书有效期 90 天     |
-| Buypass       | 挪威免费 CA，证书有效期 180 天  |
+| CA            | Description                   |
+|---------------|-------------------------------|
+| Let's Encrypt | Most popular free CA, certificate valid for 90 days |
+| LiteSSL       | Free certificate service provided by TrustAsia  |
+| Google        | Google's free certificate service            |
+| GoogleCN      | Google certificate service mirror provided by AcePanel |
+| ZeroSSL       | Free CA, certificate valid for 90 days     |
+| Buypass       | Norwegian free CA, certificate valid for 180 days  |
 
-### 密钥类型
+### Key Type
 
-| 类型 | 说明 |
-|------|------|
-| P256 (ECC) | 推荐，密钥更短，性能更好 |
-| P384 (ECC) | 更高安全性的 ECC 密钥 |
-| RSA 2048 | 传统 RSA 密钥，兼容性最好 |
-| RSA 4096 | 更高安全性的 RSA 密钥 |
+| Type | Description |
+|------|-------------|
+| P256 (ECC) | Recommended, shorter key, better performance |
+| P384 (ECC) | Higher security ECC key |
+| RSA 2048 | Traditional RSA key, best compatibility |
+| RSA 4096 | Higher security RSA key |
 
-::: tip 推荐
-一般情况下推荐使用 P256 (ECC) 密钥，兼顾安全性和性能。
+::: tip Recommendation
+Generally recommended to use P256 (ECC) key, balancing security and performance.
 :::
 
-## 修改账户
+## Modify Account
 
-点击账户右侧的 **修改** 按钮可以修改账户邮箱。
+Click the **Modify** button on the right side of the account to modify the account email.
 
-::: warning 注意
-修改邮箱后，证书相关通知将发送到新邮箱。
+::: warning Note
+After modifying the email, certificate-related notifications will be sent to the new email.
 :::
 
-## 删除账户
+## Delete Account
 
-点击账户右侧的 **删除** 按钮删除账户。
+Click the **Delete** button on the right side of the account to delete the account.
 
-::: warning 注意
-删除账户后，使用该账户申请的证书将无法续签。请先将证书迁移到其他账户或删除相关证书。
+::: warning Note
+After deleting an account, certificates applied with that account cannot be renewed. Please migrate certificates to another account or delete related certificates first.
 :::
 
-## 账户用途
+## Account Usage
 
-ACME 账户用于：
+ACME accounts are used for:
 
-1. 向 CA 证明你的身份
-2. 接收证书到期提醒
-3. 管理已申请的证书
-4. 撤销证书
+1. Proving your identity to the CA
+2. Receiving certificate expiration reminders
+3. Managing applied certificates
+4. Revoking certificates
 
-## 多账户
+## Multiple Accounts
 
-你可以创建多个账户：
+You can create multiple accounts:
 
-- 不同 CA 需要不同账户
-- 可以为不同项目使用不同账户
-- 便于管理和区分证书
+- Different CAs require different accounts
+- Can use different accounts for different projects
+- Convenient for managing and distinguishing certificates

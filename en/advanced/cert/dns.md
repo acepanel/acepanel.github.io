@@ -1,99 +1,99 @@
-# DNS 配置
+# DNS Configuration
 
-DNS 配置页面用于管理 DNS API，用于通过 DNS 验证方式申请证书。
+The DNS configuration page is used to manage DNS APIs for applying certificates through DNS verification.
 
-## DNS 列表
+## DNS List
 
-进入 **证书** > **DNS** 标签页查看 DNS 配置列表。
+Go to **Certificate** > **DNS** tab to view the DNS configuration list.
 
-![DNS 列表](/images/cert/cert-dns.png)
+![DNS List](/images/cert/cert-dns.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **备注名称**：配置名称
-- **类型**：DNS 提供商类型
-- **操作**：修改、删除
+- **Remark Name**: Configuration name
+- **Type**: DNS provider type
+- **Actions**: Modify, delete
 
-## 创建 DNS 配置
+## Create DNS Configuration
 
-1. 点击 **创建 DNS** 按钮
-2. 选择 DNS 提供商
-3. 填写 API 凭证
-4. 点击创建
+1. Click the **Create DNS** button
+2. Select DNS provider
+3. Fill in API credentials
+4. Click Create
 
-## 支持的 DNS 提供商
+## Supported DNS Providers
 
-### 国内提供商
+### Domestic Providers
 
-| 提供商 | 所需凭证 |
-|--------|----------|
-| 阿里云 DNS | AccessKey ID、AccessKey Secret |
-| 腾讯云 DNSPod | SecretId、SecretKey |
-| 华为云 DNS | AccessKeyId、SecretAccessKey |
-| 西部数码 DNS | Username、API Password |
+| Provider | Required Credentials |
+|----------|---------------------|
+| Alibaba Cloud DNS | AccessKey ID, AccessKey Secret |
+| Tencent Cloud DNSPod | SecretId, SecretKey |
+| Huawei Cloud DNS | AccessKeyId, SecretAccessKey |
+| West.cn DNS | Username, API Password |
 
-### 国际提供商
+### International Providers
 
-| 提供商 | 所需凭证               |
-|--------|--------------------|
+| Provider | Required Credentials               |
+|----------|------------------------------------|
 | Cloudflare | API Token          |
 | Gcore DNS | API Key            |
-| Porkbun | API Key、Secret Key |
+| Porkbun | API Key, Secret Key |
 | NameSilo | API Token          |
-| ClouDNS | Auth ID、Auth Password |
+| ClouDNS | Auth ID, Auth Password |
 
-## 获取 API 凭证
+## Obtaining API Credentials
 
-### 阿里云
+### Alibaba Cloud
 
-1. 登录阿里云控制台
-2. 进入 **AccessKey 管理**
-3. 创建 AccessKey
-4. 记录 AccessKey ID 和 AccessKey Secret
+1. Log in to Alibaba Cloud console
+2. Go to **AccessKey Management**
+3. Create AccessKey
+4. Record AccessKey ID and AccessKey Secret
 
-::: warning 安全提示
-建议创建子账号并只授予 DNS 管理权限，避免使用主账号 AccessKey。
+::: warning Security Notice
+It is recommended to create a sub-account and only grant DNS management permissions. Avoid using the main account AccessKey.
 :::
 
-### 腾讯云
+### Tencent Cloud
 
-1. 登录腾讯云控制台
-2. 进入 **访问管理** > **API 密钥管理**
-3. 创建密钥
-4. 记录 SecretId 和 SecretKey
+1. Log in to Tencent Cloud console
+2. Go to **Access Management** > **API Key Management**
+3. Create key
+4. Record SecretId and SecretKey
 
 ### Cloudflare
 
-1. 登录 Cloudflare 控制台
-2. 进入 **My Profile** > **API Tokens**
-3. 创建 Token，选择 **Edit zone DNS** 模板
-4. 记录生成的 Token
+1. Log in to Cloudflare console
+2. Go to **My Profile** > **API Tokens**
+3. Create Token, select **Edit zone DNS** template
+4. Record the generated Token
 
-## DNS 验证原理
+## DNS Verification Principle
 
-1. 申请证书时，CA 要求在域名 DNS 中添加特定的 TXT 记录
-2. AcePanel 通过 DNS API 自动添加验证记录
-3. CA 验证 TXT 记录存在
-4. 验证通过后颁发证书
-5. AcePanel 自动删除验证记录
+1. When applying for a certificate, the CA requires adding a specific TXT record in the domain DNS
+2. AcePanel automatically adds the verification record through DNS API
+3. CA verifies the TXT record exists
+4. Certificate is issued after verification passes
+5. AcePanel automatically deletes the verification record
 
-## 使用场景
+## Use Cases
 
-DNS 验证适用于：
+DNS verification is suitable for:
 
-- 申请泛域名证书（*.example.com）
-- 服务器 80 端口不可访问
-- 内网服务器
-- CDN 后的源站
+- Applying for wildcard certificates (*.example.com)
+- Server port 80 is not accessible
+- Intranet servers
+- Origin servers behind CDN
 
-## 常见问题
+## FAQ
 
-### 验证失败
+### Verification Failed
 
-- 检查 API 凭证是否正确
-- 检查 API 权限是否足够
-- 检查域名是否在该 DNS 提供商管理
+- Check if API credentials are correct
+- Check if API permissions are sufficient
+- Check if the domain is managed by that DNS provider
 
-### DNS 传播延迟
+### DNS Propagation Delay
 
-DNS 记录添加后需要一定时间传播，通常几分钟到几小时不等。如果验证失败，可以稍后重试。
+DNS records need some time to propagate after being added, usually ranging from a few minutes to a few hours. If verification fails, you can retry later.

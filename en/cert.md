@@ -57,7 +57,7 @@ next: false
 }
 
 .cert-card.featured::before {
-  content: "推荐";
+  content: "Recommended";
   position: absolute;
   top: -12px;
   right: 24px;
@@ -272,98 +272,98 @@ next: false
 </style>
 
 <div class="cert-hero">
-  <h1>SSL 证书服务</h1>
-  <p>免费证书有效期仅 3 个月且需要频繁续签，付费证书一年有效期，省心省力</p>
+  <h1>SSL Certificate Service</h1>
+  <p>Free certificates are only valid for 3 months and require frequent renewal. Paid certificates are valid for one year, saving you time and effort</p>
 </div>
 
 <div class="cert-cards">
   <div class="cert-card">
     <div class="cert-card-icon">🔒</div>
-    <h3>DV 单域名证书</h3>
-    <div class="cert-card-desc">适合单个网站使用</div>
+    <h3>DV Single Domain Certificate</h3>
+    <div class="cert-card-desc">Suitable for a single website</div>
     <div class="cert-price">
       <span class="cert-price-value">¥1X</span>
-      <span class="cert-price-unit"> / 年</span>
+      <span class="cert-price-unit"> / year</span>
     </div>
     <div class="cert-features">
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>域名验证 (DV) 证书</span>
+        <span>Domain Validation (DV) Certificate</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>保护单个域名</span>
+        <span>Protects a single domain</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>一年有效期</span>
+        <span>One year validity</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>国际认可品牌</span>
+        <span>Internationally recognized brand</span>
       </div>
     </div>
-    <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-secondary">联系购买</a>
+    <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-secondary">Contact to Purchase</a>
   </div>
 
   <div class="cert-card featured">
     <div class="cert-card-icon">🛡️</div>
-    <h3>DV 泛域名证书</h3>
-    <div class="cert-card-desc">一张证书保护所有子域名</div>
+    <h3>DV Wildcard Certificate</h3>
+    <div class="cert-card-desc">One certificate protects all subdomains</div>
     <div class="cert-price">
       <span class="cert-price-value">¥1XX</span>
-      <span class="cert-price-unit"> / 年</span>
+      <span class="cert-price-unit"> / year</span>
     </div>
     <div class="cert-features">
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>域名验证 (DV) 证书</span>
+        <span>Domain Validation (DV) Certificate</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>保护所有子域名 (*.domain.com)</span>
+        <span>Protects all subdomains (*.domain.com)</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>一年有效期</span>
+        <span>One year validity</span>
       </div>
       <div class="cert-feature">
         <span class="cert-feature-check">✓</span>
-        <span>国际认可品牌</span>
+        <span>Internationally recognized brand</span>
       </div>
     </div>
-    <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-primary">联系购买</a>
+    <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-primary">Contact to Purchase</a>
   </div>
 </div>
 
 <div class="cert-why">
-  <h2>为什么选择付费证书</h2>
+  <h2>Why Choose Paid Certificates</h2>
   <div class="cert-why-grid">
     <div class="cert-why-item">
       <div class="cert-why-icon shield">🔐</div>
-      <h4>更长有效期</h4>
-      <p>一年有效期，无需频繁续签</p>
+      <h4>Longer Validity</h4>
+      <p>One year validity, no frequent renewal needed</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon bolt">⚡</div>
-      <h4>快速签发</h4>
-      <p>付款后快速完成签发</p>
+      <h4>Fast Issuance</h4>
+      <p>Quick issuance after payment</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon globe">🌐</div>
-      <h4>国际品牌</h4>
-      <p>全球浏览器信任</p>
+      <h4>International Brand</h4>
+      <p>Trusted by browsers worldwide</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon support">💬</div>
-      <h4>专业支持</h4>
-      <p>遇到问题随时咨询</p>
+      <h4>Professional Support</h4>
+      <p>Consult anytime when you have questions</p>
     </div>
   </div>
 </div>
 
 <div class="cert-contact">
-  <h3>需要帮助？</h3>
-  <p>如有任何问题，欢迎加入 QQ 群咨询</p>
-  <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-contact-btn">加入 QQ 群 12370907</a>
+  <h3>Need Help?</h3>
+  <p>If you have any questions, feel free to join our QQ group for consultation</p>
+  <a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-contact-btn">Join QQ Group 12370907</a>
 </div>

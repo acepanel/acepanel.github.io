@@ -1,83 +1,83 @@
-# 原生应用
+# Native Applications
 
-原生应用是直接安装在系统上的软件，相比容器化部署具有更好的性能和更低的资源占用。
+Native applications are software installed directly on the system, offering better performance and lower resource usage compared to containerized deployment.
 
-## 应用列表
+## Application List
 
-进入 **应用** 页面，默认显示原生应用列表。你可以通过顶部的分类标签筛选不同类型的应用。
+Go to the **Applications** page, which displays the native application list by default. You can filter different types of applications through the category tabs at the top.
 
-![原生应用列表](/images/app/app-list.png)
+![Native Application List](/images/app/app-list.png)
 
-列表中显示以下信息：
+The list displays the following information:
 
-- **应用名称**：软件名称
-- **描述**：软件的简要说明
-- **已安装版本**：当前安装的版本号（未安装则为空）
-- **在主页显示**：是否在面板首页的快捷应用中显示
-- **操作**：安装、管理或卸载
+- **Application Name**: Software name
+- **Description**: Brief description of the software
+- **Installed Version**: Currently installed version number (empty if not installed)
+- **Show on Homepage**: Whether to display in the quick applications on the panel homepage
+- **Actions**: Install, manage, or uninstall
 
-## 安装应用
+## Install Application
 
-点击应用右侧的 **安装** 按钮，会弹出安装对话框：
+Click the **Install** button on the right side of the application, and an installation dialog will pop up:
 
-![安装对话框](/images/app/app-install-dialog.png)
+![Installation Dialog](/images/app/app-install-dialog.png)
 
-### 选择渠道
+### Select Channel
 
-部分应用提供多个版本渠道，点击下拉框选择需要的版本系列：
+Some applications provide multiple version channels. Click the dropdown to select the desired version series:
 
-![选择渠道](/images/app/app-install-channel.png)
+![Select Channel](/images/app/app-install-channel.png)
 
-### 选择版本
+### Select Version
 
-选择渠道后，系统会自动填入该渠道的最新版本号：
+After selecting a channel, the system will automatically fill in the latest version number for that channel:
 
-![选择版本](/images/app/app-install-version.png)
+![Select Version](/images/app/app-install-version.png)
 
-点击 **安装** 按钮开始安装。安装过程中可以在 **任务** 页面查看详细日志。
+Click the **Install** button to start installation. During installation, you can view detailed logs on the **Tasks** page.
 
-## 管理应用
+## Manage Application
 
-已安装的应用会显示 **管理** 按钮，点击进入应用管理页面。
+Installed applications will display a **Manage** button. Click to enter the application management page.
 
-### 运行状态
+### Running Status
 
-管理页面首先显示应用的运行状态：
+The management page first displays the application's running status:
 
-![应用管理](/images/app/app-manage.png)
+![Application Management](/images/app/app-manage.png)
 
-提供以下操作：
+The following operations are provided:
 
-- **启动**：启动已停止的服务
-- **停止**：停止正在运行的服务
-- **重启**：重启服务（会中断连接）
-- **重载**：重新加载配置（不中断连接，推荐）
+- **Start**: Start a stopped service
+- **Stop**: Stop a running service
+- **Restart**: Restart the service (will interrupt connections)
+- **Reload**: Reload configuration (without interrupting connections, recommended)
 
-### 修改配置
+### Modify Configuration
 
-点击 **修改配置** 标签，可以直接编辑应用的配置文件：
+Click the **Modify Configuration** tab to directly edit the application's configuration file:
 
-![修改配置](/images/app/app-manage-config.png)
+![Modify Configuration](/images/app/app-manage-config.png)
 
-::: warning 注意
-修改配置文件前请确保了解每个参数的含义，错误的配置可能导致服务无法启动。
+::: warning Note
+Please ensure you understand the meaning of each parameter before modifying configuration files. Incorrect configuration may prevent the service from starting.
 :::
 
-### 日志查看
+### View Logs
 
-点击 **运行日志** 或 **错误日志** 标签，可以查看应用的日志，便于排查问题。
+Click the **Run Log** or **Error Log** tab to view application logs, which is helpful for troubleshooting.
 
-## 卸载应用
+## Uninstall Application
 
-点击 **卸载** 按钮可以卸载应用。卸载前请确保：
+Click the **Uninstall** button to uninstall the application. Before uninstalling, please ensure:
 
-1. 没有网站或项目依赖该应用
-2. 已备份重要的配置文件和数据
+1. No websites or projects depend on this application
+2. Important configuration files and data have been backed up
 
-::: danger 警告
-卸载数据库类应用（如 MySQL、PostgreSQL）会删除所有数据库数据，请务必提前备份！
+::: danger Warning
+Uninstalling database applications (such as MySQL, PostgreSQL) will delete all database data. Please make sure to backup in advance!
 :::
 
-## 主页快捷方式
+## Homepage Shortcut
 
-开启 **在主页显示** 开关后，该应用会出现在面板首页的快捷应用区域，方便快速访问管理页面。
+After enabling the **Show on Homepage** switch, the application will appear in the quick applications area on the panel homepage for quick access to the management page.

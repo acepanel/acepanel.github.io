@@ -1,83 +1,83 @@
-# 纯静态网站
+# Static Website
 
-纯静态网站用于托管 HTML、CSS、JavaScript 等静态文件，适合部署前端项目构建产物、文档站点等。
+Static websites are used to host HTML, CSS, JavaScript, and other static files, suitable for deploying frontend project build outputs, documentation sites, etc.
 
-## 创建静态网站
+## Create Static Website
 
-1. 进入 **网站** 页面
-2. 点击 **纯静态** 标签
-3. 点击 **创建网站**
+1. Go to the **Website** page
+2. Click the **Static** tab
+3. Click **Create Website**
 
-### 配置项
+### Configuration Items
 
-- **名称**：网站标识，如 `docs`
-- **域名**：绑定的域名，如 `docs.example.com`
-- **端口**：监听端口，默认 80
-- **网站目录**：静态文件存放路径
-- **备注**：可选备注
+- **Name**: Website identifier, e.g., `docs`
+- **Domain**: Bound domain, e.g., `docs.example.com`
+- **Port**: Listening port, default 80
+- **Website Directory**: Path where static files are stored
+- **Remarks**: Optional remarks
 
-## 编辑静态网站
+## Edit Static Website
 
-点击网站列表中的 **编辑** 按钮进入编辑页面。
+Click the **Edit** button in the website list to enter the edit page.
 
-### 域名和监听
+### Domain and Listen
 
-配置网站的域名和监听端口。
+Configure the website's domain and listening port.
 
-![域名和监听配置](/images/website/website-static-edit.png)
+![Domain and Listen Configuration](/images/website/website-static-edit.png)
 
-### 高级设置
+### Advanced Settings
 
-配置网站日志、默认文档等高级选项。
+Configure advanced options such as website logs and default documents.
 
-![高级设置](/images/website/website-static-edit-advanced.png)
+![Advanced Settings](/images/website/website-static-edit-advanced.png)
 
-- **网站目录**：静态文件存放的绝对路径
-- **默认文档**：默认首页文件，如 `index.html`
+- **Website Directory**: Absolute path where static files are stored
+- **Default Document**: Default homepage file, e.g., `index.html`
 
-### 自定义配置（伪静态）
+### Custom Configuration (Rewrite)
 
-在 **自定义配置** 标签中可以添加 Nginx 配置，用于 URL 重写等功能。
+In the **Custom Configuration** tab, you can add Nginx configuration for URL rewriting and other functions.
 
-![自定义配置](/images/website/website-static-edit-custom.png)
+![Custom Configuration](/images/website/website-static-edit-custom.png)
 
-点击 **添加自定义配置** 按钮可以添加配置：
+Click the **Add Custom Configuration** button to add configuration:
 
-![添加自定义配置](/images/website/website-static-edit-custom-add.png)
+![Add Custom Configuration](/images/website/website-static-edit-custom-add.png)
 
-- **名称**：配置名称，支持字母、数字、下划线、破折号
-- **范围**：配置生效范围，可选择"此网站"或"全局"
-- **内容**：Nginx 配置内容，如 `location` 块
+- **Name**: Configuration name, supports letters, numbers, underscores, and dashes
+- **Scope**: Configuration scope, can choose "This Website" or "Global"
+- **Content**: Nginx configuration content, such as `location` blocks
 
-## 适用场景
+## Use Cases
 
-### 前端项目
+### Frontend Projects
 
-Vue、React、Angular 等前端框架的构建产物：
+Build outputs from Vue, React, Angular, and other frontend frameworks:
 
 ```bash
-# Vue 项目
+# Vue project
 npm run build
-# 将 dist 目录内容上传到网站目录
+# Upload dist directory contents to website directory
 
-# React 项目
+# React project
 npm run build
-# 将 build 目录内容上传到网站目录
+# Upload build directory contents to website directory
 ```
 
-### 文档站点
+### Documentation Sites
 
-VitePress、Docusaurus、Hugo 等静态站点生成器：
+Static site generators like VitePress, Docusaurus, Hugo:
 
 ```bash
 # VitePress
 npm run docs:build
-# 将 .vitepress/dist 目录内容上传到网站目录
+# Upload .vitepress/dist directory contents to website directory
 ```
 
-### 单页应用（SPA）
+### Single Page Application (SPA)
 
-单页应用需要配置伪静态规则，将所有路由指向 index.html。在 **自定义配置** 中添加：
+Single page applications need to configure rewrite rules to point all routes to index.html. Add in **Custom Configuration**:
 
 ```nginx
 location / {
@@ -85,35 +85,35 @@ location / {
 }
 ```
 
-## 目录结构
+## Directory Structure
 
-典型的静态网站目录结构：
+Typical static website directory structure:
 
 ```
-/opt/ace/sites/网站名称/public
-├── index.html         # 首页
-├── assets/            # 静态资源
+/opt/ace/sites/website-name/public
+├── index.html         # Homepage
+├── assets/            # Static resources
 │   ├── css/
 │   ├── js/
 │   └── images/
-├── favicon.ico        # 网站图标
+├── favicon.ico        # Website icon
 └── ...
 ```
 
-## 常见问题
+## FAQ
 
-### 404 错误
+### 404 Error
 
-- 检查文件是否存在于网站目录
-- 检查文件名大小写（Linux 区分大小写）
-- 单页应用需要配置伪静态规则
+- Check if the file exists in the website directory
+- Check filename case sensitivity (Linux is case-sensitive)
+- Single page applications need to configure rewrite rules
 
-### 资源加载失败
+### Resource Loading Failed
 
-- 检查资源路径是否正确
-- 检查是否使用了绝对路径
-- 检查 CORS 配置
+- Check if the resource path is correct
+- Check if absolute paths are used
+- Check CORS configuration
 
-### 中文文件名乱码
+### Chinese Filename Garbled
 
-- 确保文件使用 UTF-8 编码
+- Ensure files use UTF-8 encoding

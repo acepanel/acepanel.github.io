@@ -1,38 +1,38 @@
-# 产品介绍
+# Product Introduction
 
-AcePanel 是一款开源的服务器运维管理面板。
+AcePanel is an open-source server operation and maintenance management panel.
 
-## 特性
+## Features
 
-- **极低占用**：Go 语言开发，单文件运行，资源占用极低
-- **低破坏性**：尽可能减少对系统的修改，同类产品中最少
-- **追随时代**：对新系统兼容性好，技术栈保持更新
-- **高效运维**：功能完善，自定义能力强，适用于简单到复杂的部署场景
-- **离线运行**：支持离线模式，停止面板不影响已部署的服务
-- **安全稳定**：多重安全机制，生产环境长期稳定运行
-- **完整开源**：全部代码开源，可自由修改和二次开发
-- **永久免费**：面板本体不会引入任何收费功能
+- **Extremely Low Footprint**: Developed in Go language, single file operation, extremely low resource usage
+- **Low Destructiveness**: Minimizes modifications to the system, the least among similar products
+- **Following the Times**: Good compatibility with new systems, technology stack stays updated
+- **Efficient Operation**: Complete features, strong customization capabilities, suitable for simple to complex deployment scenarios
+- **Offline Operation**: Supports offline mode, stopping the panel does not affect deployed services
+- **Safe and Stable**: Multiple security mechanisms, long-term stable operation in production environments
+- **Fully Open Source**: All code is open source, free to modify and develop
+- **Permanently Free**: The panel itself will not introduce any paid features
 
-## 功能
+## Functions
 
-**快速建站**
+**Quick Website Setup**
 
-深度集成 Nginx、MySQL、PHP 等主流服务，一键部署 LNMP 环境，支持多版本共存。
+Deeply integrated with mainstream services like Nginx, MySQL, PHP, one-click LNMP environment deployment, supports multiple version coexistence.
 
-**文件管理**
+**File Management**
 
-类似 Windows 资源管理器的操作体验，支持快捷键、批量操作、在线编辑。
+Windows Explorer-like operation experience, supports shortcuts, batch operations, and online editing.
 
-**备份恢复**
+**Backup and Recovery**
 
-网站、数据库一键备份与恢复，支持定时备份和远程存储。
+One-click backup and recovery for websites and databases, supports scheduled backups and remote storage.
 
-## 对比
+## Comparison
 
-| 特性   | AcePanel        | 同类产品 1           | 同类产品 B                      |
-|------|-----------------|------------------|-----------------------------|
-| 用户界面 | 清爽现代            | 现代化设计            | 功能繁杂，广告较多                   |
-| 开源情况 | 完整开源            | 仅开源非专业版          | 部分开源，提交记录不完整                |
-| 资源占用 | 极低，单文件运行        | core + agent 双进程 | 较高                          |
-| 应用中心 | 原生应用 + 容器编排     | 仅容器编排            | 应用陈旧，更新缓慢                   |
-| 技术栈  | Go 1.25 + Vue 3 | Go 1.24 + Vue 3  | Python 3.7 + Vue 3 + jQuery |
+| Feature        | AcePanel        | Similar Product 1        | Similar Product B                     |
+|----------------|-----------------|--------------------------|---------------------------------------|
+| User Interface | Clean and modern | Modern design            | Complex features, more advertisements |
+| Open Source    | Fully open source | Only non-pro version     | Partially open source, incomplete commit history |
+| Resource Usage | Extremely low, single file | core + agent dual process | Higher                                |
+| App Center     | Native apps + container orchestration | Container orchestration only | Outdated apps, slow updates           |
+| Tech Stack     | Go 1.25 + Vue 3 | Go 1.24 + Vue 3          | Python 3.7 + Vue 3 + jQuery           |

@@ -1,198 +1,198 @@
-# 文件
+# File
 
-文件模块提供了功能强大的图形化文件管理器，设计理念是尽可能还原 Windows 资源管理器的操作体验，支持右键菜单、拖拽上传、快捷键等特性。
+The file module provides a powerful graphical file manager. The design philosophy is to restore the Windows Explorer operation experience as much as possible, supporting right-click menus, drag-and-drop upload, keyboard shortcuts, and other features.
 
-## 文件管理器
+## File Manager
 
-![文件管理器](/images/file/file-list.png)
+![File Manager](/images/file/file-list.png)
 
-## 核心特性
+## Core Features
 
-### 类 Windows 操作体验
+### Windows-like Operation Experience
 
-- **右键菜单**：右键点击文件或目录弹出操作菜单
-- **拖拽上传**：直接将本地文件拖拽到浏览器窗口即可上传
-- **多选操作**：支持 Ctrl+点击 多选，Shift+点击 范围选择
-- **快捷键支持**：常用操作都有对应的快捷键
+- **Right-click Menu**: Right-click on files or directories to pop up an action menu
+- **Drag-and-drop Upload**: Directly drag local files to the browser window to upload
+- **Multi-select Operations**: Support Ctrl+click for multi-select, Shift+click for range selection
+- **Keyboard Shortcuts**: Common operations have corresponding keyboard shortcuts
 
-### 快捷键
+### Keyboard Shortcuts
 
-| 快捷键 | 功能 |
-|--------|------|
-| `Ctrl+C` | 复制 |
-| `Ctrl+X` | 剪切 |
-| `Ctrl+V` | 粘贴 |
-| `Delete` | 删除 |
-| `F2` | 重命名 |
-| `Ctrl+A` | 全选 |
+| Shortcut | Function |
+|----------|----------|
+| `Ctrl+C` | Copy |
+| `Ctrl+X` | Cut |
+| `Ctrl+V` | Paste |
+| `Delete` | Delete |
+| `F2` | Rename |
+| `Ctrl+A` | Select All |
 
-## 导航
+## Navigation
 
-### 路径导航
+### Path Navigation
 
-顶部显示当前路径的面包屑导航，点击可以快速跳转到任意上级目录。
+The top displays breadcrumb navigation of the current path. Click to quickly jump to any parent directory.
 
-### 快捷按钮
+### Quick Buttons
 
-- **后退**：返回上一个访问的目录
-- **前进**：前进到下一个目录
-- **上级目录**：返回上级目录
-- **刷新**：刷新当前目录
-- **主目录**：返回默认目录
+- **Back**: Return to the previous visited directory
+- **Forward**: Go to the next directory
+- **Parent Directory**: Return to parent directory
+- **Refresh**: Refresh current directory
+- **Home Directory**: Return to default directory
 
-## 文件列表
+## File List
 
-文件列表显示以下信息：
+The file list displays the following information:
 
-| 列 | 说明 |
-|------|------|
-| 名称 | 文件或目录名称 |
-| 大小 | 文件大小，目录显示"计算"可点击计算 |
-| 权限 | 文件权限（如 0755） |
-| 所有者/组 | 文件的所有者和所属组 |
-| 修改时间 | 最后修改时间 |
-| 操作 | 打开、压缩、重命名、删除、更多 |
+| Column | Description |
+|--------|-------------|
+| Name | File or directory name |
+| Size | File size, directories show "Calculate" which can be clicked to calculate |
+| Permissions | File permissions (e.g., 0755) |
+| Owner/Group | File owner and group |
+| Modified Time | Last modified time |
+| Actions | Open, compress, rename, delete, more |
 
-### 选择文件
+### Select Files
 
-![选择文件](/images/file/file-select.png)
+![Select Files](/images/file/file-select.png)
 
-选择文件后，顶部会显示批量操作按钮：
+After selecting files, batch operation buttons appear at the top:
 
-- **复制**：复制选中的文件
-- **移动**：移动选中的文件
-- **压缩**：压缩选中的文件
-- **权限**：修改权限
-- **删除**：删除选中的文件
+- **Copy**: Copy selected files
+- **Move**: Move selected files
+- **Compress**: Compress selected files
+- **Permissions**: Modify permissions
+- **Delete**: Delete selected files
 
-### 更多操作
+### More Actions
 
-点击文件行的 **更多** 按钮，显示更多操作选项：
+Click the **More** button on the file row to display more action options:
 
-![更多操作](/images/file/file-context-menu.png)
+![More Actions](/images/file/file-context-menu.png)
 
-- **复制**：复制文件到其他目录
-- **移动**：移动文件到其他目录
-- **权限**：修改文件权限和所有者
-- **压缩**：压缩文件
-- **复制路径**：复制文件的完整路径
-- **属性**：查看文件详细属性
+- **Copy**: Copy file to another directory
+- **Move**: Move file to another directory
+- **Permissions**: Modify file permissions and owner
+- **Compress**: Compress file
+- **Copy Path**: Copy the full path of the file
+- **Properties**: View detailed file properties
 
-## 工具栏
+## Toolbar
 
-### 新建
+### New
 
-点击 **新建** 按钮可以：
-- 新建文件
-- 新建目录
+Click the **New** button to:
+- Create new file
+- Create new directory
 
-### 上传
+### Upload
 
-点击 **上传** 按钮上传本地文件到服务器。
+Click the **Upload** button to upload local files to the server.
 
-支持的上传方式：
-- 点击选择文件上传
-- **拖拽上传**：直接将文件拖拽到页面即可上传
+Supported upload methods:
+- Click to select files for upload
+- **Drag-and-drop Upload**: Directly drag files to the page to upload
 
-### 远程下载
+### Remote Download
 
-点击 **远程下载** 按钮，输入 URL 地址，将远程文件下载到当前目录。
+Click the **Remote Download** button, enter a URL address to download remote files to the current directory.
 
-适用场景：
-- 下载软件安装包
-- 下载远程备份文件
-- 从其他服务器获取文件
+Use cases:
+- Download software installation packages
+- Download remote backup files
+- Get files from other servers
 
-### 搜索
+### Search
 
-在搜索框输入关键词搜索文件：
-- 默认搜索当前目录
-- 勾选 **包括子目录** 可以递归搜索
+Enter keywords in the search box to search for files:
+- Default searches current directory
+- Check **Include Subdirectories** to search recursively
 
-### 终端
+### Terminal
 
-点击 **终端** 按钮可以在当前目录打开终端，方便执行命令行操作。
+Click the **Terminal** button to open a terminal in the current directory for convenient command line operations.
 
-### 排序
+### Sort
 
-点击 **排序** 按钮可以按不同字段排序文件列表。
+Click the **Sort** button to sort the file list by different fields.
 
-## 文件编辑器
+## File Editor
 
-AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Code 同款编辑器内核）。
+AcePanel has a built-in powerful code editor based on Monaco Editor (the same editor core as VS Code).
 
-![文件编辑器](/images/file/file-editor.png)
+![File Editor](/images/file/file-editor.png)
 
-### 编辑器特性
+### Editor Features
 
-- **语法高亮**：支持各种编程语言的语法高亮
-- **代码折叠**：支持代码块折叠
-- **行号显示**：显示行号，方便定位
-- **小地图**：右侧显示代码缩略图
-- **自动换行**：可切换自动换行模式
-- **多文件编辑**：支持同时打开多个文件，标签页切换
+- **Syntax Highlighting**: Supports syntax highlighting for various programming languages
+- **Code Folding**: Supports code block folding
+- **Line Numbers**: Displays line numbers for easy positioning
+- **Minimap**: Displays code thumbnail on the right side
+- **Word Wrap**: Can toggle word wrap mode
+- **Multi-file Editing**: Supports opening multiple files simultaneously with tab switching
 
-### 编辑器快捷键
+### Editor Shortcuts
 
-| 快捷键 | 功能 |
-|--------|------|
-| `Ctrl+S` | 保存当前文件 |
-| `Ctrl+Shift+S` | 保存所有文件 |
-| `Ctrl+F` | 搜索 |
-| `Ctrl+H` | 替换 |
-| `Ctrl+G` | 转到指定行 |
+| Shortcut | Function |
+|----------|----------|
+| `Ctrl+S` | Save current file |
+| `Ctrl+Shift+S` | Save all files |
+| `Ctrl+F` | Search |
+| `Ctrl+H` | Replace |
+| `Ctrl+G` | Go to line |
 
-### 编辑器工具栏
+### Editor Toolbar
 
-- **保存**：保存当前文件
-- **保存所有**：保存所有修改的文件
-- **刷新**：重新加载文件内容
-- **搜索**：打开搜索面板
-- **替换**：打开替换面板
-- **转到**：跳转到指定行
-- **字体大小**：调整编辑器字体大小
-- **切换自动换行**：开启/关闭自动换行
-- **切换小地图**：显示/隐藏右侧小地图
-- **设置**：编辑器设置
+- **Save**: Save current file
+- **Save All**: Save all modified files
+- **Refresh**: Reload file content
+- **Search**: Open search panel
+- **Replace**: Open replace panel
+- **Go to**: Jump to specified line
+- **Font Size**: Adjust editor font size
+- **Toggle Word Wrap**: Enable/disable word wrap
+- **Toggle Minimap**: Show/hide right-side minimap
+- **Settings**: Editor settings
 
-### 全屏模式
+### Fullscreen Mode
 
-点击 **最大化** 按钮可以全屏编辑，获得更大的编辑空间：
+Click the **Maximize** button for fullscreen editing to get more editing space:
 
-![全屏编辑器](/images/file/file-editor-fullscreen.png)
+![Fullscreen Editor](/images/file/file-editor-fullscreen.png)
 
-### 侧边栏文件树
+### Sidebar File Tree
 
-编辑器左侧显示当前目录的文件树，可以：
-- 快速切换编辑其他文件
-- 新建文件
-- 搜索文件
+The left side of the editor displays the file tree of the current directory, allowing you to:
+- Quickly switch to edit other files
+- Create new files
+- Search files
 
-### 状态栏
+### Status Bar
 
-编辑器底部状态栏显示：
-- 文件完整路径
-- 换行符类型（LF/CRLF）
-- 光标位置（行、列）
-- 缩进设置（空格/Tab）
-- 文件语言类型
+The editor bottom status bar displays:
+- Full file path
+- Line ending type (LF/CRLF)
+- Cursor position (line, column)
+- Indentation settings (spaces/Tab)
+- File language type
 
-## 权限说明
+## Permission Explanation
 
-Linux 文件权限由三组数字表示：
+Linux file permissions are represented by three groups of numbers:
 
-| 权限 | 数字 | 说明 |
-|------|------|------|
-| r | 4 | 读取 |
-| w | 2 | 写入 |
-| x | 1 | 执行 |
+| Permission | Number | Description |
+|------------|--------|-------------|
+| r | 4 | Read |
+| w | 2 | Write |
+| x | 1 | Execute |
 
-例如 `0755`：
-- 所有者：7 (4+2+1) = 读+写+执行
-- 所属组：5 (4+1) = 读+执行
-- 其他用户：5 (4+1) = 读+执行
+For example `0755`:
+- Owner: 7 (4+2+1) = read+write+execute
+- Group: 5 (4+1) = read+execute
+- Others: 5 (4+1) = read+execute
 
-常用权限：
-- `0644`：普通文件
-- `0755`：可执行文件和目录
-- `0600`：私密文件（如密钥）
+Common permissions:
+- `0644`: Regular files
+- `0755`: Executable files and directories
+- `0600`: Private files (such as keys)

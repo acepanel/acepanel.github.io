@@ -1,66 +1,66 @@
-# 网站
+# Website
 
-网站模块用于管理 Web 服务器上的站点配置。AcePanel 支持三种类型的网站：反向代理、PHP 和纯静态。
+The website module is used to manage site configurations on the Web server. AcePanel supports three types of websites: reverse proxy, PHP, and static.
 
-## 前置要求
+## Prerequisites
 
-使用网站功能前，需要先安装 Web 服务器：
+Before using the website feature, you need to install a Web server first:
 
-1. 进入 **应用** > **原生应用**
-2. 安装 Nginx、OpenResty 或 Apache
+1. Go to **Applications** > **Native Applications**
+2. Install Nginx, OpenResty, or Apache
 
-## 网站类型
+## Website Types
 
-| 类型 | 说明 | 适用场景 |
-|------|------|----------|
-| [反向代理](./website/proxy) | 将请求转发到后端服务 | Node.js、Go、Java 等应用 |
-| [PHP](./website/php) | 运行 PHP 程序 | WordPress、Laravel 等 |
-| [纯静态](./website/static) | 托管静态文件 | HTML、Vue/React 构建产物 |
+| Type | Description | Use Cases |
+|------|-------------|-----------|
+| [Reverse Proxy](./website/proxy) | Forward requests to backend services | Node.js, Go, Java applications |
+| [PHP](./website/php) | Run PHP programs | WordPress, Laravel, etc. |
+| [Static](./website/static) | Host static files | HTML, Vue/React build outputs |
 
-## 网站列表
+## Website List
 
-网站列表显示以下信息：
+The website list displays the following information:
 
-- **网站名称**：站点的唯一标识
-- **运行中**：站点是否启用
-- **目录**：网站文件所在目录
-- **HTTPS**：是否启用 HTTPS
-- **证书有效期**：SSL 证书的到期时间
-- **备注**：自定义备注信息
-- **操作**：管理、删除等
+- **Website Name**: Unique identifier for the site
+- **Running**: Whether the site is enabled
+- **Directory**: Directory where website files are located
+- **HTTPS**: Whether HTTPS is enabled
+- **Certificate Expiry**: SSL certificate expiration time
+- **Remarks**: Custom remarks
+- **Actions**: Manage, delete, etc.
 
-## 创建网站
+## Create Website
 
-1. 进入 **网站** 页面
-2. 选择网站类型标签（反向代理/PHP/纯静态）
-3. 点击 **创建网站**
-4. 填写网站信息
-5. 点击创建
+1. Go to the **Website** page
+2. Select the website type tab (Reverse Proxy/PHP/Static)
+3. Click **Create Website**
+4. Fill in the website information
+5. Click Create
 
-### 通用配置项
+### Common Configuration Items
 
-- **名称**：网站的唯一标识，只能使用英文，创建后不可修改
-- **域名**：绑定的域名，可添加多个
-- **端口**：监听的端口，默认 80
-- **备注**：可选的备注信息
+- **Name**: Unique identifier for the website, English only, cannot be changed after creation
+- **Domain**: Bound domain names, multiple can be added
+- **Port**: Listening port, default 80
+- **Remarks**: Optional remarks
 
-## 网站管理
+## Website Management
 
-点击网站的 **管理** 按钮进入管理页面，可以进行以下操作：
+Click the **Manage** button of a website to enter the management page, where you can perform the following operations:
 
-- 修改域名和端口
-- 配置 SSL 证书
-- 设置伪静态规则
-- 配置防盗链
-- 查看访问日志
-- 修改 Nginx 配置
+- Modify domains and ports
+- Configure SSL certificates
+- Set rewrite rules
+- Configure hotlink protection
+- View access logs
+- Modify Nginx configuration
 
-## 批量创建
+## Batch Creation
 
-点击 **批量创建网站** 可以一次创建多个网站，适合需要快速部署多个站点的场景。
+Click **Batch Create Websites** to create multiple websites at once, suitable for scenarios requiring rapid deployment of multiple sites.
 
-## 下一步
+## Next Steps
 
-- [反向代理](./website/proxy) - 了解如何创建反向代理网站
-- [PHP 网站](./website/php) - 了解如何创建 PHP 网站
-- [纯静态网站](./website/static) - 了解如何创建静态网站
+- [Reverse Proxy](./website/proxy) - Learn how to create reverse proxy websites
+- [PHP Website](./website/php) - Learn how to create PHP websites
+- [Static Website](./website/static) - Learn how to create static websites

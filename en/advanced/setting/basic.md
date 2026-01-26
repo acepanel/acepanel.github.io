@@ -1,58 +1,58 @@
-# 基本设置
+# Basic Settings
 
-基本设置页面用于配置面板的基础参数。
+The basic settings page is used to configure the panel's basic parameters.
 
-![基本设置](/images/setting/setting-basic.png)
+![Basic Settings](/images/setting/setting-basic.png)
 
-## 面板名称
+## Panel Name
 
-自定义面板显示的名称，默认为 "AcePanel"。修改后刷新页面会显示在浏览器标题和面板左上角。
+Customize the name displayed by the panel, default is "AcePanel". After modification, refresh the page to see it displayed in the browser title and the top left corner of the panel.
 
-## 语言
+## Language
 
-选择面板界面语言：
+Select the panel interface language:
 
-- 简体中文
-- 繁体中文
+- Simplified Chinese
+- Traditional Chinese
 - English
 
-## 更新渠道
+## Update Channel
 
-选择面板更新的版本渠道：
+Select the version channel for panel updates:
 
-- **稳定版**：经过充分测试的正式版本，推荐生产环境使用
-- **测试版**：包含最新功能但可能存在问题，适合尝鲜用户
+- **Stable**: Fully tested official versions, recommended for production environments
+- **Beta**: Contains the latest features but may have issues, suitable for early adopters
 
-## 端口
+## Port
 
-面板的访问端口，默认为 8888。修改端口后需要：
+The access port for the panel, default is 8888. After changing the port:
 
-1. 确保新端口未被占用
-2. 在服务器安全组中开放新端口
-3. 保存后面板会自动重启
+1. Ensure the new port is not occupied
+2. Open the new port in the server security group
+3. The panel will automatically restart after saving
 
-::: warning 注意
-修改端口前请确保服务器安全组已开放新端口，否则可能无法访问面板。
+::: warning Note
+Before changing the port, please ensure the new port is open in the server security group, otherwise you may be unable to access the panel.
 :::
 
-## 默认目录
+## Default Directories
 
-配置各类资源的默认存储路径：
+Configure the default storage paths for various resources:
 
-| 设置项 | 默认值 | 说明 |
-|--------|--------|------|
-| 默认网站目录 | /opt/ace/sites | 网站文件存放目录 |
-| 默认备份目录 | /opt/ace/backup | 备份文件存放目录 |
-| 默认项目目录 | /opt/ace/projects | 项目文件存放目录 |
+| Setting | Default Value | Description |
+|---------|---------------|-------------|
+| Default Website Directory | /opt/ace/sites | Directory for storing website files |
+| Default Backup Directory | /opt/ace/backup | Directory for storing backup files |
+| Default Project Directory | /opt/ace/projects | Directory for storing project files |
 
-修改目录后，新创建的网站/备份/项目会使用新目录，已有的不受影响。
+After changing directories, newly created websites/backups/projects will use the new directory, existing ones are not affected.
 
-## 自定义 Logo
+## Custom Logo
 
-输入图片的完整 URL 地址，可以替换面板左上角的 Logo。支持 PNG、JPG、SVG 等格式。
+Enter the full URL of an image to replace the logo in the top left corner of the panel. Supports PNG, JPG, SVG, and other formats.
 
-## 隐藏菜单
+## Hide Menu
 
-选择要隐藏的菜单项。隐藏后的菜单不会显示在左侧导航栏中，但功能仍然可用（通过直接访问 URL）。
+Select menu items to hide. Hidden menus will not be displayed in the left navigation bar, but the features are still available (by directly accessing the URL).
 
-适用于简化界面或限制普通用户可见的功能范围。
+Suitable for simplifying the interface or limiting the range of features visible to regular users.

@@ -1,98 +1,98 @@
-# 面板常见问题
+# Panel FAQ
 
-## 面板打不开
+## Panel Won't Open
 
-SSH 登录服务器，检查面板状态：
+SSH into the server and check panel status:
 
 ```shell
 acepanel status
 ```
 
-如果服务已停止，启动它：
+If the service has stopped, start it:
 
 ```shell
 acepanel start
 ```
 
-如果无法启动，尝试修复：
+If it cannot start, try to repair:
 
 ```shell
 acepanel fix && acepanel update
 ```
 
-服务正常但仍无法访问，检查防火墙：
+If the service is running but still inaccessible, check the firewall:
 
 ```shell
-# 检查端口是否监听
-curl -I http://127.0.0.1:面板端口/
+# Check if port is listening
+curl -I http://127.0.0.1:panel-port/
 
-# 放行端口（firewalld）
-firewall-cmd --add-port=面板端口/tcp --permanent
+# Allow port (firewalld)
+firewall-cmd --add-port=panel-port/tcp --permanent
 firewall-cmd --reload
 ```
 
-云服务器还需检查安全组设置。
+For cloud servers, also check security group settings.
 
-查看面板日志排查问题：
+View panel logs to troubleshoot:
 
 ```shell
 journalctl -u acepanel -n 100
 ```
 
-## 忘记密码/用户名/地址
+## Forgot Password/Username/Address
 
 ```shell
 acepanel info
 ```
 
-输出面板地址、用户名，并生成新密码。
+Outputs panel address, username, and generates a new password.
 
-## 修改面板端口
+## Change Panel Port
 
 ```shell
 acepanel port 12345
 ```
 
-修改后需在服务器安全组/防火墙放行新端口。
+After modification, you need to allow the new port in the server security group/firewall.
 
-## 关闭安全入口
+## Disable Security Entry
 
-如果忘记安全入口路径：
+If you forgot the security entry path:
 
 ```shell
 acepanel entrance off
 ```
 
-## 关闭域名/IP 绑定
+## Disable Domain/IP Binding
 
-绑定后无法访问面板：
+If you cannot access the panel after binding:
 
 ```shell
 acepanel bind-domain off
 acepanel bind-ip off
 ```
 
-## 关闭两步验证
+## Disable Two-Factor Authentication
 
 ```shell
 acepanel user 2fa admin
 ```
 
-## 证书错误
+## Certificate Error
 
-面板默认使用自签名证书，浏览器会提示不安全，点击「继续访问」即可。
+The panel uses a self-signed certificate by default, and the browser will show an insecure warning. Click "Continue" to proceed.
 
-申请正式证书：
+To apply for a proper certificate:
 
 ```shell
 acepanel https generate
 ```
 
-需要确保服务器 IP 80 端口可直接访问。
+You need to ensure the server IP port 80 is directly accessible.
 
-## acepanel 命令无权限
+## acepanel Command Permission Denied
 
-必须以 root 用户执行，或使用 sudo：
+Must be executed as root user, or use sudo:
 
 ```shell
 sudo acepanel status

@@ -1,35 +1,35 @@
-# PHP 项目
+# PHP Project
 
-PHP 项目用于部署需要常驻进程的 PHP 应用，如 Laravel Octane、Swoole、Workerman 等。
+PHP projects are used to deploy PHP applications that require long-running processes, such as Laravel Octane, Swoole, Workerman, etc.
 
-::: tip 提示
-传统的 PHP-FPM 应用（如 WordPress、Laravel）应使用 [PHP 网站](../website/php) 方式部署，而非项目。
+::: tip Tip
+Traditional PHP-FPM applications (such as WordPress, Laravel) should be deployed using [PHP Website](../website/php), not as projects.
 :::
 
-## 适用场景
+## Use Cases
 
-- Laravel Octane（Swoole/RoadRunner）
-- Swoole 应用
-- Workerman 应用
-- ReactPHP 应用
-- 其他需要常驻进程的 PHP 应用
+- Laravel Octane (Swoole/RoadRunner)
+- Swoole applications
+- Workerman applications
+- ReactPHP applications
+- Other PHP applications requiring long-running processes
 
-## 前置要求
+## Prerequisites
 
-1. 安装 PHP 运行环境：**应用** > **运行环境** > **PHP**
-2. 根据需要安装 Swoole 等模块
+1. Install PHP runtime: **Apps** > **Runtimes** > **PHP**
+2. Install Swoole or other modules as needed
 
-## 部署 Laravel Octane
+## Deploying Laravel Octane
 
-### 创建项目
+### Creating a Project
 
-1. 创建项目：
-   - **项目名**：`myapp`
-   - **项目目录**：`/opt/ace/project/myapp`
-   - **启动命令**：`php84 artisan octane:start --host=0.0.0.0 --port=8000`
-2. 开启 **反向代理**
+1. Create project:
+   - **Project Name**: `myapp`
+   - **Project Directory**: `/opt/ace/project/myapp`
+   - **Startup Command**: `php84 artisan octane:start --host=0.0.0.0 --port=8000`
+2. Enable **Reverse Proxy**
 
-## 启动命令示例
+## Startup Command Examples
 
 ```bash
 # Laravel Octane (Swoole)
@@ -48,7 +48,7 @@ php84 start.php start
 php84 artisan queue:work --daemon
 ```
 
-## Swoole 应用示例
+## Swoole Application Example
 
 ```php
 <?php
@@ -62,9 +62,9 @@ $server->on("request", function ($request, $response) {
 $server->start();
 ```
 
-启动命令：`php84 server.php`
+Startup command: `php84 server.php`
 
-## Workerman 应用示例
+## Workerman Application Example
 
 ```php
 <?php
@@ -80,18 +80,18 @@ $worker->onMessage = function($connection, $request) {
 Worker::runAll();
 ```
 
-启动命令：`php84 start.php start`
+Startup command: `php84 start.php start`
 
-## 队列处理
+## Queue Processing
 
-Laravel 队列 Worker 也可以作为项目运行：
+Laravel Queue Worker can also run as a project:
 
 ```bash
 php84 artisan queue:work --daemon --tries=3
 ```
 
-## 注意事项
+## Notes
 
-1. 常驻进程的 PHP 应用需要注意内存泄漏问题
-2. 代码更新后需要重启项目才能生效
-3. 建议配置进程监控，异常时自动重启
+1. Long-running PHP applications need to be aware of memory leak issues
+2. Code updates require restarting the project to take effect
+3. It is recommended to configure process monitoring for automatic restart on exceptions

@@ -1,80 +1,80 @@
 # SSH
 
-SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认证方式和 Root 账户设置。
+The SSH page is used to manage the server's SSH service configuration, including service status, authentication methods, and Root account settings.
 
-![SSH 设置](/images/toolbox/toolbox-ssh.png)
+![SSH Settings](/images/toolbox/toolbox-ssh.png)
 
-## 运行状态
+## Running Status
 
-显示 SSH 服务的当前状态，并提供以下操作：
+Displays the current status of the SSH service and provides the following operations:
 
-- **启动**：启动 SSH 服务
-- **停止**：停止 SSH 服务
-- **重启**：重启 SSH 服务
+- **Start**: Start the SSH service
+- **Stop**: Stop the SSH service
+- **Restart**: Restart the SSH service
 
-::: danger 警告
-停止 SSH 服务后将无法通过 SSH 远程连接服务器，请确保有其他方式访问服务器（如 VNC、带外管理）后再操作。
+::: danger Warning
+After stopping the SSH service, you will not be able to remotely connect to the server via SSH. Please ensure you have other ways to access the server (such as VNC, out-of-band management) before proceeding.
 :::
 
-## SSH 设置
+## SSH Settings
 
-### SSH 密码登录
+### SSH Password Login
 
-控制是否允许使用密码进行 SSH 认证。
+Control whether password authentication is allowed for SSH.
 
-- **开启**：允许使用密码登录
-- **关闭**：禁止密码登录，只能使用密钥
+- **Enabled**: Allow password login
+- **Disabled**: Prohibit password login, only key authentication allowed
 
-### SSH 密钥登录
+### SSH Key Login
 
-控制是否允许使用 SSH 密钥进行认证。
+Control whether SSH key authentication is allowed.
 
-- **开启**：允许使用密钥登录
-- **关闭**：禁止密钥登录
+- **Enabled**: Allow key login
+- **Disabled**: Prohibit key login
 
-::: tip 安全建议
-推荐开启密钥登录并关闭密码登录，可以有效防止暴力破解攻击。
+::: tip Security Recommendation
+It is recommended to enable key login and disable password login to effectively prevent brute force attacks.
 :::
 
-### SSH 端口
+### SSH Port
 
-修改 SSH 服务监听的端口，默认为 `22`。
+Modify the port that the SSH service listens on, default is `22`.
 
-修改端口后：
-1. 点击 **保存** 按钮
-2. 确保防火墙已放行新端口
-3. 使用新端口连接测试
-4. 确认可以连接后再关闭旧端口
+After modifying the port:
+1. Click the **Save** button
+2. Ensure the firewall has allowed the new port
+3. Test connection using the new port
+4. Close the old port after confirming the connection works
 
-::: warning 注意
-修改端口前请确保新端口已在防火墙中放行，否则可能导致无法连接。
+::: warning Note
+Before modifying the port, please ensure the new port is allowed in the firewall, otherwise you may be unable to connect.
 :::
 
-## Root 设置
+## Root Settings
 
-### Root 密码登录设置
+### Root Password Login Settings
 
-控制 Root 用户的 SSH 登录权限：
+Control Root user's SSH login permissions:
 
-- **允许 SSH 登录**：Root 可以通过 SSH 登录
-- **禁止 SSH 登录**：Root 无法通过 SSH 登录
-- **仅允许密钥登录**：Root 只能使用密钥登录
+- **Allow SSH Login**: Root can log in via SSH
+- **Prohibit SSH Login**: Root cannot log in via SSH
+- **Allow Key Login Only**: Root can only log in using keys
 
-### Root 密码
+### Root Password
 
-重置 Root 用户的密码。
+Reset the Root user's password.
 
-- 输入新密码后点击 **重置** 按钮
-- 建议使用包含大小写字母、数字和特殊字符的复杂密码
-- 刷新页面将清除密码输入框
+- Enter the new password and click the **Reset** button
+- It is recommended to use a complex password containing uppercase and lowercase letters, numbers, and special characters
+- Refreshing the page will clear the password input field
 
-### Root 密钥
+### Root Key
 
-管理 Root 用户的 SSH 密钥：
+Manage Root user's SSH keys:
 
-- **查看密钥**：查看当前配置的公钥
-- **下载**：下载私钥文件
+- **View Key**: View the currently configured public key
+- **Download**: Download the private key file
 
-::: tip 安全建议
-推荐使用密钥登录并禁用密码，可以显著提高服务器安全性。
+::: tip Security Recommendation
+It is recommended to use key login and disable password to significantly improve server security.
 :::

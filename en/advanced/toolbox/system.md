@@ -1,98 +1,98 @@
-# 系统
+# System
 
-系统页面提供服务器基础配置的管理功能，包括 DNS、SWAP、主机名和时间设置。
+The system page provides management features for basic server configuration, including DNS, SWAP, hostname, and time settings.
 
 ## DNS
 
-配置系统的 DNS 服务器。
+Configure the system's DNS servers.
 
-![DNS 设置](/images/toolbox/toolbox-system-dns.png)
+![DNS Settings](/images/toolbox/toolbox-system-dns.png)
 
-### 配置项
+### Configuration Items
 
-- **DNS1**：主 DNS 服务器地址
-- **DNS2**：辅 DNS 服务器地址
+- **DNS1**: Primary DNS server address
+- **DNS2**: Secondary DNS server address
 
-### 常用 DNS 服务器
+### Common DNS Servers
 
-| 服务商 | DNS1 | DNS2 |
-|--------|------|------|
-| 阿里云 | 223.5.5.5 | 223.6.6.6 |
-| 腾讯云 | 119.29.29.29 | 119.28.28.28 |
+| Provider | DNS1 | DNS2 |
+|----------|------|------|
+| Alibaba Cloud | 223.5.5.5 | 223.6.6.6 |
+| Tencent Cloud | 119.29.29.29 | 119.28.28.28 |
 | 114 DNS | 114.114.114.114 | 114.114.115.115 |
 | Google | 8.8.8.8 | 8.8.4.4 |
 | Cloudflare | 1.1.1.1 | 1.0.0.1 |
 
 ## SWAP
 
-管理系统的 SWAP 交换空间。
+Manage the system's SWAP space.
 
-![SWAP 设置](/images/toolbox/toolbox-system-swap.png)
+![SWAP Settings](/images/toolbox/toolbox-system-swap.png)
 
-页面显示当前 SWAP 使用情况：
-- 系统总计
-- 已使用
-- 可用
+The page displays current SWAP usage:
+- System total
+- Used
+- Available
 
-### 配置面板 SWAP
+### Configure Panel SWAP
 
-设置面板管理的 SWAP 文件大小（单位：MB）。
+Set the size of the SWAP file managed by the panel (unit: MB).
 
-- 设置为 `0` 表示禁用面板 SWAP
-- 建议根据服务器内存大小设置，通常为内存的 1-2 倍
+- Setting to `0` disables panel SWAP
+- It is recommended to set based on server memory size, typically 1-2 times the memory
 
-::: tip 提示
-SWAP 可以在物理内存不足时提供额外的虚拟内存，但性能低于物理内存。对于内存充足的服务器，可以不启用 SWAP。
+::: tip Tip
+SWAP can provide additional virtual memory when physical memory is insufficient, but performance is lower than physical memory. For servers with sufficient memory, SWAP may not need to be enabled.
 :::
 
-## 主机
+## Host
 
-配置系统主机名和 Hosts 文件。
+Configure system hostname and Hosts file.
 
-![主机设置](/images/toolbox/toolbox-system-host.png)
+![Host Settings](/images/toolbox/toolbox-system-host.png)
 
-### 系统主机名
+### System Hostname
 
-修改服务器的主机名，例如 `myserver`、`web-01` 等。
+Modify the server's hostname, such as `myserver`, `web-01`, etc.
 
 ### Hosts
 
-编辑系统的 `/etc/hosts` 文件，用于配置本地域名解析。
+Edit the system's `/etc/hosts` file for configuring local domain name resolution.
 
-常见用途：
-- 屏蔽特定域名
-- 配置本地开发域名
-- 加速特定域名的解析
+Common uses:
+- Block specific domains
+- Configure local development domains
+- Speed up resolution of specific domains
 
-## 时间
+## Time
 
-配置系统时区和时间同步。
+Configure system timezone and time synchronization.
 
-![时间设置](/images/toolbox/toolbox-system-time.png)
+![Time Settings](/images/toolbox/toolbox-system-time.png)
 
-### 选择时区
+### Select Timezone
 
-从下拉列表中选择服务器所在的时区，例如 `Asia/Shanghai`。
+Select the server's timezone from the dropdown list, such as `Asia/Shanghai`.
 
-### 修改时间
+### Modify Time
 
-手动设置系统时间。
+Manually set the system time.
 
-::: warning 注意
-手动更改时间后，系统自动时间同步可能仍会覆盖设置。
+::: warning Note
+After manually changing the time, automatic system time synchronization may still override the settings.
 :::
 
-### NTP 服务器
+### NTP Server
 
-配置 NTP 时间同步服务器。留空则使用系统默认服务器。
+Configure the NTP time synchronization server. Leave empty to use the system default server.
 
-常用 NTP 服务器：
-- `ntp.aliyun.com` - 阿里云
-- `ntp.tencent.com` - 腾讯云
-- `cn.pool.ntp.org` - 中国 NTP 池
+Common NTP servers:
+- `ntp.aliyun.com` - Alibaba Cloud
+- `ntp.tencent.com` - Tencent Cloud
+- `cn.pool.ntp.org` - China NTP Pool
 
-### 操作按钮
+### Action Buttons
 
-- **配置默认服务器**：恢复使用系统默认的 NTP 服务器
-- **保存**：保存时区和时间设置
-- **同步时间**：立即与 NTP 服务器同步时间
+- **Configure Default Server**: Restore to using the system default NTP server
+- **Save**: Save timezone and time settings
+- **Sync Time**: Immediately synchronize time with the NTP server

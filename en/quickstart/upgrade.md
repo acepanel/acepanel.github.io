@@ -1,33 +1,33 @@
-# 更新
+# Update
 
-## 自动更新
+## Automatic Update
 
-面板默认开启自动更新，每天凌晨 2 点左右会自动检测并更新。更新期间面板短暂不可用（通常不超过 1 分钟）。
+The panel has automatic updates enabled by default, checking and updating around 2 AM daily. The panel will be briefly unavailable during updates (usually less than 1 minute).
 
-关闭自动更新：「设置」->「安全」->「自动更新」。
+To disable automatic updates: "Settings" -> "Security" -> "Automatic Update".
 
-## 手动更新
+## Manual Update
 
-### Web 界面
+### Web Interface
 
-点击首页右上角「更新」按钮，有新版本时会弹出更新页面。
+Click the "Update" button in the top right corner of the homepage. When a new version is available, an update page will pop up.
 
-更新过程中请勿刷新浏览器或操作面板，完成后页面自动刷新。
+Do not refresh the browser or operate the panel during the update process. The page will automatically refresh after completion.
 
-### 命令行
+### Command Line
 
 ```shell
 acepanel update
 ```
 
-适用于面板无法访问的情况。更新过程中请勿关闭终端。
+Suitable for situations where the panel is inaccessible. Do not close the terminal during the update process.
 
-## 更新失败
+## Update Failed
 
-如果更新后出现问题，尝试修复：
+If problems occur after updating, try to repair:
 
 ```shell
 acepanel fix
 ```
 
-仍有问题可到 [社区](https://tom.moe) 反馈。
+If problems persist, provide feedback at the [Community](https://tom.moe).

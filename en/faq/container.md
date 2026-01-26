@@ -1,12 +1,12 @@
-# 容器常见问题
+# Container FAQ
 
-## 镜像拉取失败
+## Image Pull Failed
 
-国内服务器无法连接 Docker Hub，需配置镜像加速。
+Servers in China cannot connect to Docker Hub and need to configure mirror acceleration.
 
 ### Docker
 
-「应用」->「Docker」->「管理」->「配置」，添加：
+**Apps** -> **Docker** -> **Manage** -> **Configuration**, add:
 
 ```json
 {
@@ -16,7 +16,7 @@
 
 ### Podman
 
-「应用」->「Podman」->「管理」->「Registry 配置」，末尾添加：
+**Apps** -> **Podman** -> **Manage** -> **Registry Configuration**, add at the end:
 
 ```toml
 [[registry]]
@@ -25,47 +25,47 @@ location = "docker.io"
 location = "docker.1ms.run"
 ```
 
-镜像加速地址可使用 [毫秒镜像](https://1ms.run/) 或其他服务。
+For mirror acceleration addresses, you can use [1ms Mirror](https://1ms.run/) or other services.
 
-## 编排启动失败
+## Compose Startup Failed
 
-1. 点击「日志」查看错误信息
-2. 常见原因：
-   - 端口被占用：修改映射端口
-   - 镜像拉取失败：配置镜像加速
-   - 配置错误：检查 docker-compose.yml 语法
+1. Click **Logs** to view error messages
+2. Common causes:
+   - Port occupied: Modify the mapped port
+   - Image pull failed: Configure mirror acceleration
+   - Configuration error: Check docker-compose.yml syntax
 
-## 容器无法访问
+## Container Inaccessible
 
-1. 检查容器是否运行：「容器」->「容器」列表查看状态
-2. 检查端口映射是否正确
-3. 检查防火墙是否放行映射的主机端口
+1. Check if the container is running: View status in **Containers** -> **Containers** list
+2. Check if port mapping is correct
+3. Check if the firewall has allowed the mapped host port
 
-## 容器内无法访问外网
+## Container Cannot Access External Network
 
-检查 Docker 网络配置：
+Check Docker network configuration:
 
 ```shell
 docker network ls
 docker network inspect bridge
 ```
 
-## 数据持久化
+## Data Persistence
 
-容器删除后数据会丢失。使用卷挂载持久化数据：
+Data will be lost after container deletion. Use volume mounts to persist data:
 
-在编排配置中添加 volumes：
+Add volumes in the compose configuration:
 
 ```yaml
 volumes:
   - ./data:/app/data
 ```
 
-## 查看容器日志
+## View Container Logs
 
 ```shell
-docker logs 容器名或ID
-docker logs -f 容器名或ID  # 实时查看
+docker logs container-name-or-id
+docker logs -f container-name-or-id  # Real-time view
 ```
 
-或在面板「容器」->「容器」列表点击「日志」。
+Or click **Logs** in the panel **Containers** -> **Containers** list.

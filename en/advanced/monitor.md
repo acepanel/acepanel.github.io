@@ -1,99 +1,99 @@
-# 监控
+# Monitor
 
-监控模块用于记录和查看服务器的性能数据，包括 CPU、内存、磁盘 I/O 和网络流量。
+The monitor module is used to record and view server performance data, including CPU, memory, disk I/O, and network traffic.
 
-## 监控页面
+## Monitor Page
 
-![监控页面](/images/monitor/monitor.png)
+![Monitor Page](/images/monitor/monitor.png)
 
-## 监控设置
+## Monitor Settings
 
-### 启用监控
+### Enable Monitoring
 
-开启 **启用监控** 开关后，系统会定期采集性能数据。
+After turning on the **Enable Monitoring** switch, the system will periodically collect performance data.
 
-### 保存天数
+### Retention Days
 
-设置监控数据的保留时间，默认 30 天。超过保留时间的数据会自动清理。
+Set the retention time for monitoring data, default is 30 days. Data exceeding the retention time will be automatically cleaned up.
 
-### 清除监控记录
+### Clear Monitor Records
 
-点击 **清除监控记录** 按钮可以手动清除所有历史监控数据。
+Click the **Clear Monitor Records** button to manually clear all historical monitoring data.
 
-## 监控指标
+## Monitoring Metrics
 
-### 负载（Load Average）
+### Load Average
 
-系统负载反映了 CPU 的繁忙程度：
+System load reflects the busyness of the CPU:
 
-- **1 分钟负载**：最近 1 分钟的平均负载
-- **5 分钟负载**：最近 5 分钟的平均负载
-- **15 分钟负载**：最近 15 分钟的平均负载
+- **1-minute load**: Average load over the last 1 minute
+- **5-minute load**: Average load over the last 5 minutes
+- **15-minute load**: Average load over the last 15 minutes
 
-负载值的参考：
-- 负载 < CPU 核心数：系统运行流畅
-- 负载 = CPU 核心数：系统满负荷运行
-- 负载 > CPU 核心数：系统过载，可能出现卡顿
+Load value reference:
+- Load < CPU cores: System running smoothly
+- Load = CPU cores: System running at full capacity
+- Load > CPU cores: System overloaded, may experience lag
 
-### CPU 使用率
+### CPU Usage
 
-显示 CPU 的使用百分比，包括：
-- 用户态使用率
-- 系统态使用率
-- 空闲率
+Displays CPU usage percentage, including:
+- User mode usage
+- System mode usage
+- Idle rate
 
-### 内存使用
+### Memory Usage
 
-显示内存的使用情况：
-- 已使用内存
-- 可用内存
-- 缓存/缓冲区
+Displays memory usage:
+- Used memory
+- Available memory
+- Cache/Buffer
 
-### 磁盘 I/O
+### Disk I/O
 
-显示磁盘的读写速度：
-- 读取速度（KB/s 或 MB/s）
-- 写入速度（KB/s 或 MB/s）
+Displays disk read/write speed:
+- Read speed (KB/s or MB/s)
+- Write speed (KB/s or MB/s)
 
-可以选择要监控的磁盘设备。
+You can select the disk device to monitor.
 
-### 网络流量
+### Network Traffic
 
-显示网络接口的流量：
-- 发送速度
-- 接收速度
+Displays network interface traffic:
+- Send speed
+- Receive speed
 
-可以选择要监控的网络接口。
+You can select the network interface to monitor.
 
-## 时间范围
+## Time Range
 
-每个监控图表都支持选择时间范围：
+Each monitoring chart supports selecting a time range:
 
-- **昨天**：查看昨天的数据
-- **今天**：查看今天的数据
-- **近 7 天**：查看最近一周的数据
-- **自定义**：选择任意时间范围
+- **Yesterday**: View yesterday's data
+- **Today**: View today's data
+- **Last 7 days**: View data from the last week
+- **Custom**: Select any time range
 
-## 使用场景
+## Use Cases
 
-### 性能分析
+### Performance Analysis
 
-通过监控数据分析服务器性能瓶颈：
-- CPU 持续高负载：考虑优化程序或升级 CPU
-- 内存不足：考虑增加内存或优化内存使用
-- 磁盘 I/O 高：考虑使用 SSD 或优化数据库查询
-- 网络带宽不足：考虑升级带宽
+Analyze server performance bottlenecks through monitoring data:
+- Sustained high CPU load: Consider optimizing programs or upgrading CPU
+- Insufficient memory: Consider adding memory or optimizing memory usage
+- High disk I/O: Consider using SSD or optimizing database queries
+- Insufficient network bandwidth: Consider upgrading bandwidth
 
-### 故障排查
+### Troubleshooting
 
-出现问题时，查看历史监控数据定位问题发生的时间和原因。
+When problems occur, view historical monitoring data to locate the time and cause of the problem.
 
-### 容量规划
+### Capacity Planning
 
-根据历史数据趋势，预测未来的资源需求，提前进行扩容。
+Based on historical data trends, predict future resource needs and plan for expansion in advance.
 
-## 注意事项
+## Notes
 
-- 监控数据会占用一定的磁盘空间
-- 保存天数越长，占用空间越大
-- 建议根据实际需求设置合适的保存天数
+- Monitoring data will occupy some disk space
+- The longer the retention days, the more space it occupies
+- It is recommended to set appropriate retention days based on actual needs

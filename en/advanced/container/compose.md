@@ -1,32 +1,32 @@
-# 编排
+# Compose
 
-编排功能基于 Docker Compose，用于定义和运行多容器应用。通过一个 YAML 文件描述应用的服务、网络和卷，然后一键启动整个应用。
+The compose feature is based on Docker Compose, used to define and run multi-container applications. Describe the application's services, networks, and volumes through a YAML file, then start the entire application with one click.
 
-## 编排列表
+## Compose List
 
-进入 **容器** > **编排** 标签页查看编排列表。
+Go to **Container** > **Compose** tab to view the compose list.
 
-![编排列表](/images/container/compose-list.png)
+![Compose List](/images/container/compose-list.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **名称**：编排项目名称
-- **目录**：docker-compose.yml 文件所在目录
-- **状态**：运行状态
-- **创建时间**：创建时间
-- **操作**：启动、停止、编辑等
+- **Name**: Compose project name
+- **Directory**: Directory where docker-compose.yml file is located
+- **Status**: Running status
+- **Created Time**: Creation time
+- **Actions**: Start, stop, edit, etc.
 
-## 创建编排
+## Create Compose
 
-1. 点击 **创建编排** 按钮
-2. 输入编排名称
-3. 编写或粘贴 docker-compose.yml 内容
-4. 配置环境变量（可选）
-5. 点击创建
+1. Click the **Create Compose** button
+2. Enter compose name
+3. Write or paste docker-compose.yml content
+4. Configure environment variables (optional)
+5. Click Create
 
-![创建编排](/images/container/compose-create.png)
+![Create Compose](/images/container/compose-create.png)
 
-### docker-compose.yml 示例
+### docker-compose.yml Example
 
 ```yaml
 version: '3'
@@ -54,55 +54,55 @@ volumes:
   db_data:
 ```
 
-## 编排操作
+## Compose Operations
 
-### 启动编排
+### Start Compose
 
-点击 **启动** 按钮会弹出确认对话框：
+Click the **Start** button and a confirmation dialog will pop up:
 
-![启动编排](/images/container/compose-start.png)
+![Start Compose](/images/container/compose-start.png)
 
-- **强制拉取镜像**：勾选后会在启动前拉取最新镜像
+- **Force Pull Images**: When checked, will pull the latest images before starting
 
-点击确认后，会显示启动进度：
+After clicking confirm, the startup progress will be displayed:
 
-![启动进度](/images/container/compose-starting.png)
+![Startup Progress](/images/container/compose-starting.png)
 
-启动编排会创建并启动所有定义的服务容器。
+Starting compose will create and start all defined service containers.
 
-### 停止编排
+### Stop Compose
 
-停止编排会停止所有相关容器，但不会删除容器和数据。
+Stopping compose will stop all related containers, but will not delete containers and data.
 
-### 删除编排
+### Delete Compose
 
-删除编排会停止并删除所有相关容器。
+Deleting compose will stop and delete all related containers.
 
-::: warning 注意
-删除编排不会删除数据卷，如需删除数据卷请在 **卷** 页面手动删除。
+::: warning Note
+Deleting compose will not delete data volumes. To delete data volumes, please manually delete them on the **Volume** page.
 :::
 
-### 编辑编排
+### Edit Compose
 
-点击编排列表中的 **编辑** 按钮，可以修改 docker-compose.yml 文件内容和环境变量。
+Click the **Edit** button in the compose list to modify the docker-compose.yml file content and environment variables.
 
-![编辑编排](/images/container/compose-edit.png)
+![Edit Compose](/images/container/compose-edit.png)
 
-修改后需要重新启动编排才能生效。
+After modification, you need to restart the compose for changes to take effect.
 
-## 使用场景
+## Use Cases
 
-编排适合以下场景：
+Compose is suitable for the following scenarios:
 
-- **多容器应用**：如 Web 应用 + 数据库 + 缓存
-- **开发环境**：快速搭建一致的开发环境
-- **微服务架构**：管理多个相互依赖的服务
+- **Multi-container Applications**: Such as Web application + database + cache
+- **Development Environment**: Quickly set up a consistent development environment
+- **Microservices Architecture**: Manage multiple interdependent services
 
-## 与容器模板的区别
+## Difference from Container Templates
 
-| 特性 | 编排 | 容器模板     |
-|------|------|----------|
-| 配置方式 | 手写 YAML | 图形界面     |
-| 灵活性 | 完全自定义 | 使用预设配置+自定义  |
-| 适用场景 | 自定义复杂应用 | 快速部署常用应用 |
-| 学习成本 | 需要了解 Compose 语法 | 无需学习     |
+| Feature | Compose | Container Templates     |
+|---------|---------|-------------------------|
+| Configuration Method | Write YAML manually | Graphical interface     |
+| Flexibility | Fully customizable | Use preset configuration + customization  |
+| Use Cases | Custom complex applications | Quick deployment of common applications |
+| Learning Cost | Need to understand Compose syntax | No learning required     |

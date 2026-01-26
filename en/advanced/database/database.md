@@ -1,58 +1,58 @@
-# 数据库管理
+# Database Management
 
-数据库管理页面用于创建、查看和删除数据库，AcePanel 已全面默认使用 UTF-8 编码创建数据库。
+The database management page is used to create, view, and delete databases. AcePanel now uses UTF-8 encoding by default when creating databases.
 
-## 数据库列表
+## Database List
 
-进入 **数据库** 页面，默认显示数据库列表。
+Go to the **Database** page, which displays the database list by default.
 
-![数据库列表](/images/database/database-list.png)
+![Database List](/images/database/database-list.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **类型**：数据库类型（MySQL/PostgreSQL）
-- **数据库名称**：数据库名称
-- **服务器**：所属的数据库服务器
-- **编码**：字符编码
-- **注释**：备注信息（PostgreSQL 支持）
-- **操作**：删除
+- **Type**: Database type (MySQL/PostgreSQL)
+- **Database Name**: Database name
+- **Server**: The database server it belongs to
+- **Encoding**: Character encoding
+- **Comment**: Remarks (PostgreSQL supported)
+- **Actions**: Delete
 
-## 创建数据库
+## Create Database
 
-1. 点击 **创建数据库** 按钮
-2. 填写配置：
-   - **服务器**：选择数据库服务器
-   - **数据库名称**：只能使用字母、数字和下划线
-3. 选择是否创建用户并设置权限（可选）
-4. 点击创建
+1. Click the **Create Database** button
+2. Fill in the configuration:
+   - **Server**: Select database server
+   - **Database Name**: Can only use letters, numbers, and underscores
+3. Choose whether to create a user and set permissions (optional)
+4. Click Create
 
-## 删除数据库
+## Delete Database
 
-点击数据库右侧的 **删除** 按钮删除数据库。
+Click the **Delete** button on the right side of the database to delete it.
 
-::: danger 警告
-删除数据库会永久删除该数据库中的所有数据，此操作不可恢复！请务必提前备份重要数据。
+::: danger Warning
+Deleting a database will permanently delete all data in that database. This operation cannot be undone! Please make sure to backup important data in advance.
 :::
 
-## 数据库命名规范
+## Database Naming Conventions
 
-- 只能使用字母、数字和下划线
-- 不能以数字开头
-- 避免使用数据库保留字
-- 建议使用有意义的名称，如 `wordpress`、`myapp_production`
+- Can only use letters, numbers, and underscores
+- Cannot start with a number
+- Avoid using database reserved words
+- Recommend using meaningful names, such as `wordpress`, `myapp_production`
 
-## 常见问题
+## FAQ
 
-### 创建数据库失败
+### Failed to Create Database
 
-- 检查数据库名称是否符合命名规范
-- 检查是否已存在同名数据库
-- 检查数据库服务是否正常运行
+- Check if the database name follows naming conventions
+- Check if a database with the same name already exists
+- Check if the database service is running normally
 
-### 数据库编码问题
+### Database Encoding Issues
 
-如果出现乱码，检查：
+If garbled characters appear, check:
 
-1. 数据库编码是否正确
-2. 连接时是否指定了正确的编码
-3. 应用程序的编码设置
+1. Whether the database encoding is correct
+2. Whether the correct encoding is specified when connecting
+3. The encoding settings of the application

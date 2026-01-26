@@ -1,118 +1,118 @@
-# 计划任务
+# Scheduled Tasks
 
-计划任务用于设置定时执行的任务，如定时备份、定时执行脚本等。
+Scheduled tasks are used to set up tasks that execute at specified times, such as scheduled backups, scheduled script execution, etc.
 
-## 任务列表
+## Task List
 
-进入 **任务** 页面，默认显示计划任务列表。
+Go to the **Tasks** page, which displays the scheduled task list by default.
 
-![计划任务](/images/task/task-schedule.png)
+![Scheduled Tasks](/images/task/task-schedule.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **任务名称**：任务名称
-- **任务类型**：Shell/备份等
-- **已启用**：是否启用
-- **任务周期**：执行周期
-- **创建时间**：创建时间
-- **最后更新时间**：最后执行时间
-- **操作**：编辑、执行、删除等
+- **Task Name**: Task name
+- **Task Type**: Shell/Backup, etc.
+- **Enabled**: Whether enabled
+- **Task Schedule**: Execution schedule
+- **Created At**: Creation time
+- **Last Updated**: Last execution time
+- **Actions**: Edit, execute, delete, etc.
 
-## 创建任务
+## Create Task
 
-点击 **创建任务** 按钮创建新的计划任务。
+Click the **Create Task** button to create a new scheduled task.
 
-### 任务类型
+### Task Types
 
-| 类型    | 说明 |
-|-------|------|
-| Shell | 执行 Shell 命令或脚本 |
-| 备份网站  | 定时备份网站文件 |
-| 备份数据库 | 定时备份数据库 |
-| 日志切割  | 定时切割日志文件 |
+| Type | Description |
+|------|-------------|
+| Shell | Execute Shell commands or scripts |
+| Backup Website | Scheduled backup of website files |
+| Backup Database | Scheduled backup of database |
+| Log Rotation | Scheduled rotation of log files |
 
-### 执行周期
+### Execution Schedule
 
-支持多种周期设置：
+Multiple schedule settings are supported:
 
-- **每分钟**：每分钟执行一次
-- **每小时**：每小时执行一次
-- **每天**：每天指定时间执行
-- **每周**：每周指定日期和时间执行
-- **每月**：每月指定日期和时间执行
-- **自定义**：使用 Cron 表达式
+- **Every Minute**: Execute once every minute
+- **Every Hour**: Execute once every hour
+- **Every Day**: Execute at a specified time each day
+- **Every Week**: Execute on specified day and time each week
+- **Every Month**: Execute on specified date and time each month
+- **Custom**: Use Cron expression
 
-### Cron 表达式
+### Cron Expression
 
-Cron 表达式格式：`分 时 日 月 周`
+Cron expression format: `minute hour day month weekday`
 
 ```
 *    *    *    *    *
 │    │    │    │    │
-│    │    │    │    └── 周几 (0-7, 0和7都是周日)
-│    │    │    └─────── 月份 (1-12)
-│    │    └──────────── 日期 (1-31)
-│    └───────────────── 小时 (0-23)
-└────────────────────── 分钟 (0-59)
+│    │    │    │    └── Day of week (0-7, both 0 and 7 are Sunday)
+│    │    │    └─────── Month (1-12)
+│    │    └──────────── Day of month (1-31)
+│    └───────────────── Hour (0-23)
+└────────────────────── Minute (0-59)
 ```
 
-常用示例：
+Common examples:
 
-| 表达式 | 说明 |
-|--------|------|
-| `0 2 * * *` | 每天凌晨 2 点 |
-| `0 */6 * * *` | 每 6 小时 |
-| `0 0 * * 0` | 每周日凌晨 |
-| `0 0 1 * *` | 每月 1 号凌晨 |
-| `*/5 * * * *` | 每 5 分钟 |
+| Expression | Description |
+|------------|-------------|
+| `0 2 * * *` | Every day at 2 AM |
+| `0 */6 * * *` | Every 6 hours |
+| `0 0 * * 0` | Every Sunday at midnight |
+| `0 0 1 * *` | First day of every month at midnight |
+| `*/5 * * * *` | Every 5 minutes |
 
-不会写？直接找个 AI 描述清楚需求让它帮你生成一个。
+Don't know how to write it? Just describe your requirements clearly to an AI and let it generate one for you.
 
-## Shell 任务示例
+## Shell Task Examples
 
-### 清理临时文件
+### Clean Temporary Files
 
 ```bash
 find /tmp -type f -mtime +7 -delete
 ```
 
-### 重启服务
+### Restart Service
 
 ```bash
 systemctl restart nginx
 ```
 
-### 同步时间
+### Sync Time
 
 ```bash
 ntpdate ntp.aliyun.com
 ```
 
-## 任务操作
+## Task Operations
 
-### 启用/禁用
+### Enable/Disable
 
-通过开关控制任务是否启用。禁用的任务不会执行。
+Control whether the task is enabled via the switch. Disabled tasks will not execute.
 
-### 立即执行
+### Execute Immediately
 
-点击 **运行** 按钮可以立即执行任务，不等待计划时间。
+Click the **Run** button to execute the task immediately without waiting for the scheduled time.
 
-### 查看日志
+### View Logs
 
-点击 **日志** 按钮查看任务的执行日志。
+Click the **Logs** button to view the task execution logs.
 
-### 编辑任务
+### Edit Task
 
-点击 **编辑** 按钮修改任务配置。
+Click the **Edit** button to modify the task configuration.
 
-### 删除任务
+### Delete Task
 
-点击 **删除** 按钮删除任务。
+Click the **Delete** button to delete the task.
 
-## 注意事项
+## Notes
 
-1. 任务执行时间基于服务器时区
-2. 长时间运行的任务可能影响下次执行
-3. 建议为重要任务设置通知提醒
-4. 定期检查任务执行状态
+1. Task execution time is based on the server timezone
+2. Long-running tasks may affect the next execution
+3. It is recommended to set up notification reminders for important tasks
+4. Regularly check task execution status

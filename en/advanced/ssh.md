@@ -1,96 +1,96 @@
-# 终端
+# Terminal
 
-终端模块提供了基于 Web 的 SSH 终端，可以直接在浏览器中连接服务器执行命令。
+The terminal module provides a Web-based SSH terminal, allowing you to connect to servers and execute commands directly in the browser.
 
-## 终端页面
+## Terminal Page
 
-![终端页面](/images/ssh/ssh.png)
+![Terminal Page](/images/ssh/ssh.png)
 
-## 创建主机
+## Create Host
 
-点击 **创建主机** 按钮添加 SSH 连接：
+Click the **Create Host** button to add an SSH connection:
 
-### 配置项
+### Configuration Items
 
-- **名称**：连接名称，用于标识
-- **主机**：服务器 IP 地址或域名
-- **端口**：SSH 端口，默认 22
-- **认证方式**：密码或密钥
-- **用户名**：SSH 用户名
-- **密码/密钥**：认证凭证
-- **备注**：可选备注
+- **Name**: Connection name for identification
+- **Host**: Server IP address or domain name
+- **Port**: SSH port, default 22
+- **Authentication Method**: Password or key
+- **Username**: SSH username
+- **Password/Key**: Authentication credentials
+- **Remarks**: Optional remarks
 
-### 认证方式
+### Authentication Methods
 
-| 方式 | 说明 |
-|------|------|
-| 密码 | 使用用户名和密码认证 |
-| 密钥 | 使用 SSH 私钥认证 |
+| Method | Description |
+|--------|-------------|
+| Password | Authenticate using username and password |
+| Key | Authenticate using SSH private key |
 
-::: tip 推荐
-生产环境建议使用密钥认证，更加安全。
+::: tip Recommendation
+Production environments are recommended to use key authentication for better security.
 :::
 
-## 连接服务器
+## Connect to Server
 
-1. 在左侧主机列表中选择要连接的主机
-2. 点击主机名称打开终端
-3. 开始执行命令
+1. Select the host to connect to in the left host list
+2. Click the host name to open the terminal
+3. Start executing commands
 
-## 终端功能
+## Terminal Features
 
-### 多标签
+### Multiple Tabs
 
-支持同时打开多个终端标签，方便在多个会话间切换。
+Supports opening multiple terminal tabs simultaneously for easy switching between sessions.
 
-### 复制粘贴
+### Copy and Paste
 
-- **复制**：选中文本后自动复制，或使用 `Ctrl+Shift+C`
-- **粘贴**：右键粘贴，或使用 `Ctrl+Shift+V`
+- **Copy**: Automatically copies when text is selected, or use `Ctrl+Shift+C`
+- **Paste**: Right-click to paste, or use `Ctrl+Shift+V`
 
-### 全屏模式
+### Fullscreen Mode
 
-点击全屏按钮可以进入全屏模式，获得更大的终端空间。
+Click the fullscreen button to enter fullscreen mode for more terminal space.
 
-### 字体设置
+### Font Settings
 
-可以调整终端的字体大小和字体类型。
+You can adjust the terminal font size and font type.
 
-## 本地终端
+## Local Terminal
 
-默认会显示本地服务器的终端连接，可以直接连接到当前服务器。
+By default, a local server terminal connection is displayed, allowing direct connection to the current server.
 
-## 远程主机
+## Remote Hosts
 
-可以添加多个远程主机，方便管理多台服务器：
+You can add multiple remote hosts for convenient management of multiple servers:
 
-1. 点击 **创建主机**
-2. 填写远程服务器信息
-3. 保存后在列表中选择连接
+1. Click **Create Host**
+2. Fill in remote server information
+3. After saving, select to connect from the list
 
-## 安全建议
+## Security Recommendations
 
-1. 使用强密码或密钥认证
-2. 修改默认 SSH 端口
-3. 限制 SSH 访问的 IP 地址
-4. 定期更换密码或密钥
-5. 使用非 root 用户登录
+1. Use strong passwords or key authentication
+2. Change the default SSH port
+3. Restrict IP addresses that can access SSH
+4. Regularly change passwords or keys
+5. Log in with a non-root user
 
-## 常见问题
+## FAQ
 
-### 连接超时
+### Connection Timeout
 
-- 检查服务器 IP 和端口是否正确
-- 检查防火墙是否允许 SSH 连接
-- 检查 SSH 服务是否正常运行
+- Check if the server IP and port are correct
+- Check if the firewall allows SSH connections
+- Check if the SSH service is running normally
 
-### 认证失败
+### Authentication Failed
 
-- 检查用户名和密码是否正确
-- 检查密钥格式是否正确
-- 检查用户是否有 SSH 登录权限
+- Check if the username and password are correct
+- Check if the key format is correct
+- Check if the user has SSH login permissions
 
-### 中文乱码
+### Chinese Character Garbled
 
-- 检查服务器的 locale 设置
-- 确保服务器编码为 UTF-8
+- Check the server's locale settings
+- Ensure the server encoding is UTF-8

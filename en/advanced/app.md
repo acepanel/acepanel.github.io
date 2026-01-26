@@ -1,40 +1,40 @@
-# 应用
+# Application
 
-应用模块是 AcePanel 的核心功能之一，用于管理服务器上的各类软件。通过应用模块，你可以方便地安装、配置和管理 Web 服务器、数据库、运行环境等常用软件。
+The application module is one of the core features of AcePanel, used to manage various software on the server. Through the application module, you can conveniently install, configure, and manage common software such as Web servers, databases, runtime environments, etc.
 
-## 功能分类
+## Feature Categories
 
-应用模块分为三个部分：
+The application module is divided into three parts:
 
-- **原生应用**：直接安装在系统上的软件，如 Nginx、MySQL、Redis 等
-- **运行环境**：各类编程语言的运行时环境，如 PHP、Node.js、Python、Go、Java 等
-- **容器模板**：基于 Docker 的一键部署模板，可快速部署各类应用
+- **Native Applications**: Software installed directly on the system, such as Nginx, MySQL, Redis, etc.
+- **Runtime Environments**: Runtime environments for various programming languages, such as PHP, Node.js, Python, Go, Java, etc.
+- **Container Templates**: One-click deployment templates based on Docker, for quickly deploying various applications
 
-![应用列表](/images/app/app-list.png)
+![Application List](/images/app/app-list.png)
 
-## 原生应用 vs 容器模板
+## Native Application vs Container Template
 
-| 特性 | 原生应用 | 容器模板 |
-|------|----------|----------|
-| 性能 | 更高 | 略有损耗 |
-| 隔离性 | 共享系统环境 | 完全隔离 |
-| 部署难度 | 需要配置 | 一键部署 |
-| 资源占用 | 较低 | 较高 |
-| 适用场景 | 生产环境、高性能需求 | 快速测试、多版本共存 |
+| Feature | Native Application | Container Template |
+|---------|-------------------|-------------------|
+| Performance | Higher | Slight overhead |
+| Isolation | Shared system environment | Fully isolated |
+| Deployment Difficulty | Requires configuration | One-click deployment |
+| Resource Usage | Lower | Higher |
+| Use Cases | Production environment, high performance needs | Quick testing, multiple version coexistence |
 
-## 应用分类
+## Application Categories
 
-原生应用按功能预设了多个分类，包括但不限于：
+Native applications are preset with multiple categories by function, including but not limited to:
 
-- **Web 服务器**：Nginx、OpenResty、Apache
-- **数据库**：MySQL、MariaDB、PostgreSQL、Percona
-- **容器**：Docker、Podman
-- **中间件**：Redis、Memcached
-- **存储**：MinIO、S3fs
-- **工具**：phpMyAdmin、Pure-FTPd、Supervisor、Rsync、Frp
+- **Web Servers**: Nginx, OpenResty, Apache
+- **Databases**: MySQL, MariaDB, PostgreSQL, Percona
+- **Containers**: Docker, Podman
+- **Middleware**: Redis, Memcached
+- **Storage**: MinIO, S3fs
+- **Tools**: phpMyAdmin, Pure-FTPd, Supervisor, Rsync, Frp
 
-## 下一步
+## Next Steps
 
-- [原生应用](./app/native) - 了解如何安装和管理原生应用
-- [运行环境](./app/environment) - 了解如何安装编程语言运行环境
-- [容器模板](./app/template) - 了解如何使用容器模板快速部署应用
+- [Native Applications](./app/native) - Learn how to install and manage native applications
+- [Runtime Environments](./app/environment) - Learn how to install programming language runtime environments
+- [Container Templates](./app/template) - Learn how to use container templates to quickly deploy applications

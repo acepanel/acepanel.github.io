@@ -1,46 +1,46 @@
-# 跑分测试
+# Benchmark Test
 
-跑分功能用于测试服务器的 CPU、内存和磁盘性能，帮助你了解服务器的实际性能表现。
+The benchmark feature is used to test the CPU, memory, and disk performance of the server, helping you understand the actual performance of your server.
 
-![跑分测试](/images/toolbox/toolbox-benchmark.png)
+![Benchmark Test](/images/toolbox/toolbox-benchmark.png)
 
-## 测试项目
+## Test Items
 
-### CPU 测试
+### CPU Test
 
-测试 CPU 的计算能力，通过执行大量数学运算来评估处理器性能。
+Tests the computing power of the CPU by executing a large number of mathematical operations to evaluate processor performance.
 
-### 内存测试
+### Memory Test
 
-测试内存的读写速度，评估内存子系统的性能表现。
+Tests the read and write speed of memory to evaluate the performance of the memory subsystem.
 
-### 磁盘测试
+### Disk Test
 
-测试磁盘的读写速度，评估存储设备的 I/O 性能。
+Tests the read and write speed of the disk to evaluate the I/O performance of the storage device.
 
-## 使用方法
+## Usage
 
-点击 **开始跑分** 按钮，系统会依次执行 CPU、内存和磁盘测试。测试完成后会显示各项得分。
+Click the **Start Benchmark** button, and the system will execute CPU, memory, and disk tests in sequence. After the tests are completed, the scores for each item will be displayed.
 
-## 结果说明
+## Result Explanation
 
-跑分结果以数值形式展示，数值越高表示性能越好。
+Benchmark results are displayed as numerical values, with higher values indicating better performance.
 
-::: warning 注意
-跑分结果仅供参考。由于系统资源调度、缓存和其他因素的影响，测试结果可能与实际使用中的性能有所差异。
+::: warning Note
+Benchmark results are for reference only. Due to system resource scheduling, caching, and other factors, test results may differ from actual performance in use.
 :::
 
-## 测试建议
+## Testing Recommendations
 
-1. 测试前关闭不必要的服务和进程
-2. 避免在业务高峰期进行测试
-3. 多次测试取平均值更准确
-4. 不同时间段的测试结果可能有波动
+1. Close unnecessary services and processes before testing
+2. Avoid testing during peak business hours
+3. Multiple tests averaged are more accurate
+4. Test results may fluctuate at different times
 
-## 性能优化参考
+## Performance Optimization Reference
 
-如果跑分结果不理想，可以考虑：
+If benchmark results are not ideal, consider:
 
-- **CPU 性能低**：检查是否有进程占用过高 CPU
-- **内存性能低**：检查内存使用情况，是否存在内存泄漏
-- **磁盘性能低**：检查磁盘健康状态，考虑升级到 SSD
+- **Low CPU performance**: Check if any process is using too much CPU
+- **Low memory performance**: Check memory usage, whether there are memory leaks
+- **Low disk performance**: Check disk health status, consider upgrading to SSD

@@ -1,76 +1,76 @@
-# 卷
+# Volume
 
-卷（Volume）是 Docker 管理的数据存储，用于持久化容器数据。与直接挂载主机目录相比，卷由 Docker 管理，更加安全和便携。
+Volumes are Docker-managed data storage used to persist container data. Compared to directly mounting host directories, volumes are managed by Docker, making them more secure and portable.
 
-## 卷列表
+## Volume List
 
-进入 **容器** > **卷** 标签页查看卷列表。
+Go to **Container** > **Volume** tab to view the volume list.
 
-![卷列表](/images/container/container-volume.png)
+![Volume List](/images/container/container-volume.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **名称**：卷名称
-- **驱动**：存储驱动
-- **范围**：卷的范围
-- **挂载点**：卷在主机上的实际存储路径
-- **创建时间**：创建时间
-- **操作**：删除
+- **Name**: Volume name
+- **Driver**: Storage driver
+- **Scope**: Volume scope
+- **Mount Point**: Actual storage path of the volume on the host
+- **Created Time**: Creation time
+- **Actions**: Delete
 
-## 创建卷
+## Create Volume
 
-1. 点击 **创建卷** 按钮
-2. 输入卷名称
-3. 选择驱动（默认 local）
-4. 点击创建
+1. Click the **Create Volume** button
+2. Enter volume name
+3. Select driver (default local)
+4. Click Create
 
-## 使用卷
+## Using Volumes
 
-### 创建容器时挂载卷
+### Mount Volume When Creating Container
 
-创建容器时，在 **卷** 选项中添加卷挂载：
+When creating a container, add volume mounts in the **Volume** option:
 
-- **卷名称:容器路径** - 使用命名卷
-- **主机路径:容器路径** - 直接挂载主机目录
+- **volume_name:container_path** - Use named volume
+- **host_path:container_path** - Directly mount host directory
 
-例如：
-- `mysql_data:/var/lib/mysql` - 将 mysql_data 卷挂载到容器的 /var/lib/mysql
-- `/opt/ace/data:/data` - 将主机的 /opt/ace/data 目录挂载到容器的 /data
+For example:
+- `mysql_data:/var/lib/mysql` - Mount mysql_data volume to container's /var/lib/mysql
+- `/opt/ace/data:/data` - Mount host's /opt/ace/data directory to container's /data
 
-### 卷 vs 绑定挂载
+### Volume vs Bind Mount
 
-| 特性 | 卷（Volume） | 绑定挂载（Bind Mount） |
-|------|-------------|----------------------|
-| 管理方式 | Docker 管理 | 用户管理 |
-| 存储位置 | Docker 数据目录 | 任意主机路径 |
-| 备份 | 需要通过 Docker 命令 | 直接备份目录 |
-| 可移植性 | 高 | 依赖主机路径 |
-| 适用场景 | 数据库等需要持久化的数据 | 配置文件、代码目录 |
+| Feature | Volume | Bind Mount |
+|---------|--------|------------|
+| Management | Docker managed | User managed |
+| Storage Location | Docker data directory | Any host path |
+| Backup | Requires Docker commands | Directly backup directory |
+| Portability | High | Depends on host path |
+| Use Cases | Data that needs persistence like databases | Configuration files, code directories |
 
-## 删除卷
+## Delete Volume
 
-选中卷后点击 **删除** 按钮删除卷。
+Select a volume and click the **Delete** button to delete the volume.
 
-::: danger 警告
-删除卷会永久删除卷中的所有数据，此操作不可恢复！
+::: danger Warning
+Deleting a volume will permanently delete all data in the volume. This operation cannot be undone!
 :::
 
-::: warning 注意
-如果卷正在被容器使用，需要先删除相关容器才能删除卷。
+::: warning Note
+If the volume is being used by containers, you need to delete the related containers before deleting the volume.
 :::
 
-## 清理卷
+## Clean Volumes
 
-点击 **清理卷** 可以删除所有未被使用的卷，释放磁盘空间。
+Click **Clean Volumes** to delete all unused volumes and free up disk space.
 
-::: tip 提示
-清理前请确认未使用的卷中没有重要数据。
+::: tip Note
+Please confirm that unused volumes do not contain important data before cleaning.
 :::
 
-## 数据备份
+## Data Backup
 
-卷数据存储在 Docker 数据目录中（通常是 `/var/lib/docker/volumes/`），可以通过以下方式备份：
+Volume data is stored in the Docker data directory (usually `/var/lib/docker/volumes/`). You can backup through the following methods:
 
-1. 使用 `docker run` 创建临时容器挂载卷并导出数据
-2. 直接备份 Docker 数据目录（需要停止 Docker 服务）
-3. （开发中）使用 AcePanel 的 [备份功能](../backup) 进行备份
+1. Use `docker run` to create a temporary container that mounts the volume and exports data
+2. Directly backup the Docker data directory (requires stopping Docker service)
+3. (In development) Use AcePanel's [Backup Feature](../backup) for backup

@@ -1,83 +1,83 @@
-# 用户管理
+# User Management
 
-用户管理页面用于创建和管理数据库用户，设置用户权限。
+The user management page is used to create and manage database users and set user permissions.
 
-## 用户列表
+## User List
 
-进入 **数据库** > **用户** 标签页查看用户列表。
+Go to **Database** > **User** tab to view the user list.
 
-![用户列表](/images/database/database-user.png)
+![User List](/images/database/database-user.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **类型**：数据库类型
-- **用户名**：数据库用户名
-- **密码**：用户密码（点击复制）
-- **主机**：允许连接的主机
-- **服务器**：所属的数据库服务器
-- **权限**：用户拥有权限的数据库
-- **注释**：备注信息
-- **状态**：用户状态
-- **更新日期**：最后更新时间
-- **操作**：修改、删除
+- **Type**: Database type
+- **Username**: Database username
+- **Password**: User password (click to copy)
+- **Host**: Allowed connection hosts
+- **Server**: The database server it belongs to
+- **Permissions**: Databases the user has permissions for
+- **Comment**: Remarks
+- **Status**: User status
+- **Update Date**: Last update time
+- **Actions**: Modify, delete
 
-## 创建用户
+## Create User
 
-1. 点击 **创建用户** 按钮
-2. 填写配置：
-   - **服务器**：选择数据库服务器
-   - **用户名**：数据库用户名
-   - **密码**：用户密码（建议使用强密码）
-   - **主机**：允许连接的主机地址
-   - **权限**：选择用户可以访问的数据库
-3. 点击创建
+1. Click the **Create User** button
+2. Fill in the configuration:
+   - **Server**: Select database server
+   - **Username**: Database username
+   - **Password**: User password (strong password recommended)
+   - **Host**: Allowed connection host address
+   - **Permissions**: Select databases the user can access
+3. Click Create
 
-### 主机设置
+### Host Settings
 
-| 值 | 说明 |
-|------|------|
-| `localhost` | 只允许本地连接 |
-| `127.0.0.1` | 只允许本地 IP 连接 |
-| `%` | 允许任意主机连接 |
-| `192.168.1.%` | 允许指定网段连接 |
-| `192.168.1.100` | 只允许指定 IP 连接 |
+| Value | Description |
+|-------|-------------|
+| `localhost` | Only allow local connections |
+| `127.0.0.1` | Only allow local IP connections |
+| `%` | Allow connections from any host |
+| `192.168.1.%` | Allow connections from specified subnet |
+| `192.168.1.100` | Only allow connections from specified IP |
 
-::: warning 安全提示
-生产环境不建议使用 `%` 允许任意主机连接，应限制为具体的 IP 地址或网段。
+::: warning Security Notice
+Production environments are not recommended to use `%` to allow connections from any host. Should be restricted to specific IP addresses or subnets.
 :::
 
-## 修改用户
+## Modify User
 
-点击用户右侧的 **修改** 按钮可以：
+Click the **Modify** button on the right side of the user to:
 
-- 修改密码
-- 修改允许连接的主机
-- 修改数据库权限
+- Modify password
+- Modify allowed connection hosts
+- Modify database permissions
 
-## 删除用户
+## Delete User
 
-点击用户右侧的 **删除** 按钮删除用户。
+Click the **Delete** button on the right side of the user to delete the user.
 
-::: warning 注意
-删除用户后，使用该用户连接数据库的应用将无法正常工作。
+::: warning Note
+After deleting a user, applications using that user to connect to the database will not work properly.
 :::
 
-## 权限说明
+## Permission Explanation
 
-### Percona/MySQL/MariaDB 权限
+### Percona/MySQL/MariaDB Permissions
 
-创建用户时可以选择授予权限的数据库：
+When creating a user, you can select databases to grant permissions:
 
-- 选择具体数据库：用户只能访问选中的数据库
-- 不选择：用户没有任何数据库权限
+- Select specific databases: User can only access selected databases
+- No selection: User has no database permissions
 
-### PostgreSQL 权限
+### PostgreSQL Permissions
 
-PostgreSQL 的权限管理更加细粒度，可以自行针对数据库、模式、表等设置不同权限，面板仅支持授予数据库访问权限。
+PostgreSQL permission management is more fine-grained. You can set different permissions for databases, schemas, tables, etc. The panel only supports granting database access permissions.
 
-## 密码安全
+## Password Security
 
-- 使用强密码，包含大小写字母、数字和特殊字符
-- 密码长度建议 16 位以上
-- 不同应用使用不同的数据库用户
-- 定期更换密码
+- Use strong passwords containing uppercase and lowercase letters, numbers, and special characters
+- Password length recommended 16 characters or more
+- Use different database users for different applications
+- Change passwords regularly

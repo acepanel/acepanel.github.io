@@ -1,35 +1,35 @@
-# Web 钩子
+# Webhook
 
-Web 钩子（Webhook）允许你通过 HTTP 请求触发服务器上的脚本执行，实现自动化部署、CI/CD 集成等功能。
+Webhooks allow you to trigger script execution on the server through HTTP requests, enabling automated deployment, CI/CD integration, and other features.
 
-![Web 钩子](/images/toolbox/toolbox-webhook.png)
+![Webhook](/images/toolbox/toolbox-webhook.png)
 
-## 创建 Web 钩子
+## Create Webhook
 
-点击 **创建 Web 钩子** 按钮，填写以下信息：
+Click the **Create Webhook** button and fill in the following information:
 
-![创建 Web 钩子](/images/toolbox/toolbox-webhook-create.png)
+![Create Webhook](/images/toolbox/toolbox-webhook-create.png)
 
-- **名称**：Web 钩子的名称，用于标识用途
-- **用户**：执行脚本的系统用户，默认为 root
-- **原始输出**：开启后返回脚本的原始输出，关闭则返回 JSON 格式
-- **脚本**：要执行的 Shell 脚本内容
+- **Name**: The name of the webhook, used to identify its purpose
+- **User**: The system user that executes the script, default is root
+- **Raw Output**: When enabled, returns the raw output of the script; when disabled, returns JSON format
+- **Script**: The Shell script content to execute
 
-## 使用方式
+## Usage
 
-创建完成后，系统会生成一个唯一的 Key。通过访问以下 URL 即可触发脚本执行：
+After creation, the system will generate a unique Key. Access the following URL to trigger script execution:
 
 ```
 https://your-panel-domain/api/webhook/{key}
 ```
 
-支持 GET 和 POST 请求。
+Supports both GET and POST requests.
 
-## 应用场景
+## Use Cases
 
-### Git 自动部署
+### Git Auto Deployment
 
-配合 GitHub/GitLab 的 Webhook 功能，实现代码推送后自动部署：
+Combined with GitHub/GitLab Webhook functionality, achieve automatic deployment after code push:
 
 ```bash
 #!/bin/bash
@@ -39,42 +39,42 @@ npm install
 npm run build
 ```
 
-### 定时任务触发
+### Scheduled Task Trigger
 
-通过外部服务（如监控系统）触发特定操作：
+Trigger specific operations through external services (such as monitoring systems):
 
 ```bash
 #!/bin/bash
-# 清理临时文件
+# Clean temporary files
 rm -rf /tmp/cache/*
-# 重启服务
+# Restart service
 systemctl restart myapp
 ```
 
-### CI/CD 集成
+### CI/CD Integration
 
-在 CI/CD 流水线中调用 Webhook 完成部署：
+Call Webhook in CI/CD pipeline to complete deployment:
 
 ```bash
-# 在 CI 脚本中
+# In CI script
 curl -X POST https://panel.example.com/api/webhook/your-key
 ```
 
-## 列表说明
+## List Description
 
-| 字段 | 说明 |
-|------|------|
-| 名称 | Web 钩子名称 |
-| Key | 唯一标识，用于构建调用 URL |
-| 运行用户 | 执行脚本的系统用户 |
-| 原始输出 | 是否返回原始文本输出 |
-| 已启用 | 是否启用该 Web 钩子 |
-| 调用次数 | 累计被调用的次数 |
-| 最后调用 | 最后一次调用时间 |
+| Field | Description |
+|-------|-------------|
+| Name | Webhook name |
+| Key | Unique identifier, used to build the call URL |
+| Run User | System user that executes the script |
+| Raw Output | Whether to return raw text output |
+| Enabled | Whether the webhook is enabled |
+| Call Count | Cumulative number of calls |
+| Last Call | Last call time |
 
-## 注意事项
+## Notes
 
-1. Key 是敏感信息，不要泄露给不信任的人
-2. 脚本以指定用户身份执行，注意权限控制
-3. 建议在脚本中添加必要的错误处理
-4. 可以通过禁用开关临时停用 Web 钩子
+1. The Key is sensitive information, do not disclose it to untrusted people
+2. Scripts are executed as the specified user, pay attention to permission control
+3. It is recommended to add necessary error handling in scripts
+4. You can temporarily disable a webhook using the disable switch

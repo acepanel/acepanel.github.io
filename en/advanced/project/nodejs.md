@@ -1,48 +1,48 @@
-# Node.js 项目
+# Node.js Project
 
-Node.js 项目用于部署 Express、Koa、NestJS、Next.js 等 Node.js 应用。
+Node.js projects are used to deploy Express, Koa, NestJS, Next.js, and other Node.js applications.
 
-## 前置要求
+## Prerequisites
 
-1. 安装 Node.js 运行环境：**应用** > **运行环境** > **Node.js**
-2. 项目源代码
+1. Install Node.js runtime environment: **Applications** > **Runtime Environment** > **Node.js**
+2. Project source code
 
-## 部署步骤
+## Deployment Steps
 
-1. 上传项目代码到服务器
-2. 安装依赖：
+1. Upload project code to server
+2. Install dependencies:
 
 ```bash
 cd /opt/ace/project/myapp
 npm24 install
 ```
 
-3. 创建项目：
-   - **项目名**：`myapp`
-   - **项目目录**：`/opt/ace/project/myapp`
-   - **启动命令**：`node24 app.js`
-4. 开启 **反向代理**
+3. Create project:
+   - **Project Name**: `myapp`
+   - **Project Directory**: `/opt/ace/project/myapp`
+   - **Start Command**: `node24 app.js`
+4. Enable **Reverse Proxy**
 
-## 启动命令示例
+## Start Command Examples
 
 ```bash
-# 直接运行
+# Run directly
 node24 app.js
 
-# 使用 npm scripts
+# Use npm scripts
 npm24 start
 
-# 使用 npm run
+# Use npm run
 npm24 run start:prod
 
-# 设置环境变量
+# Set environment variables
 NODE_ENV=production node24 app.js
 
-# 指定端口
+# Specify port
 PORT=3000 node24 app.js
 ```
 
-## 常用框架
+## Common Frameworks
 
 ### Express
 
@@ -57,46 +57,46 @@ app.get('/', (req, res) => {
 app.listen(3000);
 ```
 
-启动命令：`node24 app.js`
+Start command: `node24 app.js`
 
 ### NestJS
 
 ```bash
-# 构建
+# Build
 npm24 run build
 ```
 
-启动命令：`node24 dist/main.js`
+Start command: `node24 dist/main.js`
 
 ### Next.js
 
 ```bash
-# 构建
+# Build
 npm24 run build
 ```
 
-启动命令：`npm24 start`
+Start command: `npm24 start`
 
 ### Nuxt.js
 
 ```bash
-# 构建
+# Build
 npm24 run build
 ```
 
-启动命令：`node24 .output/server/index.mjs`
+Start command: `node24 .output/server/index.mjs`
 
-## 进程管理
+## Process Management
 
-AcePanel 使用 systemd 管理 Node.js 进程，自动处理：
+AcePanel uses systemd to manage Node.js processes, automatically handling:
 
-- 进程崩溃自动重启
-- 开机自动启动
-- 日志记录
+- Automatic restart on process crash
+- Automatic startup on boot
+- Log recording
 
-## 环境变量
+## Environment Variables
 
-推荐使用 `.env` 文件管理环境变量：
+It is recommended to use `.env` files to manage environment variables:
 
 ```bash
 # .env
@@ -105,31 +105,31 @@ PORT=3000
 DATABASE_URL=mysql://localhost:3306/mydb
 ```
 
-使用 `dotenv` 包加载：
+Load using the `dotenv` package:
 
 ```javascript
 require('dotenv').config();
 ```
 
-## 常见问题
+## FAQ
 
-### 依赖安装失败
+### Dependency Installation Failed
 
-尝试清除缓存重新安装：
+Try clearing cache and reinstalling:
 
 ```bash
 rm -rf node_modules package-lock.json
 npm24 install
 ```
 
-### 内存不足
+### Out of Memory
 
-增加 Node.js 内存限制：
+Increase Node.js memory limit:
 
 ```bash
 NODE_OPTIONS="--max-old-space-size=4096" node24 app.js
 ```
 
-### 端口被占用
+### Port Already in Use
 
-修改应用监听的端口，或检查是否有其他进程占用。
+Modify the port the application listens on, or check if another process is using it.

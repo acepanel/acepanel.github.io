@@ -1,74 +1,74 @@
-# 用户管理
+# User Management
 
-用户管理页面用于管理面板的登录用户。
+The user management page is used to manage panel login users.
 
-![用户管理](/images/setting/setting-user.png)
+![User Management](/images/setting/setting-user.png)
 
-## 用户列表
+## User List
 
-列表显示所有面板用户的信息：
+The list displays information for all panel users:
 
-| 字段 | 说明 |
-|------|------|
-| 用户名 | 登录用户名，可直接在表格中修改 |
-| 邮箱 | 用户邮箱，用于找回密码等功能 |
-| 两步验证 | 是否启用 TOTP 两步验证 |
-| 创建时间 | 用户创建时间 |
+| Field | Description |
+|-------|-------------|
+| Username | Login username, can be modified directly in the table |
+| Email | User email, used for password recovery and other features |
+| Two-Factor Auth | Whether TOTP two-factor authentication is enabled |
+| Created At | User creation time |
 
-## 创建用户
+## Create User
 
-点击 **创建用户** 按钮添加新用户：
+Click the **Create User** button to add a new user:
 
-![创建用户](/images/setting/setting-user-create.png)
+![Create User](/images/setting/setting-user-create.png)
 
-填写以下信息：
+Fill in the following information:
 
-- **用户名**：登录用户名
-- **密码**：登录密码
-- **邮箱**：用户邮箱地址
+- **Username**: Login username
+- **Password**: Login password
+- **Email**: User email address
 
-## 用户操作
+## User Operations
 
-### 访问令牌
+### Access Token
 
-生成 API 访问令牌，用于通过 API 接口访问面板功能。
+Generate an API access token for accessing panel features through the API interface.
 
-令牌具有与用户相同的权限，请妥善保管。
+The token has the same permissions as the user, please keep it safe.
 
-### 更改密码
+### Change Password
 
-修改用户的登录密码。建议定期更换密码。
+Change the user's login password. It is recommended to change passwords regularly.
 
-### 删除用户
+### Delete User
 
-删除用户账号。删除后该用户将无法登录面板。
+Delete the user account. After deletion, the user will no longer be able to log in to the panel.
 
-::: warning 注意
-至少需要保留一个用户，无法删除最后一个用户。
+::: warning Note
+At least one user must be retained, the last user cannot be deleted.
 :::
 
-## 两步验证
+## Two-Factor Authentication
 
-两步验证（2FA）为账号提供额外的安全保护。启用后登录时除了密码还需要输入动态验证码。
+Two-factor authentication (2FA) provides additional security protection for accounts. When enabled, a dynamic verification code is required in addition to the password during login.
 
-### 启用两步验证
+### Enable Two-Factor Authentication
 
-1. 点击两步验证开关
-2. 使用 Google Authenticator、Microsoft Authenticator 等应用扫描二维码
-3. 输入应用显示的 6 位验证码确认
+1. Click the two-factor authentication switch
+2. Use Google Authenticator, Microsoft Authenticator, or other apps to scan the QR code
+3. Enter the 6-digit verification code displayed in the app to confirm
 
-### 支持的验证器应用
+### Supported Authenticator Apps
 
 - Google Authenticator
 - Microsoft Authenticator
 - Authy
 - 1Password
-- 其他支持 TOTP 的应用
+- Other apps supporting TOTP
 
-## 安全建议
+## Security Recommendations
 
-1. 使用强密码，包含大小写字母、数字和特殊字符
-2. 启用两步验证
-3. 定期更换密码
-4. 不要共享账号
-5. 及时删除不再使用的账号
+1. Use strong passwords containing uppercase and lowercase letters, numbers, and special characters
+2. Enable two-factor authentication
+3. Change passwords regularly
+4. Do not share accounts
+5. Promptly delete accounts that are no longer in use

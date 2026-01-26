@@ -1,45 +1,45 @@
-# 第一个容器：部署 pgAdmin 4
+# First Container: Deploy pgAdmin 4
 
-本文以 pgAdmin 4 为例，演示如何通过 AcePanel 快速部署 Docker 容器。
+This article uses pgAdmin 4 as an example to demonstrate how to quickly deploy Docker containers through AcePanel.
 
-## 安装 Docker
+## Install Docker
 
-进入「应用」页面，在「原生应用」中找到 Docker 并安装。安装进度可在「任务」页面查看。
+Go to the "Applications" page, find Docker in "Native Applications" and install it. Installation progress can be viewed on the "Tasks" page.
 
-::: tip 国内服务器
-国内服务器拉取镜像较慢，建议配置 [毫秒镜像](https://1ms.run/) 提供的付费加速源。
+::: tip Servers in China
+Pulling images is slow on servers in China. It is recommended to configure the paid acceleration source provided by [Millisecond Mirror](https://1ms.run/).
 :::
 
-## 部署容器
+## Deploy Container
 
-进入「应用」->「容器模板」，找到 pgAdmin 4，点击「部署」。
+Go to "Applications" -> "Container Templates", find pgAdmin 4, and click "Deploy".
 
-![容器模板列表](/images/quickstart/container-template.png)
+![Container Template List](/images/quickstart/container-template.png)
 
-![部署1](/images/quickstart/container-deploy-step1.png)
+![Deploy Step 1](/images/quickstart/container-deploy-step1.png)
 
-选择「创建新编排」后填写配置：
+Select "Create New Compose" and fill in the configuration:
 
-![部署2](/images/quickstart/container-deploy-step2.png)
+![Deploy Step 2](/images/quickstart/container-deploy-step2.png)
 
-- **编排名称**：给编排起个名字，如 `pg4admin`
-- **自动启动**：勾选后创建完成自动拉取镜像并启动
-- **自动防火墙**：勾选后自动放行端口
-- **访问端口**：容器 80 端口映射到主机端口，如 `999`
-- **管理员邮箱/密码**：pgAdmin 4 的登录凭据
+- **Compose Name**: Give the compose a name, e.g., `pg4admin`
+- **Auto Start**: When checked, automatically pull images and start after creation
+- **Auto Firewall**: When checked, automatically allow ports
+- **Access Port**: Map container port 80 to host port, e.g., `999`
+- **Admin Email/Password**: Login credentials for pgAdmin 4
 
-点击「下一步」预览编排配置，确认后点击「创建」。
+Click "Next" to preview the compose configuration, then click "Create" to confirm.
 
-## 等待启动
+## Wait for Startup
 
-如果勾选了「自动启动」，创建后会弹窗显示拉取和启动进度：
+If "Auto Start" is checked, a popup will show the pull and startup progress after creation:
 
-![启动进度](/images/container/compose-starting.png)
+![Startup Progress](/images/container/compose-starting.png)
 
-也可以在「容器」->「编排」页面手动管理：
+You can also manually manage in "Containers" -> "Compose" page:
 
-![编排列表](/images/container/compose-list.png)
+![Compose List](/images/container/compose-list.png)
 
-## 访问服务
+## Access Service
 
-启动完成后，浏览器访问 `http://服务器IP:端口`（如 `http://x.x.x.x:999`），用之前设置的邮箱和密码登录即可。
+After startup is complete, access `http://ServerIP:Port` (e.g., `http://x.x.x.x:999`) in your browser, and log in with the email and password you set earlier.

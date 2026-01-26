@@ -1,101 +1,101 @@
-# 证书管理
+# Certificate Management
 
-证书管理页面用于申请、上传和管理 SSL/TLS 证书。
+The certificate management page is used to apply for, upload, and manage SSL/TLS certificates.
 
-## 证书列表
+## Certificate List
 
-进入 **证书** 页面，默认显示证书列表。
+Go to the **Certificate** page, which displays the certificate list by default.
 
-![证书列表](/images/cert/cert-list.png)
+![Certificate List](/images/cert/cert-list.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **域名**：证书包含的域名
-- **类型**：证书类型（ACME/上传）
-- **关联账户**：使用的 ACME 账户
-- **颁发者**：证书颁发机构
-- **过期时间**：证书到期时间
-- **下次续签时间**：自动续签时间
-- **自动续签**：是否启用自动续签
-- **操作**：续签、下载、删除等
+- **Domain**: Domains included in the certificate
+- **Type**: Certificate type (ACME/Upload)
+- **Associated Account**: ACME account used
+- **Issuer**: Certificate authority
+- **Expiration Time**: Certificate expiration time
+- **Next Renewal Time**: Automatic renewal time
+- **Auto Renewal**: Whether auto renewal is enabled
+- **Actions**: Renew, download, delete, etc.
 
-## 创建证书
+## Create Certificate
 
-点击 **创建证书** 按钮申请新证书。
+Click the **Create Certificate** button to apply for a new certificate.
 
-### 配置项
+### Configuration Items
 
-- **域名**：要申请证书的域名，支持多个域名
-- **密钥类型**：RSA 或 ECC
-- **网站**：该证书关联的网站
-- **账户**：该证书关联的 ACME 账户
-- **DNS**：该证书关联的 DNS API
+- **Domain**: Domains to apply certificate for, supports multiple domains
+- **Key Type**: RSA or ECC
+- **Website**: Website associated with this certificate
+- **Account**: ACME account associated with this certificate
+- **DNS**: DNS API associated with this certificate
 
-### 域名格式
+### Domain Format
 
 ```
-example.com           # 单个域名
-www.example.com       # 子域名
-*.example.com         # 泛域名（需要 DNS 验证）
+example.com           # Single domain
+www.example.com       # Subdomain
+*.example.com         # Wildcard domain (requires DNS verification)
 ```
 
-::: tip 提示
-泛域名证书（*.example.com）只能通过 DNS 验证方式申请。
+::: tip Note
+Wildcard certificates (*.example.com) can only be applied through DNS verification.
 :::
 
-## 上传证书
+## Upload Certificate
 
-点击 **上传证书** 按钮上传已有证书。
+Click the **Upload Certificate** button to upload an existing certificate.
 
-需要提供：
-- **证书文件**：PEM 格式的证书（.crt 或 .pem），请包含完整证书链
-- **私钥文件**：PEM 格式的私钥（.key）
+Required:
+- **Certificate File**: PEM format certificate (.crt or .pem), please include complete certificate chain
+- **Private Key File**: PEM format private key (.key)
 
-## 应用证书
+## Apply Certificate
 
-申请或上传证书后，需要在网站设置中启用 HTTPS 并选择证书。
+After applying or uploading a certificate, you need to enable HTTPS in the website settings and select the certificate.
 
-1. 进入网站编辑页面
-2. 切换到 **HTTPS** 标签
-3. 启用 HTTPS
-4. 选择证书
-5. 保存配置
+1. Enter the website edit page
+2. Switch to the **HTTPS** tab
+3. Enable HTTPS
+4. Select certificate
+5. Save configuration
 
-## 自动续签
+## Auto Renewal
 
-ACME 证书支持自动续签：
+ACME certificates support auto renewal:
 
-- 证书签发后通过 ARI 获取建议的续签时间
-- 系统会在续签时间前自动尝试续签
-- 续签成功后自动更新网站配置
-- 续签失败会发送通知
+- After certificate issuance, the recommended renewal time is obtained through ARI
+- The system will automatically attempt renewal before the renewal time
+- After successful renewal, website configuration is automatically updated
+- Notification is sent if renewal fails
 
-## 证书操作
+## Certificate Operations
 
-### 手动续签
+### Manual Renewal
 
-点击 **续签** 按钮手动触发证书续签。
+Click the **Renew** button to manually trigger certificate renewal.
 
-### 下载证书
+### Download Certificate
 
-点击 **下载** 按钮下载证书文件，包含：
-- 完整证书链（.crt）
-- 私钥文件（.key）
+Click the **Download** button to download certificate files, including:
+- Complete certificate chain (.crt)
+- Private key file (.key)
 
-### 删除证书
+### Delete Certificate
 
-点击 **删除** 按钮删除证书。
+Click the **Delete** button to delete the certificate.
 
-## 常见问题
+## FAQ
 
-### 申请失败
+### Application Failed
 
-- 检查域名是否正确解析到服务器
-- 检查 80 端口是否可访问（HTTP 验证）
-- 检查 DNS API 配置是否正确（DNS 验证）
+- Check if the domain is correctly resolved to the server
+- Check if port 80 is accessible (HTTP verification)
+- Check if DNS API configuration is correct (DNS verification)
 
-### 续签失败
+### Renewal Failed
 
-- 检查域名解析是否变更
-- 检查 DNS API 是否过期
-- 查看面板日志了解详细错误
+- Check if domain resolution has changed
+- Check if DNS API has expired
+- Check panel logs for detailed errors

@@ -1,72 +1,72 @@
-# 数据库常见问题
+# Database FAQ
 
-## 忘记数据库密码
+## Forgot Database Password
 
 ### MySQL/MariaDB/Percona
 
-在面板「数据库」->「用户」中修改用户密码。
+Modify user password in panel **Databases** -> **Users**.
 
-如果忘记 root 密码，可前往「应用」->「MySQL/MariaDB/Percona」->「管理」中查看/重置。
+If you forgot the root password, you can view/reset it in **Apps** -> **MySQL/MariaDB/Percona** -> **Manage**.
 
 ### PostgreSQL
 
-在面板「数据库」->「用户」中修改用户密码。
+Modify user password in panel **Databases** -> **Users**.
 
-如果忘记 postgres 用户密码，可前往「应用」->「PostgreSQL」->「管理」中查看/重置。
+If you forgot the postgres user password, you can view/reset it in **Apps** -> **PostgreSQL** -> **Manage**.
 
-## 远程连接数据库
+## Remote Database Connection
 
-默认只允许本地连接。如需远程连接：
+Only local connections are allowed by default. For remote connections:
 
-MySQL/MariaDB/Percona：
+MySQL/MariaDB/Percona:
 
-1. 在「数据库」->「用户」中，新建一个用户主机为 `%`（允许所有 IP）或指定 IP 的用户
-2. 在防火墙放行数据库端口 3306
+1. In **Databases** -> **Users**, create a new user with host set to `%` (allow all IPs) or a specific IP
+2. Allow database port 3306 in the firewall
 
-PostgreSQL：
+PostgreSQL:
 
-1. 前往「应用」->「PostgreSQL」->「管理」中编辑主配置找到`listen_addresses`，取消注释并将其值改为 `'*'`
-2. 在同一页面编辑用户配置，添加一行：`host    all             用户名           (IP地址/掩码/all)        scram-sha-256` 并保存
-3. 重启 PostgreSQL 服务
-4. 在防火墙放行数据库端口 5432
+1. Go to **Apps** -> **PostgreSQL** -> **Manage**, edit the main configuration, find `listen_addresses`, uncomment it and change its value to `'*'`
+2. On the same page, edit the user configuration, add a line: `host    all             username           (IP-address/mask/all)        scram-sha-256` and save
+3. Restart the PostgreSQL service
+4. Allow database port 5432 in the firewall
 
-::: warning 安全提示
-不建议将数据库端口暴露到公网，建议使用 SSH 隧道或 VPN 连接。
+::: warning Security Warning
+It is not recommended to expose database ports to the public network. It is recommended to use SSH tunnels or VPN connections.
 :::
 
-## 连接被拒绝
+## Connection Refused
 
-1. 检查数据库服务是否运行
-2. 检查用户权限和主机设置
-3. 检查连接地址：本地连接用 `localhost` 或 `127.0.0.1`
+1. Check if the database service is running
+2. Check user permissions and host settings
+3. Check connection address: Use `localhost` or `127.0.0.1` for local connections
 
-## 导入大文件失败
+## Large File Import Failed
 
-phpMyAdmin 有上传限制。大文件建议用命令行导入：
+phpMyAdmin has upload limits. For large files, it is recommended to import via command line:
 
 ```shell
-mysql -u 用户名 -p 数据库名 < 文件.sql
+mysql -u username -p database_name < file.sql
 ```
 
-或使用面板的文件管理上传后，在终端执行导入。
+Or upload using the panel's file manager, then execute the import in the terminal.
 
-## 数据库备份
+## Database Backup
 
-1. 「备份」->「创建备份」选择数据库
-2. 或使用命令行：
+1. **Backup** -> **Create Backup**, select database
+2. Or use command line:
 
 ```shell
 # MySQL
-mysqldump -u 用户名 -p 数据库名 > backup.sql
+mysqldump -u username -p database_name > backup.sql
 
 # PostgreSQL
-pg_dump -U 用户名 数据库名 > backup.sql
+pg_dump -U username database_name > backup.sql
 ```
 
-## 字符集问题
+## Character Set Issues
 
-已有数据库修改字符集：
+To modify character set for existing databases:
 
 ```sql
-ALTER DATABASE 数据库名 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER DATABASE database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```

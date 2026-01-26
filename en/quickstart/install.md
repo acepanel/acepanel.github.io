@@ -1,75 +1,75 @@
-# 安装
+# Installation
 
-## 系统要求
+## System Requirements
 
-- 架构：`amd64` / `arm64`
-- 内存：≥ 512MB（建议 1GB 以上）
-- 磁盘：≥ 10GB 可用空间
+- Architecture: `amd64` / `arm64`
+- Memory: ≥ 512MB (1GB or more recommended)
+- Disk: ≥ 10GB available space
 
-## 支持的操作系统
+## Supported Operating Systems
 
-| 系统               | 版本 | 状态  |
-|------------------|----|-----|
-| AlmaLinux        | 10 | 推荐  |
-| AlmaLinux        | 9  | 支持  |
-| RockyLinux       | 10 | 推荐  |
-| RockyLinux       | 9  | 支持  |
-| Debian           | 13 | 推荐  |
-| Debian           | 12 | 支持  |
-| Ubuntu           | 24 | 推荐  |
-| Ubuntu           | 22 | 支持  |
-| OpenCloudOS      | 9  | 支持  |
-| TencentOS Server | 4  | 支持  |
-| CentOS Stream    | 10 | 不推荐 |
-| CentOS Stream    | 9  | 不推荐 |
+| System             | Version | Status          |
+|--------------------|---------|-----------------|
+| AlmaLinux          | 10      | Recommended     |
+| AlmaLinux          | 9       | Supported       |
+| RockyLinux         | 10      | Recommended     |
+| RockyLinux         | 9       | Supported       |
+| Debian             | 13      | Recommended     |
+| Debian             | 12      | Supported       |
+| Ubuntu             | 24      | Recommended     |
+| Ubuntu             | 22      | Supported       |
+| OpenCloudOS        | 9       | Supported       |
+| TencentOS Server   | 4       | Supported       |
+| CentOS Stream      | 10      | Not Recommended |
+| CentOS Stream      | 9       | Not Recommended |
 
-未列出的系统可自行尝试安装，但不提供技术支持。
+Systems not listed can be tried at your own risk, but technical support is not provided.
 
-## 安装前准备
+## Pre-installation Preparation
 
-- 使用纯净系统安装，避免与已有环境冲突
-- 如需挂载数据盘，请在安装前完成，安装后不支持目录迁移
-- 确保服务器能正常访问外网
+- Use a clean system for installation to avoid conflicts with existing environments
+- If you need to mount a data disk, complete it before installation; directory migration is not supported after installation
+- Ensure the server can access the internet normally
 
-## 开始安装
+## Start Installation
 
-::: tip AcePanel 推荐使用
-[林枫云高性能 AMD EYPC 服务器](https://www.dkdun.cn/aff/MQZZNVHQ) 服务器安装
+::: tip AcePanel Recommends
+[LF Cloud High-Performance AMD EPYC Servers](https://www.dkdun.cn/aff/MQZZNVHQ) for installation
 :::
 
-以 `root` 用户登录服务器，执行：
+Log in to the server as `root` user and execute:
 
 ```shell
 bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 ```
 
-安装过程中请勿关闭终端。
+Do not close the terminal during installation.
 
-## 安装完成
+## Installation Complete
 
-安装完成后，终端会输出面板访问地址和初始账号密码：
+After installation, the terminal will display the panel access address and initial account credentials:
 
 ```
 ========================================
-AcePanel 安装完成
-用户名：xxxxxxxx
-密码：xxxxxxxxxxxxxxxx
-端口：xxxxx
-入口：/xxxxxx
+AcePanel Installation Complete
+Username: xxxxxxxx
+Password: xxxxxxxxxxxxxxxx
+Port: xxxxx
+Entry: /xxxxxx
 ========================================
 ```
 
-首次访问可能需在浏览器信任自签名证书。
+First-time access may require trusting the self-signed certificate in your browser.
 
-## 常见问题
+## FAQ
 
-**无法访问面板**
+**Cannot access the panel**
 
-检查云服务器安全组和防火墙设置，确保放行面板端口。
+Check the cloud server security group and firewall settings to ensure the panel port is allowed.
 
-**忘记用户/密码/地址**
+**Forgot username/password/address**
 
-使用命令行工具一键重置：
+Use the command line tool to reset:
 
 ```shell
 acepanel info

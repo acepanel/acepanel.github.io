@@ -1,84 +1,84 @@
-# 面板任务
+# Panel Tasks
 
-面板任务显示 AcePanel 执行的后台任务，如应用安装、环境安装等。
+Panel tasks display background tasks executed by AcePanel, such as application installation, environment installation, etc.
 
-## 任务列表
+## Task List
 
-进入 **任务** > **面板任务** 标签页查看面板任务列表。
+Go to **Tasks** > **Panel Tasks** tab to view the panel task list.
 
-![面板任务](/images/task/task-panel.png)
+![Panel Tasks](/images/task/task-panel.png)
 
-列表显示以下信息：
+The list displays the following information:
 
-- **任务名称**：任务描述
-- **状态**：运行中/已完成/失败
-- **创建时间**：任务开始时间
-- **完成时间**：任务结束时间
-- **操作**：查看日志、删除
+- **Task Name**: Task description
+- **Status**: Running/Completed/Failed
+- **Created At**: Task start time
+- **Completed At**: Task end time
+- **Actions**: View logs, delete
 
-## 任务状态
+## Task Status
 
-| 状态 | 说明 |
-|------|------|
-| 运行中 | 任务正在执行 |
-| 已完成 | 任务执行成功 |
-| 失败 | 任务执行失败 |
+| Status | Description |
+|--------|-------------|
+| Running | Task is being executed |
+| Completed | Task executed successfully |
+| Failed | Task execution failed |
 
-## 常见任务类型
+## Common Task Types
 
-### 应用安装
+### Application Installation
 
-安装原生应用时会创建安装任务：
-- 安装应用 Nginx
-- 安装应用 MySQL
-- 安装应用 Docker
+Installation tasks are created when installing native applications:
+- Install application Nginx
+- Install application MySQL
+- Install application Docker
 
-### 应用卸载
+### Application Uninstallation
 
-卸载应用时会创建卸载任务：
-- 卸载应用 MariaDB
-- 卸载应用 Redis
+Uninstallation tasks are created when uninstalling applications:
+- Uninstall application MariaDB
+- Uninstall application Redis
 
-### 环境安装
+### Environment Installation
 
-安装运行环境时会创建安装任务：
-- 安装环境 PHP 8.4
-- 安装环境 Node.js 20
-- 安装环境 Go 1.24
+Installation tasks are created when installing runtime environments:
+- Install environment PHP 8.4
+- Install environment Node.js 20
+- Install environment Go 1.24
 
-## 查看日志
+## View Logs
 
-点击 **日志** 按钮查看任务的详细执行日志，包括：
-- 命令输出
-- 错误信息
+Click the **Logs** button to view detailed execution logs of the task, including:
+- Command output
+- Error messages
 
-日志对于排查任务失败原因非常有用。
+Logs are very useful for troubleshooting task failure causes.
 
-## 删除任务
+## Delete Task
 
-已完成或失败的任务可以删除。运行中的任务无法删除。
+Completed or failed tasks can be deleted. Running tasks cannot be deleted.
 
-::: tip 提示
-删除任务只是从列表中移除记录，不会影响已安装的应用或环境。
+::: tip Tip
+Deleting a task only removes the record from the list, it does not affect installed applications or environments.
 :::
 
-## 任务失败处理
+## Handling Task Failures
 
-如果任务失败：
+If a task fails:
 
-1. 点击 **日志** 查看错误信息
-2. 根据错误信息排查问题
-3. 解决问题后重新执行操作
+1. Click **Logs** to view error messages
+2. Troubleshoot the problem based on error messages
+3. Re-execute the operation after resolving the issue
 
-常见失败原因：
-- 网络问题导致下载失败
-- 磁盘空间不足
-- 依赖包缺失
-- 端口被占用
+Common failure causes:
+- Network issues causing download failures
+- Insufficient disk space
+- Missing dependencies
+- Port already in use
 
-## 注意事项
+## Notes
 
-1. 安装任务可能需要较长时间，请耐心等待
-2. 任务执行期间可以关闭浏览器
-3. 如果任务长时间无响应，可以刷新页面查看状态
-4. 建议定期清理已完成的任务记录
+1. Installation tasks may take a long time, please be patient
+2. You can close the browser while tasks are executing
+3. If a task is unresponsive for a long time, you can refresh the page to check the status
+4. It is recommended to regularly clean up completed task records

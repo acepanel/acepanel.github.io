@@ -1,10 +1,10 @@
-# 第一个项目：部署 Node.js 应用
+# First Project: Deploy Node.js Application
 
-本文以一个简单的 Node.js HTTP 服务为例，演示如何通过 AcePanel 部署和管理项目。
+This article uses a simple Node.js HTTP service as an example to demonstrate how to deploy and manage projects through AcePanel.
 
-## 准备代码
+## Prepare Code
 
-先准备一个简单的 Node.js 应用。在项目目录创建 `app.js`：
+First, prepare a simple Node.js application. Create `app.js` in the project directory:
 
 ```javascript
 const http = require('http');
@@ -19,56 +19,56 @@ server.listen(3000, () => {
 });
 ```
 
-## 创建项目
+## Create Project
 
-进入「项目」页面，点击「创建项目」。
+Go to the "Projects" page, click "Create Project".
 
-![创建项目](/images/quickstart/project-create.png)
+![Create Project](/images/quickstart/project-create.png)
 
-填写配置：
+Fill in the configuration:
 
-- **项目名**：项目标识，如 `hello-node`
-- **项目目录**：留空使用默认路径
-- **运行用户**：一般选 `www`
-- **启动命令**：`node app.js`
-- **反向代理**：如需通过域名访问，可开启自动创建反向代理
+- **Project Name**: Project identifier, e.g., `hello-node`
+- **Project Directory**: Leave empty to use default path
+- **Run User**: Usually select `www`
+- **Start Command**: `node app.js`
+- **Reverse Proxy**: Enable auto-create reverse proxy if you need to access via domain
 
-## 上传代码
+## Upload Code
 
-项目创建后，进入「文件」页面，导航到项目目录（如 `/opt/ace/projects/hello-node`），上传 `app.js` 文件。
+After the project is created, go to the "Files" page, navigate to the project directory (e.g., `/opt/ace/projects/hello-node`), and upload the `app.js` file.
 
-也可以通过终端用 git clone 拉取代码。
+You can also use git clone in the terminal to pull the code.
 
-## 配置项目
+## Configure Project
 
-在项目列表点击「编辑」，可以调整更多设置：
+Click "Edit" in the project list to adjust more settings:
 
-![项目编辑](/images/quickstart/project-edit-run.png)
+![Project Edit](/images/quickstart/project-edit-run.png)
 
-**运行设置**：
-- **预启动命令**：启动前执行，如 `npm install`
-- **重启策略**：进程异常退出时的处理方式
-- **环境变量**：设置 `NODE_ENV=production` 等
+**Run Settings**:
+- **Pre-start Command**: Execute before starting, e.g., `npm install`
+- **Restart Policy**: How to handle abnormal process exits
+- **Environment Variables**: Set `NODE_ENV=production`, etc.
 
-**依赖**：可以关联 Node.js 运行环境版本。
+**Dependencies**: You can associate Node.js runtime environment version.
 
-## 启动项目
+## Start Project
 
-回到项目列表，点击「启动」按钮。
+Return to the project list, click the "Start" button.
 
-![项目列表](/images/quickstart/project-list.png)
+![Project List](/images/quickstart/project-list.png)
 
-启动后可点击「日志」查看输出，确认服务正常运行。
+After starting, you can click "Logs" to view output and confirm the service is running normally.
 
-## 访问服务
+## Access Service
 
-如果开启了反向代理，通过配置的域名访问即可。
+If reverse proxy is enabled, access via the configured domain.
 
-如果没有，可以通过 `http://服务器IP:3000` 直接访问（需在防火墙放行 3000 端口）。
+If not, you can access directly via `http://ServerIP:3000` (need to allow port 3000 in the firewall).
 
-::: tip 生产环境
-生产环境建议：
-- 开启「自启动」，服务器重启后自动恢复
-- 配置反向代理，通过 Nginx 转发请求
-- 在「资源限制」中设置内存上限，防止内存泄漏
+::: tip Production Environment
+Production environment recommendations:
+- Enable "Auto Start" to automatically recover after server restart
+- Configure reverse proxy to forward requests through Nginx
+- Set memory limits in "Resource Limits" to prevent memory leaks
 :::

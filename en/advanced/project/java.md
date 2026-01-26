@@ -1,15 +1,15 @@
-# Java 项目
+# Java Project
 
-Java 项目用于部署 Spring Boot、Tomcat 等 Java 应用。
+Java projects are used to deploy Spring Boot, Tomcat, and other Java applications.
 
-## 前置要求
+## Prerequisites
 
-1. 安装 Java 运行环境：**应用** > **运行环境** > **Java**（Corretto JDK）
-2. 打包好的 JAR 文件或 WAR 文件
+1. Install Java runtime environment: **Applications** > **Runtime Environment** > **Java** (Corretto JDK)
+2. Packaged JAR file or WAR file
 
-## 部署 Spring Boot 应用
+## Deploy Spring Boot Application
 
-### 打包项目
+### Package Project
 
 ```bash
 # Maven
@@ -19,35 +19,35 @@ mvn clean package -DskipTests
 ./gradlew build -x test
 ```
 
-### 上传并部署
+### Upload and Deploy
 
-1. 上传 JAR 文件到服务器（如 `/opt/ace/project/myapp/app.jar`）
-2. 创建项目：
-   - **项目名**：`myapp`
-   - **项目目录**：`/opt/ace/project/myapp`
-   - **启动命令**：`java21 -jar app.jar`
-3. 开启 **反向代理**
+1. Upload JAR file to server (e.g., `/opt/ace/project/myapp/app.jar`)
+2. Create project:
+   - **Project Name**: `myapp`
+   - **Project Directory**: `/opt/ace/project/myapp`
+   - **Start Command**: `java21 -jar app.jar`
+3. Enable **Reverse Proxy**
 
-## 启动命令示例
+## Start Command Examples
 
 ```bash
-# 基本启动
+# Basic startup
 java21 -jar app.jar
 
-# 指定配置文件
+# Specify configuration file
 java21 -jar app.jar --spring.profiles.active=prod
 
-# 设置 JVM 参数
+# Set JVM parameters
 java21 -Xms512m -Xmx1024m -jar app.jar
 
-# 指定端口
+# Specify port
 java21 -jar app.jar --server.port=8080
 ```
 
-## JVM 参数建议
+## JVM Parameter Recommendations
 
 ```bash
-# 生产环境推荐配置
+# Recommended production environment configuration
 java21 \
   -Xms512m \
   -Xmx1024m \
@@ -56,22 +56,22 @@ java21 \
   -jar app.jar
 ```
 
-常用参数说明：
+Common parameter descriptions:
 
-| 参数 | 说明 |
-|------|------|
-| `-Xms` | 初始堆内存大小 |
-| `-Xmx` | 最大堆内存大小 |
-| `-XX:+UseG1GC` | 使用 G1 垃圾收集器 |
-| `-XX:MaxGCPauseMillis` | 最大 GC 停顿时间 |
+| Parameter | Description |
+|-----------|-------------|
+| `-Xms` | Initial heap memory size |
+| `-Xmx` | Maximum heap memory size |
+| `-XX:+UseG1GC` | Use G1 garbage collector |
+| `-XX:MaxGCPauseMillis` | Maximum GC pause time |
 
-## 多版本 JDK
+## Multiple JDK Versions
 
-AcePanel 支持安装多个 JDK 版本，路径如 `/opt/ace/server/java/{version}/bin/java`，已默认链接 `java{version}` 命令方便使用。
+AcePanel supports installing multiple JDK versions, paths like `/opt/ace/server/java/{version}/bin/java`, with `java{version}` commands linked by default for convenience.
 
-## 配置文件
+## Configuration File
 
-Spring Boot 配置文件 `application.yml` 示例：
+Spring Boot configuration file `application.yml` example:
 
 ```yaml
 server:
@@ -84,27 +84,27 @@ spring:
     password: your_password
 ```
 
-## 常见问题
+## FAQ
 
-### 内存不足
+### Out of Memory
 
-增加 JVM 堆内存：
+Increase JVM heap memory:
 
 ```bash
 java21 -Xms1g -Xmx2g -jar app.jar
 ```
 
-### 端口冲突
+### Port Conflict
 
-修改启动端口：
+Modify startup port:
 
 ```bash
 java21 -jar app.jar --server.port=8081
 ```
 
-### 启动慢
+### Slow Startup
 
-检查是否有外部依赖连接超时，或添加以下参数加速启动：
+Check if there are external dependency connection timeouts, or add the following parameters to speed up startup:
 
 ```bash
 -XX:TieredStopAtLevel=1 -noverify

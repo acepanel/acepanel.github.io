@@ -1,99 +1,99 @@
-# 容器模板
+# Container Templates
 
-容器模板提供了基于 Docker 的一键部署方案，可以快速部署各类常用应用，无需手动配置。
+Container templates provide Docker-based one-click deployment solutions for quickly deploying various common applications without manual configuration.
 
-## 前置要求
+## Prerequisites
 
-使用容器模板前，需要先安装 Docker：
+Before using container templates, you need to install Docker first:
 
-1. 进入 **应用** > **原生应用**
-2. 找到 Docker，点击 **安装**
-3. 等待安装完成
+1. Go to **Applications** > **Native Applications**
+2. Find Docker, click **Install**
+3. Wait for installation to complete
 
-## 模板列表
+## Template List
 
-进入 **应用** 页面，点击 **容器模板** 标签查看可用模板：
+Go to the **Applications** page, click the **Container Templates** tab to view available templates:
 
-![容器模板列表](/images/app/app-template.png)
+![Container Template List](/images/app/app-template.png)
 
-## 部署应用
+## Deploy Application
 
-点击模板卡片上的 **部署** 按钮，会启动部署向导。
+Click the **Deploy** button on the template card to start the deployment wizard.
 
-### 第一步：选择部署模式
+### Step 1: Select Deployment Mode
 
-![选择部署模式](/images/app/app-template-deploy-step1.png)
+![Select Deployment Mode](/images/app/app-template-deploy-step1.png)
 
-- **创建新编排**：从模板创建一个新的 Docker Compose 编排
-- **更新现有编排**：使用模板更新已有的编排配置
+- **Create New Compose**: Create a new Docker Compose from the template
+- **Update Existing Compose**: Use the template to update an existing compose configuration
 
-### 第二步：配置参数
+### Step 2: Configure Parameters
 
-根据应用需求填写配置信息：
+Fill in configuration information according to application requirements:
 
-![配置参数](/images/app/app-template-deploy-step2.png)
+![Configure Parameters](/images/app/app-template-deploy-step2.png)
 
-常见配置项：
+Common configuration items:
 
-- **编排名称**：用于标识这个部署
-- **自动启动**：是否在创建后自动启动容器
-- **自动防火墙**：是否自动放行端口
-- **数据库配置**：用户名、密码、地址等
-- **端口配置**：服务监听的端口
+- **Compose Name**: Used to identify this deployment
+- **Auto Start**: Whether to automatically start containers after creation
+- **Auto Firewall**: Whether to automatically allow ports
+- **Database Configuration**: Username, password, address, etc.
+- **Port Configuration**: Port the service listens on
 
-### 第三步：预览与编辑
+### Step 3: Preview and Edit
 
-预览生成的 Docker Compose 配置文件：
+Preview the generated Docker Compose configuration file:
 
-![预览配置](/images/app/app-template-deploy-step3.png)
+![Preview Configuration](/images/app/app-template-deploy-step3.png)
 
-你可以在这里：
+Here you can:
 
-- 查看和编辑 **编排文件**（docker-compose.yml）
-- 查看和编辑 **环境变量**
+- View and edit the **Compose File** (docker-compose.yml)
+- View and edit **Environment Variables**
 
-### 第四步：确认部署
+### Step 4: Confirm Deployment
 
-确认所有配置无误后，点击 **创建** 完成部署：
+After confirming all configurations are correct, click **Create** to complete deployment:
 
-![确认部署](/images/app/app-template-deploy-step4.png)
+![Confirm Deployment](/images/app/app-template-deploy-step4.png)
 
-部署完成后，应用会出现在 **容器** > **编排** 页面中进行管理。
+After deployment, the application will appear in the **Containers** > **Compose** page for management.
 
-## 模板 vs 手动部署
+## Template vs Manual Deployment
 
-| 特性 | 使用模板 | 手动部署 |
-|------|----------|----------|
-| 配置难度 | 简单，填写基本信息即可 | 需要编写 docker-compose.yml |
-| 灵活性 | 使用预设配置 | 完全自定义 |
-| 适用场景 | 快速部署常用应用 | 特殊需求、自定义配置 |
+| Feature | Using Template | Manual Deployment |
+|---------|----------------|-------------------|
+| Configuration Difficulty | Simple, just fill in basic information | Need to write docker-compose.yml |
+| Flexibility | Uses preset configuration | Fully customizable |
+| Use Cases | Quick deployment of common applications | Special requirements, custom configuration |
 
-## 常用模板说明
+## Common Template Descriptions
 
 ### WordPress
 
-开源博客和内容管理系统，适合搭建个人博客或企业网站。
+Open-source blog and content management system, suitable for building personal blogs or corporate websites.
 
 ### pgAdmin 4
 
-PostgreSQL 数据库的图形化管理工具。
+Graphical management tool for PostgreSQL databases.
 
 ### phpMyAdmin
 
-MySQL/MariaDB 数据库的图形化管理工具。
+Graphical management tool for MySQL/MariaDB databases.
 
 ### Vaultwarden
 
-轻量级密码管理服务器，兼容 Bitwarden 客户端。
+Lightweight password management server, compatible with Bitwarden clients.
 
-### 青龙
+### Qinglong
 
-定时任务管理平台，支持 Python、JavaScript、Shell 等脚本。
+Scheduled task management platform, supporting Python, JavaScript, Shell, and other scripts.
 
 ### OpenList
 
-多存储聚合的文件列表程序，支持阿里云盘、OneDrive 等。
+Multi-storage aggregation file listing program, supporting Alibaba Cloud Drive, OneDrive, etc.
 
-## 更新缓存
+## Update Cache
 
-如果模板列表显示不完整或需要获取最新模板，点击页面顶部的 **更新缓存** 按钮刷新模板列表。
+If the template list is incomplete or you need to get the latest templates, click the **Update Cache** button at the top of the page to refresh the template list.

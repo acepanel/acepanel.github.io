@@ -1,65 +1,65 @@
-# Go 项目
+# Go Project
 
-Go 项目用于部署使用 Go 语言开发的后端应用，如 Gin、Echo、Fiber 等框架。
+Go projects are used to deploy backend applications developed with Go language, such as Gin, Echo, Fiber frameworks.
 
-## 前置要求
+## Prerequisites
 
-1. 安装 Go 运行环境：**应用** > **运行环境** > **Go**
-2. 编译好的 Go 可执行文件或源代码
+1. Install Go runtime environment: **Applications** > **Runtime Environment** > **Go**
+2. Compiled Go executable file or source code
 
-## 部署方式
+## Deployment Methods
 
-### 方式一：部署编译好的二进制文件
+### Method 1: Deploy Compiled Binary File
 
-1. 在本地编译 Go 项目：
+1. Compile Go project locally:
 
 ```bash
-# 交叉编译为 Linux amd64
+# Cross-compile for Linux amd64
 GOOS=linux GOARCH=amd64 go build -o myapp
 ```
 
-2. 上传二进制文件到服务器
-3. 创建项目，启动命令填写：`./myapp`
+2. Upload binary file to server
+3. Create project, fill in start command: `./myapp`
 
-### 方式二：在服务器上编译
+### Method 2: Compile on Server
 
-1. 上传源代码到服务器
-2. 在终端中编译：
+1. Upload source code to server
+2. Compile in terminal:
 
 ```bash
 cd /opt/ace/project/myapp
 go build -o myapp
 ```
 
-3. 创建项目，启动命令填写：`./myapp`
+3. Create project, fill in start command: `./myapp`
 
-## 创建 Go 项目
+## Create Go Project
 
-1. 进入 **项目** 页面
-2. 点击 **创建项目**
-3. 填写配置：
-   - **项目名**：`myapp`
-   - **项目目录**：`/opt/ace/project/myapp`
-   - **启动命令**：`./myapp` 或 `go1.24 run main.go`
-4. 开启 **反向代理** 以便外部访问
+1. Go to the **Project** page
+2. Click **Create Project**
+3. Fill in configuration:
+   - **Project Name**: `myapp`
+   - **Project Directory**: `/opt/ace/project/myapp`
+   - **Start Command**: `./myapp` or `go1.24 run main.go`
+4. Enable **Reverse Proxy** for external access
 
-## 启动命令示例
+## Start Command Examples
 
 ```bash
-# 运行编译好的二进制文件
+# Run compiled binary file
 ./myapp
 
-# 使用指定版本的 Go 运行
+# Run with specified Go version
 go1.24 run main.go
 
-# 带参数运行
+# Run with parameters
 ./myapp -port 8080 -config ./config.yaml
 
-# 设置环境变量
+# Set environment variables
 GIN_MODE=release ./myapp
 ```
 
-## 常用框架
+## Common Frameworks
 
 ### Gin
 
@@ -77,7 +77,7 @@ func main() {
 }
 ```
 
-启动命令：`GIN_MODE=release ./myapp`
+Start command: `GIN_MODE=release ./myapp`
 
 ### Echo
 
@@ -113,8 +113,8 @@ func main() {
 }
 ```
 
-## 注意事项
+## Notes
 
-1. 确保二进制文件有执行权限：`chmod +x myapp`
-2. 生产环境建议使用编译好的二进制文件，而非 `go run`
-3. 建议使用环境变量或配置文件管理配置，避免硬编码
+1. Ensure binary file has execute permission: `chmod +x myapp`
+2. Production environments are recommended to use compiled binary files, not `go run`
+3. It is recommended to use environment variables or configuration files to manage configuration, avoid hardcoding

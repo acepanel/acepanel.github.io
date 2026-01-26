@@ -1,156 +1,156 @@
-# 项目
+# Project
 
-项目模块用于管理后端应用程序，支持 Go、Java、Node.js、PHP、Python 等多种语言。项目会作为系统服务运行，支持自动重启、开机自启等功能。
+The project module is used to manage backend applications, supporting multiple languages including Go, Java, Node.js, PHP, Python, etc. Projects run as system services, supporting automatic restart, auto-start on boot, and other features.
 
-## 项目类型
+## Project Types
 
-| 类型 | 说明 | 适用场景 |
-|------|------|----------|
-| [Go](./project/go) | Go 语言项目 | Gin、Echo、Fiber 等框架 |
-| [Java](./project/java) | Java 项目 | Spring Boot、Tomcat 等 |
-| [Node.js](./project/nodejs) | Node.js 项目 | Express、Koa、NestJS 等 |
-| [PHP](./project/php) | PHP 项目 | Laravel Octane、Swoole 等 |
-| [Python](./project/python) | Python 项目 | Django、Flask、FastAPI 等 |
-| [通用](./project/general) | 其他类型项目 | 任意可执行程序 |
+| Type | Description | Use Cases |
+|------|-------------|-----------|
+| [Go](./project/go) | Go language projects | Gin, Echo, Fiber frameworks |
+| [Java](./project/java) | Java projects | Spring Boot, Tomcat, etc. |
+| [Node.js](./project/nodejs) | Node.js projects | Express, Koa, NestJS, etc. |
+| [PHP](./project/php) | PHP projects | Laravel Octane, Swoole, etc. |
+| [Python](./project/python) | Python projects | Django, Flask, FastAPI, etc. |
+| [General](./project/general) | Other types of projects | Any executable program |
 
-![项目列表](/images/project/project-list.png)
+![Project List](/images/project/project-list.png)
 
-## 项目 vs 网站
+## Project vs Website
 
-| 特性 | 项目 | 网站 |
-|------|------|------|
-| 运行方式 | 独立进程 | 依赖 Web 服务器 |
-| 进程管理 | 自动重启、开机自启 | 由 Web 服务器管理 |
-| 适用场景 | 后端服务、API | 传统 Web 应用 |
-| 对外访问 | 需要配合反向代理 | 直接访问 |
+| Feature | Project | Website |
+|---------|---------|---------|
+| Run Mode | Independent process | Depends on Web server |
+| Process Management | Auto restart, auto-start on boot | Managed by Web server |
+| Use Cases | Backend services, APIs | Traditional Web applications |
+| External Access | Requires reverse proxy | Direct access |
 
-## 创建项目
+## Create Project
 
-1. 进入 **项目** 页面
-2. 点击 **创建项目**
+1. Go to the **Project** page
+2. Click **Create Project**
 
-![创建项目](/images/project/project-create.png)
+![Create Project](/images/project/project-create.png)
 
-### 配置项
+### Configuration Items
 
-- **项目名**：项目标识，用作服务名称
-- **项目目录**：项目文件所在目录
-- **运行用户**：运行项目的系统用户，默认 www
-- **启动命令**：启动项目的命令
-- **反向代理**：是否自动创建反向代理网站
+- **Project Name**: Project identifier, used as service name
+- **Project Directory**: Directory where project files are located
+- **Run User**: System user to run the project, default www
+- **Start Command**: Command to start the project
+- **Reverse Proxy**: Whether to automatically create a reverse proxy website
 
-## 项目管理
+## Project Management
 
-项目列表显示以下信息：
+The project list displays the following information:
 
-- **名称**：项目名称
-- **描述**：项目描述
-- **类型**：项目类型（Go/Java/Node.js 等）
-- **状态**：运行状态
-- **自启动**：是否开机自启
-- **目录**：项目目录
-- **操作**：启动、停止、重启、日志等
+- **Name**: Project name
+- **Description**: Project description
+- **Type**: Project type (Go/Java/Node.js, etc.)
+- **Status**: Running status
+- **Auto Start**: Whether to auto-start on boot
+- **Directory**: Project directory
+- **Actions**: Start, stop, restart, logs, etc.
 
-### 项目操作
+### Project Operations
 
-- **启动**：启动项目
-- **停止**：停止项目
-- **重启**：重启项目
-- **日志**：查看项目运行日志
-- **编辑**：修改项目配置
-- **删除**：删除项目
+- **Start**: Start the project
+- **Stop**: Stop the project
+- **Restart**: Restart the project
+- **Logs**: View project runtime logs
+- **Edit**: Modify project configuration
+- **Delete**: Delete the project
 
-## 编辑项目
+## Edit Project
 
-点击项目列表中的 **编辑** 按钮，可以修改项目配置。编辑对话框包含多个标签页：
+Click the **Edit** button in the project list to modify project configuration. The edit dialog contains multiple tabs:
 
-### 基本设置
+### Basic Settings
 
-配置项目的基本信息：
+Configure basic project information:
 
-![基本设置](/images/project/project-edit-basic.png)
+![Basic Settings](/images/project/project-edit-basic.png)
 
-- **项目名**：项目标识，用作服务名称
-- **描述**：项目描述信息
-- **项目目录**：项目文件所在目录
-- **工作目录**：程序运行时的工作目录，默认为项目目录
-- **运行用户**：运行项目的系统用户
+- **Project Name**: Project identifier, used as service name
+- **Description**: Project description information
+- **Project Directory**: Directory where project files are located
+- **Working Directory**: Working directory when the program runs, defaults to project directory
+- **Run User**: System user to run the project
 
-### 运行设置
+### Run Settings
 
-配置项目的运行参数：
+Configure project runtime parameters:
 
-![运行设置](/images/project/project-edit-run.png)
+![Run Settings](/images/project/project-edit-run.png)
 
-- **启动命令**：启动项目的命令
-- **预启动命令**：启动前运行的命令（可选）
-- **启动后命令**：启动后运行的命令（可选）
-- **停止命令**：自定义停止命令（可选）
-- **重载命令**：自定义重载命令（可选）
-- **重启策略**：失败时重启、总是重启、不重启
-- **重启间隔**：重启之间的等待时间
-- **最大重启次数**：连续重启的最大次数
-- **启动超时**：等待服务启动的超时时间
-- **停止超时**：等待服务停止的超时时间
-- **标准输出**：标准输出的处理方式
-- **标准错误**：标准错误的处理方式
-- **环境变量**：设置项目运行时的环境变量
+- **Start Command**: Command to start the project
+- **Pre-start Command**: Command to run before starting (optional)
+- **Post-start Command**: Command to run after starting (optional)
+- **Stop Command**: Custom stop command (optional)
+- **Reload Command**: Custom reload command (optional)
+- **Restart Policy**: Restart on failure, always restart, never restart
+- **Restart Interval**: Wait time between restarts
+- **Max Restart Count**: Maximum number of consecutive restarts
+- **Start Timeout**: Timeout for waiting for service to start
+- **Stop Timeout**: Timeout for waiting for service to stop
+- **Standard Output**: How to handle standard output
+- **Standard Error**: How to handle standard error
+- **Environment Variables**: Set environment variables for project runtime
 
-### 依赖
+### Dependencies
 
-配置服务依赖关系以控制启动顺序：
+Configure service dependencies to control startup order:
 
-![依赖](/images/project/project-edit-deps.png)
+![Dependencies](/images/project/project-edit-deps.png)
 
-- **Requires**：强依赖，如果这些服务不可用，项目将会失败
-- **Wants**：弱依赖，如果这些服务失败，项目仍然会启动
-- **After**：在指定服务之后启动此项目
-- **Before**：在指定服务之前启动此项目
+- **Requires**: Strong dependencies, if these services are unavailable, the project will fail
+- **Wants**: Weak dependencies, if these services fail, the project will still start
+- **After**: Start this project after the specified services
+- **Before**: Start this project before the specified services
 
-常见服务：`network.target`、`mysqld.service`、`postgresql.service`、`redis.service`
+Common services: `network.target`, `mysqld.service`, `postgresql.service`, `redis.service`
 
-### 资源限制
+### Resource Limits
 
-设置资源限制以防止服务消耗过多系统资源：
+Set resource limits to prevent services from consuming too many system resources:
 
-![资源限制](/images/project/project-edit-resource.png)
+![Resource Limits](/images/project/project-edit-resource.png)
 
-- **内存限制**：限制项目使用的最大内存，0 表示无限制
-- **CPU 配额**：限制 CPU 使用率，100% = 1 个 CPU 核心
+- **Memory Limit**: Limit the maximum memory used by the project, 0 means unlimited
+- **CPU Quota**: Limit CPU usage, 100% = 1 CPU core
 
-### 安全设置
+### Security Settings
 
-增强服务隔离的安全选项：
+Security options to enhance service isolation:
 
-![安全设置](/images/project/project-edit-security.png)
+![Security Settings](/images/project/project-edit-security.png)
 
-- **没有新权限**：防止进程获取新的权限
-- **保护 /tmp**：为服务创建私有的 /tmp 目录
-- **保护 /home**：限制对 /home 目录的访问
-- **保护系统**：设置系统目录的只读保护级别
-  - `true`：/usr、/boot 为只读
-  - `full`：+ /etc 为只读
-  - `strict`：整个文件系统为只读
-- **读写路径**：服务可以读写的路径
-- **只读路径**：服务只能读取的路径
+- **No New Privileges**: Prevent the process from gaining new privileges
+- **Protect /tmp**: Create a private /tmp directory for the service
+- **Protect /home**: Restrict access to the /home directory
+- **Protect System**: Set read-only protection level for system directories
+  - `true`: /usr, /boot are read-only
+  - `full`: + /etc is read-only
+  - `strict`: Entire filesystem is read-only
+- **Read-Write Paths**: Paths the service can read and write
+- **Read-Only Paths**: Paths the service can only read
 
-::: warning 注意
-安全设置可能会影响某些功能，请在启用之前进行充分测试。
+::: warning Note
+Security settings may affect certain features. Please test thoroughly before enabling.
 :::
 
-## 进程管理
+## Process Management
 
-项目使用 systemd 进行进程管理，具有以下特性：
+Projects use systemd for process management, with the following features:
 
-- **自动重启**：进程异常退出后自动重启
-- **开机自启**：系统启动时自动启动项目
-- **日志管理**：自动记录标准输出和错误输出
+- **Auto Restart**: Automatically restart after abnormal process exit
+- **Auto Start on Boot**: Automatically start the project when the system boots
+- **Log Management**: Automatically record standard output and error output
 
-## 下一步
+## Next Steps
 
-- [Go 项目](./project/go) - 部署 Go 应用
-- [Java 项目](./project/java) - 部署 Java 应用
-- [Node.js 项目](./project/nodejs) - 部署 Node.js 应用
-- [PHP 项目](./project/php) - 部署 PHP 应用
-- [Python 项目](./project/python) - 部署 Python 应用
-- [通用项目](./project/general) - 部署其他类型应用
+- [Go Project](./project/go) - Deploy Go applications
+- [Java Project](./project/java) - Deploy Java applications
+- [Node.js Project](./project/nodejs) - Deploy Node.js applications
+- [PHP Project](./project/php) - Deploy PHP applications
+- [Python Project](./project/python) - Deploy Python applications
+- [General Project](./project/general) - Deploy other types of applications

@@ -1,61 +1,61 @@
-# 进程管理
+# Process Management
 
-进程管理页面用于查看和管理系统中运行的进程。
+The process management page is used to view and manage processes running on the system.
 
-## 进程列表
+## Process List
 
-![进程管理](/images/toolbox/toolbox-process.png)
+![Process Management](/images/toolbox/toolbox-process.png)
 
-页面以表格形式展示所有运行中的进程。
+The page displays all running processes in a table format.
 
-列表显示以下信息：
+The list displays the following information:
 
-- **PID**：进程 ID
-- **名称**：进程名称
-- **父进程 PID**：父进程的 PID
-- **线程**：线程数量
-- **用户**：运行进程的用户
-- **状态**：进程状态
-- **CPU**：CPU 使用率
-- **内存**：内存使用量
-- **启动时间**：进程启动时间
+- **PID**: Process ID
+- **Name**: Process name
+- **Parent PID**: PID of the parent process
+- **Threads**: Number of threads
+- **User**: User running the process
+- **Status**: Process status
+- **CPU**: CPU usage
+- **Memory**: Memory usage
+- **Start Time**: Process start time
 
-## 进程状态
+## Process Status
 
-| 状态 | 说明 |
-|------|------|
-| 运行中 | 进程正在执行 |
-| 睡眠 | 进程等待事件 |
-| 空闲 | 内核线程空闲 |
-| 停止 | 进程已停止 |
-| 僵尸 | 进程已结束但未被回收 |
+| Status | Description |
+|--------|-------------|
+| Running | Process is executing |
+| Sleeping | Process is waiting for an event |
+| Idle | Kernel thread is idle |
+| Stopped | Process has stopped |
+| Zombie | Process has ended but not been reaped |
 
-## 搜索和筛选
+## Search and Filter
 
-- **搜索**：按 PID 或进程名称搜索
-- **状态筛选**：筛选特定状态的进程
+- **Search**: Search by PID or process name
+- **Status Filter**: Filter processes by specific status
 
-## 进程操作
+## Process Operations
 
-右键点击进程可以：
+Right-click on a process to:
 
-- **结束进程**：发送 SIGTERM 信号
-- **强制结束**：发送 SIGKILL 信号
-- **查看详情**：查看进程详细信息
+- **End Process**: Send SIGTERM signal
+- **Force End**: Send SIGKILL signal
+- **View Details**: View detailed process information
 
-## 常见进程
+## Common Processes
 
-| 进程       | 说明 |
-|----------|------|
-| nginx    | Nginx Web 服务器 |
-| php-fpm  | PHP FastCGI 进程管理器 |
-| mysqld   | MySQL 数据库服务 |
-| postgres | PostgreSQL 数据库服务 |
-| dockerd  | Docker 守护进程 |
-| ace      | AcePanel 面板进程 |
+| Process | Description |
+|---------|-------------|
+| nginx | Nginx web server |
+| php-fpm | PHP FastCGI process manager |
+| mysqld | MySQL database service |
+| postgres | PostgreSQL database service |
+| dockerd | Docker daemon |
+| ace | AcePanel panel process |
 
-## 注意事项
+## Notes
 
-1. 结束系统关键进程可能导致系统不稳定
-2. 结束面板进程会导致面板无法访问
-3. 建议只结束确认无用的进程
+1. Ending critical system processes may cause system instability
+2. Ending the panel process will make the panel inaccessible
+3. It is recommended to only end processes that are confirmed to be useless

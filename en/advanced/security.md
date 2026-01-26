@@ -1,29 +1,29 @@
-# 安全建议
+# Security Recommendations
 
-## 网站安全
+## Website Security
 
-大多数入侵和挂马事件源于程序漏洞，与面板或环境无关。
+Most intrusion and malware incidents originate from program vulnerabilities, unrelated to the panel or environment.
 
-- 不使用盗版程序，因为无法确认是否被篡改
-- 及时更新网站程序和运行环境
-- 后台密码使用随机生成的 20 位以上混合字符，启用两步验证
-- 配置定时备份
-- 保留 PHP 默认禁用的高危函数（`disable_functions`）
+- Do not use pirated programs, as you cannot confirm whether they have been tampered with
+- Update website programs and runtime environments promptly
+- Use randomly generated passwords of 20+ mixed characters for admin panels, enable two-factor authentication
+- Configure scheduled backups
+- Keep PHP's default disabled high-risk functions (`disable_functions`)
 
-## 系统安全
+## System Security
 
-- 定期更新系统：`dnf update` 或 `apt upgrade`
-- SSH 禁用默认 22 端口，使用强密码或密钥认证
-- 安装 Fail2ban 防止暴力破解
-- 不随意设置 777 权限或给 www 用户执行权限
-- 有 VNC 的情况下可考虑关闭 SSH
+- Update the system regularly: `dnf update` or `apt upgrade`
+- Disable the default SSH port 22, use strong passwords or key authentication
+- Install Fail2ban to prevent brute force attacks
+- Do not arbitrarily set 777 permissions or give the www user execute permissions
+- Consider disabling SSH if VNC is available
 
-## 面板安全
+## Panel Security
 
-AcePanel 拥有 root 权限，需重点保护。
+AcePanel has root privileges and needs to be protected carefully.
 
-- 保持面板和应用更新
-- 修改默认端口，使用强密码
-- 启用安全入口，开启 HTTPS
-- 内部服务端口（Redis 6379、MySQL 3306、PostgreSQL 5432 等）不要对外开放
-- 高安全要求场景可在不使用时停止面板进程，不影响已部署的服务
+- Keep the panel and applications updated
+- Change the default port, use strong passwords
+- Enable security entrance, enable HTTPS
+- Do not expose internal service ports (Redis 6379, MySQL 3306, PostgreSQL 5432, etc.) to the public
+- For high security requirements, you can stop the panel process when not in use without affecting deployed services

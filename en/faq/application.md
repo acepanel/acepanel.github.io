@@ -1,73 +1,73 @@
-# 应用常见问题
+# Application FAQ
 
-## PHP 模块安装
+## PHP Module Installation
 
-「应用」->「运行环境」->「PHP」->「管理」->「模块」，安装需要的模块。
+**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Modules**, install the required modules.
 
-部分模块需要编译安装，耗时较长，可在「任务」页面查看进度。
+Some modules require compilation and take longer to install. You can check the progress on the **Tasks** page.
 
-## PHP 函数被禁用
+## PHP Functions Disabled
 
-默认禁用了部分高危函数。如需启用：
+Some high-risk functions are disabled by default. To enable them:
 
-「应用」->「运行环境」->「PHP」->「管理」->「配置」
+**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Configuration**
 
-找到 `disable_functions`，删除需要启用的函数名。
+Find `disable_functions` and remove the function names you want to enable.
 
-::: warning 安全提示
-`exec`、`shell_exec`、`system` 等函数有安全风险，启用前需确认必要性。
+::: warning Security Warning
+Functions like `exec`, `shell_exec`, `system` have security risks. Please confirm necessity before enabling.
 :::
 
-## Nginx 配置错误
+## Nginx Configuration Error
 
-修改配置后 Nginx 无法启动，查看错误：
+If Nginx fails to start after modifying configuration, check the error:
 
 ```shell
 nginx -t
 ```
 
-修复配置后重启：
+After fixing the configuration, restart:
 
 ```shell
 systemctl restart nginx
 ```
 
-## Supervisor 启动报错
+## Supervisor Startup Error
 
-### EACCES 权限错误
+### EACCES Permission Error
 
-项目目录权限问题，确保目录所有者为 www：
+Project directory permission issue, ensure the directory owner is www:
 
 ```shell
-chown -R www:www /opt/ace/projects/项目名
+chown -R www:www /opt/ace/projects/project-name
 ```
 
-### 找不到 node/npm
+### Cannot Find node/npm
 
-通过 nvm 安装的 Node.js 不在默认 PATH 中。
+Node.js installed via nvm is not in the default PATH.
 
-「应用」->「Supervisor 管理器」->「管理」->「配置」，添加：
+**Apps** -> **Supervisor Manager** -> **Manage** -> **Configuration**, add:
 
 ```ini
 environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/bin"
 ```
 
-版本号替换为实际安装的版本，可通过 `whereis node` 查看路径。
+Replace the version number with the actual installed version. You can check the path with `whereis node`.
 
-## 应用安装失败
+## Application Installation Failed
 
-1. 检查网络连接
-2. 查看「任务」页面的错误信息
-3. 尝试「应用」页面点击「更新缓存」后重试
+1. Check network connection
+2. View error messages on the **Tasks** page
+3. Try clicking **Update Cache** on the **Apps** page and retry
 
-## 应用无法卸载
+## Application Cannot Be Uninstalled
 
-有依赖关系的应用需要先卸载依赖它的应用。
+Applications with dependencies need to uninstall dependent applications first.
 
-如 phpMyAdmin 依赖 Nginx，需先卸载 phpMyAdmin。
+For example, phpMyAdmin depends on Nginx, so phpMyAdmin needs to be uninstalled first.
 
-## 多版本 PHP 共存
+## Multiple PHP Versions Coexistence
 
-可同时安装多个 PHP 版本，在创建网站时选择对应版本。
+Multiple PHP versions can be installed simultaneously. Select the corresponding version when creating a website.
 
-已有网站切换版本：「编辑」->「基本设置」->「PHP 版本」。
+To switch versions for existing websites: **Edit** -> **Basic Settings** -> **PHP Version**.

@@ -107,10 +107,10 @@ function nav(): DefaultTheme.NavItem[] {
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: '动态与公告',
+            text: 'News & Announcements',
             collapsed: true,
             items: [
-                { text: "AcePanel 3.0 正式发布", link: '/news/acepanel-3-release' },
+                { text: "AcePanel 3.0 Official Release", link: '/news/acepanel-3-release' },
             ]
         },
         {
@@ -126,15 +126,15 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
             link: '/upgrade'
         },
         {
-            text: '第一个网站',
+            text: 'First Website',
             link: '/first-website'
         },
         {
-            text: '第一个容器',
+            text: 'First Container',
             link: '/first-container'
         },
         {
-            text: '第一个项目',
+            text: 'First Project',
             link: '/first-project'
         },
         {
@@ -151,105 +151,105 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: "应用",
+            text: "Apps",
             collapsed: true,
             items: [
-                { text: "概述", link: '/app' },
-                { text: "原生应用", link: '/app/native' },
-                { text: "运行环境", link: '/app/environment' },
-                { text: "容器模版", link: '/app/template' }
+                { text: "Overview", link: '/app' },
+                { text: "Native Apps", link: '/app/native' },
+                { text: "Runtimes", link: '/app/environment' },
+                { text: "Container Templates", link: '/app/template' }
             ]
         },
         {
-            text: "容器",
+            text: "Containers",
             collapsed: true,
             items: [
-                { text: "概述", link: '/container' },
-                { text: "容器", link: '/container/container' },
-                { text: "编排", link: '/container/compose' },
-                { text: "镜像", link: '/container/image' },
-                { text: "网络", link: '/container/network' },
-                { text: "卷", link: '/container/volume' }
+                { text: "Overview", link: '/container' },
+                { text: "Containers", link: '/container/container' },
+                { text: "Compose", link: '/container/compose' },
+                { text: "Images", link: '/container/image' },
+                { text: "Networks", link: '/container/network' },
+                { text: "Volumes", link: '/container/volume' }
             ]
         },
         {
-            text: "网站",
+            text: "Websites",
             collapsed: true,
             items: [
-                { text: "概述", link: '/website' },
-                { text: "反向代理", link: '/website/proxy' },
+                { text: "Overview", link: '/website' },
+                { text: "Reverse Proxy", link: '/website/proxy' },
                 { text: "PHP", link: '/website/php' },
-                { text: "纯静态", link: '/website/static' }
+                { text: "Static", link: '/website/static' }
             ]
         }, {
-            text: "项目",
+            text: "Projects",
             collapsed: true,
             items: [
-                { text: "概述", link: '/project' },
+                { text: "Overview", link: '/project' },
                 { text: "Go", link: '/project/go' },
                 { text: "Java", link: '/project/java' },
                 { text: "Node.js", link: '/project/nodejs' },
                 { text: "PHP", link: '/project/php' },
                 { text: "Python", link: '/project/python' },
-                { text: "通用", link: '/project/general' }
+                { text: "General", link: '/project/general' }
             ]
         }, {
-            text: "数据库",
+            text: "Databases",
             collapsed: true,
             items: [
-                { text: "概述", link: '/database' },
-                { text: "数据库", link: '/database/database' },
-                { text: "用户", link: '/database/user' },
-                { text: "服务器", link: '/database/server' }
+                { text: "Overview", link: '/database' },
+                { text: "Databases", link: '/database/database' },
+                { text: "Users", link: '/database/user' },
+                { text: "Servers", link: '/database/server' }
             ]
         },{
-            text: "证书",
+            text: "Certificates",
             collapsed: true,
             items: [
-                { text: "概述", link: '/cert' },
-                { text: "证书", link: '/cert/cert' },
-                { text: "账号", link: '/cert/account' },
+                { text: "Overview", link: '/cert' },
+                { text: "Certificates", link: '/cert/cert' },
+                { text: "Accounts", link: '/cert/account' },
                 { text: "DNS", link: '/cert/dns' }
             ]
         }, {
-            text: "监控",
+            text: "Monitor",
             link: '/monitor'
         }, {
-            text: "文件",
+            text: "Files",
             link: '/file'
         }, {
-            text: "备份",
+            text: "Backup",
             link: '/backup'
         }, {
-            text: "终端",
+            text: "Terminal",
             link: '/ssh'
         }, {
-            text: "任务",
+            text: "Tasks",
             collapsed: true,
             items: [
-                { text: "计划任务", link: '/task/schedule' },
-                { text: "面板任务", link: '/task/panel' }
+                { text: "Scheduled Tasks", link: '/task/schedule' },
+                { text: "Panel Tasks", link: '/task/panel' }
             ]
         }, {
-            text: "工具箱",
+            text: "Toolbox",
             collapsed: true,
             items: [
-                { text: "概述", link: '/toolbox' },
-                { text: "进程", link: '/toolbox/process' },
-                { text: "系统", link: '/toolbox/system' },
+                { text: "Overview", link: '/toolbox' },
+                { text: "Processes", link: '/toolbox/process' },
+                { text: "System", link: '/toolbox/system' },
                 { text: "SSH", link: '/toolbox/ssh' },
-                { text: "磁盘", link: '/toolbox/disk' },
-                { text: "日志清理", link: '/toolbox/log' },
-                { text: "Web 钩子", link: '/toolbox/webhook' },
-                { text: "跑分", link: '/toolbox/benchmark' }
+                { text: "Disk", link: '/toolbox/disk' },
+                { text: "Log Cleanup", link: '/toolbox/log' },
+                { text: "Webhooks", link: '/toolbox/webhook' },
+                { text: "Benchmark", link: '/toolbox/benchmark' }
             ]
         }, {
-            text: "设置",
+            text: "Settings",
             collapsed: true,
             items: [
-                { text: "基本设置", link: '/setting/basic' },
-                { text: "安全设置", link: '/setting/safe' },
-                { text: "用户设置", link: '/setting/user' }
+                { text: "Basic Settings", link: '/setting/basic' },
+                { text: "Security Settings", link: '/setting/safe' },
+                { text: "User Management", link: '/setting/user' }
             ]
         },
         {
@@ -257,7 +257,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
             link: '/api'
         },
         {
-            text: 'Security recommendations',
+            text: 'Security Recommendations',
             link: '/security'
         }
     ]

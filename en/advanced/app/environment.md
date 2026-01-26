@@ -1,97 +1,97 @@
-# 运行环境
+# Runtime Environment
 
-运行环境用于安装各类编程语言的运行时，为网站和项目提供执行环境。
+Runtime environments are used to install runtimes for various programming languages, providing execution environments for websites and projects.
 
-## 支持的语言
+## Supported Languages
 
-AcePanel 支持以下编程语言的运行环境：
+AcePanel supports runtime environments for the following programming languages:
 
-| 语言 | 可用版本 | 说明 |
-|------|----------|------|
-| Go | 1.20 - 1.25 | 适合构建高性能后端服务 |
-| Java | JDK 8, 11, 17, 21, 25 | 使用 Amazon Corretto 发行版 |
-| Node.js | 20, 22, 24 | 适合前端构建和 Node 应用 |
-| PHP | 7.4 - 8.5 | 适合 Web 开发 |
-| Python | 3.10 - 3.14 | 适合脚本和 Web 应用 |
+| Language | Available Versions | Description |
+|----------|-------------------|-------------|
+| Go | 1.20 - 1.25 | Suitable for building high-performance backend services |
+| Java | JDK 8, 11, 17, 21, 25 | Uses Amazon Corretto distribution |
+| Node.js | 20, 22, 24 | Suitable for frontend builds and Node applications |
+| PHP | 7.4 - 8.5 | Suitable for Web development |
+| Python | 3.10 - 3.14 | Suitable for scripts and Web applications |
 
-## 运行环境列表
+## Runtime Environment List
 
-进入 **应用** 页面，点击 **运行环境** 标签查看可用的运行环境：
+Go to the **Applications** page, click the **Runtime Environment** tab to view available runtime environments:
 
-![运行环境](/images/app/app-runtime.png)
+![Runtime Environment](/images/app/app-runtime.png)
 
-点击顶部的语言分类可以筛选特定语言的版本：
+Click the language category at the top to filter versions for a specific language:
 
-![PHP 运行环境](/images/app/app-runtime-php.png)
+![PHP Runtime Environment](/images/app/app-runtime-php.png)
 
-## 安装运行环境
+## Install Runtime Environment
 
-1. 进入 **应用** 页面
-2. 点击 **运行环境** 标签
-3. 选择需要的语言分类（或查看全部）
-4. 点击对应版本的 **安装** 按钮
+1. Go to the **Applications** page
+2. Click the **Runtime Environment** tab
+3. Select the desired language category (or view all)
+4. Click the **Install** button for the corresponding version
 
-::: tip 版本选择建议
-- 生产环境建议使用 LTS（长期支持）版本
-- 标注"已停止维护"的版本不建议用于新项目
-- 可以同时安装多个版本，在项目中指定使用
+::: tip Version Selection Recommendations
+- Production environments are recommended to use LTS (Long Term Support) versions
+- Versions marked "End of Life" are not recommended for new projects
+- Multiple versions can be installed simultaneously and specified for use in projects
 :::
 
-## 管理运行环境
+## Manage Runtime Environment
 
-已安装的运行环境会显示 **管理** 按钮，点击进入管理页面：
+Installed runtime environments will display a **Manage** button. Click to enter the management page:
 
-![运行环境管理](/images/app/app-runtime-manage.png)
+![Runtime Environment Management](/images/app/app-runtime-manage.png)
 
-### 运行状态
+### Running Status
 
-显示运行环境的当前状态，提供启动、停止、重启、重载等操作。
+Displays the current status of the runtime environment, providing operations such as start, stop, restart, and reload.
 
-### 模块管理（PHP）
+### Module Management (PHP)
 
-PHP 运行环境提供模块管理功能，可以安装或卸载各种 PHP 模块：
+PHP runtime environment provides module management functionality, allowing installation or uninstallation of various PHP modules:
 
-![PHP 模块管理](/images/app/app-runtime-modules.png)
+![PHP Module Management](/images/app/app-runtime-modules.png)
 
-常用模块包括：
+Common modules include:
 
-- **OPcache**：PHP 字节码缓存，提升性能
-- **Redis**：连接 Redis 数据库
-- **ImageMagick**：图像处理
-- **Swoole/Swow**：高性能异步框架
-- **ionCube**：PHP 代码加密解密
+- **OPcache**: PHP bytecode cache, improves performance
+- **Redis**: Connect to Redis database
+- **ImageMagick**: Image processing
+- **Swoole/Swow**: High-performance asynchronous framework
+- **ionCube**: PHP code encryption and decryption
 
-### 配置文件
+### Configuration Files
 
-可以编辑 PHP 的主配置文件（php.ini）和 FPM 配置文件。
+You can edit PHP's main configuration file (php.ini) and FPM configuration file.
 
-### 设置为 CLI 默认版本
+### Set as CLI Default Version
 
-点击 **设置为 CLI 默认版本** 按钮，可以将当前版本设置为命令行默认使用的 PHP 版本。
+Click the **Set as CLI Default Version** button to set the current version as the default PHP version used by the command line.
 
-## 多版本共存
+## Multiple Version Coexistence
 
-AcePanel 支持同一语言的多个版本共存。例如，你可以同时安装 PHP 7.4 和 PHP 8.3，不同的网站可以使用不同的 PHP 版本。
+AcePanel supports multiple versions of the same language coexisting. For example, you can install both PHP 7.4 and PHP 8.3 simultaneously, and different websites can use different PHP versions.
 
-安装路径规则：
+Installation path rules:
 
-- **Go**：`/opt/ace/server/go/版本号`
-- **Java**：`/opt/ace/server/java/版本号`
-- **Node.js**：`/opt/ace/server/nodejs/版本号`
-- **PHP**：`/opt/ace/server/php/版本号`
-- **Python**：`/opt/ace/server/python/版本号`
+- **Go**: `/opt/ace/server/go/version`
+- **Java**: `/opt/ace/server/java/version`
+- **Node.js**: `/opt/ace/server/nodejs/version`
+- **PHP**: `/opt/ace/server/php/version`
+- **Python**: `/opt/ace/server/python/version`
 
-## 在项目中使用
+## Using in Projects
 
-创建项目时，可以在项目设置中选择使用的运行环境版本。详见 [项目管理](../project) 文档。
+When creating a project, you can select the runtime environment version to use in the project settings. See [Project Management](../project) documentation for details.
 
-## 更新运行环境
+## Update Runtime Environment
 
-当有新版本可用时，列表中会显示最新版本号。你可以：
+When a new version is available, the latest version number will be displayed in the list. You can:
 
-1. 卸载旧版本，安装新版本
-2. 保留旧版本，同时安装新版本（推荐）
+1. Uninstall the old version and install the new version
+2. Keep the old version and install the new version simultaneously (recommended)
 
-::: warning 注意
-更新运行环境版本可能导致依赖该版本的项目出现兼容性问题，请在测试环境验证后再更新生产环境。
+::: warning Note
+Updating runtime environment versions may cause compatibility issues with projects that depend on that version. Please verify in a test environment before updating the production environment.
 :::

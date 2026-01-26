@@ -1,56 +1,56 @@
-# 命令行工具
+# Command Line Tool
 
-AcePanel 提供命令行工具 `acepanel`，用于在无法访问 Web 界面时进行面板管理。
+AcePanel provides the command line tool `acepanel` for panel management when the Web interface is inaccessible.
 
-## 服务管理
+## Service Management
 
-::: warning 注意
-后台任务运行时请勿停止或重启面板，可能导致任务中断或数据丢失。
+::: warning Note
+Do not stop or restart the panel while background tasks are running, as this may cause task interruption or data loss.
 :::
 
 ```shell
-acepanel start    # 启动
-acepanel stop     # 停止
-acepanel restart  # 重启
-acepanel status   # 查看状态
+acepanel start    # Start
+acepanel stop     # Stop
+acepanel restart  # Restart
+acepanel status   # View status
 ```
 
-## 用户管理
+## User Management
 
 ```shell
-acepanel user list                              # 列出所有用户
-acepanel user username <旧用户名> <新用户名>      # 修改用户名
-acepanel user password <用户名> <新密码>          # 修改密码
-acepanel user 2fa <用户名>                       # 开关两步验证
+acepanel user list                              # List all users
+acepanel user username <old_username> <new_username>      # Change username
+acepanel user password <username> <new_password>          # Change password
+acepanel user 2fa <username>                       # Toggle two-factor authentication
 ```
 
-## 安全设置
+## Security Settings
 
 ```shell
-acepanel https on|off       # 开关 HTTPS
-acepanel https generate     # 生成证书（自签名或 Let's Encrypt）
-acepanel entrance on|off    # 开关安全入口
-acepanel port <端口号>       # 修改监听端口
-acepanel bind-domain off    # 解除域名绑定
-acepanel bind-ip off        # 解除 IP 绑定
-acepanel bind-ua off        # 解除 UA 绑定
+acepanel https on|off       # Toggle HTTPS
+acepanel https generate     # Generate certificate (self-signed or Let's Encrypt)
+acepanel entrance on|off    # Toggle security entrance
+acepanel port <port_number>       # Change listening port
+acepanel bind-domain off    # Unbind domain
+acepanel bind-ip off        # Unbind IP
+acepanel bind-ua off        # Unbind UA
 ```
 
-## 维护命令
+## Maintenance Commands
 
 ```shell
-acepanel update      # 更新面板
-acepanel fix         # 修复更新问题
-acepanel sync        # 同步缓存数据
-acepanel sync-time   # 同步服务器时间
-acepanel clear-task  # 清空任务队列
-acepanel info        # 查看面板信息并重置密码
-acepanel help        # 帮助
+acepanel update      # Update panel
+acepanel fix         # Fix update issues
+acepanel sync        # Sync cache data
+acepanel sync-time   # Sync server time
+acepanel clear-task  # Clear task queue
+acepanel info        # View panel info and reset password
+acepanel help        # Help
 ```
 
-## 示例
+## Example
 
-修改用户 `admin` 的密码为 `newpassword`：
+Change the password of user `admin` to `newpassword`:
 
 ```shell
 acepanel user password admin newpassword

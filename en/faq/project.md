@@ -1,66 +1,66 @@
-# 项目常见问题
+# Project FAQ
 
-## 项目启动失败
+## Project Startup Failed
 
-点击「日志」查看错误信息。常见原因：
+Click **Logs** to view error messages. Common causes:
 
-### 权限问题
+### Permission Issues
 
-项目目录应在 `/opt/ace/projects/` 下，所有者为 www：
-
-```shell
-chown -R www:www /opt/ace/projects/项目名
-```
-
-如果部署在 `/root` 下，需使用 root 用户运行（不推荐）。
-
-### 找不到命令
-
-如 `node: No such file or directory`，说明环境变量未配置。
-
-解决方法：
-1. 在「编辑」->「依赖」中关联运行环境
-2. 或在「运行设置」->「环境变量」中添加 PATH
-
-### 端口被占用
-
-修改应用监听端口，或停止占用端口的进程：
+Project directory should be under `/opt/ace/projects/`, owned by www:
 
 ```shell
-lsof -i:3000  # 查看占用端口的进程
+chown -R www:www /opt/ace/projects/project-name
 ```
 
-## 配置环境变量
+If deployed under `/root`, you need to run as root user (not recommended).
 
-「编辑」->「运行设置」->「环境变量」，点击「添加」。
+### Command Not Found
 
-常用配置：
+Such as `node: No such file or directory`, indicates environment variables are not configured.
+
+Solutions:
+1. Associate runtime environment in **Edit** -> **Dependencies**
+2. Or add PATH in **Runtime Settings** -> **Environment Variables**
+
+### Port Already in Use
+
+Modify the application listening port, or stop the process occupying the port:
+
+```shell
+lsof -i:3000  # View process occupying the port
+```
+
+## Configure Environment Variables
+
+**Edit** -> **Runtime Settings** -> **Environment Variables**, click **Add**.
+
+Common configurations:
 - `NODE_ENV=production`
 - `PORT=3000`
 
-## 预启动命令
+## Pre-start Command
 
-在项目启动前执行，如安装依赖：
+Executed before project startup, such as installing dependencies:
 
-- Node.js：`npm install` 或 `yarn`
-- Python：`pip install -r requirements.txt`
-- Go：`go build`
+- Node.js: `npm install` or `yarn`
+- Python: `pip install -r requirements.txt`
+- Go: `go build`
 
-## 查看项目日志
+## View Project Logs
 
-1. 面板：项目列表点击「日志」
-2. 命令行：`journalctl -u ace-project-项目名 -f`
+1. Panel: Click **Logs** in the project list
+2. Command line: `journalctl -u ace-project-project-name -f`
 
-## 项目自动重启
+## Project Auto Restart
 
-在「运行设置」中配置：
+Configure in **Runtime Settings**:
 
-- **重启策略**：失败时重启 / 总是重启 / 不重启
-- **重启间隔**：两次重启之间的等待时间
-- **最大重启次数**：防止无限重启
+- **Restart Policy**: Restart on failure / Always restart / Never restart
+- **Restart Interval**: Wait time between restarts
+- **Max Restart Count**: Prevent infinite restarts
 
-## 反向代理配置
+## Reverse Proxy Configuration
 
-创建项目时开启「反向代理」，会自动创建一个反向代理网站。
+Enable **Reverse Proxy** when creating a project, and a reverse proxy website will be automatically created.
 
-手动配置：创建反向代理网站，上游地址填 `http://127.0.0.1:项目端口`。
+Manual configuration: Create a reverse proxy website with upstream address `http://127.0.0.1:project-port`.
