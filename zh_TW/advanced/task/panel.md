@@ -1,89 +1,89 @@
-# Panel Tasks
+# 面板任務
 
-Panel tasks display background tasks executed by AcePanel, such as application installation, environment installation, etc.
+面板任務顯示 AcePanel 執行的後台任務，如應用安裝、環境安裝等。
 
-## Task List
+## 任務列表
 
-Go to **Tasks** > **Panel Tasks** tab to view the panel task list.
+進入 **任務** > **面板任務** 標籤頁查看面板任務列表。
 
-![Panel Tasks](/images/task/task-panel.png)
+![面板任務](/images/task/task-panel.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Task Name**: Task description
-- **Status**: Running/Completed/Failed
-- **Created At**: Task start time
-- **Completed At**: Task end time
-- **Actions**: View logs, delete
+- **任務名稱**：任務描述
+- **狀態**：運行中/已完成/失敗
+- **建立時間**：任務開始時間
+- **完成時間**：任務結束時間
+- **操作**：查看日誌、刪除
 
-## Task Status
+## 任務狀態
 
-| Status    | Description                |
-| --------- | -------------------------- |
-| Running   | Task is being executed     |
-| Completed | Task executed successfully |
-| Failed    | Task execution failed      |
+| 狀態  | 說明     |
+| --- | ------ |
+| 運行中 | 任務正在執行 |
+| 已完成 | 任務執行成功 |
+| 失敗  | 任務執行失敗 |
 
-## Common Task Types
+## 常見任務類型
 
-### Application Installation
+### 應用安裝
 
-Installation tasks are created when installing native applications:
+安裝原生應用時會建立安裝任務：
 
-- Install application Nginx
-- Install application MySQL
-- Install application Docker
+- 安裝應用 Nginx
+- 安裝應用 MySQL
+- 安裝應用 Docker
 
-### Application Uninstallation
+### 應用卸載
 
-Uninstallation tasks are created when uninstalling applications:
+卸載應用時會建立卸載任務：
 
-- Uninstall application MariaDB
-- Uninstall application Redis
+- 卸載應用 MariaDB
+- 卸載應用 Redis
 
-### Environment Installation
+### 環境安裝
 
-Installation tasks are created when installing runtime environments:
+安裝運行環境時會建立安裝任務：
 
-- Install environment PHP 8.4
-- Install environment Node.js 20
-- Install environment Go 1.24
+- 安裝環境 PHP 8.4
+- 安裝環境 Node.js 20
+- 安裝環境 Go 1.24
 
-## View Logs
+## 查看日誌
 
-Click the **Logs** button to view detailed execution logs of the task, including:
+點擊 **日誌** 按鈕查看任務的詳細執行日誌，包括：
 
-- Command output
-- Error messages
+- 命令輸出
+- 錯誤資訊
 
-Logs are very useful for troubleshooting task failure causes.
+日誌對於排查任務失敗原因非常有用。
 
-## Delete Task
+## 刪除任務
 
-Completed or failed tasks can be deleted. Running tasks cannot be deleted.
+已完成或失敗的任務可以刪除。 運行中的任務無法刪除。
 
-:::tip Tip
-Deleting a task only removes the record from the list, it does not affect installed applications or environments.
+:::tip 提示
+刪除任務只是從列表中移除記錄，不會影響已安裝的應用或環境。
 :::
 
-## Handling Task Failures
+## 任務失敗處理
 
-If a task fails:
+如果任務失敗：
 
-1. Click **Logs** to view error messages
-2. Troubleshoot the problem based on error messages
-3. Re-execute the operation after resolving the issue
+1. 點擊 **日誌** 查看錯誤資訊
+2. 根據錯誤資訊排查問題
+3. 解決問題後重新執行操作
 
-Common failure causes:
+常見失敗原因：
 
-- Network issues causing download failures
-- Insufficient disk space
-- Missing dependencies
-- Port already in use
+- 網路問題導致下載失敗
+- 磁碟空間不足
+- 依賴套件缺失
+- 端口被佔用
 
-## Notes
+## 注意事項
 
-1. Installation tasks may take a long time, please be patient
-2. You can close the browser while tasks are executing
-3. If a task is unresponsive for a long time, you can refresh the page to check the status
-4. It is recommended to regularly clean up completed task records
+1. 安裝任務可能需要較長時間，請耐心等待
+2. 任務執行期間可以關閉瀏覽器
+3. 如果任務長時間無回應，可以重新整理頁面查看狀態
+4. 建議定期清理已完成的任務記錄

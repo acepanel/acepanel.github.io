@@ -1,10 +1,10 @@
-# First Project: Deploy Node.js Application
+# 第一個專案：部署 Node.js 應用
 
-This article uses a simple Node.js HTTP service as an example to demonstrate how to deploy and manage projects through AcePanel.
+本文以一個簡單的 Node.js HTTP 服務為例，演示如何通過 AcePanel 部署和管理專案。
 
-## Prepare Code
+## 準備程式碼
 
-First, prepare a simple Node.js application. Create `app.js` in the project directory:
+先準備一個簡單的 Node.js 應用。 在專案目錄建立 `app.js`：
 
 ```javascript
 const http = require('http');
@@ -19,58 +19,58 @@ server.listen(3000, () => {
 });
 ```
 
-## Create Project
+## 建立專案
 
-Go to the "Projects" page, click "Create Project".
+進入「專案」頁面，點擊「建立專案」。
 
-![Create Project](/images/quickstart/project-create.png)
+![建立專案](/images/quickstart/project-create.png)
 
-Fill in the configuration:
+填寫配置：
 
-- **Project Name**: Project identifier, e.g., `hello-node`
-- **Project Directory**: Leave empty to use default path
-- **Run User**: Usually select `www`
-- **Start Command**: `node app.js`
-- **Reverse Proxy**: Enable auto-create reverse proxy if you need to access via domain
+- **專案名**：專案標識，如 `hello-node`
+- **專案目錄**：留空使用預設路徑
+- **執行使用者**：一般選 `www`
+- **啟動命令**：`node app.js`
+- **反向代理**：如需通過網域存取，可開啟自動建立反向代理
 
-## Upload Code
+## 上傳程式碼
 
-After the project is created, go to the "Files" page, navigate to the project directory (e.g., `/opt/ace/projects/hello-node`), and upload the `app.js` file.
+專案建立後，進入「檔案」頁面，導航到專案目錄（如 `/opt/ace/projects/hello-node`），上傳 `app.js` 檔案。
 
-You can also use git clone in the terminal to pull the code.
+也可以通過終端機用 git clone 拉取程式碼。
 
-## Configure Project
+## 配置專案
 
-Click "Edit" in the project list to adjust more settings:
+在專案列表點擊「編輯」，可以調整更多設定：
 
-![Project Edit](/images/quickstart/project-edit-run.png)
+![專案編輯](/images/quickstart/project-edit-run.png)
 
-**Run Settings**:
+**執行設定**：
 
-- **Pre-start Command**: Execute before starting, e.g., `npm install`
-- **Restart Policy**: How to handle abnormal process exits
-- **Environment Variables**: Set `NODE_ENV=production`, etc.
+- **預啟動命令**：啟動前執行，如 `npm install`
+- **重啟策略**：程序異常退出時的處理方式
+- **環境變數**：設定 `NODE_ENV=production` 等
 
-**Dependencies**: You can associate Node.js runtime environment version.
+**依賴**：可以關聯 Node.js 執行環境版本。
 
-## Start Project
+## 啟動專案
 
-Return to the project list, click the "Start" button.
+回到專案列表，點擊「啟動」按鈕。
 
-![Project List](/images/quickstart/project-list.png)
+![專案列表](/images/quickstart/project-list.png)
 
-After starting, you can click "Logs" to view output and confirm the service is running normally.
+啟動後可點擊「日誌」查看輸出，確認服務正常執行。
 
-## Access Service
+## 存取服務
 
-If reverse proxy is enabled, access via the configured domain.
+如果開啟了反向代理，通過配置的網域存取即可。
 
-If not, you can access directly via `http://ServerIP:3000` (need to allow port 3000 in the firewall).
+如果沒有，可以通過 `http://伺服器IP:3000` 直接存取（需在防火牆放行 3000 連接埠）。
 
-:::tip Production Environment
-Production environment recommendations:
+:::tip 生產環境
+生產環境建議：
 
-- Enable "Auto Start" to automatically recover after server restart
-- Configure reverse proxy to forward requests through Nginx
-- Set memory limits in "Resource Limits" to prevent memory leaks
+- 開啟「自啟動」，伺服器重啟後自動恢復
+- 配置反向代理，通過 Nginx 轉發請求
+- 在「資源限制」中設定記憶體上限，防止記憶體洩漏
   :::

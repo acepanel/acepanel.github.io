@@ -1,98 +1,98 @@
-# Panel FAQ
+# 面板常見問題
 
-## Panel Won't Open
+## 面板打不開
 
-SSH into the server and check panel status:
+SSH 登入伺服器，檢查面板狀態：
 
 ```shell
 acepanel status
 ```
 
-If the service has stopped, start it:
+如果服務已停止，啟動它：
 
 ```shell
 acepanel start
 ```
 
-If it cannot start, try to repair:
+如果無法啟動，嘗試修復：
 
 ```shell
 acepanel fix && acepanel update
 ```
 
-If the service is running but still inaccessible, check the firewall:
+服務正常但仍無法存取，檢查防火牆：
 
 ```shell
-# Check if port is listening
-curl -I http://127.0.0.1:panel-port/
+# 檢查端口是否監聽
+curl -I http://127.0.0.1:面板端口/
 
-# Allow port (firewalld)
-firewall-cmd --add-port=panel-port/tcp --permanent
+# 放行端口（firewalld）
+firewall-cmd --add-port=面板端口/tcp --permanent
 firewall-cmd --reload
 ```
 
-For cloud servers, also check security group settings.
+雲端伺服器還需檢查安全組設定。
 
-View panel logs to troubleshoot:
+查看面板日誌排查問題：
 
 ```shell
 journalctl -u acepanel -n 100
 ```
 
-## Forgot Password/Username/Address
+## 忘記密碼/使用者名稱/地址
 
 ```shell
 acepanel info
 ```
 
-Outputs panel address, username, and generates a new password.
+輸出面板地址、使用者名稱，並產生新密碼。
 
-## Change Panel Port
+## 修改面板端口
 
 ```shell
 acepanel port 12345
 ```
 
-After modification, you need to allow the new port in the server security group/firewall.
+修改後需在伺服器安全組/防火牆放行新端口。
 
-## Disable Security Entry
+## 關閉安全入口
 
-If you forgot the security entry path:
+如果忘記安全入口路徑：
 
 ```shell
 acepanel entrance off
 ```
 
-## Disable Domain/IP Binding
+## 關閉網域/IP 綁定
 
-If you cannot access the panel after binding:
+綁定後無法存取面板：
 
 ```shell
 acepanel bind-domain off
 acepanel bind-ip off
 ```
 
-## Disable Two-Factor Authentication
+## 關閉兩步驗證
 
 ```shell
 acepanel user 2fa admin
 ```
 
-## Certificate Error
+## 憑證錯誤
 
-The panel uses a self-signed certificate by default, and the browser will show an insecure warning. Click "Continue" to proceed.
+面板預設使用自簽名憑證，瀏覽器會提示不安全， 點擊「繼續存取」即可。
 
-To apply for a proper certificate:
+申請正式憑證：
 
 ```shell
 acepanel https generate
 ```
 
-You need to ensure the server IP port 80 is directly accessible.
+需要確保伺服器 IP 80 端口可直接存取。
 
-## acepanel Command Permission Denied
+## acepanel 命令無權限
 
-Must be executed as root user, or use sudo:
+必須以 root 使用者執行，或使用 sudo：
 
 ```shell
 sudo acepanel status

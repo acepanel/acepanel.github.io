@@ -1,123 +1,123 @@
-# PHP Website
+# PHP 網站
 
-PHP websites are used to run PHP programs, such as WordPress, Laravel, ThinkPHP, etc.
+PHP 網站用於運行 PHP 程式，如 WordPress、Laravel、ThinkPHP 等。
 
-## Prerequisites
+## 前置要求
 
-Before creating a PHP website, you need to install:
+建立 PHP 網站前，需要先安裝：
 
-1. **Web Server**: Nginx, OpenResty, or Apache
-2. **PHP Runtime Environment**: Install the required PHP version in **Applications** > **Runtime Environments**
+1. **Web 伺服器**：Nginx、OpenResty 或 Apache
+2. **PHP 運行環境**：在 **應用** > **運行環境** 中安裝所需的 PHP 版本
 
-## Create PHP Website
+## 建立 PHP 網站
 
-1. Go to the **Website** page
-2. Click the **PHP** tab
-3. Click **Create Website**
+1. 進入 **網站** 頁面
+2. 點擊 **PHP** 標籤
+3. 點擊 **建立網站**
 
-### Configuration Items
+### 配置項
 
-- **Name**: Website identifier, e.g., `wordpress`
-- **Domain**: Bound domain, e.g., `blog.example.com`
-- **Port**: Listening port, default 80
-- **PHP Version**: Select an installed PHP version
-- **Website Directory**: Path where website files are stored
-- **Remarks**: Optional remarks
+- **名稱**：網站標識，如 `wordpress`
+- **域名**：綁定的域名，如 `blog.example.com`
+- **連接埠**：監聽連接埠，預設 80
+- **PHP 版本**：選擇已安裝的 PHP 版本
+- **網站目錄**：網站檔案存放路徑
+- **備註**：可選備註
 
-## Edit PHP Website
+## 編輯 PHP 網站
 
-Click the **Edit** button in the website list to enter the edit page.
+點擊網站列表中的 **編輯** 按鈕進入編輯頁面。
 
-### Domain and Listen
+### 域名和監聽
 
-Configure the website's domain and listening port.
+配置網站的域名和監聽連接埠。
 
-![Domain and Listen Configuration](/images/website/website-php-edit.png)
+![域名和監聽配置](/images/website/website-php-edit.png)
 
-### Basic Settings
+### 基本設置
 
-Configure basic information such as website directory and PHP version.
+配置網站目錄、PHP 版本等基本資訊。
 
-![Basic Settings](/images/website/website-php-basic.png)
+![基本設置](/images/website/website-php-basic.png)
 
-- **Website Directory**: Absolute path where website files are stored
-- **Run Directory**: Frameworks like Laravel need to set the run directory
-- **Default Document**: Default homepage file, e.g., `index.php`, `index.html`
-- **PHP Version**: Select an installed PHP version
-- **Anti-Cross-Site Attack**: When enabled, restricts PHP to only access files within the website directory
+- **網站目錄**：網站檔案存放的絕對路徑
+- **運行目錄**：Laravel 等框架需要設置運行目錄
+- **預設文件**：預設首頁檔案，如 `index.php`、`index.html`
+- **PHP 版本**：選擇已安裝的 PHP 版本
+- **防跨站攻擊**：啟用後限制 PHP 只能存取網站目錄內的檔案
 
-### Rewrite Configuration
+### 重寫配置
 
-Rewrite is used for URL rewriting, supporting preset rules for common PHP programs.
+重寫用於 URL 重寫，支援常見 PHP 程式的預設規則。
 
-![Rewrite Configuration](/images/website/website-php-rewrite.png)
+![重寫配置](/images/website/website-php-rewrite.png)
 
-Click the preset dropdown to select rewrite rules for common programs:
+點擊預設下拉框可以選擇常見程式的重寫規則：
 
-![Rewrite Presets](/images/website/website-php-rewrite-preset.png)
+![重寫預設](/images/website/website-php-rewrite-preset.png)
 
-Supported presets include: WordPress, Laravel, ThinkPHP, Discuz, Drupal, ECShop, and other common PHP programs.
+支援的預設包括：WordPress、Laravel、ThinkPHP、Discuz、Drupal、ECShop 等常見 PHP 程式。
 
-## Website Directory Structure
+## 網站目錄結構
 
-After creating a website, the default directory structure:
+建立網站後，預設目錄結構：
 
 ```
-/opt/ace/sites/website-name/public
-├── index.php          # Entry file
-├── .user.ini          # PHP configuration
+/opt/ace/sites/網站名稱/public
+├── index.php          # 入口檔案
+├── .user.ini          # PHP 配置
 └── ...
 ```
 
-## PHP Version Switching
+## PHP 版本切換
 
-You can switch PHP versions in the **Basic Settings** of the website edit page:
+在網站編輯頁面的 **基本設置** 中可以切換 PHP 版本：
 
-1. Enter the website edit page
-2. Click the **Basic Settings** tab
-3. Select a new version in the **PHP Version** dropdown
-4. Click **Save**
+1. 進入網站編輯頁面
+2. 點擊 **基本設置** 標籤
+3. 在 **PHP 版本** 下拉框中選擇新版本
+4. 點擊 **儲存**
 
-:::warning Note
-Switching PHP versions may cause program incompatibility. Please verify in a test environment first.
+:::warning 注意
+切換 PHP 版本可能導致程式不相容， 請先在測試環境驗證。
 :::
 
-## PHP Configuration
+## PHP 配置
 
-### php.ini Configuration
+### php.ini 配置
 
-You can modify php.ini configuration in the **Applications** > **Native Applications** > **PHP** management page.
+在 **應用** > **原生應用** > **PHP** 管理頁面可以修改 php.ini 配置。
 
-Common configuration items:
+常用配置項：
 
 ```ini
-upload_max_filesize = 50M    # Maximum upload file size
-post_max_size = 50M          # Maximum POST data size
-max_execution_time = 300     # Maximum execution time
-memory_limit = 256M          # Memory limit
+upload_max_filesize = 50M    # 最大上傳檔案大小
+post_max_size = 50M          # POST 資料最大大小
+max_execution_time = 300     # 最大執行時間
+memory_limit = 256M          # 記憶體限制
 ```
 
-### Disabled Functions
+### 禁用函數
 
-PHP disables some dangerous functions by default, such as `exec`, `system`, `passthru`, etc. To enable them, modify the `disable_functions` configuration in php.ini.
+PHP 預設禁用了一些危險函數，如 `exec`、`system`、`passthru` 等。 如需啟用，請在 php.ini 中修改 `disable_functions` 配置。
 
-:::danger Warning
-Enabling dangerous functions may pose security risks. Please proceed with caution.
+:::danger 警告
+啟用危險函數可能帶來安全風險， 請謹慎操作。
 :::
 
-## FAQ
+## 常見問題
 
 ### 502 Bad Gateway
 
-- Check if PHP-FPM is running normally
-- Check if the PHP version is correctly configured
+- 檢查 PHP-FPM 是否正常運行
+- 檢查 PHP 版本是否正確配置
 
-### File Upload Failed
+### 檔案上傳失敗
 
-- Check `upload_max_filesize` and `post_max_size` configuration
-- Check directory permissions
+- 檢查 `upload_max_filesize` 和 `post_max_size` 配置
+- 檢查目錄權限
 
-### Blank Page
+### 頁面空白
 
-- Enable PHP error display
-- Check PHP error logs
+- 開啟 PHP 錯誤顯示
+- 查看 PHP 錯誤日誌

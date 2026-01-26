@@ -1,83 +1,83 @@
-# Static Website
+# 純靜態網站
 
-Static websites are used to host HTML, CSS, JavaScript, and other static files, suitable for deploying frontend project build outputs, documentation sites, etc.
+純靜態網站用於託管 HTML、CSS、JavaScript 等靜態文件，適合部署前端項目構建產物、文檔站點等。
 
-## Create Static Website
+## 創建靜態網站
 
-1. Go to the **Website** page
-2. Click the **Static** tab
-3. Click **Create Website**
+1. 進入 **網站** 頁面
+2. 點擊 **純靜態** 標籤
+3. 點擊 **創建網站**
 
-### Configuration Items
+### 配置項
 
-- **Name**: Website identifier, e.g., `docs`
-- **Domain**: Bound domain, e.g., `docs.example.com`
-- **Port**: Listening port, default 80
-- **Website Directory**: Path where static files are stored
-- **Remarks**: Optional remarks
+- **名稱**：網站標識，如 `docs`
+- **域名**：綁定的域名，如 `docs.example.com`
+- **端口**：監聽端口，默認 80
+- **網站目錄**：靜態文件存放路徑
+- **備註**：可選備註
 
-## Edit Static Website
+## 編輯靜態網站
 
-Click the **Edit** button in the website list to enter the edit page.
+點擊網站列表中的 **編輯** 按鈕進入編輯頁面。
 
-### Domain and Listen
+### 域名和監聽
 
-Configure the website's domain and listening port.
+配置網站的域名和監聽端口。
 
-![Domain and Listen Configuration](/images/website/website-static-edit.png)
+![域名和監聽配置](/images/website/website-static-edit.png)
 
-### Advanced Settings
+### 進階設定
 
-Configure advanced options such as website logs and default documents.
+配置網站日誌、默認文檔等進階選項。
 
-![Advanced Settings](/images/website/website-static-edit-advanced.png)
+![進階設定](/images/website/website-static-edit-advanced.png)
 
-- **Website Directory**: Absolute path where static files are stored
-- **Default Document**: Default homepage file, e.g., `index.html`
+- **網站目錄**：靜態文件存放的絕對路徑
+- **默認文檔**：默認首頁文件，如 `index.html`
 
-### Custom Configuration (Rewrite)
+### 自定義配置（偽靜態）
 
-In the **Custom Configuration** tab, you can add Nginx configuration for URL rewriting and other functions.
+在 **自定義配置** 標籤中可以添加 Nginx 配置，用於 URL 重寫等功能。
 
-![Custom Configuration](/images/website/website-static-edit-custom.png)
+![自定義配置](/images/website/website-static-edit-custom.png)
 
-Click the **Add Custom Configuration** button to add configuration:
+點擊 **添加自定義配置** 按鈕可以添加配置：
 
-![Add Custom Configuration](/images/website/website-static-edit-custom-add.png)
+![添加自定義配置](/images/website/website-static-edit-custom-add.png)
 
-- **Name**: Configuration name, supports letters, numbers, underscores, and dashes
-- **Scope**: Configuration scope, can choose "This Website" or "Global"
-- **Content**: Nginx configuration content, such as `location` blocks
+- **名稱**：配置名稱，支持字母、數字、下劃線、破折號
+- **範圍**：配置生效範圍，可選擇「此網站」或「全局」
+- **內容**：Nginx 配置內容，如 `location` 塊
 
-## Use Cases
+## 適用場景
 
-### Frontend Projects
+### 前端項目
 
-Build outputs from Vue, React, Angular, and other frontend frameworks:
+Vue、React、Angular 等前端框架的構建產物：
 
 ```bash
-# Vue project
+# Vue 項目
 npm run build
-# Upload dist directory contents to website directory
+# 將 dist 目錄內容上傳到網站目錄
 
-# React project
+# React 項目
 npm run build
-# Upload build directory contents to website directory
+# 將 build 目錄內容上傳到網站目錄
 ```
 
-### Documentation Sites
+### 文檔站點
 
-Static site generators like VitePress, Docusaurus, Hugo:
+VitePress、Docusaurus、Hugo 等靜態站點生成器：
 
 ```bash
 # VitePress
 npm run docs:build
-# Upload .vitepress/dist directory contents to website directory
+# 將 .vitepress/dist 目錄內容上傳到網站目錄
 ```
 
-### Single Page Application (SPA)
+### 單頁應用（SPA）
 
-Single page applications need to configure rewrite rules to point all routes to index.html. Add in **Custom Configuration**:
+單頁應用需要配置偽靜態規則，將所有路由指向 index.html。 在 **自定義配置** 中添加：
 
 ```nginx
 location / {
@@ -85,35 +85,35 @@ location / {
 }
 ```
 
-## Directory Structure
+## 目錄結構
 
-Typical static website directory structure:
+典型的靜態網站目錄結構：
 
 ```
-/opt/ace/sites/website-name/public
-├── index.html         # Homepage
-├── assets/            # Static resources
+/opt/ace/sites/網站名稱/public
+├── index.html         # 首頁
+├── assets/            # 靜態資源
 │   ├── css/
 │   ├── js/
 │   └── images/
-├── favicon.ico        # Website icon
+├── favicon.ico        # 網站圖標
 └── ...
 ```
 
-## FAQ
+## 常見問題
 
-### 404 Error
+### 404 錯誤
 
-- Check if the file exists in the website directory
-- Check filename case sensitivity (Linux is case-sensitive)
-- Single page applications need to configure rewrite rules
+- 檢查文件是否存在於網站目錄
+- 檢查文件名大小寫（Linux 區分大小寫）
+- 單頁應用需要配置偽靜態規則
 
-### Resource Loading Failed
+### 資源加載失敗
 
-- Check if the resource path is correct
-- Check if absolute paths are used
-- Check CORS configuration
+- 檢查資源路徑是否正確
+- 檢查是否使用了絕對路徑
+- 檢查 CORS 配置
 
-### Chinese Filename Garbled
+### 中文文件名亂碼
 
-- Ensure files use UTF-8 encoding
+- 確保文件使用 UTF-8 編碼

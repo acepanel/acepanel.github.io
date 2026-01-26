@@ -1,61 +1,61 @@
-# Process Management
+# 進程管理
 
-The process management page is used to view and manage processes running on the system.
+進程管理頁面用於查看和管理系統中運行的進程。
 
-## Process List
+## 進程列表
 
-![Process Management](/images/toolbox/toolbox-process.png)
+![進程管理](/images/toolbox/toolbox-process.png)
 
-The page displays all running processes in a table format.
+頁面以表格形式展示所有運行中的進程。
 
-The list displays the following information:
+列表顯示以下信息：
 
-- **PID**: Process ID
-- **Name**: Process name
-- **Parent PID**: PID of the parent process
-- **Threads**: Number of threads
-- **User**: User running the process
-- **Status**: Process status
-- **CPU**: CPU usage
-- **Memory**: Memory usage
-- **Start Time**: Process start time
+- **PID**：進程 ID
+- **名稱**：進程名稱
+- **父進程 PID**：父進程的 PID
+- **線程**：線程數量
+- **用戶**：運行進程的用戶
+- **狀態**：進程狀態
+- **CPU**：CPU 使用率
+- **內存**：內存使用量
+- **啟動時間**：進程啟動時間
 
-## Process Status
+## 進程狀態
 
-| Status   | Description                           |
-| -------- | ------------------------------------- |
-| Running  | Process is executing                  |
-| Sleeping | Process is waiting for an event       |
-| Idle     | Kernel thread is idle                 |
-| Stopped  | Process has stopped                   |
-| Zombie   | Process has ended but not been reaped |
+| 狀態  | 說明         |
+| --- | ---------- |
+| 運行中 | 進程正在執行     |
+| 睡眠  | 進程等待事件     |
+| 空閒  | 內核線程空閒     |
+| 停止  | 進程已停止      |
+| 殭屍  | 進程已結束但未被回收 |
 
-## Search and Filter
+## 搜索和篩選
 
-- **Search**: Search by PID or process name
-- **Status Filter**: Filter processes by specific status
+- **搜索**：按 PID 或進程名稱搜索
+- **狀態篩選**：篩選特定狀態的進程
 
-## Process Operations
+## 進程操作
 
-Right-click on a process to:
+右鍵點擊進程可以：
 
-- **End Process**: Send SIGTERM signal
-- **Force End**: Send SIGKILL signal
-- **View Details**: View detailed process information
+- **結束進程**：發送 SIGTERM 信號
+- **強制結束**：發送 SIGKILL 信號
+- **查看詳情**：查看進程詳細信息
 
-## Common Processes
+## 常見進程
 
-| Process  | Description                 |
-| -------- | --------------------------- |
-| nginx    | Nginx web server            |
-| php-fpm  | PHP FastCGI process manager |
-| mysqld   | MySQL database service      |
-| postgres | PostgreSQL database service |
-| dockerd  | Docker daemon               |
-| ace      | AcePanel panel process      |
+| 進程       | 說明                |
+| -------- | ----------------- |
+| nginx    | Nginx Web 服務器     |
+| php-fpm  | PHP FastCGI 進程管理器 |
+| mysqld   | MySQL 數據庫服務       |
+| postgres | PostgreSQL 數據庫服務  |
+| dockerd  | Docker 守護進程       |
+| ace      | AcePanel 面板進程     |
 
-## Notes
+## 注意事項
 
-1. Ending critical system processes may cause system instability
-2. Ending the panel process will make the panel inaccessible
-3. It is recommended to only end processes that are confirmed to be useless
+1. 結束系統關鍵進程可能導致系統不穩定
+2. 結束面板進程會導致面板無法訪問
+3. 建議只結束確認無用的進程

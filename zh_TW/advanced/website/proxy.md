@@ -1,124 +1,124 @@
-# Reverse Proxy
+# 反向代理
 
-Reverse proxy websites are used to forward external requests to backend services, commonly used for deploying Node.js, Go, Java, Python, and other applications.
+反向代理網站用於將外部請求轉發到後端服務，常用於部署 Node.js、Go、Java、Python 等應用。
 
-## How It Works
-
-```
-User Request -> Nginx (Reverse Proxy) -> Backend Application (e.g., localhost:3000)
-```
-
-Nginx receives HTTP/HTTPS requests from users and forwards them to the specified backend address.
-
-## Create Reverse Proxy Website
-
-1. Go to the **Website** page
-2. Make sure the **Reverse Proxy** tab is selected
-3. Click **Create Website**
-
-### Configuration Items
-
-- **Name**: Website identifier, e.g., `myapp`
-- **Domain**: Bound domain, e.g., `app.example.com`
-- **Port**: Listening port, default 80
-- **Proxy Target**: Backend service address, e.g., `http://127.0.0.1:3000`
-- **Remarks**: Optional remarks
-
-### Proxy Target Format
+## 工作原理
 
 ```
-http://127.0.0.1:3000      # Local service
-http://localhost:8080       # Local service
-http://172.18.0.2:80        # Docker container
-https://backend.internal    # Internal HTTPS service
+用戶請求 -> Nginx (反向代理) -> 後端應用 (如 localhost:3000)
 ```
 
-## Edit Reverse Proxy Website
+Nginx 接收用戶的 HTTP/HTTPS 請求，然後將請求轉發到指定的後端地址。
 
-Click the **Edit** button in the website list to enter the edit page.
+## 創建反向代理網站
 
-### Domain and Listen
+1. 進入 **網站** 頁面
+2. 確保選中 **反向代理** 標籤
+3. 點擊 **創建網站**
 
-Configure the website's domain and listening port, supporting multiple domains and ports.
+### 配置項
 
-![Domain and Listen Configuration](/images/website/website-proxy-edit.png)
+- **名稱**：網站標識，如 `myapp`
+- **域名**：綁定的域名，如 `app.example.com`
+- **端口**：監聽端口，默認 80
+- **代理目標**：後端服務地址，如 `http://127.0.0.1:3000`
+- **備註**：可選備註
 
-- **Domain**: Multiple domains can be added
-- **Listen Address**: Multiple ports can be configured, supporting HTTPS and QUIC(HTTP3)
+### 代理目標格式
 
-### Upstream Configuration
+```
+http://127.0.0.1:3000      # 本地服務
+http://localhost:8080       # 本地服務
+http://172.18.0.2:80        # Docker 容器
+https://backend.internal    # 內部 HTTPS 服務
+```
 
-Upstream defines backend server addresses, supporting multiple backends for load balancing.
+## 編輯反向代理網站
 
-![Upstream Configuration](/images/website/website-proxy-upstream.png)
+點擊網站列表中的 **編輯** 按鈕進入編輯頁面。
 
-- **Upstream Name**: Identifier name for the upstream
-- **Load Balancing Algorithm**: Supports round-robin (default), IP Hash, and other algorithms
-- **Keep-Alive Connections**: Number of persistent connections to maintain with the backend
-- **DNS Resolver**: Custom DNS resolver
+### 域名和監聽
 
-Click the **Add Server** button to add backend servers:
+配置網站的域名和監聽端口，支持添加多個域名和端口。
 
-![Add Server](/images/website/website-proxy-upstream-add.png)
+![域名和監聽配置](/images/website/website-proxy-edit.png)
 
-- **Server Address**: Backend server address, e.g., `127.0.0.1:8080`
-- **Options**: Optional parameters, e.g., `weight=5` (weight), `backup` (backup server), etc.
+- **域名**：可添加多個域名
+- **監聽地址**：可配置多個端口，支持 HTTPS 和 QUIC(HTTP3)
 
-### Proxy Configuration
+### 上游配置
 
-Configure proxy behavior and request header forwarding.
+上游（Upstream）定義了後端伺服器地址，支持配置多個後端實現負載均衡。
 
-![Proxy Configuration](/images/website/website-proxy-proxy.png)
+![上游配置](/images/website/website-proxy-upstream.png)
 
-- **Match Type**: Match type, such as prefix match, regex match, etc.
-- **Match Expression**: URL expression to match
-- **Proxy Target**: Enter upstream name or directly enter backend address
-- **Enable Cache**: Whether to enable proxy cache
-- **Enable Buffer**: Whether to enable buffer, AI applications are recommended to disable otherwise it may affect streaming output
-- **Proxy SNI**: Whether to enable SNI (only valid for HTTPS proxy)
-- **Custom Request Headers**: Add or modify request headers passed to the backend
-- **Response Content Replacement**: Can replace strings in response content
+- **上游名稱**：上游的標識名稱
+- **負載均衡算法**：支持輪詢（默認）、IP Hash 等算法
+- **保持活動連接**：與後端保持的長連接數量
+- **DNS 解析器**：自定義 DNS 解析器
 
-## Use Cases
+點擊 **添加伺服器** 按鈕可以添加後端伺服器：
 
-### Node.js Application
+![添加伺服器](/images/website/website-proxy-upstream-add.png)
+
+- **伺服器地址**：後端伺服器地址，如 `127.0.0.1:8080`
+- **選項**：可選參數，如 `weight=5`（權重）、`backup`（備用伺服器）等
+
+### 代理配置
+
+配置代理行為和請求頭傳遞。
+
+![代理配置](/images/website/website-proxy-proxy.png)
+
+- **匹配類型**：匹配類型，如前綴匹配、正則匹配等
+- **匹配表達式**：匹配的 URL 表達式
+- **代理目標**：填寫上游名稱或直接填寫後端地址
+- **啟用緩存**：是否啟用代理緩存
+- **啟用緩衝區**：是否啟用緩衝區，AI 應用建議關閉否則可能影響流式輸出
+- **代理 SNI**：是否啟用 SNI（僅 HTTPS 代理有效）
+- **自定義請求頭**：添加或修改傳遞給後端的請求頭
+- **響應內容替換**：可替換響應內容中的字符串
+
+## 使用場景
+
+### Node.js 應用
 
 ```bash
-# Start Node.js application
-node app.js  # Listening on port 3000
+# 啟動 Node.js 應用
+node app.js  # 監聽 3000 端口
 ```
 
-Proxy Target: `http://127.0.0.1:3000`
+代理目標：`http://127.0.0.1:3000`
 
-### Docker Container
+### Docker 容器
 
-If the backend is a Docker container, you can use the container's IP address or container name (within the same network).
+如果後端是 Docker 容器，可以使用容器的 IP 地址或容器名稱（同一網絡內）。
 
-Proxy Target: `http://container-name:port` or `http://container-IP:port`
+代理目標：`http://容器名:端口` 或 `http://容器IP:端口`
 
-### Multiple Backends (Load Balancing)
+### 多個後端（負載均衡）
 
-Add multiple backend addresses in the upstream configuration to achieve load balancing.
+在上游配置中添加多個後端地址，實現負載均衡。
 
-Proxy Target: `http://upstream-name`
+代理目標：`http://上游名稱`
 
-## Common Configurations
+## 常見配置
 
-### WebSocket Support
+### WebSocket 支持
 
-Reverse proxy supports WebSocket by default, no additional configuration needed.
+反向代理默認支持 WebSocket，無需額外配置。
 
-### Forwarding Real IP
+### 傳遞真實 IP
 
-AcePanel automatically configures the following request headers to pass the user's real IP to the backend:
+AcePanel 會自動配置以下請求頭，將用戶真實 IP 傳遞給後端：
 
 - `X-Real-IP`
 - `X-Forwarded-For`
 - `X-Forwarded-Proto`
 
-### Custom Configuration
+### 自定義配置
 
-You can edit Nginx configuration in the website management page to add custom configurations:
+在網站管理頁面可以編輯 Nginx 配置，添加自定義配置：
 
 ```nginx
 proxy_connect_timeout 60s;
@@ -128,8 +128,8 @@ proxy_buffer_size 64k;
 proxy_buffers 4 64k;
 ```
 
-## Notes
+## 注意事項
 
-1. Ensure the backend service is started and listening on the specified port
-2. If the backend is a Docker container, ensure the port is correctly mapped or use Docker network
-3. When the backend service crashes, Nginx will return a 502 error
+1. 確保後端服務已啟動並監聽指定端口
+2. 如果後端是 Docker 容器，確保端口已正確映射或使用 Docker 網絡
+3. 後端服務崩潰時，Nginx 會返回 502 錯誤

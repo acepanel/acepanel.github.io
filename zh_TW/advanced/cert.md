@@ -1,81 +1,81 @@
-# Certificate
+# 憑證
 
-The certificate module is used to manage SSL/TLS certificates, supporting automatic free certificate application through the ACME protocol, as well as uploading your own certificates.
+憑證模組用於管理 SSL/TLS 憑證，支援透過 ACME 協議自動申請免費憑證，也支援上傳自有憑證。
 
-## Feature Overview
+## 功能概覽
 
-The certificate module is divided into three parts:
+憑證模組分為三個部分：
 
-| Feature                    | Description                  |
-| -------------------------- | ---------------------------- |
-| [Certificate](./cert/cert) | Manage SSL certificates      |
-| [Account](./cert/account)  | Manage ACME accounts         |
-| [DNS](./cert/dns)          | Manage DNS API configuration |
+| 功能                   | 說明            |
+| -------------------- | ------------- |
+| [憑證](./cert/cert)    | 管理 SSL 憑證     |
+| [帳戶](./cert/account) | 管理 ACME 帳戶    |
+| [DNS](./cert/dns)    | 管理 DNS API 配置 |
 
-![Certificate List](/images/cert/cert-list.png)
+![憑證列表](/images/cert/cert-list.png)
 
-## Certificate Types
+## 憑證類型
 
-### Free Certificates
+### 免費憑證
 
-Automatically apply for free certificates from CAs like Let's Encrypt through the ACME protocol:
+透過 ACME 協議從 Let's Encrypt 等 CA 自動申請免費憑證：
 
-- **Let's Encrypt**: The most popular free certificate authority
-- **LiteSSL**: Free certificate service provided by TrustAsia
-- **Google**: Google's free certificate service
-- **GoogleCN**: Google certificate service mirror provided by AcePanel
-- **ZeroSSL**: Another free certificate option
-- **Buypass**: Norwegian free certificate service
+- **Let's Encrypt**：最流行的免費憑證頒發機構
+- **LiteSSL**：TrustAsia 提供的免費憑證服務
+- **Google**：谷歌的免費憑證服務
+- **GoogleCN**：AcePanel 提供的谷歌憑證服務鏡像
+- **ZeroSSL**：另一個免費憑證選項
+- **Buypass**：挪威的免費憑證服務
 
-Free certificates are typically valid for 90 days, and AcePanel supports automatic renewal.
+免費憑證有效期通常為 90 天，AcePanel 支援自動續簽。
 
-### Paid Certificates
+### 付費憑證
 
-Certificates purchased from commercial CAs, typically valid for 1 year or longer:
+從商業 CA 購買的憑證，通常有效期為 1 年或更長：
 
-- Longer validity period
-- Higher trust level
-- Provides insurance and technical support
+- 更長的有效期
+- 更高的信任度
+- 提供保險和技術支援
 
-If you need to purchase certificates, you can contact us through the "Certificate" link at the top of this page.
+如有憑證購買需求，可透過本頁頂部的「憑證」連結聯繫我們。
 
-## Verification Methods
+## 驗證方式
 
-When applying for a certificate, you need to verify domain ownership. The following methods are supported:
+申請憑證時需要驗證網域所有權， 支援以下方式：
 
-### HTTP Verification
+### HTTP 驗證
 
-Place a verification file in the website root directory, and the CA verifies through HTTP access.
+在網站根目錄放置驗證檔案，CA 透過 HTTP 存取驗證。
 
-Requirements:
+要求：
 
-- Domain is resolved to the server
-- Port 80 is accessible
+- 網域已解析到伺服器
+- 80 連接埠可存取
 
-### DNS Verification
+### DNS 驗證
 
-Add a TXT record in the domain DNS for verification.
+在網域 DNS 中新增 TXT 記錄驗證。
 
-Requirements:
+要求：
 
-- Have DNS management permissions for the domain
-- Configure DNS API (for automatic verification)
+- 有網域 DNS 管理權限
+- 配置 DNS API（用於自動驗證）
 
-Advantages of DNS verification:
+DNS 驗證的優勢：
 
-- Supports applying for wildcard certificates (\*.example.com)
-- Does not require port 80 to be accessible
-- Suitable for intranet servers
+- 支援申請萬用字元憑證（\*.example.com）
+- 不需要 80 連接埠可存取
+- 適合內網伺服器
 
-## Quick Start
+## 快速開始
 
-1. Create an ACME account (first time use)
-2. If DNS verification is needed, configure DNS API
-3. Create a certificate, select verification method
-4. Apply the certificate to the website
+1. 建立 ACME 帳戶（首次使用）
+2. 如需 DNS 驗證，配置 DNS API
+3. 建立憑證，選擇驗證方式
+4. 將憑證套用到網站
 
-## Next Steps
+## 下一步
 
-- [Certificate Management](./cert/cert) - Learn how to apply for and manage certificates
-- [Account Management](./cert/account) - Learn how to manage ACME accounts
-- [DNS Configuration](./cert/dns) - Learn how to configure DNS API
+- [憑證管理](./cert/cert) - 了解如何申請和管理憑證
+- [帳戶管理](./cert/account) - 了解如何管理 ACME 帳戶
+- [DNS 配置](./cert/dns) - 了解如何配置 DNS API

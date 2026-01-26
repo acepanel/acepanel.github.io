@@ -20,12 +20,12 @@ export const config = defineConfig({
       base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
       items: sidebarAdvanced()
     }, {
-      text: "FAQ",
+      text: "常見問題",
       collapsed: true,
       base: locale == 'zh_CN' ? '/faq' : `/${locale}/faq`,
       items: sidebarFAQ()
     }, {
-      text: "Versions",
+      text: "版本歷史",
       collapsed: true,
       items: [...versions.map((version: string) => {
         return {
@@ -71,7 +71,7 @@ function nav(): DefaultTheme.NavItem[] {
     link: locale == 'zh_CN' ? '/' : `/${locale}/`
   }, {
     text: "文檔",
-    link: locale == 'zh_CN' ? '/quickstart/install' : `/${locale}/quickstart/install`
+    link: locale == 'zh_CN' ? '/quickstart/introduction' : `/${locale}/quickstart/introduction`
   }, {
     text: "支持",
     link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
@@ -85,98 +85,98 @@ function nav(): DefaultTheme.NavItem[] {
 }
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
   return [{
-    text: 'News & Announcements',
+    text: "動態與公告",
     collapsed: true,
     items: [{
-      text: "AcePanel 3.0 Official Release",
+      text: "AcePanel 3.0 正式發布",
       link: '/news/acepanel-3-release'
     }]
   }, {
-    text: 'Introduction',
+    text: "介紹",
     link: '/introduction'
   }, {
-    text: 'Install',
+    text: "安裝",
     link: '/install'
   }, {
-    text: 'Upgrade',
+    text: "升級",
     link: '/upgrade'
   }, {
-    text: 'First Website',
+    text: "第一個網站",
     link: '/first-website'
   }, {
-    text: 'First Container',
+    text: "第一個容器",
     link: '/first-container'
   }, {
-    text: 'First Project',
+    text: "第一個項目",
     link: '/first-project'
   }, {
-    text: 'Command Line',
+    text: "命令列",
     link: '/cli'
   }, {
-    text: 'Uninstall',
+    text: "卸載",
     link: '/uninstall'
   }];
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "Apps",
+    text: "應用",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/app'
     }, {
-      text: "Native Apps",
+      text: "原生應用",
       link: '/app/native'
     }, {
-      text: "Runtimes",
+      text: "運行環境",
       link: '/app/environment'
     }, {
-      text: "Container Templates",
+      text: "容器模版",
       link: '/app/template'
     }]
   }, {
-    text: "Containers",
+    text: "容器",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/container'
     }, {
-      text: "Containers",
+      text: "容器",
       link: '/container/container'
     }, {
-      text: "Compose",
+      text: "編排",
       link: '/container/compose'
     }, {
-      text: "Images",
+      text: "映像",
       link: '/container/image'
     }, {
-      text: "Networks",
+      text: "網路",
       link: '/container/network'
     }, {
-      text: "Volumes",
+      text: "卷",
       link: '/container/volume'
     }]
   }, {
-    text: "Websites",
+    text: "網站",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/website'
     }, {
-      text: "Reverse Proxy",
+      text: "反向代理",
       link: '/website/proxy'
     }, {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "Static",
+      text: "純靜態",
       link: '/website/static'
     }]
   }, {
-    text: "Projects",
+    text: "項目",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/project'
     }, {
       text: "Go",
@@ -194,130 +194,130 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "Python",
       link: '/project/python'
     }, {
-      text: "General",
+      text: "通用",
       link: '/project/general'
     }]
   }, {
-    text: "Databases",
+    text: "數據庫",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/database'
     }, {
-      text: "Databases",
+      text: "數據庫",
       link: '/database/database'
     }, {
-      text: "Users",
+      text: "用戶",
       link: '/database/user'
     }, {
-      text: "Servers",
+      text: "伺服器",
       link: '/database/server'
     }]
   }, {
-    text: "Certificates",
+    text: "證書",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/cert'
     }, {
-      text: "Certificates",
+      text: "證書",
       link: '/cert/cert'
     }, {
-      text: "Accounts",
+      text: "帳號",
       link: '/cert/account'
     }, {
       text: "DNS",
       link: '/cert/dns'
     }]
   }, {
-    text: "Monitor",
+    text: "監控",
     link: '/monitor'
   }, {
-    text: "Files",
+    text: "檔案",
     link: '/file'
   }, {
-    text: "Backup",
+    text: "備份",
     link: '/backup'
   }, {
-    text: "Terminal",
+    text: "終端機",
     link: '/ssh'
   }, {
-    text: "Tasks",
+    text: "任務",
     collapsed: true,
     items: [{
-      text: "Scheduled Tasks",
+      text: "計劃任務",
       link: '/task/schedule'
     }, {
-      text: "Panel Tasks",
+      text: "面板任務",
       link: '/task/panel'
     }]
   }, {
-    text: "Toolbox",
+    text: "工具箱",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/toolbox'
     }, {
-      text: "Processes",
+      text: "進程",
       link: '/toolbox/process'
     }, {
-      text: "System",
+      text: "系統",
       link: '/toolbox/system'
     }, {
       text: "SSH",
       link: '/toolbox/ssh'
     }, {
-      text: "Disk",
+      text: "磁碟",
       link: '/toolbox/disk'
     }, {
-      text: "Log Cleanup",
+      text: "日誌清理",
       link: '/toolbox/log'
     }, {
-      text: "Webhooks",
+      text: "Web 鉤子",
       link: '/toolbox/webhook'
     }, {
-      text: "Benchmark",
+      text: "跑分",
       link: '/toolbox/benchmark'
     }]
   }, {
-    text: "Settings",
+    text: "設置",
     collapsed: true,
     items: [{
-      text: "Basic Settings",
+      text: "基本設置",
       link: '/setting/basic'
     }, {
-      text: "Security Settings",
+      text: "安全設置",
       link: '/setting/safe'
     }, {
-      text: "User Management",
+      text: "用戶設置",
       link: '/setting/user'
     }]
   }, {
-    text: 'Panel API',
+    text: "面板 API",
     link: '/api'
   }, {
-    text: 'Security Recommendations',
+    text: "安全建議",
     link: '/security'
   }];
 }
 function sidebarFAQ(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "Panel",
+    text: "面板",
     link: '/panel'
   }, {
-    text: "Application",
+    text: "應用",
     link: '/application'
   }, {
-    text: "Database",
+    text: "數據庫",
     link: '/database'
   }, {
-    text: "Website",
+    text: "網站",
     link: '/website'
   }, {
-    text: "Project",
+    text: "項目",
     link: '/project'
   }, {
-    text: "Container",
+    text: "容器",
     link: '/container'
   }];
 }

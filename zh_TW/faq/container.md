@@ -1,12 +1,12 @@
-# Container FAQ
+# 容器常見問題
 
-## Image Pull Failed
+## 鏡像拉取失敗
 
-Servers in China cannot connect to Docker Hub and need to configure mirror acceleration.
+國內伺服器無法連接 Docker Hub，需配置鏡像加速。
 
 ### Docker
 
-**Apps** -> **Docker** -> **Manage** -> **Configuration**, add:
+「應用」->「Docker」->「管理」->「配置」，添加：
 
 ```json
 {
@@ -18,7 +18,7 @@ Servers in China cannot connect to Docker Hub and need to configure mirror accel
 
 ### Podman
 
-**Apps** -> **Podman** -> **Manage** -> **Registry Configuration**, add at the end:
+「應用」->「Podman」->「管理」->「Registry 配置」，末尾添加：
 
 ```toml
 [[registry]]
@@ -27,47 +27,47 @@ location = "docker.io"
 location = "docker.1ms.run"
 ```
 
-For mirror acceleration addresses, you can use [1ms Mirror](https://1ms.run/) or other services.
+鏡像加速地址可使用 [毫秒鏡像](https://1ms.run/) 或其他服務。
 
-## Compose Startup Failed
+## 編排啟動失敗
 
-1. Click **Logs** to view error messages
-2. Common causes:
-   - Port occupied: Modify the mapped port
-   - Image pull failed: Configure mirror acceleration
-   - Configuration error: Check docker-compose.yml syntax
+1. 點擊「日誌」查看錯誤訊息
+2. 常見原因：
+   - 端口被佔用：修改映射端口
+   - 鏡像拉取失敗：配置鏡像加速
+   - 配置錯誤：檢查 docker-compose.yml 語法
 
-## Container Inaccessible
+## 容器無法訪問
 
-1. Check if the container is running: View status in **Containers** -> **Containers** list
-2. Check if port mapping is correct
-3. Check if the firewall has allowed the mapped host port
+1. 檢查容器是否運行：「容器」->「容器」列表查看狀態
+2. 檢查端口映射是否正確
+3. 檢查防火牆是否放行映射的主機端口
 
-## Container Cannot Access External Network
+## 容器內無法訪問外網
 
-Check Docker network configuration:
+檢查 Docker 網路配置：
 
 ```shell
 docker network ls
 docker network inspect bridge
 ```
 
-## Data Persistence
+## 資料持久化
 
-Data will be lost after container deletion. Use volume mounts to persist data:
+容器刪除後資料會丟失。 使用卷掛載持久化資料：
 
-Add volumes in the compose configuration:
+在編排配置中添加 volumes：
 
 ```yaml
 volumes:
   - ./data:/app/data
 ```
 
-## View Container Logs
+## 查看容器日誌
 
 ```shell
-docker logs container-name-or-id
-docker logs -f container-name-or-id  # Real-time view
+docker logs 容器名或ID
+docker logs -f 容器名或ID  # 實時查看
 ```
 
-Or click **Logs** in the panel **Containers** -> **Containers** list.
+或在面板「容器」->「容器」列表點擊「日誌」。

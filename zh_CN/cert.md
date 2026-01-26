@@ -56,8 +56,7 @@ next: false
   border: 2px solid var(--vp-c-brand);
 }
 
-.cert-card.featured::before {
-  content: "推荐";
+.cert-badge {
   position: absolute;
   top: -12px;
   right: 24px;
@@ -300,7 +299,7 @@ next: false
     </div><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-secondary">联系购买</a>
   </div>
 
-  <div class="cert-card featured">
+  <div class="cert-card featured"><span class="cert-badge">推荐</span>
     <div class="cert-card-icon">🛡️</div>
     <h3>DV 泛域名证书</h3>
     <div class="cert-card-desc">一张证书保护所有子域名</div>

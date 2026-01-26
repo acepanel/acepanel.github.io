@@ -1,118 +1,118 @@
-# Scheduled Tasks
+# 計劃任務
 
-Scheduled tasks are used to set up tasks that execute at specified times, such as scheduled backups, scheduled script execution, etc.
+計劃任務用於設置定時執行的任務，如定時備份、定時執行腳本等。
 
-## Task List
+## 任務列表
 
-Go to the **Tasks** page, which displays the scheduled task list by default.
+進入 **任務** 頁面，默認顯示計劃任務列表。
 
-![Scheduled Tasks](/images/task/task-schedule.png)
+![計劃任務](/images/task/task-schedule.png)
 
-The list displays the following information:
+列表顯示以下信息：
 
-- **Task Name**: Task name
-- **Task Type**: Shell/Backup, etc.
-- **Enabled**: Whether enabled
-- **Task Schedule**: Execution schedule
-- **Created At**: Creation time
-- **Last Updated**: Last execution time
-- **Actions**: Edit, execute, delete, etc.
+- **任務名稱**：任務名稱
+- **任務類型**：Shell/備份等
+- **已啟用**：是否啟用
+- **任務週期**：執行週期
+- **創建時間**：創建時間
+- **最後更新時間**：最後執行時間
+- **操作**：編輯、執行、刪除等
 
-## Create Task
+## 創建任務
 
-Click the **Create Task** button to create a new scheduled task.
+點擊 **創建任務** 按鈕創建新的計劃任務。
 
-### Task Types
+### 任務類型
 
-| Type            | Description                       |
-| --------------- | --------------------------------- |
-| Shell           | Execute Shell commands or scripts |
-| Backup Website  | Scheduled backup of website files |
-| Backup Database | Scheduled backup of database      |
-| Log Rotation    | Scheduled rotation of log files   |
+| 類型    | 說明             |
+| ----- | -------------- |
+| 運行腳本  | 執行 Shell 命令或腳本 |
+| 備份網站  | 定時備份網站文件       |
+| 備份數據庫 | 定時備份數據庫        |
+| 日誌輪替  | 定時切割日誌文件       |
 
-### Execution Schedule
+### 執行週期
 
-Multiple schedule settings are supported:
+支持多種週期設置：
 
-- **Every Minute**: Execute once every minute
-- **Every Hour**: Execute once every hour
-- **Every Day**: Execute at a specified time each day
-- **Every Week**: Execute on specified day and time each week
-- **Every Month**: Execute on specified date and time each month
-- **Custom**: Use Cron expression
+- **每分鐘**：每分鐘執行一次
+- **每小時**：每小時執行一次
+- **每天**：每天指定時間執行
+- **每週**：每週指定日期和時間執行
+- **每月**：每月指定日期和時間執行
+- **自定義**：使用 Cron 表達式
 
-### Cron Expression
+### Cron 表達式
 
-Cron expression format: `minute hour day month weekday`
+Cron 表達式格式：`分 時 日 月 週`
 
 ```
 *    *    *    *    *
 │    │    │    │    │
-│    │    │    │    └── Day of week (0-7, both 0 and 7 are Sunday)
-│    │    │    └─────── Month (1-12)
-│    │    └──────────── Day of month (1-31)
-│    └───────────────── Hour (0-23)
-└────────────────────── Minute (0-59)
+│    │    │    │    └── 週幾 (0-7, 0和7都是週日)
+│    │    │    └─────── 月份 (1-12)
+│    │    └──────────── 日期 (1-31)
+│    └───────────────── 小時 (0-23)
+└────────────────────── 分鐘 (0-59)
 ```
 
-Common examples:
+常用示例：
 
-| Expression    | Description                          |
-| ------------- | ------------------------------------ |
-| `0 2 * * *`   | Every day at 2 AM                    |
-| `0 */6 * * *` | Every 6 hours                        |
-| `0 0 * * 0`   | Every Sunday at midnight             |
-| `0 0 1 * *`   | First day of every month at midnight |
-| `*/5 * * * *` | Every 5 minutes                      |
+| 表達式           | 說明       |
+| ------------- | -------- |
+| `0 2 * * *`   | 每天凌晨 2 點 |
+| `0 */6 * * *` | 每 6 小時   |
+| `0 0 * * 0`   | 每週日凌晨    |
+| `0 0 1 * *`   | 每月 1 號凌晨 |
+| `*/5 * * * *` | 每 5 分鐘   |
 
-Don't know how to write it? Just describe your requirements clearly to an AI and let it generate one for you.
+不會寫？ 直接找個 AI 描述清楚需求讓它幫你生成一個。
 
-## Shell Task Examples
+## Shell 任務示例
 
-### Clean Temporary Files
+### 清理臨時文件
 
 ```bash
 find /tmp -type f -mtime +7 -delete
 ```
 
-### Restart Service
+### 重啟服務
 
 ```bash
 systemctl restart nginx
 ```
 
-### Sync Time
+### 同步時間
 
 ```bash
 ntpdate ntp.aliyun.com
 ```
 
-## Task Operations
+## 任務操作
 
-### Enable/Disable
+### 啟用/禁用
 
-Control whether the task is enabled via the switch. Disabled tasks will not execute.
+通過開關控制任務是否啟用。 禁用的任務不會執行。
 
-### Execute Immediately
+### 立即執行
 
-Click the **Run** button to execute the task immediately without waiting for the scheduled time.
+點擊 **運行** 按鈕可以立即執行任務，不等待計劃時間。
 
-### View Logs
+### 查看日誌
 
-Click the **Logs** button to view the task execution logs.
+點擊 **日誌** 按鈕查看任務的執行日誌。
 
-### Edit Task
+### 編輯任務
 
-Click the **Edit** button to modify the task configuration.
+點擊 **編輯** 按鈕修改任務配置。
 
-### Delete Task
+### 刪除任務
 
-Click the **Delete** button to delete the task.
+點擊 **刪除** 按鈕刪除任務。
 
-## Notes
+## 注意事項
 
-1. Task execution time is based on the server timezone
-2. Long-running tasks may affect the next execution
-3. It is recommended to set up notification reminders for important tasks
-4. Regularly check task execution status
+1. 任務執行時間基於服務器時區
+2. 長時間運行的任務可能影響下次執行
+3. 建議為重要任務設置通知提醒
+4. 定期檢查任務執行狀態

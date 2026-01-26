@@ -1,46 +1,46 @@
-# Benchmark Test
+# 跑分測試
 
-The benchmark feature is used to test the CPU, memory, and disk performance of the server, helping you understand the actual performance of your server.
+跑分功能用於測試伺服器的 CPU、記憶體和磁碟效能，幫助你了解伺服器的實際效能表現。
 
-![Benchmark Test](/images/toolbox/toolbox-benchmark.png)
+![跑分測試](/images/toolbox/toolbox-benchmark.png)
 
-## Test Items
+## 測試項目
 
-### CPU Test
+### CPU 測試
 
-Tests the computing power of the CPU by executing a large number of mathematical operations to evaluate processor performance.
+測試 CPU 的計算能力，透過執行大量數學運算來評估處理器效能。
 
-### Memory Test
+### 記憶體測試
 
-Tests the read and write speed of memory to evaluate the performance of the memory subsystem.
+測試記憶體的讀寫速度，評估記憶體子系統的效能表現。
 
-### Disk Test
+### 磁碟測試
 
-Tests the read and write speed of the disk to evaluate the I/O performance of the storage device.
+測試磁碟的讀寫速度，評估儲存裝置的 I/O 效能。
 
-## Usage
+## 使用方法
 
-Click the **Start Benchmark** button, and the system will execute CPU, memory, and disk tests in sequence. After the tests are completed, the scores for each item will be displayed.
+點擊 **開始跑分** 按鈕，系統會依次執行 CPU、記憶體和磁碟測試。 測試完成後會顯示各項得分。
 
-## Result Explanation
+## 結果說明
 
-Benchmark results are displayed as numerical values, with higher values indicating better performance.
+跑分結果以數值形式展示，數值越高表示效能越好。
 
-:::warning Note
-Benchmark results are for reference only. Due to system resource scheduling, caching, and other factors, test results may differ from actual performance in use.
+:::warning 注意
+跑分結果僅供參考。 由於系統資源調度、快取和其他因素的影響，測試結果可能與實際使用中的效能有所差異。
 :::
 
-## Testing Recommendations
+## 測試建議
 
-1. Close unnecessary services and processes before testing
-2. Avoid testing during peak business hours
-3. Multiple tests averaged are more accurate
-4. Test results may fluctuate at different times
+1. 測試前關閉不必要的服務和程序
+2. 避免在業務高峰期進行測試
+3. 多次測試取平均值更準確
+4. 不同時間段的測試結果可能有波動
 
-## Performance Optimization Reference
+## 效能最佳化參考
 
-If benchmark results are not ideal, consider:
+如果跑分結果不理想，可以考慮：
 
-- **Low CPU performance**: Check if any process is using too much CPU
-- **Low memory performance**: Check memory usage, whether there are memory leaks
-- **Low disk performance**: Check disk health status, consider upgrading to SSD
+- **CPU 效能低**：檢查是否有程序佔用過高 CPU
+- **記憶體效能低**：檢查記憶體使用情況，是否存在記憶體洩漏
+- **磁碟效能低**：檢查磁碟健康狀態，考慮升級到 SSD

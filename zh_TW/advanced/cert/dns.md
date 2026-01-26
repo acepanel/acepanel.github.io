@@ -1,99 +1,99 @@
-# DNS Configuration
+# DNS 配置
 
-The DNS configuration page is used to manage DNS APIs for applying certificates through DNS verification.
+DNS 配置頁面用於管理 DNS API，用於通過 DNS 驗證方式申請證書。
 
-## DNS List
+## DNS 列表
 
-Go to **Certificate** > **DNS** tab to view the DNS configuration list.
+進入 **證書** > **DNS** 標籤頁查看 DNS 配置列表。
 
-![DNS List](/images/cert/cert-dns.png)
+![DNS 列表](/images/cert/cert-dns.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Remark Name**: Configuration name
-- **Type**: DNS provider type
-- **Actions**: Modify, delete
+- **備註名稱**：配置名稱
+- **類型**：DNS 提供商類型
+- **操作**：修改、刪除
 
-## Create DNS Configuration
+## 創建 DNS 配置
 
-1. Click the **Create DNS** button
-2. Select DNS provider
-3. Fill in API credentials
-4. Click Create
+1. 點擊 **創建 DNS** 按鈕
+2. 選擇 DNS 提供商
+3. 填寫 API 憑證
+4. 點擊創建
 
-## Supported DNS Providers
+## 支持的 DNS 提供商
 
-### Domestic Providers
+### 國內提供商
 
-| Provider                    | Required Credentials           |
-| --------------------------- | ------------------------------ |
-| Alibaba Cloud DNS           | AccessKey ID, AccessKey Secret |
-| Tencent Cloud DNSPod        | SecretId, SecretKey            |
-| Huawei Cloud DNS            | AccessKeyId, SecretAccessKey   |
-| West.cn DNS | Username, API Password         |
+| 提供商        | 所需憑證                          |
+| ---------- | ----------------------------- |
+| 阿里雲 DNS    | AccessKey ID、AccessKey Secret |
+| 騰訊雲 DNSPod | SecretId、SecretKey            |
+| 華為雲 DNS    | AccessKeyId、SecretAccessKey   |
+| 西部數碼 DNS   | Username、API Password         |
 
-### International Providers
+### 國際提供商
 
-| Provider   | Required Credentials   |
-| ---------- | ---------------------- |
-| Cloudflare | API Token              |
-| Gcore DNS  | API Key                |
-| Porkbun    | API Key, Secret Key    |
-| NameSilo   | API Token              |
-| ClouDNS    | Auth ID, Auth Password |
+| 提供商        | 所需憑證                  |
+| ---------- | --------------------- |
+| Cloudflare | API Token             |
+| Gcore DNS  | API Key               |
+| Porkbun    | API Key、Secret Key    |
+| NameSilo   | API Token             |
+| ClouDNS    | Auth ID、Auth Password |
 
-## Obtaining API Credentials
+## 獲取 API 憑證
 
-### Alibaba Cloud
+### 阿里雲
 
-1. Log in to Alibaba Cloud console
-2. Go to **AccessKey Management**
-3. Create AccessKey
-4. Record AccessKey ID and AccessKey Secret
+1. 登錄阿里雲控制台
+2. 進入 **AccessKey 管理**
+3. 創建 AccessKey
+4. 記錄 AccessKey ID 和 AccessKey Secret
 
-:::warning Security Notice
-It is recommended to create a sub-account and only grant DNS management permissions. Avoid using the main account AccessKey.
+:::warning 安全提示
+建議創建子帳號並只授予 DNS 管理權限， 避免使用主帳戶的 AccessKey。
 :::
 
-### Tencent Cloud
+### 騰訊雲
 
-1. Log in to Tencent Cloud console
-2. Go to **Access Management** > **API Key Management**
-3. Create key
-4. Record SecretId and SecretKey
+1. 登錄騰訊雲控制台
+2. 進入 **訪問管理** > **API 密鑰管理**
+3. 創建密鑰
+4. 記錄 SecretId 和 SecretKey
 
 ### Cloudflare
 
-1. Log in to Cloudflare console
-2. Go to **My Profile** > **API Tokens**
-3. Create Token, select **Edit zone DNS** template
-4. Record the generated Token
+1. 登錄 Cloudflare 控制台
+2. 進入 **My Profile** > **API Tokens**
+3. 創建 Token，選擇 **Edit zone DNS** 模板
+4. 記錄生成的 Token
 
-## DNS Verification Principle
+## DNS 驗證原理
 
-1. When applying for a certificate, the CA requires adding a specific TXT record in the domain DNS
-2. AcePanel automatically adds the verification record through DNS API
-3. CA verifies the TXT record exists
-4. Certificate is issued after verification passes
-5. AcePanel automatically deletes the verification record
+1. 申請證書時，CA 要求在域名 DNS 中添加特定的 TXT 記錄
+2. AcePanel 通過 DNS API 自動添加驗證記錄
+3. CA 驗證 TXT 記錄存在
+4. 驗證通過後頒發證書
+5. AcePanel 自動刪除驗證記錄
 
-## Use Cases
+## 使用場景
 
-DNS verification is suitable for:
+DNS 驗證適用於：
 
-- Applying for wildcard certificates (\*.example.com)
-- Server port 80 is not accessible
-- Intranet servers
-- Origin servers behind CDN
+- 申請泛域名證書（\*.example.com）
+- 伺服器 80 端口不可訪問
+- 內網伺服器
+- CDN 後的源站
 
-## FAQ
+## 常見問題
 
-### Verification Failed
+### 驗證失敗
 
-- Check if API credentials are correct
-- Check if API permissions are sufficient
-- Check if the domain is managed by that DNS provider
+- 檢查 API 憑證是否正確
+- 檢查 API 權限是否足夠
+- 檢查域名是否在該 DNS 提供商管理
 
-### DNS Propagation Delay
+### DNS 傳播延遲
 
-DNS records need some time to propagate after being added, usually ranging from a few minutes to a few hours. If verification fails, you can retry later.
+DNS 記錄添加後需要一定時間傳播，通常幾分鐘到幾小時不等。 如果驗證失敗，可以稍後重試。

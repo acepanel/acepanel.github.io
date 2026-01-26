@@ -1,231 +1,231 @@
-# Backup
+# 備份
 
-The backup module is used to backup and restore website files and databases, supporting local backup and remote storage.
+備份模組用於備份和恢復網站檔案和資料庫，支援本地備份和遠端儲存。
 
-## Backup Page
+## 備份頁面
 
-![Backup Page](/images/backup/backup.png)
+![備份頁面](/images/backup/backup.png)
 
-## Backup Types
+## 備份類型
 
-The backup module supports the following types of backups:
+備份模組支援以下類型的備份：
 
-| Type       | Description                            |
-| ---------- | -------------------------------------- |
-| Website    | Backup website files                   |
-| MySQL      | Backup Percona/MySQL/MariaDB databases |
-| PostgreSQL | Backup PostgreSQL databases            |
+| 類型         | 說明                           |
+| ---------- | ---------------------------- |
+| 網站         | 備份網站檔案                       |
+| MySQL      | 備份 Percona/MySQL/MariaDB 資料庫 |
+| PostgreSQL | 備份 PostgreSQL 資料庫            |
 
-## Create Backup
+## 創建備份
 
-1. Select the backup type tab (Website/MySQL/PostgreSQL)
-2. Click **Create Backup**
-3. Select the website or database to backup
-4. Select storage location
-5. Click Confirm
+1. 選擇備份類型標籤（網站/MySQL/PostgreSQL）
+2. 點擊 **創建備份**
+3. 選擇要備份的網站或資料庫
+4. 選擇儲存位置
+5. 點擊確認
 
-Backup file formats:
+備份檔案格式：
 
-- Website: `.zip` compressed package
-- Database: `.sql.zip` compressed SQL file
+- 網站：`.zip` 壓縮包
+- 資料庫：`.sql.zip` 壓縮的 SQL 檔案
 
-## Backup List
+## 備份列表
 
-The backup list displays the following information:
+備份列表顯示以下資訊：
 
-- **Filename**: Backup file name
-- **Size**: Backup file size
-- **Update Date**: Backup time
-- **Actions**: Download, restore, delete
+- **檔案名**：備份檔案名稱
+- **大小**：備份檔案大小
+- **更新日期**：備份時間
+- **操作**：下載、恢復、刪除
 
-## Restore Backup
+## 恢復備份
 
-1. Find the backup to restore in the backup list
-2. Click the **Restore** button
-3. Confirm the restore operation
+1. 在備份列表中找到要恢復的備份
+2. 點擊 **恢復** 按鈕
+3. 確認恢復操作
 
-:::danger Warning
-The restore operation will overwrite existing data. Please ensure you have backed up current data!
+:::danger 警告
+恢復操作會覆蓋現有資料， 請確保已備份當前資料！
 :::
 
-## Upload Backup
+## 上傳備份
 
-Click the **Upload Backup** button to upload local backup files for data restoration.
+點擊 **上傳備份** 按鈕可以上傳本地的備份檔案，用於恢復資料。
 
-## Storage Management
+## 儲存管理
 
-Switch to the **Storage** tab to manage backup storage locations.
+切換到 **儲存** 標籤頁管理備份儲存位置。
 
-![Storage Management](/images/backup/backup-storage.png)
+![儲存管理](/images/backup/backup-storage.png)
 
-### Local Storage
+### 本地儲存
 
-The default storage location, backup files are saved locally on the server.
+預設的儲存位置，備份檔案保存在伺服器本地。
 
-### Remote Storage
+### 遠端儲存
 
-Click **Add Storage** to add remote storage, supporting:
+點擊 **新增儲存** 可以新增遠端儲存，支援：
 
-- **S3 Compatible Storage**: AWS S3, Alibaba Cloud OSS, Tencent Cloud COS, etc.
-- **FTP/SFTP**: FTP or SFTP servers
-- **WebDAV**: WebDAV servers
+- **S3 相容儲存**：AWS S3、阿里雲 OSS、騰訊雲 COS 等
+- **FTP/SFTP**：FTP 或 SFTP 伺服器
+- **WebDAV**：WebDAV 伺服器
 
-Advantages of remote storage:
+遠端儲存的優勢：
 
-- Off-site backup to prevent data loss
-- Does not occupy server disk space
-- Convenient for sharing backups across multiple servers
+- 異地備份，防止資料遺失
+- 不佔用伺服器磁碟空間
+- 便於多伺服器共享備份
 
-### S3 Compatible Storage Configuration
+### S3 相容儲存配置
 
-S3 compatible storage is the most commonly used remote storage method. Most cloud storage providers offer S3 compatible interfaces.
+S3 相容儲存是最常用的遠端儲存方式， 大多數雲端儲存服務商都提供 S3 相容介面。
 
-#### Configuration Parameters
+#### 配置參數
 
-| Parameter  | Description                                                                   |
-| ---------- | ----------------------------------------------------------------------------- |
-| Name       | Name of the storage configuration for identification                          |
-| Type       | Select S3                                                                     |
-| Access Key | Access Key ID                                                                 |
-| Secret Key | Access Key Secret                                                             |
-| Style      | Virtual Hosted or Path Style                                                  |
-| Region     | Region code, e.g., `us-east-1`, `cn-hangzhou` |
-| Endpoint   | S3 service endpoint URL                                                       |
-| Protocol   | HTTPS (recommended) or HTTP                                |
-| Bucket     | Bucket name                                                                   |
-| Path       | Sub-path for backup file storage (optional)                |
+| 參數         | 說明                               |
+| ---------- | -------------------------------- |
+| 名稱         | 儲存配置的名稱，便於識別                     |
+| 類型         | 選擇 S3                            |
+| Access Key | Access Key ID                    |
+| Secret Key | Access Key Secret                |
+| 風格         | Virtual Hosted 或 Path Style      |
+| 區域         | 區域代碼，如 `us-east-1`、`cn-hangzhou` |
+| 端點         | S3 服務端點 URL                      |
+| 協定         | HTTPS（推薦）或 HTTP                  |
+| 儲存桶        | 儲存桶名稱                            |
+| 路徑         | 備份檔案儲存的子路徑（可選）                   |
 
-#### Access Style Explanation
+#### 存取風格說明
 
-S3 has two URL access styles:
+S3 有兩種 URL 存取風格：
 
-- **Virtual Hosted Style**: `https://bucket.endpoint/key`
-  - Bucket name as subdomain
-  - AWS S3 uses this style by default
+- **Virtual Hosted Style**：`https://bucket.endpoint/key`
+  - 桶名作為子網域
+  - AWS S3 預設使用此風格
 
-- **Path Style**: `https://endpoint/bucket/key`
-  - Bucket name as part of the path
-  - Self-hosted MinIO typically uses this style
+- **Path Style**：`https://endpoint/bucket/key`
+  - 桶名作為路徑的一部分
+  - 自建 MinIO 等通常使用此風格
 
-#### Compatibility List
+#### 相容性列表
 
-| Provider           | Documentation                                                                        | Compatible Access Style           | Compatibility |
-| ------------------ | ------------------------------------------------------------------------------------ | --------------------------------- | ------------- |
-| Alibaba Cloud OSS  | [Docs](https://help.aliyun.com/document_detail/410748.html)                          | Virtual Hosted Style              | ✅             |
-| Tencent Cloud COS  | [Docs](https://cloud.tencent.com/document/product/436/41284)                         | Virtual Hosted Style / Path Style | ✅             |
-| Qiniu Cloud        | [Docs](https://developer.qiniu.com/kodo/4088/s3-access-domainname)                   | Virtual Hosted Style / Path Style | ✅             |
-| Baidu Cloud BOS    | [Docs](https://cloud.baidu.com/doc/BOS/s/Fjwvyq9xo)                                  | Virtual Hosted Style / Path Style | ✅             |
-| JD Cloud           | [Docs](https://docs.jdcloud.com/cn/object-storage-service/api/regions-and-endpoints) | Virtual Hosted Style              | ✅             |
-| Kingsoft Cloud     | [Docs](https://docs.ksyun.com/documents/6761)                                        | Virtual Hosted Style              | ✅             |
-| QingCloud QingStor | [Docs](https://docsv3.qingcloud.com/storage/object-storage/s3/intro/)                | Virtual Hosted Style / Path Style | ✅             |
-| NetEase Shufan     | [Docs](https://sf.163.com/help/documents/89796157866430464)                          | Virtual Hosted Style              | ✅             |
-| Cloudflare R2      | [Docs](https://developers.cloudflare.com/r2/data-access/s3-api/)                     | Virtual Hosted Style / Path Style | ✅             |
-| Oracle Cloud       | [Docs](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)  | Virtual Hosted Style / Path Style | ✅             |
-| Upyun              | [Docs](https://help.upyun.com/knowledge-base/aws-s3%E5%85%BC%E5%AE%B9/)              | Virtual Hosted Style / Path Style | ✅             |
-| Self-hosted MinIO  | -                                                                                    | Path Style                        | ✅             |
-| Huawei Cloud OBS   | -                                                                                    | Virtual Hosted Style              | ❓             |
+| 服務商           | 文檔                                                                                 | 相容存取風格                      | 相容性 |
+| ------------- | ---------------------------------------------------------------------------------- | --------------------------- | --- |
+| 阿里雲 OSS       | [文檔](https://help.aliyun.com/document_detail/410748.html)                          | Virtual Hosted 風格           | ✅   |
+| 騰訊雲 COS       | [文檔](https://cloud.tencent.com/document/product/436/41284)                         | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 七牛雲           | [文檔](https://developer.qiniu.com/kodo/4088/s3-access-domainname)                   | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 百度雲 BOS       | [文檔](https://cloud.baidu.com/doc/BOS/s/Fjwvyq9xo)                                  | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 京東雲           | [文檔](https://docs.jdcloud.com/cn/object-storage-service/api/regions-and-endpoints) | Virtual Hosted 風格           | ✅   |
+| 金山雲           | [文檔](https://docs.ksyun.com/documents/6761)                                        | Virtual Hosted 風格           | ✅   |
+| 青雲 QingStor   | [文檔](https://docsv3.qingcloud.com/storage/object-storage/s3/intro/)                | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 網易數帆          | [文檔](https://sf.163.com/help/documents/89796157866430464)                          | Virtual Hosted 風格           | ✅   |
+| Cloudflare R2 | [文檔](https://developers.cloudflare.com/r2/data-access/s3-api/)                     | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 甲骨文雲          | [文檔](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)  | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 又拍雲           | [文檔](https://help.upyun.com/knowledge-base/aws-s3%E5%85%BC%E5%AE%B9/)              | Virtual Hosted 風格 / Path 風格 | ✅   |
+| 自建 MinIO      | -                                                                                  | Path 風格                     | ✅   |
+| 華為雲 OBS       | -                                                                                  | Virtual Hosted 風格           | ❓   |
 
-:::tip Note
-Huawei Cloud official documentation does not specify S3 API compatibility, but it works in actual testing.
+:::tip 提示
+華為雲官方文檔未說明是否相容 S3 API，但實際測試可以使用。
 :::
 
-#### Configuration Examples
+#### 配置範例
 
-**Alibaba Cloud OSS**
-
-```
-Name: aliyun-oss
-Type: S3
-Access Key: Your AccessKey ID
-Secret Key: Your AccessKey Secret
-Style: Virtual Hosted
-Region: cn-hangzhou
-Endpoint: oss-cn-hangzhou.aliyuncs.com
-Protocol: HTTPS
-Bucket: your-bucket-name
-Path: backup (optional)
-```
-
-**Tencent Cloud COS**
+**阿里雲 OSS**
 
 ```
-Name: tencent-cos
-Type: S3
-Access Key: Your SecretId
-Secret Key: Your SecretKey
-Style: Virtual Hosted
-Region: ap-guangzhou
-Endpoint: cos.ap-guangzhou.myqcloud.com
-Protocol: HTTPS
-Bucket: your-bucket-name
-Path: backup (optional)
+名稱: aliyun-oss
+類型: S3
+Access Key: 你的 AccessKey ID
+Secret Key: 你的 AccessKey Secret
+風格: Virtual Hosted
+區域: cn-hangzhou
+端點: oss-cn-hangzhou.aliyuncs.com
+協定: HTTPS
+儲存桶: your-bucket-name
+路徑: backup（可選）
+```
+
+**騰訊雲 COS**
+
+```
+名稱: tencent-cos
+類型: S3
+Access Key: 你的 SecretId
+Secret Key: 你的 SecretKey
+風格: Virtual Hosted
+區域: ap-guangzhou
+端點: cos.ap-guangzhou.myqcloud.com
+協定: HTTPS
+儲存桶: your-bucket-name
+路徑: backup（可選）
 ```
 
 **Cloudflare R2**
 
 ```
-Name: cloudflare-r2
-Type: S3
-Access Key: Your Access Key ID
-Secret Key: Your Secret Access Key
-Style: Path Style
-Region: auto
-Endpoint: <account-id>.r2.cloudflarestorage.com
-Protocol: HTTPS
-Bucket: your-bucket-name
-Path: backup (optional)
+名稱: cloudflare-r2
+類型: S3
+Access Key: 你的 Access Key ID
+Secret Key: 你的 Secret Access Key
+風格: Path Style
+區域: auto
+端點: <account-id>.r2.cloudflarestorage.com
+協定: HTTPS
+儲存桶: your-bucket-name
+路徑: backup（可選）
 ```
 
-**Self-hosted MinIO**
+**自建 MinIO**
 
 ```
-Name: minio
-Type: S3
+名稱: minio
+類型: S3
 Access Key: minioadmin
 Secret Key: minioadmin
-Style: Path Style
-Region: us-east-1
-Endpoint: minio.example.com:9000
-Protocol: HTTP or HTTPS
-Bucket: backup
-Path: (optional)
+風格: Path Style
+區域: us-east-1
+端點: minio.example.com:9000
+協定: HTTP 或 HTTPS
+儲存桶: backup
+路徑:（可選）
 ```
 
-:::warning Note
+:::warning 注意
 
-- Please ensure the bucket has been created and has correct access permissions
-- It is recommended to create dedicated access keys for backups with limited permissions
-- Some providers' Endpoints need to include region information
+- 請確保儲存桶已創建且有正確的存取權限
+- 建議為備份創建專用的存取金鑰，並限制權限範圍
+- 部分服務商的 Endpoint 需要包含區域資訊
   :::
 
-## Scheduled Backup
+## 定時備份
 
-Combined with the [Scheduled Tasks](./task/schedule) feature, you can set up automatic scheduled backups:
+結合 [計劃任務](./task/schedule) 功能，可以設定定時自動備份：
 
-1. Go to **Tasks** > **Scheduled Tasks**
-2. Create a new task
-3. Select backup type
-4. Set execution schedule
-5. Select storage location
+1. 進入 **任務** > **計劃任務**
+2. 創建新任務
+3. 選擇備份類型
+4. 設定執行週期
+5. 選擇儲存位置
 
-## Backup Strategy Recommendations
+## 備份策略建議
 
-### Backup Frequency
+### 備份頻率
 
-| Data Type           | Recommended Frequency          |
-| ------------------- | ------------------------------ |
-| Database            | Daily                          |
-| Website Files       | Weekly                         |
-| Configuration Files | Immediately after modification |
+| 資料類型 | 建議頻率    |
+| ---- | ------- |
+| 資料庫  | 每天      |
+| 網站檔案 | 每週      |
+| 配置檔案 | 修改後立即備份 |
 
-### Retention Policy
+### 保留策略
 
-- Keep daily backups for the last 7 days
-- Keep weekly backups for the last 4 weeks
-- Keep monthly backups for the last 3 months
+- 保留最近 7 天的每日備份
+- 保留最近 4 週的每週備份
+- 保留最近 3 個月的每月備份
 
-### Storage Location
+### 儲存位置
 
-- Keep at least one local backup
-- Important data should also be backed up to remote storage
-- Regularly verify the integrity of backup files
+- 至少保留一份本地備份
+- 重要資料應同時備份到遠端儲存
+- 定期驗證備份檔案的完整性

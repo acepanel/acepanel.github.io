@@ -1,156 +1,156 @@
-# Project
+# 專案
 
-The project module is used to manage backend applications, supporting multiple languages including Go, Java, Node.js, PHP, Python, etc. Projects run as system services, supporting automatic restart, auto-start on boot, and other features.
+專案模組用於管理後端應用程式，支援 Go、Java、Node.js、PHP、Python 等多種語言。 專案會作為系統服務運行，支援自動重啟、開機自啟等功能。
 
-## Project Types
+## 專案類型
 
-| Type                                        | Description                      | Use Cases                                    |
-| ------------------------------------------- | -------------------------------- | -------------------------------------------- |
-| [Go](./project/go)                          | Go language projects             | Gin, Echo, Fiber frameworks                  |
-| [Java](./project/java)                      | Java projects                    | Spring Boot, Tomcat, etc.    |
-| [Node.js](./project/nodejs) | Node.js projects | Express, Koa, NestJS, etc.   |
-| [PHP](./project/php)                        | PHP projects                     | Laravel Octane, Swoole, etc. |
-| [Python](./project/python)                  | Python projects                  | Django, Flask, FastAPI, etc. |
-| [General](./project/general)                | Other types of projects          | Any executable program                       |
+| 類型                                          | 說明                         | 適用場景                    |
+| ------------------------------------------- | -------------------------- | ----------------------- |
+| [Go](./project/go)                          | Go 語言專案                    | Gin、Echo、Fiber 等框架      |
+| [Java](./project/java)                      | Java 專案                    | Spring Boot、Tomcat 等    |
+| [Node.js](./project/nodejs) | Node.js 專案 | Express、Koa、NestJS 等    |
+| [PHP](./project/php)                        | PHP 專案                     | Laravel Octane、Swoole 等 |
+| [Python](./project/python)                  | Python 專案                  | Django、Flask、FastAPI 等  |
+| [通用](./project/general)                     | 其他類型專案                     | 任意可執行程式                 |
 
-![Project List](/images/project/project-list.png)
+![專案列表](/images/project/project-list.png)
 
-## Project vs Website
+## 專案 vs 網站
 
-| Feature            | Project                          | Website                      |
-| ------------------ | -------------------------------- | ---------------------------- |
-| Run Mode           | Independent process              | Depends on Web server        |
-| Process Management | Auto restart, auto-start on boot | Managed by Web server        |
-| Use Cases          | Backend services, APIs           | Traditional Web applications |
-| External Access    | Requires reverse proxy           | Direct access                |
+| 特性   | 專案       | 網站          |
+| ---- | -------- | ----------- |
+| 運行方式 | 獨立進程     | 依賴 Web 伺服器  |
+| 進程管理 | 專案自動重啟   | 由 Web 伺服器管理 |
+| 適用場景 | 後端服務、API | 傳統 Web 應用   |
+| 對外存取 | 反向代理配置   | 直接存取        |
 
-## Create Project
+## 建立專案
 
-1. Go to the **Project** page
-2. Click **Create Project**
+1. 進入 **專案** 頁面
+2. 點擊 **建立專案**
 
-![Create Project](/images/project/project-create.png)
+![建立專案](/images/project/project-create.png)
 
-### Configuration Items
+### 配置項
 
-- **Project Name**: Project identifier, used as service name
-- **Project Directory**: Directory where project files are located
-- **Run User**: System user to run the project, default www
-- **Start Command**: Command to start the project
-- **Reverse Proxy**: Whether to automatically create a reverse proxy website
+- **專案名**：專案標識，用作服務名稱
+- **專案目錄**：專案檔案所在目錄
+- **運行使用者**：運行專案的系統使用者，預設 www
+- **啟動命令**：啟動專案的命令
+- 建立專案時開啟「反向代理」，會自動建立一個反向代理網站。
 
-## Project Management
+## 專案管理
 
-The project list displays the following information:
+專案列表顯示以下資訊：
 
-- **Name**: Project name
-- **Description**: Project description
-- **Type**: Project type (Go/Java/Node.js, etc.)
-- **Status**: Running status
-- **Auto Start**: Whether to auto-start on boot
-- **Directory**: Project directory
-- **Actions**: Start, stop, restart, logs, etc.
+- **名稱**：專案名稱
+- **描述**：專案描述
+- **類型**：專案類型（Go/Java/Node.js 等）
+- **狀態**：運行狀態
+- **自啟動**：是否開機自啟
+- **目錄**：專案目錄
+- **操作**：啟動、停止、重啟、日誌等
 
-### Project Operations
+### 專案操作
 
-- **Start**: Start the project
-- **Stop**: Stop the project
-- **Restart**: Restart the project
-- **Logs**: View project runtime logs
-- **Edit**: Modify project configuration
-- **Delete**: Delete the project
+- **啟動**：啟動專案
+- **停止**：停止專案
+- **重啟**：重啟專案
+- 檢視專案日誌
+- **編輯**：修改專案配置
+- **刪除**：刪除專案
 
-## Edit Project
+## 編輯專案
 
-Click the **Edit** button in the project list to modify project configuration. The edit dialog contains multiple tabs:
+點擊專案列表中的 **編輯** 按鈕，可以修改專案配置。 編輯對話框包含多個標籤頁：
 
-### Basic Settings
+### 基本設置
 
-Configure basic project information:
+配置專案的基本資訊：
 
-![Basic Settings](/images/project/project-edit-basic.png)
+![基本設置](/images/project/project-edit-basic.png)
 
-- **Project Name**: Project identifier, used as service name
-- **Description**: Project description information
-- **Project Directory**: Directory where project files are located
-- **Working Directory**: Working directory when the program runs, defaults to project directory
-- **Run User**: System user to run the project
+- **專案名**：專案標識，用作服務名稱
+- **描述**：專案描述資訊
+- **專案目錄**：專案檔案所在目錄
+- **工作目錄**：程式運行時的工作目錄，預設為專案目錄
+- **運行使用者**：運行專案的系統使用者
 
-### Run Settings
+### 運行設置
 
-Configure project runtime parameters:
+配置專案的運行參數：
 
-![Run Settings](/images/project/project-edit-run.png)
+![運行設置](/images/project/project-edit-run.png)
 
-- **Start Command**: Command to start the project
-- **Pre-start Command**: Command to run before starting (optional)
-- **Post-start Command**: Command to run after starting (optional)
-- **Stop Command**: Custom stop command (optional)
-- **Reload Command**: Custom reload command (optional)
-- **Restart Policy**: Restart on failure, always restart, never restart
-- **Restart Interval**: Wait time between restarts
-- **Max Restart Count**: Maximum number of consecutive restarts
-- **Start Timeout**: Timeout for waiting for service to start
-- **Stop Timeout**: Timeout for waiting for service to stop
-- **Standard Output**: How to handle standard output
-- **Standard Error**: How to handle standard error
-- **Environment Variables**: Set environment variables for project runtime
+- **啟動命令**：啟動專案的命令
+- 預啟動命令
+- **啟動後命令**：啟動後運行的命令（可選）
+- **停止命令**：自定義停止命令（可選）
+- **重載命令**：自定義重載命令（可選）
+- **重啟策略**：失敗時重啟 / 總是重啟 / 不重啟
+- **重啟間隔**：兩次重啟之間的等待時間
+- **最大重啟次數**：防止無限重啟
+- 在專案啟動前執行，如安裝依賴：
+- lsof -i:3000  # 檢視佔用連接埠的進程
+- **標準輸出**：標準輸出的處理方式
+- **標準錯誤**：標準錯誤的處理方式
+- **環境變數**：設置專案運行時的環境變數
 
-### Dependencies
+### 依賴
 
-Configure service dependencies to control startup order:
+配置服務依賴關係以控制啟動順序：
 
-![Dependencies](/images/project/project-edit-deps.png)
+![依賴](/images/project/project-edit-deps.png)
 
-- **Requires**: Strong dependencies, if these services are unavailable, the project will fail
-- **Wants**: Weak dependencies, if these services fail, the project will still start
-- **After**: Start this project after the specified services
-- **Before**: Start this project before the specified services
+- **Requires**：強依賴，如果這些服務不可用，專案將會失敗
+- **Wants**：弱依賴，如果這些服務失敗，專案仍然會啟動
+- **After**：在指定服務之後啟動此專案
+- **Before**：在指定服務之前啟動此專案
 
-Common services: `network.target`, `mysqld.service`, `postgresql.service`, `redis.service`
+常見服務：`network.target`、`mysqld.service`、`postgresql.service`、`redis.service`
 
-### Resource Limits
+### 資源限制
 
-Set resource limits to prevent services from consuming too many system resources:
+設置資源限制以防止服務消耗過多系統資源：
 
-![Resource Limits](/images/project/project-edit-resource.png)
+![資源限制](/images/project/project-edit-resource.png)
 
-- **Memory Limit**: Limit the maximum memory used by the project, 0 means unlimited
-- **CPU Quota**: Limit CPU usage, 100% = 1 CPU core
+- **記憶體限制**：限制專案使用的最大記憶體，0 表示無限制
+- **CPU 配額**：限制 CPU 使用率，100% = 1 個 CPU 核心
 
-### Security Settings
+### 安全設置
 
-Security options to enhance service isolation:
+增強服務隔離的安全選項：
 
-![Security Settings](/images/project/project-edit-security.png)
+![安全設置](/images/project/project-edit-security.png)
 
-- **No New Privileges**: Prevent the process from gaining new privileges
-- **Protect /tmp**: Create a private /tmp directory for the service
-- **Protect /home**: Restrict access to the /home directory
-- **Protect System**: Set read-only protection level for system directories
-  - `true`: /usr, /boot are read-only
-  - `full`: + /etc is read-only
-  - `strict`: Entire filesystem is read-only
-- **Read-Write Paths**: Paths the service can read and write
-- **Read-Only Paths**: Paths the service can only read
+- **沒有新權限**：防止進程獲取新的權限
+- **保護 /tmp**：為服務建立私有的 /tmp 目錄
+- **保護 /home**：限制對 /home 目錄的存取
+- **保護系統**：設置系統目錄的唯讀保護級別
+  - `true`：/usr、/boot 為唯讀
+  - `full`：+ /etc 為唯讀
+  - `strict`：整個檔案系統為唯讀
+- **讀寫路徑**：服務可以讀寫的路徑
+- **唯讀路徑**：服務只能讀取的路徑
 
-:::warning Note
-Security settings may affect certain features. Please test thoroughly before enabling.
+:::warning 注意
+安全設置可能會影響某些功能， 請在啟用之前進行充分測試。
 :::
 
-## Process Management
+## 進程管理
 
-Projects use systemd for process management, with the following features:
+專案使用 systemd 進行進程管理，具有以下特性：
 
-- **Auto Restart**: Automatically restart after abnormal process exit
-- **Auto Start on Boot**: Automatically start the project when the system boots
-- **Log Management**: Automatically record standard output and error output
+- 專案啟動失敗
+- **開機自啟**：系統啟動時自動啟動專案
+- **日誌管理**：自動記錄標準輸出和錯誤輸出
 
-## Next Steps
+## 下一步
 
-- [Go Project](./project/go) - Deploy Go applications
-- [Java Project](./project/java) - Deploy Java applications
-- [Node.js Project](./project/nodejs) - Deploy Node.js applications
-- [PHP Project](./project/php) - Deploy PHP applications
-- [Python Project](./project/python) - Deploy Python applications
-- [General Project](./project/general) - Deploy other types of applications
+- [Go 專案](./project/go) - 部署 Go 應用
+- [Java 專案](./project/java) - 部署 Java 應用
+- [Node.js 專案](./project/nodejs) - 部署 Node.js 應用
+- [PHP 專案](./project/php) - 部署 PHP 應用
+- [Python 專案](./project/python) - 部署 Python 應用
+- [通用專案](./project/general) - 部署其他類型應用

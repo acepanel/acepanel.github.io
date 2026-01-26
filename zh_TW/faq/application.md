@@ -1,73 +1,73 @@
-# Application FAQ
+# 應用常見問題
 
-## PHP Module Installation
+## PHP 模組安裝
 
-**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Modules**, install the required modules.
+「應用」->「運行環境」->「PHP」->「管理」->「模組」，安裝需要的模組。
 
-Some modules require compilation and take longer to install. You can check the progress on the **Tasks** page.
+部分模組需要編譯安裝，耗時較長， 可在「任務」頁面查看進度。
 
-## PHP Functions Disabled
+## PHP 函數被禁用
 
-Some high-risk functions are disabled by default. To enable them:
+預設禁用了部分高危函數。 如需啟用：
 
-**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Configuration**
+「應用」->「運行環境」->「PHP」->「管理」->「配置」
 
-Find `disable_functions` and remove the function names you want to enable.
+找到 `disable_functions`，刪除需要啟用的函數名。
 
-:::warning Security Warning
-Functions like `exec`, `shell_exec`, `system` have security risks. Please confirm necessity before enabling.
+:::warning 安全提示
+`exec`、`shell_exec`、`system` 等函數有安全風險， 啟用前需確認必要性。
 :::
 
-## Nginx Configuration Error
+## Nginx 配置錯誤
 
-If Nginx fails to start after modifying configuration, check the error:
+修改配置後 Nginx 無法啟動，查看錯誤：
 
 ```shell
 nginx -t
 ```
 
-After fixing the configuration, restart:
+修復配置後重啟：
 
 ```shell
 systemctl restart nginx
 ```
 
-## Supervisor Startup Error
+## Supervisor 啟動報錯
 
-### EACCES Permission Error
+### EACCES 權限錯誤
 
-Project directory permission issue, ensure the directory owner is www:
+專案目錄權限問題，確保目錄所有者為 www：
 
 ```shell
-chown -R www:www /opt/ace/projects/project-name
+chown -R www:www /opt/ace/projects/專案名
 ```
 
-### Cannot Find node/npm
+### 找不到 node/npm
 
-Node.js installed via nvm is not in the default PATH.
+通過 nvm 安裝的 Node.js 不在預設 PATH 中。
 
-**Apps** -> **Supervisor Manager** -> **Manage** -> **Configuration**, add:
+「應用」->「Supervisor 管理器」->「管理」->「配置」，添加：
 
 ```ini
 environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/bin"
 ```
 
-Replace the version number with the actual installed version. You can check the path with `whereis node`.
+版本號替換為實際安裝的版本， 可通過 `whereis node` 查看路徑。
 
-## Application Installation Failed
+## 應用程式安裝失敗
 
-1. Check network connection
-2. View error messages on the **Tasks** page
-3. Try clicking **Update Cache** on the **Apps** page and retry
+1. 檢查網絡連接
+2. 查看「任務」頁面的錯誤信息
+3. 嘗試「應用」頁面點擊「更新緩存」後重試
 
-## Application Cannot Be Uninstalled
+## 應用無法卸載
 
-Applications with dependencies need to uninstall dependent applications first.
+有依賴關係的應用需要先卸載依賴它的應用。
 
-For example, phpMyAdmin depends on Nginx, so phpMyAdmin needs to be uninstalled first.
+如 phpMyAdmin 依賴 Nginx，需先卸載 phpMyAdmin。
 
-## Multiple PHP Versions Coexistence
+## 多版本 PHP 共存
 
-Multiple PHP versions can be installed simultaneously. Select the corresponding version when creating a website.
+可同時安裝多個 PHP 版本， 在創建網站時選擇對應版本。
 
-To switch versions for existing websites: **Edit** -> **Basic Settings** -> **PHP Version**.
+已有網站切換版本：「編輯」->「基本設置」->「PHP 版本」。

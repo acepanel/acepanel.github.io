@@ -1,58 +1,58 @@
-# Database Management
+# 數據庫管理
 
-The database management page is used to create, view, and delete databases. AcePanel now uses UTF-8 encoding by default when creating databases.
+數據庫管理頁面用於創建、查看和刪除數據庫， AcePanel 已全面默認使用 UTF-8 編碼創建數據庫。
 
-## Database List
+## 數據庫列表
 
-Go to the **Database** page, which displays the database list by default.
+進入 **數據庫** 頁面，默認顯示數據庫列表。
 
-![Database List](/images/database/database-list.png)
+![數據庫列表](/images/database/database-list.png)
 
-The list displays the following information:
+列表顯示以下信息：
 
-- **Type**: Database type (MySQL/PostgreSQL)
-- **Database Name**: Database name
-- **Server**: The database server it belongs to
-- **Encoding**: Character encoding
-- **Comment**: Remarks (PostgreSQL supported)
-- **Actions**: Delete
+- **類型**：數據庫類型（MySQL/PostgreSQL）
+- **數據庫名稱**：數據庫名稱
+- **服務器**：所屬的數據庫服務器
+- **編碼**：字符編碼
+- **註釋**：備註信息（PostgreSQL 支持）
+- **操作**：刪除
 
-## Create Database
+## 創建數據庫
 
-1. Click the **Create Database** button
-2. Fill in the configuration:
-   - **Server**: Select database server
-   - **Database Name**: Can only use letters, numbers, and underscores
-3. Choose whether to create a user and set permissions (optional)
-4. Click Create
+1. 點擊 **創建數據庫** 按鈕
+2. 填寫配置：
+   - **服務器**：選擇數據庫服務器
+   - **數據庫名稱**：只能使用字母、數字和下劃線
+3. 選擇是否創建用戶並設置權限（可選）
+4. 點擊創建
 
-## Delete Database
+## 數據庫備份
 
-Click the **Delete** button on the right side of the database to delete it.
+點擊數據庫右側的 **刪除** 按鈕刪除數據庫。
 
-:::danger Warning
-Deleting a database will permanently delete all data in that database. This operation cannot be undone! Please make sure to backup important data in advance.
+:::danger 警告
+刪除數據庫會永久刪除該數據庫中的所有數據， 此操作不可恢復！ 請務必提前備份重要數據。
 :::
 
-## Database Naming Conventions
+## 數據庫命名規範
 
-- Can only use letters, numbers, and underscores
-- Cannot start with a number
-- Avoid using database reserved words
-- Recommend using meaningful names, such as `wordpress`, `myapp_production`
+- 只能使用字母、數字和下劃線
+- 不能以數字開頭
+- 避免使用數據庫保留字
+- 建議使用有意義的名稱，如 `wordpress`、`myapp_production`
 
-## FAQ
+## 常見問題
 
-### Failed to Create Database
+### 創建數據庫失敗
 
-- Check if the database name follows naming conventions
-- Check if a database with the same name already exists
-- Check if the database service is running normally
+- 檢查數據庫名稱是否符合命名規範
+- 檢查是否已存在同名數據庫
+- 檢查數據庫服務是否運行
 
-### Database Encoding Issues
+### 數據庫常見問題
 
-If garbled characters appear, check:
+如果出現亂碼，檢查：
 
-1. Whether the database encoding is correct
-2. Whether the correct encoding is specified when connecting
-3. The encoding settings of the application
+1. 數據庫編碼是否正確
+2. 連接時是否指定了正確的編碼
+3. 應用程序的編碼設置

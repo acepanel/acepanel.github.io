@@ -1,77 +1,77 @@
-# Database
+# 數據庫
 
-The database module is used to manage MySQL, MariaDB, PostgreSQL, and other databases. It supports creating databases, managing users, and configuring database servers.
+數據庫模組用於管理 MySQL、MariaDB、PostgreSQL 等數據庫。 支持創建數據庫、管理用戶和配置數據庫服務器。
 
-## Prerequisites
+## 前置要求
 
-Before using the database feature, you need to install database software first:
+使用數據庫功能前，需要先安裝數據庫軟體：
 
-1. Go to **Applications** > **Native Applications**
-2. Install Percona, MySQL, MariaDB, or PostgreSQL
+1. 進入 **應用** > **原生應用**
+2. 安裝 Percona、MySQL、MariaDB 或 PostgreSQL
 
-## Feature Overview
+## 功能概覽
 
-The database module is divided into three parts:
+數據庫模組分為三個部分：
 
-| Feature                         | Description                           |
-| ------------------------------- | ------------------------------------- |
-| [Database](./database/database) | Create and manage databases           |
-| [User](./database/user)         | Manage database users and permissions |
-| [Server](./database/server)     | Manage database server connections    |
+| 功能                         | 說明         |
+| -------------------------- | ---------- |
+| [數據庫](./database/database) | 創建和管理數據庫   |
+| [用戶](./database/user)      | 管理數據庫用戶和權限 |
+| [服務器](./database/server)   | 管理數據庫服務器連接 |
 
-![Database List](/images/database/database-list.png)
+![數據庫列表](/images/database/database-list.png)
 
-## Supported Databases
+## 支持的數據庫
 
-| Database   | Description                                                      |
-| ---------- | ---------------------------------------------------------------- |
-| Percona    | High-performance fork of MySQL, suitable for high-load scenarios |
-| MySQL      | The world's most popular open-source relational database         |
-| MariaDB    | Open-source fork of MySQL, fully compatible with MySQL           |
-| PostgreSQL | Powerful open-source object-relational database                  |
+| 數據庫        | 說明                     |
+| ---------- | ---------------------- |
+| Percona    | MySQL 的高性能分支，適合高負載場景   |
+| MySQL      | 世界上最流行的開源關係型數據庫        |
+| MariaDB    | MySQL 的開源分支，完全兼容 MySQL |
+| PostgreSQL | 功能強大的開源對象關係型數據庫        |
 
-## Quick Start
+## 快速開始
 
-### Create Database
+### 創建數據庫
 
-1. Go to the **Database** page
-2. Click **Create Database**
-3. Select database type and server
-4. Enter database name
-5. Choose whether to create a user and set permissions
-6. Click Create
+1. 進入 **數據庫** 頁面
+2. 點擊 **創建數據庫**
+3. 選擇數據庫類型和服務器
+4. 輸入數據庫名稱
+5. 選擇是否創建用戶並設置權限
+6. 點擊創建
 
-### Create User
+### 創建用戶
 
-1. Switch to the **User** tab
-2. Click **Create User**
-3. Enter username and password
-4. Set access permissions
-5. Click Create
+1. 切換到 **用戶** 標籤
+2. 點擊 **創建用戶**
+3. 輸入用戶名和密碼
+4. 設置訪問權限
+5. 點擊創建
 
-## Connect to Database
+## 連接數據庫
 
-### Local Connection
+### 本地連接
 
 ```
-Host: 127.0.0.1 or localhost
-Port: Percona/MySQL/MariaDB 3306, PostgreSQL 5432
-Socket: Percona/MySQL/MariaDB /tmp/mysql.sock, PostgreSQL /tmp/.s.PGSQL.5432
+主機：127.0.0.1 或 localhost
+端口：Percona/MySQL/MariaDB 3306，PostgreSQL 5432
+Socket：Percona/MySQL/MariaDB /tmp/mysql.sock，PostgreSQL /tmp/.s.PGSQL.5432
 ```
 
-### Remote Connection
+### 遠程連接
 
-To connect to the database remotely:
+如需遠程連接數據庫：
 
-1. Open the database port in the firewall
-2. Create a user that allows remote access (set host to `%`)
+1. 在防火牆中開放數據庫端口
+2. 創建允許遠程訪問的用戶（主機設為 `%`）
 
-:::warning Security Notice
-It is not recommended to expose database ports to the public network. For remote management, it is recommended to use SSH tunnels or VPN.
+:::warning 安全提示
+不建議將數據庫端口暴露到公網， 如需遠程管理建議使用 SSH 隧道或 VPN。
 :::
 
-## Next Steps
+## 下一步
 
-- [Database Management](./database/database) - Learn how to create and manage databases
-- [User Management](./database/user) - Learn how to manage database users
-- [Server Management](./database/server) - Learn how to manage database servers
+- [數據庫管理](./database/database) - 了解如何創建和管理數據庫
+- [用戶管理](./database/user) - 了解如何管理數據庫用戶
+- [服務器管理](./database/server) - 了解如何管理數據庫服務器
