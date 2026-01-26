@@ -16,10 +16,16 @@ export const config = defineConfig({
       items: sidebarQuickstart()
     }, {
       text: "進階指南",
+      collapsed: true,
       base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
       items: sidebarAdvanced()
     }, {
-      text: "版本歷史",
+      text: "FAQ",
+      collapsed: true,
+      base: locale == 'zh_CN' ? '/faq' : `/${locale}/faq`,
+      items: sidebarFAQ()
+    }, {
+      text: "Versions",
       collapsed: true,
       items: [...versions.map((version: string) => {
         return {
@@ -79,28 +85,239 @@ function nav(): DefaultTheme.NavItem[] {
 }
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "安裝面板",
+    text: 'News & Announcements',
+    collapsed: true,
+    items: [{
+      text: "AcePanel 3.0 Official Release",
+      link: '/news/acepanel-3-release'
+    }]
+  }, {
+    text: 'Introduction',
+    link: '/introduction'
+  }, {
+    text: 'Install',
     link: '/install'
   }, {
-    text: "掛載分區",
-    link: '/disk'
+    text: 'Upgrade',
+    link: '/upgrade'
   }, {
-    text: "管理面板",
-    link: '/panel'
+    text: 'First Website',
+    link: '/first-website'
   }, {
-    text: "管理容器",
-    link: '/container'
+    text: 'First Container',
+    link: '/first-container'
+  }, {
+    text: 'First Project',
+    link: '/first-project'
+  }, {
+    text: 'Command Line',
+    link: '/cli'
+  }, {
+    text: 'Uninstall',
+    link: '/uninstall'
   }];
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "面板 API",
+    text: "Apps",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/app'
+    }, {
+      text: "Native Apps",
+      link: '/app/native'
+    }, {
+      text: "Runtimes",
+      link: '/app/environment'
+    }, {
+      text: "Container Templates",
+      link: '/app/template'
+    }]
+  }, {
+    text: "Containers",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/container'
+    }, {
+      text: "Containers",
+      link: '/container/container'
+    }, {
+      text: "Compose",
+      link: '/container/compose'
+    }, {
+      text: "Images",
+      link: '/container/image'
+    }, {
+      text: "Networks",
+      link: '/container/network'
+    }, {
+      text: "Volumes",
+      link: '/container/volume'
+    }]
+  }, {
+    text: "Websites",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/website'
+    }, {
+      text: "Reverse Proxy",
+      link: '/website/proxy'
+    }, {
+      text: "PHP",
+      link: '/website/php'
+    }, {
+      text: "Static",
+      link: '/website/static'
+    }]
+  }, {
+    text: "Projects",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/project'
+    }, {
+      text: "Go",
+      link: '/project/go'
+    }, {
+      text: "Java",
+      link: '/project/java'
+    }, {
+      text: "Node.js",
+      link: '/project/nodejs'
+    }, {
+      text: "PHP",
+      link: '/project/php'
+    }, {
+      text: "Python",
+      link: '/project/python'
+    }, {
+      text: "General",
+      link: '/project/general'
+    }]
+  }, {
+    text: "Databases",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/database'
+    }, {
+      text: "Databases",
+      link: '/database/database'
+    }, {
+      text: "Users",
+      link: '/database/user'
+    }, {
+      text: "Servers",
+      link: '/database/server'
+    }]
+  }, {
+    text: "Certificates",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/cert'
+    }, {
+      text: "Certificates",
+      link: '/cert/cert'
+    }, {
+      text: "Accounts",
+      link: '/cert/account'
+    }, {
+      text: "DNS",
+      link: '/cert/dns'
+    }]
+  }, {
+    text: "Monitor",
+    link: '/monitor'
+  }, {
+    text: "Files",
+    link: '/file'
+  }, {
+    text: "Backup",
+    link: '/backup'
+  }, {
+    text: "Terminal",
+    link: '/ssh'
+  }, {
+    text: "Tasks",
+    collapsed: true,
+    items: [{
+      text: "Scheduled Tasks",
+      link: '/task/schedule'
+    }, {
+      text: "Panel Tasks",
+      link: '/task/panel'
+    }]
+  }, {
+    text: "Toolbox",
+    collapsed: true,
+    items: [{
+      text: "Overview",
+      link: '/toolbox'
+    }, {
+      text: "Processes",
+      link: '/toolbox/process'
+    }, {
+      text: "System",
+      link: '/toolbox/system'
+    }, {
+      text: "SSH",
+      link: '/toolbox/ssh'
+    }, {
+      text: "Disk",
+      link: '/toolbox/disk'
+    }, {
+      text: "Log Cleanup",
+      link: '/toolbox/log'
+    }, {
+      text: "Webhooks",
+      link: '/toolbox/webhook'
+    }, {
+      text: "Benchmark",
+      link: '/toolbox/benchmark'
+    }]
+  }, {
+    text: "Settings",
+    collapsed: true,
+    items: [{
+      text: "Basic Settings",
+      link: '/setting/basic'
+    }, {
+      text: "Security Settings",
+      link: '/setting/safe'
+    }, {
+      text: "User Management",
+      link: '/setting/user'
+    }]
+  }, {
+    text: 'Panel API',
     link: '/api'
   }, {
-    text: "安全性建議",
-    link: '/safe'
+    text: 'Security Recommendations',
+    link: '/security'
+  }];
+}
+function sidebarFAQ(): DefaultTheme.SidebarItem[] {
+  return [{
+    text: "Panel",
+    link: '/panel'
   }, {
-    text: "常見問題",
-    link: '/faq'
+    text: "Application",
+    link: '/application'
+  }, {
+    text: "Database",
+    link: '/database'
+  }, {
+    text: "Website",
+    link: '/website'
+  }, {
+    text: "Project",
+    link: '/project'
+  }, {
+    text: "Container",
+    link: '/container'
   }];
 }

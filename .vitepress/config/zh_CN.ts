@@ -16,8 +16,14 @@ export const config = defineConfig({
       items: sidebarQuickstart()
     }, {
       text: "进阶指南",
+      collapsed: true,
       base: locale == 'zh_CN' ? '/advanced' : `/${locale}/advanced`,
       items: sidebarAdvanced()
+    }, {
+      text: "常见问题",
+      collapsed: true,
+      base: locale == 'zh_CN' ? '/faq' : `/${locale}/faq`,
+      items: sidebarFAQ()
     }, {
       text: "版本历史",
       collapsed: true,
@@ -79,28 +85,239 @@ function nav(): DefaultTheme.NavItem[] {
 }
 function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "安装面板",
+    text: "动态与公告",
+    collapsed: true,
+    items: [{
+      text: "AcePanel 3.0 正式发布",
+      link: '/news/acepanel-3-release'
+    }]
+  }, {
+    text: "介绍",
+    link: '/introduction'
+  }, {
+    text: "安装",
     link: '/install'
   }, {
-    text: "挂载分区",
-    link: '/disk'
+    text: "升级",
+    link: '/upgrade'
   }, {
-    text: "管理面板",
-    link: '/panel'
+    text: "第一个网站",
+    link: '/first-website'
   }, {
-    text: "管理容器",
-    link: '/container'
+    text: "第一个容器",
+    link: '/first-container'
+  }, {
+    text: "第一个项目",
+    link: '/first-project'
+  }, {
+    text: "命令行",
+    link: '/cli'
+  }, {
+    text: "卸载",
+    link: '/uninstall'
   }];
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
+    text: "应用",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/app'
+    }, {
+      text: "原生应用",
+      link: '/app/native'
+    }, {
+      text: "运行环境",
+      link: '/app/environment'
+    }, {
+      text: "容器模版",
+      link: '/app/template'
+    }]
+  }, {
+    text: "容器",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/container'
+    }, {
+      text: "容器",
+      link: '/container/container'
+    }, {
+      text: "编排",
+      link: '/container/compose'
+    }, {
+      text: "镜像",
+      link: '/container/image'
+    }, {
+      text: "网络",
+      link: '/container/network'
+    }, {
+      text: "卷",
+      link: '/container/volume'
+    }]
+  }, {
+    text: "网站",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/website'
+    }, {
+      text: "反向代理",
+      link: '/website/proxy'
+    }, {
+      text: "PHP",
+      link: '/website/php'
+    }, {
+      text: "纯静态",
+      link: '/website/static'
+    }]
+  }, {
+    text: "项目",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/project'
+    }, {
+      text: "Go",
+      link: '/project/go'
+    }, {
+      text: "Java",
+      link: '/project/java'
+    }, {
+      text: "Node.js",
+      link: '/project/nodejs'
+    }, {
+      text: "PHP",
+      link: '/project/php'
+    }, {
+      text: "Python",
+      link: '/project/python'
+    }, {
+      text: "通用",
+      link: '/project/general'
+    }]
+  }, {
+    text: "数据库",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/database'
+    }, {
+      text: "数据库",
+      link: '/database/database'
+    }, {
+      text: "用户",
+      link: '/database/user'
+    }, {
+      text: "服务器",
+      link: '/database/server'
+    }]
+  }, {
+    text: "证书",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/cert'
+    }, {
+      text: "证书",
+      link: '/cert/cert'
+    }, {
+      text: "账号",
+      link: '/cert/account'
+    }, {
+      text: "DNS",
+      link: '/cert/dns'
+    }]
+  }, {
+    text: "监控",
+    link: '/monitor'
+  }, {
+    text: "文件",
+    link: '/file'
+  }, {
+    text: "备份",
+    link: '/backup'
+  }, {
+    text: "终端",
+    link: '/ssh'
+  }, {
+    text: "任务",
+    collapsed: true,
+    items: [{
+      text: "计划任务",
+      link: '/task/schedule'
+    }, {
+      text: "面板任务",
+      link: '/task/panel'
+    }]
+  }, {
+    text: "工具箱",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/toolbox'
+    }, {
+      text: "进程",
+      link: '/toolbox/process'
+    }, {
+      text: "系统",
+      link: '/toolbox/system'
+    }, {
+      text: "SSH",
+      link: '/toolbox/ssh'
+    }, {
+      text: "磁盘",
+      link: '/toolbox/disk'
+    }, {
+      text: "日志清理",
+      link: '/toolbox/log'
+    }, {
+      text: "Web 钩子",
+      link: '/toolbox/webhook'
+    }, {
+      text: "跑分",
+      link: '/toolbox/benchmark'
+    }]
+  }, {
+    text: "设置",
+    collapsed: true,
+    items: [{
+      text: "基本设置",
+      link: '/setting/basic'
+    }, {
+      text: "安全设置",
+      link: '/setting/safe'
+    }, {
+      text: "用户设置",
+      link: '/setting/user'
+    }]
+  }, {
     text: "面板 API",
     link: '/api'
   }, {
-    text: "安全性建议",
-    link: '/safe'
+    text: "安全建议",
+    link: '/security'
+  }];
+}
+function sidebarFAQ(): DefaultTheme.SidebarItem[] {
+  return [{
+    text: "面板",
+    link: '/panel'
   }, {
-    text: "常见问题",
-    link: '/faq'
+    text: "应用",
+    link: '/application'
+  }, {
+    text: "数据库",
+    link: '/database'
+  }, {
+    text: "网站",
+    link: '/website'
+  }, {
+    text: "项目",
+    link: '/project'
+  }, {
+    text: "容器",
+    link: '/container'
   }];
 }
