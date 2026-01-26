@@ -10,7 +10,9 @@ Servers in China cannot connect to Docker Hub and need to configure mirror accel
 
 ```json
 {
-  "registry-mirrors": ["https://docker.1ms.run"]
+  "registry-mirrors": [
+    "https://docker.1ms.run"
+  ]
 }
 ```
 
@@ -31,9 +33,9 @@ For mirror acceleration addresses, you can use [1ms Mirror](https://1ms.run/) or
 
 1. Click **Logs** to view error messages
 2. Common causes:
-   - Port occupied: Modify the mapped port
-   - Image pull failed: Configure mirror acceleration
-   - Configuration error: Check docker-compose.yml syntax
+    - Port occupied: Modify the mapped port
+    - Image pull failed: Configure mirror acceleration
+    - Configuration error: Check docker-compose.yml syntax
 
 ## Container Inaccessible
 

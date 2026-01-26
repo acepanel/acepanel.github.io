@@ -31,6 +31,7 @@ System load reflects the busyness of the CPU:
 - **15-minute load**: Average load over the last 15 minutes
 
 Load value reference:
+
 - Load < CPU cores: System running smoothly
 - Load = CPU cores: System running at full capacity
 - Load > CPU cores: System overloaded, may experience lag
@@ -38,6 +39,7 @@ Load value reference:
 ### CPU Usage
 
 Displays CPU usage percentage, including:
+
 - User mode usage
 - System mode usage
 - Idle rate
@@ -45,6 +47,7 @@ Displays CPU usage percentage, including:
 ### Memory Usage
 
 Displays memory usage:
+
 - Used memory
 - Available memory
 - Cache/Buffer
@@ -52,6 +55,7 @@ Displays memory usage:
 ### Disk I/O
 
 Displays disk read/write speed:
+
 - Read speed (KB/s or MB/s)
 - Write speed (KB/s or MB/s)
 
@@ -60,6 +64,7 @@ You can select the disk device to monitor.
 ### Network Traffic
 
 Displays network interface traffic:
+
 - Send speed
 - Receive speed
 
@@ -79,6 +84,7 @@ Each monitoring chart supports selecting a time range:
 ### Performance Analysis
 
 Analyze server performance bottlenecks through monitoring data:
+
 - Sustained high CPU load: Consider optimizing programs or upgrading CPU
 - Insufficient memory: Consider adding memory or optimizing memory usage
 - High disk I/O: Consider using SSD or optimizing database queries

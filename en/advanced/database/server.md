@@ -31,12 +31,12 @@ After installing database software, AcePanel will automatically add local server
 
 1. Click the **Add Server** button
 2. Fill in the configuration:
-   - **Type**: Select database type
-   - **Name**: Server name (for identification)
-   - **Host**: Server address
-   - **Port**: Database port
-   - **Username**: Administrator username
-   - **Password**: Administrator password
+    - **Type**: Select database type
+    - **Name**: Server name (for identification)
+    - **Host**: Server address
+    - **Port**: Database port
+    - **Username**: Administrator username
+    - **Password**: Administrator password
 3. Click Add
 
 ### Remote Server Use Cases
@@ -80,7 +80,7 @@ After adding or modifying a server, the system will automatically test the conne
 
 ## Default Ports
 
-| Database                | Default Port |
-|-------------------------|--------------|
-| Percona/MySQL/MariaDB   | 3306 |
-| PostgreSQL              | 5432 |
+| Database              | Default Port |
+|-----------------------|--------------|
+| Percona/MySQL/MariaDB | 3306         |
+| PostgreSQL            | 5432         |

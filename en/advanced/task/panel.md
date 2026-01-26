@@ -18,17 +18,18 @@ The list displays the following information:
 
 ## Task Status
 
-| Status | Description |
-|--------|-------------|
-| Running | Task is being executed |
+| Status    | Description                |
+|-----------|----------------------------|
+| Running   | Task is being executed     |
 | Completed | Task executed successfully |
-| Failed | Task execution failed |
+| Failed    | Task execution failed      |
 
 ## Common Task Types
 
 ### Application Installation
 
 Installation tasks are created when installing native applications:
+
 - Install application Nginx
 - Install application MySQL
 - Install application Docker
@@ -36,12 +37,14 @@ Installation tasks are created when installing native applications:
 ### Application Uninstallation
 
 Uninstallation tasks are created when uninstalling applications:
+
 - Uninstall application MariaDB
 - Uninstall application Redis
 
 ### Environment Installation
 
 Installation tasks are created when installing runtime environments:
+
 - Install environment PHP 8.4
 - Install environment Node.js 20
 - Install environment Go 1.24
@@ -49,6 +52,7 @@ Installation tasks are created when installing runtime environments:
 ## View Logs
 
 Click the **Logs** button to view detailed execution logs of the task, including:
+
 - Command output
 - Error messages
 
@@ -71,6 +75,7 @@ If a task fails:
 3. Re-execute the operation after resolving the issue
 
 Common failure causes:
+
 - Network issues causing download failures
 - Insufficient disk space
 - Missing dependencies

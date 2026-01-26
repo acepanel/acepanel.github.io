@@ -34,18 +34,19 @@ When creating a container, add volume mounts in the **Volume** option:
 - **host_path:container_path** - Directly mount host directory
 
 For example:
+
 - `mysql_data:/var/lib/mysql` - Mount mysql_data volume to container's /var/lib/mysql
 - `/opt/ace/data:/data` - Mount host's /opt/ace/data directory to container's /data
 
 ### Volume vs Bind Mount
 
-| Feature | Volume | Bind Mount |
-|---------|--------|------------|
-| Management | Docker managed | User managed |
-| Storage Location | Docker data directory | Any host path |
-| Backup | Requires Docker commands | Directly backup directory |
-| Portability | High | Depends on host path |
-| Use Cases | Data that needs persistence like databases | Configuration files, code directories |
+| Feature          | Volume                                     | Bind Mount                            |
+|------------------|--------------------------------------------|---------------------------------------|
+| Management       | Docker managed                             | User managed                          |
+| Storage Location | Docker data directory                      | Any host path                         |
+| Backup           | Requires Docker commands                   | Directly backup directory             |
+| Portability      | High                                       | Depends on host path                  |
+| Use Cases        | Data that needs persistence like databases | Configuration files, code directories |
 
 ## Delete Volume
 

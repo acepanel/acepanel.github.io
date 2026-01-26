@@ -25,21 +25,21 @@ The list displays the following information:
 
 1. Click the **Create User** button
 2. Fill in the configuration:
-   - **Server**: Select database server
-   - **Username**: Database username
-   - **Password**: User password (strong password recommended)
-   - **Host**: Allowed connection host address
-   - **Permissions**: Select databases the user can access
+    - **Server**: Select database server
+    - **Username**: Database username
+    - **Password**: User password (strong password recommended)
+    - **Host**: Allowed connection host address
+    - **Permissions**: Select databases the user can access
 3. Click Create
 
 ### Host Settings
 
-| Value | Description |
-|-------|-------------|
-| `localhost` | Only allow local connections |
-| `127.0.0.1` | Only allow local IP connections |
-| `%` | Allow connections from any host |
-| `192.168.1.%` | Allow connections from specified subnet |
+| Value           | Description                              |
+|-----------------|------------------------------------------|
+| `localhost`     | Only allow local connections             |
+| `127.0.0.1`     | Only allow local IP connections          |
+| `%`             | Allow connections from any host          |
+| `192.168.1.%`   | Allow connections from specified subnet  |
 | `192.168.1.100` | Only allow connections from specified IP |
 
 ::: warning Security Notice

@@ -11,11 +11,11 @@ Before using the website feature, you need to install a Web server first:
 
 ## Website Types
 
-| Type | Description | Use Cases |
-|------|-------------|-----------|
+| Type                             | Description                          | Use Cases                      |
+|----------------------------------|--------------------------------------|--------------------------------|
 | [Reverse Proxy](./website/proxy) | Forward requests to backend services | Node.js, Go, Java applications |
-| [PHP](./website/php) | Run PHP programs | WordPress, Laravel, etc. |
-| [Static](./website/static) | Host static files | HTML, Vue/React build outputs |
+| [PHP](./website/php)             | Run PHP programs                     | WordPress, Laravel, etc.       |
+| [Static](./website/static)       | Host static files                    | HTML, Vue/React build outputs  |
 
 ## Website List
 

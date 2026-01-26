@@ -6,13 +6,13 @@ Runtime environments are used to install runtimes for various programming langua
 
 AcePanel supports runtime environments for the following programming languages:
 
-| Language | Available Versions | Description |
-|----------|-------------------|-------------|
-| Go | 1.20 - 1.25 | Suitable for building high-performance backend services |
-| Java | JDK 8, 11, 17, 21, 25 | Uses Amazon Corretto distribution |
-| Node.js | 20, 22, 24 | Suitable for frontend builds and Node applications |
-| PHP | 7.4 - 8.5 | Suitable for Web development |
-| Python | 3.10 - 3.14 | Suitable for scripts and Web applications |
+| Language | Available Versions    | Description                                             |
+|----------|-----------------------|---------------------------------------------------------|
+| Go       | 1.20 - 1.25           | Suitable for building high-performance backend services |
+| Java     | JDK 8, 11, 17, 21, 25 | Uses Amazon Corretto distribution                       |
+| Node.js  | 20, 22, 24            | Suitable for frontend builds and Node applications      |
+| PHP      | 7.4 - 8.5             | Suitable for Web development                            |
+| Python   | 3.10 - 3.14           | Suitable for scripts and Web applications               |
 
 ## Runtime Environment List
 
@@ -32,10 +32,11 @@ Click the language category at the top to filter versions for a specific languag
 4. Click the **Install** button for the corresponding version
 
 ::: tip Version Selection Recommendations
+
 - Production environments are recommended to use LTS (Long Term Support) versions
 - Versions marked "End of Life" are not recommended for new projects
 - Multiple versions can be installed simultaneously and specified for use in projects
-:::
+  :::
 
 ## Manage Runtime Environment
 

@@ -22,10 +22,10 @@ Click the **Create Host** button to add an SSH connection:
 
 ### Authentication Methods
 
-| Method | Description |
-|--------|-------------|
+| Method   | Description                              |
+|----------|------------------------------------------|
 | Password | Authenticate using username and password |
-| Key | Authenticate using SSH private key |
+| Key      | Authenticate using SSH private key       |
 
 ::: tip Recommendation
 Production environments are recommended to use key authentication for better security.

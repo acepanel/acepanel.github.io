@@ -57,11 +57,11 @@ Add listening addresses in **Domains and Listening**: `[::]:80` and `[::]:443`.
 
 ## CDN Origin and HTTPS
 
-| CDN Origin Protocol | Website HTTPS Configuration |
-|---------------------|----------------------------|
-| HTTP | Not required |
-| HTTPS | Must be enabled |
-| Follow Protocol | Must be enabled, and HTTP redirect must not be enabled |
+| CDN Origin Protocol | Website HTTPS Configuration                            |
+|---------------------|--------------------------------------------------------|
+| HTTP                | Not required                                           |
+| HTTPS               | Must be enabled                                        |
+| Follow Protocol     | Must be enabled, and HTTP redirect must not be enabled |
 
 ## Upload File Size Limit
 

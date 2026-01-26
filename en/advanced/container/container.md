@@ -29,10 +29,10 @@ Click the **Create Container** button to open the creation dialog.
 - **Image**: Docker image name, e.g., `nginx:latest`, `mysql:8.0`
 - **Network**: Select the network for the container to use
 - **Restart Policy**: Restart behavior after container exits
-  - None: Do not auto restart
-  - always: Always restart
-  - on-failure: Restart on failure
-  - unless-stopped: Restart unless manually stopped
+    - None: Do not auto restart
+    - always: Always restart
+    - on-failure: Restart on failure
+    - unless-stopped: Restart unless manually stopped
 
 ### Advanced Options
 

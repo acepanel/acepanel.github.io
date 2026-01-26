@@ -20,16 +20,16 @@ The top of the page displays basic information for each disk:
 
 Each disk shows its partition information:
 
-| Column | Description |
-|--------|-------------|
+| Column         | Description                               |
+|----------------|-------------------------------------------|
 | Partition Name | Partition device name, such as vda1, vda2 |
-| Size | Partition capacity |
-| Used | Used space |
-| Available | Available space |
-| Usage | Usage percentage |
-| Mount Point | Mount directory, such as `/`, `/data` |
-| File System | File system type, such as ext4, xfs |
-| Actions | Unmount and other operations |
+| Size           | Partition capacity                        |
+| Used           | Used space                                |
+| Available      | Available space                           |
+| Usage          | Usage percentage                          |
+| Mount Point    | Mount directory, such as `/`, `/data`     |
+| File System    | File system type, such as ext4, xfs       |
+| Actions        | Unmount and other operations              |
 
 ### Mount Partition
 
@@ -81,6 +81,7 @@ LVM (Logical Volume Manager) provides flexible disk space management with suppor
 Physical volumes are the foundation of LVM, typically a disk partition or an entire disk.
 
 **Create Physical Volume**:
+
 1. Select device (unused partition or disk)
 2. Click **Create Physical Volume**
 
@@ -89,6 +90,7 @@ Physical volumes are the foundation of LVM, typically a disk partition or an ent
 A volume group consists of one or more physical volumes, representing a storage pool concept.
 
 **Create Volume Group**:
+
 1. Enter volume group name
 2. Select physical volumes to add
 3. Click **Create Volume Group**
@@ -98,6 +100,7 @@ A volume group consists of one or more physical volumes, representing a storage 
 Logical volumes allocate space from volume groups, equivalent to traditional partitions.
 
 **Create Logical Volume**:
+
 1. Enter logical volume name
 2. Select volume group
 3. Set size (GB)

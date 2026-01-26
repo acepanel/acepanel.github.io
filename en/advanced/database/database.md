@@ -21,8 +21,8 @@ The list displays the following information:
 
 1. Click the **Create Database** button
 2. Fill in the configuration:
-   - **Server**: Select database server
-   - **Database Name**: Can only use letters, numbers, and underscores
+    - **Server**: Select database server
+    - **Database Name**: Can only use letters, numbers, and underscores
 3. Choose whether to create a user and set permissions (optional)
 4. Click Create
 

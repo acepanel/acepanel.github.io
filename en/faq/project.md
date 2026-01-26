@@ -19,6 +19,7 @@ If deployed under `/root`, you need to run as root user (not recommended).
 Such as `node: No such file or directory`, indicates environment variables are not configured.
 
 Solutions:
+
 1. Associate runtime environment in **Edit** -> **Dependencies**
 2. Or add PATH in **Runtime Settings** -> **Environment Variables**
 
@@ -35,6 +36,7 @@ lsof -i:3000  # View process occupying the port
 **Edit** -> **Runtime Settings** -> **Environment Variables**, click **Add**.
 
 Common configurations:
+
 - `NODE_ENV=production`
 - `PORT=3000`
 

@@ -15,13 +15,13 @@ Configure the system's DNS servers.
 
 ### Common DNS Servers
 
-| Provider | DNS1 | DNS2 |
-|----------|------|------|
-| Alibaba Cloud | 223.5.5.5 | 223.6.6.6 |
-| Tencent Cloud | 119.29.29.29 | 119.28.28.28 |
-| 114 DNS | 114.114.114.114 | 114.114.115.115 |
-| Google | 8.8.8.8 | 8.8.4.4 |
-| Cloudflare | 1.1.1.1 | 1.0.0.1 |
+| Provider      | DNS1            | DNS2            |
+|---------------|-----------------|-----------------|
+| Alibaba Cloud | 223.5.5.5       | 223.6.6.6       |
+| Tencent Cloud | 119.29.29.29    | 119.28.28.28    |
+| 114 DNS       | 114.114.114.114 | 114.114.115.115 |
+| Google        | 8.8.8.8         | 8.8.4.4         |
+| Cloudflare    | 1.1.1.1         | 1.0.0.1         |
 
 ## SWAP
 
@@ -30,6 +30,7 @@ Manage the system's SWAP space.
 ![SWAP Settings](/images/toolbox/toolbox-system-swap.png)
 
 The page displays current SWAP usage:
+
 - System total
 - Used
 - Available
@@ -60,6 +61,7 @@ Modify the server's hostname, such as `myserver`, `web-01`, etc.
 Edit the system's `/etc/hosts` file for configuring local domain name resolution.
 
 Common uses:
+
 - Block specific domains
 - Configure local development domains
 - Speed up resolution of specific domains
@@ -87,6 +89,7 @@ After manually changing the time, automatic system time synchronization may stil
 Configure the NTP time synchronization server. Leave empty to use the system default server.
 
 Common NTP servers:
+
 - `ntp.aliyun.com` - Alibaba Cloud
 - `ntp.tencent.com` - Tencent Cloud
 - `cn.pool.ntp.org` - China NTP Pool

@@ -35,6 +35,7 @@ When enabled, entering the wrong password multiple times during login will trigg
 When the panel is deployed behind a reverse proxy (such as Nginx, CDN), you need to set the correct IP header to obtain the real client IP.
 
 Common values:
+
 - `X-Real-IP`: Default used by Nginx
 - `X-Forwarded-For`: Standard proxy header
 - `CF-Connecting-IP`: Used by Cloudflare
@@ -44,6 +45,7 @@ Common values:
 Restrict panel access to specified domains only. After adding a domain, access via IP or other domains will be blocked.
 
 Suitable for:
+
 - Improving security
 - Using with SSL certificates
 
@@ -52,6 +54,7 @@ Suitable for:
 Restrict panel access to specified IP addresses only. Multiple IP addresses can be added.
 
 Suitable for:
+
 - Fixed office networks
 - Jump server access
 
@@ -68,6 +71,7 @@ This is an advanced security option that can be used with custom browser plugins
 ## Offline Mode
 
 When enabled, the panel will not connect to external networks, including:
+
 - Checking for updates
 - Downloading applications
 - Syncing cache data

@@ -19,32 +19,32 @@ The list displays the following information:
 
 1. Click the **Create Account** button
 2. Fill in the configuration:
-   - **Email**: Used to receive certificate-related notifications
-   - **CA**: Select certificate authority
-   - **Key Type**: Select key algorithm
-   - **KID**: Optional, some CAs require KID
-   - **HMAC**: Optional, some CAs require HMAC key
+    - **Email**: Used to receive certificate-related notifications
+    - **CA**: Select certificate authority
+    - **Key Type**: Select key algorithm
+    - **KID**: Optional, some CAs require KID
+    - **HMAC**: Optional, some CAs require HMAC key
 3. Click Create
 
 ### Certificate Authority (CA)
 
-| CA            | Description                   |
-|---------------|-------------------------------|
-| Let's Encrypt | Most popular free CA, certificate valid for 90 days |
-| LiteSSL       | Free certificate service provided by TrustAsia  |
-| Google        | Google's free certificate service            |
+| CA            | Description                                            |
+|---------------|--------------------------------------------------------|
+| Let's Encrypt | Most popular free CA, certificate valid for 90 days    |
+| LiteSSL       | Free certificate service provided by TrustAsia         |
+| Google        | Google's free certificate service                      |
 | GoogleCN      | Google certificate service mirror provided by AcePanel |
-| ZeroSSL       | Free CA, certificate valid for 90 days     |
-| Buypass       | Norwegian free CA, certificate valid for 180 days  |
+| ZeroSSL       | Free CA, certificate valid for 90 days                 |
+| Buypass       | Norwegian free CA, certificate valid for 180 days      |
 
 ### Key Type
 
-| Type | Description |
-|------|-------------|
+| Type       | Description                                  |
+|------------|----------------------------------------------|
 | P256 (ECC) | Recommended, shorter key, better performance |
-| P384 (ECC) | Higher security ECC key |
-| RSA 2048 | Traditional RSA key, best compatibility |
-| RSA 4096 | Higher security RSA key |
+| P384 (ECC) | Higher security ECC key                      |
+| RSA 2048   | Traditional RSA key, best compatibility      |
+| RSA 4096   | Higher security RSA key                      |
 
 ::: tip Recommendation
 Generally recommended to use P256 (ECC) key, balancing security and performance.

@@ -8,20 +8,20 @@
 
 ## Supported Operating Systems
 
-| System             | Version | Status          |
-|--------------------|---------|-----------------|
-| AlmaLinux          | 10      | Recommended     |
-| AlmaLinux          | 9       | Supported       |
-| RockyLinux         | 10      | Recommended     |
-| RockyLinux         | 9       | Supported       |
-| Debian             | 13      | Recommended     |
-| Debian             | 12      | Supported       |
-| Ubuntu             | 24      | Recommended     |
-| Ubuntu             | 22      | Supported       |
-| OpenCloudOS        | 9       | Supported       |
-| TencentOS Server   | 4       | Supported       |
-| CentOS Stream      | 10      | Not Recommended |
-| CentOS Stream      | 9       | Not Recommended |
+| System           | Version | Status          |
+|------------------|---------|-----------------|
+| AlmaLinux        | 10      | Recommended     |
+| AlmaLinux        | 9       | Supported       |
+| RockyLinux       | 10      | Recommended     |
+| RockyLinux       | 9       | Supported       |
+| Debian           | 13      | Recommended     |
+| Debian           | 12      | Supported       |
+| Ubuntu           | 24      | Recommended     |
+| Ubuntu           | 22      | Supported       |
+| OpenCloudOS      | 9       | Supported       |
+| TencentOS Server | 4       | Supported       |
+| CentOS Stream    | 10      | Not Recommended |
+| CentOS Stream    | 9       | Not Recommended |
 
 Systems not listed can be tried at your own risk, but technical support is not provided.
 

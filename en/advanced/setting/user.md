@@ -8,12 +8,12 @@ The user management page is used to manage panel login users.
 
 The list displays information for all panel users:
 
-| Field | Description |
-|-------|-------------|
-| Username | Login username, can be modified directly in the table |
-| Email | User email, used for password recovery and other features |
-| Two-Factor Auth | Whether TOTP two-factor authentication is enabled |
-| Created At | User creation time |
+| Field           | Description                                               |
+|-----------------|-----------------------------------------------------------|
+| Username        | Login username, can be modified directly in the table     |
+| Email           | User email, used for password recovery and other features |
+| Two-Factor Auth | Whether TOTP two-factor authentication is enabled         |
+| Created At      | User creation time                                        |
 
 ## Create User
 

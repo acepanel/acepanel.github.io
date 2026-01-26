@@ -100,9 +100,9 @@ Compose is suitable for the following scenarios:
 
 ## Difference from Container Templates
 
-| Feature | Compose | Container Templates     |
-|---------|---------|-------------------------|
-| Configuration Method | Write YAML manually | Graphical interface     |
-| Flexibility | Fully customizable | Use preset configuration + customization  |
-| Use Cases | Custom complex applications | Quick deployment of common applications |
-| Learning Cost | Need to understand Compose syntax | No learning required     |
+| Feature              | Compose                           | Container Templates                      |
+|----------------------|-----------------------------------|------------------------------------------|
+| Configuration Method | Write YAML manually               | Graphical interface                      |
+| Flexibility          | Fully customizable                | Use preset configuration + customization |
+| Use Cases            | Custom complex applications       | Quick deployment of common applications  |
+| Learning Cost        | Need to understand Compose syntax | No learning required                     |

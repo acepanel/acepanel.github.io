@@ -48,6 +48,7 @@ Wildcard certificates (*.example.com) can only be applied through DNS verificati
 Click the **Upload Certificate** button to upload an existing certificate.
 
 Required:
+
 - **Certificate File**: PEM format certificate (.crt or .pem), please include complete certificate chain
 - **Private Key File**: PEM format private key (.key)
 
@@ -79,6 +80,7 @@ Click the **Renew** button to manually trigger certificate renewal.
 ### Download Certificate
 
 Click the **Download** button to download certificate files, including:
+
 - Complete certificate chain (.crt)
 - Private key file (.key)
 

@@ -13,22 +13,22 @@ Before using the database feature, you need to install database software first:
 
 The database module is divided into three parts:
 
-| Feature | Description |
-|---------|-------------|
-| [Database](./database/database) | Create and manage databases |
-| [User](./database/user) | Manage database users and permissions |
-| [Server](./database/server) | Manage database server connections |
+| Feature                         | Description                           |
+|---------------------------------|---------------------------------------|
+| [Database](./database/database) | Create and manage databases           |
+| [User](./database/user)         | Manage database users and permissions |
+| [Server](./database/server)     | Manage database server connections    |
 
 ![Database List](/images/database/database-list.png)
 
 ## Supported Databases
 
-| Database | Description |
-|----------|-------------|
-| Percona | High-performance fork of MySQL, suitable for high-load scenarios |
-| MySQL | The world's most popular open-source relational database |
-| MariaDB | Open-source fork of MySQL, fully compatible with MySQL |
-| PostgreSQL | Powerful open-source object-relational database |
+| Database   | Description                                                      |
+|------------|------------------------------------------------------------------|
+| Percona    | High-performance fork of MySQL, suitable for high-load scenarios |
+| MySQL      | The world's most popular open-source relational database         |
+| MariaDB    | Open-source fork of MySQL, fully compatible with MySQL           |
+| PostgreSQL | Powerful open-source object-relational database                  |
 
 ## Quick Start
 

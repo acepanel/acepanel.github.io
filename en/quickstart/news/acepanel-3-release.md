@@ -4,9 +4,9 @@ Long time no see. After several delays, AcePanel 3.0 was finally completed in ea
 
 ## Upgraded to New Brand Name AcePanel
 
-AcePanel was originally named Haozi Panel, a server operation and maintenance management panel I developed at the end of 2022.
+AcePanel was originally named Rat Panel, a server operation and maintenance management panel I developed at the end of 2022.
 
-The most common feedback I received was that the name Haozi Panel didn't sound good, so we've now changed to a more sophisticated name - AcePanel.
+The most common feedback I received was that the name Rat Panel didn't sound good, so we've now changed to a more sophisticated name - AcePanel.
 
 ![AcePanel Logo](https://wmimg.com/i/1424/2026/01/6975d8a45a01d.png)
 
@@ -130,12 +130,11 @@ Also starting from AcePanel 3.0, RHEL 8-based systems (AlmaLinux 8/Rocky Linux 8
 
 Additionally, to support pre-built installation packages to solve the much-criticized slow MySQL compilation issue, AcePanel has changed the default installation directory to `/opt/ace` and no longer allows customization (expected to have minimal impact, you can still mount data disks before installation).
 
-
 ## About Old Version Upgrade and Maintenance
 
-We plan to release a script to upgrade from the old Haozi Panel 2.x to AcePanel 3.0 after AcePanel 3.0 has been stable for a while. Given the significant changes, a perfect upgrade is not expected to be achievable, please be aware.
+We plan to release a script to upgrade from the old Rat Panel 2.x to AcePanel 3.0 after AcePanel 3.0 has been stable for a while. Given the significant changes, a perfect upgrade is not expected to be achievable, please be aware.
 
-The old Haozi Panel 2.x will continue to receive security updates for a period of time (expected until the end of 2026). You can arrange your upgrade during this period.
+The old Rat Panel 2.x will continue to receive security updates for a period of time (expected until the end of 2026). You can arrange your upgrade during this period.
 
 ## Open Source License Change
 

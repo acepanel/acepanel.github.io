@@ -18,9 +18,9 @@ npm24 install
 ```
 
 3. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Start Command**: `node24 app.js`
+    - **Project Name**: `myapp`
+    - **Project Directory**: `/opt/ace/project/myapp`
+    - **Start Command**: `node24 app.js`
 4. Enable **Reverse Proxy**
 
 ## Start Command Examples
@@ -51,7 +51,7 @@ const express = require('express');
 const app = express();
 
 app.get('/', (req, res) => {
-  res.send('Hello World');
+    res.send('Hello World');
 });
 
 app.listen(3000);

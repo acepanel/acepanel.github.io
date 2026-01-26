@@ -24,9 +24,9 @@ Traditional PHP-FPM applications (such as WordPress, Laravel) should be deployed
 ### Creating a Project
 
 1. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Startup Command**: `php84 artisan octane:start --host=0.0.0.0 --port=8000`
+    - **Project Name**: `myapp`
+    - **Project Directory**: `/opt/ace/project/myapp`
+    - **Startup Command**: `php84 artisan octane:start --host=0.0.0.0 --port=8000`
 2. Enable **Reverse Proxy**
 
 ## Startup Command Examples

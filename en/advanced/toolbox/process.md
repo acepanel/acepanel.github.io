@@ -22,13 +22,13 @@ The list displays the following information:
 
 ## Process Status
 
-| Status | Description |
-|--------|-------------|
-| Running | Process is executing |
-| Sleeping | Process is waiting for an event |
-| Idle | Kernel thread is idle |
-| Stopped | Process has stopped |
-| Zombie | Process has ended but not been reaped |
+| Status   | Description                           |
+|----------|---------------------------------------|
+| Running  | Process is executing                  |
+| Sleeping | Process is waiting for an event       |
+| Idle     | Kernel thread is idle                 |
+| Stopped  | Process has stopped                   |
+| Zombie   | Process has ended but not been reaped |
 
 ## Search and Filter
 
@@ -45,14 +45,14 @@ Right-click on a process to:
 
 ## Common Processes
 
-| Process | Description |
-|---------|-------------|
-| nginx | Nginx web server |
-| php-fpm | PHP FastCGI process manager |
-| mysqld | MySQL database service |
+| Process  | Description                 |
+|----------|-----------------------------|
+| nginx    | Nginx web server            |
+| php-fpm  | PHP FastCGI process manager |
+| mysqld   | MySQL database service      |
 | postgres | PostgreSQL database service |
-| dockerd | Docker daemon |
-| ace | AcePanel panel process |
+| dockerd  | Docker daemon               |
+| ace      | AcePanel panel process      |
 
 ## Notes
 

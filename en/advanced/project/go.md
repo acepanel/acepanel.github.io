@@ -38,9 +38,9 @@ go build -o myapp
 1. Go to the **Project** page
 2. Click **Create Project**
 3. Fill in configuration:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Start Command**: `./myapp` or `go1.24 run main.go`
+    - **Project Name**: `myapp`
+    - **Project Directory**: `/opt/ace/project/myapp`
+    - **Start Command**: `./myapp` or `go1.24 run main.go`
 4. Enable **Reverse Proxy** for external access
 
 ## Start Command Examples

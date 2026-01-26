@@ -23,9 +23,9 @@ mvn clean package -DskipTests
 
 1. Upload JAR file to server (e.g., `/opt/ace/project/myapp/app.jar`)
 2. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Start Command**: `java21 -jar app.jar`
+    - **Project Name**: `myapp`
+    - **Project Directory**: `/opt/ace/project/myapp`
+    - **Start Command**: `java21 -jar app.jar`
 3. Enable **Reverse Proxy**
 
 ## Start Command Examples
@@ -58,12 +58,12 @@ java21 \
 
 Common parameter descriptions:
 
-| Parameter | Description |
-|-----------|-------------|
-| `-Xms` | Initial heap memory size |
-| `-Xmx` | Maximum heap memory size |
-| `-XX:+UseG1GC` | Use G1 garbage collector |
-| `-XX:MaxGCPauseMillis` | Maximum GC pause time |
+| Parameter              | Description              |
+|------------------------|--------------------------|
+| `-Xms`                 | Initial heap memory size |
+| `-Xmx`                 | Maximum heap memory size |
+| `-XX:+UseG1GC`         | Use G1 garbage collector |
+| `-XX:MaxGCPauseMillis` | Maximum GC pause time    |
 
 ## Multiple JDK Versions
 

@@ -20,9 +20,9 @@ pip install -r requirements.txt
 ```
 
 3. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Startup Command**: See examples below
+    - **Project Name**: `myapp`
+    - **Project Directory**: `/opt/ace/project/myapp`
+    - **Startup Command**: See examples below
 4. Enable **Reverse Proxy**
 
 ## Startup Command Examples

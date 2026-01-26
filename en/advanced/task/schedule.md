@@ -24,12 +24,12 @@ Click the **Create Task** button to create a new scheduled task.
 
 ### Task Types
 
-| Type | Description |
-|------|-------------|
-| Shell | Execute Shell commands or scripts |
-| Backup Website | Scheduled backup of website files |
-| Backup Database | Scheduled backup of database |
-| Log Rotation | Scheduled rotation of log files |
+| Type            | Description                       |
+|-----------------|-----------------------------------|
+| Shell           | Execute Shell commands or scripts |
+| Backup Website  | Scheduled backup of website files |
+| Backup Database | Scheduled backup of database      |
+| Log Rotation    | Scheduled rotation of log files   |
 
 ### Execution Schedule
 
@@ -58,13 +58,13 @@ Cron expression format: `minute hour day month weekday`
 
 Common examples:
 
-| Expression | Description |
-|------------|-------------|
-| `0 2 * * *` | Every day at 2 AM |
-| `0 */6 * * *` | Every 6 hours |
-| `0 0 * * 0` | Every Sunday at midnight |
-| `0 0 1 * *` | First day of every month at midnight |
-| `*/5 * * * *` | Every 5 minutes |
+| Expression    | Description                          |
+|---------------|--------------------------------------|
+| `0 2 * * *`   | Every day at 2 AM                    |
+| `0 */6 * * *` | Every 6 hours                        |
+| `0 0 * * 0`   | Every Sunday at midnight             |
+| `0 0 1 * *`   | First day of every month at midnight |
+| `*/5 * * * *` | Every 5 minutes                      |
 
 Don't know how to write it? Just describe your requirements clearly to an AI and let it generate one for you.
 

@@ -14,13 +14,13 @@ The application module is divided into three parts:
 
 ## Native Application vs Container Template
 
-| Feature | Native Application | Container Template |
-|---------|-------------------|-------------------|
-| Performance | Higher | Slight overhead |
-| Isolation | Shared system environment | Fully isolated |
-| Deployment Difficulty | Requires configuration | One-click deployment |
-| Resource Usage | Lower | Higher |
-| Use Cases | Production environment, high performance needs | Quick testing, multiple version coexistence |
+| Feature               | Native Application                             | Container Template                          |
+|-----------------------|------------------------------------------------|---------------------------------------------|
+| Performance           | Higher                                         | Slight overhead                             |
+| Isolation             | Shared system environment                      | Fully isolated                              |
+| Deployment Difficulty | Requires configuration                         | One-click deployment                        |
+| Resource Usage        | Lower                                          | Higher                                      |
+| Use Cases             | Production environment, high performance needs | Quick testing, multiple version coexistence |
 
 ## Application Categories
 

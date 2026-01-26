@@ -39,10 +39,10 @@ Before changing the port, please ensure the new port is open in the server secur
 
 Configure the default storage paths for various resources:
 
-| Setting | Default Value | Description |
-|---------|---------------|-------------|
-| Default Website Directory | /opt/ace/sites | Directory for storing website files |
-| Default Backup Directory | /opt/ace/backup | Directory for storing backup files |
+| Setting                   | Default Value     | Description                         |
+|---------------------------|-------------------|-------------------------------------|
+| Default Website Directory | /opt/ace/sites    | Directory for storing website files |
+| Default Backup Directory  | /opt/ace/backup   | Directory for storing backup files  |
 | Default Project Directory | /opt/ace/projects | Directory for storing project files |
 
 After changing directories, newly created websites/backups/projects will use the new directory, existing ones are not affected.

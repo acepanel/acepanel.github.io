@@ -4,22 +4,22 @@ The container module provides complete Docker container management functionality
 
 ## Prerequisites
 
-Before using the container feature, you need to install Docker first:
+Before using the container feature, you need to install Docker or Podman first:
 
 1. Go to **Applications** > **Native Applications**
-2. Find Docker, click **Install**
+2. Find Docker or Podman, click **Install**
 
 ## Feature Overview
 
 The container module is divided into five parts:
 
-| Feature | Description |
-|---------|-------------|
-| [Container](./container/container) | Manage running container instances |
-| [Compose](./container/compose) | Manage multi-container applications using Docker Compose |
-| [Image](./container/image) | Manage local images |
-| [Network](./container/network) | Manage Docker networks |
-| [Volume](./container/volume) | Manage data volumes |
+| Feature                            | Description                                              |
+|------------------------------------|----------------------------------------------------------|
+| [Container](./container/container) | Manage running container instances                       |
+| [Compose](./container/compose)     | Manage multi-container applications using Docker Compose |
+| [Image](./container/image)         | Manage local images                                      |
+| [Network](./container/network)     | Manage Docker networks                                   |
+| [Volume](./container/volume)       | Manage data volumes                                      |
 
 ![Container List](/images/container/container-list.png)
 
@@ -39,13 +39,13 @@ If you want to quickly deploy common applications, it is recommended to use [Con
 
 ## Container vs Native Application
 
-| Feature | Container | Native Application |
-|---------|-----------|-------------------|
-| Isolation | Fully isolated | Shared system environment |
-| Performance | Slight overhead | Native performance |
-| Deployment | Standardized, portable | Depends on system environment |
-| Resource Usage | Higher | Lower |
-| Version Management | Easy to switch | Requires manual management |
+| Feature            | Container              | Native Application            |
+|--------------------|------------------------|-------------------------------|
+| Isolation          | Fully isolated         | Shared system environment     |
+| Performance        | Slight overhead        | Native performance            |
+| Deployment         | Standardized, portable | Depends on system environment |
+| Resource Usage     | Higher                 | Lower                         |
+| Version Management | Easy to switch         | Requires manual management    |
 
 ## Next Steps
 

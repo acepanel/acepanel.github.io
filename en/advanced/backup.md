@@ -10,11 +10,11 @@ The backup module is used to backup and restore website files and databases, sup
 
 The backup module supports the following types of backups:
 
-| Type | Description                           |
-|------|---------------------------------------|
-| Website | Backup website files                  |
-| MySQL | Backup Percona/MySQL/MariaDB databases |
-| PostgreSQL | Backup PostgreSQL databases           |
+| Type       | Description                            |
+|------------|----------------------------------------|
+| Website    | Backup website files                   |
+| MySQL      | Backup Percona/MySQL/MariaDB databases |
+| PostgreSQL | Backup PostgreSQL databases            |
 
 ## Create Backup
 
@@ -25,6 +25,7 @@ The backup module supports the following types of backups:
 5. Click Confirm
 
 Backup file formats:
+
 - Website: `.zip` compressed package
 - Database: `.sql.zip` compressed SQL file
 
@@ -70,6 +71,7 @@ Click **Add Storage** to add remote storage, supporting:
 - **WebDAV**: WebDAV servers
 
 Advantages of remote storage:
+
 - Off-site backup to prevent data loss
 - Does not occupy server disk space
 - Convenient for sharing backups across multiple servers
@@ -80,48 +82,48 @@ S3 compatible storage is the most commonly used remote storage method. Most clou
 
 #### Configuration Parameters
 
-| Parameter | Description |
-|-----------|-------------|
-| Name | Name of the storage configuration for identification |
-| Type | Select S3 |
-| Access Key | Access Key ID |
-| Secret Key | Access Key Secret |
-| Style | Virtual Hosted or Path Style |
-| Region | Region code, e.g., `us-east-1`, `cn-hangzhou` |
-| Endpoint | S3 service endpoint URL |
-| Protocol | HTTPS (recommended) or HTTP |
-| Bucket | Bucket name |
-| Path | Sub-path for backup file storage (optional) |
+| Parameter  | Description                                          |
+|------------|------------------------------------------------------|
+| Name       | Name of the storage configuration for identification |
+| Type       | Select S3                                            |
+| Access Key | Access Key ID                                        |
+| Secret Key | Access Key Secret                                    |
+| Style      | Virtual Hosted or Path Style                         |
+| Region     | Region code, e.g., `us-east-1`, `cn-hangzhou`        |
+| Endpoint   | S3 service endpoint URL                              |
+| Protocol   | HTTPS (recommended) or HTTP                          |
+| Bucket     | Bucket name                                          |
+| Path       | Sub-path for backup file storage (optional)          |
 
 #### Access Style Explanation
 
 S3 has two URL access styles:
 
 - **Virtual Hosted Style**: `https://bucket.endpoint/key`
-  - Bucket name as subdomain
-  - AWS S3 uses this style by default
+    - Bucket name as subdomain
+    - AWS S3 uses this style by default
 
 - **Path Style**: `https://endpoint/bucket/key`
-  - Bucket name as part of the path
-  - Self-hosted MinIO typically uses this style
+    - Bucket name as part of the path
+    - Self-hosted MinIO typically uses this style
 
 #### Compatibility List
 
-| Provider | Documentation | Compatible Access Style | Compatibility |
-|----------|---------------|------------------------|---------------|
-| Alibaba Cloud OSS | [Docs](https://help.aliyun.com/document_detail/410748.html) | Virtual Hosted Style | ✅ |
-| Tencent Cloud COS | [Docs](https://cloud.tencent.com/document/product/436/41284) | Virtual Hosted Style / Path Style | ✅ |
-| Qiniu Cloud | [Docs](https://developer.qiniu.com/kodo/4088/s3-access-domainname) | Virtual Hosted Style / Path Style | ✅ |
-| Baidu Cloud BOS | [Docs](https://cloud.baidu.com/doc/BOS/s/Fjwvyq9xo) | Virtual Hosted Style / Path Style | ✅ |
-| JD Cloud | [Docs](https://docs.jdcloud.com/cn/object-storage-service/api/regions-and-endpoints) | Virtual Hosted Style | ✅ |
-| Kingsoft Cloud | [Docs](https://docs.ksyun.com/documents/6761) | Virtual Hosted Style | ✅ |
-| QingCloud QingStor | [Docs](https://docsv3.qingcloud.com/storage/object-storage/s3/intro/) | Virtual Hosted Style / Path Style | ✅ |
-| NetEase Shufan | [Docs](https://sf.163.com/help/documents/89796157866430464) | Virtual Hosted Style | ✅ |
-| Cloudflare R2 | [Docs](https://developers.cloudflare.com/r2/data-access/s3-api/) | Virtual Hosted Style / Path Style | ✅ |
-| Oracle Cloud | [Docs](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm) | Virtual Hosted Style / Path Style | ✅ |
-| Upyun | [Docs](https://help.upyun.com/knowledge-base/aws-s3%E5%85%BC%E5%AE%B9/) | Virtual Hosted Style / Path Style | ✅ |
-| Self-hosted MinIO | - | Path Style | ✅ |
-| Huawei Cloud OBS | - | Virtual Hosted Style | ❓ |
+| Provider           | Documentation                                                                        | Compatible Access Style           | Compatibility |
+|--------------------|--------------------------------------------------------------------------------------|-----------------------------------|---------------|
+| Alibaba Cloud OSS  | [Docs](https://help.aliyun.com/document_detail/410748.html)                          | Virtual Hosted Style              | ✅             |
+| Tencent Cloud COS  | [Docs](https://cloud.tencent.com/document/product/436/41284)                         | Virtual Hosted Style / Path Style | ✅             |
+| Qiniu Cloud        | [Docs](https://developer.qiniu.com/kodo/4088/s3-access-domainname)                   | Virtual Hosted Style / Path Style | ✅             |
+| Baidu Cloud BOS    | [Docs](https://cloud.baidu.com/doc/BOS/s/Fjwvyq9xo)                                  | Virtual Hosted Style / Path Style | ✅             |
+| JD Cloud           | [Docs](https://docs.jdcloud.com/cn/object-storage-service/api/regions-and-endpoints) | Virtual Hosted Style              | ✅             |
+| Kingsoft Cloud     | [Docs](https://docs.ksyun.com/documents/6761)                                        | Virtual Hosted Style              | ✅             |
+| QingCloud QingStor | [Docs](https://docsv3.qingcloud.com/storage/object-storage/s3/intro/)                | Virtual Hosted Style / Path Style | ✅             |
+| NetEase Shufan     | [Docs](https://sf.163.com/help/documents/89796157866430464)                          | Virtual Hosted Style              | ✅             |
+| Cloudflare R2      | [Docs](https://developers.cloudflare.com/r2/data-access/s3-api/)                     | Virtual Hosted Style / Path Style | ✅             |
+| Oracle Cloud       | [Docs](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/s3compatibleapi.htm)  | Virtual Hosted Style / Path Style | ✅             |
+| Upyun              | [Docs](https://help.upyun.com/knowledge-base/aws-s3%E5%85%BC%E5%AE%B9/)              | Virtual Hosted Style / Path Style | ✅             |
+| Self-hosted MinIO  | -                                                                                    | Path Style                        | ✅             |
+| Huawei Cloud OBS   | -                                                                                    | Virtual Hosted Style              | ❓             |
 
 ::: tip Note
 Huawei Cloud official documentation does not specify S3 API compatibility, but it works in actual testing.
@@ -190,10 +192,11 @@ Path: (optional)
 ```
 
 ::: warning Note
+
 - Please ensure the bucket has been created and has correct access permissions
 - It is recommended to create dedicated access keys for backups with limited permissions
 - Some providers' Endpoints need to include region information
-:::
+  :::
 
 ## Scheduled Backup
 
@@ -209,10 +212,10 @@ Combined with the [Scheduled Tasks](./task/schedule) feature, you can set up aut
 
 ### Backup Frequency
 
-| Data Type | Recommended Frequency |
-|-----------|----------------------|
-| Database | Daily |
-| Website Files | Weekly |
+| Data Type           | Recommended Frequency          |
+|---------------------|--------------------------------|
+| Database            | Daily                          |
+| Website Files       | Weekly                         |
 | Configuration Files | Immediately after modification |
 
 ### Retention Policy

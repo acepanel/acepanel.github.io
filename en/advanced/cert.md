@@ -6,11 +6,11 @@ The certificate module is used to manage SSL/TLS certificates, supporting automa
 
 The certificate module is divided into three parts:
 
-| Feature | Description |
-|---------|-------------|
-| [Certificate](./cert/cert) | Manage SSL certificates |
-| [Account](./cert/account) | Manage ACME accounts |
-| [DNS](./cert/dns) | Manage DNS API configuration |
+| Feature                    | Description                  |
+|----------------------------|------------------------------|
+| [Certificate](./cert/cert) | Manage SSL certificates      |
+| [Account](./cert/account)  | Manage ACME accounts         |
+| [DNS](./cert/dns)          | Manage DNS API configuration |
 
 ![Certificate List](/images/cert/cert-list.png)
 
@@ -48,6 +48,7 @@ When applying for a certificate, you need to verify domain ownership. The follow
 Place a verification file in the website root directory, and the CA verifies through HTTP access.
 
 Requirements:
+
 - Domain is resolved to the server
 - Port 80 is accessible
 
@@ -56,10 +57,12 @@ Requirements:
 Add a TXT record in the domain DNS for verification.
 
 Requirements:
+
 - Have DNS management permissions for the domain
 - Configure DNS API (for automatic verification)
 
 Advantages of DNS verification:
+
 - Supports applying for wildcard certificates (*.example.com)
 - Does not require port 80 to be accessible
 - Suitable for intranet servers

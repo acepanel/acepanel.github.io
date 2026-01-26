@@ -4,25 +4,25 @@ The project module is used to manage backend applications, supporting multiple l
 
 ## Project Types
 
-| Type | Description | Use Cases |
-|------|-------------|-----------|
-| [Go](./project/go) | Go language projects | Gin, Echo, Fiber frameworks |
-| [Java](./project/java) | Java projects | Spring Boot, Tomcat, etc. |
-| [Node.js](./project/nodejs) | Node.js projects | Express, Koa, NestJS, etc. |
-| [PHP](./project/php) | PHP projects | Laravel Octane, Swoole, etc. |
-| [Python](./project/python) | Python projects | Django, Flask, FastAPI, etc. |
-| [General](./project/general) | Other types of projects | Any executable program |
+| Type                         | Description             | Use Cases                    |
+|------------------------------|-------------------------|------------------------------|
+| [Go](./project/go)           | Go language projects    | Gin, Echo, Fiber frameworks  |
+| [Java](./project/java)       | Java projects           | Spring Boot, Tomcat, etc.    |
+| [Node.js](./project/nodejs)  | Node.js projects        | Express, Koa, NestJS, etc.   |
+| [PHP](./project/php)         | PHP projects            | Laravel Octane, Swoole, etc. |
+| [Python](./project/python)   | Python projects         | Django, Flask, FastAPI, etc. |
+| [General](./project/general) | Other types of projects | Any executable program       |
 
 ![Project List](/images/project/project-list.png)
 
 ## Project vs Website
 
-| Feature | Project | Website |
-|---------|---------|---------|
-| Run Mode | Independent process | Depends on Web server |
-| Process Management | Auto restart, auto-start on boot | Managed by Web server |
-| Use Cases | Backend services, APIs | Traditional Web applications |
-| External Access | Requires reverse proxy | Direct access |
+| Feature            | Project                          | Website                      |
+|--------------------|----------------------------------|------------------------------|
+| Run Mode           | Independent process              | Depends on Web server        |
+| Process Management | Auto restart, auto-start on boot | Managed by Web server        |
+| Use Cases          | Backend services, APIs           | Traditional Web applications |
+| External Access    | Requires reverse proxy           | Direct access                |
 
 ## Create Project
 
@@ -128,9 +128,9 @@ Security options to enhance service isolation:
 - **Protect /tmp**: Create a private /tmp directory for the service
 - **Protect /home**: Restrict access to the /home directory
 - **Protect System**: Set read-only protection level for system directories
-  - `true`: /usr, /boot are read-only
-  - `full`: + /etc is read-only
-  - `strict`: Entire filesystem is read-only
+    - `true`: /usr, /boot are read-only
+    - `full`: + /etc is read-only
+    - `strict`: Entire filesystem is read-only
 - **Read-Write Paths**: Paths the service can read and write
 - **Read-Only Paths**: Paths the service can only read
 

@@ -10,12 +10,12 @@ First, prepare a simple Node.js application. Create `app.js` in the project dire
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello from AcePanel!\n');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Hello from AcePanel!\n');
 });
 
 server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000/');
+    console.log('Server running at http://localhost:3000/');
 });
 ```
 
@@ -46,6 +46,7 @@ Click "Edit" in the project list to adjust more settings:
 ![Project Edit](/images/quickstart/project-edit-run.png)
 
 **Run Settings**:
+
 - **Pre-start Command**: Execute before starting, e.g., `npm install`
 - **Restart Policy**: How to handle abnormal process exits
 - **Environment Variables**: Set `NODE_ENV=production`, etc.
@@ -68,7 +69,8 @@ If not, you can access directly via `http://ServerIP:3000` (need to allow port 3
 
 ::: tip Production Environment
 Production environment recommendations:
+
 - Enable "Auto Start" to automatically recover after server restart
 - Configure reverse proxy to forward requests through Nginx
 - Set memory limits in "Resource Limits" to prevent memory leaks
-:::
+  :::

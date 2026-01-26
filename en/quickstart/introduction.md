@@ -29,10 +29,10 @@ One-click backup and recovery for websites and databases, supports scheduled bac
 
 ## Comparison
 
-| Feature        | AcePanel        | Similar Product 1        | Similar Product B                     |
-|----------------|-----------------|--------------------------|---------------------------------------|
-| User Interface | Clean and modern | Modern design            | Complex features, more advertisements |
-| Open Source    | Fully open source | Only non-pro version     | Partially open source, incomplete commit history |
-| Resource Usage | Extremely low, single file | core + agent dual process | Higher                                |
-| App Center     | Native apps + container orchestration | Container orchestration only | Outdated apps, slow updates           |
-| Tech Stack     | Go 1.25 + Vue 3 | Go 1.24 + Vue 3          | Python 3.7 + Vue 3 + jQuery           |
+| Feature        | AcePanel                              | Similar Product 1            | Similar Product B                                |
+|----------------|---------------------------------------|------------------------------|--------------------------------------------------|
+| User Interface | Clean and modern                      | Modern design                | Complex features, more advertisements            |
+| Open Source    | Fully open source                     | Only non-pro version         | Partially open source, incomplete commit history |
+| Resource Usage | Extremely low, single file            | core + agent dual process    | Higher                                           |
+| App Center     | Native apps + container orchestration | Container orchestration only | Outdated apps, slow updates                      |
+| Tech Stack     | Go 1.25 + Vue 3                       | Go 1.24 + Vue 3              | Python 3.7 + Vue 3 + jQuery                      |

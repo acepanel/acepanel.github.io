@@ -25,22 +25,22 @@ The list displays the following information:
 
 ### Domestic Providers
 
-| Provider | Required Credentials |
-|----------|---------------------|
-| Alibaba Cloud DNS | AccessKey ID, AccessKey Secret |
-| Tencent Cloud DNSPod | SecretId, SecretKey |
-| Huawei Cloud DNS | AccessKeyId, SecretAccessKey |
-| West.cn DNS | Username, API Password |
+| Provider             | Required Credentials           |
+|----------------------|--------------------------------|
+| Alibaba Cloud DNS    | AccessKey ID, AccessKey Secret |
+| Tencent Cloud DNSPod | SecretId, SecretKey            |
+| Huawei Cloud DNS     | AccessKeyId, SecretAccessKey   |
+| West.cn DNS          | Username, API Password         |
 
 ### International Providers
 
-| Provider | Required Credentials               |
-|----------|------------------------------------|
-| Cloudflare | API Token          |
-| Gcore DNS | API Key            |
-| Porkbun | API Key, Secret Key |
-| NameSilo | API Token          |
-| ClouDNS | Auth ID, Auth Password |
+| Provider   | Required Credentials   |
+|------------|------------------------|
+| Cloudflare | API Token              |
+| Gcore DNS  | API Key                |
+| Porkbun    | API Key, Secret Key    |
+| NameSilo   | API Token              |
+| ClouDNS    | Auth ID, Auth Password |
 
 ## Obtaining API Credentials
 

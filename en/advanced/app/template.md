@@ -62,11 +62,11 @@ After deployment, the application will appear in the **Containers** > **Compose*
 
 ## Template vs Manual Deployment
 
-| Feature | Using Template | Manual Deployment |
-|---------|----------------|-------------------|
-| Configuration Difficulty | Simple, just fill in basic information | Need to write docker-compose.yml |
-| Flexibility | Uses preset configuration | Fully customizable |
-| Use Cases | Quick deployment of common applications | Special requirements, custom configuration |
+| Feature                  | Using Template                          | Manual Deployment                          |
+|--------------------------|-----------------------------------------|--------------------------------------------|
+| Configuration Difficulty | Simple, just fill in basic information  | Need to write docker-compose.yml           |
+| Flexibility              | Uses preset configuration               | Fully customizable                         |
+| Use Cases                | Quick deployment of common applications | Special requirements, custom configuration |
 
 ## Common Template Descriptions
 

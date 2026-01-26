@@ -58,6 +58,7 @@ The cleanup operation will delete:
 Docker's official image registry, containing a large number of official and community images.
 
 Common official images:
+
 - `nginx` - Web server
 - `mysql` / `mariadb` - Database
 - `redis` - Cache

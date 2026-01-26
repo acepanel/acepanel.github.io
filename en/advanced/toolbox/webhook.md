@@ -62,15 +62,15 @@ curl -X POST https://panel.example.com/api/webhook/your-key
 
 ## List Description
 
-| Field | Description |
-|-------|-------------|
-| Name | Webhook name |
-| Key | Unique identifier, used to build the call URL |
-| Run User | System user that executes the script |
-| Raw Output | Whether to return raw text output |
-| Enabled | Whether the webhook is enabled |
-| Call Count | Cumulative number of calls |
-| Last Call | Last call time |
+| Field      | Description                                   |
+|------------|-----------------------------------------------|
+| Name       | Webhook name                                  |
+| Key        | Unique identifier, used to build the call URL |
+| Run User   | System user that executes the script          |
+| Raw Output | Whether to return raw text output             |
+| Enabled    | Whether the webhook is enabled                |
+| Call Count | Cumulative number of calls                    |
+| Last Call  | Last call time                                |
 
 ## Notes
 

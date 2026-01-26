@@ -68,5 +68,6 @@ pg_dump -U username database_name > backup.sql
 To modify character set for existing databases:
 
 ```sql
-ALTER DATABASE database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+ALTER
+DATABASE database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```

@@ -17,13 +17,13 @@ The file module provides a powerful graphical file manager. The design philosoph
 
 ### Keyboard Shortcuts
 
-| Shortcut | Function |
-|----------|----------|
-| `Ctrl+C` | Copy |
-| `Ctrl+X` | Cut |
-| `Ctrl+V` | Paste |
-| `Delete` | Delete |
-| `F2` | Rename |
+| Shortcut | Function   |
+|----------|------------|
+| `Ctrl+C` | Copy       |
+| `Ctrl+X` | Cut        |
+| `Ctrl+V` | Paste      |
+| `Delete` | Delete     |
+| `F2`     | Rename     |
 | `Ctrl+A` | Select All |
 
 ## Navigation
@@ -44,14 +44,14 @@ The top displays breadcrumb navigation of the current path. Click to quickly jum
 
 The file list displays the following information:
 
-| Column | Description |
-|--------|-------------|
-| Name | File or directory name |
-| Size | File size, directories show "Calculate" which can be clicked to calculate |
-| Permissions | File permissions (e.g., 0755) |
-| Owner/Group | File owner and group |
-| Modified Time | Last modified time |
-| Actions | Open, compress, rename, delete, more |
+| Column        | Description                                                               |
+|---------------|---------------------------------------------------------------------------|
+| Name          | File or directory name                                                    |
+| Size          | File size, directories show "Calculate" which can be clicked to calculate |
+| Permissions   | File permissions (e.g., 0755)                                             |
+| Owner/Group   | File owner and group                                                      |
+| Modified Time | Last modified time                                                        |
+| Actions       | Open, compress, rename, delete, more                                      |
 
 ### Select Files
 
@@ -83,6 +83,7 @@ Click the **More** button on the file row to display more action options:
 ### New
 
 Click the **New** button to:
+
 - Create new file
 - Create new directory
 
@@ -91,6 +92,7 @@ Click the **New** button to:
 Click the **Upload** button to upload local files to the server.
 
 Supported upload methods:
+
 - Click to select files for upload
 - **Drag-and-drop Upload**: Directly drag files to the page to upload
 
@@ -99,6 +101,7 @@ Supported upload methods:
 Click the **Remote Download** button, enter a URL address to download remote files to the current directory.
 
 Use cases:
+
 - Download software installation packages
 - Download remote backup files
 - Get files from other servers
@@ -106,6 +109,7 @@ Use cases:
 ### Search
 
 Enter keywords in the search box to search for files:
+
 - Default searches current directory
 - Check **Include Subdirectories** to search recursively
 
@@ -134,13 +138,13 @@ AcePanel has a built-in powerful code editor based on Monaco Editor (the same ed
 
 ### Editor Shortcuts
 
-| Shortcut | Function |
-|----------|----------|
-| `Ctrl+S` | Save current file |
-| `Ctrl+Shift+S` | Save all files |
-| `Ctrl+F` | Search |
-| `Ctrl+H` | Replace |
-| `Ctrl+G` | Go to line |
+| Shortcut       | Function          |
+|----------------|-------------------|
+| `Ctrl+S`       | Save current file |
+| `Ctrl+Shift+S` | Save all files    |
+| `Ctrl+F`       | Search            |
+| `Ctrl+H`       | Replace           |
+| `Ctrl+G`       | Go to line        |
 
 ### Editor Toolbar
 
@@ -164,6 +168,7 @@ Click the **Maximize** button for fullscreen editing to get more editing space:
 ### Sidebar File Tree
 
 The left side of the editor displays the file tree of the current directory, allowing you to:
+
 - Quickly switch to edit other files
 - Create new files
 - Search files
@@ -171,6 +176,7 @@ The left side of the editor displays the file tree of the current directory, all
 ### Status Bar
 
 The editor bottom status bar displays:
+
 - Full file path
 - Line ending type (LF/CRLF)
 - Cursor position (line, column)
@@ -183,16 +189,18 @@ Linux file permissions are represented by three groups of numbers:
 
 | Permission | Number | Description |
 |------------|--------|-------------|
-| r | 4 | Read |
-| w | 2 | Write |
-| x | 1 | Execute |
+| r          | 4      | Read        |
+| w          | 2      | Write       |
+| x          | 1      | Execute     |
 
 For example `0755`:
+
 - Owner: 7 (4+2+1) = read+write+execute
 - Group: 5 (4+1) = read+execute
 - Others: 5 (4+1) = read+execute
 
 Common permissions:
+
 - `0644`: Regular files
 - `0755`: Executable files and directories
 - `0600`: Private files (such as keys)

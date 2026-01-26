@@ -15,9 +15,9 @@ General projects are used to deploy any type of executable program, not limited 
 1. Go to the **Projects** page
 2. Click **Create Project**
 3. Fill in the configuration:
-   - **Project Name**: Project identifier
-   - **Project Directory**: Directory where the executable is located
-   - **Startup Command**: Command to start the program
+    - **Project Name**: Project identifier
+    - **Project Directory**: Directory where the executable is located
+    - **Startup Command**: Command to start the program
 4. Enable **Reverse Proxy** as needed
 
 ## Startup Command Examples

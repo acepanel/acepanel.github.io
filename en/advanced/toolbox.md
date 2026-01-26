@@ -4,15 +4,15 @@ The toolbox provides a series of system management tools, including process mana
 
 ## Feature List
 
-| Feature | Description |
-|---------|-------------|
-| [Process](./toolbox/process) | View and manage system processes |
-| [System](./toolbox/system) | View system information and configuration |
-| [SSH](./toolbox/ssh) | SSH service configuration |
-| [Disk](./toolbox/disk) | Disk usage and management |
-| [Log Cleanup](./toolbox/log) | Clean up system logs |
-| [Web Hook](./toolbox/webhook) | Configure Webhook notifications |
-| [Benchmark](./toolbox/benchmark) | Server performance testing |
+| Feature                          | Description                               |
+|----------------------------------|-------------------------------------------|
+| [Process](./toolbox/process)     | View and manage system processes          |
+| [System](./toolbox/system)       | View system information and configuration |
+| [SSH](./toolbox/ssh)             | SSH service configuration                 |
+| [Disk](./toolbox/disk)           | Disk usage and management                 |
+| [Log Cleanup](./toolbox/log)     | Clean up system logs                      |
+| [Web Hook](./toolbox/webhook)    | Configure Webhook notifications           |
+| [Benchmark](./toolbox/benchmark) | Server performance testing                |
 
 ![Toolbox](/images/toolbox/toolbox-process.png)
 

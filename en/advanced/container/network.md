@@ -22,11 +22,11 @@ The list displays the following information:
 
 Docker automatically creates the following networks after installation:
 
-| Network Name | Driver | Description |
-|--------------|--------|-------------|
-| bridge | bridge | Default network, containers access external network through NAT |
-| host | host | Container directly uses host network, no network isolation |
-| none | null | No network, container is completely isolated |
+| Network Name | Driver | Description                                                     |
+|--------------|--------|-----------------------------------------------------------------|
+| bridge       | bridge | Default network, containers access external network through NAT |
+| host         | host   | Container directly uses host network, no network isolation      |
+| none         | null   | No network, container is completely isolated                    |
 
 AcePanel also creates the `acepanel-network` network for containers deployed by panel compose templates. Please do not delete it.
 
@@ -56,6 +56,7 @@ When creating a container, select the network to use in the **Network** option.
 Containers in the same network can access each other by container name.
 
 For example, in the `acepanel-network` network:
+
 - Container A is named `web`
 - Container B is named `db`
 - Container A can access Container B's database through `db:3306`
@@ -65,9 +66,10 @@ For example, in the `acepanel-network` network:
 Select a network and click the **Delete** button to delete the network.
 
 ::: warning Note
+
 - Default networks (bridge, host, none) and `acepanel-network` cannot be deleted
 - If there are containers in the network, you need to delete or disconnect the containers before deleting the network
-:::
+  :::
 
 ## Clean Networks
 
