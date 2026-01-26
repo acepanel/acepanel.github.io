@@ -10,10 +10,10 @@ export const enSearch: DefaultTheme.AlgoliaSearchOptions['locales'] = {
             },
             modal: {
                 searchBox: {
-                    clearButtonTitle: 'Clear the query',
-                    clearButtonAriaLabel: 'Clear the query',
-                    closeButtonText: 'Cancel',
-                    closeButtonAriaLabel: 'Cancel'
+                    resetButtonTitle: 'Clear the query',
+                    resetButtonAriaLabel: 'Clear the query',
+                    cancelButtonText: 'Cancel',
+                    cancelButtonAriaLabel: 'Cancel'
                 },
                 startScreen: {
                     recentSearchesTitle: 'Recent',
@@ -57,10 +57,10 @@ export const zh_CNSearch: DefaultTheme.AlgoliaSearchOptions['locales'] = {
             },
             modal: {
                 searchBox: {
-                    clearButtonTitle: '清除查询条件',
-                    clearButtonAriaLabel: '清除查询条件',
-                    closeButtonText: '关闭',
-                    closeButtonAriaLabel: '关闭'
+                    resetButtonTitle: '清除查询条件',
+                    resetButtonAriaLabel: '清除查询条件',
+                    cancelButtonText: '关闭',
+                    cancelButtonAriaLabel: '关闭'
                 },
                 startScreen: {
                     recentSearchesTitle: '搜索历史',
@@ -104,10 +104,10 @@ export const zh_TWSearch: DefaultTheme.AlgoliaSearchOptions['locales'] = {
             },
             modal: {
                 searchBox: {
-                    clearButtonTitle: '清除查詢條件',
-                    clearButtonAriaLabel: '清除查詢條件',
-                    closeButtonText: '關閉',
-                    closeButtonAriaLabel: '關閉'
+                    resetButtonTitle: '清除查詢條件',
+                    resetButtonAriaLabel: '清除查詢條件',
+                    cancelButtonText: '關閉',
+                    cancelButtonAriaLabel: '關閉'
                 },
                 startScreen: {
                     recentSearchesTitle: '搜尋歷史',

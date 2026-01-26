@@ -266,27 +266,27 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
 function sidebarFAQ(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: "Panel FAQs",
+            text: "Panel",
             link: '/panel'
         },
         {
-            text: "Application FAQs",
+            text: "Application",
             link: '/application'
         },
         {
-            text: "Database FAQs",
+            text: "Database",
             link: '/database'
         },
         {
-            text: "Website FAQs",
+            text: "Website",
             link: '/website'
         },
         {
-            text: "Project FAQs",
+            text: "Project",
             link: '/project'
         },
         {
-            text: "Container FAQs",
+            text: "Container",
             link: '/container'
         },
     ]
