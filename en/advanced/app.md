@@ -24,16 +24,14 @@
 
 ## 应用分类
 
-原生应用按功能分为以下类别：
+原生应用按功能预设了多个分类，包括但不限于：
 
 - **Web 服务器**：Nginx、OpenResty、Apache
 - **数据库**：MySQL、MariaDB、PostgreSQL、Percona
 - **容器**：Docker、Podman
 - **中间件**：Redis、Memcached
 - **存储**：MinIO、S3fs
-- **安全**：Fail2ban
 - **工具**：phpMyAdmin、Pure-FTPd、Supervisor、Rsync、Frp
-- **开发者**：Gitea
 
 ## 下一步
 

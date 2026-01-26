@@ -28,7 +28,7 @@
 
 ### 高级设置
 
-配置网站目录、默认文档等高级选项。
+配置网站日志、默认文档等高级选项。
 
 ![高级设置](/images/website/website-static-edit-advanced.png)
 
