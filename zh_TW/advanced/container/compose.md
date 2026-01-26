@@ -1,32 +1,32 @@
-# Compose
+# 編排
 
-The compose feature is based on Docker Compose, used to define and run multi-container applications. Describe the application's services, networks, and volumes through a YAML file, then start the entire application with one click.
+編排功能基於 Docker Compose，用於定義和運行多容器應用。 通過一個 YAML 文件描述應用的服務、網路和卷，然後一鍵啟動整個應用。
 
-## Compose List
+## 編排列表
 
-Go to **Container** > **Compose** tab to view the compose list.
+進入 **容器** > **編排** 標籤頁查看編排列表。
 
-![Compose List](/images/container/compose-list.png)
+![編排列表](/images/container/compose-list.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Name**: Compose project name
-- **Directory**: Directory where docker-compose.yml file is located
-- **Status**: Running status
-- **Created Time**: Creation time
-- **Actions**: Start, stop, edit, etc.
+- **名稱**：編排項目名稱
+- **目錄**：docker-compose.yml 文件所在目錄
+- **狀態**：運行狀態
+- **創建時間**：創建時間
+- **操作**：啟動、停止、編輯等
 
-## Create Compose
+## 創建編排
 
-1. Click the **Create Compose** button
-2. Enter compose name
-3. Write or paste docker-compose.yml content
-4. Configure environment variables (optional)
-5. Click Create
+1. 點擊 **創建編排** 按鈕
+2. 輸入編排名稱
+3. 編寫或粘貼 docker-compose.yml 內容
+4. 配置環境變數（可選）
+5. 點擊創建
 
-![Create Compose](/images/container/compose-create.png)
+![創建編排](/images/container/compose-create.png)
 
-### docker-compose.yml Example
+### docker-compose.yml 示例
 
 ```yaml
 version: '3'
@@ -54,55 +54,55 @@ volumes:
   db_data:
 ```
 
-## Compose Operations
+## 編排操作
 
-### Start Compose
+### 啟動編排
 
-Click the **Start** button and a confirmation dialog will pop up:
+點擊 **啟動** 按鈕會彈出確認對話框：
 
-![Start Compose](/images/container/compose-start.png)
+![啟動編排](/images/container/compose-start.png)
 
-- **Force Pull Images**: When checked, will pull the latest images before starting
+- **強制拉取鏡像**：勾選後會在啟動前拉取最新鏡像
 
-After clicking confirm, the startup progress will be displayed:
+點擊確認後，會顯示啟動進度：
 
-![Startup Progress](/images/container/compose-starting.png)
+![啟動進度](/images/container/compose-starting.png)
 
-Starting compose will create and start all defined service containers.
+啟動編排會創建並啟動所有定義的服務容器。
 
-### Stop Compose
+### 停止編排
 
-Stopping compose will stop all related containers, but will not delete containers and data.
+停止編排會停止所有相關容器，但不會刪除容器和資料。
 
-### Delete Compose
+### 刪除編排
 
-Deleting compose will stop and delete all related containers.
+刪除編排會停止並刪除所有相關容器。
 
-:::warning Note
-Deleting compose will not delete data volumes. To delete data volumes, please manually delete them on the **Volume** page.
+:::warning 注意
+刪除編排不會刪除資料卷， 如需刪除資料卷請在 **卷** 頁面手動刪除。
 :::
 
-### Edit Compose
+### 編輯編排
 
-Click the **Edit** button in the compose list to modify the docker-compose.yml file content and environment variables.
+點擊編排列表中的 **編輯** 按鈕，可以修改 docker-compose.yml 文件內容和環境變數。
 
-![Edit Compose](/images/container/compose-edit.png)
+![編輯編排](/images/container/compose-edit.png)
 
-After modification, you need to restart the compose for changes to take effect.
+修改後需要重新啟動編排才能生效。
 
-## Use Cases
+## 使用場景
 
-Compose is suitable for the following scenarios:
+編排適合以下場景：
 
-- **Multi-container Applications**: Such as Web application + database + cache
-- **Development Environment**: Quickly set up a consistent development environment
-- **Microservices Architecture**: Manage multiple interdependent services
+- **多容器應用**：如 Web 應用 + 資料庫 + 快取
+- **開發環境**：快速搭建一致的開發環境
+- **微服務架構**：管理多個相互依賴的服務
 
-## Difference from Container Templates
+## 與容器模板的區別
 
-| Feature              | Compose                           | Container Templates                      |
-| -------------------- | --------------------------------- | ---------------------------------------- |
-| Configuration Method | Write YAML manually               | Graphical interface                      |
-| Flexibility          | Fully customizable                | Use preset configuration + customization |
-| Use Cases            | Custom complex applications       | Quick deployment of common applications  |
-| Learning Cost        | Need to understand Compose syntax | No learning required                     |
+| 特性   | 編排              | 容器模板       |
+| ---- | --------------- | ---------- |
+| 配置方式 | 手寫 YAML         | 圖形介面       |
+| 靈活性  | 完全自定義           | 使用預設配置+自定義 |
+| 適用場景 | 自定義複雜應用         | 快速部署常用應用   |
+| 學習成本 | 需要了解 Compose 語法 | 無需學習       |

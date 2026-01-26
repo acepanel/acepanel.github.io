@@ -1,77 +1,77 @@
-# Volume
+# 卷
 
-Volumes are Docker-managed data storage used to persist container data. Compared to directly mounting host directories, volumes are managed by Docker, making them more secure and portable.
+卷（Volume）是 Docker 管理的資料儲存，用於持久化容器資料。 與直接掛載主機目錄相比，卷由 Docker 管理，更加安全和便攜。
 
-## Volume List
+## 卷列表
 
-Go to **Container** > **Volume** tab to view the volume list.
+進入 **容器** > **卷** 標籤頁查看卷列表。
 
-![Volume List](/images/container/container-volume.png)
+![卷列表](/images/container/container-volume.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Name**: Volume name
-- **Driver**: Storage driver
-- **Scope**: Volume scope
-- **Mount Point**: Actual storage path of the volume on the host
-- **Created Time**: Creation time
-- **Actions**: Delete
+- **名稱**：卷名稱
+- **驅動**：儲存驅動
+- **範圍**：卷的範圍
+- **掛載點**：卷在主機上的實際儲存路徑
+- **建立時間**：建立時間
+- **操作**：刪除
 
-## Create Volume
+## 建立卷
 
-1. Click the **Create Volume** button
-2. Enter volume name
-3. Select driver (default local)
-4. Click Create
+1. 點擊 **建立卷** 按鈕
+2. 輸入卷名稱
+3. 選擇驅動（預設 local）
+4. 點擊建立
 
-## Using Volumes
+## 使用卷
 
-### Mount Volume When Creating Container
+### 建立容器時掛載卷
 
-When creating a container, add volume mounts in the **Volume** option:
+建立容器時，在 **卷** 選項中新增卷掛載：
 
-- **volume_name:container_path** - Use named volume
-- **host_path:container_path** - Directly mount host directory
+- **卷名稱:容器路徑** - 使用命名卷
+- **主機路徑:容器路徑** - 直接掛載主機目錄
 
-For example:
+例如：
 
-- `mysql_data:/var/lib/mysql` - Mount mysql_data volume to container's /var/lib/mysql
-- `/opt/ace/data:/data` - Mount host's /opt/ace/data directory to container's /data
+- `mysql_data:/var/lib/mysql` - 將 mysql_data 卷掛載到容器的 /var/lib/mysql
+- `/opt/ace/data:/data` - 將主機的 /opt/ace/data 目錄掛載到容器的 /data
 
-### Volume vs Bind Mount
+### 卷 vs 綁定掛載
 
-| Feature          | Volume                                     | Bind Mount                            |
-| ---------------- | ------------------------------------------ | ------------------------------------- |
-| Management       | Docker managed                             | User managed                          |
-| Storage Location | Docker data directory                      | Any host path                         |
-| Backup           | Requires Docker commands                   | Directly backup directory             |
-| Portability      | High                                       | Depends on host path                  |
-| Use Cases        | Data that needs persistence like databases | Configuration files, code directories |
+| 特性   | 卷（Volume）      | 綁定掛載（Bind Mount） |
+| ---- | -------------- | ---------------- |
+| 管理方式 | Docker 管理      | 用戶管理             |
+| 儲存位置 | Docker 資料目錄    | 任意主機路徑           |
+| 備份   | 需要透過 Docker 命令 | 直接備份目錄           |
+| 可移植性 | 高              | 依賴主機路徑           |
+| 適用場景 | 資料庫等需要持久化的資料   | 配置檔案、程式碼目錄       |
 
-## Delete Volume
+## 刪除卷
 
-Select a volume and click the **Delete** button to delete the volume.
+選中卷後點擊 **刪除** 按鈕刪除卷。
 
-:::danger Warning
-Deleting a volume will permanently delete all data in the volume. This operation cannot be undone!
+:::danger 警告
+刪除卷會永久刪除卷中的所有資料， 此操作不可恢復！
 :::
 
-:::warning Note
-If the volume is being used by containers, you need to delete the related containers before deleting the volume.
+:::warning 注意
+如果卷正在被容器使用，需要先刪除相關容器才能刪除卷。
 :::
 
-## Clean Volumes
+## 清理卷
 
-Click **Clean Volumes** to delete all unused volumes and free up disk space.
+點擊 **清理卷** 可以刪除所有未被使用的卷，釋放磁碟空間。
 
-:::tip Note
-Please confirm that unused volumes do not contain important data before cleaning.
+:::tip 提示
+清理前請確認未使用的卷中沒有重要資料。
 :::
 
-## Data Backup
+## 資料備份
 
-Volume data is stored in the Docker data directory (usually `/var/lib/docker/volumes/`). You can backup through the following methods:
+卷資料儲存在 Docker 資料目錄中（通常是 `/var/lib/docker/volumes/`）， 可以透過以下方式備份：
 
-1. Use `docker run` to create a temporary container that mounts the volume and exports data
-2. Directly backup the Docker data directory (requires stopping Docker service)
-3. (In development) Use AcePanel's [Backup Feature](../backup) for backup
+1. 使用 `docker run` 建立臨時容器掛載卷並匯出資料
+2. 直接備份 Docker 資料目錄（需要停止 Docker 服務）
+3. （開發中）使用 AcePanel 的 [備份功能](../backup) 進行備份

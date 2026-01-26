@@ -1,101 +1,101 @@
-# System
+# 系統
 
-The system page provides management features for basic server configuration, including DNS, SWAP, hostname, and time settings.
+系統頁面提供伺服器基礎配置的管理功能，包括 DNS、SWAP、主機名和時間設置。
 
 ## DNS
 
-Configure the system's DNS servers.
+配置系統的 DNS 伺服器。
 
-![DNS Settings](/images/toolbox/toolbox-system-dns.png)
+![DNS 設置](/images/toolbox/toolbox-system-dns.png)
 
-### Configuration Items
+### 配置項
 
-- **DNS1**: Primary DNS server address
-- **DNS2**: Secondary DNS server address
+- **DNS1**：主 DNS 伺服器地址
+- **DNS2**：輔 DNS 伺服器地址
 
-### Common DNS Servers
+### 常用 DNS 伺服器
 
-| Provider      | DNS1                                                            | DNS2                                                            |
-| ------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| Alibaba Cloud | 223.5.5.5       | 223.6.6.6       |
-| Tencent Cloud | 119.29.29.29    | 119.28.28.28    |
-| 114 DNS       | 114.114.114.114 | 114.114.115.115 |
-| Google        | 8.8.8.8         | 8.8.4.4         |
-| Cloudflare    | 1.1.1.1         | 1.0.0.1         |
+| 服務商        | DNS1                                                            | DNS2                                                            |
+| ---------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| 阿里雲        | 223.5.5.5       | 223.6.6.6       |
+| 騰訊雲        | 119.29.29.29    | 119.28.28.28    |
+| 114 DNS    | 114.114.114.114 | 114.114.115.115 |
+| Google     | 8.8.8.8         | 8.8.4.4         |
+| Cloudflare | 1.1.1.1         | 1.0.0.1         |
 
 ## SWAP
 
-Manage the system's SWAP space.
+管理系統的 SWAP 交換空間。
 
-![SWAP Settings](/images/toolbox/toolbox-system-swap.png)
+![SWAP 設置](/images/toolbox/toolbox-system-swap.png)
 
-The page displays current SWAP usage:
+頁面顯示當前 SWAP 使用情況：
 
-- System total
-- Used
-- Available
+- 系統總計
+- 已使用
+- 可用
 
-### Configure Panel SWAP
+### 配置面板 SWAP
 
-Set the size of the SWAP file managed by the panel (unit: MB).
+設置面板管理的 SWAP 檔案大小（單位：MB）。
 
-- Setting to `0` disables panel SWAP
-- It is recommended to set based on server memory size, typically 1-2 times the memory
+- 設置為 `0` 表示禁用面板 SWAP
+- 建議根據伺服器記憶體大小設置，通常為記憶體的 1-2 倍
 
-:::tip Tip
-SWAP can provide additional virtual memory when physical memory is insufficient, but performance is lower than physical memory. For servers with sufficient memory, SWAP may not need to be enabled.
+:::tip 提示
+SWAP 可以在實體記憶體不足時提供額外的虛擬記憶體，但性能低於實體記憶體。 對於記憶體充足的伺服器，可以不啟用 SWAP。
 :::
 
 ## Host
 
-Configure system hostname and Hosts file.
+配置系統主機名和 Hosts 檔案。
 
-![Host Settings](/images/toolbox/toolbox-system-host.png)
+![主機設置](/images/toolbox/toolbox-system-host.png)
 
-### System Hostname
+### 系統主機名
 
-Modify the server's hostname, such as `myserver`, `web-01`, etc.
+修改伺服器的主機名，例如 `myserver`、`web-01` 等。
 
 ### Hosts
 
-Edit the system's `/etc/hosts` file for configuring local domain name resolution.
+編輯系統的 `/etc/hosts` 檔案，用於配置本地域名解析。
 
-Common uses:
+常見用途：
 
-- Block specific domains
-- Configure local development domains
-- Speed up resolution of specific domains
+- 屏蔽特定域名
+- 配置本地開發域名
+- 加速特定域名的解析
 
-## Time
+## 時間
 
-Configure system timezone and time synchronization.
+配置系統時區和時間同步。
 
-![Time Settings](/images/toolbox/toolbox-system-time.png)
+![時間設置](/images/toolbox/toolbox-system-time.png)
 
-### Select Timezone
+### 選擇時區
 
-Select the server's timezone from the dropdown list, such as `Asia/Shanghai`.
+從下拉列表中選擇伺服器所在的時區，例如 `Asia/Shanghai`。
 
-### Modify Time
+### 修改時間
 
-Manually set the system time.
+手動設置系統時間。
 
-:::warning Note
-After manually changing the time, automatic system time synchronization may still override the settings.
+:::warning 注意
+手動更改時間後，系統自動時間同步可能仍會覆蓋設置。
 :::
 
-### NTP Server
+### NTP 伺服器
 
-Configure the NTP time synchronization server. Leave empty to use the system default server.
+配置 NTP 時間同步伺服器。 留空則使用系統預設伺服器。
 
-Common NTP servers:
+常用 NTP 伺服器：
 
-- `ntp.aliyun.com` - Alibaba Cloud
-- `ntp.tencent.com` - Tencent Cloud
-- `cn.pool.ntp.org` - China NTP Pool
+- `ntp.aliyun.com` - 阿里雲
+- `ntp.tencent.com` - 騰訊雲
+- `cn.pool.ntp.org` - 中國 NTP 池
 
-### Action Buttons
+### 操作按鈕
 
-- **Configure Default Server**: Restore to using the system default NTP server
-- **Save**: Save timezone and time settings
-- **Sync Time**: Immediately synchronize time with the NTP server
+- **配置預設伺服器**：恢復使用系統預設的 NTP 伺服器
+- **保存**：保存時區和時間設置
+- **同步時間**：立即與 NTP 伺服器同步時間

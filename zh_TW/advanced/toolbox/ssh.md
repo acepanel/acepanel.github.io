@@ -1,81 +1,81 @@
-# SSH
+# 遠端主機
 
-The SSH page is used to manage the server's SSH service configuration, including service status, authentication methods, and Root account settings.
+SSH 頁面用於管理伺服器的 SSH 服務配置，包括服務狀態、認證方式和 Root 帳戶設置。
 
-![SSH Settings](/images/toolbox/toolbox-ssh.png)
+![SSH 設置](/images/toolbox/toolbox-ssh.png)
 
-## Running Status
+## 運行狀態
 
-Displays the current status of the SSH service and provides the following operations:
+顯示 SSH 服務的當前狀態，並提供以下操作：
 
-- **Start**: Start the SSH service
-- **Stop**: Stop the SSH service
-- **Restart**: Restart the SSH service
+- **啟動**：啟動 SSH 服務
+- **停止**：停止 SSH 服務
+- **重啟**：重啟 SSH 服務
 
-:::danger Warning
-After stopping the SSH service, you will not be able to remotely connect to the server via SSH. Please ensure you have other ways to access the server (such as VNC, out-of-band management) before proceeding.
+:::danger 警告
+停止 SSH 服務後將無法通過 SSH 遠端連接伺服器， 請確保有其他方式訪問伺服器（如 VNC、帶外管理）後再操作。
 :::
 
-## SSH Settings
+## SSH 設置
 
-### SSH Password Login
+### SSH 密碼登入
 
-Control whether password authentication is allowed for SSH.
+控制是否允許使用密碼進行 SSH 認證。
 
-- **Enabled**: Allow password login
-- **Disabled**: Prohibit password login, only key authentication allowed
+- **開啟**：允許使用密碼登入
+- **關閉**：禁止密碼登入，只能使用密鑰
 
-### SSH Key Login
+### SSH 密鑰登入
 
-Control whether SSH key authentication is allowed.
+控制是否允許使用 SSH 密鑰進行認證。
 
-- **Enabled**: Allow key login
-- **Disabled**: Prohibit key login
+- **開啟**：允許使用密鑰登入
+- **關閉**：禁止密鑰登入
 
-:::tip Security Recommendation
-It is recommended to enable key login and disable password login to effectively prevent brute force attacks.
+:::tip 安全建議
+推薦開啟密鑰登入並關閉密碼登入，可以有效防止暴力破解攻擊。
 :::
 
-### SSH Port
+### SSH 連接埠
 
-Modify the port that the SSH service listens on, default is `22`.
+修改 SSH 服務監聽的連接埠，預設為 `22`。
 
-After modifying the port:
+修改連接埠後：
 
-1. Click the **Save** button
-2. Ensure the firewall has allowed the new port
-3. Test connection using the new port
-4. Close the old port after confirming the connection works
+1. 點擊 **保存** 按鈕
+2. 確保防火牆已放行新連接埠
+3. 使用新連接埠連接測試
+4. 確認可以連接後再關閉舊連接埠
 
-:::warning Note
-Before modifying the port, please ensure the new port is allowed in the firewall, otherwise you may be unable to connect.
+:::warning 注意
+修改連接埠前請確保新連接埠已在防火牆中放行，否則可能導致無法連接。
 :::
 
-## Root Settings
+## Root 設置
 
-### Root Password Login Settings
+### Root 密碼登入設置
 
-Control Root user's SSH login permissions:
+控制 Root 用戶的 SSH 登入權限：
 
-- **Allow SSH Login**: Root can log in via SSH
-- **Prohibit SSH Login**: Root cannot log in via SSH
-- **Allow Key Login Only**: Root can only log in using keys
+- **允許 SSH 登入**：Root 可以通過 SSH 登入
+- **禁止 SSH 登入**：Root 無法通過 SSH 登入
+- **僅允許密鑰登入**：Root 只能使用密鑰登入
 
-### Root Password
+### Root 密碼
 
-Reset the Root user's password.
+重置 Root 用戶的密碼。
 
-- Enter the new password and click the **Reset** button
-- It is recommended to use a complex password containing uppercase and lowercase letters, numbers, and special characters
-- Refreshing the page will clear the password input field
+- 輸入新密碼後點擊 **重置** 按鈕
+- 建議使用包含大小寫字母、數字和特殊字符的複雜密碼
+- 刷新頁面將清除密碼輸入框
 
-### Root Key
+### Root 密鑰
 
-Manage Root user's SSH keys:
+管理 Root 用戶的 SSH 密鑰：
 
-- **View Key**: View the currently configured public key
-- **Download**: Download the private key file
+- **查看密鑰**：查看當前配置的公鑰
+- **下載**：下載私鑰文件
 
-:::tip Security Recommendation
-It is recommended to use key login and disable password to significantly improve server security.
+:::tip 安全建議
+推薦使用密鑰登入並禁用密碼，可以顯著提高伺服器安全性。
 :::

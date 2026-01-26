@@ -71,7 +71,7 @@ function nav(): DefaultTheme.NavItem[] {
     link: locale == 'zh_CN' ? '/' : `/${locale}/`
   }, {
     text: "文档",
-    link: locale == 'zh_CN' ? '/quickstart/install' : `/${locale}/quickstart/install`
+    link: locale == 'zh_CN' ? '/quickstart/introduction' : `/${locale}/quickstart/introduction`
   }, {
     text: "支持",
     link: locale == 'zh_CN' ? '/support' : `/${locale}/support`

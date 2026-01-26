@@ -1,120 +1,120 @@
-# Disk
+# 磁碟
 
-The disk page provides disk partition management and LVM logical volume management features.
+磁碟頁面提供磁碟分區管理和 LVM 邏輯卷管理功能。
 
-## Disk Management
+## 磁碟管理
 
-![Disk Management](/images/toolbox/toolbox-disk.png)
+![磁碟管理](/images/toolbox/toolbox-disk.png)
 
-### Disk Information
+### 磁碟資訊
 
-The top of the page displays basic information for each disk:
+頁面頂部顯示每個磁碟的基本資訊：
 
-- **Disk Name**: Such as vda, sda
-- **Type**: System disk or data disk
-- **Size**: Total disk capacity
-- **Partitions**: Number of partitions
-- **Disk Type**: HDD, SSD, etc.
+- **磁碟名**：如 vda、sda
+- **類型**：系統盤或資料盤
+- **大小**：磁碟總容量
+- **分區數**：分區數量
+- **磁碟類型**：HDD、SSD 等
 
-### Partition List
+### 分區列表
 
-Each disk shows its partition information:
+每個磁碟下顯示其分區資訊：
 
-| Column         | Description                               |
-| -------------- | ----------------------------------------- |
-| Partition Name | Partition device name, such as vda1, vda2 |
-| Size           | Partition capacity                        |
-| Used           | Used space                                |
-| Available      | Available space                           |
-| Usage          | Usage percentage                          |
-| Mount Point    | Mount directory, such as `/`, `/data`     |
-| File System    | File system type, such as ext4, xfs       |
-| Actions        | Unmount and other operations              |
+| 列    | 說明                 |
+| ---- | ------------------ |
+| 分區名  | 分區裝置名，如 vda1、vda2  |
+| 大小   | 分區容量               |
+| 已用   | 已使用空間              |
+| 可用   | 可用空間               |
+| 使用率  | 使用百分比              |
+| 掛載點  | 掛載目錄，如 `/`、`/data` |
+| 檔案系統 | 檔案系統類型，如 ext4、xfs  |
+| 操作   | 卸載等操作              |
 
-### Mount Partition
+### 掛載分區
 
-Mount an unmounted partition to a specified directory:
+將未掛載的分區掛載到指定目錄：
 
-- **Partition**: Select the partition to mount
-- **Mount Path**: Mount directory, such as `/mnt/data`
-- **Mount Options**: Mount parameters, such as `defaults,noatime`
-- **Auto Mount on Boot**: Whether to write to fstab for automatic mounting on boot
+- **分區**：選擇要掛載的分區
+- **掛載路徑**：掛載目錄，如 `/mnt/data`
+- **掛載選項**：掛載參數，如 `defaults,noatime`
+- **啟動時自動掛載**：是否寫入 fstab 開機自動掛載
 
-### Format Partition
+### 格式化分區
 
-:::danger Warning
-Formatting will erase all data on the partition!
+:::danger 警告
+格式化將清除分區上的所有資料！
 :::
 
-- **Partition**: Select the partition to format
-- **File System Type**: ext4, xfs, btrfs, etc.
+- **分區**：選擇要格式化的分區
+- **檔案系統類型**：ext4、xfs、btrfs 等
 
-### Initialize Disk
+### 初始化磁碟
 
-:::danger Warning
-Initialization will delete all partitions and data on the disk!
+:::danger 警告
+初始化將刪除磁碟上的所有分區和資料！
 :::
 
-Initialize the entire disk as a single partition:
+將整個磁碟初始化為單個分區：
 
-- **Disk**: Select the disk to initialize
-- **File System Type**: ext4, xfs, btrfs, etc.
+- **磁碟**：選擇要初始化的磁碟
+- **檔案系統類型**：ext4、xfs、btrfs 等
 
-### Auto Mount Configuration (fstab)
+### 自動掛載配置（fstab）
 
-Display mount configurations in `/etc/fstab`:
+顯示 `/etc/fstab` 中的掛載配置：
 
-- **Device**: Device name or UUID
-- **Mount Point**: Mount directory
-- **File System**: File system type
-- **Options**: Mount options
-- **Actions**: Remove configuration
+- **裝置**：裝置名或 UUID
+- **掛載點**：掛載目錄
+- **檔案系統**：檔案系統類型
+- **選項**：掛載選項
+- **操作**：移除配置
 
-## LVM Management
+## LVM 管理
 
-![LVM Management](/images/toolbox/toolbox-disk-lvm.png)
+![LVM 管理](/images/toolbox/toolbox-disk-lvm.png)
 
-LVM (Logical Volume Manager) provides flexible disk space management with support for dynamic partition resizing.
+LVM（Logical Volume Manager）提供靈活的磁碟空間管理，支援動態調整分區大小。
 
-### Physical Volume (PV)
+### 物理卷（PV）
 
-Physical volumes are the foundation of LVM, typically a disk partition or an entire disk.
+物理卷是 LVM 的基礎，通常是一個磁碟分區或整個磁碟。
 
-**Create Physical Volume**:
+**建立物理卷**：
 
-1. Select device (unused partition or disk)
-2. Click **Create Physical Volume**
+1. 選擇裝置（未使用的分區或磁碟）
+2. 點擊 **建立物理卷**
 
-### Volume Group (VG)
+### 卷組（VG）
 
-A volume group consists of one or more physical volumes, representing a storage pool concept.
+卷組由一個或多個物理卷組成，是儲存池的概念。
 
-**Create Volume Group**:
+**建立卷組**：
 
-1. Enter volume group name
-2. Select physical volumes to add
-3. Click **Create Volume Group**
+1. 輸入卷組名
+2. 選擇要加入的物理卷
+3. 點擊 **建立卷組**
 
-### Logical Volume (LV)
+### 邏輯卷（LV）
 
-Logical volumes allocate space from volume groups, equivalent to traditional partitions.
+邏輯卷從卷組中分配空間，相當於傳統的分區。
 
-**Create Logical Volume**:
+**建立邏輯卷**：
 
-1. Enter logical volume name
-2. Select volume group
-3. Set size (GB)
-4. Click **Create Logical Volume**
+1. 輸入邏輯卷名
+2. 選擇卷組
+3. 設定大小（GB）
+4. 點擊 **建立邏輯卷**
 
-### Extend Logical Volume
+### 擴展邏輯卷
 
-Dynamically extend the size of a logical volume:
+動態擴展邏輯卷的大小：
 
-1. Select the logical volume to extend
-2. Enter extension size (GB)
-3. Check **Auto Resize File System** (recommended)
-4. Click **Extend Logical Volume**
+1. 選擇要擴展的邏輯卷
+2. 輸入擴展大小（GB）
+3. 勾選 **自動調整檔案系統大小**（推薦）
+4. 點擊 **擴展邏輯卷**
 
-:::tip Tip
-The advantage of LVM is that logical volumes can be extended online without unmounting partitions or restarting the system.
+:::tip 提示
+LVM 的優勢在於可以線上擴展邏輯卷，無需卸載分區或重新啟動系統。
 :::

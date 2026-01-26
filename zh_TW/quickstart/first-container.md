@@ -1,45 +1,45 @@
-# First Container: Deploy pgAdmin 4
+# 第一個容器：部署 pgAdmin 4
 
-This article uses pgAdmin 4 as an example to demonstrate how to quickly deploy Docker containers through AcePanel.
+本文以 pgAdmin 4 為例，演示如何通過 AcePanel 快速部署 Docker 容器。
 
-## Install Docker
+## 安裝 Docker
 
-Go to the "Applications" page, find Docker in "Native Applications" and install it. Installation progress can be viewed on the "Tasks" page.
+進入「應用」頁面，在「原生應用」中找到 Docker 並安裝。 安裝進度可在「任務」頁面查看。
 
-:::tip Servers in China
-Pulling images is slow on servers in China. It is recommended to configure the paid acceleration source provided by [Millisecond Mirror](https://1ms.run/).
+:::tip 國內服務器
+國內服務器拉取鏡像較慢， 建議配置 [毫秒鏡像](https://1ms.run/) 提供的付費加速源。
 :::
 
-## Deploy Container
+## 部署容器
 
-Go to "Applications" -> "Container Templates", find pgAdmin 4, and click "Deploy".
+進入「應用」->「容器模板」，找到 pgAdmin 4，點擊「部署」。
 
-![Container Template List](/images/quickstart/container-template.png)
+![容器模板列表](/images/quickstart/container-template.png)
 
-![Deploy Step 1](/images/quickstart/container-deploy-step1.png)
+![部署1](/images/quickstart/container-deploy-step1.png)
 
-Select "Create New Compose" and fill in the configuration:
+選擇「創建新編排」後填寫配置：
 
-![Deploy Step 2](/images/quickstart/container-deploy-step2.png)
+![部署2](/images/quickstart/container-deploy-step2.png)
 
-- **Compose Name**: Give the compose a name, e.g., `pg4admin`
-- **Auto Start**: When checked, automatically pull images and start after creation
-- **Auto Firewall**: When checked, automatically allow ports
-- **Access Port**: Map container port 80 to host port, e.g., `999`
-- **Admin Email/Password**: Login credentials for pgAdmin 4
+- **編排名稱**：給編排起個名字，如 `pg4admin`
+- **自動啟動**：勾選後創建完成自動拉取鏡像並啟動
+- **自動防火牆**：勾選後自動放行端口
+- **訪問端口**：容器 80 端口映射到主機端口，如 `999`
+- **管理員郵箱/密碼**：pgAdmin 4 的登錄憑據
 
-Click "Next" to preview the compose configuration, then click "Create" to confirm.
+點擊「下一步」預覽編排配置，確認後點擊「創建」。
 
-## Wait for Startup
+## 等待啟動
 
-If "Auto Start" is checked, a popup will show the pull and startup progress after creation:
+如果勾選了「自動啟動」，創建後會彈窗顯示拉取和啟動進度：
 
-![Startup Progress](/images/container/compose-starting.png)
+![啟動進度](/images/container/compose-starting.png)
 
-You can also manually manage in "Containers" -> "Compose" page:
+也可以在「容器」->「編排」頁面手動管理：
 
-![Compose List](/images/container/compose-list.png)
+![編排列表](/images/container/compose-list.png)
 
-## Access Service
+## 訪問服務
 
-After startup is complete, access `http://ServerIP:Port` (e.g., `http://x.x.x.x:999`) in your browser, and log in with the email and password you set earlier.
+啟動完成後，瀏覽器訪問 `http://服務器IP:端口`（如 `http://x.x.x.x:999`），用之前設置的郵箱和密碼登錄即可。

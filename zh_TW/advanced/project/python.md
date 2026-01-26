@@ -1,16 +1,16 @@
-# Python Project
+# Python 專案
 
-Python projects are used to deploy Django, Flask, FastAPI, and other Python web applications.
+Python 專案用於部署 Django、Flask、FastAPI 等 Python Web 應用。
 
-## Prerequisites
+## 前置要求
 
-1. Install Python runtime: **Apps** > **Runtimes** > **Python**
-2. Project source code
+1. 安裝 Python 執行環境：**應用** > **執行環境** > **Python**
+2. 專案原始碼
 
-## Deployment Steps
+## 部署步驟
 
-1. Upload project code to the server
-2. Create virtual environment and install dependencies:
+1. 上傳專案程式碼到伺服器
+2. 建立虛擬環境並安裝依賴：
 
 ```bash
 cd /opt/ace/project/myapp
@@ -19,50 +19,50 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-3. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Startup Command**: See examples below
-4. Enable **Reverse Proxy**
+3. 建立專案：
+   - **專案名**：`myapp`
+   - **專案目錄**：`/opt/ace/project/myapp`
+   - **啟動命令**：見下方範例
+4. 開啟 **反向代理**
 
-## Startup Command Examples
+## 啟動命令範例
 
 ### Django
 
 ```bash
-# Development server (not recommended for production)
+# 開發伺服器（不推薦生產使用）
 /opt/ace/project/myapp/venv/bin/python manage.py runserver 0.0.0.0:8000
 
-# Using Gunicorn (recommended)
+# 使用 Gunicorn（推薦）
 /opt/ace/project/myapp/venv/bin/gunicorn myproject.wsgi:application -b 0.0.0.0:8000 -w 4
 
-# Using uWSGI
+# 使用 uWSGI
 /opt/ace/project/myapp/venv/bin/uwsgi --http 0.0.0.0:8000 --module myproject.wsgi
 ```
 
 ### Flask
 
 ```bash
-# Development server (not recommended for production)
+# 開發伺服器（不推薦生產使用）
 /opt/ace/project/myapp/venv/bin/python app.py
 
-# Using Gunicorn (recommended)
+# 使用 Gunicorn（推薦）
 /opt/ace/project/myapp/venv/bin/gunicorn app:app -b 0.0.0.0:8000 -w 4
 ```
 
 ### FastAPI
 
 ```bash
-# Using Uvicorn
+# 使用 Uvicorn
 /opt/ace/project/myapp/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
 
-# Using Gunicorn + Uvicorn Workers (recommended)
+# 使用 Gunicorn + Uvicorn Workers（推薦）
 /opt/ace/project/myapp/venv/bin/gunicorn main:app -b 0.0.0.0:8000 -w 4 -k uvicorn.workers.UvicornWorker
 ```
 
-## Common Framework Configurations
+## 常用框架配置
 
-### Django Production Configuration
+### Django 生產配置
 
 `settings.py`:
 
@@ -72,13 +72,13 @@ ALLOWED_HOSTS = ['your-domain.com']
 STATIC_ROOT = '/opt/ace/project/myapp/static/'
 ```
 
-Collect static files:
+收集靜態檔案：
 
 ```bash
 /opt/ace/project/myapp/venv/bin/python manage.py collectstatic
 ```
 
-### FastAPI Example
+### FastAPI 範例
 
 ```python
 from fastapi import FastAPI
@@ -90,47 +90,47 @@ def read_root():
     return {"Hello": "World"}
 ```
 
-## Gunicorn Configuration
+## Gunicorn 配置
 
-Create `gunicorn.conf.py`:
+建立 `gunicorn.conf.py`：
 
 ```python
 bind = "0.0.0.0:8000"
 workers = 4
-worker_class = "sync"  # Or "uvicorn.workers.UvicornWorker" for FastAPI
+worker_class = "sync"  # 或 "uvicorn.workers.UvicornWorker" for FastAPI
 timeout = 30
 keepalive = 2
 ```
 
-Startup command:
+啟動命令：
 
 ```bash
 /opt/ace/project/myapp/venv/bin/gunicorn -c gunicorn.conf.py myproject.wsgi:application
 ```
 
-## Virtual Environment
+## 虛擬環境
 
-It is strongly recommended to use virtual environments to isolate project dependencies:
+強烈建議使用虛擬環境隔離專案依賴：
 
 ```bash
-# Create virtual environment
+# 建立虛擬環境
 python3.13 -m venv venv
 
-# Activate virtual environment
+# 啟用虛擬環境
 source venv/bin/activate
 
-# Install dependencies
+# 安裝依賴
 pip install -r requirements.txt
 
-# Deactivate virtual environment
+# 退出虛擬環境
 deactivate
 ```
 
-## Common Issues
+## 常見問題
 
-### Dependency Installation Failed
+### 依賴安裝失敗
 
-Some packages require compilation, ensure necessary system dependencies are installed:
+某些套件需要編譯，確保安裝了必要的系統依賴：
 
 ```bash
 # AlmaLinux/Rocky Linux
@@ -140,10 +140,10 @@ yum install gcc python3-devel
 apt install gcc python3-dev
 ```
 
-### Static Files 404
+### 靜態檔案 404
 
-Django production environment needs to configure Nginx to serve static files directly, or use WhiteNoise.
+Django 生產環境需要配置 Nginx 直接提供靜態檔案，或使用 WhiteNoise。
 
-### Database Connection Issues
+### 資料庫連線問題
 
-Check database configuration and network connection, ensure the database service is running properly.
+檢查資料庫配置和網路連線，確保資料庫服務正常執行。

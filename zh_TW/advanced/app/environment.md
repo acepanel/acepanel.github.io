@@ -1,98 +1,98 @@
-# Runtime Environment
+# 運行環境
 
-Runtime environments are used to install runtimes for various programming languages, providing execution environments for websites and projects.
+運行環境用於安裝各類程式語言的運行時，為網站和專案提供執行環境。
 
-## Supported Languages
+## 支援的語言
 
-AcePanel supports runtime environments for the following programming languages:
+AcePanel 支援以下程式語言的運行環境：
 
-| Language                | Available Versions                          | Description                                             |
-| ----------------------- | ------------------------------------------- | ------------------------------------------------------- |
-| Go                      | 1.20 - 1.25 | Suitable for building high-performance backend services |
-| Java                    | JDK 8, 11, 17, 21, 25                       | Uses Amazon Corretto distribution                       |
-| Node.js | 20, 22, 24                                  | Suitable for frontend builds and Node applications      |
-| PHP                     | 7.4 - 8.5   | Suitable for Web development                            |
-| Python                  | 3.10 - 3.14 | Suitable for scripts and Web applications               |
+| 語言                      | 可用版本                                        | 說明                     |
+| ----------------------- | ------------------------------------------- | ---------------------- |
+| Go                      | 1.20 - 1.25 | 適合建構高效能後端服務            |
+| Java                    | JDK 8, 11, 17, 21, 25                       | 使用 Amazon Corretto 發行版 |
+| Node.js | 20, 22, 24                                  | 適合前端建構和 Node 應用        |
+| PHP                     | 7.4 - 8.5   | 適合 Web 開發              |
+| Python                  | 3.10 - 3.14 | 適合腳本和 Web 應用           |
 
-## Runtime Environment List
+## 運行環境列表
 
-Go to the **Applications** page, click the **Runtime Environment** tab to view available runtime environments:
+進入 **應用** 頁面，點擊 **運行環境** 標籤查看可用的運行環境：
 
-![Runtime Environment](/images/app/app-runtime.png)
+![運行環境](/images/app/app-runtime.png)
 
-Click the language category at the top to filter versions for a specific language:
+點擊頂部的語言分類可以篩選特定語言的版本：
 
-![PHP Runtime Environment](/images/app/app-runtime-php.png)
+![PHP 運行環境](/images/app/app-runtime-php.png)
 
-## Install Runtime Environment
+## 安裝運行環境
 
-1. Go to the **Applications** page
-2. Click the **Runtime Environment** tab
-3. Select the desired language category (or view all)
-4. Click the **Install** button for the corresponding version
+1. 進入 **應用** 頁面
+2. 點擊 **運行環境** 標籤
+3. 選擇需要的語言分類（或查看全部）
+4. 點擊對應版本的 **安裝** 按鈕
 
-:::tip Version Selection Recommendations
+:::tip 版本選擇建議
 
-- Production environments are recommended to use LTS (Long Term Support) versions
-- Versions marked "End of Life" are not recommended for new projects
-- Multiple versions can be installed simultaneously and specified for use in projects
+- 生產環境建議使用 LTS（長期支援）版本
+- 標註「已停止維護」的版本不建議用於新專案
+- 可以同時安裝多個版本，在專案中指定使用
   :::
 
-## Manage Runtime Environment
+## 管理運行環境
 
-Installed runtime environments will display a **Manage** button. Click to enter the management page:
+已安裝的運行環境會顯示 **管理** 按鈕。 點擊進入管理頁面：
 
-![Runtime Environment Management](/images/app/app-runtime-manage.png)
+![運行環境管理](/images/app/app-runtime-manage.png)
 
-### Running Status
+### 運行狀態
 
-Displays the current status of the runtime environment, providing operations such as start, stop, restart, and reload.
+顯示運行環境的當前狀態，提供啟動、停止、重啟、重載等操作。
 
-### Module Management (PHP)
+### 模組管理（PHP）
 
-PHP runtime environment provides module management functionality, allowing installation or uninstallation of various PHP modules:
+PHP 運行環境提供模組管理功能，可以安裝或卸載各種 PHP 模組：
 
-![PHP Module Management](/images/app/app-runtime-modules.png)
+![PHP 模組管理](/images/app/app-runtime-modules.png)
 
-Common modules include:
+常用模組包括：
 
-- **OPcache**: PHP bytecode cache, improves performance
-- **Redis**: Connect to Redis database
-- **ImageMagick**: Image processing
-- **Swoole/Swow**: High-performance asynchronous framework
-- **ionCube**: PHP code encryption and decryption
+- **OPcache**：PHP 位元組碼快取，提升效能
+- **Redis**：連接 Redis 資料庫
+- **ImageMagick**：圖像處理
+- **Swoole/Swow**：高效能非同步框架
+- **ionCube**：PHP 程式碼加密解密
 
-### Configuration Files
+### 配置檔案
 
-You can edit PHP's main configuration file (php.ini) and FPM configuration file.
+可以編輯 PHP 的主配置檔案（php.ini）和 FPM 配置檔案。
 
-### Set as CLI Default Version
+### 設置為 CLI 預設版本
 
-Click the **Set as CLI Default Version** button to set the current version as the default PHP version used by the command line.
+點擊 **設置為 CLI 預設版本** 按鈕，可以將當前版本設置為命令列預設使用的 PHP 版本。
 
-## Multiple Version Coexistence
+## 多版本共存
 
-AcePanel supports multiple versions of the same language coexisting. For example, you can install both PHP 7.4 and PHP 8.3 simultaneously, and different websites can use different PHP versions.
+AcePanel 支援同一語言的多個版本共存。 例如，你可以同時安裝 PHP 7.4 和 PHP 8.3，不同的網站可以使用不同的 PHP 版本。
 
-Installation path rules:
+安裝路徑規則：
 
-- **Go**: `/opt/ace/server/go/version`
-- **Java**: `/opt/ace/server/java/version`
-- **Node.js**: `/opt/ace/server/nodejs/version`
-- **PHP**: `/opt/ace/server/php/version`
-- **Python**: `/opt/ace/server/python/version`
+- **Go**：`/opt/ace/server/go/版本號`
+- **Java**：`/opt/ace/server/java/版本號`
+- **Node.js**：`/opt/ace/server/nodejs/版本號`
+- **PHP**：`/opt/ace/server/php/版本號`
+- **Python**：`/opt/ace/server/python/版本號`
 
-## Using in Projects
+## 在專案中使用
 
-When creating a project, you can select the runtime environment version to use in the project settings. See [Project Management](../project) documentation for details.
+建立專案時，可以在專案設定中選擇使用的運行環境版本。 詳見 [專案管理](../project) 文件。
 
-## Update Runtime Environment
+## 更新運行環境
 
-When a new version is available, the latest version number will be displayed in the list. You can:
+當有新版本可用時，列表中會顯示最新版本號。 你可以：
 
-1. Uninstall the old version and install the new version
-2. Keep the old version and install the new version simultaneously (recommended)
+1. 卸載舊版本，安裝新版本
+2. 保留舊版本，同時安裝新版本（推薦）
 
-:::warning Note
-Updating runtime environment versions may cause compatibility issues with projects that depend on that version. Please verify in a test environment before updating the production environment.
+:::warning 注意
+更新運行環境版本可能導致依賴該版本的專案出現相容性問題， 請在測試環境驗證後再更新生產環境。
 :::

@@ -1,86 +1,86 @@
-# Server Management
+# 伺服器管理
 
-The server management page is used to manage database server connections, supporting both local and remote database servers.
+伺服器管理頁面用於管理資料庫伺服器連接，支援本地和遠端資料庫伺服器。
 
-## Server List
+## 伺服器列表
 
-Go to **Database** > **Server** tab to view the server list.
+進入 **資料庫** > **伺服器** 標籤頁查看伺服器列表。
 
-![Server List](/images/database/database-server.png)
+![伺服器列表](/images/database/database-server.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Type**: Database type (MySQL/PostgreSQL)
-- **Name**: Server name
-- **Username**: Administrator username
-- **Password**: Administrator password
-- **Host**: Server address and port
-- **Comment**: Remarks
-- **Status**: Connection status
-- **Update Date**: Last update time
-- **Actions**: Terminal, sync, modify, delete
+- **類型**：資料庫類型（MySQL/PostgreSQL）
+- **名稱**：伺服器名稱
+- **使用者名稱**：管理員使用者名稱
+- **密碼**：管理員密碼
+- **主機**：伺服器地址和連接埠
+- **註釋**：備註資訊
+- **狀態**：連接狀態
+- **更新日期**：最後更新時間
+- **操作**：終端機、同步、修改、刪除
 
-## Local Server
+## 本地伺服器
 
-After installing database software, AcePanel will automatically add local servers. These servers cannot be deleted by users:
+安裝資料庫軟體後，AcePanel 會自動新增本地伺服器， 此類伺服器不支援自行刪除：
 
-- **local_mysql**: Local Percona/MySQL/MariaDB server
-- **local_postgresql**: Local PostgreSQL server
+- **local_mysql**：本地 Percona/MySQL/MariaDB 伺服器
+- **local_postgresql**：本地 PostgreSQL 伺服器
 
-## Add Remote Server
+## 新增遠端伺服器
 
-1. Click the **Add Server** button
-2. Fill in the configuration:
-   - **Type**: Select database type
-   - **Name**: Server name (for identification)
-   - **Host**: Server address
-   - **Port**: Database port
-   - **Username**: Administrator username
-   - **Password**: Administrator password
-3. Click Add
+1. 點擊 **新增伺服器** 按鈕
+2. 填寫配置：
+   - **類型**：選擇資料庫類型
+   - **名稱**：伺服器名稱（用於標識）
+   - **主機**：伺服器地址
+   - **連接埠**：資料庫連接埠
+   - **使用者名稱**：管理員使用者名稱
+   - **密碼**：管理員密碼
+3. 點擊新增
 
-### Remote Server Use Cases
+### 遠端伺服器使用場景
 
-- Connect to cloud databases (such as Alibaba Cloud RDS, Tencent Cloud CDB)
-- Connect to database services in containers
-- Connect to databases on other servers
-- Database read-write separation architecture
+- 連接雲端資料庫（如阿里雲 RDS、騰訊雲 CDB）
+- 連接容器中的資料庫服務
+- 連接其他伺服器上的資料庫
+- 資料庫讀寫分離架構
 
-## Server Operations
+## 伺服器操作
 
-### Terminal
+### 終端機
 
-Click the **Terminal** button to open the database command line terminal, where you can directly execute SQL statements.
+點擊 **終端機** 按鈕開啟資料庫命令列終端機，可以直接執行 SQL 語句。
 
-### Sync
+### 同步
 
-Click the **Sync** button to synchronize database and user information. When databases or users are created directly in the database, you can use this function to sync to the panel.
+點擊 **同步** 按鈕同步資料庫和使用者資訊。 當直接在資料庫中建立了資料庫或使用者時，可以使用此功能同步到面板。
 
-### Modify
+### 修改
 
-Click the **Modify** button to modify server connection information, such as password, host address, etc.
+點擊 **修改** 按鈕可以修改伺服器連接資訊，如密碼、主機地址等。
 
-### Delete
+### 刪除
 
-Click the **Delete** button to delete the server configuration.
+點擊 **刪除** 按鈕刪除伺服器配置。
 
-:::warning Note
-Deleting the server configuration will not delete the actual database service, it only removes the server management from the panel.
+:::warning 注意
+刪除伺服器配置不會刪除實際的資料庫服務，只是從面板中移除該伺服器的管理。
 :::
 
-## Connection Test
+## 連接測試
 
-After adding or modifying a server, the system will automatically test the connection. If the connection fails, please check:
+新增或修改伺服器後，系統會自動測試連接。 如果連接失敗，請檢查：
 
-1. Whether the server address and port are correct
-2. Whether the username and password are correct
-3. Whether the firewall allows the connection
-4. Whether the database service is running normally
-5. Whether the database user is allowed to connect from the current host
+1. 伺服器地址和連接埠是否正確
+2. 使用者名稱和密碼是否正確
+3. 防火牆是否允許連接
+4. 資料庫服務是否正常運行
+5. 資料庫使用者是否允許從當前主機連接
 
-## Default Ports
+## 預設連接埠
 
-| Database              | Default Port |
-| --------------------- | ------------ |
-| Percona/MySQL/MariaDB | 3306         |
-| PostgreSQL            | 5432         |
+| 資料庫                   | 預設連接埠 |
+| --------------------- | ----- |
+| Percona/MySQL/MariaDB | 3306  |
+| PostgreSQL            | 5432  |

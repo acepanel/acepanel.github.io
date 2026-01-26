@@ -1,66 +1,66 @@
-# Website
+# 網站常見問題
 
-The website module is used to manage site configurations on the Web server. AcePanel supports three types of websites: reverse proxy, PHP, and static.
+網站模組用於管理 Web 伺服器上的站點配置。 AcePanel 支援三種類型的網站：反向代理、PHP 和純靜態。
 
-## Prerequisites
+## 前置要求
 
-Before using the website feature, you need to install a Web server first:
+使用網站功能前，需要先安裝 Web 伺服器：
 
-1. Go to **Applications** > **Native Applications**
-2. Install Nginx, OpenResty, or Apache
+1. 進入 **應用** > **原生應用**
+2. 安裝 Nginx、OpenResty 或 Apache
 
-## Website Types
+## 網站類型
 
-| Type                             | Description                          | Use Cases                                      |
-| -------------------------------- | ------------------------------------ | ---------------------------------------------- |
-| [Reverse Proxy](./website/proxy) | Forward requests to backend services | Node.js, Go, Java applications |
-| [PHP](./website/php)             | Run PHP programs                     | WordPress, Laravel, etc.       |
-| [Static](./website/static)       | Host static files                    | HTML, Vue/React build outputs                  |
+| 類型                      | 說明         | 適用場景                                |
+| ----------------------- | ---------- | ----------------------------------- |
+| [反向代理](./website/proxy) | 將請求轉發到後端服務 | Node.js、Go、Java 等應用 |
+| [PHP](./website/php)    | 運行 PHP 程式  | WordPress、Laravel 等                 |
+| [純靜態](./website/static) | 託管靜態檔案     | HTML、Vue/React 構建產物                 |
 
-## Website List
+## 網站列表
 
-The website list displays the following information:
+網站列表顯示以下資訊：
 
-- **Website Name**: Unique identifier for the site
-- **Running**: Whether the site is enabled
-- **Directory**: Directory where website files are located
-- **HTTPS**: Whether HTTPS is enabled
-- **Certificate Expiry**: SSL certificate expiration time
-- **Remarks**: Custom remarks
-- **Actions**: Manage, delete, etc.
+- **網站名稱**：站點的唯一標識
+- **運行中**：站點是否啟用
+- **目錄**：網站檔案所在目錄
+- **HTTPS**：是否啟用 HTTPS
+- **證書有效期**：SSL 證書的到期時間
+- **備註**：自訂備註資訊
+- **操作**：管理、刪除等
 
-## Create Website
+## 創建網站
 
-1. Go to the **Website** page
-2. Select the website type tab (Reverse Proxy/PHP/Static)
-3. Click **Create Website**
-4. Fill in the website information
-5. Click Create
+1. 進入 **網站** 頁面
+2. 選擇網站類型標籤（反向代理/PHP/純靜態）
+3. 點擊 **創建網站**
+4. 填寫網站資訊
+5. 點擊創建
 
-### Common Configuration Items
+### 通用配置項
 
-- **Name**: Unique identifier for the website, English only, cannot be changed after creation
-- **Domain**: Bound domain names, multiple can be added
-- **Port**: Listening port, default 80
-- **Remarks**: Optional remarks
+- **名稱**：網站的唯一標識，只能使用英文，創建後不可修改
+- **域名**：綑綁的域名，可添加多個
+- **連接埠**：監聽的連接埠，預設 80
+- **備註**：可選的備註資訊
 
-## Website Management
+## 網站管理
 
-Click the **Manage** button of a website to enter the management page, where you can perform the following operations:
+點擊網站的 **管理** 按鈕進入管理頁面，可以進行以下操作：
 
-- Modify domains and ports
-- Configure SSL certificates
-- Set rewrite rules
-- Configure hotlink protection
-- View access logs
-- Modify Nginx configuration
+- 修改域名和連接埠
+- SSL 證書申請失敗
+- 設定偽靜態規則
+- 配置防盜鏈
+- 查看訪問日誌
+- 查看 Nginx 錯誤日誌
 
-## Batch Creation
+## 批量創建
 
-Click **Batch Create Websites** to create multiple websites at once, suitable for scenarios requiring rapid deployment of multiple sites.
+點擊 **批量創建網站** 可以一次創建多個網站，適合需要快速部署多個站點的場景。
 
-## Next Steps
+## 下一步
 
-- [Reverse Proxy](./website/proxy) - Learn how to create reverse proxy websites
-- [PHP Website](./website/php) - Learn how to create PHP websites
-- [Static Website](./website/static) - Learn how to create static websites
+- [反向代理](./website/proxy) - 了解如何創建反向代理網站
+- [PHP 網站](./website/php) - 了解如何創建 PHP 網站
+- [純靜態網站](./website/static) - 了解如何創建靜態網站

@@ -1,101 +1,101 @@
-# Security Settings
+# 安全設置
 
-The security settings page is used to configure panel security-related options to protect the panel from unauthorized access.
+安全設置頁面用於配置面板的安全相關選項，保護面板免受未授權訪問。
 
-![Security Settings](/images/setting/setting-safe.png)
+![安全設置](/images/setting/setting-safe.png)
 
-## Login Timeout
+## 登錄超時
 
-Set the validity period of login sessions in minutes. If there is no activity beyond this time, you will be automatically logged out and need to re-authenticate.
+設置登錄會話的有效時間，單位為分鐘。 超過該時間未操作將自動退出登錄，需要重新認證。
 
-The default value is 120 minutes.
+默認值為 120 分鐘。
 
-## Access Entry
+## 訪問入口
 
-Set the access path for the panel. After setting the access entry, you need to access via `https://IP:port/entry-path`.
+設置面板的訪問路徑， 設置訪問入口後需要通過 `https://IP:端口/入口路徑` 才能訪問。
 
-For example, if set to `/admin`, the access address becomes `https://IP:port/admin`.
+例如設置為 `/admin`，則訪問地址變為 `https://IP:端口/admin`。
 
-This is a simple but effective security measure that can prevent the panel from being discovered by scanners.
+這是一個簡單但有效的安全措施，可以防止面板被掃描器發現。
 
-## Entry Error Page
+## 入口錯誤頁
 
-The HTTP status code returned when accessing an incorrect entry path:
+當訪問錯誤的入口路徑時返回的 HTTP 狀態碼：
 
-- **418 I'm a teapot**: Returns an interesting error code and error page
-- **Nginx 404**: Returns the same 404 page as Nginx
-- **Close Connection**: Closes the connection directly without returning any content
+- **418 I'm a teapot**：返回一個有趣的錯誤碼與錯誤頁
+- **Nginx 404**：返回 Nginx 同款 404 頁面
+- **關閉連接**：直接關閉連接不返回任何內容
 
-## Login Captcha
+## 登錄驗證碼
 
-When enabled, entering the wrong password multiple times during login will trigger a captcha to prevent brute force attacks.
+開啟後登錄時多次輸入錯誤密碼會觸發驗證碼，防止暴力破解。
 
-## Request IP Header
+## 請求 IP 頭
 
-When the panel is deployed behind a reverse proxy (such as Nginx, CDN), you need to set the correct IP header to obtain the real client IP.
+當面板部署在反向代理（如 Nginx、CDN）後面時，需要設置正確的 IP 頭才能獲取真實的客戶端 IP。
 
-Common values:
+常用值：
 
-- `X-Real-IP`: Default used by Nginx
-- `X-Forwarded-For`: Standard proxy header
-- `CF-Connecting-IP`: Used by Cloudflare
+- `X-Real-IP`：Nginx 默認使用
+- `X-Forwarded-For`：標準代理頭
+- `CF-Connecting-IP`：Cloudflare 使用
 
-## Bind Domain
+## 綁定域名
 
-Restrict panel access to specified domains only. After adding a domain, access via IP or other domains will be blocked.
+限制只能通過指定域名訪問面板。 添加域名後，通過 IP 或其他域名將無法訪問。
 
-Suitable for:
+適用於：
 
-- Improving security
-- Using with SSL certificates
+- 提高安全性
+- 配合 SSL 證書使用
 
-## Bind IP
+## 綁定 IP
 
-Restrict panel access to specified IP addresses only. Multiple IP addresses can be added.
+限制只能從指定 IP 地址訪問面板。 可以添加多個 IP 地址。
 
-Suitable for:
+適用於：
 
-- Fixed office networks
-- Jump server access
+- 固定辦公網絡
+- 跳板機訪問
 
-:::warning Note
-Before binding IP, please ensure your IP address is static, otherwise you may be unable to access the panel.
+:::warning 注意
+綁定 IP 前請確保你的 IP 地址是固定的，否則可能導致無法訪問面板。
 :::
 
-## Bind UA
+## 綁定 UA
 
-Restrict panel access to browsers with specified User-Agent only.
+限制只能使用指定 User-Agent 的瀏覽器訪問面板。
 
-This is an advanced security option that can be used with custom browser plugins.
+這是一個高級安全選項，可以配合自定義瀏覽器插件使用。
 
-## Offline Mode
+## 離線模式
 
-When enabled, the panel will not connect to external networks, including:
+開啟後面板將不會連接外部網絡，包括：
 
-- Checking for updates
-- Downloading applications
-- Syncing cache data
+- 檢查更新
+- 下載應用
+- 同步緩存數據
 
-Suitable for intranet environments or scenarios with strict network restrictions.
+適用於內網環境或有嚴格網絡限制的場景。
 
-## Auto Update
+## 自動更新
 
-When enabled, the panel will automatically check and install updates daily. It is recommended to keep this enabled to receive the latest security fixes.
+開啟後面板會每日自動檢查並安裝更新。 建議保持開啟以獲取最新的安全修復。
 
-## Panel HTTPS
+## 面板 HTTPS
 
-Enable HTTPS encrypted access for the panel:
+為面板啟用 HTTPS 加密訪問：
 
-- **Disabled**: Access via HTTP
-- **ACME (Auto)**: Automatically apply for and renew Let's Encrypt certificates, requires IP to support port 80 access
-- **Custom Certificate**: Use your own SSL certificate
+- **禁用**：使用 HTTP 訪問
+- **ACME（自動）**：自動申請和續簽 Let's Encrypt 證書，需要 IP 支持 80 端口訪問
+- **自定義證書**：使用自己的 SSL 證書
 
-:::tip Recommended
-It is recommended to enable HTTPS in production environments to protect the transmission security of login credentials and sensitive data.
+:::tip 推薦
+生產環境建議啟用 HTTPS，保護登錄憑據和敏感數據的傳輸安全。
 :::
 
-## Panel Public IP
+## 面板公網 IP
 
-Configure the public IP address of the panel, currently mainly used for applying IP certificates from Let's Encrypt.
+配置面板的公網 IP 地址，目前主要用於向 Let's Encrypt 申請 IP 證書。
 
-Supports both IPv4 and IPv6 addresses.
+支持 IPv4 和 IPv6 地址。

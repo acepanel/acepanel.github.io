@@ -1,76 +1,76 @@
-# Network
+# 網絡
 
-Docker networks are used for communication between containers. Through the network management page, you can create, view, and delete networks.
+Docker 網絡用於容器之間的通信。 通過網絡管理頁面，你可以創建、查看和刪除網絡。
 
-## Network List
+## 網絡列表
 
-Go to **Container** > **Network** tab to view the network list.
+進入 **容器** > **網絡** 標籤頁查看網絡列表。
 
-![Network List](/images/container/container-network.png)
+![網絡列表](/images/container/container-network.png)
 
-The list displays the following information:
+列表顯示以下信息：
 
-- **Name**: Network name
-- **Driver**: Network driver type
-- **Scope**: Network scope
-- **Subnet**: Network subnet address
-- **Gateway**: Network gateway address
-- **Created Time**: Creation time
-- **Actions**: Delete
+- **名稱**：網絡名稱
+- **驅動**：網絡驅動類型
+- **範圍**：網絡範圍
+- **子網**：網絡的子網地址
+- **網關**：網絡的網關地址
+- **創建時間**：創建時間
+- **操作**：刪除
 
-## Default Networks
+## 默認網絡
 
-Docker automatically creates the following networks after installation:
+Docker 安裝後會自動創建以下網絡：
 
-| Network Name | Driver | Description                                                     |
-| ------------ | ------ | --------------------------------------------------------------- |
-| bridge       | bridge | Default network, containers access external network through NAT |
-| host         | host   | Container directly uses host network, no network isolation      |
-| none         | null   | No network, container is completely isolated                    |
+| 網路名稱   | 驅動     | 說明                   |
+| ------ | ------ | -------------------- |
+| bridge | bridge | 默認網絡，容器通過 NAT 訪問外部網絡 |
+| host   | host   | 容器直接使用主機網絡，無網絡隔離     |
+| none   | null   | 無網絡，容器完全隔離           |
 
-AcePanel also creates the `acepanel-network` network for containers deployed by panel compose templates. Please do not delete it.
+AcePanel 還會創建 `acepanel-network` 網絡，用於面板編排模版部署的容器， 請勿刪除。
 
-## Create Network
+## 創建網絡
 
-1. Click the **Create Network** button
-2. Enter network name
-3. Select network driver
-4. Configure subnet and gateway (optional)
-5. Click Create
+1. 點擊 **創建網絡** 按鈕
+2. 輸入網絡名稱
+3. 選擇網絡驅動
+4. 配置子網和網關（可選）
+5. 點擊創建
 
-### Network Drivers
+### 網絡驅動
 
-- **bridge**: Bridge network, the most commonly used network type. Containers connect through a virtual bridge and can communicate with each other.
-- **host**: Host network, container directly uses the host's network stack, best performance but no isolation.
-- **overlay**: Overlay network, used for cross-host container communication (Swarm mode).
-- **macvlan**: MAC VLAN network, assigns independent MAC addresses to containers.
+- **bridge**：橋接網絡，最常用的網絡類型。 容器通過虛擬網橋連接，可以相互通信。
+- **host**：主機網絡，容器直接使用主機的網絡棧，性能最好但無隔離。
+- **overlay**：覆蓋網絡，用於跨主機的容器通信（Swarm 模式）。
+- **macvlan**：MAC VLAN 網絡，為容器分配獨立的 MAC 地址。
 
-## Network Usage
+## 網絡使用
 
-### Specify Network When Creating Container
+### 創建容器時指定網絡
 
-When creating a container, select the network to use in the **Network** option.
+創建容器時，在 **網絡** 選項中選擇要使用的網絡。
 
-### Communication Between Containers
+### 容器間通信
 
-Containers in the same network can access each other by container name.
+同一網絡中的容器可以通過容器名稱相互訪問。
 
-For example, in the `acepanel-network` network:
+例如，在 `acepanel-network` 網絡中：
 
-- Container A is named `web`
-- Container B is named `db`
-- Container A can access Container B's database through `db:3306`
+- 容器 A 名稱為 `web`
+- 容器 B 名稱為 `db`
+- 容器 A 可以通過 `db:3306` 訪問容器 B 的數據庫
 
-## Delete Network
+## 刪除網絡
 
-Select a network and click the **Delete** button to delete the network.
+選中網絡後點擊 **刪除** 按鈕刪除網絡。
 
-:::warning Note
+:::warning 注意
 
-- Default networks (bridge, host, none) and `acepanel-network` cannot be deleted
-- If there are containers in the network, you need to delete or disconnect the containers before deleting the network
+- 默認網絡（bridge、host、none）和 `acepanel-network` 不能刪除
+- 如果網絡中有容器，需要先刪除或斷開容器才能刪除網絡
   :::
 
-## Clean Networks
+## 清理網絡
 
-Click **Clean Networks** to delete all unused custom networks.
+點擊 **清理網絡** 可以刪除所有未被使用的自定義網絡。

@@ -1,93 +1,93 @@
-# Container Management
+# 容器管理
 
-Containers are the core concept of Docker, being running instances of images. Through the container management page, you can create, start, stop, and manage containers.
+容器是 Docker 的核心概念，是映像的運行實例。 通過容器管理頁面，你可以創建、啟動、停止和管理容器。
 
-## Container List
+## 容器列表
 
-Go to the **Container** page, which displays the container list by default.
+進入 **容器** 頁面，預設顯示容器列表。
 
-![Container List](/images/container/container-list.png)
+![容器列表](/images/container/container-list.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Container Name**: Name of the container
-- **Status**: Running status switch
-- **Image**: Image used by the container
-- **Ports**: Port mapping (host port -> container port)
-- **Running Status**: Detailed running status information
-- **Actions**: Terminal, logs, rename, etc.
+- **容器名稱**：容器的名稱
+- **狀態**：運行狀態開關
+- **映像**：容器使用的映像
+- **連接埠**：連接埠映射（主機連接埠 -> 容器連接埠）
+- **運行狀態**：詳細的運行狀態資訊
+- **操作**：終端、日誌、重新命名等
 
-## Create Container
+## 創建容器
 
-Click the **Create Container** button to open the creation dialog.
+點擊 **創建容器** 按鈕打開創建對話框。
 
-![Create Container](/images/container/container-create.png)
+![創建容器](/images/container/container-create.png)
 
-### Basic Settings
+### 基本設置
 
-- **Container Name**: Optional, auto-generated if left empty
-- **Image**: Docker image name, e.g., `nginx:latest`, `mysql:8.0`
-- **Network**: Select the network for the container to use
-- **Restart Policy**: Restart behavior after container exits
-  - None: Do not auto restart
-  - always: Always restart
-  - on-failure: Restart on failure
-  - unless-stopped: Restart unless manually stopped
+- **容器名稱**：可選，留空則自動生成
+- **映像**：Docker 映像名稱，如 `nginx:latest`、`mysql:8.0`
+- **網路**：選擇容器使用的網路
+- **重啟策略**：容器退出後的重啟行為
+  - 無：不自動重啟
+  - always：總是重啟
+  - on-failure：啟動失敗時重啟
+  - unless-stopped：除非手動停止，否則重啟
 
-### Advanced Options
+### 進階選項
 
-- **TTY (-t)**: Allocate a pseudo-TTY
-- **STDIN (-i)**: Keep STDIN open
-- **Auto Remove**: Automatically delete container when stopped
-- **Privileged Mode**: Grant container full system privileges (use with caution)
+- **TTY (-t)**：分配偽終端
+- **STDIN (-i)**：保持標準輸入打開
+- **自動移除**：容器停止後自動刪除
+- **特權模式**：賦予容器完整的系統權限（謹慎使用）
 
-### Port Mapping
+### 連接埠映射
 
-Map container internal ports to host ports, format: `host_port:container_port`
+將容器內部連接埠映射到主機連接埠，格式：`主機連接埠:容器連接埠`
 
-![Port Mapping](/images/container/container-create-port.png)
+![連接埠映射](/images/container/container-create-port.png)
 
-For example: `8080:80` means mapping container port 80 to host port 8080.
+例如：`8080:80` 表示將容器的 80 連接埠映射到主機的 8080 連接埠。
 
-### Volume Mounts
+### 卷掛載
 
-Mount host directories or data volumes to the container, format: `host_path:container_path`
+將主機目錄或資料卷掛載到容器內，格式：`主機路徑:容器路徑`
 
-For example: `/opt/ace/data:/data` means mounting the host's `/opt/ace/data` directory to the container's `/data` directory.
+例如：`/opt/ace/data:/data` 表示將主機的 `/opt/ace/data` 目錄掛載到容器的 `/data` 目錄。
 
-### Resource Limits
+### 資源限制
 
-Limit the CPU and memory resources the container can use.
+限制容器可使用的 CPU 和記憶體資源。
 
-### Environment Variables
+### 環境變數
 
-Set container environment variables, format: `KEY=VALUE`
+設置容器的環境變數，格式：`KEY=VALUE`
 
-## Container Operations
+## 容器操作
 
-### Batch Operations
+### 批量操作
 
-After selecting multiple containers, you can perform batch operations:
+勾選多個容器後，可以進行批量操作：
 
-- **Start**: Start selected containers
-- **Stop**: Stop selected containers
-- **Restart**: Restart selected containers
-- **Force Stop**: Force stop selected containers
-- **Pause**: Pause selected containers
-- **Resume**: Resume paused containers
-- **Delete**: Delete selected containers
+- **啟動**：啟動選中的容器
+- **停止**：停止選中的容器
+- **重啟**：重啟選中的容器
+- **強制停止**：強制停止選中的容器
+- **暫停**：暫停選中的容器
+- **恢復**：恢復暫停的容器
+- **刪除**：刪除選中的容器
 
-### Single Container Operations
+### 單個容器操作
 
-- **Terminal**: Open the container's terminal to execute commands inside the container
-- **Logs**: View container runtime logs
-- **Rename**: Modify container name
-- **More**: View details, export, and other operations
+- **終端**：打開容器的終端，可以在容器內執行命令
+- **日誌**：查看容器運行日誌
+- **重新命名**：修改容器名稱
+- **更多**：查看詳情、匯出等操作
 
-## Clean Containers
+## 清理容器
 
-Click **Clean Containers** to delete all stopped containers and free up system resources.
+點擊 **清理容器** 可以刪除所有已停止的容器，釋放系統資源。
 
-:::warning Note
-The cleanup operation cannot be undone. Please ensure stopped containers are no longer needed.
+:::warning 注意
+清理操作不可恢復， 請確保已停止的容器不再需要。
 :::

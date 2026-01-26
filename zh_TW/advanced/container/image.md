@@ -1,77 +1,77 @@
-# Image
+# 映像
 
-Images are templates for containers, containing all files and configurations needed to run applications. Through the image management page, you can pull, view, and delete local images.
+映像是容器的模板，包含了運行應用所需的所有檔案和配置。 透過映像管理頁面，你可以拉取、查看和刪除本地映像。
 
-## Image List
+## 映像列表
 
-Go to **Container** > **Image** tab to view the local image list.
+進入 **容器** > **映像** 標籤頁查看本地映像列表。
 
-![Image List](/images/container/container-image.png)
+![映像列表](/images/container/container-image.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **ID**: Image ID
-- **Container Count**: Number of containers using this image
-- **Image**: Image name and tag
-- **Size**: Disk space occupied by the image
-- **Created Time**: Image creation time
-- **Actions**: Delete, etc.
+- **ID**：映像 ID
+- **容器數量**：使用該映像的容器數量
+- **映像**：映像名稱和標籤
+- **大小**：映像佔用的磁碟空間
+- **建立時間**：映像建立時間
+- **操作**：刪除等
 
-## Pull Image
+## 拉取映像
 
-1. Click the **Pull Image** button
-2. Enter the image name, e.g., `nginx:latest`, `mysql:8.4`
-3. Click confirm to start pulling
+1. 點擊 **拉取映像** 按鈕
+2. 輸入映像名稱，如 `nginx:latest`、`mysql:8.4`
+3. 點擊確認開始拉取
 
-Image name format: `[registry_address/]image_name[:tag]`
+映像名稱格式：`[倉庫地址/]映像名[:標籤]`
 
-- `nginx` - Pull the latest tag of the official nginx image
-- `nginx:1.28` - Pull a specific version
-- `mysql:8.4` - Pull MySQL version 8.4
-- `registry.cn-hangzhou.aliyuncs.com/xxx/yyy:latest` - Pull from Alibaba Cloud image registry
+- `nginx` - 拉取官方 nginx 映像的 latest 標籤
+- `nginx:1.28` - 拉取指定版本
+- `mysql:8.4` - 拉取 MySQL 8.4 版本
+- `registry.cn-hangzhou.aliyuncs.com/xxx/yyy:latest` - 從阿里雲映像倉庫拉取
 
-:::tip Note
-Pulling Docker Hub images from servers in China may be slow. It is recommended to configure an image accelerator or use domestic image sources.
+:::tip 提示
+國內伺服器拉取 Docker Hub 映像可能較慢， 建議配置映像加速器或使用國內映像源。
 :::
 
-## Delete Image
+## 刪除映像
 
-Select an image and click the **Delete** button to delete the image.
+選中映像後點擊 **刪除** 按鈕刪除映像。
 
-:::warning Note
-If the image is being used by containers, you need to delete the related containers before deleting the image.
+:::warning 注意
+如果映像正在被容器使用，需要先刪除相關容器才能刪除映像。
 :::
 
-## Clean Images
+## 清理映像
 
-Click **Clean Images** to delete all unused images and free up disk space.
+點擊 **清理映像** 可以刪除所有未被使用的映像，釋放磁碟空間。
 
-The cleanup operation will delete:
+清理操作會刪除：
 
-- Dangling images
-- Images not used by any container
+- 懸空映像（dangling images）
+- 未被任何容器使用的映像
 
-## Image Sources
+## 映像來源
 
 ### Docker Hub
 
-Docker's official image registry, containing a large number of official and community images.
+Docker 官方映像倉庫，包含大量官方和社群映像。
 
-Common official images:
+常用官方映像：
 
-- `nginx` - Web server
-- `mysql` / `mariadb` - Database
-- `redis` - Cache
-- `postgres` - PostgreSQL database
-- `node` - Node.js runtime environment
-- `python` - Python runtime environment
+- `nginx` - Web 伺服器
+- `mysql` / `mariadb` - 資料庫
+- `redis` - 快取
+- `postgres` - PostgreSQL 資料庫
+- `node` - Node.js 執行環境
+- `python` - Python 執行環境
 
-### Domestic Image Sources
+### 國內映像源
 
-- Alibaba Cloud: `registry.cn-hangzhou.aliyuncs.com`
-- Tencent Cloud: `ccr.ccs.tencentyun.com`
-- Huawei Cloud: `swr.cn-north-4.myhuaweicloud.com`
+- 阿里雲：`registry.cn-hangzhou.aliyuncs.com`
+- 騰訊雲：`ccr.ccs.tencentyun.com`
+- 華為雲：`swr.cn-north-4.myhuaweicloud.com`
 
-### Private Registry
+### 私有倉庫
 
-If you have a private image registry, you can directly use the full image address to pull.
+如果你有私有映像倉庫，可以直接使用完整的映像地址拉取。

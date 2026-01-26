@@ -1,84 +1,84 @@
-# Account Management
+# 帳戶管理
 
-The account management page is used to manage ACME accounts. ACME accounts are used to apply for certificates from certificate authorities.
+帳戶管理頁面用於管理 ACME 帳戶， ACME 帳戶用於向證書頒發機構申請證書。
 
-## Account List
+## 帳戶列表
 
-Go to **Certificate** > **Account** tab to view the account list.
+進入 **證書** > **帳戶** 標籤頁查看帳戶列表。
 
-![Account List](/images/cert/cert-account.png)
+![帳戶列表](/images/cert/cert-account.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Email**: Account email
-- **CA**: Certificate Authority
-- **Key Type**: Account key type
-- **Actions**: Modify, delete
+- **郵箱**：帳戶郵箱
+- **CA**：證書頒發機構
+- **密鑰類型**：帳戶密鑰類型
+- **操作**：修改、刪除
 
-## Create Account
+## 創建帳戶
 
-1. Click the **Create Account** button
-2. Fill in the configuration:
-   - **Email**: Used to receive certificate-related notifications
-   - **CA**: Select certificate authority
-   - **Key Type**: Select key algorithm
-   - **KID**: Optional, some CAs require KID
-   - **HMAC**: Optional, some CAs require HMAC key
-3. Click Create
+1. 點擊 **創建帳戶** 按鈕
+2. 填寫配置：
+   - **郵箱**：用於接收證書相關通知
+   - **CA**：選擇證書頒發機構
+   - **密鑰類型**：選擇密鑰演算法
+   - **KID**：可選，部分 CA 需要提供 KID
+   - **HMAC**：可選，部分 CA 需要提供 HMAC 密鑰
+3. 點擊創建
 
-### Certificate Authority (CA)
+### 證書頒發機構（CA）
 
-| CA            | Description                                            |
-| ------------- | ------------------------------------------------------ |
-| Let's Encrypt | Most popular free CA, certificate valid for 90 days    |
-| LiteSSL       | Free certificate service provided by TrustAsia         |
-| Google        | Google's free certificate service                      |
-| GoogleCN      | Google certificate service mirror provided by AcePanel |
-| ZeroSSL       | Free CA, certificate valid for 90 days                 |
-| Buypass       | Norwegian free CA, certificate valid for 180 days      |
+| CA            | 說明                   |
+| ------------- | -------------------- |
+| Let's Encrypt | 最流行的免費 CA，證書有效期 90 天 |
+| LiteSSL       | TrustAsia 提供的免費證書服務  |
+| Google        | 谷歌的免費證書服務            |
+| GoogleCN      | AcePanel 提供的谷歌證書服務鏡像 |
+| ZeroSSL       | 免費 CA，證書有效期 90 天     |
+| Buypass       | 挪威免費 CA，證書有效期 180 天  |
 
-### Key Type
+### 密鑰類型
 
-| Type                          | Description                                  |
-| ----------------------------- | -------------------------------------------- |
-| P256 (ECC) | Recommended, shorter key, better performance |
-| P384 (ECC) | Higher security ECC key                      |
-| RSA 2048                      | Traditional RSA key, best compatibility      |
-| RSA 4096                      | Higher security RSA key                      |
+| 類型                            | 說明              |
+| ----------------------------- | --------------- |
+| P256 (ECC) | 推薦，密鑰更短，性能更好    |
+| P384 (ECC) | 更高安全性的 ECC 密鑰   |
+| RSA 2048                      | 傳統 RSA 密鑰，兼容性最好 |
+| RSA 4096                      | 更高安全性的 RSA 密鑰   |
 
-:::tip Recommendation
-Generally recommended to use P256 (ECC) key, balancing security and performance.
+:::tip 推薦
+一般情況下推薦使用 P256 (ECC) 密鑰，兼顧安全性和性能。
 :::
 
-## Modify Account
+## 修改帳戶
 
-Click the **Modify** button on the right side of the account to modify the account email.
+點擊帳戶右側的 **修改** 按鈕可以修改帳戶郵箱。
 
-:::warning Note
-After modifying the email, certificate-related notifications will be sent to the new email.
+:::warning 注意
+修改郵箱後，證書相關通知將發送到新郵箱。
 :::
 
-## Delete Account
+## 刪除帳戶
 
-Click the **Delete** button on the right side of the account to delete the account.
+點擊帳戶右側的 **刪除** 按鈕刪除帳戶。
 
-:::warning Note
-After deleting an account, certificates applied with that account cannot be renewed. Please migrate certificates to another account or delete related certificates first.
+:::warning 注意
+刪除帳戶後，使用該帳戶申請的證書將無法續簽。 請先將證書遷移到其他帳戶或刪除相關證書。
 :::
 
-## Account Usage
+## 帳戶用途
 
-ACME accounts are used for:
+ACME 帳戶用於：
 
-1. Proving your identity to the CA
-2. Receiving certificate expiration reminders
-3. Managing applied certificates
-4. Revoking certificates
+1. 向 CA 證明你的身份
+2. 接收證書到期提醒
+3. 管理已申請的證書
+4. 撤銷證書
 
-## Multiple Accounts
+## 多帳戶
 
-You can create multiple accounts:
+你可以創建多個帳戶：
 
-- Different CAs require different accounts
-- Can use different accounts for different projects
-- Convenient for managing and distinguishing certificates
+- 不同 CA 需要不同帳戶
+- 可以為不同項目使用不同帳戶
+- 便於管理和區分證書

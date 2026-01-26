@@ -1,96 +1,96 @@
-# Terminal
+# 終端機
 
-The terminal module provides a Web-based SSH terminal, allowing you to connect to servers and execute commands directly in the browser.
+終端機模組提供了基於 Web 的 SSH 終端機，可以直接在瀏覽器中連接伺服器執行命令。
 
-## Terminal Page
+## 終端機頁面
 
-![Terminal Page](/images/ssh/ssh.png)
+![終端機頁面](/images/ssh/ssh.png)
 
-## Create Host
+## 創建主機
 
-Click the **Create Host** button to add an SSH connection:
+點擊 **創建主機** 按鈕添加 SSH 連接：
 
-### Configuration Items
+### 配置項
 
-- **Name**: Connection name for identification
-- **Host**: Server IP address or domain name
-- **Port**: SSH port, default 22
-- **Authentication Method**: Password or key
-- **Username**: SSH username
-- **Password/Key**: Authentication credentials
-- **Remarks**: Optional remarks
+- **名稱**：連接名稱，用於標識
+- **主機**：伺服器 IP 地址或域名
+- **端口**：SSH 端口，默認 22
+- **認證方式**：密碼或密鑰
+- **用戶名**：SSH 用戶名
+- **密碼/密鑰**：認證憑證
+- **備註**：可選備註
 
-### Authentication Methods
+### 驗證方式
 
-| Method   | Description                              |
-| -------- | ---------------------------------------- |
-| Password | Authenticate using username and password |
-| Key      | Authenticate using SSH private key       |
+| 方式 | 說明          |
+| -- | ----------- |
+| 密碼 | 使用用戶名和密碼認證  |
+| 密鑰 | 使用 SSH 私鑰認證 |
 
-:::tip Recommendation
-Production environments are recommended to use key authentication for better security.
+:::tip 推薦
+生產環境建議使用密鑰認證，更加安全。
 :::
 
-## Connect to Server
+## 連接伺服器
 
-1. Select the host to connect to in the left host list
-2. Click the host name to open the terminal
-3. Start executing commands
+1. 在左側主機列表中選擇要連接的主機
+2. 點擊主機名稱打開終端機
+3. 開始執行命令
 
-## Terminal Features
+## 終端機功能
 
-### Multiple Tabs
+### 多標籤
 
-Supports opening multiple terminal tabs simultaneously for easy switching between sessions.
+支持同時打開多個終端機標籤，方便在多個會話間切換。
 
-### Copy and Paste
+### 複製貼上
 
-- **Copy**: Automatically copies when text is selected, or use `Ctrl+Shift+C`
-- **Paste**: Right-click to paste, or use `Ctrl+Shift+V`
+- **複製**：選中文本後自動複製，或使用 `Ctrl+Shift+C`
+- **貼上**：右鍵貼上，或使用 `Ctrl+Shift+V`
 
-### Fullscreen Mode
+### 全屏模式
 
-Click the fullscreen button to enter fullscreen mode for more terminal space.
+點擊全屏按鈕可以進入全屏模式，獲得更大的終端機空間。
 
-### Font Settings
+### 字體設置
 
-You can adjust the terminal font size and font type.
+可以調整終端機的字體大小和字體類型。
 
-## Local Terminal
+## 本地終端機
 
-By default, a local server terminal connection is displayed, allowing direct connection to the current server.
+默認會顯示本地伺服器的終端機連接，可以直接連接到當前伺服器。
 
-## Remote Hosts
+## 遠程主機
 
-You can add multiple remote hosts for convenient management of multiple servers:
+可以添加多個遠程主機，方便管理多台伺服器：
 
-1. Click **Create Host**
-2. Fill in remote server information
-3. After saving, select to connect from the list
+1. 點擊 **創建主機**
+2. 填寫遠程伺服器信息
+3. 保存後在列表中選擇連接
 
-## Security Recommendations
+## 安全建議
 
-1. Use strong passwords or key authentication
-2. Change the default SSH port
-3. Restrict IP addresses that can access SSH
-4. Regularly change passwords or keys
-5. Log in with a non-root user
+1. 使用強密碼或密鑰認證
+2. 修改默認 SSH 端口
+3. 限制 SSH 訪問的 IP 地址
+4. 定期更換密碼或密鑰
+5. 使用非 root 用戶登錄
 
-## FAQ
+## 常見問題
 
-### Connection Timeout
+### 連接超時
 
-- Check if the server IP and port are correct
-- Check if the firewall allows SSH connections
-- Check if the SSH service is running normally
+- 檢查伺服器 IP 和端口是否正確
+- 檢查防火牆是否允許 SSH 連接
+- 檢查 SSH 服務是否正常運行
 
-### Authentication Failed
+### 認證失敗
 
-- Check if the username and password are correct
-- Check if the key format is correct
-- Check if the user has SSH login permissions
+- 檢查用戶名和密碼是否正確
+- 檢查密鑰格式是否正確
+- 檢查用戶是否有 SSH 登錄權限
 
-### Chinese Character Garbled
+### 中文亂碼
 
-- Check the server's locale settings
-- Ensure the server encoding is UTF-8
+- 檢查伺服器的 locale 設置
+- 確保伺服器編碼為 UTF-8

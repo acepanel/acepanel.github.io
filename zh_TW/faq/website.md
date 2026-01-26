@@ -1,80 +1,80 @@
-# Website FAQ
+# 網站常見問題
 
-## Website Inaccessible
+## 網站無法訪問
 
-1. Check if the domain is resolved to the server IP
-2. Check if the firewall has allowed ports 80/443
-3. Check if Nginx is running: **Apps** -> **Nginx** -> **Manage**
-4. View Nginx error logs
+1. 檢查域名是否解析到伺服器 IP
+2. 檢查防火牆是否放行 80/443 連接埠
+3. 檢查 Nginx 是否運行：「應用」->「Nginx」->「管理」
+4. 查看 Nginx 錯誤日誌
 
 ## 403 Forbidden
 
-Usually a permission issue:
+通常是權限問題：
 
 ```shell
-# Fix website directory permissions
-chown -R www:www /opt/ace/sites/website-name/public
-chmod -R 755 /opt/ace/sites/website-name/public
+# 修復網站目錄權限
+chown -R www:www /opt/ace/sites/網站名/public
+chmod -R 755 /opt/ace/sites/網站名/public
 ```
 
 ## 502 Bad Gateway
 
-For PHP websites with 502, check if PHP is running:
+PHP 網站出現 502，檢查 PHP 是否運行：
 
-1. **Apps** -> **Runtimes** -> **PHP** -> **Manage**
-2. Confirm PHP version matches website configuration
-3. View PHP error logs
+1. 「應用」->「運行環境」->「PHP」->「管理」
+2. 確認 PHP 版本與網站配置一致
+3. 查看 PHP 錯誤日誌
 
-For reverse proxy websites with 502, check if the backend service is running.
+反向代理網站出現 502，檢查後端服務是否運行。
 
-## Rewrite Rules Not Working
+## 偽靜態不生效
 
-1. Confirm the correct preset is selected or rules are filled in the **Rewrite** tab
-2. Nginx will automatically reload after clicking **Save**
-3. Clear browser cache and test
+1. 確認在「偽靜態」標籤頁選擇了正確的預設或填寫了規則
+2. 點擊「保存」後 Nginx 會自動重載
+3. 清除瀏覽器快取後測試
 
-## Configure QUIC (HTTP/3)
+## 配置 QUIC (HTTP/3)
 
-The panel supports QUIC, but does not add the `Alt-Svc` header by default. Add in custom configuration:
+面板支援 QUIC，但預設不添加 `Alt-Svc` 頭。 在自訂配置中添加：
 
 ```nginx
 add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
 ```
 
-Ensure the server security group/firewall allows UDP port 443.
+確保伺服器安全組/防火牆放行 UDP 443 連接埠。
 
-## Enable TLSv1/TLSv1.1
+## 啟用 TLSv1/TLSv1.1
 
-OpenSSL 3.x disables old protocols by default. If you must use them, modify the cipher suite in **HTTPS** settings:
+OpenSSL 3.x 預設禁用舊協議。 如必須使用，在「HTTPS」設定中修改密碼套件：
 
 ```nginx
 ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES128-SHA:AES256-SHA:DES-CBC3-SHA:@SECLEVEL=0;
 ```
 
-## Enable IPv6
+## 啟用 IPv6
 
-Add listening addresses in **Domains and Listening**: `[::]:80` and `[::]:443`.
+在「域名和監聽」添加監聽地址：`[::]:80` 和 `[::]:443`。
 
-## CDN Origin and HTTPS
+## CDN 回源與 HTTPS
 
-| CDN Origin Protocol | Website HTTPS Configuration                            |
-| ------------------- | ------------------------------------------------------ |
-| HTTP                | Not required                                           |
-| HTTPS               | Must be enabled                                        |
-| Follow Protocol     | Must be enabled, and HTTP redirect must not be enabled |
+| CDN 回源協議 | 網站 HTTPS 配置         |
+| -------- | ------------------- |
+| HTTP     | 無需開啟                |
+| HTTPS    | 必須開啟                |
+| 協議跟隨     | 必須開啟，且不能開啟 HTTP 重定向 |
 
-## Upload File Size Limit
+## 上傳檔案大小限制
 
-Default limit is 100MB. Modify PHP configuration:
+預設限制 100MB。 修改 PHP 配置：
 
-1. **Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Main Configuration**
-2. Modify `upload_max_filesize` and `post_max_size`
-3. Restart PHP after saving
+1. 「應用」->「運行環境」->「PHP」->「管理」->「主配置」
+2. 修改 `upload_max_filesize` 和 `post_max_size`
+3. 保存後重啟 PHP
 
-## SSL Certificate Application Failed
+## SSL 憑證申請失敗
 
-1. Confirm the domain is resolved to the server
-2. Confirm port 80 is accessible (required for Let's Encrypt verification)
-3. Check if Let's Encrypt rate limit is exceeded
-4. Try using DNS verification method
-5. Switch to another certificate provider
+1. 確認域名已解析到伺服器
+2. 確認 80 連接埠可訪問（Let's Encrypt 驗證需要）
+3. 檢查是否超過 Let's Encrypt 速率限制
+4. 嘗試使用 DNS 驗證方式
+5. 更換其他憑證提供商
