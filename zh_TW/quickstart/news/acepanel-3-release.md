@@ -1,166 +1,166 @@
-# AcePanel 3.0 Official Release
+# AcePanel 3.0 正式發布
 
-Long time no see. After several delays, AcePanel 3.0 was finally completed in early 2026. After about 3 weeks of internal testing, it's time to release.
+好久不見， 經過幾次跳票延期，AcePanel 3.0 終於在 2026 年初完成開發， 經過了約 3 個星期的內測，現在是時候發布了。
 
-## Upgraded to New Brand Name AcePanel
+## 升級全新品牌名稱 AcePanel
 
-AcePanel was originally named Rat Panel, a server operation and maintenance management panel I developed at the end of 2022.
+AcePanel 原名耗子面板，是本人 2022 年底開發的伺服器運維管理面板。
 
-The most common feedback I received was that the name Rat Panel didn't sound good, so we've now changed to a more sophisticated name - AcePanel.
+之前收到最多的一個回饋就是耗子面板這個名字不好聽，於是我們現在換了更高端大氣上檔次的名字 - AcePanel，你也可以叫它王牌面板/艾斯面板。
 
 ![AcePanel Logo](https://wmimg.com/i/1424/2026/01/6975d8a45a01d.png)
 
-In this article, AcePanel refers to AcePanel 3.0 version.
+本文以下 AcePanel 均表示 AcePanel 3.0 版本
 
-## Support for Runtime Environments and Project Management
+## 支援運行環境與專案管理
 
-The biggest update in AcePanel is the new runtime environment feature, supporting one-click installation and management of Go, Java, Node.js, PHP, Python and other runtime environments, with support for multiple versions coexisting.
+AcePanel 這次最大的更新就是新增了運行環境功能，支援一鍵安裝與管理 Go、Java、Node.js、PHP、Python 等運行環境，支援多版本同時共存。
 
-![AcePanel Runtime Environments](https://wmimg.com/i/1424/2026/01/6975d8a49a638.png)
+![AcePanel 運行環境](https://wmimg.com/i/1424/2026/01/6975d8a49a638.png)
 
-At the same time, AcePanel has developed a brand new project management feature based on the powerful capabilities of Linux systemd, supporting one-click creation and management of various Web projects and daemon programs through installed runtime environments, which can replace tools like PM2 and Supervisor.
+同時 AcePanel 基於 Linux systemd 的強大能力全新開發了專案管理功能，支援通過安裝的運行環境一鍵建立與管理各類 Web 專案和常駐程式，可平替 PM2、Supervisor 等工具。
 
-![AcePanel Project List](https://wmimg.com/i/1424/2026/01/6975d8a386a79.png)
+![AcePanel 專案列表](https://wmimg.com/i/1424/2026/01/6975d8a386a79.png)
 
-![AcePanel Project Edit](https://wmimg.com/i/1424/2026/01/6975d8a4454f7.png)
+![AcePanel 專案編輯](https://wmimg.com/i/1424/2026/01/6975d8a4454f7.png)
 
-## Website Management Refactored
+## 網站管理重構
 
-AcePanel has also refactored the website management feature, reorganized the website directory structure, supports 3 website types: reverse proxy, static, and PHP, and added multiple common configurations and customization features.
+AcePanel 還對網站管理功能進行了重構，重新組織了網站目錄結構，支援反向代理、純靜態、PHP 3 種網站類型，並新增了多項常用配置以及自訂功能。
 
-![AcePanel Reverse Proxy Website Upstream Edit](https://wmimg.com/i/1424/2026/01/6975d8a3e8c5b.png)
+![AcePanel 反向代理網站上游編輯](https://wmimg.com/i/1424/2026/01/6975d8a3e8c5b.png)
 
-![AcePanel Reverse Proxy Website Proxy Edit](https://wmimg.com/i/1424/2026/01/6975d8a59b896.png)
+![AcePanel 反向代理網站代理編輯](https://wmimg.com/i/1424/2026/01/6975d8a59b896.png)
 
-The new website directory structure allows flexible addition of various custom configurations without conflicts.
+新的網站目錄結構允許靈活添加各種自訂配置，且不易衝突。
 
-## App Center Optimization
+## 應用中心優化
 
-AcePanel officially launches the long-awaited container compose template feature, supporting one-click deployment of common programs like WordPress, Nextcloud, GitLab, etc.
+AcePanel 正式上線期待已久的容器編排模版功能，支援一鍵部署 WordPress、Nextcloud、GitLab 等常用程式。
 
-![AcePanel Compose Templates](https://wmimg.com/i/1424/2026/01/6975d8a59c3b9.png)
+![AcePanel 編排模版](https://wmimg.com/i/1424/2026/01/6975d8a59c3b9.png)
 
-(Missing the program you want? Feel free to submit a PR to the AcePanel template library, see the end of this article for details)
+（缺少你想要的程式？ 歡迎向 AcePanel 模版庫提交 PR，方式可見文末）
 
-AcePanel has added Nginx, MySQL, and MariaDB on top of the original OpenResty and Percona, and optimized the installation process of many applications to improve installation speed. Especially for Percona/MySQL/MariaDB, pre-built installation packages are used for common systems to greatly improve installation speed and success rate.
+AcePanel 在原有 OpenResty 與 Percona 的基礎上新增 Nginx 與 MySQL、MariaDB，同時還優化了許多應用的安裝流程以提高安裝速度， 特別對 Percona/MySQL/MariaDB 為常用系統使用預製安裝包以極大提高安裝速度和成功率。
 
-(In testing, MySQL can usually be installed within 2 minutes)
+（實測 MySQL 通常可以在 2 分鐘內完成安裝）
 
-## Backup Optimization
+## 備份優化
 
-AcePanel has optimized the backup feature, added backup storage settings, supporting common remote storage like S3, SFTP, etc.
+AcePanel 優化了備份功能，新增備份儲存設定，支援添加 S3、SFTP 等常用遠端儲存。
 
-(You might ask why there's no OSS, COS? This is because OSS, COS, etc. all provide S3-compatible interfaces and can be configured directly using S3, so there's no need to introduce dependencies and additional development for them separately.)
+（你可能會問為什麼沒有 OSS、COS？ 這是因為 OSS、COS 等均提供 S3 相容介面，可直接使用 S3 配置，因此沒必要單獨為它們引入依賴以及額外開發。）
 
-![AcePanel Add Backup Storage](https://wmimg.com/i/1424/2026/01/6975d8a5c18e5.png)
+![AcePanel 添加備份儲存](https://wmimg.com/i/1424/2026/01/6975d8a5c18e5.png)
 
-## Brand New Panel Helper
+## 全新的面板助手
 
-AcePanel has rewritten the original shell script-based installer using Go language. The new panel helper fully supports interactive installation and multiple languages, providing a better and more modern user experience.
+AcePanel 使用 Go 語言重寫了原來基於 shell 腳本的安裝器， 新的面板助手全面支援互動式安裝及多語言，提供更好、更現代的使用者體驗。
 
-![AcePanel Installer](https://wmimg.com/i/1424/2026/01/6975d8a5d98b9.png)
+![AcePanel 安裝器](https://wmimg.com/i/1424/2026/01/6975d8a5d98b9.png)
 
-## Usage Optimization
+## 使用優化
 
-AcePanel has comprehensively optimized file management, restoring an operation experience similar to Windows Explorer (supports keyboard shortcuts).
+AcePanel 全面優化了檔案管理，還原類似 Windows 資源管理器的操作體驗（支援快捷鍵操作）。
 
-![AcePanel File Management (List)](https://wmimg.com/i/1424/2026/01/6975d8a64b601.png)
+![AcePanel 檔案管理（列表）](https://wmimg.com/i/1424/2026/01/6975d8a64b601.png)
 
-![AcePanel File Management (Icons)](https://wmimg.com/i/1424/2026/01/6975d959712cf.png)
+![AcePanel 檔案管理（圖示）](https://wmimg.com/i/1424/2026/01/6975d959712cf.png)
 
-A brand new file editor developed based on Monaco, which is both an editor and can be used as an online IDE (also supports keyboard shortcuts).
+基於 Monaco 開發全新的檔案編輯器，即是編輯器，亦可作為線上 IDE 使用（同樣支援快捷鍵操作）。
 
-![AcePanel File Edit](https://wmimg.com/i/1424/2026/01/6975d95a50149.png)
+![AcePanel 檔案編輯](https://wmimg.com/i/1424/2026/01/6975d95a50149.png)
 
-Toolbox capabilities have been comprehensively enhanced. Process management supports right-click operations, and new features include SSH service management, disk management, log cleanup, and Web hooks.
+工具箱能力全面提升， 程序管理支援右鍵操作，同時新增 SSH 服務管理，磁碟管理，日誌清理以及 Web 鉤子等功能。
 
-![AcePanel Process Management](https://wmimg.com/i/1424/2026/01/6975d95ab38b2.png)
+![AcePanel 程序管理](https://wmimg.com/i/1424/2026/01/6975d95ab38b2.png)
 
-![AcePanel SSH Management](https://wmimg.com/i/1424/2026/01/6975d95a283e1.png)
+![AcePanel SSH 管理](https://wmimg.com/i/1424/2026/01/6975d95a283e1.png)
 
-![AcePanel Web Hooks](https://wmimg.com/i/1424/2026/01/6975d95932b1d.png)
+![AcePanel Web 鉤子](https://wmimg.com/i/1424/2026/01/6975d95932b1d.png)
 
-The scheduled task period selector has been rewritten, providing a more friendly interaction experience.
+計劃任務週期選擇器重寫，提供更友好的互動體驗。
 
-![AcePanel Create Scheduled Task](https://wmimg.com/i/1424/2026/01/6975d95b1ac63.png)
+![AcePanel 建立計劃任務](https://wmimg.com/i/1424/2026/01/6975d95b1ac63.png)
 
-## Other Optimizations
+## 其他優化
 
-- Support using ACME to apply for Let's Encrypt IP certificates
-- Entrance error page supports customization
-- Login supports automatic captcha activation
-- Custom Logo and hidden menu support long-term saving
-- Added operation log recording and viewing feature
-- Certificate management adds ACME ARI support
-- Icons are fully localized, no longer dependent on external CDN
-- Nginx/OpenResty adds Stream support (Layer 4 proxy)
-- Added PHP 8.5 support
-- Added Apache Web server basic support
-- Added LiteSSL certificate support
-- Container and compose creation/startup supports real-time progress display
-- Container supports one-click terminal access
-- Resource monitoring supports custom time range and network card/disk selection
-- Homepage apps support drag-and-drop sorting
-- File management supports large file chunked upload
-- File management supports double-click to extract compressed files
-- Apps, runtime environments, and container templates support category filtering
-- SSH terminal supports private key login
-- System toolbox - DNS adapts to modern network management methods
-- Support visual modification of Docker basic settings
-- Database server list supports one-click terminal access
-- Some delete operations add 5-second countdown confirmation
+- 支援使用 ACME 申請 Let's Encrypt IP 憑證
+- 入口錯誤頁支援自訂
+- 登入支援自動開啟驗證碼
+- 自訂 Logo 與隱藏選單支援長期保存
+- 新增操作日誌記錄與查看功能
+- 憑證管理新增 ACME ARI 支援
+- 圖示全面本地化，不再需要依賴外部 CDN
+- Nginx/OpenResty 新增 Stream 支援（四層代理）
+- 新增 PHP 8.5 支援
+- 新增 Apache Web 伺服器基礎支援
+- 新增 LiteSSL 憑證支援
+- 容器與編排建立/啟動支援即時顯示進度
+- 容器支援一鍵進入終端
+- 資源監控支援自訂時間範圍與網卡/磁碟選擇
+- 首頁應用支援拖曳排序
+- 檔案管理支援大檔案分片上傳
+- 檔案管理支援壓縮包雙擊解壓
+- 應用與運行環境、容器模版支援分類篩選
+- SSH 終端支援私鑰登入
+- 系統工具箱 - DNS 適配現代網路管理方式
+- 支援視覺化修改 Docker 基本設定
+- 資料庫伺服器列表支援一鍵進入終端
+- 部分刪除操作新增 5s 倒數確認
 
-## Bug Fixes
+## 問題修復
 
-- Fixed the issue where the panel automatically logs out after logging in for more than 120 minutes
-- Fixed the issue where Docker 29+ versions cannot use panel container features
-- Fixed the occasional ERR_CONNECTION_REFUSED error in the panel
-- Fixed the resource leak issue in panel Websocket sessions
-- Fixed the issue where firewall port allowance doesn't take effect in some cases
-- Fixed the issue where PHP setting default cli version doesn't take effect
-- Fixed the issue where rsync secrets newline characters are written incorrectly
-- Fixed fail2ban IPv6 address display and unban issues
-- Other known bug fixes
+- 修復登入超過 120 分鐘後面板自動登出的問題
+- 修復 Docker 29+ 版本無法使用面板容器功能的問題
+- 修復面板偶現 ERR_CONNECTION_REFUSED 錯誤的問題
+- 修復面板 Websocket 會話存在資源洩漏的問題
+- 修復部分情況下防火牆連接埠放行不生效的問題
+- 修復 PHP 設定預設 cli 版本不生效的問題
+- 修復 rsync secrets 換行符寫入不正確的問題
+- 修復 fail2ban IPv6 位址顯示和解封問題
+- 其他已知問題修復
 
-## Compatibility Changes
+## 相容性變化
 
-Given that openEuler, Alibaba Cloud Linux 4, and Anolis 23 and other new domestic systems have changed their software sources beyond recognition, making adaptation extremely difficult, AcePanel 3.0 has decided to drop support for these three distributions. It is recommended to switch to AlmaLinux / Rocky Linux. If you must use domestic systems, consider OpenCloudOS 9 or TencentOS Server 4.
+鑑於 openEuler 及 Alibaba Cloud Linux 4 和 Anolis 23 等新版信創系統把軟體源改的面目全非，適配極其困難，因此 AcePanel 3.0 決定放棄對這三個發行版的支援。 建議切換到 AlmaLinux / Rocky Linux 使用， 如必須使用信創系統可考慮 OpenCloudOS 9 或 TencentOS Server 4。
 
-Also starting from AcePanel 3.0, RHEL 8-based systems (AlmaLinux 8/Rocky Linux 8) based on 4.x kernel are no longer supported. Please upgrade to 9.x/10.x.
+同時 AcePanel 3.0 版本起，不再支援基於 4.x 核心的 RHEL 8-based 系統（AlmaLinux 8/Rocky Linux 8）， 請升級至 9.x/10.x 使用。
 
-Additionally, to support pre-built installation packages to solve the much-criticized slow MySQL compilation issue, AcePanel has changed the default installation directory to `/opt/ace` and no longer allows customization (expected to have minimal impact, you can still mount data disks before installation).
+其次為支援預製安裝包以解決飽受詬病的 MySQL 編譯慢問題，AcePanel 修改了預設安裝目錄為 `/opt/ace` 且不再允許自訂（預計影響不大，仍可在安裝前掛載資料磁碟）。
 
-## About Old Version Upgrade and Maintenance
+## 關於舊版本升級及維護
 
-We plan to release a script to upgrade from the old Rat Panel 2.x to AcePanel 3.0 after AcePanel 3.0 has been stable for a while. Given the significant changes, a perfect upgrade is not expected to be achievable, please be aware.
+計劃在 AcePanel 3.0 穩定一段時間之後推出舊版耗子面板 2.x 升級至 AcePanel 3.0 的腳本， 鑑於改動較大，預計無法實現完美升級，請留意。
 
-The old Rat Panel 2.x will continue to receive security updates for a period of time (expected until the end of 2026). You can arrange your upgrade during this period.
+舊版耗子面板 2.x 仍將繼續維護一段時間的安全更新（預計到 2026 年底）， 您可在此期間自行安排時間點進行升級。
 
-## Open Source License Change
+## 開源協議變化
 
-The new version of AcePanel has decided to use the more permissive BSD-3 open source license, hoping that more developers will participate in the future to build a better server panel together.
+新版本 AcePanel 決定使用更寬鬆的開源協議 BSD-3，希望未來能有更多的開發者參與進來，一起打造更好用的伺服器面板。
 
-Current projects available for contribution:
+當前可參與貢獻的專案如下：
 
-- [AcePanel Main Program (please star)](https://github.com/acepanel/panel)
-- [AcePanel Installer](https://github.com/acepanel/helper)
-- [AcePanel Container Template Library](https://github.com/acepanel/templates)
-- [AcePanel Documentation](https://github.com/acepanel/acepanel.github.io)
-- [AcePanel Translation](https://zh.crowdin.com/project/acepanel)
+- [AcePanel 主程式（求star）](https://github.com/acepanel/panel)
+- [AcePanel 安裝器](https://github.com/acepanel/helper)
+- [AcePanel 容器模版庫](https://github.com/acepanel/templates)
+- [AcePanel 文件](https://github.com/acepanel/acepanel.github.io)
+- [AcePanel 翻譯](https://zh.crowdin.com/project/acepanel)
 
-Don't know how to code? No problem, feel free to publish articles about using AcePanel to build various services and discover different ways to play, helping to promote AcePanel.
+不會程式碼？ 沒關係，歡迎發表使用 AcePanel 搭建各種服務、發掘不同玩法的文章，幫助推廣 AcePanel。
 
-## Closing Remarks
+## 結束語
 
-When writing this article, it was past 4 AM. In the blink of an eye, this project celebrated its 3rd birthday last month. When I wrote the first line of code, I knew nothing about Go, and now I've grown into what some people call an expert.
+寫這篇文章的時候是夜裡 4 點多， 轉眼這個專案已經在上個月度過其 3 歲生日， 當年寫下第一行程式碼時我還對 Go 一竅不通，如今已經成長為有些人口中的大佬。
 
-AcePanel is my youth. I hope to write it to perfection without regrets, so I've refactored it several times. If this has affected your usage, I apologize here. Now I'm getting older, and with the many trivial matters of work and life, I may not be able to refactor it again in the future.
+AcePanel 是我的青春， 我希望將其寫到極致而不留遺憾，因此來回重構了數次， 如果因此影響了您的使用，我在此說聲道歉。 現在自己年紀也慢慢大了，加上工作與生活的瑣事繁多，未來再想重構也不一定折騰得動了。
 
-AI in 2026 is already very powerful. A lot of complex interaction logic in the new version of AcePanel was developed with the assistance of Claude Opus 4.5. I admit that with my level, it would be difficult to write such complete interactions. Perhaps with continued development, panels may no longer be needed in the future, and instead, you can just say to AI: Help me install Nginx; Help me create xxx project. Who knows?
+2026 年的 AI 已經非常強大， AcePanel 新版本中有大量複雜的互動邏輯均使用 Claude Opus 4.5 輔助開發， 我承認以我的水平難以寫出這樣完善的互動。 也許繼續發展下去未來或將不再需要面板，而是直接對 AI 說：幫我安裝 Nginx；幫我建立 xxx 專案。 誰知道呢？
 
-Finally, thanks to sponsors WeiXiaoDuo and LF Cloud, and all users who participated in the AcePanel internal testing. Without your help, AcePanel would have been difficult to release on schedule.
+最後，感謝贊助商微曉朵和林楓雲以及參與 AcePanel 內測的所有使用者， 沒有你們的幫助 AcePanel 將難以如期發布。
 
-Here is the installation command for the new version of AcePanel, welcome to test and experience:
+附上 AcePanel 新版本的安裝命令，歡迎測試體驗：
 
 ```bash
 bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)

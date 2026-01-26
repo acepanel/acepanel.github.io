@@ -1,71 +1,71 @@
-# Database FAQ
+# 資料庫常見問題
 
-## Forgot Database Password
+## 忘記資料庫密碼
 
 ### MySQL/MariaDB/Percona
 
-Modify user password in panel **Databases** -> **Users**.
+在面板「資料庫」->「使用者」中修改使用者密碼。
 
-If you forgot the root password, you can view/reset it in **Apps** -> **MySQL/MariaDB/Percona** -> **Manage**.
+如果忘記 root 密碼，可前往「應用」->「MySQL/MariaDB/Percona」->「管理」中查看/重置。
 
 ### PostgreSQL
 
-Modify user password in panel **Databases** -> **Users**.
+在面板「資料庫」->「使用者」中修改使用者密碼。
 
-If you forgot the postgres user password, you can view/reset it in **Apps** -> **PostgreSQL** -> **Manage**.
+如果忘記 postgres 使用者密碼，可前往「應用」->「PostgreSQL」->「管理」中查看/重置。
 
-## Remote Database Connection
+## 遠端連接資料庫
 
-Only local connections are allowed by default. For remote connections:
+預設只允許本地連接。 如需遠端連接：
 
-MySQL/MariaDB/Percona:
+MySQL/MariaDB/Percona：
 
-1. In **Databases** -> **Users**, create a new user with host set to `%` (allow all IPs) or a specific IP
-2. Allow database port 3306 in the firewall
+1. 在「資料庫」->「使用者」中，新建一個使用者主機為 `%`（允許所有 IP）或指定 IP 的使用者
+2. 在防火牆放行資料庫連接埠 3306
 
-PostgreSQL:
+PostgreSQL：
 
-1. Go to **Apps** -> **PostgreSQL** -> **Manage**, edit the main configuration, find `listen_addresses`, uncomment it and change its value to `'*'`
-2. On the same page, edit the user configuration, add a line: `host    all             username           (IP-address/mask/all)        scram-sha-256` and save
-3. Restart the PostgreSQL service
-4. Allow database port 5432 in the firewall
+1. 前往「應用」->「PostgreSQL」->「管理」中編輯主配置找到`listen_addresses`，取消註解並將其值改為 `'*'`
+2. 在同一頁面編輯使用者配置，添加一行：`host    all             用户名           (IP地址/掩码/all)        scram-sha-256` 並儲存
+3. 重啟 PostgreSQL 服務
+4. 在防火牆放行資料庫連接埠 5432
 
-:::warning Security Warning
-It is not recommended to expose database ports to the public network. It is recommended to use SSH tunnels or VPN connections.
+:::warning 安全提示
+不建議將資料庫連接埠暴露到公網， 建議使用 SSH 隧道或 VPN 連接。
 :::
 
-## Connection Refused
+## 連接被拒絕
 
-1. Check if the database service is running
-2. Check user permissions and host settings
-3. Check connection address: Use `localhost` or `127.0.0.1` for local connections
+1. 檢查資料庫服務是否運行
+2. 檢查使用者權限和主機設定
+3. 檢查連接地址：本地連接用 `localhost` 或 `127.0.0.1`
 
-## Large File Import Failed
+## 匯入大檔案失敗
 
-phpMyAdmin has upload limits. For large files, it is recommended to import via command line:
+phpMyAdmin 有上傳限制。 大檔案建議用命令列匯入：
 
 ```shell
-mysql -u username -p database_name < file.sql
+mysql -u 用户名 -p 数据库名 < 文件.sql
 ```
 
-Or upload using the panel's file manager, then execute the import in the terminal.
+或使用面板的檔案管理上傳後，在終端執行匯入。
 
-## Database Backup
+## 資料庫備份
 
-1. **Backup** -> **Create Backup**, select database
-2. Or use command line:
+1. 「備份」->「建立備份」選擇資料庫
+2. 或使用命令列：
 
 ```shell
 # MySQL
-mysqldump -u username -p database_name > backup.sql
+mysqldump -u 用户名 -p 数据库名 > backup.sql
 
 # PostgreSQL
-pg_dump -U username database_name > backup.sql
+pg_dump -U 用户名 数据库名 > backup.sql
 ```
 
-## Character Set Issues
+## 字元集問題
 
-To modify character set for existing databases:
+已有資料庫修改字元集：
 
 ```sql
 ALTER

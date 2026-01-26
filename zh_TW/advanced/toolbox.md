@@ -1,27 +1,27 @@
-# Toolbox
+# 工具箱
 
-The toolbox provides a series of system management tools, including process management, system information, SSH configuration, disk management, etc.
+工具箱提供了一系列系統管理工具，包括進程管理、系統資訊、SSH 配置、磁碟管理等。
 
-## Feature List
+## 功能列表
 
-| Feature                          | Description                               |
-| -------------------------------- | ----------------------------------------- |
-| [Process](./toolbox/process)     | View and manage system processes          |
-| [System](./toolbox/system)       | View system information and configuration |
-| [SSH](./toolbox/ssh)             | SSH service configuration                 |
-| [Disk](./toolbox/disk)           | Disk usage and management                 |
-| [Log Cleanup](./toolbox/log)     | Clean up system logs                      |
-| [Web Hook](./toolbox/webhook)    | Configure Webhook notifications           |
-| [Benchmark](./toolbox/benchmark) | Server performance testing                |
+| 功能                          | 說明            |
+| --------------------------- | ------------- |
+| [進程](./toolbox/process)     | 查看和管理系統進程     |
+| [系統](./toolbox/system)      | 查看系統資訊和配置     |
+| [SSH](./toolbox/ssh)        | SSH 服務配置      |
+| [磁碟](./toolbox/disk)        | 磁碟使用情況和管理     |
+| [日誌清理](./toolbox/log)       | 清理系統日誌        |
+| [Web 鉤子](./toolbox/webhook) | 配置 Webhook 通知 |
+| [跑分](./toolbox/benchmark)   | 伺服器效能測試       |
 
-![Toolbox](/images/toolbox/toolbox-process.png)
+![工具箱](/images/toolbox/toolbox-process.png)
 
-## Next Steps
+## 下一步
 
-- [Process Management](./toolbox/process) - View and manage system processes
-- [System Information](./toolbox/system) - View system configuration
-- [SSH Configuration](./toolbox/ssh) - Configure SSH service
-- [Disk Management](./toolbox/disk) - Manage disk space
-- [Log Cleanup](./toolbox/log) - Clean up system logs
-- [Web Hook](./toolbox/webhook) - Configure notifications
-- [Benchmark Test](./toolbox/benchmark) - Test server performance
+- [進程管理](./toolbox/process) - 查看和管理系統進程
+- [系統資訊](./toolbox/system) - 查看系統配置
+- [SSH 配置](./toolbox/ssh) - 配置 SSH 服務
+- [磁碟管理](./toolbox/disk) - 管理磁碟空間
+- [日誌清理](./toolbox/log) - 清理系統日誌
+- [Web 鉤子](./toolbox/webhook) - 配置通知
+- [跑分測試](./toolbox/benchmark) - 測試伺服器效能

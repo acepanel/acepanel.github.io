@@ -1,83 +1,83 @@
-# User Management
+# 用戶管理
 
-The user management page is used to create and manage database users and set user permissions.
+用戶管理頁面用於創建和管理數據庫用戶，設置用戶權限。
 
-## User List
+## 用戶列表
 
-Go to **Database** > **User** tab to view the user list.
+進入 **數據庫** > **用戶** 標籤頁查看用戶列表。
 
-![User List](/images/database/database-user.png)
+![用戶管理](/images/setting/setting-user.png)
 
-The list displays the following information:
+列表顯示所有面板用戶的信息：
 
-- **Type**: Database type
-- **Username**: Database username
-- **Password**: User password (click to copy)
-- **Host**: Allowed connection hosts
-- **Server**: The database server it belongs to
-- **Permissions**: Databases the user has permissions for
-- **Comment**: Remarks
-- **Status**: User status
-- **Update Date**: Last update time
-- **Actions**: Modify, delete
+- **類型**：數據庫類型
+- 用戶名
+- 用戶郵箱，用於找回密碼等功能
+- **主機**：允許連接的主機
+- **服務器**：所屬的數據庫服務器
+- **權限**：用戶擁有權限的數據庫
+- **註釋**：備註信息
+- **郵箱**：用戶郵箱地址
+- **更新日期**：最後更新時間
+- **操作**：修改、刪除
 
-## Create User
+## 創建用戶
 
-1. Click the **Create User** button
-2. Fill in the configuration:
-   - **Server**: Select database server
-   - **Username**: Database username
-   - **Password**: User password (strong password recommended)
-   - **Host**: Allowed connection host address
-   - **Permissions**: Select databases the user can access
-3. Click Create
+1. 點擊 **創建用戶** 按鈕添加新用戶：
+2. 填寫配置：
+   - **服務器**：選擇數據庫服務器
+   - **用戶名**：登錄用戶名
+   - **密碼**：登錄密碼
+   - **主機**：允許連接的主機地址
+   - **權限**：選擇用戶可以訪問的數據庫
+3. 創建時間
 
-### Host Settings
+### 主機設置
 
-| Value           | Description                              |
-| --------------- | ---------------------------------------- |
-| `localhost`     | Only allow local connections             |
-| `127.0.0.1`     | Only allow local IP connections          |
-| `%`             | Allow connections from any host          |
-| `192.168.1.%`   | Allow connections from specified subnet  |
-| `192.168.1.100` | Only allow connections from specified IP |
+| 值               | 說明          |
+| --------------- | ----------- |
+| `localhost`     | 只允許本地連接     |
+| `127.0.0.1`     | 只允許本地 IP 連接 |
+| `%`             | 允許任意主機連接    |
+| `192.168.1.%`   | 允許指定網段連接    |
+| `192.168.1.100` | 只允許指定 IP 連接 |
 
-:::warning Security Notice
-Production environments are not recommended to use `%` to allow connections from any host. Should be restricted to specific IP addresses or subnets.
+:::warning 安全建議
+生產環境不建議使用 `%` 允許任意主機連接， 應限制為具體的 IP 地址或網段。
 :::
 
-## Modify User
+## 用戶操作
 
-Click the **Modify** button on the right side of the user to:
+登錄用戶名，可直接在表格中修改
 
-- Modify password
-- Modify allowed connection hosts
-- Modify database permissions
+- 更改密碼
+- 修改允許連接的主機
+- 修改數據庫權限
 
-## Delete User
+## 刪除用戶
 
-Click the **Delete** button on the right side of the user to delete the user.
+點擊用戶右側的 **刪除** 按鈕刪除用戶。
 
-:::warning Note
-After deleting a user, applications using that user to connect to the database will not work properly.
+:::warning 注意
+刪除用戶後，使用該用戶連接數據庫的應用將無法正常工作。
 :::
 
-## Permission Explanation
+## 權限說明
 
-### Percona/MySQL/MariaDB Permissions
+### Percona/MySQL/MariaDB 權限
 
-When creating a user, you can select databases to grant permissions:
+創建用戶時可以選擇授予權限的數據庫：
 
-- Select specific databases: User can only access selected databases
-- No selection: User has no database permissions
+- 選擇具體數據庫：用戶只能訪問選中的數據庫
+- 不選擇：用戶沒有任何數據庫權限
 
-### PostgreSQL Permissions
+### PostgreSQL 權限
 
-PostgreSQL permission management is more fine-grained. You can set different permissions for databases, schemas, tables, etc. The panel only supports granting database access permissions.
+PostgreSQL 的權限管理更加細粒度， 可以自行針對數據庫、模式、表等設置不同權限， 面板僅支持授予數據庫訪問權限。
 
-## Password Security
+## 密碼安全
 
-- Use strong passwords containing uppercase and lowercase letters, numbers, and special characters
-- Password length recommended 16 characters or more
-- Use different database users for different applications
-- Change passwords regularly
+- 使用強密碼，包含大小寫字母、數字和特殊字符
+- 密碼長度建議 16 位以上
+- 不同應用使用不同的數據庫用戶
+- 定期更換密碼

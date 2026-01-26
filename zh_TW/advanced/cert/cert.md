@@ -1,103 +1,103 @@
-# Certificate Management
+# 憑證管理
 
-The certificate management page is used to apply for, upload, and manage SSL/TLS certificates.
+憑證管理頁面用於申請、上傳和管理 SSL/TLS 憑證。
 
-## Certificate List
+## 憑證列表
 
-Go to the **Certificate** page, which displays the certificate list by default.
+進入 **憑證** 頁面，預設顯示憑證列表。
 
-![Certificate List](/images/cert/cert-list.png)
+![憑證列表](/images/cert/cert-list.png)
 
-The list displays the following information:
+列表顯示以下資訊：
 
-- **Domain**: Domains included in the certificate
-- **Type**: Certificate type (ACME/Upload)
-- **Associated Account**: ACME account used
-- **Issuer**: Certificate authority
-- **Expiration Time**: Certificate expiration time
-- **Next Renewal Time**: Automatic renewal time
-- **Auto Renewal**: Whether auto renewal is enabled
-- **Actions**: Renew, download, delete, etc.
+- **網域**：憑證包含的網域
+- **類型**：憑證類型（ACME/上傳）
+- **關聯帳戶**：使用的 ACME 帳戶
+- **頒發者**：憑證頒發機構
+- **過期時間**：憑證到期時間
+- **下次續簽時間**：自動續簽時間
+- **自動續簽**：是否啟用自動續簽
+- **操作**：續簽、下載、刪除等
 
-## Create Certificate
+## 建立憑證
 
-Click the **Create Certificate** button to apply for a new certificate.
+點擊 **建立憑證** 按鈕申請新憑證。
 
-### Configuration Items
+### 配置項
 
-- **Domain**: Domains to apply certificate for, supports multiple domains
-- **Key Type**: RSA or ECC
-- **Website**: Website associated with this certificate
-- **Account**: ACME account associated with this certificate
-- **DNS**: DNS API associated with this certificate
+- **網域**：要申請憑證的網域，支援多個網域
+- **金鑰類型**：RSA 或 ECC
+- **網站**：該憑證關聯的網站
+- **帳戶**：該憑證關聯的 ACME 帳戶
+- **DNS**：該憑證關聯的 DNS API
 
-### Domain Format
+### 網域格式
 
 ```
-example.com           # Single domain
-www.example.com       # Subdomain
-*.example.com         # Wildcard domain (requires DNS verification)
+example.com           # 單個網域
+www.example.com       # 子網域
+*.example.com         # 泛網域（需要 DNS 驗證）
 ```
 
-:::tip Note
-Wildcard certificates (\*.example.com) can only be applied through DNS verification.
+:::tip 提示
+泛網域憑證（\*.example.com）只能透過 DNS 驗證方式申請。
 :::
 
-## Upload Certificate
+## 上傳憑證
 
-Click the **Upload Certificate** button to upload an existing certificate.
+點擊 **上傳憑證** 按鈕上傳已有憑證。
 
-Required:
+需要提供：
 
-- **Certificate File**: PEM format certificate (.crt or .pem), please include complete certificate chain
-- **Private Key File**: PEM format private key (.key)
+- **憑證檔案**：PEM 格式的憑證（.crt 或 .pem），請包含完整憑證鏈
+- **私鑰檔案**：PEM 格式的私鑰（.key）
 
-## Apply Certificate
+## 套用憑證
 
-After applying or uploading a certificate, you need to enable HTTPS in the website settings and select the certificate.
+申請或上傳憑證後，需要在網站設定中啟用 HTTPS 並選擇憑證。
 
-1. Enter the website edit page
-2. Switch to the **HTTPS** tab
-3. Enable HTTPS
-4. Select certificate
-5. Save configuration
+1. 進入網站編輯頁面
+2. 切換到 **HTTPS** 標籤
+3. 啟用 HTTPS
+4. 選擇憑證
+5. 儲存配置
 
-## Auto Renewal
+## 自動續簽
 
-ACME certificates support auto renewal:
+ACME 憑證支援自動續簽：
 
-- After certificate issuance, the recommended renewal time is obtained through ARI
-- The system will automatically attempt renewal before the renewal time
-- After successful renewal, website configuration is automatically updated
-- Notification is sent if renewal fails
+- 憑證簽發後透過 ARI 取得建議的續簽時間
+- 系統會在續簽時間前自動嘗試續簽
+- 續簽成功後自動更新網站配置
+- 續簽失敗會傳送通知
 
-## Certificate Operations
+## 憑證操作
 
-### Manual Renewal
+### 手動續簽
 
-Click the **Renew** button to manually trigger certificate renewal.
+點擊 **續簽** 按鈕手動觸發憑證續簽。
 
-### Download Certificate
+### 下載憑證
 
-Click the **Download** button to download certificate files, including:
+點擊 **下載** 按鈕下載憑證檔案，包含：
 
-- Complete certificate chain (.crt)
-- Private key file (.key)
+- 完整憑證鏈（.crt）
+- 私鑰檔案（.key）
 
-### Delete Certificate
+### 刪除憑證
 
-Click the **Delete** button to delete the certificate.
+點擊 **刪除** 按鈕刪除憑證。
 
-## FAQ
+## 常見問題
 
-### Application Failed
+### 申請失敗
 
-- Check if the domain is correctly resolved to the server
-- Check if port 80 is accessible (HTTP verification)
-- Check if DNS API configuration is correct (DNS verification)
+- 檢查網域是否正確解析到伺服器
+- 檢查 80 連接埠是否可存取（HTTP 驗證）
+- 檢查 DNS API 配置是否正確（DNS 驗證）
 
-### Renewal Failed
+### 續簽失敗
 
-- Check if domain resolution has changed
-- Check if DNS API has expired
-- Check panel logs for detailed errors
+- 檢查網域解析是否變更
+- 檢查 DNS API 是否過期
+- 查看面板日誌了解詳細錯誤

@@ -1,15 +1,15 @@
-# Java Project
+# Java 專案
 
-Java projects are used to deploy Spring Boot, Tomcat, and other Java applications.
+Java 專案用於部署 Spring Boot、Tomcat 等 Java 應用。
 
-## Prerequisites
+## 前置要求
 
-1. Install Java runtime environment: **Applications** > **Runtime Environment** > **Java** (Corretto JDK)
-2. Packaged JAR file or WAR file
+1. 安裝 Java 執行環境：**應用** > **執行環境** > **Java**（Corretto JDK）
+2. 打包好的 JAR 檔案或 WAR 檔案
 
-## Deploy Spring Boot Application
+## 部署 Spring Boot 應用
 
-### Package Project
+### 打包專案
 
 ```bash
 # Maven
@@ -19,35 +19,35 @@ mvn clean package -DskipTests
 ./gradlew build -x test
 ```
 
-### Upload and Deploy
+### 上傳並部署
 
-1. Upload JAR file to server (e.g., `/opt/ace/project/myapp/app.jar`)
-2. Create project:
-   - **Project Name**: `myapp`
-   - **Project Directory**: `/opt/ace/project/myapp`
-   - **Start Command**: `java21 -jar app.jar`
-3. Enable **Reverse Proxy**
+1. 上傳 JAR 檔案到伺服器（如 `/opt/ace/project/myapp/app.jar`）
+2. 建立專案：
+   - **專案名**：`myapp`
+   - **專案目錄**：`/opt/ace/project/myapp`
+   - **啟動命令**：`java21 -jar app.jar`
+3. 開啟 **反向代理**
 
-## Start Command Examples
+## 啟動命令範例
 
 ```bash
-# Basic startup
+# 基本啟動
 java21 -jar app.jar
 
-# Specify configuration file
+# 指定配置檔案
 java21 -jar app.jar --spring.profiles.active=prod
 
-# Set JVM parameters
+# 設定 JVM 參數
 java21 -Xms512m -Xmx1024m -jar app.jar
 
-# Specify port
+# 指定連接埠
 java21 -jar app.jar --server.port=8080
 ```
 
-## JVM Parameter Recommendations
+## JVM 參數建議
 
 ```bash
-# Recommended production environment configuration
+# 生產環境推薦配置
 java21 \
   -Xms512m \
   -Xmx1024m \
@@ -56,22 +56,22 @@ java21 \
   -jar app.jar
 ```
 
-Common parameter descriptions:
+常用參數說明：
 
-| Parameter              | Description              |
-| ---------------------- | ------------------------ |
-| `-Xms`                 | Initial heap memory size |
-| `-Xmx`                 | Maximum heap memory size |
-| `-XX:+UseG1GC`         | Use G1 garbage collector |
-| `-XX:MaxGCPauseMillis` | Maximum GC pause time    |
+| 參數                     | 說明          |
+| ---------------------- | ----------- |
+| `-Xms`                 | 初始堆積記憶體大小   |
+| `-Xmx`                 | 最大堆積記憶體大小   |
+| `-XX:+UseG1GC`         | 使用 G1 垃圾收集器 |
+| `-XX:MaxGCPauseMillis` | 最大 GC 停頓時間  |
 
-## Multiple JDK Versions
+## 多版本 JDK
 
-AcePanel supports installing multiple JDK versions, paths like `/opt/ace/server/java/{version}/bin/java`, with `java{version}` commands linked by default for convenience.
+AcePanel 支援安裝多個 JDK 版本，路徑如 `/opt/ace/server/java/{version}/bin/java`，已預設連結 `java{version}` 命令方便使用。
 
-## Configuration File
+## 配置檔案
 
-Spring Boot configuration file `application.yml` example:
+Spring Boot 配置檔案 `application.yml` 範例：
 
 ```yaml
 server:
@@ -84,27 +84,27 @@ spring:
     password: your_password
 ```
 
-## FAQ
+## 常見問題
 
-### Out of Memory
+### 記憶體不足
 
-Increase JVM heap memory:
+增加 JVM 堆積記憶體：
 
 ```bash
 java21 -Xms1g -Xmx2g -jar app.jar
 ```
 
-### Port Conflict
+### 連接埠衝突
 
-Modify startup port:
+修改啟動連接埠：
 
 ```bash
 java21 -jar app.jar --server.port=8081
 ```
 
-### Slow Startup
+### 啟動慢
 
-Check if there are external dependency connection timeouts, or add the following parameters to speed up startup:
+檢查是否有外部依賴連線逾時，或新增以下參數加速啟動：
 
 ```bash
 -XX:TieredStopAtLevel=1 -noverify

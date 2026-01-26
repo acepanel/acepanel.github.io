@@ -1,74 +1,74 @@
-# User Management
+# 用戶管理
 
-The user management page is used to manage panel login users.
+用戶管理頁面用於管理面板的登錄用戶。
 
-![User Management](/images/setting/setting-user.png)
+![用戶管理](/images/setting/setting-user.png)
 
-## User List
+## 用戶列表
 
-The list displays information for all panel users:
+列表顯示所有面板用戶的信息：
 
-| Field           | Description                                               |
-| --------------- | --------------------------------------------------------- |
-| Username        | Login username, can be modified directly in the table     |
-| Email           | User email, used for password recovery and other features |
-| Two-Factor Auth | Whether TOTP two-factor authentication is enabled         |
-| Created At      | User creation time                                        |
+| 字段   | 說明              |
+| ---- | --------------- |
+| 用戶名  | 登錄用戶名，可直接在表格中修改 |
+| 郵箱   | 用戶郵箱，用於找回密碼等功能  |
+| 兩步驗證 | 是否啟用 TOTP 兩步驗證  |
+| 創建時間 | 用戶創建時間          |
 
-## Create User
+## 創建用戶
 
-Click the **Create User** button to add a new user:
+點擊 **創建用戶** 按鈕添加新用戶：
 
-![Create User](/images/setting/setting-user-create.png)
+![創建用戶](/images/setting/setting-user-create.png)
 
-Fill in the following information:
+填寫以下信息：
 
-- **Username**: Login username
-- **Password**: Login password
-- **Email**: User email address
+- **用戶名**：登錄用戶名
+- **密碼**：登錄密碼
+- **郵箱**：用戶郵箱地址
 
-## User Operations
+## 用戶操作
 
-### Access Token
+### 訪問令牌
 
-Generate an API access token for accessing panel features through the API interface.
+生成 API 訪問令牌，用於通過 API 接口訪問面板功能。
 
-The token has the same permissions as the user, please keep it safe.
+令牌具有與用戶相同的權限，請妥善保管。
 
-### Change Password
+### 更改密碼
 
-Change the user's login password. It is recommended to change passwords regularly.
+修改用戶的登錄密碼。 建議定期更換密碼。
 
-### Delete User
+### 刪除用戶
 
-Delete the user account. After deletion, the user will no longer be able to log in to the panel.
+刪除用戶賬號。 刪除後該用戶將無法登錄面板。
 
-:::warning Note
-At least one user must be retained, the last user cannot be deleted.
+:::warning 注意
+至少需要保留一個用戶，無法刪除最後一個用戶。
 :::
 
-## Two-Factor Authentication
+## 兩步驗證
 
-Two-factor authentication (2FA) provides additional security protection for accounts. When enabled, a dynamic verification code is required in addition to the password during login.
+兩步驗證（2FA）為賬號提供額外的安全保護。 啟用後登錄時除了密碼還需要輸入動態驗證碼。
 
-### Enable Two-Factor Authentication
+### 啟用兩步驗證
 
-1. Click the two-factor authentication switch
-2. Use Google Authenticator, Microsoft Authenticator, or other apps to scan the QR code
-3. Enter the 6-digit verification code displayed in the app to confirm
+1. 點擊兩步驗證開關
+2. 使用 Google Authenticator、Microsoft Authenticator 等應用掃描二維碼
+3. 輸入應用顯示的 6 位驗證碼確認
 
-### Supported Authenticator Apps
+### 支持的驗證器應用
 
 - Google Authenticator
 - Microsoft Authenticator
 - Authy
 - 1Password
-- Other apps supporting TOTP
+- 其他支持 TOTP 的應用
 
-## Security Recommendations
+## 安全建議
 
-1. Use strong passwords containing uppercase and lowercase letters, numbers, and special characters
-2. Enable two-factor authentication
-3. Change passwords regularly
-4. Do not share accounts
-5. Promptly delete accounts that are no longer in use
+1. 使用強密碼，包含大小寫字母、數字和特殊字符
+2. 啟用兩步驗證
+3. 定期更換密碼
+4. 不要共享賬號
+5. 及時刪除不再使用的賬號

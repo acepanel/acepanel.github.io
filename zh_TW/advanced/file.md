@@ -1,206 +1,206 @@
-# File
+# 檔案
 
-The file module provides a powerful graphical file manager. The design philosophy is to restore the Windows Explorer operation experience as much as possible, supporting right-click menus, drag-and-drop upload, keyboard shortcuts, and other features.
+檔案模組提供了功能強大的圖形化檔案管理器， 設計理念是盡可能還原 Windows 資源管理器的操作體驗，支援右鍵選單、拖曳上傳、快捷鍵等特性。
 
-## File Manager
+## 檔案管理器
 
-![File Manager](/images/file/file-list.png)
+![檔案管理器](/images/file/file-list.png)
 
-## Core Features
+## 核心特性
 
-### Windows-like Operation Experience
+### 類 Windows 操作體驗
 
-- **Right-click Menu**: Right-click on files or directories to pop up an action menu
-- **Drag-and-drop Upload**: Directly drag local files to the browser window to upload
-- **Multi-select Operations**: Support Ctrl+click for multi-select, Shift+click for range selection
-- **Keyboard Shortcuts**: Common operations have corresponding keyboard shortcuts
+- **右鍵選單**：右鍵點擊檔案或目錄彈出操作選單
+- **拖曳上傳**：直接將本機檔案拖曳到瀏覽器視窗即可上傳
+- **多選操作**：支援 Ctrl+點擊 多選，Shift+點擊 範圍選擇
+- **快捷鍵支援**：常用操作都有對應的快捷鍵
 
-### Keyboard Shortcuts
+### 快捷鍵
 
-| Shortcut | Function   |
-| -------- | ---------- |
-| `Ctrl+C` | Copy       |
-| `Ctrl+X` | Cut        |
-| `Ctrl+V` | Paste      |
-| `Delete` | Delete     |
-| `F2`     | Rename     |
-| `Ctrl+A` | Select All |
+| 快捷鍵      | 功能   |
+| -------- | ---- |
+| `Ctrl+C` | 複製   |
+| `Ctrl+X` | 剪下   |
+| `Ctrl+V` | 貼上   |
+| `Delete` | 刪除   |
+| `F2`     | 重新命名 |
+| `Ctrl+A` | 全選   |
 
-## Navigation
+## 導覽
 
-### Path Navigation
+### 路徑導覽
 
-The top displays breadcrumb navigation of the current path. Click to quickly jump to any parent directory.
+頂部顯示當前路徑的麵包屑導覽， 點擊可以快速跳轉到任意上級目錄。
 
-### Quick Buttons
+### 快捷按鈕
 
-- **Back**: Return to the previous visited directory
-- **Forward**: Go to the next directory
-- **Parent Directory**: Return to parent directory
-- **Refresh**: Refresh current directory
-- **Home Directory**: Return to default directory
+- **後退**：返回上一個存取的目錄
+- **前進**：前進到下一個目錄
+- **上級目錄**：返回上級目錄
+- **重新整理**：重新整理當前目錄
+- **主目錄**：返回預設目錄
 
-## File List
+## 檔案列表
 
-The file list displays the following information:
+檔案列表顯示以下資訊：
 
-| Column        | Description                                                                      |
-| ------------- | -------------------------------------------------------------------------------- |
-| Name          | File or directory name                                                           |
-| Size          | File size, directories show "Calculate" which can be clicked to calculate        |
-| Permissions   | File permissions (e.g., 0755) |
-| Owner/Group   | File owner and group                                                             |
-| Modified Time | Last modified time                                                               |
-| Actions       | Open, compress, rename, delete, more                                             |
+| 欄      | 說明                 |
+| ------ | ------------------ |
+| 名稱     | 檔案或目錄名稱            |
+| 大小     | 檔案大小，目錄顯示「計算」可點擊計算 |
+| 權限     | 檔案權限（如 0755）       |
+| 所有者/群組 | 檔案的所有者和所屬群組        |
+| 修改時間   | 最後修改時間             |
+| 操作     | 開啟、壓縮、重新命名、刪除、更多   |
 
-### Select Files
+### 選擇檔案
 
-![Select Files](/images/file/file-select.png)
+![選擇檔案](/images/file/file-select.png)
 
-After selecting files, batch operation buttons appear at the top:
+選擇檔案後，頂部會顯示批次操作按鈕：
 
-- **Copy**: Copy selected files
-- **Move**: Move selected files
-- **Compress**: Compress selected files
-- **Permissions**: Modify permissions
-- **Delete**: Delete selected files
+- **複製**：複製選中的檔案
+- **移動**：移動選中的檔案
+- **壓縮**：壓縮選中的檔案
+- **權限**：修改權限
+- **刪除**：刪除選中的檔案
 
-### More Actions
+### 更多操作
 
-Click the **More** button on the file row to display more action options:
+點擊檔案列的 **更多** 按鈕，顯示更多操作選項：
 
-![More Actions](/images/file/file-context-menu.png)
+![更多操作](/images/file/file-context-menu.png)
 
-- **Copy**: Copy file to another directory
-- **Move**: Move file to another directory
-- **Permissions**: Modify file permissions and owner
-- **Compress**: Compress file
-- **Copy Path**: Copy the full path of the file
-- **Properties**: View detailed file properties
+- **複製**：複製檔案到其他目錄
+- **移動**：移動檔案到其他目錄
+- **權限**：修改檔案權限和所有者
+- **壓縮**：壓縮檔案
+- **複製路徑**：複製檔案的完整路徑
+- **屬性**：檢視檔案詳細屬性
 
-## Toolbar
+## 工具列
 
-### New
+### 新建
 
-Click the **New** button to:
+點擊 **新建** 按鈕可以：
 
-- Create new file
-- Create new directory
+- 新建檔案
+- 新建目錄
 
-### Upload
+### 上傳
 
-Click the **Upload** button to upload local files to the server.
+點擊 **上傳** 按鈕上傳本機檔案到伺服器。
 
-Supported upload methods:
+支援的上傳方式：
 
-- Click to select files for upload
-- **Drag-and-drop Upload**: Directly drag files to the page to upload
+- 點擊選擇檔案上傳
+- **拖曳上傳**：直接將檔案拖曳到頁面即可上傳
 
-### Remote Download
+### 遠端下載
 
-Click the **Remote Download** button, enter a URL address to download remote files to the current directory.
+點擊 **遠端下載** 按鈕，輸入 URL 位址，將遠端檔案下載到當前目錄。
 
-Use cases:
+適用場景：
 
-- Download software installation packages
-- Download remote backup files
-- Get files from other servers
+- 下載軟體安裝套件
+- 下載遠端備份檔案
+- 從其他伺服器取得檔案
 
-### Search
+### 搜尋
 
-Enter keywords in the search box to search for files:
+在搜尋框輸入關鍵字搜尋檔案：
 
-- Default searches current directory
-- Check **Include Subdirectories** to search recursively
+- 預設搜尋當前目錄
+- 勾選 **包括子目錄** 可以遞迴搜尋
 
-### Terminal
+### 終端機
 
-Click the **Terminal** button to open a terminal in the current directory for convenient command line operations.
+點擊 **終端機** 按鈕可以在當前目錄開啟終端機，方便執行命令列操作。
 
-### Sort
+### 排序
 
-Click the **Sort** button to sort the file list by different fields.
+點擊 **排序** 按鈕可以按不同欄位排序檔案列表。
 
-## File Editor
+## 文件編輯器
 
-AcePanel has a built-in powerful code editor based on Monaco Editor (the same editor core as VS Code).
+AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（VS Code 同款編輯器核心）。
 
-![File Editor](/images/file/file-editor.png)
+![文件編輯器](/images/file/file-editor.png)
 
-### Editor Features
+### 編輯器特性
 
-- **Syntax Highlighting**: Supports syntax highlighting for various programming languages
-- **Code Folding**: Supports code block folding
-- **Line Numbers**: Displays line numbers for easy positioning
-- **Minimap**: Displays code thumbnail on the right side
-- **Word Wrap**: Can toggle word wrap mode
-- **Multi-file Editing**: Supports opening multiple files simultaneously with tab switching
+- **語法高亮**：支援各種程式語言的語法高亮
+- **程式碼摺疊**：支援程式碼區塊摺疊
+- **行號顯示**：顯示行號，方便定位
+- **小地圖**：右側顯示程式碼縮圖
+- **自動換行**：可切換自動換行模式
+- **多檔案編輯**：支援同時開啟多個檔案，分頁切換
 
-### Editor Shortcuts
+### 編輯器快捷鍵
 
-| Shortcut       | Function          |
-| -------------- | ----------------- |
-| `Ctrl+S`       | Save current file |
-| `Ctrl+Shift+S` | Save all files    |
-| `Ctrl+F`       | Search            |
-| `Ctrl+H`       | Replace           |
-| `Ctrl+G`       | Go to line        |
+| 快捷鍵            | 功能     |
+| -------------- | ------ |
+| `Ctrl+S`       | 儲存當前檔案 |
+| `Ctrl+Shift+S` | 儲存所有檔案 |
+| `Ctrl+F`       | 搜尋     |
+| `Ctrl+H`       | 替換     |
+| `Ctrl+G`       | 跳轉到指定行 |
 
-### Editor Toolbar
+### 編輯器工具列
 
-- **Save**: Save current file
-- **Save All**: Save all modified files
-- **Refresh**: Reload file content
-- **Search**: Open search panel
-- **Replace**: Open replace panel
-- **Go to**: Jump to specified line
-- **Font Size**: Adjust editor font size
-- **Toggle Word Wrap**: Enable/disable word wrap
-- **Toggle Minimap**: Show/hide right-side minimap
-- **Settings**: Editor settings
+- **儲存**：儲存當前檔案
+- **儲存所有**：儲存所有修改的檔案
+- **重新整理**：重新載入檔案內容
+- **搜尋**：開啟搜尋面板
+- **替換**：開啟替換面板
+- **跳轉**：跳轉到指定行
+- **字型大小**：調整編輯器字型大小
+- **切換自動換行**：開啟/關閉自動換行
+- **切換小地圖**：顯示/隱藏右側小地圖
+- **設定**：編輯器設定
 
-### Fullscreen Mode
+### 全螢幕模式
 
-Click the **Maximize** button for fullscreen editing to get more editing space:
+點擊 **最大化** 按鈕可以全螢幕編輯，獲得更大的編輯空間：
 
-![Fullscreen Editor](/images/file/file-editor-fullscreen.png)
+![全螢幕編輯器](/images/file/file-editor-fullscreen.png)
 
-### Sidebar File Tree
+### 側邊欄檔案樹
 
-The left side of the editor displays the file tree of the current directory, allowing you to:
+編輯器左側顯示當前目錄的檔案樹，可以：
 
-- Quickly switch to edit other files
-- Create new files
-- Search files
+- 快速切換編輯其他檔案
+- 新建檔案
+- 搜尋檔案
 
-### Status Bar
+### 狀態列
 
-The editor bottom status bar displays:
+編輯器底部狀態列顯示：
 
-- Full file path
-- Line ending type (LF/CRLF)
-- Cursor position (line, column)
-- Indentation settings (spaces/Tab)
-- File language type
+- 檔案完整路徑
+- 換行符類型（LF/CRLF）
+- 游標位置（行、列）
+- 縮排設定（空格/Tab）
+- 檔案語言類型
 
-## Permission Explanation
+## 權限說明
 
-Linux file permissions are represented by three groups of numbers:
+Linux 檔案權限由三組數字表示：
 
-| Permission | Number | Description |
-| ---------- | ------ | ----------- |
-| r          | 4      | Read        |
-| w          | 2      | Write       |
-| x          | 1      | Execute     |
+| 權限 | 數字 | 說明 |
+| -- | -- | -- |
+| r  | 4  | 讀取 |
+| w  | 2  | 寫入 |
+| x  | 1  | 執行 |
 
-For example `0755`:
+例如 `0755`：
 
-- Owner: 7 (4+2+1) = read+write+execute
-- Group: 5 (4+1) = read+execute
-- Others: 5 (4+1) = read+execute
+- 所有者：7 (4+2+1) = 讀+寫+執行
+- 所屬群組：5 (4+1) = 讀+執行
+- 其他使用者：5 (4+1) = 讀+執行
 
-Common permissions:
+常用權限：
 
-- `0644`: Regular files
-- `0755`: Executable files and directories
-- `0600`: Private files (such as keys)
+- `0644`：普通檔案
+- `0755`：可執行檔案和目錄
+- `0600`：私密檔案（如金鑰）

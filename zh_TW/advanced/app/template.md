@@ -1,99 +1,99 @@
-# Container Templates
+# 容器模板
 
-Container templates provide Docker-based one-click deployment solutions for quickly deploying various common applications without manual configuration.
+容器模板提供了基於 Docker 的一鍵部署方案，可以快速部署各類常用應用，無需手動配置。
 
-## Prerequisites
+## 前置要求
 
-Before using container templates, you need to install Docker first:
+使用容器模板前，需要先安裝 Docker：
 
-1. Go to **Applications** > **Native Applications**
-2. Find Docker, click **Install**
-3. Wait for installation to complete
+1. 進入 **應用** > **原生應用**
+2. 找到 Docker，點擊 **安裝**
+3. 等待安裝完成
 
-## Template List
+## 模板列表
 
-Go to the **Applications** page, click the **Container Templates** tab to view available templates:
+進入 **應用** 頁面，點擊 **容器模板** 標籤查看可用模板：
 
-![Container Template List](/images/app/app-template.png)
+![容器模板列表](/images/app/app-template.png)
 
-## Deploy Application
+## 部署應用
 
-Click the **Deploy** button on the template card to start the deployment wizard.
+點擊模板卡片上的 **部署** 按鈕，會啟動部署嚮導。
 
-### Step 1: Select Deployment Mode
+### 第一步：選擇部署模式
 
-![Select Deployment Mode](/images/app/app-template-deploy-step1.png)
+![選擇部署模式](/images/app/app-template-deploy-step1.png)
 
-- **Create New Compose**: Create a new Docker Compose from the template
-- **Update Existing Compose**: Use the template to update an existing compose configuration
+- **建立新編排**：從模板建立一個新的 Docker Compose 編排
+- **更新現有編排**：使用模板更新已有的編排配置
 
-### Step 2: Configure Parameters
+### 第二步：配置參數
 
-Fill in configuration information according to application requirements:
+根據應用需求填寫配置資訊：
 
-![Configure Parameters](/images/app/app-template-deploy-step2.png)
+![配置參數](/images/app/app-template-deploy-step2.png)
 
-Common configuration items:
+常見配置項：
 
-- **Compose Name**: Used to identify this deployment
-- **Auto Start**: Whether to automatically start containers after creation
-- **Auto Firewall**: Whether to automatically allow ports
-- **Database Configuration**: Username, password, address, etc.
-- **Port Configuration**: Port the service listens on
+- **編排名稱**：用於標識這個部署
+- **自動啟動**：是否在建立後自動啟動容器
+- **自動防火牆**：是否自動放行連接埠
+- **資料庫配置**：使用者名稱、密碼、地址等
+- **連接埠配置**：服務監聽的連接埠
 
-### Step 3: Preview and Edit
+### 第三步：預覽與編輯
 
-Preview the generated Docker Compose configuration file:
+預覽生成的 Docker Compose 配置檔案：
 
-![Preview Configuration](/images/app/app-template-deploy-step3.png)
+![預覽配置](/images/app/app-template-deploy-step3.png)
 
-Here you can:
+你可以在這裡：
 
-- View and edit the **Compose File** (docker-compose.yml)
-- View and edit **Environment Variables**
+- 查看和編輯 **編排檔案**（docker-compose.yml）
+- 查看和編輯 **環境變數**
 
-### Step 4: Confirm Deployment
+### 第四步：確認部署
 
-After confirming all configurations are correct, click **Create** to complete deployment:
+確認所有配置無誤後，點擊 **建立** 完成部署：
 
-![Confirm Deployment](/images/app/app-template-deploy-step4.png)
+![確認部署](/images/app/app-template-deploy-step4.png)
 
-After deployment, the application will appear in the **Containers** > **Compose** page for management.
+部署完成後，應用會出現在 **容器** > **編排** 頁面中進行管理。
 
-## Template vs Manual Deployment
+## 模板 vs 手動部署
 
-| Feature                  | Using Template                          | Manual Deployment                                |
-| ------------------------ | --------------------------------------- | ------------------------------------------------ |
-| Configuration Difficulty | Simple, just fill in basic information  | Need to write docker-compose.yml |
-| Flexibility              | Uses preset configuration               | Fully customizable                               |
-| Use Cases                | Quick deployment of common applications | Special requirements, custom configuration       |
+| 特性   | 使用模板        | 手動部署                                    |
+| ---- | ----------- | --------------------------------------- |
+| 配置難度 | 簡單，填寫基本資訊即可 | 需要編寫 docker-compose.yml |
+| 靈活性  | 使用預設配置      | 完全自訂                                    |
+| 適用場景 | 快速部署常用應用    | 特殊需求、自訂配置                               |
 
-## Common Template Descriptions
+## 常用模板說明
 
 ### WordPress
 
-Open-source blog and content management system, suitable for building personal blogs or corporate websites.
+開源部落格和內容管理系統，適合搭建個人部落格或企業網站。
 
 ### pgAdmin 4
 
-Graphical management tool for PostgreSQL databases.
+PostgreSQL 資料庫的圖形化管理工具。
 
 ### phpMyAdmin
 
-Graphical management tool for MySQL/MariaDB databases.
+MySQL/MariaDB 資料庫的圖形化管理工具。
 
 ### Vaultwarden
 
-Lightweight password management server, compatible with Bitwarden clients.
+輕量級密碼管理伺服器，相容 Bitwarden 用戶端。
 
-### Qinglong
+### 青龍
 
-Scheduled task management platform, supporting Python, JavaScript, Shell, and other scripts.
+定時任務管理平台，支援 Python、JavaScript、Shell 等腳本。
 
 ### OpenList
 
-Multi-storage aggregation file listing program, supporting Alibaba Cloud Drive, OneDrive, etc.
+多儲存聚合的檔案列表程式，支援阿里雲盤、OneDrive 等。
 
-## Update Cache
+## 更新快取
 
-If the template list is incomplete or you need to get the latest templates, click the **Update Cache** button at the top of the page to refresh the template list.
+如果模板列表顯示不完整或需要取得最新模板，點擊頁面頂部的 **更新快取** 按鈕重新整理模板列表。

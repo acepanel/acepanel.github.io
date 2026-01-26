@@ -1,52 +1,52 @@
-# First Website: Deploy WordPress
+# 第一個網站：部署 WordPress
 
-This article uses WordPress as an example to demonstrate how to quickly set up a PHP website through AcePanel.
+本文以 WordPress 為例，演示如何通過 AcePanel 快速搭建 PHP 網站。
 
-## Install Environment
+## 安裝環境
 
-Go to the "Applications" page:
+進入「應用」頁面：
 
-1. Install Nginx and Percona (or MySQL/MariaDB) in "Native Applications"
-2. Install PHP (8.3+ recommended) in "Runtime Environment"
+1. 在「原生應用」中安裝 Nginx 和 Percona（或 MySQL/MariaDB）
+2. 在「運行環境」中安裝 PHP（建議 8.3+）
 
-Installation progress can be viewed on the "Tasks" page.
+安裝進度可在「任務」頁面查看。
 
-## Create Website
+## 創建網站
 
-Go to "Website" -> "PHP", click "Create Website".
+進入「網站」->「PHP」，點擊「創建網站」。
 
-![Create Website](/images/quickstart/website-create.png)
+![創建網站](/images/quickstart/website-create.png)
 
-Fill in the configuration:
+填寫配置：
 
-- **Name**: Website identifier, e.g., `wordpress`, cannot be changed after creation
-- **Domain**: Your domain name, use server IP if you don't have a domain
-- **Root Directory**: Leave empty to use default path
-- **PHP Version**: Select the version you just installed
-- **Database**: Select MySQL, note down the generated database name, username, and password
+- **名稱**：網站標識，如 `wordpress`，創建後不可改
+- **域名**：你的域名，沒有域名可填伺服器 IP
+- **根目錄**：留空使用預設路徑
+- **PHP 版本**：選擇剛安裝的版本
+- **資料庫**：選擇 MySQL，記下生成的資料庫名、用戶名、密碼
 
-## Upload WordPress
+## 上傳 WordPress
 
-Download the installation package from the [WordPress official website](https://wordpress.org/download/).
+從 [WordPress 官網](https://wordpress.org/download/) 下載安裝包。
 
-Click "Directory" in the website list to enter file management, upload the compressed package and extract it. Enter the `wordpress` directory, `Ctrl+A` to select all, `Ctrl+X` to cut, return to the parent directory and `Ctrl+V` to paste, moving the files to the website root directory.
+在網站列表點擊「目錄」進入檔案管理，上傳壓縮包並解壓。 進入 `wordpress` 目錄，`Ctrl+A` 全選，`Ctrl+X` 剪切，返回上級目錄 `Ctrl+V` 貼上，把檔案移到網站根目錄。
 
-## Configure Rewrite Rules
+## 配置重寫
 
-Return to the website list, click "Edit", switch to the "Rewrite" tab, select the preset `wordpress` rule and save.
+回到網站列表，點擊「編輯」，切換到「重寫」標籤頁，選擇預設的 `wordpress` 規則並儲存。
 
-![Rewrite Configuration](/images/quickstart/website-rewrite.png)
+![重寫配置](/images/quickstart/website-rewrite.png)
 
 :::tip HTTPS
-You can issue a free Let's Encrypt certificate with one click in the "HTTPS" tab.
+可在「HTTPS」標籤頁一鍵簽發免費的 Let's Encrypt 證書。
 :::
 
-## Install WordPress
+## 安裝 WordPress
 
-Access your domain in the browser and follow the prompts to complete the installation:
+瀏覽器訪問你的域名，按提示完成安裝：
 
-1. Select language
-2. Fill in site information (title, admin account, etc.)
-3. Database configuration: Enter the database information noted earlier, host is `localhost`
+1. 選擇語言
+2. 填寫站點資訊（標題、管理員帳號等）
+3. 資料庫配置：填入之前記下的資料庫資訊，主機填 `localhost`
 
-After installation, you can log in to the WordPress admin panel.
+安裝完成後即可登入 WordPress 後台。

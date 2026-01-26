@@ -1,17 +1,17 @@
-# Uninstall
+# 卸載
 
-:::danger Warning
-Please backup all data before uninstalling. Data cannot be recovered after uninstallation.
+:::danger 警告
+卸載前請備份所有數據， 卸載後數據不可恢復。
 :::
 
-## Uninstall Steps
+## 卸載步驟
 
-1. Backup important data such as websites and databases
-2. Uninstall all installed applications in the panel
-3. Execute the uninstall command:
+1. 備份網站、數據庫等重要數據
+2. 在面板中卸載所有已安裝的應用
+3. 執行卸載命令：
 
 ```shell
 bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 ```
 
-Select the "Uninstall Panel" option to complete the uninstallation.
+選擇「卸載面板」選項完成卸載。
