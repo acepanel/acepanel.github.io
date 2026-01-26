@@ -87,7 +87,7 @@ function nav(): DefaultTheme.NavItem[] {
         },
         {
             text: 'Document',
-            link: locale == 'zh_CN' ? '/quickstart/install' : `/${locale}/quickstart/install`
+            link: locale == 'zh_CN' ? '/quickstart/introduction' : `/${locale}/quickstart/introduction`
         },
         {
             text: 'Support',

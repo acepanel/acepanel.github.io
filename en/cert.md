@@ -56,8 +56,7 @@ next: false
   border: 2px solid var(--vp-c-brand);
 }
 
-.cert-card.featured::before {
-  content: "Recommended";
+.cert-badge {
   position: absolute;
   top: -12px;
   right: 24px;
@@ -307,6 +306,7 @@ next: false
   </div>
 
   <div class="cert-card featured">
+    <span class="cert-badge">Recommended</span>
     <div class="cert-card-icon">🛡️</div>
     <h3>DV Wildcard Certificate</h3>
     <div class="cert-card-desc">One certificate protects all subdomains</div>
