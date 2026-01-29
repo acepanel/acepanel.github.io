@@ -26,7 +26,7 @@ Click the **Create Container** button to open the creation dialog.
 ### Basic Settings
 
 - **Container Name**: Optional, auto-generated if left empty
-- **Image**: Docker image name, e.g., `nginx:latest`, `mysql:8.0`
+- **Image**: Docker image name, e.g., `nginx`, `mysql:8.4`, `your_username/your_image:tag`
 - **Network**: Select the network for the container to use
 - **Restart Policy**: Restart behavior after container exits
     - None: Do not auto restart
