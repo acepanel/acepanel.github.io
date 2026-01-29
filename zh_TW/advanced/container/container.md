@@ -26,7 +26,7 @@
 ### 基本設置
 
 - **容器名稱**：可選，留空則自動生成
-- **映像**：Docker 映像名稱，如 `nginx:latest`、`mysql:8.0`
+- **Image**: Docker image name, e.g., `nginx`, `mysql:8.4`, `your_username/your_image:tag`
 - **網路**：選擇容器使用的網路
 - **重啟策略**：容器退出後的重啟行為
   - 無：不自動重啟
