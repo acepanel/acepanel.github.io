@@ -26,7 +26,7 @@
 ### 基本设置
 
 - **容器名称**：可选，留空则自动生成
-- **Image**: Docker image name, e.g., `nginx`, `mysql:8.4`, `your_username/your_image:tag`
+- **镜像**：Docker 镜像名称，例如 `nginx`，`mysql:8.4`，`your_username/your_image:tag`
 - **网络**：选择容器使用的网络
 - **重启策略**：容器退出后的重启行为
   - 无：不自动重启
