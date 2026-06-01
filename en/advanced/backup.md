@@ -16,18 +16,22 @@ The backup module supports the following types of backups:
 | MySQL      | Backup Percona/MySQL/MariaDB databases |
 | PostgreSQL | Backup PostgreSQL databases            |
 
+The MySQL and PostgreSQL tabs only appear when the corresponding database engine is installed.
+
 ## Create Backup
 
 1. Select the backup type tab (Website/MySQL/PostgreSQL)
 2. Click **Create Backup**
-3. Select the website or database to backup
-4. Select storage location
-5. Click Confirm
+3. Select the website (for the Website type) or enter the database name (for database types) to back up
+4. Select the backup storage
+5. Click Submit
 
-Backup file formats:
+The compression format of backup archives is controlled by **Settings** > **Basic** > **Backup Compression Format**, which supports `tar.xz` (default), `tar.gz`, `tar.zst`, `zip` and `7z`.
 
-- Website: `.zip` compressed package
-- Database: `.sql.zip` compressed SQL file
+Backup file formats (`<format>` is the configured compression format):
+
+- Website: `<name>.<format>` archive of the website directory
+- Database: `<name>.sql.<format>` compressed SQL dump
 
 ## Backup List
 
@@ -36,13 +40,13 @@ The backup list displays the following information:
 - **Filename**: Backup file name
 - **Size**: Backup file size
 - **Update Date**: Backup time
-- **Actions**: Download, restore, delete
+- **Actions**: Restore, delete
 
 ## Restore Backup
 
 1. Find the backup to restore in the backup list
 2. Click the **Restore** button
-3. Confirm the restore operation
+3. In the dialog, select the target website (for the Website type) or enter the target database name (for database types), then click Submit
 
 ::: danger Warning
 The restore operation will overwrite existing data. Please ensure you have backed up current data!
@@ -50,7 +54,7 @@ The restore operation will overwrite existing data. Please ensure you have backe
 
 ## Upload Backup
 
-Click the **Upload Backup** button to upload local backup files for data restoration.
+Click the **Upload Backup** button to upload local backup files for data restoration. Supported file types are `.sql`, `.zip`, `.tar`, `.gz`, `.tgz`, `.bz2`, `.xz`, `.zst` and `.7z`.
 
 ## Storage Management
 
@@ -67,7 +71,7 @@ The default storage location, backup files are saved locally on the server.
 Click **Add Storage** to add remote storage, supporting:
 
 - **S3 Compatible Storage**: AWS S3, Alibaba Cloud OSS, Tencent Cloud COS, etc.
-- **FTP/SFTP**: FTP or SFTP servers
+- **SFTP**: SFTP servers (authenticate with either a password or a private key)
 - **WebDAV**: WebDAV servers
 
 Advantages of remote storage:
@@ -91,7 +95,7 @@ S3 compatible storage is the most commonly used remote storage method. Most clou
 | Style      | Virtual Hosted or Path Style                         |
 | Region     | Region code, e.g., `us-east-1`, `cn-hangzhou`        |
 | Endpoint   | S3 service endpoint URL                              |
-| Protocol   | HTTPS (recommended) or HTTP                          |
+| Scheme     | HTTPS (recommended) or HTTP                          |
 | Bucket     | Bucket name                                          |
 | Path       | Sub-path for backup file storage (optional)          |
 
@@ -141,7 +145,7 @@ Secret Key: Your AccessKey Secret
 Style: Virtual Hosted
 Region: cn-hangzhou
 Endpoint: oss-cn-hangzhou.aliyuncs.com
-Protocol: HTTPS
+Scheme: HTTPS
 Bucket: your-bucket-name
 Path: backup (optional)
 ```
@@ -156,7 +160,7 @@ Secret Key: Your SecretKey
 Style: Virtual Hosted
 Region: ap-guangzhou
 Endpoint: cos.ap-guangzhou.myqcloud.com
-Protocol: HTTPS
+Scheme: HTTPS
 Bucket: your-bucket-name
 Path: backup (optional)
 ```
@@ -171,7 +175,7 @@ Secret Key: Your Secret Access Key
 Style: Path Style
 Region: auto
 Endpoint: <account-id>.r2.cloudflarestorage.com
-Protocol: HTTPS
+Scheme: HTTPS
 Bucket: your-bucket-name
 Path: backup (optional)
 ```
@@ -186,7 +190,7 @@ Secret Key: minioadmin
 Style: Path Style
 Region: us-east-1
 Endpoint: minio.example.com:9000
-Protocol: HTTP or HTTPS
+Scheme: HTTP or HTTPS
 Bucket: backup
 Path: (optional)
 ```
@@ -207,6 +211,32 @@ Combined with the [Scheduled Tasks](./task/schedule) feature, you can set up aut
 3. Select backup type
 4. Set execution schedule
 5. Select storage location
+
+## Command Line Backup
+
+In addition to the Web interface, backups can be triggered from the [command line tool](../quickstart/cli). This is useful for custom shell scripts and for the commands run by scheduled tasks. Most commands accept an optional `-s, --storage` flag specifying the storage ID (the `panel` command does not); when omitted, the backup is saved to local storage.
+
+```shell
+# Backup a website by name
+acepanel backup website -n <website_name> [-s <storage_id>]
+
+# Backup a database (type is mysql or postgresql)
+acepanel backup database -t <type> -n <database_name> [-s <storage_id>]
+
+# Backup an arbitrary directory
+acepanel backup path -p <directory_path> [-s <storage_id>]
+
+# Backup the panel itself
+acepanel backup panel
+
+# Clean up old backups, keeping the most recent <keep> copies
+# <file> is the file name prefix used to match backups of the same target
+acepanel backup clear -t <type> -f <file> -k <keep> [-s <storage_id>]
+```
+
+::: tip Note
+The command line tool can back up directories (`path`) and the panel (`panel`), which are not available as tabs in the Web backup module. The `clear` command is the same retention cleanup used by scheduled backup tasks: for each target it keeps the newest `keep` archives and removes the rest.
+:::
 
 ## Backup Strategy Recommendations
 

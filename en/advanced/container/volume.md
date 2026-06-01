@@ -20,9 +20,10 @@ The list displays the following information:
 ## Create Volume
 
 1. Click the **Create Volume** button
-2. Enter volume name
-3. Select driver (default local)
-4. Click Create
+2. Enter the volume name
+3. Select the driver (only `local` is supported)
+4. Optionally add **Labels** and **Options** (key-value pairs passed to the driver)
+5. Click **Submit**
 
 ## Using Volumes
 
@@ -50,19 +51,19 @@ For example:
 
 ## Delete Volume
 
-Select a volume and click the **Delete** button to delete the volume.
+Click the **Delete** button on a volume row to delete a single volume. You can also check multiple volumes and click the **Delete** button at the top to delete them in bulk.
 
 ::: danger Warning
 Deleting a volume will permanently delete all data in the volume. This operation cannot be undone!
 :::
 
 ::: warning Note
-If the volume is being used by containers, you need to delete the related containers before deleting the volume.
+A volume that is in use by a running container cannot be removed. Stop the containers using it first, then delete the volume.
 :::
 
 ## Clean Volumes
 
-Click **Clean Volumes** to delete all unused volumes and free up disk space.
+Click **Cleanup Volumes** to delete all unused volumes and free up disk space. Volumes created by AcePanel itself are preserved.
 
 ::: tip Note
 Please confirm that unused volumes do not contain important data before cleaning.
@@ -74,4 +75,3 @@ Volume data is stored in the Docker data directory (usually `/var/lib/docker/vol
 
 1. Use `docker run` to create a temporary container that mounts the volume and exports data
 2. Directly backup the Docker data directory (requires stopping Docker service)
-3. (In development) Use AcePanel's [Backup Feature](../backup) for backup

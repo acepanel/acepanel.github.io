@@ -4,7 +4,7 @@
 
 The panel has automatic updates enabled by default, checking and updating around 2 AM daily. The panel will be briefly unavailable during updates (usually less than 1 minute).
 
-To disable automatic updates: "Settings" -> "Security" -> "Automatic Update".
+To disable automatic updates: "Settings" -> "Safe" -> "Auto Update".
 
 ## Manual Update
 
@@ -30,4 +30,4 @@ If problems occur after updating, try to repair:
 acepanel fix
 ```
 
-If problems persist, provide feedback at the [Community](https://tom.moe).
+If problems persist, provide feedback at the [Community](https://tom.moe/c/technical/acepanel).

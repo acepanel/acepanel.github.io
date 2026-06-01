@@ -47,6 +47,22 @@ Configure the default storage paths for various resources:
 
 After changing directories, newly created websites/backups/projects will use the new directory, existing ones are not affected.
 
+## Backup Compression Format
+
+Select the compression format used when creating backups. Available options are `tar.xz` (default), `tar.gz`, `tar.zst`, `zip`, and `7z`. Choose `tar.zst` for a good balance of speed and compression ratio, or `zip`/`7z` for better cross-platform compatibility.
+
+## Container Socket
+
+Specify the path to the container runtime socket, default is `/var/run/docker.sock`. Adjust this when using a non-default Docker socket location or a Podman socket so that the container management module can connect correctly.
+
+## IP Database
+
+Configure the GeoIP database used to resolve the geographic location of visitor IPs (for example in website statistics and the firewall scan awareness module). Three modes are available:
+
+- **Disabled**: Do not resolve IP locations.
+- **Subscribe**: Provide a subscription URL (default `https://fastly.jsdelivr.net/npm/qqwry.ipdb/qqwry.ipdb`). The database is updated automatically every week and must be in IPIP.NET format (`.ipdb`).
+- **Custom File**: Provide the path to a local `.ipdb` database file in IPIP.NET format.
+
 ## Custom Logo
 
 Enter the full URL of an image to replace the logo in the top left corner of the panel. Supports PNG, JPG, SVG, and other formats.

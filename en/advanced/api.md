@@ -14,11 +14,11 @@ AcePanel provides a secure RESTful interface for interacting with the panel syst
 
 The API uses the HMAC-SHA256 signature algorithm for authentication. Each request must include the following HTTP headers:
 
-| Header Name     | Description                                                                              |
-|-----------------|------------------------------------------------------------------------------------------|
-| `Content-Type`  | Set to `application/json`                                                                |
-| `X-Timestamp`   | Current UNIX timestamp (seconds)                                                         |
-| `Authorization` | Authentication information, format: `HMAC-SHA256 Credential={id}, Signature={signature}` |
+| Header Name     | Required  | Description                                                                              |
+|-----------------|-----------|------------------------------------------------------------------------------------------|
+| `X-Timestamp`   | Yes       | Current UNIX timestamp (seconds). See the timestamp window described below.              |
+| `Authorization` | Yes       | Authentication information, format: `HMAC-SHA256 Credential={id}, Signature={signature}` |
+| `Content-Type`  | No        | Convention only; recommended to set to `application/json` for requests that carry a JSON body. It is **not** part of the canonical request and is **not** verified by the server. |
 
 ## Signature Algorithm
 
@@ -59,6 +59,26 @@ Add the calculated signature to the `Authorization` header:
 Authorization: HMAC-SHA256 Credential={id}, Signature={signature}
 ```
 
+**Note**: `{id}` is the token ID returned when you create an access token (not the user ID), and `{signature}` is the signature calculated in the previous step.
+
+### Timestamp Window
+
+The server validates the `X-Timestamp` value to limit the lifetime of a signed request:
+
+- A timestamp of `0` (missing or unparsable) is rejected.
+- A timestamp older than 300 seconds in the past (relative to server time) is rejected with a `signature expired` error.
+- Timestamps in the future are **not** rejected, so a moderate clock skew where the client is ahead of the server will not cause a failure. Only timestamps that are too old fall outside the window.
+
+Because the timestamp is part of the string to sign, you must send the exact same value in the `X-Timestamp` header that you used when computing the signature.
+
+### Access Token Properties
+
+Access tokens are created and managed under **Settings → User** in the panel. Each token has the following properties that affect API requests:
+
+- **Token ID and secret**: The full token secret is shown **only once**, at the moment the token is created. Store it securely; it cannot be retrieved again afterwards. The token ID is the `{id}` used in the `Authorization` header.
+- **Expiration**: Every token has an expiration time (set at creation, between the current time and at most 10 years in the future). Requests made with an expired token are rejected with a `token expired` error.
+- **IP whitelist (optional)**: A token may be restricted to a list of source addresses. Each entry can be a single IP address or a CIDR block (for example `203.0.113.10` or `203.0.113.0/24`). When a whitelist is set, requests from any other address are rejected with an `invalid request ip` error. When the list is empty, the token may be used from any address.
+
 ## Go Example
 
 ```go
@@ -87,7 +107,7 @@ func main() {
     // Set content type
     req.Header.Set("Content-Type", "application/json")
     
-    // Sign request - pass your user ID and API token
+    // Sign request - pass your token ID and API token
     if err = SignReq(req, uint(16), "YourSecretToken"); err != nil {
         fmt.Println("Error signing request:", err)
         return
@@ -287,7 +307,7 @@ def hmac_sha256(key, message):
     """Calculate signature using HMAC-SHA256 algorithm"""
     return hmac.new(key.encode('utf-8'), message.encode('utf-8'), hashlib.sha256).hexdigest()
 
-def sign_request(method, url, body, user_id, token):
+def sign_request(method, url, body, token_id, token):
     """Generate signature for API request"""
     # Parse URL
     parsed_url = urlparse(url)
@@ -326,18 +346,18 @@ def sign_request(method, url, body, user_id, token):
     return {
         "timestamp": timestamp,
         "signature": signature,
-        "id": user_id
+        "id": token_id
     }
 
 # Example request
 api_url = "http://example.com/entrance/api/user/info"
 method = "GET"
 body = ""  # GET requests typically have no body
-user_id = 16
+token_id = 16
 token = "YourSecretToken"
 
 # Generate signature information
-signing_data = sign_request(method, api_url, body, user_id, token)
+signing_data = sign_request(method, api_url, body, token_id, token)
 
 # Prepare HTTP headers
 headers = {
@@ -532,7 +552,7 @@ function hmacSha256(key, message) {
  * @param {string} method HTTP method
  * @param {string} apiUrl API URL
  * @param {string} body Request body
- * @param {number} id User ID
+ * @param {number} id Token ID
  * @param {string} token Secret key
  * @returns {object} Object containing signature, timestamp and ID
  */
@@ -626,6 +646,22 @@ async function sendApiRequest() {
 sendApiRequest();
 ```
 
+## Response Format
+
+All API responses are JSON objects with a consistent envelope:
+
+```json
+{
+    "msg": "success",
+    "data": {}
+}
+```
+
+- `msg`: On success this is the string `success`; on failure it contains the error message.
+- `data`: The response payload. For paginated list endpoints, the payload is an object containing `total` (total number of items) and `items` (the items on the current page).
+
+Error responses use the same structure but only return the `msg` field, together with the corresponding HTTP status code.
+
 ## Common Response Codes
 
 | HTTP Status Code | Description             |
@@ -636,6 +672,44 @@ sendApiRequest();
 | 404              | Resource not found      |
 | 422              | Request parameter error |
 | 500              | Internal server error   |
+
+## API Surface Overview
+
+The example above uses `/api/user/info`, but the same signing mechanism applies to every panel endpoint. All endpoints are served under the `/api/` prefix and are grouped by feature. The table below lists the available endpoint groups; the management UI for each feature issues requests against the corresponding prefix, so the simplest way to discover the exact path, method, and parameters of any operation is to open that feature in the panel and observe the network requests it sends.
+
+| Endpoint Prefix              | Feature                                                                 |
+|------------------------------|-------------------------------------------------------------------------|
+| `/api/user`, `/api/users`    | Current-user info, login state, two-factor, passkeys, user management   |
+| `/api/user_tokens`           | Access token management (list, create, update, delete)                  |
+| `/api/user_passkeys`         | Passkey (WebAuthn) credential management                                |
+| `/api/home`                  | Dashboard, system info, panel update and restart                        |
+| `/api/task`                  | Background task list and status                                         |
+| `/api/website`               | Websites and website statistics                                         |
+| `/api/project`               | Projects                                                                |
+| `/api/database`, `/api/database_server`, `/api/database_user` | Databases, database servers, and database users |
+| `/api/database_redis`        | Redis key/value operations                                              |
+| `/api/database_elasticsearch`| Elasticsearch index and document operations                             |
+| `/api/backup`, `/api/backup_storage` | Backups and backup storage                                      |
+| `/api/cert`                  | Certificates, ACME accounts, and DNS providers                          |
+| `/api/app`                   | App store (install, uninstall, update)                                  |
+| `/api/environment`           | Runtime environments (Go, Java, Node.js, PHP, Python, .NET)             |
+| `/api/cron`                  | Scheduled (cron) tasks                                                   |
+| `/api/process`               | Process list and signals                                                |
+| `/api/safe`, `/api/firewall` | Ping switch, firewall rules, and scan detection                         |
+| `/api/ssh`                   | SSH connection profiles                                                  |
+| `/api/container`             | Containers, compose, networks, images, and volumes                      |
+| `/api/file`                  | File manager operations, including chunked upload                       |
+| `/api/log`                   | Panel and SSH logs                                                       |
+| `/api/monitor`               | Resource monitoring data and settings                                   |
+| `/api/setting`               | Panel settings                                                          |
+| `/api/systemctl`             | systemd service control                                                 |
+| `/api/toolbox_system`, `/api/toolbox_network`, `/api/toolbox_disk`, `/api/toolbox_ssh`, `/api/toolbox_benchmark`, `/api/toolbox_log` | Toolbox utilities (DNS, swap, time, hostname, disks, SSH config, benchmark, log cleanup) |
+| `/api/toolbox_migration`     | Server migration                                                        |
+| `/api/webhook`               | WebHook management                                                      |
+| `/api/template`              | Configuration templates                                                 |
+| `/api/apps/...`              | App-specific endpoints registered by installed apps                     |
+
+> **WebSocket endpoints are not accessible via token authentication.** Any request under `/api/ws` that carries an `Authorization` header is rejected with a `ws not allowed` error; WebSocket features (such as the terminal) are only available through an interactive browser session.
 
 ## Security Recommendations
 
@@ -649,10 +723,11 @@ sendApiRequest();
 
 If you encounter signature verification failures, check:
 
-- Ensure you are using the correct API token and ID
-- Check that the client and server times are accurate; timestamp differences greater than 300 seconds will cause verification to fail
+- Ensure you are using the correct API token and the token ID returned when the token was created (not the user ID)
+- Check that the client clock is accurate; a timestamp more than 300 seconds older than the server's time will cause verification to fail (a future-dated client clock is tolerated). Make sure the `X-Timestamp` you send matches the value used to compute the signature
 - Ensure the request body hasn't been modified before or after signature calculation
 - Ensure the URL path is handled correctly; remember to remove the entry prefix when normalizing the path
+- If the token has an IP whitelist, confirm the request originates from an allowed IP or CIDR block; otherwise it is rejected with an `invalid request ip` error
 
 ### Request Timeout
 

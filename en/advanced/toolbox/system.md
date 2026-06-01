@@ -8,10 +8,14 @@ Configure the system's DNS servers.
 
 ![DNS Settings](/images/toolbox/toolbox-system-dns.png)
 
+The page shows the current DNS manager detected on the system. If the manager is `resolv.conf`, the panel warns that DNS modifications will revert to default after a system restart.
+
 ### Configuration Items
 
 - **DNS1**: Primary DNS server address
 - **DNS2**: Secondary DNS server address
+
+Both DNS1 and DNS2 are required when saving.
 
 ### Common DNS Servers
 
@@ -33,7 +37,7 @@ The page displays current SWAP usage:
 
 - System total
 - Used
-- Available
+- Free
 
 ### Configure Panel SWAP
 
@@ -86,16 +90,13 @@ After manually changing the time, automatic system time synchronization may stil
 
 ### NTP Server
 
-Configure the NTP time synchronization server. Leave empty to use the system default server.
+Specify the NTP server used by **Synchronize Time**. This is a one-off server for the synchronization action and is not persisted. Leave it empty to fall back to the panel's built-in servers (such as `ntp.aliyun.com`, `ntp1.aliyun.com`, `ntp.tencent.com`, `time.windows.com`, `time.apple.com`), which are probed automatically to pick the fastest reachable one.
 
-Common NTP servers:
+Click **Configure Default Servers** to open the **System NTP Server Configuration** dialog, where you can manage the system's persistent NTP server list. The dialog detects whether the system uses Chrony or systemd-timesyncd and writes the change to its configuration. You can add or remove multiple servers, click **Reset to Default** to restore the built-in list, and **Save** to apply. At least one server is required.
 
-- `ntp.aliyun.com` - Alibaba Cloud
-- `ntp.tencent.com` - Tencent Cloud
-- `cn.pool.ntp.org` - China NTP Pool
+If the panel cannot identify the time service, the dialog shows a warning that the NTP service could not be detected and asks you to ensure that Chrony or systemd-timesyncd is installed. In this case, install one of those services before persisting an NTP server list.
 
 ### Action Buttons
 
-- **Configure Default Server**: Restore to using the system default NTP server
-- **Save**: Save timezone and time settings
-- **Sync Time**: Immediately synchronize time with the NTP server
+- **Save**: Save the timezone and the manually set time
+- **Synchronize Time**: Immediately synchronize the system time using the NTP server (or the built-in servers if left empty)

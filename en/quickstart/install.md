@@ -16,7 +16,8 @@
 | RockyLinux       | 9       | Supported       |
 | Debian           | 13      | Recommended     |
 | Debian           | 12      | Supported       |
-| Ubuntu           | 24      | Recommended     |
+| Ubuntu           | 26      | Recommended     |
+| Ubuntu           | 24      | Supported       |
 | Ubuntu           | 22      | Supported       |
 | OpenCloudOS      | 9       | Supported       |
 | TencentOS Server | 4       | Supported       |

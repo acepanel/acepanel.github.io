@@ -17,14 +17,25 @@ The file module provides a powerful graphical file manager. The design philosoph
 
 ### Keyboard Shortcuts
 
-| Shortcut | Function   |
-|----------|------------|
-| `Ctrl+C` | Copy       |
-| `Ctrl+X` | Cut        |
-| `Ctrl+V` | Paste      |
-| `Delete` | Delete     |
-| `F2`     | Rename     |
-| `Ctrl+A` | Select All |
+| Shortcut                | Function                                   |
+|-------------------------|--------------------------------------------|
+| `Ctrl+C`                | Copy                                       |
+| `Ctrl+X`                | Cut                                        |
+| `Ctrl+V`                | Paste                                      |
+| `Delete`                | Delete selected                            |
+| `F2`                    | Rename selected (single selection)         |
+| `Ctrl+A`                | Select All                                 |
+| `Ctrl+T`                | Open a new tab                             |
+| `Ctrl+W`                | Close the current tab                      |
+| `Enter`                 | Open the selected entry (single selection) |
+| `Backspace`             | Go to the parent directory                 |
+| `Escape`                | Clear the current selection                |
+| `↑` `↓`                 | Move the selection between entries         |
+| `←` `→`                 | Move the selection (grid view only)        |
+| `Home` / `End`          | Jump to the first / last entry             |
+| `Shift` + arrow / Home / End | Extend the selection while moving     |
+
+> On macOS, use `Cmd` in place of `Ctrl`. Keyboard shortcuts are ignored while focus is inside an input box or while the file editor window is open.
 
 ## Navigation
 
@@ -36,9 +47,17 @@ The top displays breadcrumb navigation of the current path. Click to quickly jum
 
 - **Back**: Return to the previous visited directory
 - **Forward**: Go to the next directory
-- **Parent Directory**: Return to parent directory
+- **Up**: Return to parent directory
 - **Refresh**: Refresh current directory
-- **Home Directory**: Return to default directory
+- **Show/Hide Hidden Files**: Toggle whether dotfiles (e.g. `.bashrc`) are displayed
+
+### Tabs
+
+The file manager supports multiple tabs, so you can browse several directories at once:
+
+- Click the **+** button on the tab bar (or press `Ctrl+T`) to open a new tab
+- Click the **×** on a tab (or press `Ctrl+W`) to close it; you can also close a tab with a middle-click
+- Each tab keeps its own path and browsing history
 
 ## File List
 
@@ -75,8 +94,26 @@ Click the **More** button on the file row to display more action options:
 - **Move**: Move file to another directory
 - **Permissions**: Modify file permissions and owner
 - **Compress**: Compress file
+- **Uncompress**: Extract the archive (only shown for compressed files)
 - **Copy Path**: Copy the full path of the file
+- **Terminal**: Open a terminal in the directory (only shown for directories)
 - **Properties**: View detailed file properties
+
+### Compress
+
+When you compress one or more entries, the dialog lets you edit the target archive name and pick an archive **Format**. The file extension is updated automatically to match the selected format. Supported formats:
+
+| Format     | Description                  |
+|------------|------------------------------|
+| `.zip`     | ZIP archive                  |
+| `.gz`      | Gzip                         |
+| `.tar`     | Uncompressed tar archive     |
+| `.tar.gz`  | Gzip-compressed tar          |
+| `.tgz`     | Gzip-compressed tar (alias)  |
+| `.tar.bz2` | Bzip2-compressed tar         |
+| `.tar.xz`  | XZ-compressed tar            |
+| `.tar.zst` | Zstandard-compressed tar     |
+| `.7z`      | 7-Zip archive                |
 
 ## Toolbar
 
@@ -157,7 +194,47 @@ AcePanel has a built-in powerful code editor based on Monaco Editor (the same ed
 - **Font Size**: Adjust editor font size
 - **Toggle Word Wrap**: Enable/disable word wrap
 - **Toggle Minimap**: Show/hide right-side minimap
-- **Settings**: Editor settings
+- **Settings**: Open the editor settings dialog
+
+### Editor Settings
+
+Clicking **Settings** opens a dialog where the editor behavior can be fine-tuned. Settings take effect immediately and are grouped as follows.
+
+**Basic**
+
+| Setting       | Description                                                            |
+|---------------|------------------------------------------------------------------------|
+| Tab Size      | Width of a tab, from 1 to 8                                            |
+| Use Spaces    | Insert spaces instead of tab characters when pressing Tab             |
+| Font Size     | Editor font size, from 10 to 24                                       |
+| Word Wrap     | `Off`, `On`, `Word Wrap Column`, or `Bounded`                        |
+| Show Minimap  | Show or hide the code minimap on the right side                       |
+
+**Display**
+
+| Setting              | Description                                                           |
+|----------------------|-----------------------------------------------------------------------|
+| Line Numbers         | `On`, `Off`, `Relative`, or `Interval`                               |
+| Render Whitespace    | `None`, `Boundary`, `Selection`, `Trailing`, or `All`               |
+| Bracket Colorization | Colorize matching bracket pairs                                       |
+| Indent Guides        | Show indentation guide lines                                          |
+| Code Folding         | Enable or disable code block folding                                  |
+
+**Cursor**
+
+| Setting          | Description                                                                          |
+|------------------|--------------------------------------------------------------------------------------|
+| Cursor Style     | `Line`, `Block`, `Underline`, `Line Thin`, `Block Outline`, or `Underline Thin`     |
+| Cursor Blinking  | `Blink`, `Smooth`, `Phase`, `Expand`, or `Solid`                                    |
+| Smooth Scrolling | Enable smooth scrolling animation                                                    |
+
+**Behavior**
+
+| Setting          | Description                                                  |
+|------------------|--------------------------------------------------------------|
+| Mouse Wheel Zoom | Zoom the editor by holding Ctrl and scrolling the mouse wheel |
+| Format On Paste  | Automatically format pasted content                          |
+| Format On Type   | Automatically format code as you type                        |
 
 ### Fullscreen Mode
 
@@ -170,8 +247,9 @@ Click the **Maximize** button for fullscreen editing to get more editing space:
 The left side of the editor displays the file tree of the current directory, allowing you to:
 
 - Quickly switch to edit other files
-- Create new files
+- Create new files and directories
 - Search files
+- Rename or delete entries via the right-click menu
 
 ### Status Bar
 

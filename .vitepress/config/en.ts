@@ -179,7 +179,8 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Overview", link: '/website' },
                 { text: "Reverse Proxy", link: '/website/proxy' },
                 { text: "PHP", link: '/website/php' },
-                { text: "Static", link: '/website/static' }
+                { text: "Static", link: '/website/static' },
+                { text: "Statistics", link: '/website/stat' }
             ]
         }, {
             text: "Projects",
@@ -191,6 +192,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Node.js", link: '/project/nodejs' },
                 { text: "PHP", link: '/project/php' },
                 { text: "Python", link: '/project/python' },
+                { text: ".NET", link: '/project/dotnet' },
                 { text: "General", link: '/project/general' }
             ]
         }, {
@@ -200,7 +202,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Overview", link: '/database' },
                 { text: "Databases", link: '/database/database' },
                 { text: "Users", link: '/database/user' },
-                { text: "Servers", link: '/database/server' }
+                { text: "Servers", link: '/database/server' },
+                { text: "Redis", link: '/database/redis' },
+                { text: "Elasticsearch", link: '/database/elasticsearch' }
             ]
         },{
             text: "Certificates",
@@ -224,6 +228,13 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
             text: "Terminal",
             link: '/ssh'
         }, {
+            text: "Firewall",
+            collapsed: true,
+            items: [
+                { text: "Overview", link: '/firewall' },
+                { text: "Scan Awareness", link: '/firewall/scan' }
+            ]
+        }, {
             text: "Tasks",
             collapsed: true,
             items: [
@@ -241,7 +252,10 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Disk", link: '/toolbox/disk' },
                 { text: "Log Cleanup", link: '/toolbox/log' },
                 { text: "Webhooks", link: '/toolbox/webhook' },
-                { text: "Benchmark", link: '/toolbox/benchmark' }
+                { text: "Benchmark", link: '/toolbox/benchmark' },
+                { text: "Network", link: '/toolbox/network' },
+                { text: "Migration", link: '/toolbox/migration' },
+                { text: "Panel", link: '/toolbox/panel' }
             ]
         }, {
             text: "Settings",

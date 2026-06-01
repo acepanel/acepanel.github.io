@@ -8,19 +8,27 @@ The benchmark feature is used to test the CPU, memory, and disk performance of t
 
 ### CPU Test
 
-Tests the computing power of the CPU by executing a large number of mathematical operations to evaluate processor performance.
+Evaluates processor performance by running seven independent workloads. The CPU score is the sum of the scores of all sub-tests:
+
+- **Image Processing**: Generates an image and applies a convolution (blur) filter
+- **Machine Learning**: Performs large matrix multiplication
+- **Program Compilation**: Computes large Fibonacci numbers
+- **AES Encryption**: Encrypts a large data block with AES-GCM
+- **Compression/Decompression**: Compresses and decompresses data with gzip
+- **Physics Simulation**: Runs an N-body gravitational simulation
+- **JSON Parsing**: Serializes and deserializes a large JSON structure
 
 ### Memory Test
 
-Tests the read and write speed of memory to evaluate the performance of the memory subsystem.
+Evaluates the memory subsystem by measuring **memory bandwidth** (in MB/s) and **memory access latency** (in ns), and produces a memory score.
 
 ### Disk Test
 
-Tests the read and write speed of the disk to evaluate the I/O performance of the storage device.
+Evaluates storage I/O performance by measuring read and write speed at three block sizes (**4KB**, **64KB**, and **1MB**) using direct I/O, and produces a disk score.
 
 ## Usage
 
-Click the **Start Benchmark** button, and the system will execute CPU, memory, and disk tests in sequence. After the tests are completed, the scores for each item will be displayed.
+Click the **Start Benchmark** button, and the system will execute the CPU sub-tests, memory test, and disk test in sequence, showing the current item and overall progress. After the tests are completed, the aggregate CPU, memory, and disk scores are displayed; hover over a score to view the detailed metrics of each test.
 
 ## Result Explanation
 

@@ -1,6 +1,6 @@
 # Project
 
-The project module is used to manage backend applications, supporting multiple languages including Go, Java, Node.js, PHP, Python, etc. Projects run as system services, supporting automatic restart, auto-start on boot, and other features.
+The project module is used to manage backend applications, supporting multiple languages including Go, Java, Node.js, PHP, Python, .NET, etc. Projects run as system services, supporting automatic restart, auto-start on boot, and other features.
 
 ## Project Types
 
@@ -11,6 +11,7 @@ The project module is used to manage backend applications, supporting multiple l
 | [Node.js](./project/nodejs)  | Node.js projects        | Express, Koa, NestJS, etc.   |
 | [PHP](./project/php)         | PHP projects            | Laravel Octane, Swoole, etc. |
 | [Python](./project/python)   | Python projects         | Django, Flask, FastAPI, etc. |
+| [.NET](./project/dotnet)     | .NET projects           | ASP.NET Core, Blazor, gRPC   |
 | [General](./project/general) | Other types of projects | Any executable program       |
 
 ![Project List](/images/project/project-list.png)
@@ -33,11 +34,32 @@ The project module is used to manage backend applications, supporting multiple l
 
 ### Configuration Items
 
-- **Project Name**: Project identifier, used as service name
-- **Project Directory**: Directory where project files are located
-- **Run User**: System user to run the project, default www
+- **Project Name**: Project identifier, used as service name (letters, numbers, underscores, and hyphens only)
+- **Project Directory**: Directory where project files are located. If left empty, defaults to the configured project path joined with the project name (e.g. `/opt/ace/projects/<project name>`)
+- **Run User**: System user to run the project, default www (you may also choose `root` / `nobody`, or type a custom user)
 - **Start Command**: Command to start the project
 - **Reverse Proxy**: Whether to automatically create a reverse proxy website
+
+#### Type-specific Helper Fields
+
+When you open the create dialog from a language-specific tab (Go, Java, Node.js, PHP, Python, or .NET), additional helper fields appear to assist you in composing the **Start Command**:
+
+- **Version selection**: Pick an installed runtime version for the chosen language. Only versions actually installed under **Applications** > **Runtime Environment** are listed.
+- **Framework**: Select a framework preset. Choosing a preset (anything other than **Custom**) auto-fills the **Start Command** in the form `<runtime><version> <preset command>` (for example `python3.12 -m flask run --host=0.0.0.0`). The generated command remains fully editable.
+- **Go Run Mode** (Go only): Choose between **Source Code** and **Binary**.
+    - **Source Code**: Select a **Go Version** and an **Entry File** (e.g. `main.go`, `cmd/server/main.go`); the start command becomes `go<version> run <entry file>`.
+    - **Binary**: The start command points to the compiled binary at `<project directory>/main`.
+
+These helper fields only influence the generated **Start Command**; the panel ultimately stores the command itself, so you can always override it manually.
+
+#### Reverse Proxy Options
+
+When **Reverse Proxy** is enabled, two extra inputs appear:
+
+- **Domain**: One or more domains for the reverse proxy website (at least one is required).
+- **Project Port**: The local port your application listens on. The created website listens on port `80` and proxies to `http://127.0.0.1:<project port>`.
+
+The reverse proxy website is created first; if it fails, the project is not created.
 
 ## Project Management
 
@@ -46,8 +68,8 @@ The project list displays the following information:
 - **Name**: Project name
 - **Description**: Project description
 - **Type**: Project type (Go/Java/Node.js, etc.)
-- **Status**: Running status
-- **Auto Start**: Whether to auto-start on boot
+- **Status**: Service state — one of **Running** (active), **Stopped** (inactive), **Failed** (failed), or **Inactive** (default/unknown)
+- **Auto Start**: Whether to auto-start on boot (toggled directly from the list)
 - **Directory**: Project directory
 - **Actions**: Start, stop, restart, logs, etc.
 
@@ -55,10 +77,12 @@ The project list displays the following information:
 
 - **Start**: Start the project
 - **Stop**: Stop the project
-- **Restart**: Restart the project
+- **Restart**: Restart the project (only shown when running)
+- **Reload**: Reload the project without a full restart (only shown when running)
 - **Logs**: View project runtime logs
 - **Edit**: Modify project configuration
-- **Delete**: Delete the project
+- **Delete**: Delete the project (requires a 5-second confirmation countdown)
+- **Bulk Delete**: Select multiple projects with the row checkboxes, then use the **Delete** button above the list to remove them at once (also requires a 5-second confirmation countdown)
 
 ## Edit Project
 
@@ -87,7 +111,7 @@ Configure project runtime parameters:
 - **Post-start Command**: Command to run after starting (optional)
 - **Stop Command**: Custom stop command (optional)
 - **Reload Command**: Custom reload command (optional)
-- **Restart Policy**: Restart on failure, always restart, never restart
+- **Restart Policy**: No restart, always restart, restart on failure, on abnormal, on abort, or on success
 - **Restart Interval**: Wait time between restarts
 - **Max Restart Count**: Maximum number of consecutive restarts
 - **Start Timeout**: Timeout for waiting for service to start
@@ -153,4 +177,5 @@ Projects use systemd for process management, with the following features:
 - [Node.js Project](./project/nodejs) - Deploy Node.js applications
 - [PHP Project](./project/php) - Deploy PHP applications
 - [Python Project](./project/python) - Deploy Python applications
+- [.NET Project](./project/dotnet) - Deploy .NET applications
 - [General Project](./project/general) - Deploy other types of applications

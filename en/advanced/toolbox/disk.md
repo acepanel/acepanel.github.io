@@ -1,6 +1,6 @@
 # Disk
 
-The disk page provides disk partition management and LVM logical volume management features.
+The disk page provides disk partition management, LVM logical volume management, SMART disk health, and RAID array status features.
 
 ## Disk Management
 
@@ -11,10 +11,11 @@ The disk page provides disk partition management and LVM logical volume manageme
 The top of the page displays basic information for each disk:
 
 - **Disk Name**: Such as vda, sda
-- **Type**: System disk or data disk
+- **Disk Type**: SSD, or the disk model in uppercase
 - **Size**: Total disk capacity
 - **Partitions**: Number of partitions
-- **Disk Type**: HDD, SSD, etc.
+
+The disk that holds the root (`/`) partition is marked with a **System Disk** tag and cannot be initialized or have its partitions unmounted.
 
 ### Partition List
 
@@ -47,7 +48,7 @@ Formatting will erase all data on the partition!
 :::
 
 - **Partition**: Select the partition to format
-- **File System Type**: ext4, xfs, btrfs, etc.
+- **File System Type**: ext4, ext3, xfs, or btrfs
 
 ### Initialize Disk
 
@@ -58,7 +59,7 @@ Initialization will delete all partitions and data on the disk!
 Initialize the entire disk as a single partition:
 
 - **Disk**: Select the disk to initialize
-- **File System Type**: ext4, xfs, btrfs, etc.
+- **File System Type**: ext4, ext3, xfs, or btrfs
 
 ### Auto Mount Configuration (fstab)
 
@@ -117,4 +118,32 @@ Dynamically extend the size of a logical volume:
 
 ::: tip Tip
 The advantage of LVM is that logical volumes can be extended online without unmounting partitions or restarting the system.
+:::
+
+## SMART
+
+The SMART tab shows the health information of disks that support S.M.A.R.T.
+
+::: tip Tip
+SMART relies on `smartctl`. If it is not installed, the tab will prompt you to install smartmontools first (e.g. `apt install smartmontools` or `dnf install smartmontools`).
+:::
+
+Select a disk to view its details across two tabs:
+
+- **Basic Info**: Current temperature, health status (PASSED / FAILED), and device details such as model, serial number, firmware, capacity, interface, rotation rate, and power-on hours.
+- **SMART Attributes**: The full attribute table. For ATA/SATA disks it lists ID, attribute, value, worst, threshold, raw value, and status; for NVMe disks it lists the health information log (such as percentage used, available spare, data units read/written, and media errors).
+
+## RAID
+
+The RAID tab automatically detects and displays the status of RAID arrays. The following controller types are supported:
+
+- **Linux Software RAID (mdadm)**
+- **MegaRAID (LSI/Broadcom)** via `storcli`
+- **HP Smart Array** via `ssacli`
+- **Adaptec** via `arcconf`
+
+For each array it shows the RAID level, size, strip size, state, the active/total device count, and rebuild progress (when rebuilding), along with the list of physical disks. For hardware controllers, the controller model, serial number, firmware, and cache size are also displayed.
+
+::: tip Tip
+Detecting hardware RAID requires the corresponding vendor CLI tool to be installed. If no RAID configuration is detected, the tab will indicate so.
 :::

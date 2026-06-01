@@ -25,7 +25,7 @@ Automatically apply for free certificates from CAs like Let's Encrypt through th
 - **Google**: Google's free certificate service
 - **GoogleCN**: Google certificate service mirror provided by AcePanel
 - **ZeroSSL**: Another free certificate option
-- **Buypass**: Norwegian free certificate service
+- **SSL.com**: Free certificate service provided by SSL.com
 
 Free certificates are typically valid for 90 days, and AcePanel supports automatic renewal.
 
@@ -38,6 +38,17 @@ Certificates purchased from commercial CAs, typically valid for 1 year or longer
 - Provides insurance and technical support
 
 If you need to purchase certificates, you can contact us through the "Certificate" link at the top of this page.
+
+### Self-signed Certificates
+
+In addition to ACME and uploaded certificates, AcePanel can generate self-signed certificates for testing or internal use. These are not trusted by browsers but are useful when public CA validation is not required.
+
+When you issue a certificate, you choose between two issuance modes:
+
+- **Automatic**: Apply for a certificate through the ACME protocol (HTTP or DNS verification).
+- **Self-signed**: Generate a self-signed certificate locally, without contacting any CA.
+
+The automatic mode displays real-time progress while the certificate is being issued or renewed, so you can follow each step and see the exact error message if issuance fails.
 
 ## Verification Methods
 
@@ -66,6 +77,7 @@ Advantages of DNS verification:
 - Supports applying for wildcard certificates (*.example.com)
 - Does not require port 80 to be accessible
 - Suitable for intranet servers
+- Supports DNS alias (DNS-01 CNAME delegation), allowing the validation TXT record to be placed in another domain or zone
 
 ## Quick Start
 
@@ -73,6 +85,21 @@ Advantages of DNS verification:
 2. If DNS verification is needed, configure DNS API
 3. Create a certificate, select verification method
 4. Apply the certificate to the website
+
+## Renewal
+
+Each certificate has an **Auto Renewal** switch. When enabled (on by default for newly created certificates), AcePanel automatically renews the certificate before it expires. Uploaded certificates cannot be auto-renewed.
+
+You can also trigger a **Renewal** manually at any time from the certificate list. As with automatic issuance, manual renewal shows real-time progress.
+
+## Deployment
+
+After a certificate is issued or uploaded, use **Deploy** to apply it:
+
+- **Website**: A certificate can be deployed to one or more websites at the same time.
+- **Enable HTTPS**: Optionally enable HTTPS on the selected websites during deployment.
+
+In addition, each certificate can carry an optional **Deployment Script**. The `{cert}` and `{key}` placeholders in the script are replaced with the certificate and private key content, which is useful for deploying certificates to services other than the built-in websites.
 
 ## Next Steps
 

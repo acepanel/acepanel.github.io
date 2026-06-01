@@ -6,7 +6,7 @@ The container module provides complete Docker container management functionality
 
 Before using the container feature, you need to install Docker or Podman first:
 
-1. Go to **Applications** > **Native Applications**
+1. Go to **Apps** > **Native App**
 2. Find Docker or Podman, click **Install**
 
 ## Feature Overview

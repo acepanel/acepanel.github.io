@@ -45,7 +45,13 @@ journalctl -u acepanel -n 100
 acepanel info
 ```
 
-Outputs panel address, username, and generates a new password.
+This command regenerates **both a new username and a new password**, then prints the new username, the new password, the listening port, the security entrance, and the local/public IPv4 and IPv6 access addresses. Use one of the printed addresses to log back in.
+
+::: warning Note
+Because `acepanel info` resets the username and password every time it runs, the previous credentials become invalid after running it.
+:::
+
+For the full list of command line tool commands (service management, user management, security settings, maintenance, etc.), see [Command Line Tool](../quickstart/cli).
 
 ## Change Panel Port
 
@@ -63,13 +69,14 @@ If you forgot the security entry path:
 acepanel entrance off
 ```
 
-## Disable Domain/IP Binding
+## Disable Domain/IP/UA Binding
 
 If you cannot access the panel after binding:
 
 ```shell
 acepanel bind-domain off
 acepanel bind-ip off
+acepanel bind-ua off
 ```
 
 ## Disable Two-Factor Authentication

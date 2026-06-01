@@ -12,13 +12,17 @@ The monitor module is used to record and view server performance data, including
 
 After turning on the **Enable Monitoring** switch, the system will periodically collect performance data.
 
-### Retention Days
+### Save Days
 
-Set the retention time for monitoring data, default is 30 days. Data exceeding the retention time will be automatically cleaned up.
+Set the retention time for monitoring data, default is 30 days (range 1-365). Data exceeding the retention time will be automatically cleaned up.
 
-### Clear Monitor Records
+### Collection Interval
 
-Click the **Clear Monitor Records** button to manually clear all historical monitoring data.
+Set how often performance data is collected, default is 1 minute (range 1-120 minutes). A larger interval reduces the amount of data stored at the cost of lower granularity.
+
+### Clear Monitoring Records
+
+Click the **Clear Monitoring Records** button to manually clear all historical monitoring data.
 
 ## Monitoring Metrics
 
@@ -38,19 +42,16 @@ Load value reference:
 
 ### CPU Usage
 
-Displays CPU usage percentage, including:
-
-- User mode usage
-- System mode usage
-- Idle rate
+Displays the overall CPU usage percentage (0-100%) over time. Hover over the chart to see the **Top 5 processes** by CPU usage at that point in time.
 
 ### Memory Usage
 
-Displays memory usage:
+Displays memory usage in MB:
 
 - Used memory
-- Available memory
-- Cache/Buffer
+- Swap usage
+
+Hover over the chart to see the **Top 5 processes** by memory usage at that point in time.
 
 ### Disk I/O
 
@@ -59,16 +60,16 @@ Displays disk read/write speed:
 - Read speed (KB/s or MB/s)
 - Write speed (KB/s or MB/s)
 
-You can select the disk device to monitor.
+Use the checkboxes to choose which disk devices to display (all are selected by default). Hover over the chart to see the **Top 5 processes** by disk I/O, including their total read and total write.
 
 ### Network Traffic
 
 Displays network interface traffic:
 
-- Send speed
-- Receive speed
+- Upload speed
+- Download speed
 
-You can select the network interface to monitor.
+Use the checkboxes to choose which network interfaces to display (all are selected by default). The loopback interface (`lo`) is excluded.
 
 ## Time Range
 

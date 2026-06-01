@@ -59,6 +59,8 @@ HTTP 方法
 授權: HMAC-SHA256 Credential={id}, Signature={signature}
 ```
 
+**注意**：其中 `{id}` 是創建訪問令牌時返回的令牌 ID（不是用戶 ID），`{signature}` 是上一步計算得到的簽名。
+
 ## Go 範例
 
 ```go
@@ -87,7 +89,7 @@ func main() {
     // 設置內容類型
     req.Header.Set("Content-Type", "application/json")
     
-    // 簽名請求 - 傳入您的用戶 ID 和 API 令牌
+    // 簽名請求 - 傳入您的令牌 ID 和 API 令牌
     if err = SignReq(req, uint(16), "YourSecretToken"); err != nil {
         fmt.Println("簽名請求時出錯:", err)
         return
@@ -287,7 +289,7 @@ def hmac_sha256(key, message):
     """使用 HMAC-SHA256 算法計算簽名"""
     return hmac.new(key.encode('utf-8'), message.encode('utf-8'), hashlib.sha256).hexdigest()
 
-def sign_request(method, url, body, user_id, token):
+def sign_request(method, url, body, token_id, token):
     """為 API 請求生成簽名"""
     # 解析 URL
     parsed_url = urlparse(url)
@@ -326,18 +328,18 @@ def sign_request(method, url, body, user_id, token):
     return {
         "timestamp": timestamp,
         "signature": signature,
-        "id": user_id
+        "id": token_id
     }
 
 # 範例請求
 api_url = "http://example.com/entrance/api/user/info"
 method = "GET"
 body = ""  # GET 請求通常沒有請求主體
-user_id = 16
+token_id = 16
 token = "您的秘密令牌"
 
 # 生成簽名信息
-signing_data = sign_request(method, api_url, body, user_id, token)
+signing_data = sign_request(method, api_url, body, token_id, token)
 
 # 準備 HTTP 標頭
 headers = {
@@ -532,7 +534,7 @@ function hmacSha256(key, message) {
  * @param {string} method HTTP 方法
  * @param {string} apiUrl API 地址
  * @param {string} body 請求體
- * @param {number} id 用戶 ID
+ * @param {number} id 令牌 ID
  * @param {string} token 密鑰
  * @returns {object} 包含簽名、時間戳和 ID 的對象
  */
@@ -649,7 +651,7 @@ sendApiRequest();
 
 如果遇到簽名驗證失敗，請檢查：
 
-- 確保使用了正確的 API 令牌和 ID
+- 確保使用了正確的 API 令牌，以及創建令牌時返回的令牌 ID（不是用戶 ID）
 - 檢查客戶端和伺服器時間是否準確；時間戳之間的差異超過 300 秒將導致驗證失敗
 - 確保請求主體在計算簽名前後沒有被修改
 - 確保 URL 路徑處理正確；請記住在規範化路徑時要移除入口前綴

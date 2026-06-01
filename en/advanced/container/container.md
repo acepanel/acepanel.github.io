@@ -30,38 +30,51 @@ Click the **Create Container** button to open the creation dialog.
 - **Network**: Select the network for the container to use
 - **Restart Policy**: Restart behavior after container exits
     - None: Do not auto restart
-    - always: Always restart
-    - on-failure: Restart on failure
-    - unless-stopped: Restart unless manually stopped
+    - Always: Always restart
+    - On failure: Restart on failure (defaults to 5 retries)
+    - Unless stopped: Restart unless manually stopped
 
-### Advanced Options
+The **Container Options** section at the bottom of this tab provides the following switches:
 
 - **TTY (-t)**: Allocate a pseudo-TTY
 - **STDIN (-i)**: Keep STDIN open
 - **Auto Remove**: Automatically delete container when stopped
-- **Privileged Mode**: Grant container full system privileges (use with caution)
+- **Privileged**: Grant container full system privileges (use with caution)
 
 ### Port Mapping
 
-Map container internal ports to host ports, format: `host_port:container_port`
+The **Port Mode** offers two options:
+
+- **Map Ports**: Manually map container ports to host ports
+- **Expose All**: Automatically map all exposed ports in the image to random host ports
 
 ![Port Mapping](/images/container/container-create-port.png)
 
-For example: `8080:80` means mapping container port 80 to host port 8080.
+In **Map Ports** mode, each rule contains an optional bind IP, a host port range (start/end), a container port range (start/end), and a protocol (TCP or UDP). To map a single port, set the start and end values to the same number.
+
+For example, mapping host port 8080 to container port 80 means setting the host start/end to `8080` and the container start/end to `80`.
 
 ### Volume Mounts
 
-Mount host directories or data volumes to the container, format: `host_path:container_path`
+Mount host directories or data volumes to the container. Each mount consists of a host path, a container path, and an access mode (**Read-Write** or **Read-Only**). Use absolute paths for host directories.
 
-For example: `/opt/ace/data:/data` means mounting the host's `/opt/ace/data` directory to the container's `/data` directory.
+For example, mounting the host's `/opt/ace/data` directory to the container's `/data` directory.
 
 ### Resource Limits
 
-Limit the CPU and memory resources the container can use.
+Limit the resources the container can use. Set a value to `0` for no limit:
 
-### Environment Variables
+- **Memory (MB)**: Maximum memory the container can use, in MB
+- **CPU Cores**: Number of CPU cores the container can use (e.g., `0.5` means half a core)
+- **CPU Shares**: Relative CPU weight (default `1024`); higher values get more CPU time when competing
 
-Set container environment variables, format: `KEY=VALUE`
+### Environment
+
+In the **Environment** tab you can set the following:
+
+- **Environment Variables**: Container environment variables in `KEY=VALUE` form
+- **Startup Commands**: Override the image's default **Command** (CMD) and **Entrypoint** (ENTRYPOINT)
+- **Container Labels**: Custom labels attached to the container in `KEY=VALUE` form
 
 ## Container Operations
 
@@ -79,14 +92,14 @@ After selecting multiple containers, you can perform batch operations:
 
 ### Single Container Operations
 
-- **Terminal**: Open the container's terminal to execute commands inside the container
+- **Terminal**: Open the container's terminal to execute commands inside the container (available only when the container is running)
 - **Logs**: View container runtime logs
 - **Rename**: Modify container name
-- **More**: View details, export, and other operations
+- **More**: A dropdown with Start, Stop, Restart, Force Stop, Pause, Resume, and Delete actions
 
-## Clean Containers
+## Cleanup Containers
 
-Click **Clean Containers** to delete all stopped containers and free up system resources.
+Click **Cleanup Containers** to delete all stopped containers and free up system resources.
 
 ::: warning Note
 The cleanup operation cannot be undone. Please ensure stopped containers are no longer needed.

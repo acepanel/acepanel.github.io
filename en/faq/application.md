@@ -2,20 +2,20 @@
 
 ## PHP Module Installation
 
-**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Modules**, install the required modules.
+**Apps** -> **Operating Environment** -> **PHP** -> **Manage** -> **Module Management**, install the required modules.
 
-Some modules require compilation and take longer to install. You can check the progress on the **Tasks** page.
+Some modules require compilation and take longer to install. You can check the progress on the **Task** page.
 
 ## PHP Functions Disabled
 
 Some high-risk functions are disabled by default. To enable them:
 
-**Apps** -> **Runtimes** -> **PHP** -> **Manage** -> **Configuration**
+**Apps** -> **Operating Environment** -> **PHP** -> **Manage** -> **Parameter Tuning** -> **Disabled Functions**
 
-Find `disable_functions` and remove the function names you want to enable.
+Remove the function names you want to enable from the list, then save. You can also edit `disable_functions` directly in the **Main Configuration** tab.
 
 ::: warning Security Warning
-Functions like `exec`, `shell_exec`, `system` have security risks. Please confirm necessity before enabling.
+Functions like `exec`, `shell_exec`, `system`, `passthru`, `proc_open`, `popen` have security risks. Please confirm necessity before enabling.
 :::
 
 ## Nginx Configuration Error
@@ -46,7 +46,7 @@ chown -R www:www /opt/ace/projects/project-name
 
 Node.js installed via nvm is not in the default PATH.
 
-**Apps** -> **Supervisor Manager** -> **Manage** -> **Configuration**, add:
+**Apps** -> **Supervisor Manager** -> **Manage** -> **Main Configuration**, add:
 
 ```ini
 environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/bin"
@@ -57,8 +57,8 @@ Replace the version number with the actual installed version. You can check the 
 ## Application Installation Failed
 
 1. Check network connection
-2. View error messages on the **Tasks** page
-3. Try clicking **Update Cache** on the **Apps** page and retry
+2. View error messages on the **Task** page
+3. Switch to the **Native App**, **Operating Environment**, or **Container Template** tab on the **Apps** page, then click **Update Cache** and retry (the **Update Cache** button is hidden on the default **Installed** tab)
 
 ## Application Cannot Be Uninstalled
 

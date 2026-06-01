@@ -19,40 +19,44 @@ The list displays the following information:
 
 1. Click the **Create Account** button
 2. Fill in the configuration:
-    - **Email**: Used to receive certificate-related notifications
     - **CA**: Select certificate authority
     - **Key Type**: Select key algorithm
-    - **KID**: Optional, some CAs require KID
-    - **HMAC**: Optional, some CAs require HMAC key
-3. Click Create
+    - **Email**: Used to receive certificate-related notifications
+    - **KID**: Required only when CA is Google, LiteSSL, or SSL.com
+    - **HMAC**: Required only when CA is Google, LiteSSL, or SSL.com
+3. Click **Submit**
+
+::: tip Note
+LiteSSL, Google, and SSL.com require obtaining EAB (KID and HMAC) from their official websites first. The KID and HMAC fields are only shown when one of these CAs is selected. Google is not accessible in mainland China; other CAs depend on network conditions, so using Let's Encrypt or LiteSSL is recommended.
+:::
 
 ### Certificate Authority (CA)
 
 | CA            | Description                                            |
 |---------------|--------------------------------------------------------|
 | Let's Encrypt | Most popular free CA, certificate valid for 90 days    |
-| LiteSSL       | Free certificate service provided by TrustAsia         |
-| Google        | Google's free certificate service                      |
 | GoogleCN      | Google certificate service mirror provided by AcePanel |
+| LiteSSL       | Free certificate service provided by TrustAsia         |
 | ZeroSSL       | Free CA, certificate valid for 90 days                 |
-| Buypass       | Norwegian free CA, certificate valid for 180 days      |
+| SSL.com       | Commercial CA, supports ACME issuance with EAB         |
+| Google        | Google's free certificate service                      |
 
 ### Key Type
 
-| Type       | Description                                  |
-|------------|----------------------------------------------|
-| P256 (ECC) | Recommended, shorter key, better performance |
-| P384 (ECC) | Higher security ECC key                      |
-| RSA 2048   | Traditional RSA key, best compatibility      |
-| RSA 4096   | Higher security RSA key                      |
+| Type    | Description                                  |
+|---------|----------------------------------------------|
+| EC256   | Recommended, shorter key, better performance |
+| EC384   | Higher security ECC key                      |
+| RSA2048 | Traditional RSA key, best compatibility      |
+| RSA4096 | Higher security RSA key                      |
 
 ::: tip Recommendation
-Generally recommended to use P256 (ECC) key, balancing security and performance.
+Generally recommended to use the EC256 key, balancing security and performance.
 :::
 
 ## Modify Account
 
-Click the **Modify** button on the right side of the account to modify the account email.
+Click the **Modify** button on the right side of the account to modify the CA, key type, email, KID, and HMAC. Saving re-registers the account with the CA using the new settings.
 
 ::: warning Note
 After modifying the email, certificate-related notifications will be sent to the new email.

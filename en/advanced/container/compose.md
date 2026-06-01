@@ -22,14 +22,13 @@ The list displays the following information:
 2. Enter compose name
 3. Write or paste docker-compose.yml content
 4. Configure environment variables (optional)
-5. Click Create
+5. Click **Submit**
 
 ![Create Compose](/images/container/compose-create.png)
 
 ### docker-compose.yml Example
 
 ```yaml
-version: '3'
 services:
   web:
     image: nginx:latest
@@ -64,7 +63,7 @@ Click the **Start** button and a confirmation dialog will pop up:
 
 - **Force Pull Images**: When checked, will pull the latest images before starting
 
-After clicking confirm, the startup progress will be displayed:
+After clicking confirm, a terminal window opens and displays the real-time output of the startup command:
 
 ![Startup Progress](/images/container/compose-starting.png)
 
@@ -76,7 +75,9 @@ Stopping compose will stop all related containers, but will not delete container
 
 ### Delete Compose
 
-Deleting compose will stop and delete all related containers.
+Deleting compose will stop and delete all related containers, and remove the compose project directory.
+
+You can also select multiple composes in the list and click the **Delete** button at the top to delete them in bulk.
 
 ::: warning Note
 Deleting compose will not delete data volumes. To delete data volumes, please manually delete them on the **Volume** page.
