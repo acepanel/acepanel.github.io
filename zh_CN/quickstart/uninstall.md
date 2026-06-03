@@ -15,3 +15,14 @@ bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 ```
 
 选择「卸载面板」选项完成卸载。
+
+:::tip 先停止面板服务（可选）
+如果你只是想在卸载前暂停面板，可以使用 `acepanel` 命令行工具停止服务。 请注意，这只会停止服务，并不会移除面板：
+
+```shell
+acepanel status   # View service status
+acepanel stop     # Stop the service
+```
+
+请勿在后台任务仍在运行时停止面板，否则可能中断这些任务。 完整的命令参考请查看[命令行工具](./cli)页面。
+:::

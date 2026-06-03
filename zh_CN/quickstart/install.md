@@ -16,7 +16,8 @@
 | RockyLinux       | 9  | 支持  |
 | Debian           | 13 | 推荐  |
 | Debian           | 12 | 支持  |
-| Ubuntu           | 24 | 推荐  |
+| Ubuntu           | 26 | 推荐  |
+| Ubuntu           | 24 | 支持  |
 | Ubuntu           | 22 | 支持  |
 | OpenCloudOS      | 9  | 支持  |
 | TencentOS Server | 4  | 支持  |

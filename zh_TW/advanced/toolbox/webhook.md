@@ -1,35 +1,55 @@
-# Web 鉤子
+# Webhook
 
-Web 鉤子（Webhook）允許你通過 HTTP 請求觸發伺服器上的腳本執行，實現自動化部署、CI/CD 整合等功能。
+Webhook 允許您透過 HTTP 請求觸發伺服器上的腳本執行，藉此實現自動化部署、CI/CD 整合等功能。
 
-![Web 鉤子](/images/toolbox/toolbox-webhook.png)
+![Webhook](/images/toolbox/toolbox-webhook.png)
 
-## 建立 Web 鉤子
+## 建立 Webhook
 
-點擊 **建立 Web 鉤子** 按鈕，填寫以下資訊：
+點選 **建立 Webhook** 按鈕並填寫以下資訊：
 
-![建立 Web 鉤子](/images/toolbox/toolbox-webhook-create.png)
+![建立 Webhook](/images/toolbox/toolbox-webhook-create.png)
 
-- **名稱**：Web 鉤子的名稱，用於標識用途
+- **名稱**：Webhook 的名稱，用於識別其用途
 - **使用者**：執行腳本的系統使用者，預設為 root
-- **原始輸出**：開啟後返回腳本的原始輸出，關閉則返回 JSON 格式
-- **腳本**：要執行的 Shell 腳本內容
+- **原始輸出**：啟用時回傳腳本的原始輸出；停用時回傳 JSON 格式
+- **腳本**：要執行的 Shell 腳本內容。 表單預設預填了 `#!/bin/bash` 範本
+
+建立 Webhook 時，腳本內容會儲存為一個獨立的 `.sh` 檔案（權限 `0755`），位於面板資料根目錄下的 `server/webhook` 目錄中，並以產生的 Key 命名。 刪除 Webhook 時也會一併刪除該腳本檔案。
+
+腳本透過 `bash` 執行。 當設定的使用者為 `root`（或留空）時，腳本會直接以面板行程的擁有者身分執行；對於其他使用者，則使用 `su -s /bin/bash -c` 以該使用者身分執行，因此請確保目標使用者存在且有權限執行該腳本。
 
 ## 使用方式
 
-建立完成後，系統會產生一個唯一的 Key。 通過存取以下 URL 即可觸發腳本執行：
+建立後，系統會產生一組唯一的 Key。 存取以下 URL 即可觸發腳本執行：
 
 ```
-https://your-panel-domain/api/webhook/{key}
+https://your-panel-domain/webhook/{key}
 ```
 
-支援 GET 和 POST 請求。
+同時支援 GET 與 POST 請求。 您也可以使用清單中的 **複製 URL** 按鈕，直接複製完整的呼叫 URL。
 
-## 適用場景
+## 編輯 Webhook
+
+點選某一列的 **編輯** 按鈕即可修改現有的 Webhook。 編輯對話框提供與建立表單相同的 **名稱**、**使用者**、**原始輸出** 和 **腳本** 欄位，並額外提供一個 **啟用** 開關，讓您可以在編輯時直接開啟或關閉該 Webhook。 儲存時會重寫底層的腳本檔案並更新已儲存的設定；Key 保持不變。
+
+## 操作
+
+清單中的每一列都提供以下操作：
+
+| 操作     | 說明                                               |
+| ------ | ------------------------------------------------ |
+| 複製 URL | 將完整的呼叫 URL（`{panel-origin}/webhook/{key}`）複製到剪貼簿 |
+| 編輯     | 開啟編輯對話框以修改該 Webhook                              |
+| 刪除     | 在確認對話框後刪除該 Webhook；這同時會刪除對應的腳本檔案                 |
+
+此外，**啟用** 欄中顯示一個開關，您可以直接在清單中切換它，無需開啟編輯對話框即可啟用或停用某個 Webhook。
+
+## 使用情境
 
 ### Git 自動部署
 
-配合 GitHub/GitLab 的 Webhook 功能，實現程式碼推送後自動部署：
+搭配 GitHub/GitLab 的 Webhook 功能，可在程式碼推送後實現自動部署：
 
 ```bash
 #!/bin/bash
@@ -39,42 +59,43 @@ npm install
 npm run build
 ```
 
-### 定時任務觸發
+### 排程任務觸發
 
-通過外部服務（如監控系統）觸發特定操作：
+透過外部服務（例如監控系統）觸發特定操作：
 
 ```bash
 #!/bin/bash
-# 清理臨時檔案
+# Clean temporary files
 rm -rf /tmp/cache/*
-# 重啟服務
+# Restart service
 systemctl restart myapp
 ```
 
 ### CI/CD 整合
 
-在 CI/CD 流水線中呼叫 Webhook 完成部署：
+在 CI/CD 流水線中呼叫 Webhook 以完成部署：
 
 ```bash
-# 在 CI 腳本中
-curl -X POST https://panel.example.com/api/webhook/your-key
+# In CI script
+curl -X POST https://panel.example.com/webhook/your-key
 ```
 
-## 列表說明
+## 清單說明
 
-| 欄位    | 說明              |
-| ----- | --------------- |
-| 名稱    | Web 鉤子名稱        |
-| Key   | 唯一標識，用於建構呼叫 URL |
-| 執行使用者 | 執行腳本的系統使用者      |
-| 原始輸出  | 是否返回原始文字輸出      |
-| 已啟用   | 是否啟用該 Web 鉤子    |
-| 呼叫次數  | 累計被呼叫的次數        |
-| 最後呼叫  | 最後一次呼叫時間        |
+| 欄位      | 說明               |
+| ------- | ---------------- |
+| 名稱      | Webhook 名稱       |
+| Key     | 唯一識別碼，用於建構呼叫 URL |
+| 執行身分使用者 | 執行腳本的系統使用者       |
+| 原始輸出    | 是否回傳原始文字輸出       |
+| 已啟用     | Webhook 是否已啟用    |
+| 呼叫次數    | 累計呼叫次數           |
+| 上次呼叫    | 上次呼叫時間           |
+| 建立時間    | Webhook 的建立時間    |
 
 ## 注意事項
 
-1. Key 是敏感資訊，不要洩露給不信任的人
-2. 腳本以指定使用者身份執行，注意權限控制
-3. 建議在腳本中添加必要的錯誤處理
-4. 可以通過停用開關臨時停用 Web 鉤子
+1. Key 屬於敏感資訊，請勿洩漏給不信任的人
+2. 腳本會以指定的使用者身分執行，請留意權限控管
+3. 建議在腳本中加入必要的錯誤處理
+4. 您可以使用停用開關暫時停用某個 Webhook

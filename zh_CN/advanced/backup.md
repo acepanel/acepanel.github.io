@@ -16,18 +16,22 @@
 | MySQL      | 备份 Percona/MySQL/MariaDB 数据库 |
 | PostgreSQL | 备份 PostgreSQL 数据库            |
 
+MySQL 和 PostgreSQL 选项卡仅在安装了相应的数据库引擎时才会出现。
+
 ## 创建备份
 
 1. 选择备份类型标签（网站/MySQL/PostgreSQL）
 2. 点击 **创建备份**
-3. 选择要备份的网站或数据库
-4. 选择存储位置
-5. 点击确认
+3. 选择要备份的网站（网站类型）或输入数据库名称（数据库类型）
+4. 选择备份存储
+5. 点击提交
 
-备份文件格式：
+备份归档的压缩格式由 **设置** > **基础** > **备份压缩格式** 控制，支持 `tar.xz`（默认）、`tar.gz`、`tar.zst`、`zip` 和 `7z`。
 
-- 网站：`.zip` 压缩包
-- 数据库：`.sql.zip` 压缩的 SQL 文件
+备份文件格式（`<format>` 为配置的压缩格式）：
+
+- 网站：`<name>.<format>` 网站目录的归档
+- 数据库：`<name>.sql.<format>` 压缩的 SQL 转储
 
 ## 备份列表
 
@@ -36,13 +40,13 @@
 - **文件名**：备份文件名称
 - **大小**：备份文件大小
 - **更新日期**：备份时间
-- **操作**：下载、恢复、删除
+- **操作**：恢复、删除
 
 ## 恢复备份
 
 1. 在备份列表中找到要恢复的备份
 2. 点击 **恢复** 按钮
-3. 确认恢复操作
+3. 在对话框中选择目标网站（网站类型）或输入目标数据库名称（数据库类型），然后点击提交
 
 :::danger 警告
 恢复操作会覆盖现有数据， 请确保已备份当前数据！
@@ -50,7 +54,7 @@
 
 ## 上传备份
 
-点击 **上传备份** 按钮可以上传本地的备份文件，用于恢复数据。
+点击 **上传备份** 按钮可以上传本地的备份文件，用于恢复数据。 支持的文件类型为 `.sql`、`.zip`、`.tar`、`.gz`、`.tgz`、`.bz2`、`.xz`、`.zst` 和 `.7z`。
 
 ## 存储管理
 
@@ -67,7 +71,7 @@
 点击 **添加存储** 可以添加远程存储，支持：
 
 - **S3 兼容存储**：AWS S3、阿里云 OSS、腾讯云 COS 等
-- **FTP/SFTP**：FTP 或 SFTP 服务器
+- **SFTP**：SFTP 服务器（使用密码或私钥进行身份验证）
 - **WebDAV**：WebDAV 服务器
 
 远程存储的优势：
@@ -134,61 +138,61 @@ S3 有两种 URL 访问风格：
 **阿里云 OSS**
 
 ```
-名称: aliyun-oss
-类型: S3
+Name: aliyun-oss
+Type: S3
 Access Key: 你的 AccessKey ID
 Secret Key: 你的 AccessKey Secret
-风格: Virtual Hosted
-区域: cn-hangzhou
-端点: oss-cn-hangzhou.aliyuncs.com
-协议: HTTPS
-存储桶: your-bucket-name
-路径: backup（可选）
+Style: Virtual Hosted
+Region: cn-hangzhou
+Endpoint: oss-cn-hangzhou.aliyuncs.com
+Scheme: HTTPS
+Bucket: your-bucket-name
+Path: backup (可选)
 ```
 
 **腾讯云 COS**
 
 ```
-名称: tencent-cos
-类型: S3
+Name: tencent-cos
+Type: S3
 Access Key: 你的 SecretId
 Secret Key: 你的 SecretKey
-风格: Virtual Hosted
-区域: ap-guangzhou
-端点: cos.ap-guangzhou.myqcloud.com
-协议: HTTPS
-存储桶: your-bucket-name
-路径: backup（可选）
+Style: Virtual Hosted
+Region: ap-guangzhou
+Endpoint: cos.ap-guangzhou.myqcloud.com
+Scheme: HTTPS
+Bucket: your-bucket-name
+Path: backup (可选)
 ```
 
 **Cloudflare R2**
 
 ```
-名称: cloudflare-r2
-类型: S3
+Name: cloudflare-r2
+Type: S3
 Access Key: 你的 Access Key ID
 Secret Key: 你的 Secret Access Key
-风格: Path Style
-区域: auto
-端点: <account-id>.r2.cloudflarestorage.com
-协议: HTTPS
-存储桶: your-bucket-name
-路径: backup（可选）
+Style: Path Style
+Region: auto
+Endpoint: <account-id>.r2.cloudflarestorage.com
+Scheme: HTTPS
+Bucket: your-bucket-name
+Path: backup (可选)
 ```
 
 **自建 MinIO**
 
 ```
-名称: minio
-类型: S3
+Name: minio
+Type: S3
 Access Key: minioadmin
 Secret Key: minioadmin
-风格: Path Style
-区域: us-east-1
-端点: minio.example.com:9000
-协议: HTTP 或 HTTPS
-存储桶: backup
-路径:（可选）
+Style: Path Style
+Region: us-east-1
+Endpoint: minio.example.com:9000
+Scheme: HTTP or HTTPS
+Bucket: backup
+Path: (可选)
 ```
 
 :::warning 注意
@@ -207,6 +211,32 @@ Secret Key: minioadmin
 3. 选择备份类型
 4. 设置执行周期
 5. 选择存储位置
+
+## 命令行备份
+
+除了 Web 界面，还可以通过[命令行工具](../quickstart/cli)触发备份。 这对于自定义 shell 脚本以及计划任务运行的命令非常有用。 大多数命令接受一个可选的 `-s, --storage` 参数来指定存储 ID（`panel` 命令除外）；省略时备份将保存到本地存储。
+
+```shell
+# 按名称备份网站
+acepanel backup website -n <website_name> [-s <storage_id>]
+
+# 备份数据库（type 为 mysql 或 postgresql）
+acepanel backup database -t <type> -n <database_name> [-s <storage_id>]
+
+# 备份任意目录
+acepanel backup path -p <directory_path> [-s <storage_id>]
+
+# 备份面板自身
+acepanel backup panel
+
+# 清理旧备份，保留最近的 <keep> 份
+# <file> 是用于匹配同一目标备份的文件名前缀
+acepanel backup clear -t <type> -f <file> -k <keep> [-s <storage_id>]
+```
+
+:::tip 注意
+命令行工具可以备份目录（`path`）和面板（`panel`），这些在 Web 备份模块中没有对应的选项卡。 `clear` 命令与计划备份任务使用的保留清理相同：对每个目标保留最新的 `keep` 份归档并删除其余的。
+:::
 
 ## 备份策略建议
 

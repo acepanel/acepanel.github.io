@@ -22,14 +22,13 @@
 2. 输入编排名称
 3. 编写或粘贴 docker-compose.yml 内容
 4. 配置环境变量（可选）
-5. 点击创建
+5. 点击 **提交**
 
 ![创建编排](/images/container/compose-create.png)
 
 ### docker-compose.yml 示例
 
 ```yaml
-version: '3'
 services:
   web:
     image: nginx:latest
@@ -64,7 +63,7 @@ volumes:
 
 - **强制拉取镜像**：勾选后会在启动前拉取最新镜像
 
-点击确认后，会显示启动进度：
+点击确认后，会打开一个终端窗口并显示启动命令的实时输出：
 
 ![启动进度](/images/container/compose-starting.png)
 
@@ -76,7 +75,9 @@ volumes:
 
 ### 删除编排
 
-删除编排会停止并删除所有相关容器。
+删除 Compose 会停止并删除所有相关容器，并移除 Compose 项目目录。
+
+你也可以在列表中选择多个 Compose，点击顶部的 **删除** 按钮进行批量删除。
 
 :::warning 注意
 删除编排不会删除数据卷， 如需删除数据卷请在 **卷** 页面手动删除。
