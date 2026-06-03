@@ -171,6 +171,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }, {
       text: "純靜態",
       link: '/website/static'
+    }, {
+      text: "統計",
+      link: '/website/stat'
     }]
   }, {
     text: "項目",
@@ -194,6 +197,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "Python",
       link: '/project/python'
     }, {
+      text: ".NET",
+      link: '/project/dotnet'
+    }, {
       text: "通用",
       link: '/project/general'
     }]
@@ -212,6 +218,12 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }, {
       text: "伺服器",
       link: '/database/server'
+    }, {
+      text: "Redis",
+      link: '/database/redis'
+    }, {
+      text: "Elasticsearch",
+      link: '/database/elasticsearch'
     }]
   }, {
     text: "證書",
@@ -242,10 +254,20 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     text: "終端機",
     link: '/ssh'
   }, {
+    text: "防火牆",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/firewall'
+    }, {
+      text: "掃描感知",
+      link: '/firewall/scan'
+    }]
+  }, {
     text: "任務",
     collapsed: true,
     items: [{
-      text: "計劃任務",
+      text: "排程任務",
       link: '/task/schedule'
     }, {
       text: "面板任務",
@@ -258,7 +280,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "概述",
       link: '/toolbox'
     }, {
-      text: "進程",
+      text: "行程",
       link: '/toolbox/process'
     }, {
       text: "系統",
@@ -273,23 +295,32 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "日誌清理",
       link: '/toolbox/log'
     }, {
-      text: "Web 鉤子",
+      text: "Webhook",
       link: '/toolbox/webhook'
     }, {
-      text: "跑分",
+      text: "效能測試",
       link: '/toolbox/benchmark'
+    }, {
+      text: "網路",
+      link: '/toolbox/network'
+    }, {
+      text: "遷移",
+      link: '/toolbox/migration'
+    }, {
+      text: "面板",
+      link: '/toolbox/panel'
     }]
   }, {
-    text: "設置",
+    text: "設定",
     collapsed: true,
     items: [{
-      text: "基本設置",
+      text: "基本設定",
       link: '/setting/basic'
     }, {
-      text: "安全設置",
+      text: "安全設定",
       link: '/setting/safe'
     }, {
-      text: "用戶設置",
+      text: "使用者管理",
       link: '/setting/user'
     }]
   }, {

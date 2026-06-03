@@ -171,6 +171,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }, {
       text: "纯静态",
       link: '/website/static'
+    }, {
+      text: "统计",
+      link: '/website/stat'
     }]
   }, {
     text: "项目",
@@ -194,6 +197,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "Python",
       link: '/project/python'
     }, {
+      text: ".NET",
+      link: '/project/dotnet'
+    }, {
       text: "通用",
       link: '/project/general'
     }]
@@ -212,6 +218,12 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }, {
       text: "服务器",
       link: '/database/server'
+    }, {
+      text: "Redis",
+      link: '/database/redis'
+    }, {
+      text: "Elasticsearch",
+      link: '/database/elasticsearch'
     }]
   }, {
     text: "证书",
@@ -241,6 +253,16 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   }, {
     text: "终端",
     link: '/ssh'
+  }, {
+    text: "防火墙",
+    collapsed: true,
+    items: [{
+      text: "概述",
+      link: '/firewall'
+    }, {
+      text: "扫描感知",
+      link: '/firewall/scan'
+    }]
   }, {
     text: "任务",
     collapsed: true,
@@ -273,11 +295,20 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "日志清理",
       link: '/toolbox/log'
     }, {
-      text: "Web 钩子",
+      text: "Webhook",
       link: '/toolbox/webhook'
     }, {
-      text: "跑分",
+      text: "性能测试",
       link: '/toolbox/benchmark'
+    }, {
+      text: "网络",
+      link: '/toolbox/network'
+    }, {
+      text: "迁移",
+      link: '/toolbox/migration'
+    }, {
+      text: "面板",
+      link: '/toolbox/panel'
     }]
   }, {
     text: "设置",
@@ -289,7 +320,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "安全设置",
       link: '/setting/safe'
     }, {
-      text: "用户设置",
+      text: "用户管理",
       link: '/setting/user'
     }]
   }, {

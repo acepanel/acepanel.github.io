@@ -45,7 +45,13 @@ journalctl -u acepanel -n 100
 acepanel info
 ```
 
-输出面板地址、用户名，并生成新密码。
+该命令会重新生成**全新的用户名和全新的密码**，然后打印出新的用户名、新的密码、监听端口、安全入口，以及本地/公网的 IPv4 和 IPv6 访问地址。 使用打印出的任意一个地址重新登录即可。
+
+:::warning 注意
+由于 `acepanel info` 每次运行都会重置用户名和密码，运行后此前的登录凭据将会失效。
+:::
+
+命令行工具命令的完整列表（服务管理、用户管理、安全设置、维护等），请参阅 [命令行工具](../quickstart/cli)。
 
 ## 修改面板端口
 
@@ -63,13 +69,14 @@ acepanel port 12345
 acepanel entrance off
 ```
 
-## 关闭域名/IP 绑定
+## 关闭域名/IP/UA 绑定
 
 绑定后无法访问面板：
 
 ```shell
 acepanel bind-domain off
 acepanel bind-ip off
+acepanel bind-ua off
 ```
 
 ## 关闭两步验证

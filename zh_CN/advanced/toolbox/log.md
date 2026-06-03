@@ -1,6 +1,6 @@
 # 日志清理
 
-日志清理功能用于扫描和清理系统及应用产生的日志文件，释放磁盘空间。
+日志清理功能用于扫描和清理系统及应用产生的日志文件，以释放磁盘空间。 在面板中它位于工具箱下的 **日志清理** 中。
 
 ![日志清理](/images/toolbox/toolbox-log.png)
 
@@ -24,9 +24,9 @@
 
 网站的访问日志和错误日志，包括：
 
-- Nginx 访问日志（access.log）
-- Nginx 错误日志（error.log）
-- 各网站的独立日志
+- 访问日志（access.log）
+- 错误日志（error.log）
+- 每个网站的独立日志（支持 Nginx、OpenResty 和 Apache）
 
 :::tip 提示
 网站日志通常是占用空间最大的日志类型，建议定期清理。
@@ -36,9 +36,8 @@
 
 Percona/MySQL/MariaDB 数据库的日志文件：
 
-- 慢查询日志（slow query log）
-- 二进制日志（binlog）
-- 错误日志
+- 慢查询日志（`mysql-slow.log`）
+- 二进制日志（binlog，`mysql-bin.*`）
 
 :::warning 注意
 二进制日志用于数据恢复和主从复制，清理前请确认不再需要。
@@ -46,19 +45,28 @@ Percona/MySQL/MariaDB 数据库的日志文件：
 
 ### Docker
 
-Docker 相关的日志和未使用资源：
+Docker 和 Podman 相关的日志及未使用的资源：
 
-- 容器日志
+- 容器日志（Docker 和 Podman）
 - 未使用的镜像
-- 构建缓存
+- 构建缓存及其他可回收资源会在清理时（通过 `system prune`）释放，但不会出现在扫描结果中
 
 ### 系统日志
 
 系统级别的日志文件：
 
 - systemd journal 日志
-- `/var/log` 下的系统日志
-- 内核日志
+- `/var/log` 下的系统日志（`syslog`、`messages`、`auth.log`、`secure`，以及所有 `/var/log/*.log` 文件）
+- 内核日志（`kern.log`、`dmesg`）
+- 登录记录（`btmp`、`wtmp`、`lastlog`）
+
+:::tip Journal 保留
+systemd journal 不会被完全删除。 清理时会执行 `journalctl --vacuum-time=1d`，因此只保留最近一天的条目。
+:::
+
+:::warning lastlog 仅扫描
+`/var/log/lastlog` 会包含在扫描结果中以便查看其大小，但在清理时**不会**被截断。 该文件存储每个用户的最后登录时间且为稀疏文件，因此其报告的大小通常远大于实际占用的磁盘空间。
+:::
 
 ## 使用方法
 

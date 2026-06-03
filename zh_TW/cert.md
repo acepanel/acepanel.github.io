@@ -267,28 +267,27 @@ next: false
 .cert-contact-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-</style>
+}</style>
 
 <div class="cert-hero">
   <h1>SSL 憑證服務</h1>
-  <p>免費憑證有效期僅 3 個月且需要頻繁續簽， 付費憑證有效期一年，省心省力</p>
+  <p>免費憑證有效期僅 3 個月且需要頻繁續約， 付費憑證有效期一年，省時又省力</p>
 </div>
 
 <div class="cert-cards">
   <div class="cert-card">
     <div class="cert-card-icon">🔒</div>
-    <h3>DV 單域名憑證</h3>
-    <div class="cert-card-desc">適合單個網站使用</div>
+    <h3>DV 單一網域憑證</h3>
+    <div class="cert-card-desc">適合單一網站使用</div>
     <div class="cert-price"><span class="cert-price-value">¥1X</span>
       <span class="cert-price-unit"> / 年</span>
     </div>
     <div class="cert-features">
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
-        <span>域名驗證 (DV) 憑證</span>
+        <span>網域驗證 (DV) 憑證</span>
       </div>
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
-        <span>保護單個域名</span>
+        <span>保護單一網域</span>
       </div>
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
         <span>一年有效期</span>
@@ -296,22 +295,22 @@ next: false
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
         <span>國際認可品牌</span>
       </div>
-    </div><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-secondary">聯繫購買</a>
+    </div><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-secondary">聯絡購買</a>
   </div>
 
   <div class="cert-card featured"><span class="cert-badge">推薦</span>
     <div class="cert-card-icon">🛡️</div>
-    <h3>DV 泛域名憑證</h3>
-    <div class="cert-card-desc">一張憑證保護所有子域名</div>
+    <h3>DV 萬用字元憑證</h3>
+    <div class="cert-card-desc">一張憑證即可保護所有子網域</div>
     <div class="cert-price"><span class="cert-price-value">¥1XX</span>
       <span class="cert-price-unit"> / 年</span>
     </div>
     <div class="cert-features">
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
-        <span>域名驗證 (DV) 憑證</span>
+        <span>網域驗證 (DV) 憑證</span>
       </div>
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
-        <span>保護所有子域名 (*.domain.com)</span>
+        <span>保護所有子網域 (*.domain.com)</span>
       </div>
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
         <span>一年有效期</span>
@@ -319,7 +318,7 @@ next: false
       <div class="cert-feature"><span class="cert-feature-check">✓</span>
         <span>國際認可品牌</span>
       </div>
-    </div><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-primary">聯繫購買</a>
+    </div><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-btn cert-btn-primary">聯絡購買</a>
   </div>
 </div>
 
@@ -328,18 +327,18 @@ next: false
   <div class="cert-why-grid">
     <div class="cert-why-item">
       <div class="cert-why-icon shield">🔐</div>
-      <h4>更長有效期</h4>
-      <p>一年有效期，無需頻繁續簽</p>
+      <h4>更長的有效期</h4>
+      <p>一年有效期，無需頻繁續約</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon bolt">⚡</div>
       <h4>快速簽發</h4>
-      <p>付款後快速完成簽發</p>
+      <p>付款後即可快速完成簽發</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon globe">🌐</div>
       <h4>國際品牌</h4>
-      <p>全球瀏覽器信任</p>
+      <p>受全球瀏覽器信任</p>
     </div>
     <div class="cert-why-item">
       <div class="cert-why-icon support">💬</div>
@@ -350,6 +349,5 @@ next: false
 </div>
 
 <div class="cert-contact">
-  <h3>需要幫助？</h3>
-  <p>如有任何問題，歡迎加入 QQ 群諮詢</p><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-contact-btn">加入 QQ 群 12370907</a>
-</div>
+  <h3>需要協助嗎？</h3>
+  <p>如有任何問題，歡迎加入我們的 QQ 群組諮詢</p><a href="https://jq.qq.com/?_wv=1027&k=I1oJKSTH" target="_blank" class="cert-contact-btn">加入 QQ 群組 12370907</a></div>

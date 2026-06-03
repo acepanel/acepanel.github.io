@@ -21,7 +21,7 @@ chmod -R 755 /opt/ace/sites/网站名/public
 
 PHP 网站出现 502，检查 PHP 是否运行：
 
-1. 「应用」->「运行环境」->「PHP」->「管理」
+1. **应用** -> **运行环境** -> **PHP** -> **管理**
 2. 确认 PHP 版本与网站配置一致
 3. 查看 PHP 错误日志
 
@@ -35,7 +35,7 @@ PHP 网站出现 502，检查 PHP 是否运行：
 
 ## 配置 QUIC (HTTP/3)
 
-面板支持 QUIC，但默认不添加 `Alt-Svc` 头。 在自定义配置中添加：
+在网站编辑器中，打开 **域名与监听** 标签页，并在 HTTPS 监听地址上启用 **QUIC(HTTP3)** 开关。 启用 QUIC 后，面板会自动为你添加 `Alt-Svc` 宣告头，因此无需额外配置：
 
 ```nginx
 add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
@@ -45,15 +45,17 @@ add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
 
 ## 启用 TLSv1/TLSv1.1
 
-OpenSSL 3.x 默认禁用旧协议。 如必须使用，在「HTTPS」设置中修改密码套件：
+在网站编辑器中，打开 **HTTPS** 标签页，并在 **TLS 版本** 选择器中添加 **TLS 1.0** 和/或 **TLS 1.1**（默认仅启用 TLS 1.2 和 TLS 1.3）。
+
+OpenSSL 3.x 还会降低安全等级，因此这些旧协议所用的加密套件会被拒绝。 如果连接仍然失败，请通过 **自定义配置** 标签页追加一个以 `@SECLEVEL=0` 结尾的加密套件：
 
 ```nginx
-ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES128-SHA:AES256-SHA:DES-CBC3-SHA:@SECLEVEL=0;
+ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES128-SHA:AES256-SHA:DES-CBC3-SHA:@SECLEVEL=0;
 ```
 
 ## 启用 IPv6
 
-在「域名和监听」添加监听地址：`[::]:80` 和 `[::]:443`。
+在 **域名与监听** 中添加监听地址：`[::]:80` 和 `[::]:443`。
 
 ## CDN 回源与 HTTPS
 
@@ -67,7 +69,7 @@ ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM
 
 默认限制 100MB。 修改 PHP 配置：
 
-1. 「应用」->「运行环境」->「PHP」->「管理」->「主配置」
+1. **应用** -> **运行环境** -> **PHP** -> **管理** -> **主配置**
 2. 修改 `upload_max_filesize` 和 `post_max_size`
 3. 保存后重启 PHP
 
