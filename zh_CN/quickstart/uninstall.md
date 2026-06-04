@@ -1,7 +1,7 @@
 # 卸载
 
 :::danger 警告
-卸载前请备份所有数据， 卸载后数据不可恢复。
+卸载前请备份所有数据。 卸载后数据不可恢复。
 :::
 
 ## 卸载步骤
@@ -20,8 +20,8 @@ bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 如果你只是想在卸载前暂停面板，可以使用 `acepanel` 命令行工具停止服务。 请注意，这只会停止服务，并不会移除面板：
 
 ```shell
-acepanel status   # View service status
-acepanel stop     # Stop the service
+acepanel status   # 查看服务状态
+acepanel stop     # 停止服务
 ```
 
 请勿在后台任务仍在运行时停止面板，否则可能中断这些任务。 完整的命令参考请查看[命令行工具](./cli)页面。

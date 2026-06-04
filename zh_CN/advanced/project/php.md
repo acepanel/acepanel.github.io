@@ -1,8 +1,8 @@
-# PHP 网站
+# PHP 项目
 
-PHP 网站用于运行 PHP 程序，如 WordPress、Laravel、ThinkPHP 等。
+PHP 项目用于部署需要常驻进程的 PHP 应用，例如 Laravel Octane、Swoole、Workerman 等。
 
-:::tip 警告
+:::tip 提示
 传统的 PHP-FPM 应用（如 WordPress、Laravel）应使用 [PHP 网站](../website/php) 方式部署，而非项目。
 :::
 

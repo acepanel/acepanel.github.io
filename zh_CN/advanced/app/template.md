@@ -26,8 +26,8 @@
 
 ![选择部署模式](/images/app/app-template-deploy-step1.png)
 
-- **创建新编排**：从模板创建一个新的 Docker Compose 编排
-- **更新现有编排**：使用模板更新已有的编排配置
+- **创建新 Compose**：从模板创建一个新的 Docker Compose
+- **更新现有 Compose**：使用模板更新已有的 compose 配置
 
 ### 第二步：配置参数
 
@@ -78,7 +78,7 @@
 
 如果启用了 **自动启动**，会打开一个终端窗口并运行 `docker compose -f <dir>/docker-compose.yml up -d` 来启动容器；你可以实时查看启动输出。
 
-部署完成后，应用会出现在 **容器** > **编排** 页面中进行管理。
+部署完成后，应用会出现在 **容器** > **Compose** 页面中进行管理。
 
 ## 模板 vs 手动部署
 

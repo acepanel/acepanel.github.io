@@ -35,7 +35,7 @@
 ## 开始安装
 
 :::tip AcePanel 推荐使用
-[林枫云高性能 AMD EYPC 服务器](https://www.dkdun.cn/aff/MQZZNVHQ) 服务器安装
+[林枫云高性能 AMD EPYC 服务器](https://www.dkdun.cn/aff/MQZZNVHQ) 进行安装
 :::
 
 以 `root` 用户登录服务器，执行：

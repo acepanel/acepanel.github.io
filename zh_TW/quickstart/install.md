@@ -51,7 +51,13 @@ bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 安裝完成後，終端機會顯示面板存取位址與初始帳號憑證：
 
 ```
-========================================\nAcePanel Installation Complete\nUsername: xxxxxxxx\nPassword: xxxxxxxxxxxxxxxx\nPort: xxxxx\nEntry: /xxxxxx\n========================================
+========================================
+AcePanel Installation Complete
+Username: xxxxxxxx
+Password: xxxxxxxxxxxxxxxx
+Port: xxxxx
+Entry: /xxxxxx
+========================================
 ```
 
 首次存取時，可能需要在瀏覽器中信任自簽憑證。
