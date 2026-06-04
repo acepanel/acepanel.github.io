@@ -58,7 +58,7 @@ export const config = defineConfig({
     },
     langMenuLabel: "切換語言",
     returnToTopLabel: "回到頂部",
-    sidebarMenuLabel: "菜單",
+    sidebarMenuLabel: "選單",
     darkModeSwitchLabel: "主題",
     lightModeSwitchTitle: "切換到淺色主題",
     darkModeSwitchTitle: "切換到深色主題",
@@ -70,13 +70,13 @@ function nav(): DefaultTheme.NavItem[] {
     text: "首頁",
     link: locale == 'zh_CN' ? '/' : `/${locale}/`
   }, {
-    text: "文檔",
+    text: "文件",
     link: locale == 'zh_CN' ? '/quickstart/introduction' : `/${locale}/quickstart/introduction`
   }, {
     text: "支持",
     link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
   }, {
-    text: "🔥證書",
+    text: "🔥憑證",
     link: locale == 'zh_CN' ? '/cert' : `/${locale}/cert`
   }, {
     text: "關於",
@@ -107,7 +107,7 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
     text: "第一個容器",
     link: '/first-container'
   }, {
-    text: "第一個項目",
+    text: "第一個專案",
     link: '/first-project'
   }, {
     text: "命令列",
@@ -128,7 +128,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "原生應用",
       link: '/app/native'
     }, {
-      text: "運行環境",
+      text: "執行環境",
       link: '/app/environment'
     }, {
       text: "容器模版",
@@ -147,7 +147,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "編排",
       link: '/container/compose'
     }, {
-      text: "映像",
+      text: "映像檔",
       link: '/container/image'
     }, {
       text: "網路",
@@ -176,7 +176,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/website/stat'
     }]
   }, {
-    text: "項目",
+    text: "專案",
     collapsed: true,
     items: [{
       text: "概述",
@@ -204,16 +204,16 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/project/general'
     }]
   }, {
-    text: "數據庫",
+    text: "資料庫",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/database'
     }, {
-      text: "數據庫",
+      text: "資料庫",
       link: '/database/database'
     }, {
-      text: "用戶",
+      text: "使用者",
       link: '/database/user'
     }, {
       text: "伺服器",
@@ -226,13 +226,13 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/database/elasticsearch'
     }]
   }, {
-    text: "證書",
+    text: "憑證",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/cert'
     }, {
-      text: "證書",
+      text: "憑證",
       link: '/cert/cert'
     }, {
       text: "帳號",
@@ -339,13 +339,13 @@ function sidebarFAQ(): DefaultTheme.SidebarItem[] {
     text: "應用",
     link: '/application'
   }, {
-    text: "數據庫",
+    text: "資料庫",
     link: '/database'
   }, {
     text: "網站",
     link: '/website'
   }, {
-    text: "項目",
+    text: "專案",
     link: '/project'
   }, {
     text: "容器",

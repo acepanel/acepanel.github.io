@@ -1,16 +1,16 @@
-# Web 钩子
+# Webhook
 
-Web 钩子（Webhook）允许你通过 HTTP 请求触发服务器上的脚本执行，实现自动化部署、CI/CD 集成等功能。
+Webhook 允许你通过 HTTP 请求触发服务器上的脚本执行，实现自动化部署、CI/CD 集成等功能。
 
-![Web 钩子](/images/toolbox/toolbox-webhook.png)
+![Webhook](/images/toolbox/toolbox-webhook.png)
 
-## 创建 Web 钩子
+## 创建 Webhook
 
-点击 **创建 Web 钩子** 按钮，填写以下信息：
+点击 **创建 Webhook** 按钮，填写以下信息：
 
-![创建 Web 钩子](/images/toolbox/toolbox-webhook-create.png)
+![创建 Webhook](/images/toolbox/toolbox-webhook-create.png)
 
-- **名称**：Web 钩子的名称，用于标识用途
+- **名称**：Webhook 的名称，用于标识用途
 - **用户**：执行脚本的系统用户，默认为 root
 - **原始输出**：开启后返回脚本的原始输出，关闭则返回 JSON 格式
 - **脚本**：要执行的 Shell 脚本内容。 表单默认预填了 `#!/bin/bash` 模板
@@ -84,11 +84,11 @@ curl -X POST https://panel.example.com/webhook/your-key
 
 | 字段     | 说明              |
 | ------ | --------------- |
-| 名称     | Web 钩子名称        |
+| 名称     | Webhook 名称      |
 | Key    | 唯一标识，用于构建调用 URL |
 | 运行身份用户 | 执行脚本的系统用户       |
 | 原始输出   | 是否返回原始文本输出      |
-| 已启用    | 是否启用该 Web 钩子    |
+| 已启用    | 是否启用该 Webhook   |
 | 调用次数   | 累计被调用的次数        |
 | 最后调用   | 最后一次调用时间        |
 | 创建时间   | Webhook 的创建时间   |
@@ -98,4 +98,4 @@ curl -X POST https://panel.example.com/webhook/your-key
 1. Key 是敏感信息，不要泄露给不信任的人
 2. 脚本以指定用户身份执行，注意权限控制
 3. 建议在脚本中添加必要的错误处理
-4. 可以通过禁用开关临时停用 Web 钩子
+4. 可以通过禁用开关临时停用 Webhook

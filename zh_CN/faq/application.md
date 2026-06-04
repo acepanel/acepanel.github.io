@@ -39,7 +39,7 @@ systemctl restart nginx
 项目目录权限问题，确保目录所有者为 www：
 
 ```shell
-chown -R www:www /opt/ace/projects/项目名
+chown -R www:www /opt/ace/projects/project-name
 ```
 
 ### 找不到 node/npm

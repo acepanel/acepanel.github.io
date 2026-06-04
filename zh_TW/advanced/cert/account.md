@@ -32,14 +32,14 @@ LiteSSL、Google 與 SSL.com 需要先從其官方網站取得 EAB（KID 與 HMA
 
 ### 憑證授權機構（CA）
 
-| CA                      | 說明                            |
-| ----------------------- | ----------------------------- |
-| Let's Encrypt           | 最熱門的免費 CA，憑證有效期為 90 天         |
-| GoogleCN                | 由 AcePanel 提供的 Google 憑證服務映像檔 |
-| LiteSSL                 | 由 TrustAsia 提供的免費憑證服務         |
-| ZeroSSL                 | 免費 CA，憑證有效期為 90 天             |
-| SSL.com | 商業 CA，支援透過 EAB 進行 ACME 簽發     |
-| Google                  | Google 的免費憑證服務                |
+| CA                      | 說明                           |
+| ----------------------- | ---------------------------- |
+| Let's Encrypt           | 最熱門的免費 CA，憑證有效期為 90 天        |
+| GoogleCN                | 由 AcePanel 提供的 Google 憑證服務鏡像 |
+| LiteSSL                 | 由 TrustAsia 提供的免費憑證服務        |
+| ZeroSSL                 | 免費 CA，憑證有效期為 90 天            |
+| SSL.com | 商業 CA，支援透過 EAB 進行 ACME 簽發    |
+| Google                  | Google 的免費憑證服務               |
 
 ### 金鑰類型
 
