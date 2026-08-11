@@ -1,9 +1,22 @@
 import { type DefaultTheme, defineConfig } from 'vitepress';
 const locale = "zh_CN";
-const resp = await (await fetch('https://api.acepanel.net/versions?locale=en')).json();
-const versions = resp.data.slice(0, 10).map((item: any) => {
-  return item.version;
-});
+const versions = await getVersions();
+
+async function getVersions(): Promise<string[]> {
+  try {
+    const response = await fetch('https://api.acepanel.net/versions?locale=en');
+    const resp = await response.json();
+    if (!Array.isArray(resp?.data)) {
+      return [];
+    }
+    return resp.data
+      .slice(0, 10)
+      .map((item: any) => item?.version)
+      .filter((version: unknown): version is string => typeof version === 'string' && version.length > 0);
+  } catch {
+    return [];
+  }
+}
 export const config = defineConfig({
   lang: "zh-CN",
   title: 'AcePanel',
