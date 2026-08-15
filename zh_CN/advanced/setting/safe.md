@@ -102,7 +102,7 @@
 
 选择 **ACME（自动）** 或 **自签名** 时，保存按钮旁会出现 **刷新证书** / **重新生成证书** 按钮，可手动重新签发证书。 重新签发后，页面会在几秒后自动刷新。
 
-When the panel is bound to a domain, that domain can be used for ACME issuance. Confirm that DNS and the required validation path reach this server before requesting the certificate.
+面板绑定域名后，可以使用该域名申请 ACME 证书。 申请前请确认 DNS 和所需验证路径均指向此服务器。
 
 :::tip 注意
 当 HTTPS 模式或面板公网 IP 存在未保存的更改时，**刷新证书** / **重新生成证书** 按钮会保持禁用状态。 请先保存更改，然后再点击该按钮重新签发证书。

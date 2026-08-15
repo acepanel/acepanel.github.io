@@ -1,20 +1,20 @@
-# 容器範本
+# 容器模板
 
 ![Container templates](/images/app/template.png)
 
-容器範本提供以 Docker 為基礎的一鍵部署方案，可快速部署各種常見的應用程式，無需手動設定。
+容器模板提供了基於 Docker 的一鍵部署方案，可以快速部署各類常用應用，無需手動配置。
 
-## 事前準備
+## 前置要求
 
-使用容器範本前，您需要先安裝 Docker：
+使用容器模板前，需要先安裝 Docker：
 
-1. Go to **Apps** > **Native App**
+1. 進入 **應用** > **原生應用**
 2. 找到 Docker，點選 **安裝**
 3. 等待安裝完成
 
-## 範本清單
+## 模板列表
 
-Go to the **Apps** page, click the **Container Template** tab to view available templates:
+進入 **應用** 頁面，點選 **容器模板** 選項卡檢視可用模板：
 
 您可以依分類標籤篩選範本，或依名稱、描述、網址進行搜尋。 從本機 `panel/storage/templates` 目錄載入的範本會顯示 **本機** 標籤。 若本機範本與遠端範本的 slug 相同，則以本機範本為準。
 
@@ -22,7 +22,7 @@ Go to the **Apps** page, click the **Container Template** tab to view available 
 
 點選範本卡片上的 **部署** 按鈕，即可啟動部署精靈。
 
-### 步驟 1：選擇部署模式
+### 第一步：選擇部署模式
 
 - **建立新的 Compose**：以範本建立一個新的 Docker Compose
 - **更新現有 Compose**：使用範本更新現有的 compose 設定
@@ -31,7 +31,7 @@ Go to the **Apps** page, click the **Container Template** tab to view available 
 
 依應用程式需求填寫設定資訊：
 
-常見的設定項目：
+常見配置項：
 
 - **Compose 名稱**：用於識別這次部署（僅限建立模式；更新模式下改為選擇一個現有的 compose）
 - **自動啟動**：是否在建立後自動啟動容器
@@ -53,14 +53,14 @@ Go to the **Apps** page, click the **Container Template** tab to view available 
 
 ### 步驟 3：預覽與編輯
 
-預覽產生的 Docker Compose 設定檔：
+預覽生成的 Docker Compose 配置檔案：
 
-在這裡您可以：
+你可以在這裡：
 
 - 檢視並編輯 **Compose 檔案**（docker-compose.yml）。 在更新模式下這是一個差異編輯器：左側顯示原始的 compose，右側顯示新的 compose，您可以對其進行編輯。
 - 檢視並編輯 **環境變數**
 
-### 步驟 4：確認部署
+### 第四步：確認部署
 
 此步驟會顯示您所做選擇的摘要：部署模式、compose 名稱、是否啟用自動啟動、是否啟用自動放行防火牆（僅限建立模式），以及環境變數的數量。 您可以展開 **Compose 內容**，再次檢視最終的唯讀 compose。
 
@@ -72,15 +72,15 @@ Go to the **Apps** page, click the **Container Template** tab to view available 
 
 部署完成後，該應用程式會出現在 **容器** > **Compose** 頁面中供您管理。
 
-## 範本部署與手動部署的比較
+## 模板 vs 手動部署
 
-| 功能   | 使用範本        | 手動部署                                     |
-| ---- | ----------- | ---------------------------------------- |
-| 設定難度 | 簡單，只需填寫基本資訊 | 需自行撰寫 docker-compose.yml |
-| 彈性   | 使用預設設定      | 可完全自訂                                    |
-| 適用情境 | 快速部署常見應用程式  | 特殊需求、自訂設定                                |
+| 特性   | 使用模板        | 手動部署                                    |
+| ---- | ----------- | --------------------------------------- |
+| 配置難度 | 簡單，填寫基本資訊即可 | 需要編寫 docker-compose.yml |
+| 彈性   | 使用預設配置      | 可完全自訂                                   |
+| 適用情境 | 快速部署常用應用    | 特殊需求、自訂設定                               |
 
-## 常見範本說明
+## 常用模板說明
 
 ### WordPress
 
@@ -104,7 +104,7 @@ MySQL/MariaDB 資料庫的圖形化管理工具。
 
 ### OpenList
 
-多儲存空間彙整的檔案清單程式，支援阿里雲端硬碟、OneDrive 等。
+多儲存聚合的檔案列表程式，支援阿里雲盤、OneDrive 等。
 
 ## 更新快取
 

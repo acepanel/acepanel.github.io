@@ -1,57 +1,57 @@
-# Home
+# 首頁
 
-![AcePanel home dashboard](/images/home/home.png)
+![AcePanel 首頁儀表盤](/images/home/home.png)
 
-Home is the operational overview of the current server. It combines resource totals, live performance, shortcuts, system information, process ranking, version information, and panel-health warnings on one page.
+首頁用於總覽當前伺服器的執行情況， 在一個頁面中集中展示資源數量、即時效能、快捷入口、系統資訊、程序排行、版本資訊和麵板健康告警。
 
-Open **Home** from the first item in the main navigation.
+點選主導航中的第一個選單項 **首頁** 即可進入。
 
-## What the Dashboard Shows
+## 儀表盤內容
 
-| Area                    | What it is used for                                                                                                                                                                          |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource cards          | Counts of managed websites, projects, databases, containers, certificates, scheduled tasks, and applications. Click a card to open the corresponding module. |
-| CPU, memory, and load   | Current CPU and memory utilization and Linux load averages. A high load value is not the same as high CPU usage; also check process and disk activity.       |
-| Disk and network charts | Live disk throughput and network ingress/egress. These are short-term operational signals, not historical monitoring.                                        |
-| Top processes           | Processes currently consuming the most CPU or memory. Use **Toolbox > Process** for details, open files, connections, and signals.                           |
-| Application shortcuts   | Quick access to installed applications and their management pages.                                                                                                           |
-| System information      | Distribution, kernel, uptime, host, and support status.                                                                                                                      |
-| Version                 | The installed AcePanel version and commit. Use it to confirm that the UI matches the documentation.                                                          |
+| 區域         | 用途                                                              |
+| ---------- | --------------------------------------------------------------- |
+| 資源卡片       | 顯示已管理的網站、專案、資料庫、容器、證書、計劃任務和應用數量。 點選卡片可直接進入對應模組。                 |
+| CPU、記憶體和負載 | 顯示當前 CPU、記憶體使用率以及 Linux 平均負載。 負載高不一定等於 CPU 使用率高，還應結合程序和磁碟活動判斷。  |
+| 磁碟和網路圖表    | 顯示即時磁碟吞吐量與網路流入、流出速率， 用於觀察短期執行狀態，不作為歷史監控資料。                      |
+| 程序排行       | 顯示當前佔用 CPU 或記憶體最多的程序。 需要檢視程序詳情、開啟檔案、網路連線或傳送訊號時，使用 **工具箱 > 程序**。 |
+| 應用快捷入口     | 快速進入已安裝應用及其管理頁面。                                                |
+| 系統資訊       | 顯示發行版、核心、執行時間、主機資訊和支援狀態。                                        |
+| 版本資訊       | 顯示當前安裝的 AcePanel 版本和提交， 用於確認當前介面與文件是否一致。                        |
 
-For historical charts and alerting, use [System Monitoring](./monitor), [Alerts](./monitor/alert), and [Monitoring Settings & Notifications](./monitor/setting).
+需要檢視歷史圖表或配置告警時，請參閱[系統監控](./monitor)、[告警](./monitor/alert)和[監控設定與通知](./monitor/setting)。
 
-## Health Warnings
+## 健康告警
 
-AcePanel checks its main database, website statistics database, and scan-awareness database. A health banner is displayed if a database cannot be opened or its integrity check fails.
+AcePanel 會檢查面板主資料庫、網站統計資料庫和掃描感知資料庫。 資料庫無法開啟或完整性檢查失敗時，首頁會顯示健康告警橫幅。
 
-Do not ignore a health banner even when the rest of the panel still appears usable. First create or confirm a recent panel backup, then run the command suggested by the banner:
+即使面板其他功能暫時仍可使用，也不要忽略健康告警。 先建立面板備份或確認已有近期備份，再按告警提示執行：
 
 ```bash
 acepanel fix
 ```
 
-Review the command output and restart AcePanel only when instructed. A repair may affect the panel service, so keep an SSH session open before starting. Panel database maintenance and the tamper-protection auxiliary database are included in panel backup and recovery operations.
+檢查命令輸出，僅在提示要求時重啟 AcePanel。 修復過程可能影響面板服務，操作前應保留一個可用的 SSH 會話。 面板資料庫維護及防篡改輔助資料庫均包含在面板備份和恢復範圍內。
 
-## Unsupported or End-of-Life Systems
+## 系統不受支援或已停止維護
 
-Home warns when the distribution is unsupported or has reached end of life. An unsupported system can prevent application installation, security updates, firewall changes, or service management from working reliably. Migrate to a supported distribution instead of hiding the warning.
+當前發行版不受支援或已經停止維護時，首頁會顯示提示。 繼續使用此類系統可能導致應用安裝、安全更新、防火牆修改或服務管理異常。 應遷移到受支援的發行版，不要僅隱藏提示後繼續使用。
 
-## Updating AcePanel
+## 更新 AcePanel
 
-When an update is available, open the update dialog to compare the current and target versions and read the changelog. The dialog streams each update stage and its log output. A failed or timed-out stage remains visible for troubleshooting.
+有新版本時，可開啟更新對話方塊比較當前版本與目標版本並閱讀更新日誌。 對話方塊會即時顯示各更新階段及日誌； 失敗或超時的階段會保留在頁面中，便於排查。
 
-Before updating:
+更新前：
 
-1. Download a recent panel backup.
-2. Confirm that websites, databases, and projects have their own backups.
-3. Keep an independent SSH session open.
-4. Do not update while a [migration](./toolbox/migration) is running.
+1. 下載一份近期面板備份。
+2. 確認網站、資料庫和專案均有各自的備份。
+3. 保留一個獨立的 SSH 會話。
+4. [遷移](./toolbox/migration)進行期間不要更新面板。
 
-The panel service restarts during an update, so the browser connection temporarily drops. Some releases may also require a server restart. After a successful update, the dialog closes or reloads the page automatically. If the page does not return, check the panel service and run `acepanel info` from SSH.
+更新過程中面板服務會重啟，瀏覽器連線將暫時斷開； 部分版本還可能要求重啟伺服器。 更新成功後，對話方塊會自動關閉或重新整理頁面。 頁面沒有恢復時，通過 SSH 檢查面板服務並執行 `acepanel info`。
 
-## Troubleshooting
+## 故障排查
 
-- **A chart is empty:** wait for the first sampling interval, then confirm that the server is not under extreme load.
-- **A resource count looks stale:** open the related module and refresh it; if the mismatch remains, check the health banner and operation logs.
-- **The update log stops:** keep the page open long enough to distinguish a slow package operation from a timeout, then check [Panel Tasks](./task/panel) and the panel service log.
-- **An update does not complete:** keep the SSH session open, check the update log and panel service, then use `acepanel fix` when the health message instructs you to do so.
+- **圖表為空：** 等待第一個取樣週期，再確認伺服器是否處於極高負載狀態。
+- **資源數量沒有更新：** 進入對應模組並重新整理；仍不一致時，檢查健康告警和操作日誌。
+- **更新日誌停止變化：** 保持頁面開啟，先區分耗時較長的軟體包操作與真正超時，再檢查[面板任務](./task/panel)和麵板服務日誌。
+- **更新未完成：** 保留 SSH 會話，檢查更新日誌和麵板服務；健康提示要求時再執行 `acepanel fix`。

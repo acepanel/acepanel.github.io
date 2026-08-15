@@ -1,14 +1,14 @@
-# System Monitoring
+# 系統監控
 
 ![System monitoring](/images/monitor/system.png)
 
-System Monitoring records and displays CPU, memory, disk I/O, and network traffic over time. Open **Monitoring > System**. Use [Alerts](./monitor/alert) to define thresholds and [Settings & Notifications](./monitor/setting) to configure collection, retention, SMTP, and event delivery.
+系統監控按時間記錄並展示 CPU、記憶體、磁碟 I/O 和網路流量。 進入 **監控 > 系統**。 使用[告警](./monitor/alert)設定閾值，通過[設定與通知](./monitor/setting)配置採集、保留、SMTP 和事件傳送。
 
 ## 監控頁面
 
-## Data Collection Settings
+## 資料採集設定
 
-Collection controls are under **Monitoring > Settings**.
+資料採集控制位於 **監控 > 設定**。
 
 ### 啟用監控
 
@@ -28,9 +28,9 @@ Collection controls are under **Monitoring > Settings**.
 
 ## 監控指標
 
-### 平均負載
+### 負載（Load Average）
 
-系統負載反映 CPU 的繁忙程度：
+系統負載反映了 CPU 的繁忙程度：
 
 - **1 分鐘負載**：最近 1 分鐘的平均負載
 - **5 分鐘負載**：最近 5 分鐘的平均負載
@@ -40,13 +40,13 @@ Collection controls are under **Monitoring > Settings**.
 
 - 負載 < CPU 核心數：系統運作順暢
 - 負載 = CPU 核心數：系統滿載運作
-- 負載 > CPU 核心數：系統超載，可能會出現卡頓
+- 負載 > CPU 核心數：系統過載，可能出現卡頓
 
 ### CPU 使用率
 
 顯示一段時間內 CPU 的整體使用率百分比（0-100%）。 將滑鼠游標移至圖表上，可檢視該時間點 CPU 使用率 **前 5 名行程**。
 
-### 記憶體使用量
+### 記憶體使用
 
 以 MB 為單位顯示記憶體使用量：
 
@@ -88,12 +88,12 @@ Collection controls are under **Monitoring > Settings**.
 
 透過監控資料分析伺服器的效能瓶頸：
 
-- CPU 負載持續偏高：可考慮最佳化程式或升級 CPU
-- 記憶體不足：可考慮增加記憶體或最佳化記憶體使用
-- 磁碟 I/O 偏高：可考慮使用 SSD 或最佳化資料庫查詢
-- 網路頻寬不足：可考慮升級頻寬
+- CPU 持續高負載：考慮最佳化程式或升級 CPU
+- 記憶體不足：考慮增加記憶體或最佳化記憶體使用
+- 磁碟 I/O 高：考慮使用 SSD 或最佳化資料庫查詢
+- 網路頻寬不足：考慮升級頻寬
 
-### 問題排查
+### 故障排查
 
 發生問題時，可檢視歷史監控資料以定位問題發生的時間與原因。
 

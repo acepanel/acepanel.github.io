@@ -40,7 +40,7 @@
 
 ## 测试建议
 
-CPU, memory, and especially disk benchmarks create temporary load and can compete with websites, databases, containers, and backups. Run them during a maintenance window, one test at a time, with enough free disk space. Do not benchmark a production database volume during peak traffic.
+CPU、内存，尤其是磁盘性能测试会产生临时负载，并与网站、数据库、容器和备份争用资源。 请在维护窗口内逐项执行，并确保有足够的可用磁盘空间。 业务高峰期不要在生产数据库所在的磁盘卷上运行测试。
 
 1. 测试前关闭不必要的服务和进程
 2. 避免在业务高峰期进行测试

@@ -9,9 +9,9 @@
 頁面頂部提供批次操作按鈕：
 
 - **全部掃描**：掃描所有類型的日誌
-- **全部清理**：清理所有已掃描的日誌
+- **清理所有**：清理所有已掃描的日誌
 
-Scanning is read-only: it reports the matching items, count, and estimated reclaimable space. Cleaning removes or vacuums the items found by the scan and reports the actual result. Scan again if new logs were written after the previous result.
+掃描是隻讀操作，只會報告匹配的專案、數量和預計可釋放空間。 清理會刪除或整理掃描發現的專案，並報告實際結果。 如果上次掃描後又寫入了新日誌，請重新掃描。
 
 ## 日誌類型
 
@@ -70,7 +70,7 @@ systemd journal 不會被完全刪除。 清理時會執行 `journalctl --vacuum
 `/var/log/lastlog` 會包含在掃描結果中以便檢視其大小，但在清理時**不會**被截斷。 該檔案儲存每個使用者的最後登入時間且為稀疏檔案，因此其回報的大小通常遠大於實際佔用的磁碟空間。
 :::
 
-## 使用方式
+## 使用方法
 
 1. 點選各類型的 **掃描** 按鈕，檢視日誌佔用空間
 2. 確認要清理的日誌類型
@@ -84,8 +84,8 @@ systemd journal 不會被完全刪除。 清理時會執行 `journalctl --vacuum
 
 ## 注意事項
 
-1. 清理操作無法復原，請確認日誌不再需要
-2. Log cleanup targets panel logs, website logs, MySQL slow-query and binary logs, Docker container logs and unused images, and system log or journal data. It does not delete website content, database tables, active container volumes, or normal business files.
-3. Download logs first when they may be needed for an incident, audit, failed backup, or security investigation.
+1. 清理操作不可恢復，請確認日誌不再需要
+2. 日誌清理只處理面板日誌、網站日誌、MySQL 慢查詢和二進位制日誌、Docker 容器日誌和未使用映象，以及系統日誌或 journal 資料； 不會刪除網站內容、資料庫表、正在使用的容器卷或普通業務檔案。
+3. 如果日誌可能用於故障、審計、備份失敗或安全事件調查，請先下載儲存。
 4. 重要日誌建議先備份
-5. 生產環境建議保留最近的日誌以利問題排查
+5. 生產環境建議保留最近的日誌用於問題排查

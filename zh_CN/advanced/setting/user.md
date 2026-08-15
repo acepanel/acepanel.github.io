@@ -31,7 +31,7 @@
 
 管理用于代表该用户调用面板 API 的 API 访问令牌。
 
-Access tokens are also used when this server is the destination of an [AcePanel-to-AcePanel migration](../toolbox/migration). For a custom integration, follow the [Panel API](../api) signing rules.
+当本服务器作为 [AcePanel 到 AcePanel 迁移](../toolbox/migration)的目标时，也需要使用访问令牌。 开发自定义集成时，请遵循[面板 API](../api)中的签名规则。
 
 点击 **访问令牌** 打开令牌管理器，你可以在其中创建、修改和删除令牌。 令牌列表会显示令牌的 **ID**、**创建时间** 和 **过期时间**。
 
@@ -46,7 +46,7 @@ Access tokens are also used when this server is the destination of an [AcePanel-
 令牌值仅在创建时显示一次，请在关闭对话框前妥善保存。
 :::
 
-For migration, add the source server's outbound IP address—not the address of the administrator's browser—to the allowlist. Delete temporary tokens after the migration completes.
+迁移时，应将来源服务器的出口 IP 地址加入白名单，而不是管理员浏览器的地址。 迁移完成后请删除临时令牌。
 
 ### 通行密钥
 

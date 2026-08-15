@@ -1,47 +1,47 @@
-# Rsync Manager
+# Rsync 管理器
 
-![Rsync manager](/images/app/rsync.png)
+![Rsync 管理器](/images/app/rsync.png)
 
-The Rsync manager publishes selected server directories as authenticated rsync modules. Use it for controlled file synchronization, mirrors, and backup feeds when rsync is an explicit requirement.
+Rsync 管理器可以把指定伺服器目錄釋出為需要認證的 rsync 模組， 適用於明確需要 rsync 協議的檔案同步、映象和備份資料來源。
 
-Go to **Apps > Installed > Rsync > Manage**.
+進入 **應用 > 已安裝 > Rsync > 管理**。
 
-## Prerequisites
+## 前置條件
 
-- Install the Rsync native application.
-- Permit the configured daemon port only from the hosts that need it.
-- Create a dedicated low-privilege operating-system user for sensitive directories when possible.
+- 安裝 Rsync 原生應用。
+- 守護程序埠只向確有需要的來源主機開放。
+- 對敏感目錄，儘量使用專用的低許可權系統使用者。
 
-## Manager Tabs
+## 管理器標籤頁
 
-| Tab                | Purpose                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------- |
-| Status             | Start, stop, restart, and inspect the daemon.                       |
-| Modules            | Create and maintain exported directory modules.                     |
-| Main Configuration | Edit daemon-wide settings not represented by a module.              |
-| Run Log            | Inspect startup, authentication, connection, and transfer failures. |
+| 管理器標籤頁 | 用途                   |
+| ------ | -------------------- |
+| 狀態     | 啟動、停止、重啟並檢視守護程序狀態。   |
+| 模組     | 建立和管理對外提供的目錄模組。      |
+| 主配置    | 編輯不屬於單個模組的守護程序全域性設定。 |
+| 執行日誌   | 排查啟動、認證、連線和傳輸失敗。     |
 
-## Create a Module
+## 建立模組
 
-Each module has a name, directory, username, password, allowed hosts, read-only mode, and optional remark.
+每個模組包含名稱、目錄、使用者名稱、密碼、允許主機、只讀模式和可選備註。
 
-- The module name is the public rsync path component and should not expose a secret.
-- The directory must exist and be accessible to the rsync daemon user.
-- Allowed hosts should be a narrow IP or network allowlist.
-- Enable **Read Only** for downloads and mirrors that must never modify the source.
-- Store module credentials as secrets and do not embed them in public scripts or screenshots.
+- 模組名稱會成為公開 rsync 路徑的一部分，不應把它當作秘密。
+- 目錄必須存在，且 rsync 守護程序使用者具有所需許可權。
+- 允許主機應配置為範圍儘可能小的 IP 或網段白名單。
+- 僅用於下載或映象且禁止修改原始檔時，啟用 **只讀**。
+- 模組憑據必須按金鑰儲存，不要寫入公開指令碼或截圖。
 
-Example client form:
+客戶端命令示例：
 
 ```bash
 rsync -av rsync://backup-user@example.com/module-name/ ./destination/
 ```
 
-Supply the password through an appropriately protected password file or an interactive prompt rather than a command-line argument.
+密碼應通過許可權受控的密碼檔案或互動提示提供，不要直接寫在命令列引數中。
 
-## Safety and Troubleshooting
+## 安全與故障排查
 
-- A writable module can delete or replace files when the client uses destructive synchronization flags. Test against disposable data first.
-- The system firewall and cloud security group must both permit the daemon port.
-- An authentication error usually indicates a module username/password mismatch; a permission error usually indicates filesystem ownership or daemon-user access.
-- After editing raw configuration, restart the daemon and immediately check **Run Log**.
+- 可寫模組在客戶端使用破壞性同步引數時，可能刪除或覆蓋檔案， 應先用臨時資料測試。
+- 系統防火牆和雲安全組必須同時放行守護程序埠。
+- 認證失敗通常表示模組使用者名稱或密碼不匹配；許可權錯誤通常表示檔案所有權或守護程序使用者許可權不足。
+- 修改原始配置後重啟守護程序，並立即檢查 **執行日誌**。

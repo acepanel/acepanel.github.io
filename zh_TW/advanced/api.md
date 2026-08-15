@@ -1,36 +1,36 @@
-# Panel API
+# 面板 API
 
-AcePanel exposes its management functions under `/api`. Use an access token for scripts and integrations; do not automate the Web login or reuse a browser session.
+AcePanel 的管理介面位於 `/api` 下。 指令碼和系統整合應使用訪問令牌，不要自動化 Web 登入，也不要複用瀏覽器會話。
 
-## Create an Access Token
+## 建立訪問令牌
 
-Open **Settings > User > Access Tokens**, create a token, set its expiry time, and restrict it to the integration server's IP address or CIDR whenever possible.
+進入 **設定 > 使用者 > 訪問令牌**，建立令牌並設定有效期；條件允許時，將允許來源限制為整合伺服器的 IP 地址或 CIDR。
 
-The secret is displayed once. Store the Token ID and secret in a secret manager. The Token ID identifies the credential and is not the user ID.
+令牌金鑰只顯示一次。 請將 Token ID 和金鑰儲存到金鑰管理工具中。 Token ID 用於標識該憑據，並不是使用者 ID。
 
-## Request Address
+## 請求地址
 
 ```text
 https://panel.example.com/<entrance>/api/<resource>
 ```
 
-The public URL may contain the panel entrance prefix. For the canonical request, use the path suffix beginning with `/api` and omit the entrance prefix, scheme, host, and fragment.
+公開訪問地址可能包含面板安全入口字首。 構造規範請求時，只使用從 `/api` 開始的路徑，不包含安全入口、協議、主機和 URL 片段。
 
-## HMAC-SHA256 Authentication
+## HMAC-SHA256 認證
 
-Every token request sends:
+每個令牌請求都需要傳送：
 
-| Header          | Value                                                                      |
-| --------------- | -------------------------------------------------------------------------- |
-| `X-Timestamp`   | Unix time in seconds used in the signature                                 |
-| `Authorization` | `HMAC-SHA256 Credential=<token-id>, Signature=<hex-signature>`             |
-| `Content-Type`  | `application/json` for JSON bodies; the value is not part of the signature |
+| 請求頭             | 值                                                              |
+| --------------- | -------------------------------------------------------------- |
+| `X-Timestamp`   | 參與簽名的 Unix 秒級時間戳                                               |
+| `Authorization` | `HMAC-SHA256 Credential=<token-id>, Signature=<hex-signature>` |
+| `Content-Type`  | JSON 請求體使用 `application/json`；該值不參與簽名                          |
 
-AcePanel rejects a missing timestamp or one more than 300 seconds behind the server. Keep both systems synchronized with NTP.
+時間戳缺失或比伺服器時間早 300 秒以上時，AcePanel 會拒絕請求。 整合伺服器和麵板伺服器都應使用 NTP 保持時間同步。
 
-### Canonical Request
+### 規範請求
 
-Join these four values with `\n`, without an extra final newline:
+按以下順序使用 `\n` 連線四項內容，末尾不額外新增換行：
 
 ```text
 HTTP_METHOD
@@ -39,12 +39,12 @@ SORTED_QUERY_STRING
 SHA256_HEX(RAW_BODY)
 ```
 
-- Use the uppercase HTTP method.
-- Use the canonical path beginning with `/api`, without the panel entrance prefix.
-- Encode query parameters with standard URL escaping, sort by key and value, and omit the leading `?`.
-- Hash the exact body bytes sent on the wire. An empty body has SHA-256 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`.
+- HTTP 方法使用大寫形式。
+- 請求路徑從 `/api` 開始，不包含面板安全入口字首。
+- 查詢引數使用標準 URL 轉義，並按鍵和值排序，不包含開頭的 `?`。
+- 對實際傳送的請求體原始位元組計算雜湊。 空請求體的 SHA-256 為 `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`。
 
-Hash the canonical request, create the string to sign, then calculate HMAC-SHA256 with the token secret:
+對規範請求計算雜湊，構造待簽名字串，再使用令牌金鑰計算 HMAC-SHA256：
 
 ```text
 HMAC-SHA256
@@ -52,9 +52,9 @@ HMAC-SHA256
 SHA256_HEX(<canonical-request>)
 ```
 
-## Fixed Signing Example
+## 固定簽名示例
 
-Use this vector to verify an implementation before sending a live request:
+連線真實介面前，可以使用以下固定資料驗證簽名實現：
 
 ```text
 Token ID:          16
@@ -68,7 +68,7 @@ Canonical hash:    38bf1025a419a585944c9f458b9b1dd5afc6ac0ee4ca4930fd30ca0a52a93
 Signature:         0acf9b3e9bcb3340df2c789e4009fb2f710cc995022c1359af5322616875da16
 ```
 
-All examples below produce that signature.
+以下四個示例都會生成相同簽名。
 
 ### Go
 
@@ -129,11 +129,11 @@ const toSign = `HMAC-SHA256\n1700000000\n${sha256(canonical)}`
 console.log(createHmac('sha256', 'docs-demo-token').update(toSign).digest('hex'))
 ```
 
-For a live request, replace the fixed timestamp with the current Unix time and calculate the body hash from the exact serialized bytes. Send the same timestamp in `X-Timestamp`.
+真實請求應使用當前 Unix 時間戳，並對最終序列化後傳送的請求體位元組計算雜湊； 同一個時間戳寫入 `X-Timestamp`。
 
-## Responses and Errors
+## 響應和錯誤
 
-A normal response envelope is:
+普通響應使用以下外層結構：
 
 ```json
 {
@@ -142,7 +142,7 @@ A normal response envelope is:
 }
 ```
 
-Paginated endpoints normally return the following inside `data`:
+分頁介面通常在 `data` 中返回：
 
 ```json
 {
@@ -151,53 +151,53 @@ Paginated endpoints normally return the following inside `data`:
 }
 ```
 
-Check the HTTP status before reading `data`. Authentication errors include an invalid header or signature, an expired token, a timestamp outside the accepted window, and a source address outside the token allowlist. Validation and business errors return a message describing the rejected field or operation.
+讀取 `data` 前先檢查 HTTP 狀態碼。 認證錯誤包括請求頭或簽名無效、令牌過期、時間戳超出允許範圍以及來源地址不在令牌白名單中。 引數校驗和業務錯誤會通過訊息說明被拒絕的欄位或操作。
 
-Do not parse a translated `msg` as a stable program code. Use the HTTP status and the structure of `data`, and log the message for an operator.
+不要把可能經過翻譯的 `msg` 當作穩定的程式錯誤碼。 程式應使用 HTTP 狀態碼和 `data` 結構判斷結果，同時把訊息記錄給運維人員檢視。
 
-## JSON, Uploads, and Query Parameters
+## JSON、上傳和查詢引數
 
-- Serialize JSON once, hash those bytes, and send the same bytes. Changing whitespace or key order after signing changes the hash.
-- For `multipart/form-data`, hash the complete encoded multipart body, including boundaries and line endings. Let one component build both the body and its hash.
-- Build and encode the query once. Signing `a=1&b=2` and sending `b=2&a=1`, using different escaping, or dropping an empty value can invalidate the signature.
-- Do not send credentials in a query string.
+- JSON 只序列化一次，對生成的位元組計算雜湊，併發送相同位元組。 簽名後再改變空格或鍵順序會導致雜湊不同。
+- `multipart/form-data` 必須對完整編碼後的請求體計算雜湊，包括邊界和換行。 應由同一個元件同時生成請求體及其雜湊。
+- 查詢引數只構造和編碼一次。 簽名 `a=1&b=2` 卻傳送 `b=2&a=1`、使用不同轉義方式或丟棄空值，都可能導致簽名無效。
+- 不要在查詢字串中傳遞憑據。
 
-## WebSocket and SSE
+## WebSocket 和 SSE
 
-Terminal, live-log, image-pull, certificate, update, SFTP, and migration progress connections use `/api/ws/...` WebSocket endpoints. Some migration execution streams use SSE. These long-lived connections are not described by the generated OpenAPI document and do not use the normal JSON request/response envelope.
+終端、即時日誌、映象拉取、證書、更新、SFTP 和遷移進度使用 `/api/ws/...` 下的 WebSocket 介面，部分遷移執行過程使用 SSE。這些長連線不會出現在生成的 OpenAPI 文件中，也不使用普通 JSON 請求和響應外層結構。
 
-Use the browser session for interactive panel features. For an external integration, prefer the regular HTTP endpoint that starts or queries an operation, then implement the corresponding stream only when its message format and authentication are explicitly required.
+面板互動功能應使用瀏覽器會話。 外部系統整合優先呼叫用於啟動或查詢操作的普通 HTTP 介面；只有明確需要且已經確認訊息格式與認證方式時，才實現對應流式連線。
 
-## Endpoint Groups
+## 介面分組
 
-The API is grouped by the same resources as the panel:
+API 按照面板資源劃分：
 
-- user, access tokens, security, and settings;
-- home, tasks, and scheduled tasks;
-- websites, website statistics, certificates, and backups;
-- projects and runtime environments;
-- databases, users, servers, Redis, and Elasticsearch;
-- applications and container templates;
-- containers, Compose, images, networks, and volumes;
-- files and public shares;
-- firewall, scan awareness, tamper protection, monitoring, alerts, notifications, and logs;
-- SSH, processes, and toolbox functions.
+- 使用者、訪問令牌、安全和設定；
+- 首頁、面板任務和計劃任務；
+- 網站、網站統計、證書和備份；
+- 專案和執行環境；
+- 資料庫、使用者、伺服器、Redis 和 Elasticsearch；
+- 應用和容器模板；
+- 容器、Compose、映象、網路和卷；
+- 檔案和公開分享；
+- 防火牆、掃描感知、防篡改、監控、告警、通知和日誌；
+- SSH、程序和工具箱功能。
 
-Installed applications may add routes below `/api/apps`.
+已安裝應用還可能在 `/api/apps` 下增加動態介面。
 
 ## OpenAPI
 
-AcePanel generates an OpenAPI document from its registered HTTP routes when debug mode is enabled:
+啟用除錯模式後，AcePanel 會根據已註冊的 HTTP 路由生成 OpenAPI 文件：
 
 ```text
 https://panel.example.com/openapi.json
 https://panel.example.com/docs
 ```
 
-Set `app.debug: true` in `/opt/ace/panel/storage/config.yml`, restart the panel, and use the pages only on a trusted development system.
+在 `/opt/ace/panel/storage/config.yml` 中設定 `app.debug: true` 並重啟面板。只應在可信開發環境中使用這些頁面。
 
-:::danger Do not leave debug mode enabled in production
-The generated specification exposes a broad inventory of administrative operations. Disable debug mode and restart AcePanel after development or troubleshooting. In normal production mode, `/docs` and `/openapi.json` are not mounted.
+:::danger 不要在正式環境中長期啟用除錯模式
+產生的介面文件會公開大量管理操作清單。 開發或排查完成後，關閉除錯模式並重啟 AcePanel。 一般正式環境模式不會掛載 `/docs` 和 `/openapi.json`。
 :::
 
-WebSocket routes, probes, dynamic application routes, and endpoints without request or response schemas may be absent from OpenAPI. Treat the installed panel's generated document as the reference for its HTTP routes and field schemas.
+WebSocket 路由、探針、動態應用路由以及沒有請求或響應結構的介面可能不會出現在 OpenAPI 中。 應以當前已安裝面板生成的文件為 HTTP 路由和欄位結構依據。

@@ -13,13 +13,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
-      - name: List Crowdin machine translation engines
-        env:
-          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
-        run: |
-          user_id=$(curl -fsSL -H "Authorization: Bearer ${CROWDIN_PERSONAL_TOKEN}" https://api.crowdin.com/api/v2/user | jq -r '.data.id')
-          curl -fsSL -H "Authorization: Bearer ${CROWDIN_PERSONAL_TOKEN}" "https://api.crowdin.com/api/v2/users/${user_id}/mts?limit=100" \
-            | jq -c '.data[] | {id: .data.id, name: .data.name, type: .data.type}'
       - name: Sync with Crowdin
         uses: crowdin/github-action@v2
         with:

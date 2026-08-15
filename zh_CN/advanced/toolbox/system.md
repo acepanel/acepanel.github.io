@@ -2,7 +2,7 @@
 
 ![System settings](/images/toolbox/system.png)
 
-The System page manages Swap, hostname, Hosts entries, timezone, manual time, and NTP. Network-interface addresses, gateways, and DNS are configured under [Network](./network).
+系统页面用于管理 Swap、主机名、Hosts 条目、时区、手工时间和 NTP。 网卡地址、网关和 DNS 请在[网络](./network)页面配置。
 
 ## SWAP
 

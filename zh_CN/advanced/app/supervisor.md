@@ -1,46 +1,46 @@
-# Supervisor Manager
+# Supervisor 管理器
 
-![Supervisor manager](/images/app/supervisor.png)
+![Supervisor 管理器](/images/app/supervisor.png)
 
-Supervisor keeps long-running commands alive and restarts them according to a process policy. The AcePanel manager controls the Supervisor daemon and its programs after the native application is installed.
+Supervisor 用于保持长期运行的命令持续工作，并按进程策略自动重启。 安装 Supervisor 原生应用后，可以在 AcePanel 中管理守护进程和各个程序。
 
-Go to **Apps > Installed > Supervisor > Manage**.
+进入 **应用 > 已安装 > Supervisor > 管理**。
 
-## Manager Tabs
+## 管理器标签页
 
-| Tab                | Purpose                                                                  |
-| ------------------ | ------------------------------------------------------------------------ |
-| Status             | Start, stop, restart, and inspect Supervisor.            |
-| Processes          | Create, start, stop, restart, edit, and delete programs. |
-| Main Configuration | Edit daemon-wide Supervisor configuration.               |
-| Run Log            | View panel-managed service output.                       |
-| Daemon Log         | View Supervisor's own diagnostic log.                    |
+| 管理器标签页 | 用途                         |
+| ------ | -------------------------- |
+| 状态     | 启动、停止、重启并查看 Supervisor 状态。 |
+| 进程     | 创建、启动、停止、重启、编辑和删除程序。       |
+| 主配置    | 编辑 Supervisor 守护进程的全局配置。   |
+| 运行日志   | 查看面板管理的服务输出。               |
+| 守护进程日志 | 查看 Supervisor 自身的诊断日志。     |
 
-## Create a Process
+## 创建进程
 
-Configure the executable command, working directory, run user, number of processes, automatic start and restart, start-success time, retry count, stop behavior, priority, process group behavior, log files and rotation, and environment variables. Advanced users can inspect or edit the generated raw configuration.
+可配置执行命令、工作目录、运行用户、进程数量、自动启动和自动重启、启动成功等待时间、重试次数、停止行为、优先级、进程组行为、日志文件与轮转以及环境变量。 高级用户还可以查看或编辑生成的原始配置。
 
-Use an absolute executable path and a dedicated unprivileged user. Put secrets in a protected environment file or secret store rather than in a command that can appear in the process list.
+执行文件应使用绝对路径，并尽量使用专用的非特权用户。 密钥应存放在权限受控的环境文件或密钥管理工具中，不要写进会出现在进程列表中的命令。
 
-## Common Workflow
+## 常用流程
 
-1. Run the command manually as the intended user and confirm it starts.
-2. Create a Supervisor process with its exact working directory and environment.
-3. Start the process and wait through `startsecs` so Supervisor can classify it as running.
-4. Review the process log and daemon log.
-5. Test one controlled restart and verify the expected number of workers.
+1. 先以目标运行用户手工执行命令，确认可以正常启动。
+2. 使用准确的工作目录和环境变量创建 Supervisor 进程。
+3. 启动进程并等待超过 `startsecs`，让 Supervisor 正确判断其已进入运行状态。
+4. 检查进程日志和守护进程日志。
+5. 执行一次可控重启，确认进程数量符合预期。
 
-## Important Options
+## 重要选项
 
-- **Automatic start** starts the process when Supervisor starts.
-- **Automatic restart** restarts the process according to its exit status and policy.
-- **Retry count** controls repeated startup attempts; it does not make an unhealthy application healthy.
-- **Priority** controls Supervisor's start and stop order.
-- **Stop as group / kill as group** is important for commands that spawn child processes.
-- **Log rotation** prevents stdout and stderr logs from growing without limit.
+- **自动启动：** Supervisor 启动时一并启动该进程。
+- **自动重启：** 根据退出状态和策略决定是否重启进程。
+- **重试次数：** 控制启动失败后的重复尝试次数，不能修复应用本身的故障。
+- **优先级：** 控制 Supervisor 启动和停止进程的顺序。
+- **停止进程组 / 终止进程组：** 对会创建子进程的命令尤其重要。
+- **日志轮转：** 防止标准输出和错误日志无限增长。
 
-## Deletion and Troubleshooting
+## 删除与故障排查
 
-Deleting a process removes its Supervisor configuration. It does not delete the application directory, but it can interrupt a production service immediately. Stop traffic or provide another instance before deleting.
+删除进程会移除对应的 Supervisor 配置，不会删除应用目录，但可能立即中断生产服务。 删除前应先停止流量或准备其他可用实例。
 
-If a process cycles between starting and exited, check the command, user permissions, working directory, environment, port conflicts, and application log. Use **Daemon Log** when Supervisor rejects or fails to load the configuration.
+进程在启动中和已退出状态之间反复切换时，检查命令、用户权限、工作目录、环境变量、端口冲突和应用日志。 Supervisor 拒绝或无法加载配置时，查看 **守护进程日志**。

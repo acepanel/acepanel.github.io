@@ -4,32 +4,32 @@
 
 網站模組用於管理 Web 伺服器上的站台設定。 AcePanel 支援三種類型的網站：反向代理、PHP 與靜態。
 
-## 事前準備
+## 前置要求
 
-在使用網站功能之前，您需要先安裝 Web 伺服器：
+使用網站功能前，需要先安裝 Web 伺服器：
 
-1. Go to **Apps** > **Native Applications**
+1. 進入 **應用** > **原生應用**
 2. 安裝 Nginx、OpenResty 或 Apache
 
 ## 網站類型
 
-| 類型                      | 說明         | 使用情境                                 |
-| ----------------------- | ---------- | ------------------------------------ |
-| [反向代理](./website/proxy) | 將請求轉發至後端服務 | Node.js、Go、Java 應用程式 |
-| [PHP](./website/php)    | 執行 PHP 程式  | WordPress、Laravel 等                  |
-| [靜態](./website/static)  | 託管靜態檔案     | HTML、Vue/React 建置產物                  |
+| 類型                      | 說明         | 使用情境                                |
+| ----------------------- | ---------- | ----------------------------------- |
+| [反向代理](./website/proxy) | 將請求轉發至後端服務 | Node.js、Go、Java 等應用 |
+| [PHP](./website/php)    | 執行 PHP 程式  | WordPress、Laravel 等                 |
+| [純靜態](./website/static) | 託管靜態檔案     | HTML、Vue/React 構建產物                 |
 
-## 網站清單
+## 網站列表
 
-In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the page provides **Stats** and [**Settings**](./website/setting) tabs.
+除 **全部**、**反向代理**、**PHP** 和**純靜態**外，頁面還提供 **統計**和[**設定**](./website/setting)標籤頁。
 
-網站清單會顯示以下資訊：
+網站列表顯示以下資訊：
 
-- **網站名稱**：站台的唯一識別碼
+- **網站名稱**：站點的唯一標識
 - **網站類型**：反向代理、PHP 或純靜態
 - **執行中**：站台是否已啟用
-- **目錄**：網站檔案所在的目錄
-- **HTTPS**：是否已啟用 HTTPS
+- **目錄**：網站檔案所在目錄
+- **HTTPS**：是否啟用 HTTPS
 - **憑證到期**：SSL 憑證到期時間
 - **到期**：站台到期時間，到期後會自動停止站台
 - **備註**：自訂備註
@@ -37,13 +37,13 @@ In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the pag
 
 ## 建立網站
 
-1. 前往 **網站** 頁面
+1. 進入 **網站** 頁面
 2. 選擇網站類型分頁（反向代理／PHP／靜態）
 3. 點選 **建立網站**
 4. 填寫網站資訊
 5. 點選建立
 
-### 常用設定項目
+### 通用配置項
 
 - **名稱**：網站的唯一識別碼，僅允許字母、數字、連字號與底線；建立後無法變更
 - **網域**：所綁定的網域，可新增多個（貼上以逗號／空格／換行分隔的內容即可批次新增）
@@ -70,11 +70,11 @@ In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the pag
 - **自訂設定**：新增自訂設定片段（站台範圍或共用）
 - **存取記錄檔** / **錯誤記錄檔**：即時檢視站台的記錄檔
 
-### Change the Website Type
+### 切換網站型別
 
-An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
+現有反向代理、PHP 或純靜態網站可以切換為另外兩種型別。 AcePanel 會保留名稱、域名、監聽地址、目錄、檔案、HTTPS 關聯、到期時間等通用欄位， 刪除原型別專屬 Web 伺服器配置，併為新型別生成配置。
 
-Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+切換前先備份網站。 切換後必須重新檢查或配置上游和代理規則、PHP 執行環境與 Rewrite，以及靜態網站專屬行為。AcePanel 會在應用前測試生成的 Web 伺服器配置；驗證失敗時顯示 Nginx、OpenResty 或 Apache 返回的具體錯誤。
 
 ## 批次建立
 
@@ -82,11 +82,11 @@ Back up the site before converting it. Upstreams and proxy rules, PHP runtime an
 
 ## 刪除網站
 
-刪除網站時，需要進行 5 秒的確認倒數。 您可以選擇是否一併 **刪除網站目錄** 以及 **刪除同名的本機資料庫**。 Bulk deletion removes the website directory but keeps the same-name database. AcePanel also removes the website from certificates associated with it and deletes a matching tamper-protection rule.
+刪除網站時，需要進行 5 秒的確認倒數。 您可以選擇是否一併 **刪除網站目錄** 以及 **刪除同名的本機資料庫**。  AcePanel 還會解除網站與憑證的關聯，並刪除對應的防竄改規則。
 
-## 後續步驟
+## 下一步
 
 - [反向代理](./website/proxy) - 瞭解如何建立反向代理網站
 - [PHP 網站](./website/php) - 瞭解如何建立 PHP 網站
 - [靜態網站](./website/static) - 瞭解如何建立靜態網站
-- [Website Settings](./website/setting) - Configure default site, IPv6 listening, error pages, and statistics
+- [網站設定](./website/setting)：配置預設網站、IPv6 監聽、錯誤頁和統計。

@@ -1,120 +1,120 @@
 # 迁移
 
-![Migration](/images/toolbox/migration.png)
+![迁移](/images/toolbox/migration.png)
 
-Use **Toolbox > Migration** to move websites, databases, database users, and projects to AcePanel. The page guides you through four steps: connect to the source, select resources, follow the migration, and review the result.
+使用 **工具箱 > 迁移**，可以将网站、数据库、数据库用户和项目迁移到 AcePanel。 迁移向导分为连接来源、选择资源、执行迁移和查看结果四个步骤。
 
-:::warning Before you start
-Back up both servers, make sure you can access them through SSH, and install the required Web server, database engines, and runtimes on the destination. Do not restart or update either panel during a migration.
+:::warning 开始前
+备份来源服务器和目标服务器，确认两端均可通过 SSH 管理，并在目标服务器安装所需的 Web 服务器、数据库引擎和运行环境。 迁移期间不要重启或更新任一面板。
 :::
 
-## Connect to the Source
+## 连接来源
 
-Choose the panel that contains the resources you want to move.
+首先选择资源所在的面板。
 
-### Another AcePanel Server
+### 另一台 AcePanel 服务器
 
-In this direction, the AcePanel page you are using is the source and it sends resources to the destination AcePanel server.
+当前正在操作的 AcePanel 是来源端，资源会从当前服务器推送到目标 AcePanel。
 
-Enter the destination panel address, Token ID, and access token. Create the token on the destination under **Settings > User > Access Tokens**, and allow the source server's outbound IP address in the token allowlist.
+填写目标面板地址、Token ID 和访问令牌。 令牌在目标面板的 **设置 > 用户 > 访问令牌**中创建，令牌 IP 白名单必须允许来源服务器的出口地址。
 
-### BaoTa
+### 宝塔
 
-AcePanel connects to BaoTa and downloads the selected resources from it. Enter the BaoTa panel address and API key. Before connecting, enable the panel API and add the AcePanel server's IP address to the API allowlist. See the [BaoTa Panel API configuration guide](https://docs.bt.cn/user-guide/config/common/panel-api).
+AcePanel 会连接宝塔并从中下载所选资源。 填写宝塔面板地址和 API 密钥。 连接前先启用面板 API，并将 AcePanel 服务器 IP 加入 API 白名单。 具体操作参阅[宝塔面板 API 配置说明](https://docs.bt.cn/user-guide/config/common/panel-api)。
 
 ### 1Panel
 
-AcePanel connects to 1Panel and downloads the selected resources from it. Enter the 1Panel address and API Key, then check the key's expiry time and IP allowlist. See the [1Panel API manual](https://1panel.cn/docs/v2/dev_manual/api_manual/).
+AcePanel 会连接 1Panel 并从中下载所选资源。 填写 1Panel 地址和 API Key，并检查密钥有效期和 IP 白名单。 具体操作参阅[1Panel API 接口文档](https://1panel.cn/docs/v2/dev_manual/api_manual/)。
 
-Enter only the panel address. AcePanel detects whether the source uses the v1 or v2 API; do not append `/api/v1` or `/api/v2` yourself.
+只填写面板地址。 AcePanel 会自动识别来源使用的是 v1 还是 v2 API；不要自行追加 `/api/v1` 或 `/api/v2`。
 
-:::danger Protect credentials
-Do not include access tokens, API keys, database passwords, or real server addresses in screenshots and diagnostic logs shared with other people. Delete temporary migration credentials when the work is complete.
+:::danger 保护凭据
+不要在对外分享的截图和诊断日志中包含访问令牌、API Key、数据库密码或真实服务器地址。 迁移完成后删除临时凭据。
 :::
 
-## What Can Be Migrated
+## 可迁移资源
 
-| Source   | Websites                                                                                                                                               | Databases and users                                                                                    | Projects                                                                                     |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| AcePanel | Reverse proxy, PHP, and static websites, including complete website settings, certificates, and enabled state                                          | MySQL, PostgreSQL, and ClickHouse; matching users, hosts, and privileges                               | General, Go, Java, Node.js, PHP, Python, and .NET projects   |
-| BaoTa    | Static, PHP, and reverse-proxy websites; directories, domains, listeners, run directory, rewrites, proxies, redirects, certificates, and enabled state | Local MySQL and MariaDB databases and users whose password is available to the BaoTa API               | Node.js, Python, Go, .NET, Spring Boot, and General projects |
-| 1Panel   | Static, reverse-proxy, and PHP Runtime websites                                                                                                        | Local MySQL, MariaDB, and PostgreSQL databases and users whose password is available to the 1Panel API | —                                                                                            |
+| 连接来源     | 网站                                                    | 数据库和用户                                               | 项目                                                                       |
+| -------- | ----------------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------ |
+| AcePanel | 反向代理、PHP 和静态网站，包含完整网站设置、证书和启用状态                       | MySQL、PostgreSQL 和 ClickHouse，以及对应用户、主机和权限           | 通用、Go、Java、Node.js、PHP、Python 和 .NET 项目  |
+| 宝塔       | 静态、PHP 和反向代理网站，包括目录、域名、监听、运行目录、Rewrite、代理、重定向、证书和启用状态 | 宝塔 API 能够提供密码的本机 MySQL、MariaDB 数据库及用户                | Node.js、Python、Go、.NET、Spring Boot 和其他项目 |
+| 1Panel   | 静态、反向代理和 PHP Runtime 网站                               | 1Panel API 能够提供密码的本机 MySQL、MariaDB、PostgreSQL 数据库及用户 | —                                                                        |
 
-The following resources need to be moved or rebuilt separately:
+下列资源需要另行迁移或重新部署：
 
-- Redis and Valkey data in an AcePanel-to-AcePanel migration;
-- remote databases from BaoTa or 1Panel;
-- BaoTa Tomcat projects;
-- 1Panel non-PHP Runtime websites, app-store websites, and projects;
-- containers and Compose stacks from BaoTa or 1Panel.
+- AcePanel 间迁移中的 Redis 和 Valkey 数据；
+- 宝塔或 1Panel 中的远程数据库；
+- 宝塔 Tomcat 项目；
+- 1Panel 非 PHP Runtime 网站、应用商店网站和项目；
+- 宝塔或 1Panel 中的容器和 Compose 编排。
 
-## Step 1: Connect
+## 第一步：连接
 
-After you submit the address and credentials, AcePanel verifies the panel type and version and loads its resource inventory.
+提交地址和凭据后，AcePanel 会验证面板类型和版本，并加载资源清单。
 
-If the connection fails, check the exact panel address and entrance path, network reachability, firewall and security-group rules, credential expiry, IP allowlist, and time on both servers.
+连接失败时，检查面板完整地址和安全入口、网络连通性、防火墙与安全组、凭据有效期、IP 白名单以及两台服务器的系统时间。
 
-## Step 2: Select Resources
+## 第二步：选择资源
 
-The resource list shows the type, name, current state, estimated size, destination, dependencies, warnings, and anything that blocks the import. Select the resources you want to move. For a project, you can change its destination directory and run user before starting.
+资源列表会显示类型、名称、当前状态、预计大小、目标位置、依赖关系、警告和阻断原因。 选择需要迁移的资源； 项目还可以修改目标目录和运行用户。
 
-### Conflicts That Must Be Fixed First
+### 必须先处理的冲突
 
-A resource cannot be selected for import when:
+出现下列情况时，资源不能直接导入：
 
-- a website, database, or project with the same name already exists on the destination;
-- the name is reserved, such as `default` or `phpmyadmin`, or is not a valid AcePanel resource name;
-- the destination website or project directory is not empty;
-- no compatible database server is available;
-- an AcePanel database cannot find a destination server with the same name and type;
-- the source PostgreSQL major version is newer than the destination version;
-- a project has no compatible runtime or valid run user.
+- 目标已经存在同名网站、数据库或项目；
+- 名称为 `default`、`phpmyadmin` 等保留名称，或不符合 AcePanel 资源命名规则；
+- 目标网站或项目目录非空；
+- 目标没有兼容的数据库服务器；
+- AcePanel 数据库找不到名称和类型相同的目标服务器；
+- 来源 PostgreSQL 主版本高于目标版本；
+- 项目没有兼容运行环境或有效运行用户。
 
-**Skip blocked resources** marks these resources as **Skipped** and continues with the remaining selection. It does not ignore the underlying conflict.
+启用 **跳过阻断资源**后，阻断项会记为 **已跳过**，其余资源继续迁移。 该选项不会绕过底层冲突或兼容限制。
 
-### Compatibility Adjustments
+### 兼容性调整
 
-- A MariaDB database imported into an AcePanel MySQL server finishes with a warning.
-- If the same PHP version is not installed, AcePanel uses the closest installed version. If there is no PHP runtime, the website is created without PHP enabled and the result contains a warning.
-- Project users named `www-data`, `nginx`, or `apache` are mapped to `www`.
-- Node.js dependencies under `node_modules` and Python virtual environments are not reused on the destination. Reinstall project dependencies before starting the service.
+- MariaDB 数据库导入 AcePanel MySQL 服务器时，结果会带有警告。
+- 没有安装相同 PHP 版本时，AcePanel 会选择最接近的已安装版本； 完全没有 PHP 运行环境时，会创建未启用 PHP 的网站并给出警告。
+- 项目用户 `www-data`、`nginx` 和 `apache` 会映射为 `www`。
+- 目标服务器不会直接复用 Node.js 的 `node_modules` 或 Python 虚拟环境，启动服务前必须重新安装依赖。
 
-### Dependencies and Import Order
+### 依赖和导入顺序
 
-Database users are imported before databases, databases before projects, and projects before websites. This is important when a BaoTa website and project use a database with the same name. Select related resources together and resolve any warning shown beside them.
+数据库用户先于数据库导入，数据库先于项目，项目先于网站。 宝塔网站和项目使用同名数据库时尤其需要注意， 应同时选择有关联的资源，并逐项处理提示。
 
-## Step 3: Migrating
+## 第三步：迁移中
 
-The page shows the overall percentage, the current resource and stage, and a live log. The stages are **backup**, **transfer**, **import**, and **done**. Each resource is marked **Pending**, **Running**, **Success**, **Completed with warnings**, **Failed**, or **Skipped**.
+页面显示总体进度、当前资源和阶段以及实时日志。 阶段分为 **backup**、**transfer**、**import** 和 **done**。 每个资源的结果为 **等待中**、**运行中**、**成功**、**完成但有警告**、**失败**或**已跳过**。
 
-When **Stop running services while creating backups** is enabled, AcePanel briefly stops a running website or project, creates its archive, and immediately restores its previous state. Databases are exported online and are not stopped.
+启用 **创建备份时停止运行中的服务**后，AcePanel 会在备份网站或项目时短暂停止来源资源，归档完成后立即恢复原状态。 数据库使用在线导出，不会停库。
 
-You may leave the page while the migration continues. When you return, AcePanel restores the progress kept by the running panel process. If the live connection drops, the page reconnects every three seconds.
+离开页面不会停止迁移， 再次进入时会恢复当前面板进程保存的进度。 实时连接断开后，页面每三秒尝试重连。
 
-There is no cancel button. Closing the page does not cancel the migration. Do not restart AcePanel: migration progress is kept in the panel process and cannot be recovered after that process exits. A migration can run for up to 24 hours, so move unusually large resources in smaller batches.
+迁移没有取消按钮， 关闭页面也不等于取消。 不要重启 AcePanel：迁移状态保存在面板进程中，进程退出后无法恢复。 单次迁移最长运行 24 小时，超大资源应拆分为多批迁移。
 
-### Transfer Behavior
+### 传输方式
 
-Between two AcePanel servers, files are uploaded in 10 MiB chunks. Each chunk is verified by its hash, and already uploaded chunks are checked before transfer continues.
+AcePanel 服务器之间使用 10 MiB 分片上传，每个分片通过哈希校验，并在继续传输前检查已经上传的分片。
 
-BaoTa and 1Panel migrations download an archive from the source panel and do not use the AcePanel-to-AcePanel chunk-resume flow.
+宝塔和 1Panel 迁移会从来源面板下载归档，不使用 AcePanel 之间的分片续传流程。
 
-Only one migration can run in an AcePanel process at a time.
+每个 AcePanel 进程同一时间只能运行一个迁移任务。
 
-## Step 4: Done
+## 第四步：完成
 
-The result page groups resources into **Success**, **Completed with warnings**, **Failed**, and **Skipped**, and shows the duration and details for each resource. Download the log before starting another migration.
+结果页会按 **成功**、**完成但有警告**、**失败**和**已跳过**分类，并显示每个资源的耗时和详情。 开始下一次迁移前先下载日志。
 
-**Start new migration** becomes available after the task ends. It clears the connection, selection, results, and current log.
+任务结束后可以点击 **开始新的迁移**。 重置后会清除当前连接、资源选择、结果和日志。
 
-## Verify the Destination
+## 验证目标服务器
 
-Do not remove the source data until all of the following checks pass:
+完成以下检查前，不要删除来源数据：
 
-1. Open every website over HTTP and HTTPS. Check domains, listeners, redirects, rewrites, proxy targets, PHP version, certificate, and enabled state.
-2. Connect to each database with the migrated account. Check tables, row counts, character set, privileges, and the application's connection settings.
-3. For projects, check the rewritten directory, command, environment, run user, and service status. Reinstall Node.js or Python dependencies where required.
-4. Read every warning and download the migration log.
-5. Run an application-level test before changing DNS or sending production traffic to the new server.
+1. 分别通过 HTTP 和 HTTPS 打开每个网站，检查域名、监听地址、重定向、Rewrite、代理目标、PHP 版本、证书和启用状态。
+2. 使用迁移后的账号连接每个数据库， 检查表、数据量、字符集、权限和应用连接配置。
+3. 检查项目重写后的目录、命令、环境变量、运行用户和服务状态，并按需要重新安装 Node.js 或 Python 依赖。
+4. 阅读每一条警告并下载迁移日志。
+5. 修改 DNS 或引入生产流量前，执行应用层测试。
 
-If a transferred resource fails during import, check free disk space, directory ownership, the database server name and version, installed runtimes, and the error for that resource in the live log.
+资源传输成功但导入失败时，检查磁盘空间、目录所有权、数据库服务器名称和版本、已安装运行环境以及实时日志中该资源的错误。

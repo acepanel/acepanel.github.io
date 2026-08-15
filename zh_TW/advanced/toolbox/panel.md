@@ -2,7 +2,7 @@
 
 ![Panel runtime diagnostics](/images/toolbox/panel.png)
 
-This page shows runtime diagnostics for the AcePanel Go process, including memory allocation, heap and stack use, garbage collection, and goroutines. These values describe the panel process, not the whole server. Use [System Monitoring](../monitor) and [Processes](./process) for host-wide analysis.
+本頁顯示 AcePanel Go 程序的執行時診斷資訊，包括記憶體分配、堆和棧使用、垃圾回收及 goroutine。 這些數值只描述面板程序，不代表整臺伺服器； 需要分析主機整體狀態時，請使用[系統監控](../monitor)和[程序](./process)。
 
 Panel 頁面會顯示 AcePanel 行程自身的 Go 執行環境統計資訊與即時的 goroutine 堆疊追蹤。 它主要用於診斷面板本身，例如排查記憶體成長、垃圾回收行為或卡住的 goroutine。
 

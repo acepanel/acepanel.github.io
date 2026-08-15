@@ -1,62 +1,62 @@
-# FRP Manager
+# FRP 管理器
 
-![FRP manager](/images/app/frp.png)
+![FRP 管理器](/images/app/frp.png)
 
-FRP is a reverse-proxy and tunneling system. AcePanel can manage both the server component (**Frps**) and the client component (**Frpc**) after the FRP native application is installed.
+FRP 是反向代理和內網穿透工具。 安裝 FRP 原生應用後，AcePanel 可以同時管理服務端元件 **Frps** 和客戶端元件 **Frpc**。
 
-Use Frps on the publicly reachable server that accepts tunnel connections. Use Frpc on the machine that exposes a local service through Frps. A **proxy** publishes a client-side service; a **Visitor** is used by STCP or SUDP to reach a secret proxy without exposing it publicly.
+Frps 部署在具有公網訪問能力、負責接收隧道連線的伺服器上； Frpc 部署在需要通過 Frps 暴露本地服務的伺服器上。 **代理**用於釋出 Frpc 一側的服務；**Visitor** 用於訪問 STCP 或 SUDP 私密代理，不會將服務直接公開。
 
-Go to **Apps > Installed > FRP > Manage**.
+進入 **應用 > 已安裝 > FRP > 管理**。
 
-## Prerequisites
+## 前置條件
 
-- Install the FRP native application on every participating server.
-- Permit the Frps bind port, dashboard port, virtual-host ports, and any explicitly published remote ports in the system firewall and upstream security group.
-- Use matching authentication and transport settings on Frps and Frpc.
-- Keep the FRP version compatible across the server and clients.
+- 在所有參與連線的伺服器上安裝 FRP 原生應用。
+- 在系統防火牆和雲安全組中放行 Frps 繫結埠、控制台埠、虛擬主機埠以及需要公開的遠端埠。
+- Frps 與 Frpc 使用一致的認證和傳輸設定。
+- 保持服務端與客戶端 FRP 版本相容。
 
 ## Frps
 
-The Frps manager includes **Status**, **Parameter Tuning**, **Main Configuration**, **Run User**, and **Run Log**.
+Frps 管理器包含 **狀態**、**引數調優**、**主配置**、**執行使用者**和**執行日誌**。
 
-Parameter tuning covers the commonly used server settings, including bind and virtual-host ports, authentication token or OIDC, TLS, transport limits, dashboard credentials, log level and retention, subdomain host, allowed ports, and HTTP plug-ins. Use **Main Configuration** when a valid FRP option is not exposed by the form.
+引數調優覆蓋常用服務端配置，包括繫結埠和虛擬主機埠、Token 或 OIDC 認證、TLS、傳輸限制、控制台憑據、日誌級別與保留時間、子域名、允許埠和 HTTP 外掛。 表單沒有提供的合法 FRP 選項可在 **主配置** 中設定。
 
-Changing the run user changes the operating-system permissions available to FRP. Make sure the selected user can read the configuration and certificate files and bind the required ports.
+修改執行使用者會改變 FRP 可用的系統許可權。 所選使用者必須能夠讀取配置和證書檔案，並有權繫結需要的埠。
 
 ## Frpc
 
-The Frpc manager adds **Proxies** and **Visitors** to the status, configuration, user, and log tabs.
+除狀態、配置、使用者和日誌外，Frpc 管理器還提供 **代理**和 **Visitor**。
 
-### Proxies
+### 代理
 
-Create the proxy type that matches the service and exposure model:
+根據服務協議和暴露方式選擇代理型別：
 
-| Type         | Typical use                                                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------------ |
-| TCP / UDP    | Publish a local TCP or UDP service on a remote port.                                         |
-| HTTP / HTTPS | Route by domain through the Frps virtual-host ports; supports locations and request headers. |
-| STCP / SUDP  | Secret TCP or UDP service reachable only through a configured Visitor.                       |
-| XTCP         | Peer-to-peer TCP traversal where the network permits it.                                     |
-| TCPMux       | Share a TCP multiplexer listener for supported protocols.                                    |
+| 型別           | 常見用途                                  |
+| ------------ | ------------------------------------- |
+| TCP / UDP    | 通過遠端埠公開本地 TCP 或 UDP 服務。               |
+| HTTP / HTTPS | 通過 Frps 虛擬主機埠按域名轉發，支援路徑和請求頭設定。        |
+| STCP / SUDP  | 僅允許配置了 Visitor 的客戶端訪問私密 TCP 或 UDP 服務。 |
+| XTCP         | 網路條件允許時使用點對點 TCP 穿透。                  |
+| TCPMux       | 讓支援的協議共用 TCP 多路複用監聽埠。                 |
 
-Depending on the type, the form exposes local address and port, remote port, domains, locations, host-header rewrite, request/response headers, TLS, encryption, compression, bandwidth limits, load balancing, group keys, health checks, plug-ins, annotations, and metadata.
+不同型別會顯示不同欄位，包括本地地址和埠、遠端埠、域名、路徑、Host 重寫、請求頭和響應頭、TLS、加密、壓縮、頻寬限制、負載均衡、分組金鑰、健康檢查、外掛、註解和後設資料。
 
-### Visitors
+### Visitor
 
-A Visitor pairs with an STCP or SUDP proxy using the same server name and secret key. Configure its local bind address and port, then connect the local application to that address. A Visitor does not create a public Frps listening port.
+Visitor 通過相同的服務名和金鑰與 STCP 或 SUDP 代理配對。 配置本地繫結地址和埠後，讓本地應用連線該地址。 Visitor 不會在 Frps 上建立公開監聽埠。
 
-## Common Workflow
+## 常用流程
 
-1. Configure and start Frps, then confirm the bind port is listening.
-2. Configure Frpc with the Frps address, port, and matching authentication.
-3. Create one proxy and select the correct transport type.
-4. Add a health check for services that may be unavailable while Frpc remains connected.
-5. Save, restart Frpc when requested, and watch **Run Log**.
-6. Test from a network outside the client server.
+1. 配置並啟動 Frps，確認繫結埠正在監聽。
+2. 在 Frpc 中填寫 Frps 地址、埠和一致的認證資訊。
+3. 新建一個代理並選擇正確的傳輸型別。
+4. 對可能在 Frpc 保持連線期間停止的服務配置健康檢查。
+5. 儲存配置，按提示重啟 Frpc，並檢視 **執行日誌**。
+6. 從客戶端伺服器以外的網路測試訪問。
 
-## Safety and Troubleshooting
+## 安全與故障排查
 
-- Dashboard and Admin API endpoints are administrative surfaces. Bind them to a private address or protect them with firewall rules and strong credentials.
-- A saved configuration can still fail at runtime because of an occupied port, DNS, certificate permissions, or a server/client mismatch. The run log is the source of truth.
-- Do not publish databases, SSH, or admin interfaces directly to the internet without an allowlist and an additional authentication layer.
-- When editing raw configuration, keep the TOML syntax valid. Use the visual form for supported options to reduce configuration errors.
+- 控制台和 Admin API 屬於管理介面， 應繫結到私有地址，或使用防火牆規則和強憑據保護。
+- 配置儲存成功不代表一定能正常啟動。 連接埠占用、DNS、憑證權限或服務端與客戶端配置不一致均可能導致執行失敗，應以執行日誌為準。
+- 不要在沒有訪問白名單和額外認證的情況下，將資料庫、SSH 或管理介面直接暴露到公網。
+- 編輯原始配置時必須保持 TOML 語法有效； 表單已支援的選項優先通過視覺化介面修改。

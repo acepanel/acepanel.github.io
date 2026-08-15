@@ -11,7 +11,7 @@
 | 欄位    | 說明                       |
 | ----- | ------------------------ |
 | 使用者名稱 | 登入使用者名稱，可在表格中直接編輯        |
-| 電子郵件  | 使用者電子郵件，可在表格中直接編輯        |
+| 郵箱    | 使用者電子郵件，可在表格中直接編輯        |
 | 2FA   | 是否啟用 TOTP 雙因素驗證，可在列中直接切換 |
 | 建立時間  | 使用者建立時間                  |
 
@@ -31,7 +31,7 @@
 
 管理用於代表該使用者呼叫面板 API 的 API 存取權杖。
 
-Access tokens are also used when this server is the destination of an [AcePanel-to-AcePanel migration](../toolbox/migration). For a custom integration, follow the [Panel API](../api) signing rules.
+當本伺服器作為 [AcePanel 到 AcePanel 遷移](../toolbox/migration)的目標時，也需要使用訪問令牌。 開發自定義整合時，請遵循[面板 API](../api)中的簽名規則。
 
 點選 **存取權杖** 開啟權杖管理員，你可以在其中建立、修改與刪除權杖。 權杖清單會顯示權杖的 **ID**、**建立時間** 與 **到期時間**。
 
@@ -46,7 +46,7 @@ Access tokens are also used when this server is the destination of an [AcePanel-
 權杖值僅在建立時顯示一次，請在關閉對話方塊前妥善儲存。
 :::
 
-For migration, add the source server's outbound IP address—not the address of the administrator's browser—to the allowlist. Delete temporary tokens after the migration completes.
+遷移時，應將來源伺服器的出口 IP 地址加入白名單，而不是管理員瀏覽器的地址。 遷移完成後請刪除臨時令牌。
 
 ### 通行金鑰
 
@@ -58,7 +58,7 @@ For migration, add the source server's outbound IP address—not the address of 
 通行金鑰僅在透過受信任的 HTTPS 連線存取面板時可用（繫結了帶有受信任憑證的網域，或由反向代理終結 HTTPS）。
 :::
 
-### 變更密碼
+### 更改密碼
 
 變更使用者的登入密碼。 新密碼長度必須為 8-20 個字元，且至少包含字母、數字、特殊字元這三類中的兩類。 建議定期變更密碼。
 
@@ -88,10 +88,10 @@ For migration, add the source server's outbound IP address—not the address of 
 - 1Password
 - 其他支援 TOTP 的應用程式
 
-## 安全性建議
+## 安全建議
 
 1. 使用包含大小寫字母、數字與特殊字元的強式密碼
 2. 啟用雙因素驗證
-3. 定期變更密碼
-4. 請勿共用帳戶
+3. 定期更換密碼
+4. 不要共享賬號
 5. 及時刪除不再使用的帳戶

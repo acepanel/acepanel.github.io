@@ -8,7 +8,7 @@
 
 使用网站功能前，需要先安装 Web 服务器：
 
-1. Go to **Apps** > **Native Applications**
+1. 进入 **应用** > **原生应用**
 2. 安装 Nginx、OpenResty 或 Apache
 
 ## 网站类型
@@ -21,7 +21,7 @@
 
 ## 网站列表
 
-In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the page provides **Stats** and [**Settings**](./website/setting) tabs.
+除 **全部**、**反向代理**、**PHP** 和**纯静态**外，页面还提供 **统计**和[**设置**](./website/setting)标签页。
 
 网站列表显示以下信息：
 
@@ -70,11 +70,11 @@ In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the pag
 - **自定义配置**：添加自定义配置片段（站点级或共享）
 - **访问日志** / **错误日志**：实时查看网站的日志
 
-### Change the Website Type
+### 切换网站类型
 
-An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
+现有反向代理、PHP 或纯静态网站可以切换为另外两种类型。 AcePanel 会保留名称、域名、监听地址、目录、文件、HTTPS 关联、到期时间等通用字段， 删除原类型专属 Web 服务器配置，并为新类型生成配置。
 
-Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+切换前先备份网站。 切换后必须重新检查或配置上游和代理规则、PHP 运行环境与 Rewrite，以及静态网站专属行为。AcePanel 会在应用前测试生成的 Web 服务器配置；验证失败时显示 Nginx、OpenResty 或 Apache 返回的具体错误。
 
 ## 批量创建
 
@@ -82,11 +82,11 @@ Back up the site before converting it. Upstreams and proxy rules, PHP runtime an
 
 ## 删除网站
 
-删除网站时，需要进行 5 秒的确认倒计时。 你可以选择是否同时 **删除网站目录** 以及 **删除同名的本地数据库**。 Bulk deletion removes the website directory but keeps the same-name database. AcePanel also removes the website from certificates associated with it and deletes a matching tamper-protection rule.
+删除网站时，需要进行 5 秒的确认倒计时。 你可以选择是否同时 **删除网站目录** 以及 **删除同名的本地数据库**。  AcePanel 还会解除网站与证书的关联，并删除对应的防篡改规则。
 
 ## 下一步
 
 - [反向代理](./website/proxy) - 了解如何创建反向代理网站
 - [PHP 网站](./website/php) - 了解如何创建 PHP 网站
 - [纯静态网站](./website/static) - 了解如何创建静态网站
-- [Website Settings](./website/setting) - Configure default site, IPv6 listening, error pages, and statistics
+- [网站设置](./website/setting)：配置默认网站、IPv6 监听、错误页和统计。

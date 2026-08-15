@@ -70,13 +70,13 @@ AcePanel 安装完成
 
 **忘记用户/密码/地址**
 
-Display the current access information:
+显示当前访问信息：
 
 ```shell
 acepanel info
 ```
 
-If the password is unknown, reset the selected account explicitly:
+密码未知时，明确重置所选账号：
 
 ```shell
 acepanel info --username <username> --force

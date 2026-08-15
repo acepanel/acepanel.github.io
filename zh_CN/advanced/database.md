@@ -8,19 +8,19 @@
 
 在使用数据库功能之前，需要先安装相应的数据库软件：
 
-1. Go to **Apps** > **Native Applications**
+1. 进入 **应用** > **原生应用**
 2. 安装你需要的数据库，例如 Percona、MySQL、MariaDB、PostgreSQL、MongoDB、ClickHouse、Elasticsearch、OpenSearch、Redis 或 Valkey
 
 ## 功能概览
 
-The database module adds a type tab only when at least one server of that type exists. The available type tabs are followed by **User** and **Server**:
+只有至少存在一台对应类型的服务器时，数据库模块才会显示该类型标签； 类型标签后方是 **用户**和**服务器**：
 
-| 功能                            | 说明                                                   |
-| ----------------------------- | ---------------------------------------------------- |
-| [数据库](./database/database)    | 为所选类型创建和管理数据库                                        |
-| [用户](./database/user)         | 管理数据库用户和权限                                           |
-| [服务器](./database/server)      | 管理数据库服务器连接                                           |
-| [pgAdmin](./database/pgadmin) | Open and maintain the PostgreSQL Web management tool |
+| 功能                            | 说明                        |
+| ----------------------------- | ------------------------- |
+| [数据库](./database/database)    | 为所选类型创建和管理数据库             |
+| [用户](./database/user)         | 管理数据库用户和权限                |
+| [服务器](./database/server)      | 管理数据库服务器连接                |
+| [pgAdmin](./database/pgadmin) | 打开并管理 PostgreSQL Web 管理工具 |
 
 Elasticsearch 和 Redis 标签页提供在线数据浏览器，可直接管理索引/文档和键值数据，而不是创建数据库的工作流。
 
@@ -65,7 +65,7 @@ MariaDB 和 Percona 在 **MySQL** 标签页下管理，因为它们与 MySQL 协
 
 ## 连接数据库
 
-The MySQL database list can open phpMyAdmin and lets you choose the MySQL server to connect to. The PostgreSQL list opens pgAdmin after it is installed. Both tools follow the panel language. Keep their ports private or restricted with an allowlist.
+MySQL 数据库列表可以打开 phpMyAdmin，并选择要连接的 MySQL 服务器； 安装 pgAdmin 后， PostgreSQL 列表可以直接打开它。 两个工具的界面语言均跟随面板，其端口应保持私有或使用白名单限制。
 
 ### 本地连接
 

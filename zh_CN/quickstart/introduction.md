@@ -27,15 +27,15 @@ AcePanel 是一款开源的服务器运维管理面板。
 
 **备份恢复**
 
-Backup and recovery for websites, MySQL, PostgreSQL, ClickHouse, Redis, and Valkey, with scheduled tasks and local, S3, SFTP, or WebDAV storage.
+为网站、MySQL、PostgreSQL、ClickHouse、Redis 和 Valkey 提供备份与恢复，并支持计划任务以及本地、S3、SFTP、WebDAV 存储。
 
-**Monitoring and Security**
+**监控与安全**
 
-Historical system monitoring, configurable alerts, SMTP and event notifications, firewall rules, scan awareness, and Linux tamper protection.
+提供系统历史监控、可配置告警、SMTP 和事件通知、防火墙规则、扫描感知以及 Linux 防篡改。
 
-**Containers and Projects**
+**容器与项目**
 
-Docker or Podman containers, Compose, images, networks, volumes, and systemd-managed Go, Java, Node.js, PHP, Python, .NET, and general projects.
+管理 Docker 或 Podman 容器、Compose、镜像、网络、卷，以及由 systemd 管理的 Go、Java、Node.js、PHP、Python、.NET 和通用项目。
 
 ## 对比
 

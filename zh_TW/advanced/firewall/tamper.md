@@ -1,78 +1,78 @@
-# Tamper Protection
+# 防篡改
 
-![Tamper protection](/images/security/tamper.png)
+![防篡改](/images/security/tamper.png)
 
-Tamper Protection protects selected website or application files against writes, deletion, renaming, attribute changes, and optionally the creation of new protected file types. It is available only on Linux; other systems display an unsupported-platform message.
+防篡改用於保護指定網站或應用檔案，阻止寫入、刪除、重新命名、屬性修改，並可控制是否允許建立新的受保護型別檔案。 該功能僅支援 Linux，其他系統會顯示不支援提示。
 
-Open **Security > Tamper Protection**. The page has **Settings**, **Protection Rules**, and **Interception Logs** tabs.
+進入 **安全 > 防篡改**。 頁面包含 **設定**、**保護規則**和 **攔截日誌**三個標籤頁。
 
-## Settings and Status
+## 設定與狀態
 
-Settings contains the master switch, runtime status, protection mode, new-file policy, and log-retention days. The summary shows the number of protected files and directories. Log retention can be set from 1 to 365 days.
+設定頁包含總開關、執行狀態、保護模式、新檔案策略和日誌保留天數， 並顯示已保護檔案和目錄數量。 日誌可保留 1 到 365 天。
 
-### `chattr` Mode
+### `chattr` 模式
 
-`chattr` mode uses Linux immutable and append-only filesystem attributes. It has no BPF LSM or specific kernel-version requirement and is useful for preventing Web-service and other ordinary processes from modifying protected content.
+`chattr` 模式使用 Linux 的 immutable 和 append-only 檔案系統屬性，不依賴 BPF LSM，也沒有特定核心版本要求，主要用於阻止 Web 服務等普通程序修改受保護內容。
 
-It is not an absolute boundary against `root`: an administrator can manually remove the filesystem attributes. Empty-extension rules protect all files and place the protected directory under append-only semantics so existing entries cannot be removed or replaced.
+該模式不能阻止 `root` 管理員手工解除檔案屬性。 副檔名列表為空時會保護全部檔案，同時目錄採用 append-only 語義，使現有條目無法被刪除或替換。
 
-### `eBPF-LSM` Mode
+### `eBPF-LSM` 模式
 
-`eBPF-LSM` enforces protection at the kernel security-hook layer. It intercepts writes, unlink, rename, attribute changes, and creation, and records the process name and PID. The running kernel must have the `bpf` LSM enabled.
+`eBPF-LSM` 在核心安全鉤子層執行保護，攔截寫入、刪除、重新命名、屬性修改和建立，並記錄程序名與 PID。執行中的核心必須啟用 `bpf` LSM。
 
-If the prerequisite is missing, **Activate eBPF and Reboot** modifies the kernel boot parameters and immediately restarts the server after a five-second dangerous-action confirmation.
+缺少前置條件時，點選 **啟用 eBPF 並重啟**會修改核心啟動引數，並在五秒危險操作確認後立即重啟伺服器。
 
-:::danger Immediate server restart
-Activating eBPF interrupts the panel, websites, databases, containers, projects, SSH sessions, and every other service on the server. Confirm backups and an independent recovery path before continuing.
+:::danger 伺服器立即重新啟動
+啟用 eBPF 會中斷面板、網站、資料庫、容器、專案、SSH 工作階段以及伺服器上的其他服務。 繼續操作前，請確認備份有效並準備獨立的復原方式。
 :::
 
-## Block New Files
+## 阻止新檔案
 
-The policy applies to new files whose type is covered by a rule:
+該策略針對規則覆蓋的檔案型別：
 
-| Mode     | Block New Files enabled                                      | Block New Files disabled                                                         |
-| -------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| eBPF-LSM | The kernel rejects creation.                 | Creation is logged and the new file is then added to protection. |
-| chattr   | A matching new file is detected and deleted. | Creation is logged and the new file is then protected.           |
+| 模式       | 啟用阻止新檔案         | 關閉阻止新檔案            |
+| -------- | --------------- | ------------------ |
+| eBPF-LSM | 核心直接拒絕建立。       | 先記錄建立事件，再把新檔案納入保護。 |
+| chattr   | 檢測到匹配的新檔案後將其刪除。 | 先記錄建立事件，再保護新檔案。    |
 
-In `chattr` mode, deletion happens after the new file is observed; only eBPF-LSM rejects creation at the kernel hook before the file is written.
+`chattr` 模式是在發現新檔案後刪除；只有 eBPF-LSM 會在核心鉤子處、檔案寫入前拒絕建立。
 
-## Protection Rules
+## 保護規則
 
-Each rule contains:
+每條規則包含：
 
-- a name;
-- protected directory;
-- one or more extensions;
-- exclusions;
-- enabled status.
+- 名稱；
+- 保護目錄；
+- 一個或多個副檔名；
+- 排除項；
+- 啟用狀態。
 
-Use the website selector to fill a managed site's directory. An empty extension list means all files. An exclusion can be a path fragment or an absolute path; keep it narrow and verify that it does not unintentionally match sensitive content elsewhere in the tree.
+可以通過網站選擇器填入已管理網站的目錄。 副檔名列表為空表示保護全部檔案。 排除項既可以是路徑片段，也可以是絕對路徑；應儘量縮小範圍，並確認不會意外匹配目錄樹中的其他敏感內容。
 
-### Common Workflow
+### 常用流程
 
-1. Back up the target files.
-2. Create a rule for a disposable or staging directory first.
-3. Choose chattr or verify eBPF-LSM readiness.
-4. Enable the rule and confirm the protected-file count.
-5. Attempt one controlled edit, rename, and new-file creation.
-6. Review **Interception Logs**, then enable the rule for production.
+1. 備份目標檔案。
+2. 先對臨時目錄或預釋出目錄建立規則。
+3. 選擇 chattr，或確認 eBPF-LSM 已滿足執行條件。
+4. 啟用規則並核對受保護檔案數量。
+5. 分別執行一次可控的編輯、重新命名和新建檔案測試。
+6. 檢查 **攔截日誌**，確認符合預期後再用於生產目錄。
 
-## Interception Logs
+## 攔截日誌
 
-Logs identify `write`, `unlink`, `rename`, `setattr`, and `create` operations. Each entry includes time, operation, path, process, and PID. The table supports pagination, refresh, clear, and automatic retention.
+日誌記錄 `write`、`unlink`、`rename`、`setattr` 和 `create` 操作。 每筆記錄包含時間、操作、路徑、程序和 PID。 列表支援分頁、重新整理、清空和自動保留。
 
-Clearing the table is irreversible. Export or record the relevant evidence before clearing during an investigation. A tamper interception can also trigger a notification configured under [Monitoring Settings](../monitor/setting).
+清空日誌不可恢復。 事故調查期間應先匯出或記錄相關證據。 防篡改攔截還可以觸發[監控設定](../monitor/setting)中配置的通知。
 
-## File Manager Integration
+## 檔案管理整合
 
-[Files](../file) shows a lock and protected/immutable state for affected entries and provides inline and context-menu protection actions. For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion warns that immutable files cannot be removed instead of silently bypassing the policy.
+[檔案](../file)會為受影響條目顯示鎖圖示及受保護、immutable 狀態，並提供行內和右鍵保護操作。 執行支援的單項操作時，AcePanel 可以臨時解除 immutable 屬性，完成操作後恢復保護。 批次刪除不會靜默繞過保護，而會提示 immutable 檔案無法刪除。
 
-## Lifecycle and Recovery
+## 生命週期與恢復
 
-- Deleting a managed website removes its corresponding protection rule.
-- When AcePanel restarts, it reconciles the desired rules with filesystem protection state.
-- The tamper-protection auxiliary database is included in panel backup maintenance.
-- If a protected deployment fails, check both the interception log and the deploying process. Disable or narrow the rule only for the minimum required window, then verify that protection is restored.
+- 刪除已管理網站時，會清理對應保護規則。
+- AcePanel 重啟後會重新對齊規則期望狀態和檔案系統實際保護狀態。
+- 防篡改輔助資料庫包含在面板備份維護範圍內。
+- 受保護部署失敗時，同時檢查攔截日誌和部署程序。 只在最短必要時間內停用或縮小規則，操作完成後確認保護已經恢復。
 
-Tamper Protection reduces unauthorized file changes; it does not replace least-privilege service users, patching, backups, malware investigation, or [firewall controls](../firewall).
+防篡改可以減少未授權檔案修改，但不能替代最小許可權使用者、漏洞修復、備份、惡意軟體調查和[防火牆控制](../firewall)。

@@ -1,46 +1,46 @@
-# Website Settings
+# 网站设置
 
-![Website settings](/images/website/setting.png)
+![网站设置](/images/website/setting.png)
 
-Website Settings controls defaults and global behavior shared by managed websites. Open **Websites > Settings**. These options are separate from the configuration of an individual website.
+网站设置用于管理所有网站共用的默认值和全局行为。 进入 **网站 > 设置**。 这里的设置独立于单个网站配置。
 
-## Tabs and Options
+## 标签页和选项
 
-The page contains the default page, stopped-site page, 404 page, default site, default settings, and website-statistics options supported by the active Web server.
+根据当前 Web 服务器支持的功能，页面提供默认页、停用页、404 页面、默认网站、默认设置和网站统计等标签页。
 
-### Default Site
+### 默认网站
 
-On Nginx, a default site receives requests that do not match another configured domain. Select only a site designed for this purpose. A default site does not replace DNS, TLS certificate matching, or explicit domain configuration.
+使用 Nginx 时，默认网站会接收没有匹配到其他已配置域名的请求。 只应选择专门用于此目的的网站。 默认网站不能替代 DNS 配置、TLS 证书域名匹配或网站自身的域名设置。
 
-### Default IPv6 Listening
+### 默认 IPv6 监听
 
-The default IPv6 option controls how AcePanel creates or extends listen addresses:
+默认 IPv6 选项决定 AcePanel 如何创建或补充监听地址：
 
-- New websites receive the corresponding IPv6 listeners for all configured ports.
-- When HTTPS is enabled on an existing website, AcePanel adds the IPv6 `443` listener according to this default.
+- 新建网站会为所有已配置端口添加对应的 IPv6 监听地址。
+- 为现有网站启用 HTTPS 时，AcePanel 会根据该默认设置添加 IPv6 `443` 监听地址。
 
-Before enabling it, confirm that the server has working IPv6 routing, the firewall permits the ports for IPv6, and DNS `AAAA` records point to the correct address. An IPv6 listener can expose a service even when only IPv4 firewall rules were reviewed.
+启用前，应确认服务器 IPv6 路由正常、防火墙已放行对应 IPv6 端口，并且 DNS `AAAA` 记录指向正确地址。 即使只检查过 IPv4 防火墙规则，IPv6 监听也可能使服务对外可访问。
 
-### Default and Error Pages
+### 默认页和错误页
 
-Default, stopped, and 404 pages are global Web-server assets. Replacing them affects every website that inherits the corresponding page. Keep a copy of customized content before an application or Web-server update.
+默认页、停用页和 404 页面是 Web 服务器的全局资源。 替换后会影响所有继承对应页面的网站。 在应用或 Web 服务器更新前，应备份自定义内容。
 
-### Statistics
+### 统计
 
-Website statistics require compatible access logging. Disabling or customizing logs at the individual website level can make the statistics incomplete.
+网站统计依赖兼容的访问日志。 单独为网站禁用日志或修改日志格式，可能导致统计数据不完整。
 
-## Website Type Changes
+## 切换网站类型
 
-An existing reverse-proxy, PHP, or pure-static website can be changed to another of those three types. AcePanel preserves common website data, including domains and files, but deletes the old type-specific configuration and rebuilds the new type's configuration.
+现有反向代理、PHP 或纯静态网站可以在这三种类型之间切换。 AcePanel 会保留域名和网站文件等通用数据，但会删除原类型的专属配置，并按新类型重新生成配置。
 
-:::danger Before changing a type
-Back up the website configuration and files. Upstreams, proxy rules, PHP-runtime settings, rewrites, and other type-specific fields are not guaranteed to survive the conversion. Run the configuration test and verify the site immediately afterward.
+:::danger 切换类型前
+请先备份网站配置和文件。 上游地址、代理规则、PHP 运行环境设置、Rewrite 等类型专属字段不会在类型切换后保留。 切换后立即运行配置测试并检查网站。
 :::
 
-Pure-static websites enable SPA fallback by default. Review that behavior when converting a traditional static site, because unknown paths may be served by the application entry page instead of returning 404.
+纯静态网站默认启用 SPA 回退。 传统静态网站切换到该类型后应检查此行为，因为不存在的路径可能返回应用入口页，而不是 404。
 
-## Configuration Validation
+## 配置验证
 
-AcePanel tests the Web-server configuration before applying a change. When the test fails, the dialog shows the Web server's concrete error. Fix the named file, directive, port, or certificate problem instead of repeatedly submitting the same configuration.
+AcePanel 会在应用修改前测试 Web 服务器配置。 测试失败时，对话框会显示 Web 服务器返回的具体错误。 根据错误修正文件、指令、端口或证书问题，不要在没有修改的情况下反复提交。
 
-See [Website Overview](../website), [Reverse Proxy](./proxy), [PHP Website](./php), [Static Website](./static), and [Certificates](../cert/cert).
+相关内容请参阅[网站总览](../website)、[反向代理网站](./proxy)、[PHP 网站](./php)、[静态网站](./static)和[证书](../cert/cert)。

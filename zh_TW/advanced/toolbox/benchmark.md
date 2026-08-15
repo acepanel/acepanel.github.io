@@ -26,7 +26,7 @@
 
 透過直接 I/O 在三種區塊大小（**4KB**、**64KB** 與 **1MB**）下測量讀寫速度來評估儲存 I/O 效能，並產生磁碟分數。
 
-## 使用方式
+## 使用方法
 
 點選 **開始跑分** 按鈕，系統會依序執行 CPU 子測試、記憶體測試與磁碟測試，並顯示目前項目與整體進度。 測試完成後，會顯示 CPU、記憶體與磁碟的總分；將滑鼠移至分數上方即可檢視各項測試的詳細指標。
 
@@ -40,17 +40,17 @@
 
 ## 測試建議
 
-CPU, memory, and especially disk benchmarks create temporary load and can compete with websites, databases, containers, and backups. Run them during a maintenance window, one test at a time, with enough free disk space. Do not benchmark a production database volume during peak traffic.
+CPU、記憶體，尤其是磁碟效能測試會產生臨時負載，並與網站、資料庫、容器和備份爭用資源。 請在維護視窗內逐項執行，並確保有足夠的可用磁碟空間。 業務高峰期不要在生產資料庫所在的磁碟捲上執行測試。
 
-1. 測試前關閉不必要的服務與行程
-2. 避免在業務尖峰時段進行測試
-3. 多次測試取平均值會更準確
-4. 不同時段的測試結果可能會有波動
+1. 測試前關閉不必要的服務和程序
+2. 避免在業務高峰期進行測試
+3. 多次測試取平均值更準確
+4. 不同時間段的測試結果可能有波動
 
 ## 效能最佳化參考
 
 如果跑分結果不理想，可以考慮：
 
-- **CPU 效能偏低**：檢查是否有行程佔用過高的 CPU
-- **記憶體效能偏低**：檢查記憶體使用情況，是否存在記憶體洩漏
-- **磁碟效能偏低**：檢查磁碟健康狀態，考慮升級為 SSD
+- **CPU 效能低**：檢查是否有程序佔用過高 CPU
+- **記憶體效能低**：檢查記憶體使用情況，是否存在記憶體洩漏
+- **磁碟效能低**：檢查磁碟健康狀態，考慮升級到 SSD

@@ -1,62 +1,62 @@
 # 网络
 
-![Network management](/images/toolbox/network.png)
+![网络管理](/images/toolbox/network.png)
 
-The Network tool combines a read-only connection inspector with guarded network-interface configuration. Open **Toolbox > Network**.
+网络工具包含只读的连接查看器和带安全保护的网卡配置。 进入 **工具箱 > 网络**。
 
-## Network Connections
+## 网络连接
 
-The connection list shows current TCP, TCP6, UDP, and UDP6 sockets with local address, remote address, state, PID, and process. Search by PID, partial process name, or local/remote port, combine state filters, sort supported columns, refresh the snapshot, and change the page size.
+连接列表显示当前 TCP、TCP6、UDP 和 UDP6 套接字，包括本地地址、远程地址、状态、PID 和进程。 可以按 PID、部分进程名、本地或远程端口搜索，组合状态筛选，排序受支持的列，刷新当前快照并调整每页数量。
 
-Common states include `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, `CLOSE_WAIT`, `SYN_SENT`, `SYN_RECV`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, `CLOSING`, and `NONE`. UDP commonly has no connection state. Process ownership can be empty if the process exited between sampling or the operating system did not expose it.
+常见状态包括 `LISTEN`、`ESTABLISHED`、`TIME_WAIT`、`CLOSE_WAIT`、`SYN_SENT`、`SYN_RECV`、`FIN_WAIT1`、`FIN_WAIT2`、`LAST_ACK`、`CLOSING` 和 `NONE`。 UDP 通常没有连接状态。 进程在采样期间退出，或操作系统没有提供所有者信息时，PID 和进程可能为空。
 
-The connection list does not terminate sockets. Open [Processes](./process) when you need process details or signal operations.
+连接列表不会终止套接字。 需要查看进程详情或发送信号时，打开[进程](./process)工具。
 
-## Network Interface Configuration
+## 网卡配置
 
-The interface section shows the detected configuration manager, interface type, MAC address, MTU, and current IPv4 and IPv6 addresses.
+网卡区域显示检测到的配置管理器、网卡类型、MAC 地址、MTU 以及当前 IPv4、IPv6 地址。
 
-AcePanel can safely edit supported configurations managed by:
+AcePanel 可以安全编辑以下方式管理且满足要求的配置：
 
-- NetworkManager;
-- netplan;
-- ifupdown configurations that pass AcePanel's safety parser.
+- NetworkManager；
+- netplan；
+- 通过 AcePanel 安全解析检查的 ifupdown 配置。
 
-For IPv4 and IPv6 independently, choose automatic or manual addressing and configure CIDR addresses, the default gateway, DNS servers, and whether automatically assigned DNS is accepted. ifupdown does not expose automatic-DNS fields that it cannot represent.
+IPv4 和 IPv6 分开设置。每种地址族都可以选择自动或手动获取，并配置 CIDR 地址、默认网关、DNS 服务器以及是否接受自动分配的 DNS。 ifupdown 无法表达的自动 DNS 字段不会显示。
 
-### Unsupported Configurations
+### 不支持的配置
 
-AcePanel displays **Unsupported** instead of attempting an unsafe rewrite when it cannot reliably round-trip the active configuration. Examples include multiple files defining the same interface, inherited or `mapping`-based ifupdown definitions, and a NetworkManager interface without an editable active connection profile.
+AcePanel 无法可靠读取并按原样写回活动配置时，会显示 **不支持**，而不会尝试进行不安全的改写。 例如：多个文件定义同一网卡、使用继承或基于 `mapping` 的 ifupdown 定义，以及 NetworkManager 网卡没有可编辑的活动连接配置。
 
-Manage an unsupported interface with its native operating-system tools or simplify the configuration first. Do not overwrite it with a guessed panel form.
+此时应使用操作系统原生工具管理网卡，或先简化配置。 不要使用猜测出的面板表单覆盖现有配置。
 
-## Safe Apply and Automatic Rollback
+## 安全应用和自动回滚
 
-Changing the primary address, gateway, route source, or automatic-address setting can immediately disconnect the panel and SSH. Keep a console or provider recovery channel available.
+修改主 IP、网关、路由来源或自动地址设置，可能立即中断面板和 SSH。 操作前必须准备控制台或云厂商恢复通道。
 
-When a change is applied, AcePanel starts a 30-second confirmation window:
+应用修改后，AcePanel 会启动 30 秒确认倒计时：
 
-1. Verify that the panel, SSH, gateway, DNS, and required services remain reachable.
-2. Click **Keep change** within 30 seconds to retain the new configuration.
-3. Click **Roll back now** to restore the previous configuration immediately.
-4. If no confirmation arrives before the countdown ends, AcePanel automatically rolls back.
+1. 检查面板、SSH、网关、DNS 和所需服务是否仍可访问。
+2. 在 30 秒内点击 **保留修改**，保存新配置。
+3. 点击 **立即回滚**，马上恢复旧配置。
+4. 倒计时结束前没有确认时，AcePanel 自动回滚。
 
-Automatic rollback reduces risk but cannot guarantee recovery from every driver, routing, provider, or operating-system failure. Test remotely managed servers during a maintenance window.
+自动回滚可以降低风险，但不能保证从所有驱动、路由、云厂商或操作系统故障中恢复。 远程服务器应在维护窗口内测试。
 
-## Validation
+## 验证
 
-After keeping a change, verify:
+保留修改后，逐项检查：
 
-- the expected IPv4 and IPv6 addresses and MTU;
-- the default gateway and route table;
-- DNS resolution using every configured resolver;
-- panel and SSH access from a fresh connection;
-- inbound services through both the system firewall and cloud security group;
-- outbound access required by package managers, backups, mail, and monitoring.
+- IPv4、IPv6 地址和 MTU 是否符合预期；
+- 默认网关和路由表；
+- 使用每个已配置 DNS 服务器进行解析；
+- 从新连接访问面板和 SSH；
+- 通过系统防火墙和云安全组访问入站服务；
+- 软件包管理器、备份、邮件和监控所需的出站连接。
 
-## Troubleshooting
+## 故障排查
 
-- **Unsupported:** inspect the named manager's source files and remove ambiguous multi-file, inheritance, or mapping constructs only if you understand their effect.
-- **Change rolled back:** determine which address, gateway, DNS, or DHCP condition broke connectivity before trying again.
-- **Panel reachable but a service is not:** check its bind address and [Security](../firewall) rules for both address families.
-- **An old address remains:** refresh the interface list and inspect the native manager; temporary kernel addresses and persistent configuration are different states.
+- **显示不支持：** 检查页面指出的配置管理器源文件；只有理解影响时，才移除多文件、继承或 mapping 等歧义结构。
+- **修改被回滚：** 找出导致连接中断的地址、网关、DNS 或 DHCP 条件后再重试。
+- **面板可访问但服务不可用：** 检查服务绑定地址，并核对两种地址族的[安全](../firewall)规则。
+- **旧地址仍然存在：** 刷新网卡列表并检查原生网络管理器；内核临时地址和持久配置是不同状态。

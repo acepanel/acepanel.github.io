@@ -1,6 +1,6 @@
 # 运行环境
 
-![Runtime environments](/images/app/environment.png)
+![运行环境](/images/app/environment.png)
 
 运行环境用于安装各类编程语言的运行时，为网站和项目提供执行环境。
 
@@ -19,18 +19,18 @@ AcePanel 支持以下编程语言的运行环境：
 
 ## 运行环境列表
 
-Go to the **Apps** page, click the **Runtime Environment** tab to view available runtime environments:
+进入 **应用** 页面，点击 **运行环境** 选项卡查看可用运行环境：
 
 点击顶部的语言分类可筛选特定语言的版本，或使用右侧的搜索框按名称或描述搜索：
 
 ## 安装运行环境
 
-1. Go to the **Apps** page
+1. 进入 **应用** 页面
 2. 点击 **运行环境** 标签
 3. 选择需要的语言分类（或查看全部）
 4. 点击对应版本的 **安装** 按钮
 
-When the runtime offers them, the install dialog also accepts a **Pre-execution Script** and **Custom Compile Parameters**. Leave them empty unless the build needs a known dependency, mirror, patch, or compiler option. The script runs with installation privileges, so review it before submitting the task.
+运行环境支持时，安装对话框还会显示 **预执行脚本**和**自定义编译参数**。 只有构建确实需要特定依赖、镜像、补丁或编译选项时才填写。 脚本以安装权限执行，提交任务前必须检查内容。
 
 :::tip 版本选择建议
 
@@ -51,83 +51,83 @@ When the runtime offers them, the install dialog also accepts a **Pre-execution 
 
 PHP 运行环境提供模块管理功能，可以安装或卸载各种 PHP 模块：
 
-The Module Management tab lists every available module with its name, description, and an **Install** / **Delete** action. Installing or uninstalling a module is submitted as a background task; check the result in **Tasks > Panel Tasks**.
+模块管理选项卡列出所有可用模块的名称、说明以及 **安装** / **删除** 操作。 安装或卸载模块会提交后台任务；请在 **任务 > 面板任务** 中查看结果。
 
-A wide catalog of modules is available, including (but not limited to):
+常用模块包括：
 
-- **Caching / Serialization**: OPcache (bytecode cache), APCu (user-level in-memory key-value cache), igbinary, Redis (requires igbinary), Memcached
-- **Imaging / Files**: ImageMagick, exif, fileinfo, zip, bz2, zstd, xlswriter (Excel)
-- **Databases**: pgsql and pdo_pgsql (PostgreSQL), sqlsrv and pdo_sqlsrv (SQL Server)
-- **Networking / Protocols**: ssh2, snmp, ldap, imap, event, grpc, protobuf, rdkafka (Kafka)
-- **Internationalization / Text**: intl, gettext, enchant, pspell, readline, yaml, xsl
-- **System V IPC**: sysvmsg, sysvsem, sysvshm
-- **Math**: gmp, calendar
-- **Profiling / Debugging**: xhprof, xdebug
-- **High-performance / Encryption**: Swoole, Swow, ionCube (must be installed after OPcache)
+- **缓存和序列化：** OPcache、APCu、igbinary、Redis（依赖 igbinary）、Memcached。
+- **图像和文件：** ImageMagick、exif、fileinfo、zip、bz2、zstd、xlswriter。
+- **数据库：** pgsql、pdo_pgsql、sqlsrv、pdo_sqlsrv。
+- **网络和协议：** ssh2、snmp、ldap、imap、event、grpc、protobuf、rdkafka。
+- **国际化和文本：** intl、gettext、enchant、pspell、readline、yaml、xsl。
+- **System V IPC：** sysvmsg、sysvsem、sysvshm。
+- **数学：** gmp、calendar。
+- **分析和调试：** xhprof、xdebug。
+- **高性能和加密：** Swoole、Swow、ionCube，其中 ionCube 必须在 OPcache 之后安装。
 
-:::tip Version-Aware Availability
-The module catalog adapts to the selected PHP version:
+:::tip 按 PHP 版本显示
+模块列表会随所选 PHP 版本变化：
 
-- **Swow** is only available on PHP 8.0 and later
-- **pspell** and **imap** are removed on PHP 8.4 and later (no longer recommended)
-- **OPcache** is no longer offered as an installable module on PHP 8.5 and later, since it is built in natively
+- **Swow** 仅支持 PHP 8.0 及以上版本
+- PHP 8.4 及以上不再提供 **pspell** 和 **imap**（不再推荐）
+- PHP 8.5 及以上已原生内置 **OPcache**，不再将其作为可安装模块
   :::
 
-### Configuration Files (PHP)
+### 配置文件（PHP）
 
-You can edit PHP's main configuration file (php.ini) via the **Main Configuration** tab and the FPM configuration file via the **FPM Configuration** tab using a built-in editor. The **View PHPInfo** button on the running status page shows the full `phpinfo()` output.
+可以使用内置编辑器，在 **主配置** 选项卡中编辑 PHP 主配置文件 php.ini，并在 **FPM 配置** 选项卡中编辑 FPM 配置文件。 运行状态页的 **查看 PHPInfo**会显示完整 `phpinfo()` 信息。
 
-### Parameter Tuning (PHP)
+### 参数调优（PHP）
 
-The **Parameter Tuning** tab provides a form-based way to adjust common settings without editing the raw configuration. It is organized into the following sections:
+**参数调优** 选项卡通过表单调整常用设置，无需编辑原始配置。 其中包含以下分组：
 
-- **General**: `short_open_tag`, `date.timezone`, `display_errors`, and `error_reporting`
-- **Disabled Functions**: a comma-separated list of PHP functions to disable (e.g. `exec`, `shell_exec`, `system`, `passthru`)
-- **Upload Limits**: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, and `memory_limit`
-- **Timeout Limits**: `max_execution_time`, `max_input_time`, and `max_input_vars`
-- **Performance Tuning**: PHP-FPM process manager settings (`pm`, `pm.max_children`, and, for `dynamic` mode, `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`)
-- **Session**: `session.save_handler` (files, redis, or memcached), the matching connection details or save path, `session.gc_maxlifetime`, and `session.cookie_lifetime`. A **Clean Session Files** button deletes all session files; it only takes effect when the save handler is set to `files`
+- **常规：** `short_open_tag`、`date.timezone`、`display_errors`、`error_reporting`。
+- **禁用函数：** 以逗号分隔需要禁用的函数，例如 `exec`、`shell_exec`、`system`、`passthru`。
+- **上传限制：** `upload_max_filesize`、`post_max_size`、`max_file_uploads`、`memory_limit`。
+- **超时限制：** `max_execution_time`、`max_input_time`、`max_input_vars`。
+- **性能调优**：PHP-FPM 进程管理器设置（`pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers` 和 `pm.max_spare_servers`）
+- **会话**：`session.save_handler`（files、redis 或 memcached）、对应的连接信息或保存路径、`session.gc_maxlifetime` 及 `session.cookie_lifetime`。 **清理会话文件** 按钮会删除全部会话文件；仅当保存处理器设为 `files` 时生效
 
-### Logs (PHP)
+### 日志（PHP）
 
-The PHP runtime environment provides a separate **Load Status** tab (FPM pool load), along with **Runtime Logs**, **Error Logs**, and **Slow Logs** tabs for monitoring and troubleshooting.
+PHP 还提供独立的 **负载状态**（FPM 进程池负载）、**运行日志**、**错误日志**和**慢日志**标签页。
 
-### Language-Specific Settings
+### 语言专属设置
 
-Some runtime environments provide dedicated settings on their management page:
+部分运行环境的管理页面还提供专用设置：
 
-- **Go**: Configure the module proxy (`GOPROXY`), with presets for the official proxy and mirrors such as goproxy.cn, Alibaba, and Tencent
-- **Node.js**: Configure the npm registry, with presets for the official registry and mirrors such as npmmirror, Tencent, and Huawei
-- **Python**: Configure the pip mirror, with presets for the official source and mirrors such as Alibaba, Tencent, Tsinghua, and USTC
+- **Go：** 配置 `GOPROXY`，可选择官方地址、goproxy.cn、阿里云和腾讯云等预设。
+- **Node.js：** 配置 npm 镜像，可选择官方地址、npmmirror、腾讯云和华为云等预设。
+- **Python：** 配置 pip 镜像，可选择官方地址、阿里云、腾讯云、清华大学和中国科学技术大学等预设。
 
-### Set as CLI Default Version
+### 设置为 CLI 默认版本
 
-Click the **Set as CLI Default Version** button to set the current version as the default version used by the command line. This is available for all runtime environments (Go, Java, Node.js, PHP, Python, and .NET).
+点击 **设置为 CLI 默认版本**，可把当前版本设为命令行默认版本。 Go、Java、Node.js、PHP、Python 和 .NET 均支持该操作。
 
-## Multiple Version Coexistence
+## 多版本共存
 
-AcePanel supports multiple versions of the same language coexisting. For example, you can install both PHP 7.4 and PHP 8.3 simultaneously, and different websites can use different PHP versions.
+同一语言可以安装多个版本。 例如同时安装 PHP 7.4 和 PHP 8.3，让不同网站分别使用不同版本。
 
-Installation path rules:
+安装路径规则：
 
-- **Go**: `/opt/ace/server/go/version`
-- **Java**: `/opt/ace/server/java/version`
-- **Node.js**: `/opt/ace/server/nodejs/version`
-- **PHP**: `/opt/ace/server/php/version`
-- **Python**: `/opt/ace/server/python/version`
-- **.NET**: `/opt/ace/server/dotnet/version`
+- **Go**：`/opt/ace/server/go/version`
+- **Java**：`/opt/ace/server/java/version`
+- **Node.js**：`/opt/ace/server/nodejs/version`
+- **PHP**：`/opt/ace/server/php/version`
+- **Python**：`/opt/ace/server/python/version`
+- **.NET**：`/opt/ace/server/dotnet/version`
 
-## Using in Projects
+## 在项目中使用
 
-When creating a project, you can select the runtime environment version to use in the project settings. See [Project Management](../project) documentation for details.
+创建项目时，可以在项目设置中选择运行环境版本。 详见[项目管理](../project)。
 
-## Update Runtime Environment
+## 更新运行环境
 
-When a new version is available, the latest version number will be displayed in the list. You can:
+有新版本时，列表会显示最新版本号。 可以卸载旧版本后安装新版本，也可以保留旧版本并同时安装新版本，后者更适合逐步验证。
 
-1. Uninstall the old version and install the new version
-2. Keep the old version and install the new version simultaneously (recommended)
+1. 卸载旧版本后安装新版本
+2. 保留旧版本，同时安装新版本（推荐）
 
-:::warning Note
-Updating runtime environment versions may cause compatibility issues with projects that depend on that version. Please verify in a test environment before updating the production environment.
+:::warning 注意
+更新运行环境版本可能导致依赖该版本的项目出现兼容问题。 更新生产环境前，请先在测试环境中验证。
 :::

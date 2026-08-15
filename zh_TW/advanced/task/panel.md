@@ -2,35 +2,35 @@
 
 ![Panel tasks](/images/task/panel.png)
 
-Panel Tasks contains long-running work submitted to AcePanel's queue, including application and runtime changes, backups and restores, file compression and extraction, and background container operations.
+面板任務包含提交到 AcePanel 佇列中的長時間操作，例如應用和執行環境變更、備份與恢復、檔案壓縮與解壓，以及後臺容器操作。
 
 **任務** 頁面有兩個分頁：**排程任務**（預設顯示）與 **面板任務**。 本頁僅介紹 **面板任務**。 若是以時間為基準的工作（例如定時備份或腳本），請參閱 [排程任務](./schedule.md)。
 
-## 任務清單
+## 任務列表
 
 前往 **任務** > **面板任務** 分頁即可檢視面板任務清單。
 
-清單會顯示以下資訊：
+列表顯示以下資訊：
 
 - **任務名稱**：任務描述
 - **狀態**：等待中/執行中/已完成/失敗
 - **建立時間**：任務建立時間
 - **完成時間**：任務結束時間
-- **Actions**: View logs, cancel, delete
+- **操作**：檢視日誌、取消、刪除
 
 ## 任務狀態
 
-| 狀態       | 說明                                      |
-| -------- | --------------------------------------- |
-| 等待中      | 任務已排入佇列，尚未開始                            |
-| 執行中      | 任務正在執行                                  |
-| 已完成      | 任務執行成功                                  |
-| 失敗       | 任務執行失敗                                  |
-| Canceled | A waiting or running task was cancelled |
+| 狀態       | 說明            |
+| -------- | ------------- |
+| 等待中      | 任務已排入佇列，尚未開始  |
+| 執行中      | 任務正在執行        |
+| 已完成      | 任務執行成功        |
+| 失敗       | 任務執行失敗        |
+| Canceled | 等待中或執行中的任務已取消 |
 
 ## 常見任務類型
 
-### 應用程式安裝
+### 應用安裝
 
 安裝應用程式時會建立安裝任務：
 
@@ -67,13 +67,13 @@ Panel Tasks contains long-running work submitted to AcePanel's queue, including 
 - 命令輸出
 - 錯誤訊息
 
-Logs are streamed in real time. The viewer can load history, search loaded text, jump between matches, toggle wrapping, copy, and enter full screen. The **Logs** button is unavailable while a task is still waiting. See [Logs](../log) for the shared viewer behavior.
+日誌會即時顯示。 檢視器支援載入歷史記錄、搜尋已載入文本、在匹配項之間跳轉、切換自動換行、複製和全屏顯示。 任務仍在等待時，**日誌** 按鈕不可用。 通用檢視器的操作說明請參閱[日誌](../log)。
 
-## Cancel Task
+## 取消任務
 
-Waiting and running tasks provide **Cancel**. Cancelling a waiting task removes it from execution. Cancelling a running task asks the worker to stop and runs the task's cleanup action when one is defined.
+等待中和執行中的任務都會提供 **取消** 操作。 取消等待中的任務會將其從執行佇列移除； 取消執行中的任務會請求工作程序停止，並在任務定義了清理操作時執行清理。
 
-Cancellation is not a rollback. A pull, restore, extraction, or installer may already have written files or changed a service. Read the log and inspect the affected resource before retrying.
+取消不等於回滾。 拉取、恢復、解壓或安裝程式可能已經寫入檔案或修改服務。 重試前請閱讀日誌並檢查受影響的資源。
 
 記錄對於排查任務失敗的原因非常有用。
 
@@ -83,13 +83,13 @@ Cancellation is not a rollback. A pull, restore, extraction, or installer may al
 
 ## 刪除任務
 
-Only finished, failed, or canceled tasks can be deleted. Cancel a waiting or running task first.
+只有已完成、失敗或已取消的任務可以刪除。 等待中或執行中的任務需要先取消。
 
 :::tip 提示
-刪除任務只會從清單中移除記錄，並不會影響已安裝的應用程式或環境。
+刪除任務只是從列表中移除記錄，不會影響已安裝的應用或環境。
 :::
 
-## 處理任務失敗
+## 任務失敗處理
 
 如果任務失敗：
 
@@ -120,7 +120,7 @@ acepanel clear-task
 
 ## 注意事項
 
-1. 安裝任務可能需要較長時間，請耐心等候
+1. 安裝任務可能需要較長時間，請耐心等待
 2. 任務執行期間可以關閉瀏覽器
 3. 如果任務長時間沒有回應，可以重新整理頁面以檢視狀態
 4. 建議定期清理已完成的任務記錄

@@ -6,7 +6,7 @@
 
 ## 安裝 Docker
 
-Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安裝進度可在「任務」->「面板任務」中檢視。
+進入「應用」頁面，在「原生應用」分頁中找到並安裝 Docker。 安裝進度可在「任務」->「面板任務」中檢視。
 
 :::tip 中國大陸的伺服器
 在中國大陸的伺服器上拉取映像檔速度緩慢。 建議設定 [Millisecond Mirror](https://1ms.run/) 提供的付費加速來源。
@@ -14,7 +14,7 @@ Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安�
 
 ## 部署容器
 
-Go to "Apps" -> "Container Template", find pgAdmin 4, and click "Deploy". 部署是一個四步驟精靈：部署模式、設定、預覽與編輯、確認。
+進入「應用 > 容器範本」，找到 pgAdmin 4 並點選「部署」。 部署是一個四步驟精靈：部署模式、設定、預覽與編輯、確認。
 
 在範本清單中，您可以透過頂部的分類標籤或右側的搜尋框來縮小選擇範圍。 每個範本卡片都會顯示其圖示、名稱與說明；「本機」標籤用於標示儲存在本伺服器上的範本（而非從遠端範本儲存庫取得），而有定義首頁的範本會顯示一個外部連結按鈕，點選即可開啟專案網站。
 

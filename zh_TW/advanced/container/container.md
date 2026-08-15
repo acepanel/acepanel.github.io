@@ -4,26 +4,26 @@
 
 容器是 Docker 的核心概念，是映像檔的執行實例。 透過容器管理頁面，你可以建立、啟動、停止與管理容器。
 
-## 容器清單
+## 容器列表
 
-進入 **容器** 頁面，預設會顯示容器清單。
+進入 **容器** 頁面，預設顯示容器列表。
 
-清單會顯示以下資訊：
+列表顯示以下資訊：
 
 - **容器名稱**：容器的名稱
 - **狀態**：執行狀態開關
 - **映像檔**：容器使用的映像檔
 - **連接埠**：連接埠對應（主機連接埠 -> 容器連接埠）
 - **執行狀態**：詳細的執行狀態資訊
-- **操作**：終端機、日誌、重新命名等
+- **操作**：終端、日誌、重新命名等
 
-## Inspect and Edit a Container
+## 檢視和編輯容器
 
-Click a container name or **Details** to open its information dialog. It shows the effective image, command, state, restart policy, ports, mounts, environment variables, labels, networks, resource settings, and the raw Docker/Podman `inspect` result. Use the raw view when the summarized fields are not enough for troubleshooting.
+點選容器名稱或 **詳情** 開啟資訊對話方塊。 這裡會顯示實際使用的映象、命令、狀態、重啟策略、埠、掛載、環境變數、標籤、網路、資源設定，以及原始的 Docker/Podman `inspect` 結果。 彙總欄位不足以排查問題時，可切換到原始檢視。
 
-Use **Edit** to change a supported setting on an existing container. Review mounts, ports, and environment variables before saving because recreating a container can interrupt the service. Data stored only in the writable container layer can be lost when a container is replaced; keep persistent data in a volume or host mount.
+點選 **編輯** 可以修改現有容器支援的設定。 儲存前請檢查掛載、埠和環境變數，因為重新建立容器會中斷服務。 僅存放在容器可寫層中的資料可能在替換容器時丟失，持久資料應儲存到卷或主機掛載目錄。
 
-Continuous adjacent port mappings are combined in the list to make ranges easier to read. Open the details dialog to inspect the exact underlying mappings.
+列表會合並連續的相鄰埠對映，便於檢視埠範圍。 需要確認精確對映時，請開啟詳情對話方塊。
 
 ## 建立容器
 
@@ -31,18 +31,18 @@ Continuous adjacent port mappings are combined in the list to make ranges easier
 
 ### 基本設定
 
-- **容器名稱**：選填，留空則自動產生
+- **容器名稱**：可選，留空則自動生成
 - **映像檔**：Docker 映像檔名稱，例如 `nginx`、`mysql:8.4`、`your_username/your_image:tag`
 - **網路**：選擇容器使用的網路
-- **重啟策略**：容器結束後的重啟行為
-  - None：不自動重啟
+- **重啟策略**：容器退出後的重啟行為
+  - 無：不自動重啟
   - Always：總是重啟
   - On failure：失敗時重啟（預設重試 5 次）
   - Unless stopped：除非手動停止，否則重啟
 
 本分頁底部的 **容器選項** 區域提供以下開關：
 
-- **TTY (-t)**：配置虛擬終端機
+- **TTY (-t)**：分配偽終端
 - **STDIN (-i)**：保持標準輸入開啟
 - **自動移除**：容器停止後自動刪除
 - **特權模式**：授予容器完整的系統權限（請謹慎使用）
@@ -80,12 +80,12 @@ Continuous adjacent port mappings are combined in the list to make ranges easier
 - **啟動指令**：覆寫映像檔預設的 **指令** (CMD) 與 **進入點** (ENTRYPOINT)
 - **容器標籤**：附加至容器上的自訂標籤，格式為 `KEY=VALUE`
 
-Before submitting, choose how the operation runs:
+提交前請選擇操作方式：
 
-- **Foreground** keeps the dialog open and streams image-pull and container-creation output.
-- **Background** creates a panel task. You may leave the page and follow the result under **Tasks > Panel Tasks**.
+- **前臺**：保持對話方塊開啟，即時顯示映象拉取和容器建立輸出。
+- **後臺**：建立面板任務。 離開頁面不會中斷操作，可在 **任務 > 面板任務** 中檢視結果。
 
-These modes are not interchangeable: foreground output belongs to the current browser operation, while a background operation is owned by the task queue.
+兩種方式的執行邊界不同：前臺輸出屬於當前瀏覽器操作，後臺操作則由任務佇列管理。
 
 ## 容器操作
 
@@ -93,22 +93,22 @@ These modes are not interchangeable: foreground output belongs to the current br
 
 勾選多個容器後，即可進行批次操作：
 
-- **啟動**：啟動勾選的容器
-- **停止**：停止勾選的容器
-- **重啟**：重啟勾選的容器
-- **強制停止**：強制停止勾選的容器
-- **暫停**：暫停勾選的容器
-- **恢復**：恢復已暫停的容器
-- **刪除**：刪除勾選的容器
+- **啟動**：啟動選中的容器
+- **停止**：停止選中的容器
+- **重啟**：重啟選中的容器
+- **強制停止**：強制停止選中的容器
+- **暫停**：暫停選中的容器
+- **恢復**：恢復暫停的容器
+- **刪除**：刪除選中的容器
 
-### 單一容器操作
+### 單個容器操作
 
 - **終端機**：開啟容器的終端機，在容器內執行指令（僅在容器執行時可用）
 - **日誌**：檢視容器執行日誌
 - **重新命名**：修改容器名稱
 - **更多**：包含啟動、停止、重啟、強制停止、暫停、恢復與刪除操作的下拉選單
 
-The real-time log viewer shows its connection state and can load older lines, search the loaded text, jump between matches, toggle wrapping, copy all loaded output, and enter full screen. Search covers only the history already loaded in the dialog. See [Logs](../log) for the shared viewer behavior.
+即時日誌檢視器會顯示連線狀態，並支援載入更早日誌、搜尋已載入文本、在匹配項之間跳轉、切換自動換行、複製全部已載入內容和全屏顯示。 搜尋範圍僅包含對話方塊中已經載入的歷史記錄。 通用日誌檢視器的操作說明請參閱[日誌](../log)。
 
 ## 清理容器
 

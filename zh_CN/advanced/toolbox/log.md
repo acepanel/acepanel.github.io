@@ -11,7 +11,7 @@
 - **扫描所有**：扫描所有类型的日志
 - **清理所有**：清理所有已扫描的日志
 
-Scanning is read-only: it reports the matching items, count, and estimated reclaimable space. Cleaning removes or vacuums the items found by the scan and reports the actual result. Scan again if new logs were written after the previous result.
+扫描是只读操作，只会报告匹配的项目、数量和预计可释放空间。 清理会删除或整理扫描发现的项目，并报告实际结果。 如果上次扫描后又写入了新日志，请重新扫描。
 
 ## 日志类型
 
@@ -85,7 +85,7 @@ systemd journal 不会被完全删除。 清理时会执行 `journalctl --vacuum
 ## 注意事项
 
 1. 清理操作不可恢复，请确认日志不再需要
-2. Log cleanup targets panel logs, website logs, MySQL slow-query and binary logs, Docker container logs and unused images, and system log or journal data. It does not delete website content, database tables, active container volumes, or normal business files.
-3. Download logs first when they may be needed for an incident, audit, failed backup, or security investigation.
+2. 日志清理只处理面板日志、网站日志、MySQL 慢查询和二进制日志、Docker 容器日志和未使用镜像，以及系统日志或 journal 数据； 不会删除网站内容、数据库表、正在使用的容器卷或普通业务文件。
+3. 如果日志可能用于故障、审计、备份失败或安全事件调查，请先下载保存。
 4. 重要日志建议先备份
 5. 生产环境建议保留最近的日志用于问题排查

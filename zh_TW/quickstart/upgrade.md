@@ -10,13 +10,13 @@
 
 ## 手動更新
 
-### 網頁介面
+### Web 介面
 
-Click the version or **Update** action on Home. The dialog compares the installed and target versions, shows the release notes, and streams each update stage and its output. A failure or timeout remains visible so you can copy the relevant error.
+在首頁點選版本或 **更新**。 對話方塊會比較當前版本和目標版本，顯示更新日誌，並即時輸出各更新階段。 失敗或超時資訊會保留，便於複製錯誤。
 
-Before starting, download a recent panel backup, confirm that important websites and databases have their own backups, and keep an independent SSH session open. Do not update while a migration, restore, application installation, or other critical background task is running.
+開始前下載近期面板備份，確認重要網站和資料庫有各自備份，並保留獨立 SSH 會話。 遷移、恢復、應用安裝或其他關鍵後臺任務執行期間不要更新。
 
-The panel service restarts during the update, so the browser connection temporarily closes. A release may also require a server restart, which interrupts websites, databases, projects, containers, SSH, and every other service. After a successful panel-only restart, the update dialog closes or reloads the page automatically.
+更新過程中面板服務會重啟，瀏覽器連線將暫時斷開。 部分更新還可能要求重啟伺服器，這會中斷網站、資料庫、專案、容器、SSH 和其他服務。 僅重啟面板且更新成功後，對話方塊會自動關閉或重新整理頁面。
 
 ### 命令列
 
@@ -24,14 +24,14 @@ The panel service restarts during the update, so the browser connection temporar
 acepanel update
 ```
 
-Use the CLI when the Web interface is unavailable. Keep the terminal open and read the complete output.
+Web 介面不可用時使用命令列， 並保持終端開啟、閱讀完整輸出。
 
 ## 更新失敗
 
-If Home displays a database or update-health warning, or an update leaves the panel unusable, run:
+首頁顯示資料庫或更新健康告警，或更新後面板無法使用時，執行：
 
 ```shell
 acepanel fix
 ```
 
-Before retrying, check `acepanel status`, free disk space, network access to the update source, and the failed-stage log. If `acepanel fix` does not restore the panel, keep the backup and error output and ask for help in the [Community](https://tom.moe/c/technical/acepanel).
+重試前檢查 `acepanel status`、可用磁碟空間、更新源網路連線和失敗階段日誌。 `acepanel fix` 仍無法恢復時，保留備份和錯誤輸出，併到[社群](https://tom.moe/c/technical/acepanel)求助。

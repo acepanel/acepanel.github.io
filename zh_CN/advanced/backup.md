@@ -1,6 +1,6 @@
 # 备份
 
-![Backup management](/images/backup/backup.png)
+![备份管理](/images/backup/backup.png)
 
 备份模块用于备份和恢复网站文件和数据库，支持本地备份和远程存储。
 
@@ -15,15 +15,15 @@
 | 网站         | 备份网站文件                       |
 | MySQL      | 备份 Percona/MySQL/MariaDB 数据库 |
 | PostgreSQL | 备份 PostgreSQL 数据库            |
-| ClickHouse | Backup ClickHouse databases  |
-| Redis      | Backup Redis data            |
-| Valkey     | Backup Valkey data           |
+| ClickHouse | 备份 ClickHouse 数据库            |
+| Redis      | 备份 Redis 数据                  |
+| Valkey     | 备份 Valkey 数据                 |
 
-Database tabs are shown when a corresponding server is available.
+只有存在对应数据库服务器时，相关数据库标签页才会显示。
 
 ## 创建备份
 
-1. Select the backup type tab (Website/MySQL/PostgreSQL/ClickHouse/Redis/Valkey)
+1. 选择备份类型标签页（网站、MySQL、PostgreSQL、ClickHouse、Redis 或 Valkey）
 2. 点击 **创建备份**
 3. 选择要备份的网站（网站类型）或输入数据库名称（数据库类型）
 4. 选择备份存储
@@ -43,19 +43,19 @@ Database tabs are shown when a corresponding server is available.
 - **文件名**：备份文件名称
 - **大小**：备份文件大小
 - **更新日期**：备份时间
-- **Actions**: Download, restore, delete
+- **操作**：下载、恢复、删除
 
 ## 恢复备份
 
 1. 在备份列表中找到要恢复的备份
-2. Click **Restore**
-3. Select the target website or database and submit the task
-4. Follow the restore under **Tasks > Panel Tasks** and review its log before using the restored resource
+2. 点击 **恢复**
+3. 选择目标网站或数据库并提交任务
+4. 在 **任务 > 面板任务**中跟踪恢复进度，使用恢复后的资源前先检查日志
 
-Website restore recognizes compatible archive layouts created by other server panels. Always review the destination path and site content after importing an external archive.
+网站恢复可以识别其他服务器面板生成的兼容归档结构。 导入外部归档后，必须检查目标路径和网站内容。
 
 :::danger 警告
-Restore runs in the background and can overwrite existing data. Back up the current target first. Closing the dialog does not stop the task.
+恢复会在后台执行，并可能覆盖现有数据。 先备份当前目标； 关闭对话框不会停止任务。
 :::
 
 ## 上传备份

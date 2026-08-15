@@ -2,7 +2,7 @@
 
 ![Panel tasks](/images/task/panel.png)
 
-Panel Tasks contains long-running work submitted to AcePanel's queue, including application and runtime changes, backups and restores, file compression and extraction, and background container operations.
+面板任务包含提交到 AcePanel 队列中的长时间操作，例如应用和运行环境变更、备份与恢复、文件压缩与解压，以及后台容器操作。
 
 **任务** 页面有两个标签页：**计划任务**（默认显示）和 **面板任务**。 本页仅介绍 **面板任务**。 对于基于时间的任务（如定时备份或脚本），请参阅 [计划任务](./schedule.md)。
 
@@ -16,17 +16,17 @@ Panel Tasks contains long-running work submitted to AcePanel's queue, including 
 - **状态**：等待中/运行中/已完成/失败
 - **创建时间**：任务创建时间
 - **完成时间**：任务结束时间
-- **Actions**: View logs, cancel, delete
+- **操作**：查看日志、取消、删除
 
 ## 任务状态
 
-| 状态       | 说明                                      |
-| -------- | --------------------------------------- |
-| 等待中      | 任务已排队，尚未开始                              |
-| 运行中      | 任务正在执行                                  |
-| 已完成      | 任务执行成功                                  |
-| 失败       | 任务执行失败                                  |
-| Canceled | A waiting or running task was cancelled |
+| 状态       | 说明            |
+| -------- | ------------- |
+| 等待中      | 任务已排队，尚未开始    |
+| 运行中      | 任务正在执行        |
+| 已完成      | 任务执行成功        |
+| 失败       | 任务执行失败        |
+| Canceled | 等待中或运行中的任务已取消 |
 
 ## 常见任务类型
 
@@ -67,13 +67,13 @@ Panel Tasks contains long-running work submitted to AcePanel's queue, including 
 - 命令输出
 - 错误信息
 
-Logs are streamed in real time. The viewer can load history, search loaded text, jump between matches, toggle wrapping, copy, and enter full screen. The **Logs** button is unavailable while a task is still waiting. See [Logs](../log) for the shared viewer behavior.
+日志会实时显示。 查看器支持加载历史记录、搜索已加载文本、在匹配项之间跳转、切换自动换行、复制和全屏显示。 任务仍在等待时，**日志** 按钮不可用。 通用查看器的操作说明请参阅[日志](../log)。
 
-## Cancel Task
+## 取消任务
 
-Waiting and running tasks provide **Cancel**. Cancelling a waiting task removes it from execution. Cancelling a running task asks the worker to stop and runs the task's cleanup action when one is defined.
+等待中和运行中的任务都会提供 **取消** 操作。 取消等待中的任务会将其从执行队列移除； 取消运行中的任务会请求工作进程停止，并在任务定义了清理操作时执行清理。
 
-Cancellation is not a rollback. A pull, restore, extraction, or installer may already have written files or changed a service. Read the log and inspect the affected resource before retrying.
+取消不等于回滚。 拉取、恢复、解压或安装程序可能已经写入文件或修改服务。 重试前请阅读日志并检查受影响的资源。
 
 日志对于排查任务失败原因非常有用。
 
@@ -83,7 +83,7 @@ Cancellation is not a rollback. A pull, restore, extraction, or installer may al
 
 ## 删除任务
 
-Only finished, failed, or canceled tasks can be deleted. Cancel a waiting or running task first.
+只有已完成、失败或已取消的任务可以删除。 等待中或运行中的任务需要先取消。
 
 :::tip 提示
 删除任务只是从列表中移除记录，不会影响已安装的应用或环境。

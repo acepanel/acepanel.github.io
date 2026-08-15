@@ -1,14 +1,14 @@
-# System Monitoring
+# 系统监控
 
 ![System monitoring](/images/monitor/system.png)
 
-System Monitoring records and displays CPU, memory, disk I/O, and network traffic over time. Open **Monitoring > System**. Use [Alerts](./monitor/alert) to define thresholds and [Settings & Notifications](./monitor/setting) to configure collection, retention, SMTP, and event delivery.
+系统监控按时间记录并展示 CPU、内存、磁盘 I/O 和网络流量。 进入 **监控 > 系统**。 使用[告警](./monitor/alert)设置阈值，通过[设置与通知](./monitor/setting)配置采集、保留、SMTP 和事件发送。
 
 ## 监控页面
 
-## Data Collection Settings
+## 数据采集设置
 
-Collection controls are under **Monitoring > Settings**.
+数据采集控制位于 **监控 > 设置**。
 
 ### 启用监控
 

@@ -1,6 +1,6 @@
 # Webhook
 
-![WebHook management](/images/toolbox/webhook.png)
+![WebHook 管理](/images/toolbox/webhook.png)
 
 Webhook 允许你通过 HTTP 请求触发服务器上的脚本执行，实现自动化部署、CI/CD 集成等功能。
 
@@ -9,45 +9,45 @@ Webhook 允许你通过 HTTP 请求触发服务器上的脚本执行，实现自
 点击 **创建 Webhook** 按钮，填写以下信息：
 
 - **名称**：Webhook 的名称，用于标识用途
-- **User**: The system user that executes the script. Use a dedicated low-privilege deployment user instead of root whenever possible
-- **Raw Output**: When enabled, returns the raw output of the script; when disabled, returns JSON format
-- **Script**: The Shell script content to execute. The form is pre-filled with a `#!/bin/bash` template by default
+- **用户：** 执行脚本的系统用户。 应尽量使用专用的低权限部署用户，不要默认使用 root
+- **原始输出：** 启用时直接返回脚本输出；关闭时返回 JSON 格式。
+- **脚本：** 需要执行的 Shell 脚本，默认提供 `#!/bin/bash` 模板。
 
-When you create a webhook, the script content is saved as a standalone `.sh` file (mode `0755`) under the `server/webhook` directory of the panel data root, named after the generated Key. Deleting the webhook also removes this script file.
+创建后，脚本会作为独立 `.sh` 文件保存在面板数据根目录的 `server/webhook` 下，文件名使用生成的 Key，权限为 `0755`。 删除 WebHook 时会同时删除该脚本文件。
 
-The script is executed via `bash`. When the configured user is `root` (or left empty), it runs directly as the panel process owner; for any other user, it is executed as that user using `su -s /bin/bash -c`, so make sure the target user exists and has permission to run the script.
+脚本通过 `bash` 执行。 配置用户为 `root` 或留空时，脚本直接以面板进程所有者运行；选择其他用户时，通过 `su -s /bin/bash -c` 切换用户执行，因此目标用户必须存在并有权运行脚本。
 
-## Usage
+## 调用方式
 
-After creation, the system will generate a unique Key. Access the following URL to trigger script execution:
+创建后会生成唯一 Key， 通过以下地址触发：
 
 ```
 https://your-panel-domain/webhook/{key}
 ```
 
-Supports both GET and POST requests. You can also use the **Copy URL** button in the list to copy the full call URL directly.
+GET 和 POST 请求均可触发。 列表中的 **复制 URL**可以直接复制完整调用地址。
 
-## Edit Webhook
+## 编辑 WebHook
 
-Click the **Edit** button on a row to modify an existing webhook. The edit dialog exposes the same **Name**, **User**, **Raw Output**, and **Script** fields as the create form, plus an additional **Enabled** switch so you can toggle the webhook on or off directly while editing. Saving rewrites the underlying script file and updates the stored configuration; the Key remains unchanged.
+点击某行的 **编辑** 按钮修改现有 WebHook。 编辑对话框提供与创建表单相同的 **名称**、**用户**、**原始输出**和**脚本**字段，并增加 **启用** 开关，可在编辑时直接启停。 保存后会重写脚本文件并更新配置，Key 保持不变。
 
-## Actions
+## 列表操作
 
-Each row in the list provides the following actions:
+列表中的每一行提供以下操作：
 
-| Action   | Description                                                                                      |
-| -------- | ------------------------------------------------------------------------------------------------ |
-| Copy URL | Copies the full call URL (`{panel-origin}/webhook/{key}`) to the clipboard    |
-| Edit     | Opens the edit dialog to modify the webhook                                                      |
-| Delete   | Deletes the webhook after a confirmation dialog; this also removes the corresponding script file |
+| 列表操作       | 说明                                            |
+| ---------- | --------------------------------------------- |
+| 复制 URL     | 将完整的 `{panel-origin}/webhook/{key}` 地址复制到剪贴板。 |
+| 编辑 WebHook | 打开编辑对话框。                                      |
+| 删除         | 确认后删除 WebHook 及对应脚本文件。                        |
 
-In addition, the **Enabled** column shows a switch you can toggle directly in the list to enable or disable a webhook without opening the edit dialog.
+还可以直接在列表的 **启用**列打开或关闭 WebHook。
 
-## Use Cases
+## 使用场景
 
-### Git Auto Deployment
+### Git 自动部署
 
-Combined with GitHub/GitLab Webhook functionality, achieve automatic deployment after code push:
+结合 GitHub 或 GitLab WebHook，在推送代码后部署：
 
 ```bash
 #!/bin/bash
@@ -57,44 +57,43 @@ npm install
 npm run build
 ```
 
-### Scheduled Task Trigger
+### 由外部系统触发任务
 
-Trigger specific operations through external services (such as monitoring systems):
+删除命令必须使用明确且经过校验的路径，不要直接拼接请求参数。
 
 ```bash
 #!/bin/bash
-# Clean temporary files
+# 清理临时文件
 rm -rf /tmp/cache/*
-# Restart service
+# 重启服务
 systemctl restart myapp
 ```
 
-### CI/CD Integration
+### CI/CD 集成
 
-Call Webhook in CI/CD pipeline to complete deployment:
+在流水线中调用：
 
 ```bash
-# In CI script
 curl -X POST https://panel.example.com/webhook/your-key
 ```
 
-## List Description
+## 列表字段
 
-| Field         | Description                                   |
-| ------------- | --------------------------------------------- |
-| Name          | Webhook name                                  |
-| Key           | Unique identifier, used to build the call URL |
-| Run As User   | System user that executes the script          |
-| Raw Output    | Whether to return raw text output             |
-| Enabled       | Whether the webhook is enabled                |
-| Call Count    | Cumulative number of calls                    |
-| Last Call     | Last call time                                |
-| Creation Time | Time the webhook was created                  |
+| 字段   | 说明             |
+| ---- | -------------- |
+| 名称   | WebHook 名称。    |
+| 密钥   | 用于构造调用地址的唯一标识。 |
+| 运行用户 | 执行脚本的系统用户。     |
+| 原始输出 | 是否直接返回文本输出。    |
+| 启用   | 是否允许调用。        |
+| 调用次数 | 累计调用次数。        |
+| 最后调用 | 最近调用时间。        |
+| 创建时间 | WebHook 创建时间。  |
 
-## Notes
+## 安全与故障排查
 
-1. The Key is sensitive information, do not disclose it to untrusted people
-2. **Raw Output** returns stdout directly. When disabled, AcePanel wraps the result as JSON.
-3. When a call fails, check the script permission, run user, paths, environment variables, timeout, exit code, and stderr. An interactive shell may use a different `PATH` and profile.
-4. Validate any request data before using it in a command, and add explicit error handling to the script.
-5. Delete and recreate the WebHook if its URL is exposed in a repository, CI log, chat, or analytics system.
+1. Key 属于敏感信息，不要提供给不可信人员。
+2. **原始输出**会直接返回标准输出； 关闭时由 AcePanel 包装为 JSON。
+3. 调用失败时，检查脚本权限、运行用户、路径、环境变量、超时、退出码和标准错误。 交互式 Shell 与 WebHook 的 `PATH` 和用户配置可能不同。
+4. 把请求数据用于命令前必须进行校验，并在脚本中加入明确的错误处理。
+5. URL 出现在代码仓库、CI 日志、聊天记录或分析系统中时，删除并重新创建 WebHook。

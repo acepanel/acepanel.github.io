@@ -2,19 +2,19 @@
 
 ![System settings](/images/toolbox/system.png)
 
-The System page manages Swap, hostname, Hosts entries, timezone, manual time, and NTP. Network-interface addresses, gateways, and DNS are configured under [Network](./network).
+系統頁面用於管理 Swap、主機名、Hosts 條目、時區、手工時間和 NTP。 網絡卡地址、閘道器和 DNS 請在[網路](./network)頁面配置。
 
 ## SWAP
 
-管理系統的 SWAP 空間。
+管理系統的 SWAP 交換空間。
 
-頁面會顯示目前的 SWAP 使用情況：
+頁面顯示當前 SWAP 使用情況：
 
 - 系統總計
 - 已使用
 - 閒置
 
-### 設定面板 SWAP
+### 配置面板 SWAP
 
 設定由面板管理的 SWAP 檔案大小（單位：MB）。
 
@@ -27,11 +27,11 @@ The System page manages Swap, hostname, Hosts entries, timezone, manual time, an
 
 ## 主機
 
-設定系統主機名稱與 Hosts 檔案。
+配置系統主機名和 Hosts 檔案。
 
 ### 系統主機名稱
 
-修改伺服器的主機名稱，例如 `myserver`、`web-01` 等。
+修改伺服器的主機名，例如 `myserver`、`web-01` 等。
 
 ### Hosts
 
@@ -40,12 +40,12 @@ The System page manages Swap, hostname, Hosts entries, timezone, manual time, an
 常見用途：
 
 - 封鎖特定網域
-- 設定本機開發網域
-- 加速特定網域的解析
+- 配置本地開發域名
+- 加速特定域名的解析
 
 ## 時間
 
-設定系統時區與時間同步。
+配置系統時區和時間同步。
 
 ### 選擇時區
 

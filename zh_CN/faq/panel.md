@@ -45,16 +45,16 @@ journalctl -u acepanel -n 100
 acepanel info
 ```
 
-This command prints the current username, listening port, security entrance, and local/public IPv4 and IPv6 access addresses. After its first run, the password is masked and the account is not changed.
+该命令显示当前用户名、监听端口、安全入口以及本地和公网 IPv4、IPv6 访问地址。 首次运行后，密码会以掩码显示，账号不会被修改。
 
-To reset a forgotten password, select the account and request the reset explicitly:
+忘记密码时，明确选择账号并执行重置：
 
 ```shell
 acepanel info --username <username> --force
 ```
 
-:::warning Password Reset
-`--force` changes the selected account's username and password immediately. Existing credentials become invalid. Omit `--username` only when resetting the first panel user is intended.
+:::warning 重置密码
+`--force` 会立即修改所选账号的用户名和密码。 原有凭据会立即失效。 只有确实需要重置第一个面板用户时，才省略 `--username`。
 :::
 
 命令行工具命令的完整列表（服务管理、用户管理、安全设置、维护等），请参阅 [命令行工具](../quickstart/cli)。

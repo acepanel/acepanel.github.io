@@ -1,6 +1,6 @@
 # 反向代理
 
-![Reverse proxy website settings](/images/website/proxy.png)
+![反向代理网站设置](/images/website/proxy.png)
 
 反向代理网站用于将外部请求转发到后端服务，常用于部署 Node.js、Go、Java、Python 等应用。
 
@@ -39,7 +39,7 @@ https://backend.internal    # 内部 HTTPS 服务
 
 点击网站列表中的 **编辑** 按钮进入编辑页面。
 
-You can change this website to PHP or pure static from its basic settings. Domains, listeners, files, and other shared fields are kept, while proxy upstreams and proxy rules are deleted and the selected type's configuration is generated. Back up and record the proxy configuration before converting.
+可以在基本设置中将网站切换为 PHP 或纯静态类型。 域名、监听、文件等通用内容会保留；代理上游和代理规则会删除，并重新生成所选类型的配置。 切换前必须备份并记录代理配置。
 
 ### 域名和监听
 
@@ -66,137 +66,136 @@ You can change this website to PHP or pure static from its basic settings. Domai
 
 配置代理行为和请求头转发。 每条代理规则将一个 location 映射到一个后端。
 
-- **Match Type**: Location match type, such as Exact Match (`=`), Priority Prefix Match (`^~`), Prefix Match, Case-sensitive Regex (`~`), and Case-insensitive Regex (`~*`)
-- **Match Expression**: URL expression to match
-- **Proxy Pass**: Enter upstream name or directly enter backend address, e.g., `http://127.0.0.1:8080` or `http://upstream_name`
-- **Proxy Host**: The `Host` header sent to the backend (defaults to `$proxy_host`, or is automatically extracted from Proxy Pass)
-- **Enable Cache**: Whether to enable proxy cache
-- **Enable Buffering**: Whether to enable buffering, AI applications are recommended to disable otherwise it may affect streaming output
-- **Proxy SNI**: SNI to send to the backend (only valid for HTTPS backends)
-- **DNS Resolver**: Custom DNS resolver and resolver timeout (Nginx only)
-- **Custom Request Headers**: Add or modify request headers passed to the backend
-- **Response Content Replacement**: Can replace strings in response content
+- **匹配类型：** 精确匹配（`=`）、优先前缀（`^~`）、普通前缀、区分大小写正则（`~`）和不区分大小写正则（`~*`）。
+- **匹配表达式：** 要匹配的 URL 表达式。
+- **代理地址：** 上游名称或完整后端地址，例如 `http://127.0.0.1:8080`、`http://upstream_name`。
+- **代理 Host：** 发送给后端的 `Host` 请求头，默认 `$proxy_host`，也可从代理地址自动提取。
+- **启用缓存：** 是否使用代理缓存。
+- **启用缓冲：** 是否缓冲响应；AI 等流式应用建议关闭，否则可能影响流式输出。
+- **代理 SNI：** HTTPS 后端使用的 SNI。
+- **DNS 解析器：** 自定义 DNS 服务器和解析超时，仅 Nginx 支持。
+- **自定义请求头：** 添加或修改传给后端的请求头。
+- **响应内容替换：** 替换响应正文中的字符串。
 
-#### Advanced Settings
+#### 代理高级设置
 
-For Nginx, each proxy rule also exposes an **Advanced Settings** panel:
+Nginx 的每条代理规则还提供 **高级设置**面板：
 
-- **HTTP Version**: Backend protocol version (HTTP/1.0, HTTP/1.1, HTTP/2)
-- **Max Body Size**: Maximum request body size for this rule
-- **Timeout Settings**: Connect / read / send timeouts
-- **Retry Settings**: Retry conditions, max tries, and retry timeout for failed upstream requests
-- **SSL Backend Verify**: Verify the backend certificate (only shown for HTTPS backends)
-- **Response Headers**: Hide or add response headers
-- **IP Access Control**: Allow or deny visitor IPs/CIDRs for this rule
+- **HTTP 版本**：后端协议版本（HTTP/1.0、HTTP/1.1 或 HTTP/2）
+- **最大请求体**：此规则允许的最大请求体大小
+- **超时设置**：连接、读取和发送超时
+- **重试设置**：上游失败时的重试条件、最大次数和重试超时
+- **SSL 后端验证**：验证后端证书（仅 HTTPS 后端显示）
+- **响应头**：隐藏或添加响应头
+- **IP 访问控制**：允许或拒绝此规则的访问者 IP/CIDR
 
-### Redirects
+### 重定向
 
-The **Redirects** tab lets you add redirect rules that are applied before the request reaches the proxy. Each rule is a card and rules can be reordered by dragging.
+**重定向**标签页中的规则会在请求进入代理前执行， 可拖动调整顺序。
 
-- **Redirect Type**:
-  - **URL Redirect** (`url`): Redirect a source path to a target path
-  - **Host Redirect** (`host`): Redirect a source host to a target URL (e.g., force `www` to apex)
-  - **404 Redirect** (`404`): Redirect requests that would return 404 to a target URL
-- **Status Code**: `301` (Moved Permanently), `302` (Found), `307` (Temporary Redirect), or `308` (Permanent Redirect, default)
-- **Source**: The source path (URL type) or source host (Host type); not used for the 404 type
-- **Target**: The target path (URL type) or target URL (Host/404 type)
-- **Keep URI**: When enabled, the original request path and query parameters are kept and appended to the target
+- **重定向类型**：
+  - **URL 重定向**（`url`）：将来源路径重定向到目标路径
+  - **主机重定向**（`host`）：将来源主机重定向到目标 URL，例如强制将 `www` 跳转到主域名
+  - **404 重定向**（`404`）：将原本返回 404 的请求重定向到目标 URL
+- **状态码**：`301`、`302`、`307` 或 `308`，默认值为 308
+- **来源：** URL 类型填写来源路径，Host 类型填写来源主机；404 类型无需填写。
+- **目标：** URL 类型填写目标路径，Host 和 404 类型填写目标 URL。
+- **保留 URI：** 保留原请求路径和查询参数并追加到目标地址。
 
-### HTTPS
+### Nginx 接收用户的 HTTP 或 HTTPS 请求，再转发到指定后端地址。
 
-The **HTTPS** tab manages TLS for the website. When a certificate is already bound, a summary card shows the certificate validity period, issuer, and covered domains.
+**HTTPS** 标签页用于管理网站 TLS。 网站已绑定证书时，会显示有效期、签发者和覆盖域名。
 
-- **Main Switch**: Enable or disable HTTPS for this website. Enabling it automatically adds a `443` listener (and `quic` for Nginx); disabling it removes the `443` listener and clears the `ssl`/`quic` flags
-- **Use Existing Certificate**: Select a certificate already managed in Certificate Management to fill in the certificate and private key
-- **HSTS**: Enable HTTP Strict Transport Security
-- **HTTP Redirect**: Force plain HTTP requests to redirect to HTTPS
-- **OCSP Stapling**: Enable OCSP stapling
-- **TLS Version**: Choose the allowed protocols among TLS 1.0, TLS 1.1, TLS 1.2, and TLS 1.3
-- **Certificate** / **Private Key**: Paste the PEM certificate and KEY private key contents directly
+- **总开关**：为此网站启用或关闭 HTTPS。 启用后自动增加 `443` 监听，Nginx 还会增加 `quic`；关闭后移除 `443` 监听，并清除 `ssl` 和 `quic` 标记
+- **使用已有证书：** 从证书管理中选择证书，自动填入证书和私钥。
+- **HSTS：** 启用 HTTP 严格传输安全。
+- **HTTP 重定向：** 强制 HTTP 跳转到 HTTPS。
+- **OCSP Stapling：** 启用 OCSP 装订。
+- **TLS 版本：** 可选择 TLS 1.0、1.1、1.2 和 1.3。
+- **证书** / **私钥**：直接粘贴 PEM 证书和 KEY 私钥内容
 
-#### One-click Certificate Issuance
+#### 一键签发证书
 
-When the website has at least one domain, the **One-click Certificate Issuance** button in the footer requests a free certificate for the bound domains. If any domain is a wildcard (e.g., `*.example.com`), a dialog prompts you to select a DNS provider (configured in Certificate Management) so the certificate can be issued via DNS verification.
+网站至少绑定一个域名后，可以通过底部的 **一键签发证书**为这些域名申请免费证书。 存在 `*.example.com` 等通配符域名时，需要选择已经在证书管理中配置的 DNS 提供商，通过 DNS 验证签发。
 
-### Advanced Settings (Site-wide)
+### 网站高级设置
 
-The **Advanced Settings** tab groups several site-wide options into collapsible panels.
+**高级设置** 选项卡将多个站点级选项整理为可折叠面板。
 
-#### Access Statistics
+#### 访问统计
 
-Available for Nginx only. Toggle **Enable Statistics** to collect access statistics for this website (viewable on the website statistics page).
+仅 Nginx 支持。 启用 **访问统计**后，可在网站统计页面查看该网站数据。
 
-#### Log Settings
+#### 日志设置
 
-- **Access Log**: Choose **Disabled** (`off`), the **Default Path**, or enter a custom path
-- **Error Log**: Choose **Disabled** (`off`), the **Default Path**, or enter a custom path
+- **访问日志**：选择 **关闭**（`off`）、**默认路径**或输入自定义路径
+- **错误日志**：选择 **关闭**（`off`）、**默认路径**或输入自定义路径
 
-When a log path is set (and not disabled), the editor also shows **Access Log** / **Error Log** tabs for real-time viewing, and the footer **Clear Logs** button truncates the currently viewed log file.
+设置有效日志路径后，编辑器会显示实时 **访问日志**和 **错误日志**标签；底部 **清空日志**会截断当前查看的日志文件。
 
-#### Rate Limiting
+#### 限流
 
-Toggle **Enable Rate Limiting** to turn the feature on; the limit fields below appear only when it is enabled.
+打开 **启用限流**开关；只有启用后才显示下面的限制字段。
 
-- **Concurrent Limit**: Maximum concurrent connections for the whole site (`0` = unlimited)
-- **Per IP Limit**: Maximum concurrent connections per visitor IP (`0` = unlimited)
-- **Rate Limit**: Per-request transfer rate limit in KB (`0` = unlimited)
+- **并发限制：** 整个网站的最大并发连接数，`0` 表示不限。
+- **单 IP 限制：** 每个访问 IP 的最大并发连接数，`0` 表示不限。
+- **速率限制：** 单个请求的传输速率，单位 KB，`0` 表示不限。
 
-#### Real IP
+#### 真实 IP
 
-Identifies the real visitor IP when AcePanel itself sits behind a CDN or Frp (this is different from forwarding headers to the backend; see [Forwarding Real IP](#forwarding-real-ip)).
+当 AcePanel 本身位于 CDN 或 Frp 后方时识别真实访问者 IP；此功能不同于向后端转发请求头，参阅[转发真实 IP](#forwarding-real-ip)。
 
-- **Enable**: Turn the feature on or off
-- **IP Sources**: Trusted upstream IPs or CIDRs, one per line (e.g., `127.0.0.1`, `10.0.0.0/8`). If using Frp, fill in the Frp IP; if using a CDN, fill in the CDN IP ranges. If unsure you may use `0.0.0.0/0` / `::/0` (insecure)
-- **IP Header**: The header carrying the real IP, such as `X-Real-IP`, `X-Forwarded-For`, `CF-Connecting-IP`, `True-Client-IP`, `Ali-Cdn-Real-Ip`, or `EO-Connecting-IP` (custom values allowed)
-- **Recursive**: Recursively search for the real IP within the `X-Forwarded-For` header
+- **启用**：开启或关闭此功能
+- **IP 来源**：可信上游 IP 或 CIDR，每行一个，例如 `127.0.0.1`、`10.0.0.0/8`。 使用 Frp 时填写 Frp 地址，使用 CDN 时填写 CDN 地址段。 不确定时可以使用 `0.0.0.0/0` 或 `::/0`，但这不安全。
+- **IP 请求头：** 例如 `X-Real-IP`、`X-Forwarded-For`、`CF-Connecting-IP`、`True-Client-IP`、`Ali-Cdn-Real-Ip` 或 `EO-Connecting-IP`，也支持自定义。
+- **递归：** 在 `X-Forwarded-For` 中递归查找真实 IP。
 
-#### Basic Authentication
+#### 基本认证
 
-Add username/password pairs under **User Credentials** to require HTTP Basic Authentication before visitors can access the website. Leaving the list empty disables authentication.
+在 **用户凭据**中添加用户名和密码后，访问网站前必须通过 HTTP Basic Authentication； 列表为空时不启用认证。
 
-## Use Cases
+## 常见场景
 
-### Node.js Application
+### Node.js 应用
 
 ```bash
-# Start Node.js application
-node app.js  # Listening on port 3000
+node app.js  # 监听 3000 端口
 ```
 
-Proxy Target: `http://127.0.0.1:3000`
+代理目标：`http://127.0.0.1:3000`
 
-### Docker Container
+### Docker 容器
 
-If the backend is a Docker container, you can use the container's IP address or container name (within the same network).
+后端位于 Docker 容器时，可以使用容器 IP，或在同一 Docker 网络中使用容器名称。
 
-Proxy Target: `http://container-name:port` or `http://container-IP:port`
+代理目标：`http://container-name:port` 或 `http://container-IP:port`
 
-### Multiple Backends (Load Balancing)
+### 多后端负载均衡
 
-Add multiple backend addresses in the upstream configuration to achieve load balancing.
+在上游配置中添加多个后端地址以实现负载均衡。
 
-Proxy Target: `http://upstream-name`
+在上游配置中添加多个后端地址，再将代理目标设为 `http://upstream-name`。
 
-## Common Configurations
+## 常用配置
 
-### WebSocket Support
+### WebSocket
 
-Reverse proxy supports WebSocket by default, no additional configuration needed.
+反向代理默认支持 WebSocket，无需额外配置。
 
-### Forwarding Real IP
+### 当 AcePanel 位于 CDN 或 Frp 后方时，用于识别真实访问者 IP。该功能与向后端转发请求头不同。
 
-AcePanel automatically configures the following request headers to pass the user's real IP to the backend:
+AcePanel 会自动配置以下请求头，把用户真实 IP 传给后端：
 
 - `X-Real-IP`
 - `X-Forwarded-For`
 - `X-Forwarded-Proto`
 
 > [!NOTE]
-> This is about forwarding the visitor IP **to your backend service**, and is separate from the **Real IP** feature in [Advanced Settings (Site-wide)](#advanced-settings-site-wide). That feature is about AcePanel itself recovering the **real visitor IP** when it sits behind a CDN or Frp (i.e., reading a trusted upstream header instead of the proxy's own IP). Use Real IP when AcePanel is behind another proxy; use header forwarding when your backend needs the client IP.
+> 这里介绍的是把访问者 IP **转发给后端服务**，与[高级设置（站点级）](#advanced-settings-site-wide)中的 **真实 IP** 功能不同。 该功能用于 AcePanel 位于 CDN 或 Frp 后方时恢复 **真实访问者 IP**，即读取可信上游请求头，而不是代理自身 IP。 IP；后端应用需要客户端 IP 时使用请求头转发。
 
-### Custom Configuration
+### 自定义配置
 
-You can add custom configuration in the **Custom Configs** tab of the website editor. Each config has a name and a scope (**This Website** or **Global**), letting you inject extra directives without editing files manually:
+在网站编辑器的 **自定义配置**标签页中， 可以添加作用范围为 **当前网站**或**全局**的额外指令，不需要直接修改配置文件：
 
 ```nginx
 proxy_connect_timeout 60s;
@@ -206,8 +205,8 @@ proxy_buffer_size 64k;
 proxy_buffers 4 64k;
 ```
 
-## Notes
+## 注意事项
 
-1. Ensure the backend service is started and listening on the specified port
-2. If the backend is a Docker container, ensure the port is correctly mapped or use Docker network
-3. When the backend service crashes, Nginx will return a 502 error
+1. 确认后端服务已经启动并监听指定端口。
+2. 后端是 Docker 容器时，确认端口映射正确，或使用 Docker 网络访问。
+3. 后端服务崩溃时，Nginx 会返回 502。

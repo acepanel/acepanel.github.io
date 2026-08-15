@@ -4,7 +4,7 @@
 
 SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认证方式和 Root 账户设置。
 
-This page changes the SSH daemon. It is different from the top-level [Terminal](../ssh), which opens local or remote terminal tabs and transfers files through SFTP.
+本页修改 SSH 服务配置。 它与主菜单中的[终端](../ssh)不同；终端用于打开本机或远程终端标签，并通过 SFTP 传输文件。
 
 页面布局为顶部的服务状态卡片，下方左侧有两个标签页：
 
@@ -32,7 +32,7 @@ This page changes the SSH daemon. It is different from the top-level [Terminal](
 
 修改 SSH 服务监听的端口，默认为 `22`。 端口可填写 `1` 到 `65535` 之间的任意值。 你可以点击刷新图标生成一个随机端口（范围为 `10000`–`65535`），然后点击 **保存** 按钮应用。 保存时会自动重启 SSH 服务。
 
-Before modifying the port, allow the new TCP port in **Security > Port Rules** and in the provider security group. Then:
+修改端口前，请先在 **安全 > 端口规则** 和云服务商安全组中放行新的 TCP 端口， 然后：
 
 1. 点击 **保存** 按钮
 2. 确保防火墙已放行新端口
@@ -47,7 +47,7 @@ Before modifying the port, allow the new TCP port in **Security > Port Rules** a
 
 控制是否允许 SSH 密码认证（`PasswordAuthentication`）。
 
-Before disabling it, add a tested key for the account you will use and keep the current session open until a fresh key-authenticated session succeeds.
+关闭密码认证前，请先为准备使用的账户添加并验证密钥；在新的密钥认证会话成功登录前，不要关闭当前会话。
 
 - **开启**：允许使用密码登录
 - **关闭**：禁止密码登录，只能使用密钥
@@ -74,7 +74,7 @@ Before disabling it, add a tested key for the account you will use and keep the 
 - **仅允许密钥登录**（`prohibit-password`）：Root 只能使用密钥登录
 - **仅允许使用预定义命令的密钥登录**（`forced-commands-only`）：Root 只能运行通过 `authorized_keys` 授权的命令
 
-Changing the root policy or both authentication methods can lock every administrator out. Keep a provider console or another verified sudo-capable account available.
+修改 Root 登录策略或同时修改两种认证方式，可能导致所有管理员都无法登录。 请保留云服务商控制台，或另一个已经验证且具备 sudo 权限的账户。
 
 ### 重置 Root 密码
 

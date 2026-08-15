@@ -2,14 +2,14 @@
 
 ![Create a Java project](/images/project/java.png)
 
-Java 專案用於部署 Spring Boot、Tomcat 等 Java 應用程式。
+Java 專案用於部署 Spring Boot、Tomcat 等 Java 應用。
 
-## 先決條件
+## 前置要求
 
-1. Install Java runtime environment: **Apps** > **Runtime Environment** > **Java** (Amazon Corretto, a production-ready OpenJDK distribution)
-2. 已打包的 JAR 檔案或 WAR 檔案
+1. 安裝 Java 執行環境：**應用** > **執行環境** > **Java**（使用適合正式環境的 Amazon Corretto OpenJDK 發行版）
+2. 打包好的 JAR 檔案或 WAR 檔案
 
-## 部署 Spring Boot 應用程式
+## 部署 Spring Boot 應用
 
 ### 打包專案
 
@@ -23,7 +23,7 @@ mvn clean package -DskipTests
 
 ### 上傳並部署
 
-1. 將 JAR 檔案上傳至伺服器（例如 `/opt/ace/projects/myapp/app.jar`）
+1. 將 JAR 檔案上傳到伺服器（例如 `/opt/ace/projects/myapp/app.jar`）
 2. 前往 **專案** 頁面，開啟 **Java** 分頁，然後點選 **建立專案**
 3. 填寫設定：
    - **專案名稱**：`myapp`（作為服務識別碼使用）
@@ -69,7 +69,7 @@ java21 -jar app.jar --server.port=8080
 ## JVM 參數建議
 
 ```bash
-# Recommended production environment configuration
+# 生產環境推薦配置
 java21 \
   -Xms512m \
   -Xmx1024m \
@@ -84,10 +84,10 @@ java21 \
 | ---------------------- | ----------- |
 | `-Xms`                 | 初始堆積記憶體大小   |
 | `-Xmx`                 | 最大堆積記憶體大小   |
-| `-XX:+UseG1GC`         | 使用 G1 垃圾回收器 |
-| `-XX:MaxGCPauseMillis` | 最大 GC 暫停時間  |
+| `-XX:+UseG1GC`         | 使用 G1 垃圾收集器 |
+| `-XX:MaxGCPauseMillis` | 最大 GC 停頓時間  |
 
-## 多個 JDK 版本
+## 多版本 JDK
 
 AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ace/server/java/{version}/bin/`。 每個已安裝的版本都會提供一個 `java{version}` 指令（例如 `java21`），讓你能將專案固定使用特定的 JDK。
 
@@ -97,7 +97,7 @@ AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ac
 
 建立後，每個專案都會以一列的形式顯示在 **專案** 頁面（以 **Java** 分頁篩選），顯示其名稱、類型、執行狀態（執行中／已停止／失敗）、開機自啟狀態與目錄。 每一列可使用以下操作：
 
-- **啟動**／**停止**：立即啟動或停止服務
+- **啟動** / **停止**：立即啟動或停止服務
 - **重新啟動**：重新啟動執行中的服務（僅在執行中時顯示）
 - **重新載入**：重新載入執行中的服務而無需完整重新啟動（僅在執行中時顯示）
 - **日誌**：開啟服務的即時日誌檢視器
@@ -111,15 +111,15 @@ AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ac
 
 **編輯** 對話框將 systemd 單元設定組織為多個分頁：
 
-- **基本設定**：專案名稱、描述、專案目錄、工作目錄與執行使用者
+- **基本設定**：專案名稱、描述、專案目錄、工作目錄和執行使用者
 - **執行設定**：啟動指令、啟動前／啟動後／停止／重新載入指令、重啟策略、重啟間隔、最大重啟次數、啟動／停止逾時、標準輸出／標準錯誤目標（`journal`、`syslog`、`kmsg`、`null` 或檔案），以及環境變數
 - **相依性**：systemd 排序與相依性指令（`Requires`、`Wants`、`After`、`Before`），例如 `mysqld.service`、`redis.service`
-- **資源限制**：記憶體限制（MB，`0` 表示無限制）與 CPU 配額（例如 `50%`、`200%`）
+- **資源限制**：記憶體限制（MB，`0` 表示不限制）和 CPU 配額（例如 `50%`、`200%`）
 - **安全設定**：`NoNewPrivileges`、`ProtectHome`、`ProtectSystem`、`/tmp` 保護，以及可讀寫／唯讀路徑清單
 
-Saving updates the underlying systemd unit at `/etc/systemd/system/<project name>.service` and reloads it. Java projects include `SuccessExitStatus=143`, so a normal SIGTERM shutdown is not reported as an application failure.
+儲存後會更新 `/etc/systemd/system/<project name>.service` 下的 systemd 單元並重新載入。 Java 專案包含 `SuccessExitStatus=143`，因此由 SIGTERM 觸發的正常停止不會被報告為應用故障。
 
-When the project is updated, AcePanel keeps the custom systemd settings configured in the editor. Review the effective unit after moving a project from another server, because AcePanel rewrites the project directory and runtime command for the destination.
+更新專案時，AcePanel 會保留在編輯器中配置的自定義 systemd 設定。 從其他伺服器遷移專案後，請檢查最終生效的單元配置，因為 AcePanel 會按照目標伺服器重寫專案目錄和執行時命令。
 
 ## 行程管理
 
@@ -129,7 +129,7 @@ AcePanel 使用 systemd 管理 Java 行程，自動處理：
 - 開機時自動啟動（啟用開機自啟時）
 - 日誌記錄
 
-## 設定檔
+## 配置檔案
 
 Spring Boot 設定檔 `application.yml` 範例：
 
@@ -162,7 +162,7 @@ java21 -Xms1g -Xmx2g -jar app.jar
 java21 -jar app.jar --server.port=8081
 ```
 
-### 啟動緩慢
+### 啟動慢
 
 檢查是否有外部相依連線逾時，或將 JIT 編譯限制在第一層以加快啟動速度：
 

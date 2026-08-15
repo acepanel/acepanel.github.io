@@ -1,53 +1,53 @@
-# Monitoring Settings and Notifications
+# 監控設定與通知
 
-![Monitoring settings and notifications](/images/monitor/setting.png)
+![監控設定與通知](/images/monitor/setting.png)
 
-Open **Monitoring > Settings** to configure monitoring retention, SMTP notification channels, and system-event notifications. Alert thresholds themselves are managed on the [Alerts](./alert) page.
+進入 **監控 > 設定**，可配置監控資料保留、SMTP 通知渠道和系統事件通知。 告警閾值在[告警](./alert)頁面管理。
 
-## SMTP Channels
+## SMTP 渠道
 
-AcePanel sends alert and event notifications through SMTP channels. Each channel contains:
+AcePanel 通過 SMTP 渠道傳送告警和事件通知。 每個渠道包含：
 
-- name and enabled status;
-- SMTP host and port;
-- security mode: SSL/TLS (commonly port 465), STARTTLS (commonly port 587), or no transport encryption (commonly port 25);
-- account and password;
-- sender address and sender name;
-- one or more recipients;
-- optional TLS-certificate verification bypass.
+- 名稱和啟用狀態；
+- SMTP 主機和埠；
+- 安全模式：SSL/TLS（常用埠 465）、STARTTLS（常用埠 587）或不加密（常用埠 25）；
+- 賬號和密碼；
+- 發件地址和發件人名稱；
+- 一個或多個收件人；
+- 可選的跳過 TLS 證書驗證。
 
-Use **Test** after saving. A successful test confirms delivery at that moment; it does not guarantee that later mail will bypass spam filtering.
+儲存後使用 **測試**驗證。 測試成功只能說明當時郵件已經發送，不代表之後的郵件一定不會被歸入垃圾郵件。
 
-:::warning TLS verification
-Disabling TLS verification permits a machine-in-the-middle attack and should be limited to a controlled network with a separately verified mail server.
+:::warning TLS 驗證
+關閉 TLS 驗證可能遭受中間人攻擊，僅應在受控網路中，並且已經透過其他方式核實郵件伺服器身分時使用。
 :::
 
-## System Events
+## 系統事件
 
-Channels can receive 11 event types:
+渠道可以接收以下 11 類事件：
 
-1. certificate renewal failure;
-2. backup failure;
-3. background task failure;
-4. scheduled-task failure;
-5. website expiration;
-6. tamper-protection interception;
-7. panel health warning;
-8. successful panel login;
-9. repeated failed panel logins;
-10. SSH login;
-11. SSH brute-force activity.
+1. 證書續簽失敗；
+2. 備份失敗；
+3. 後臺任務失敗；
+4. 計劃任務失敗；
+5. 網站到期；
+6. 防篡改攔截；
+7. 面板健康告警；
+8. 面板登入成功；
+9. 面板連續登入失敗；
+10. SSH 登入；
+11. SSH 暴力破解活動。
 
-Select security-sensitive login events carefully: they can be frequent on an exposed server. Use a mailbox and retention policy appropriate for operational security logs.
+公網伺服器上的登入安全事件可能非常頻繁， 應選擇適合接收運維安全日誌的郵箱，並配置合理的保留策略。
 
-## Relationship to Alerts
+## 與告警的關係
 
-System events are emitted by a concrete panel action or security condition. Alert rules are periodic metric evaluations. Both can use the same SMTP channel, but enabling an event does not create a metric rule and creating a rule does not automatically enable the corresponding system event.
+系統事件由具體的面板操作或安全條件觸發； 告警規則則按週期評估指標。 兩者可以使用同一個 SMTP 渠道，但啟用事件不會自動建立指標規則，建立規則也不會自動啟用對應系統事件。
 
-## Troubleshooting Delivery
+## 投遞故障排查
 
-- Verify DNS, outbound firewall rules, SMTP host and port, transport mode, account, and sender policy.
-- Check whether the provider requires an application password rather than the normal mailbox password.
-- Review the test result before attaching the channel to many rules.
-- If panel health or task failure messages are missing, confirm that the event type and the channel are both enabled.
-- Never place SMTP passwords in screenshots, public issue reports, or copied diagnostic logs.
+- 檢查 DNS、出站防火牆、SMTP 主機和埠、傳輸模式、賬號及發件策略。
+- 確認郵件服務商是否要求使用應用專用密碼，而不是普通郵箱密碼。
+- 將渠道關聯到大量規則前，先檢視測試結果。
+- 沒有收到面板健康或任務失敗訊息時，確認事件型別和渠道均已啟用。
+- 不要在截圖、公開問題或複製的診斷日誌中包含 SMTP 密碼。

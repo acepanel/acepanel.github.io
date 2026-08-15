@@ -2,7 +2,7 @@
 
 ![Scan awareness](/images/security/scan.png)
 
-掃描感知使用 eBPF 被動偵測針對您伺服器的入站連接埠掃描，記錄這些掃描，並可選擇自動封鎖發動掃描的 IP 位址。 Open **Security > Scan Awareness**.
+掃描感知使用 eBPF 被動偵測針對您伺服器的入站連接埠掃描，記錄這些掃描，並可選擇自動封鎖發動掃描的 IP 位址。 開啟 **安全 > 掃描感知**。
 
 :::warning
 掃描感知仰賴 Linux eBPF 子系統（TC ingress）。 它僅在核心版本夠新的 Linux 伺服器上可用。 在不支援的平台上，偵測器將不會啟動，也不會收集任何掃描資料。
@@ -12,7 +12,7 @@
 
 啟用後，面板會將一個輕量級 eBPF 程式掛載到您的網路介面，並直接在核心中檢查入站封包：
 
-The program attaches at TC ingress, before the system firewall's normal drop decision. A packet can therefore appear in Scan Awareness even when `firewalld` or `ufw` successfully blocks it later. A scan record is evidence that the packet reached the network interface, not evidence that the firewall allowed it to reach a service.
+程式掛載在 TC ingress，位置早於系統防火牆的常規丟棄判斷。 因此，即使 `firewalld` 或 `ufw` 隨後成功攔截，資料包仍可能出現在掃描感知中。 掃描記錄只表示資料包到達網絡卡，不表示防火牆允許它訪問服務。
 
 - 對於 **TCP**，只有 SYN 封包（新建連線嘗試）才會被視為潛在掃描。
 - 對於 **UDP**，來自知名服務來源連接埠的回應流量（例如 DNS `53`/`853`、NTP `123`、DHCP `67`/`68`/`546`/`547`、HTTPS/QUIC `443`、mDNS `5353` 以及 IKE/IPsec `500`/`4500`）會被忽略，因為它幾乎總是對您自己出站請求的回覆。
@@ -22,9 +22,9 @@ The program attaches at TC ingress, before the system firewall's normal drop dec
 
 ## 開啟頁面
 
-Scan Awareness lives inside the **Security** module:
+掃描感知位於 **安全**模組中：
 
-1. Go to **Security** in the main navigation.
+1. 在主導航進入 **安全**。
 2. 開啟**掃描感知**分頁以檢視儀表板和事件。
 3. 開啟**設定**分頁以設定此功能。
 
@@ -32,7 +32,7 @@ Scan Awareness lives inside the **Security** module:
 
 ## 掃描設定
 
-All options below are configured under **Security > Settings**, in the Scan Awareness section. 點選**儲存**以套用您的變更。
+下列選項均在 **安全 > 設定** 的掃描感知區域設定。 點選**儲存**以套用您的變更。
 
 ### 掃描感知
 

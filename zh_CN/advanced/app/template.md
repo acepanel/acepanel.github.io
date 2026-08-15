@@ -8,13 +8,13 @@
 
 使用容器模板前，需要先安装 Docker：
 
-1. Go to **Apps** > **Native App**
+1. 进入 **应用** > **原生应用**
 2. 找到 Docker，点击 **安装**
 3. 等待安装完成
 
 ## 模板列表
 
-Go to the **Apps** page, click the **Container Template** tab to view available templates:
+进入 **应用** 页面，点击 **容器模板** 选项卡查看可用模板：
 
 你可以按分类标签筛选模板，或按名称、描述、网址进行搜索。 从本地 `panel/storage/templates` 目录加载的模板会显示 **本地** 标签。 如果本地模板与远程模板的 slug 相同，则以本地模板为准。
 

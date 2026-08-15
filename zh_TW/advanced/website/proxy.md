@@ -1,6 +1,6 @@
 # 反向代理
 
-![Reverse proxy website settings](/images/website/proxy.png)
+![反向代理網站設定](/images/website/proxy.png)
 
 反向代理網站用於將外部請求轉發至後端服務，常用於部署 Node.js、Go、Java、Python 等應用程式。
 
@@ -29,8 +29,8 @@ Nginx 接收使用者的 HTTP/HTTPS 請求，並將其轉發至指定的後端�
 ### 代理目標格式
 
 ```
-http://127.0.0.1:3000      # 本機服務
-http://localhost:8080       # 本機服務
+http://127.0.0.1:3000      # 本地服務
+http://localhost:8080       # 本地服務
 http://172.18.0.2:80        # Docker 容器
 https://backend.internal    # 內部 HTTPS 服務
 ```
@@ -39,7 +39,7 @@ https://backend.internal    # 內部 HTTPS 服務
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
-You can change this website to PHP or pure static from its basic settings. Domains, listeners, files, and other shared fields are kept, while proxy upstreams and proxy rules are deleted and the selected type's configuration is generated. Back up and record the proxy configuration before converting.
+可以在基本設定中將網站切換為 PHP 或純靜態型別。 域名、監聽、檔案等通用內容會保留；代理上游和代理規則會刪除，並重新生成所選型別的配置。 切換前必須備份並記錄代理配置。
 
 ### 網域與監聽
 
@@ -48,7 +48,7 @@ You can change this website to PHP or pure static from its basic settings. Domai
 - **網域**：可新增多個網域
 - **監聽位址**：可設定多個連接埠，支援 HTTPS 與 QUIC(HTTP3)
 
-### 上游設定
+### 上游配置
 
 上游用於定義後端伺服器位址，支援多個後端以進行負載平衡。
 
@@ -62,141 +62,140 @@ You can change this website to PHP or pure static from its basic settings. Domai
 - **伺服器位址**：後端伺服器位址，例如 `127.0.0.1:8080`
 - **選項**：選填參數，例如 `weight=5`（權重）、`backup`（備援伺服器）等。
 
-### 代理設定
+### 代理配置
 
 設定代理行為與請求標頭轉發。 每條代理規則會將一個 location 對應到一個後端。
 
-- **Match Type**: Location match type, such as Exact Match (`=`), Priority Prefix Match (`^~`), Prefix Match, Case-sensitive Regex (`~`), and Case-insensitive Regex (`~*`)
-- **Match Expression**: URL expression to match
-- **Proxy Pass**: Enter upstream name or directly enter backend address, e.g., `http://127.0.0.1:8080` or `http://upstream_name`
-- **Proxy Host**: The `Host` header sent to the backend (defaults to `$proxy_host`, or is automatically extracted from Proxy Pass)
-- **Enable Cache**: Whether to enable proxy cache
-- **Enable Buffering**: Whether to enable buffering, AI applications are recommended to disable otherwise it may affect streaming output
-- **Proxy SNI**: SNI to send to the backend (only valid for HTTPS backends)
-- **DNS Resolver**: Custom DNS resolver and resolver timeout (Nginx only)
-- **Custom Request Headers**: Add or modify request headers passed to the backend
-- **Response Content Replacement**: Can replace strings in response content
+- **匹配型別：** 精確匹配（`=`）、優先字首（`^~`）、普通字首、區分大小寫正則（`~`）和不區分大小寫正則（`~*`）。
+- **匹配表示式：** 要匹配的 URL 表示式。
+- **代理地址：** 上游名稱或完整後端地址，例如 `http://127.0.0.1:8080`、`http://upstream_name`。
+- **代理 Host：** 傳送給後端的 `Host` 請求頭，預設 `$proxy_host`，也可從代理地址自動提取。
+- **啟用快取：** 是否使用代理快取。
+- **啟用緩衝：** 是否緩衝響應；AI 等流式應用建議關閉，否則可能影響流式輸出。
+- **代理 SNI：** HTTPS 後端使用的 SNI。
+- **DNS 解析器：** 自定義 DNS 伺服器和解析超時，僅 Nginx 支援。
+- **自定義請求頭：** 新增或修改傳給後端的請求頭。
+- **響應內容替換：** 替換響應正文中的字串。
 
-#### Advanced Settings
+#### 代理進階設定
 
-For Nginx, each proxy rule also exposes an **Advanced Settings** panel:
+Nginx 的每條代理規則還提供 **進階設定**面板：
 
-- **HTTP Version**: Backend protocol version (HTTP/1.0, HTTP/1.1, HTTP/2)
-- **Max Body Size**: Maximum request body size for this rule
-- **Timeout Settings**: Connect / read / send timeouts
-- **Retry Settings**: Retry conditions, max tries, and retry timeout for failed upstream requests
-- **SSL Backend Verify**: Verify the backend certificate (only shown for HTTPS backends)
-- **Response Headers**: Hide or add response headers
-- **IP Access Control**: Allow or deny visitor IPs/CIDRs for this rule
+- **HTTP 版本**：後端通訊協定版本（HTTP/1.0、HTTP/1.1 或 HTTP/2）
+- **最大要求本文**：此規則允許的最大要求本文大小
+- **逾時設定**：連線、讀取和傳送逾時
+- **重試設定**：上游失敗時的重試條件、最大次數和重試逾時
+- **SSL 後端驗證**：驗證後端憑證（僅 HTTPS 後端顯示）
+- **回應標頭**：隱藏或新增回應標頭
+- **IP 存取控制**：允許或拒絕此規則的訪客 IP/CIDR
 
-### Redirects
+### 重定向
 
-The **Redirects** tab lets you add redirect rules that are applied before the request reaches the proxy. Each rule is a card and rules can be reordered by dragging.
+**重定向**標籤頁中的規則會在請求進入代理前執行， 可拖動調整順序。
 
-- **Redirect Type**:
-  - **URL Redirect** (`url`): Redirect a source path to a target path
-  - **Host Redirect** (`host`): Redirect a source host to a target URL (e.g., force `www` to apex)
-  - **404 Redirect** (`404`): Redirect requests that would return 404 to a target URL
-- **Status Code**: `301` (Moved Permanently), `302` (Found), `307` (Temporary Redirect), or `308` (Permanent Redirect, default)
-- **Source**: The source path (URL type) or source host (Host type); not used for the 404 type
-- **Target**: The target path (URL type) or target URL (Host/404 type)
-- **Keep URI**: When enabled, the original request path and query parameters are kept and appended to the target
+- **重新導向類型**：
+  - **URL 重新導向**（`url`）：將來源路徑重新導向到目標路徑
+  - **主機重新導向**（`host`）：將來源主機重新導向到目標 URL，例如強制將 `www` 跳轉到主網域
+  - **404 重新導向**（`404`）：將原本傳回 404 的請求重新導向到目標 URL
+- **狀態碼**：`301`、`302`、`307` 或 `308`，預設值為 308
+- **來源：** URL 型別填寫來源路徑，Host 型別填寫來源主機；404 型別無需填寫。
+- **目標：** URL 型別填寫目標路徑，Host 和 404 型別填寫目標 URL。
+- **保留 URI：** 保留原請求路徑和查詢引數並追加到目標地址。
 
-### HTTPS
+### Nginx 接收使用者的 HTTP 或 HTTPS 請求，再轉發到指定後端地址。
 
-The **HTTPS** tab manages TLS for the website. When a certificate is already bound, a summary card shows the certificate validity period, issuer, and covered domains.
+**HTTPS** 標籤頁用於管理網站 TLS。 網站已繫結證書時，會顯示有效期、簽發者和覆蓋域名。
 
-- **Main Switch**: Enable or disable HTTPS for this website. Enabling it automatically adds a `443` listener (and `quic` for Nginx); disabling it removes the `443` listener and clears the `ssl`/`quic` flags
-- **Use Existing Certificate**: Select a certificate already managed in Certificate Management to fill in the certificate and private key
-- **HSTS**: Enable HTTP Strict Transport Security
-- **HTTP Redirect**: Force plain HTTP requests to redirect to HTTPS
-- **OCSP Stapling**: Enable OCSP stapling
-- **TLS Version**: Choose the allowed protocols among TLS 1.0, TLS 1.1, TLS 1.2, and TLS 1.3
-- **Certificate** / **Private Key**: Paste the PEM certificate and KEY private key contents directly
+- **總開關**：為此網站啟用或關閉 HTTPS。 啟用後自動增加 `443` 監聽，Nginx 還會增加 `quic`；關閉後移除 `443` 監聽，並清除 `ssl` 和 `quic` 標記
+- **使用已有證書：** 從證書管理中選擇證書，自動填入證書和私鑰。
+- **HSTS：** 啟用 HTTP 嚴格傳輸安全。
+- **HTTP 重定向：** 強制 HTTP 跳轉到 HTTPS。
+- **OCSP Stapling：** 啟用 OCSP 裝訂。
+- **TLS 版本：** 可選擇 TLS 1.0、1.1、1.2 和 1.3。
+- **憑證** / **私密金鑰**：直接貼上 PEM 憑證和 KEY 私密金鑰內容
 
-#### One-click Certificate Issuance
+#### 一鍵簽發證書
 
-When the website has at least one domain, the **One-click Certificate Issuance** button in the footer requests a free certificate for the bound domains. If any domain is a wildcard (e.g., `*.example.com`), a dialog prompts you to select a DNS provider (configured in Certificate Management) so the certificate can be issued via DNS verification.
+網站至少繫結一個域名後，可以通過底部的 **一鍵簽發證書**為這些域名申請免費證書。 存在 `*.example.com` 等萬用字元域名時，需要選擇已經在證書管理中配置的 DNS 提供商，通過 DNS 驗證簽發。
 
-### Advanced Settings (Site-wide)
+### 網站進階設定
 
-The **Advanced Settings** tab groups several site-wide options into collapsible panels.
+**進階設定** 分頁將多個網站層級選項整理為可摺疊面板。
 
-#### Access Statistics
+#### 訪問統計
 
-Available for Nginx only. Toggle **Enable Statistics** to collect access statistics for this website (viewable on the website statistics page).
+僅 Nginx 支援。 啟用 **訪問統計**後，可在網站統計頁面檢視該網站資料。
 
-#### Log Settings
+#### 日誌設定
 
-- **Access Log**: Choose **Disabled** (`off`), the **Default Path**, or enter a custom path
-- **Error Log**: Choose **Disabled** (`off`), the **Default Path**, or enter a custom path
+- **存取日誌**：選擇 **關閉**（`off`）、**預設路徑**或輸入自訂路徑
+- **錯誤日誌**：選擇 **關閉**（`off`）、**預設路徑**或輸入自訂路徑
 
-When a log path is set (and not disabled), the editor also shows **Access Log** / **Error Log** tabs for real-time viewing, and the footer **Clear Logs** button truncates the currently viewed log file.
+設定有效日誌路徑後，編輯器會顯示即時 **訪問日誌**和 **錯誤日誌**標籤；底部 **清空日誌**會截斷當前檢視的日誌檔案。
 
-#### Rate Limiting
+#### 限流
 
-Toggle **Enable Rate Limiting** to turn the feature on; the limit fields below appear only when it is enabled.
+開啟 **啟用流量限制**開關；只有啟用後才顯示下面的限制欄位。
 
-- **Concurrent Limit**: Maximum concurrent connections for the whole site (`0` = unlimited)
-- **Per IP Limit**: Maximum concurrent connections per visitor IP (`0` = unlimited)
-- **Rate Limit**: Per-request transfer rate limit in KB (`0` = unlimited)
+- **併發限制：** 整個網站的最大併發連線數，`0` 表示不限。
+- **單 IP 限制：** 每個訪問 IP 的最大併發連線數，`0` 表示不限。
+- **速率限制：** 單個請求的傳輸速率，單位 KB，`0` 表示不限。
 
-#### Real IP
+#### 真實 IP
 
-Identifies the real visitor IP when AcePanel itself sits behind a CDN or Frp (this is different from forwarding headers to the backend; see [Forwarding Real IP](#forwarding-real-ip)).
+當 AcePanel 本身位於 CDN 或 Frp 後方時識別真實訪客 IP；此功能不同於向後端轉送請求標頭，參閱[轉送真實 IP](#forwarding-real-ip)。
 
-- **Enable**: Turn the feature on or off
-- **IP Sources**: Trusted upstream IPs or CIDRs, one per line (e.g., `127.0.0.1`, `10.0.0.0/8`). If using Frp, fill in the Frp IP; if using a CDN, fill in the CDN IP ranges. If unsure you may use `0.0.0.0/0` / `::/0` (insecure)
-- **IP Header**: The header carrying the real IP, such as `X-Real-IP`, `X-Forwarded-For`, `CF-Connecting-IP`, `True-Client-IP`, `Ali-Cdn-Real-Ip`, or `EO-Connecting-IP` (custom values allowed)
-- **Recursive**: Recursively search for the real IP within the `X-Forwarded-For` header
+- **啟用**：開啟或關閉此功能
+- **IP 來源**：可信任上游 IP 或 CIDR，每行一個，例如 `127.0.0.1`、`10.0.0.0/8`。 使用 Frp 時填寫 Frp 地址，使用 CDN 時填寫 CDN 地址段。 不確定時可以使用 `0.0.0.0/0` 或 `::/0`，但這不安全。
+- **IP 請求頭：** 例如 `X-Real-IP`、`X-Forwarded-For`、`CF-Connecting-IP`、`True-Client-IP`、`Ali-Cdn-Real-Ip` 或 `EO-Connecting-IP`，也支援自定義。
+- **遞迴：** 在 `X-Forwarded-For` 中遞迴查詢真實 IP。
 
-#### Basic Authentication
+#### 基本認證
 
-Add username/password pairs under **User Credentials** to require HTTP Basic Authentication before visitors can access the website. Leaving the list empty disables authentication.
+在 **使用者憑據**中新增使用者名稱和密碼後，訪問網站前必須通過 HTTP Basic Authentication； 列表為空時不啟用認證。
 
-## Use Cases
+## 常見場景
 
-### Node.js Application
+### Node.js 應用
 
 ```bash
-# Start Node.js application
-node app.js  # Listening on port 3000
+node app.js  # 監聽 3000 埠
 ```
 
-Proxy Target: `http://127.0.0.1:3000`
+代理目標：`http://127.0.0.1:3000`
 
-### Docker Container
+### Docker 容器
 
-If the backend is a Docker container, you can use the container's IP address or container name (within the same network).
+後端位於 Docker 容器時，可以使用容器 IP，或在同一 Docker 網路中使用容器名稱。
 
-Proxy Target: `http://container-name:port` or `http://container-IP:port`
+代理目標：`http://container-name:port` 或 `http://container-IP:port`
 
-### Multiple Backends (Load Balancing)
+### 多後端負載均衡
 
-Add multiple backend addresses in the upstream configuration to achieve load balancing.
+在上游設定中新增多個後端位址以實現負載平衡。
 
-Proxy Target: `http://upstream-name`
+在上游配置中新增多個後端地址，再將代理目標設為 `http://upstream-name`。
 
-## Common Configurations
+## 常用配置
 
-### WebSocket Support
+### WebSocket
 
-Reverse proxy supports WebSocket by default, no additional configuration needed.
+反向代理預設支援 WebSocket，無需額外配置。
 
-### Forwarding Real IP
+### 當 AcePanel 位於 CDN 或 Frp 後方時，用於識別真實訪問者 IP。該功能與向後端轉發請求頭不同。
 
-AcePanel automatically configures the following request headers to pass the user's real IP to the backend:
+AcePanel 會自動配置以下請求頭，把使用者真實 IP 傳給後端：
 
 - `X-Real-IP`
 - `X-Forwarded-For`
 - `X-Forwarded-Proto`
 
 > [!NOTE]
-> This is about forwarding the visitor IP **to your backend service**, and is separate from the **Real IP** feature in [Advanced Settings (Site-wide)](#advanced-settings-site-wide). That feature is about AcePanel itself recovering the **real visitor IP** when it sits behind a CDN or Frp (i.e., reading a trusted upstream header instead of the proxy's own IP). Use Real IP when AcePanel is behind another proxy; use header forwarding when your backend needs the client IP.
+> 這裡介紹的是把訪客 IP **轉送給後端服務**，與[進階設定（網站層級）](#advanced-settings-site-wide)中的 **真實 IP** 功能不同。 該功能用於 AcePanel 位於 CDN 或 Frp 後方時還原 **真實訪客 IP**，即讀取可信任上游要求標頭，而不是代理本身 IP。 IP；後端應用需要客戶端 IP 時使用請求頭轉發。
 
-### Custom Configuration
+### 自定義配置
 
-You can add custom configuration in the **Custom Configs** tab of the website editor. Each config has a name and a scope (**This Website** or **Global**), letting you inject extra directives without editing files manually:
+在網站編輯器的 **自定義配置**標籤頁中， 可以新增作用範圍為 **當前網站**或**全域性**的額外指令，不需要直接修改配置檔案：
 
 ```nginx
 proxy_connect_timeout 60s;
@@ -206,8 +205,8 @@ proxy_buffer_size 64k;
 proxy_buffers 4 64k;
 ```
 
-## Notes
+## 注意事項
 
-1. Ensure the backend service is started and listening on the specified port
-2. If the backend is a Docker container, ensure the port is correctly mapped or use Docker network
-3. When the backend service crashes, Nginx will return a 502 error
+1. 確認後端服務已經啟動並監聽指定埠。
+2. 後端是 Docker 容器時，確認埠對映正確，或使用 Docker 網路訪問。
+3. 後端服務崩潰時，Nginx 會返回 502。

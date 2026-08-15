@@ -25,10 +25,10 @@
 | 狀態  | 說明            |
 | --- | ------------- |
 | 執行中 | 行程正在執行        |
-| 休眠  | 行程正在等待某個事件    |
+| 睡眠  | 行程正在等待某個事件    |
 | 已封鎖 | 行程已被封鎖        |
 | 閒置  | 核心執行緒處於閒置狀態   |
-| 已停止 | 行程已停止         |
+| 停止  | 行程已停止         |
 | 等待中 | 行程處於不可中斷的等待狀態 |
 | 已鎖定 | 行程處於鎖定狀態      |
 | 殭屍  | 行程已結束但尚未被回收   |
@@ -57,7 +57,7 @@ PID、名稱、父 PID、執行緒、CPU、記憶體與啟動時間這幾欄可�
 - **使用者訊號 1 (SIGUSR1)**：傳送 SIGUSR1 使用者自訂訊號
 - **使用者訊號 2 (SIGUSR2)**：傳送 SIGUSR2 使用者自訂訊號
 
-Use `SIGTERM` first so the process can close listeners and flush data. `SIGKILL` cannot be handled and can leave partial writes, stale locks, or an unclean database. `SIGSTOP`, `SIGHUP`, `SIGUSR1`, and `SIGUSR2` have application-specific effects; send them only when the service documents the expected behavior.
+優先使用 `SIGTERM`，讓程序有機會關閉監聽並重新整理資料。 `SIGKILL` 無法被程序處理，可能留下部分寫入、陳舊鎖或未正常關閉的資料庫。 `SIGSTOP`、`SIGHUP`、`SIGUSR1` 和 `SIGUSR2` 的作用取決於具體應用，只有在服務文件明確說明預期行為時才應傳送。
 
 你也可以雙擊行程直接開啟其詳情。
 
@@ -67,24 +67,24 @@ Use `SIGTERM` first so the process can close listeners and flush data. `SIGKILL`
 
 詳情對話框顯示以下基本資訊：
 
-| 欄位                           | 說明                                                  |
-| ---------------------------- | --------------------------------------------------- |
-| PID                          | 行程 ID                                               |
-| 父 PID                        | 父行程的 PID                                            |
-| 名稱                           | 行程名稱                                                |
-| 使用者                          | 執行該行程的使用者                                           |
-| 狀態                           | 行程狀態                                                |
-| 執行緒                          | 執行緒數量                                               |
-| CPU                          | CPU 使用率                                             |
-| 記憶體 (RSS) | 常駐記憶體大小（正在使用的實體記憶體）                                 |
-| 虛擬記憶體                        | 虛擬記憶體大小                                             |
-| 置換空間                         | 置換出的記憶體量                                            |
-| 磁碟讀取                         | Bytes physically read from storage for the process  |
-| 磁碟寫入                         | Bytes physically written to storage for the process |
-| 啟動時間                         | 行程啟動時間                                              |
-| 執行檔路徑                        | 執行檔的路徑                                              |
-| 工作目錄                         | 目前的工作目錄                                             |
-| 命令列                          | 啟動行程所使用的完整命令列                                       |
+| 欄位                           | 說明                  |
+| ---------------------------- | ------------------- |
+| PID                          | 行程 ID               |
+| 父 PID                        | 父行程的 PID            |
+| 名稱                           | 行程名稱                |
+| 使用者                          | 執行該行程的使用者           |
+| 狀態                           | 行程狀態                |
+| 執行緒                          | 執行緒數量               |
+| CPU                          | CPU 使用率             |
+| 記憶體 (RSS) | 常駐記憶體大小（正在使用的實體記憶體） |
+| 虛擬記憶體                        | 虛擬記憶體大小             |
+| 置換空間                         | 置換出的記憶體量            |
+| 磁碟讀取                         | 程序從儲存裝置實際讀取的位元組數    |
+| 磁碟寫入                         | 程序向儲存裝置實際寫入的位元組數    |
+| 啟動時間                         | 行程啟動時間              |
+| 執行檔路徑                        | 執行檔的路徑              |
+| 工作目錄                         | 目前的工作目錄             |
+| 命令列                          | 啟動行程所使用的完整命令列       |
 
 在基本資訊下方，提供以下可摺疊面板（每個面板僅在行程有相應資料時才顯示）：
 

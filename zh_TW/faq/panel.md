@@ -8,13 +8,13 @@ SSH 登入伺服器，檢查面板狀態：
 acepanel status
 ```
 
-若服務已停止，請啟動它：
+如果服務已停止，啟動它：
 
 ```shell
 acepanel start
 ```
 
-若無法啟動，請嘗試修復：
+如果無法啟動，嘗試修復：
 
 ```shell
 acepanel fix && acepanel update
@@ -39,22 +39,22 @@ firewall-cmd --reload
 journalctl -u acepanel -n 100
 ```
 
-## 忘記密碼／使用者名稱／位址
+## 忘記密碼/使用者名稱/地址
 
 ```shell
 acepanel info
 ```
 
-This command prints the current username, listening port, security entrance, and local/public IPv4 and IPv6 access addresses. After its first run, the password is masked and the account is not changed.
+該命令顯示當前使用者名稱、監聽埠、安全入口以及本地和公網 IPv4、IPv6 訪問地址。 首次執行後，密碼會以掩碼顯示，賬號不會被修改。
 
-To reset a forgotten password, select the account and request the reset explicitly:
+忘記密碼時，明確選擇賬號並執行重置：
 
 ```shell
 acepanel info --username <username> --force
 ```
 
-:::warning Password Reset
-`--force` changes the selected account's username and password immediately. Existing credentials become invalid. Omit `--username` only when resetting the first panel user is intended.
+:::warning 重設密碼
+`--force` 會立即修改所選帳號的使用者名稱和密碼。 原有憑證會立即失效。 只有確實需要重設第一個面板使用者時，才省略 `--username`。
 :::
 
 如需命令列工具命令的完整清單（服務管理、使用者管理、安全性設定、維護等），請參閱 [命令列工具](../quickstart/cli)。
@@ -67,9 +67,9 @@ acepanel port 12345
 
 變更後，需在伺服器安全性群組／防火牆中放行新的連接埠。
 
-## 停用安全入口
+## 關閉安全入口
 
-若忘記安全入口路徑：
+如果忘記安全入口路徑：
 
 ```shell
 acepanel entrance off

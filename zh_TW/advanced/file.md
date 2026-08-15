@@ -6,16 +6,16 @@
 
 ## 檔案管理器
 
-## 核心功能
+## 核心特性
 
 ### 類 Windows 操作體驗
 
 - **右鍵選單**：在檔案或目錄上按右鍵彈出操作選單
 - **拖放上傳**：直接將本機檔案拖曳至瀏覽器視窗即可上傳
 - **多選操作**：支援 Ctrl+點選多選、Shift+點選範圍選取
-- **鍵盤快捷鍵**：常用操作均有對應的鍵盤快捷鍵
+- **快捷鍵支援**：常用操作都有對應的快捷鍵
 
-### 鍵盤快捷鍵
+### 快捷鍵
 
 | 快捷鍵                        | 功能             |
 | -------------------------- | -------------- |
@@ -46,9 +46,9 @@
 ### 快捷按鈕
 
 - **上一頁**：返回上一個瀏覽的目錄
-- **下一頁**：前往下一個目錄
+- **前進**：前進到下一個目錄
 - **上層**：返回上層目錄
-- **重新整理**：重新整理目前目錄
+- **重新整理**：重新整理當前目錄
 - **顯示/隱藏隱藏檔案**：切換是否顯示點開頭檔案（如 `.bashrc`）
 
 ### 標籤頁
@@ -59,9 +59,9 @@
 - 點選標籤頁上的 **×**（或按 `Ctrl+W`）關閉標籤頁，也可以透過中鍵點選關閉標籤頁
 - 每個標籤頁保留各自的路徑與瀏覽紀錄
 
-## 檔案清單
+## 檔案列表
 
-檔案清單顯示以下資訊：
+檔案列表顯示以下資訊：
 
 | 欄位     | 說明                   |
 | ------ | -------------------- |
@@ -72,28 +72,28 @@
 | 修改時間   | 最後修改時間               |
 | 操作     | 開啟、壓縮、重新命名、刪除、更多     |
 
-### 選取檔案
+### 選擇檔案
 
-選取檔案後，頂部會出現批次操作按鈕：
+選擇檔案後，頂部會顯示批次操作按鈕：
 
-- **複製**：複製選取的檔案
-- **移動**：移動選取的檔案
-- **壓縮**：壓縮選取的檔案
+- **複製**：複製選中的檔案
+- **移動**：移動選中的檔案
+- **壓縮**：壓縮選中的檔案
 - **權限**：修改權限
-- **刪除**：刪除選取的檔案
+- **刪除**：刪除選中的檔案
 
 ### 更多操作
 
 點選檔案列的 **更多** 按鈕可顯示更多操作選項：
 
-- **複製**：將檔案複製到其他目錄
-- **移動**：將檔案移動到其他目錄
+- **複製**：複製檔案到其他目錄
+- **移動**：移動檔案到其他目錄
 - **權限**：修改檔案權限與擁有者
 - **壓縮**：壓縮檔案
 - **解壓縮**：解壓縮封存檔（僅壓縮檔案顯示）
 - **複製路徑**：複製檔案的完整路徑
 - **終端機**：在該目錄開啟終端機（僅目錄顯示）
-- **內容**：檢視檔案的詳細內容
+- **屬性**：檢視檔案詳細屬性
 
 ### 壓縮
 
@@ -111,18 +111,18 @@
 | `.tar.zst` | Zstandard 壓縮的 tar |
 | `.7z`      | 7-Zip 封存檔         |
 
-`.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
+`.gz`、`.xz`、`.bz2` 和 `.zst` 也支援作為單一檔案壓縮格式。 這些格式只壓縮一個檔案，不會建立多檔案封存；選擇多個項目或目錄時，請使用 `tar.*`、ZIP 或 7-Zip 格式。
 
-Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+壓縮和解壓會作為後臺任務提交。 可以離開檔案頁面，在 **任務 > 面板任務**中檢視進度和失敗原因； 任務完成後重新整理目錄。
 
 ## 工具列
 
-### 新增
+### 新建
 
 點選 **新增** 按鈕可以：
 
-- 新增檔案
-- 新增目錄
+- 新建檔案
+- 新建目錄
 
 ### 上傳
 
@@ -133,13 +133,13 @@ Compression and extraction are submitted as background tasks. You can leave the 
 - 點選選取檔案上傳
 - **拖放上傳**：直接將檔案拖曳至頁面即可上傳
 
-Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
+傳輸資料前，AcePanel 會檢查目標位置的同名衝突。 可以逐項或一次性對剩餘衝突選擇 **跳過**、**重新命名**或**覆蓋**。 目錄衝突應謹慎處理：覆蓋可能替換現有內容，重新命名則以不同名稱保留兩者。
 
-### Share
+### 分享
 
-Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
+對檔案使用 **分享**可以建立公開下載連結。 有效期可選 1 小時、1 天、7 天或 30 天，並可限制下載次數。 可以複製當前分享地址，不再需要時取消分享。
 
-Anyone with the URL can download the file until it expires, reaches its limit, or is cancelled. Do not share backups, private keys, database dumps, configuration files, or logs containing credentials. Cancelling a share prevents future downloads but cannot recall existing copies.
+任何獲得連結的人都能在到期、達到次數限制或取消前下載檔案。 不要分享備份、私鑰、資料庫轉儲、配置檔案或含憑據的日誌。 取消分享只能阻止後續下載，無法收回已經下載的副本。
 
 ### 遠端下載
 
@@ -156,7 +156,7 @@ Anyone with the URL can download the file until it expires, reaches its limit, o
 在搜尋框中輸入關鍵字即可搜尋檔案：
 
 - 預設搜尋目前目錄
-- 勾選 **包含子目錄** 可遞迴搜尋
+- 勾選 **包括子目錄** 可以遞迴搜尋
 
 ### 終端機
 
@@ -168,39 +168,39 @@ Anyone with the URL can download the file until it expires, reaches its limit, o
 
 ## 檔案編輯器
 
-AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與 VS Code 相同的編輯器核心）。
+AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（VS Code 同款編輯器核心）。
 
 ### 編輯器功能
 
-- **語法突顯**：支援多種程式語言的語法突顯
+- **語法高亮**：支援各種程式語言的語法高亮
 - **程式碼摺疊**：支援程式碼區塊摺疊
-- **行號**：顯示行號便於定位
-- **縮圖**：在右側顯示程式碼縮圖
+- **行號顯示**：顯示行號，方便定位
+- **小地圖**：右側顯示程式碼縮圖
 - **自動換行**：可切換自動換行模式
 - **多檔案編輯**：支援同時開啟多個檔案並透過標籤頁切換
 
 ### 編輯器快捷鍵
 
-| 快捷鍵            | 功能                                                |
-| -------------- | ------------------------------------------------- |
-| `Ctrl+S`       | 儲存目前檔案                                            |
-| `Ctrl+Shift+S` | 儲存所有檔案                                            |
-| `Ctrl+F`       | 搜尋                                                |
-| `Ctrl+H`       | 取代                                                |
-| `Ctrl+G`       | 跳至指定行                                             |
-| `Ctrl+/`       | Toggle a comment in supported configuration files |
+| 快捷鍵            | 功能            |
+| -------------- | ------------- |
+| `Ctrl+S`       | 儲存目前檔案        |
+| `Ctrl+Shift+S` | 儲存所有檔案        |
+| `Ctrl+F`       | 搜尋            |
+| `Ctrl+H`       | 替換            |
+| `Ctrl+G`       | 跳至指定行         |
+| `Ctrl+/`       | 在支援的配置檔案中切換註釋 |
 
 ### 編輯器工具列
 
-- **儲存**：儲存目前檔案
-- **全部儲存**：儲存所有已修改的檔案
+- **儲存**：儲存當前檔案
+- **儲存所有**：儲存所有修改的檔案
 - **重新整理**：重新載入檔案內容
 - **搜尋**：開啟搜尋面板
-- **取代**：開啟取代面板
+- **替換**：開啟替換面板
 - **跳至**：跳至指定行
 - **字型大小**：調整編輯器字型大小
 - **切換自動換行**：啟用/停用自動換行
-- **切換縮圖**：顯示/隱藏右側縮圖
+- **切換小地圖**：顯示/隱藏右側小地圖
 - **設定**：開啟編輯器設定對話框
 
 ### 編輯器設定
@@ -266,11 +266,11 @@ AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與
 - 縮排設定（空格/Tab）
 - 檔案語言類型
 
-## Tamper Protection
+## 防篡改
 
-When [Tamper Protection](./firewall/tamper) covers a file or directory, Files shows a lock and its protected or immutable state. Use the inline or context-menu action to add or remove protection.
+[防篡改](./firewall/tamper)覆蓋檔案或目錄時，檔案列表會顯示鎖圖示及受保護或 immutable 狀態。 可以通過行內或右鍵選單新增、移除保護。
 
-For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion does not silently unlock protected files and warns that immutable entries cannot be deleted. Review the interception log when an edit, upload, rename, extraction, or deployment is denied.
+執行支援的單項操作時，AcePanel 可以臨時解除 immutable 屬性，完成操作後恢復保護。 批次刪除不會靜默解鎖受保護檔案，而會提示 immutable 條目無法刪除。 編輯、上傳、重新命名、解壓或部署被拒絕時，應檢視攔截日誌。
 
 ## 權限說明
 
@@ -284,12 +284,12 @@ Linux 檔案權限由三組數字表示：
 
 例如 `0755`：
 
-- 擁有者：7（4+2+1）= 讀取+寫入+執行
+- 所有者：7 (4+2+1) = 讀+寫+執行
 - 群組：5（4+1）= 讀取+執行
-- 其他：5（4+1）= 讀取+執行
+- 其他使用者：5 (4+1) = 讀+執行
 
 常用權限：
 
-- `0644`：一般檔案
+- `0644`：普通檔案
 - `0755`：可執行檔與目錄
 - `0600`：私密檔案（如金鑰）

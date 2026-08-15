@@ -33,12 +33,12 @@
 
 - **域名**：要申请证书的域名，支持多个域名
 - **密钥类型**：EC 256、EC 384、RSA 2048 或 RSA 4096（默认为 EC 256）
-- **Websites**: One or more websites associated with this certificate for HTTP verification and deployment. Use the domain-match action to select websites whose domains are covered by the certificate
+- **网站**：与证书关联、用于 HTTP 验证和部署的一个或多个网站。 可以使用域名匹配操作，选择域名已被该证书覆盖的网站
 - **账户**：该证书关联的 ACME 账户
 - **DNS**：与此证书关联的 DNS 账户（选择 DNS 账户后将使用 DNS 验证）
 - **DNS 别名**：仅在选择了 DNS 账户时显示。 将原始域名映射到一条别名记录，用于 DNS-01 CNAME 委托，从而允许 ACME 质询在另一个（被委托的）区域中进行验证
 
-You can associate several websites with one certificate. AcePanel issues the certificate for its complete domain list and deploys the result to every selected website. The domain used to access the panel can also be included in an ACME certificate when its validation requirements are satisfied.
+一个证书可以关联多个网站。 AcePanel 会按照证书的完整域名列表签发证书，并将结果部署到每个已选网站。 用于访问面板的域名在满足验证条件时也可以加入 ACME 证书。
 
 ### 域名格式
 
@@ -76,7 +76,7 @@ www.example.com       # 子域名
 
 在证书列表中点击 **部署** 按钮：
 
-1. Select one or more **Websites**, or use domain matching to select covered sites
+1. 选择一个或多个 **网站**，或使用域名匹配选择已覆盖的网站
 2. 如果你希望在所选网站上启用 HTTPS，请打开 **启用 HTTPS** 开关
 3. 提交
 
@@ -117,7 +117,7 @@ ACME 证书支持自动续签：
 
 点击 **删除** 按钮删除证书。 需要进行确认。
 
-Deleting a website automatically removes that website from the certificate association; it does not delete a certificate still used by another website. When HTTPS is enabled, the IPv6 `443` listener follows the default configured under [Website Settings](../website/setting).
+删除网站时，系统会自动解除该网站与证书的关联；仍被其他网站使用的证书不会被删除。启用 HTTPS 后，IPv6 `443` 监听遵循[网站设置](../website/setting)中的默认配置。
 
 ## ACME 账户
 

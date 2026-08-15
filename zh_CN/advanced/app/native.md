@@ -6,7 +6,7 @@
 
 ## 应用列表
 
-Go to the **Apps** page and switch to the **Native App** tab to view the native application list. 可以通过顶部的分类标签筛选不同类型的应用，或使用右侧的搜索框按名称或描述进行搜索。
+进入 **应用** 页面并切换到 **原生应用** 选项卡，即可查看原生应用列表。 可以通过顶部的分类标签筛选不同类型的应用，或使用右侧的搜索框按名称或描述进行搜索。
 
 列表中显示以下信息：
 
@@ -30,11 +30,11 @@ Go to the **Apps** page and switch to the **Native App** tab to view the native 
 
 如果所选渠道提供了发布说明，版本字段下方会出现 **更新日志** 区域，展示该渠道的更新内容。 版本字段本身是只读的，始终反映所选渠道的最新可用版本。
 
-Some applications also provide **Pre-execution Script** and **Custom Compile Parameters** fields. The pre-execution script runs before the installer and is intended for repository, dependency, or environment preparation. Custom compile parameters are passed to applications that support source-build customization.
+部分应用还提供 **预执行脚本** 和 **自定义编译参数** 字段。 预执行脚本会在安装程序运行前执行，可用于准备软件源、依赖或环境； 自定义编译参数会传递给支持源码编译定制的应用。
 
-Review both fields before submitting: they execute with installation privileges and a mistake can change the system outside the application directory. Leave them empty for a normal installation.
+提交前请仔细检查这两个字段：它们会以安装权限执行，错误内容可能修改应用目录之外的系统文件。 普通安装请留空。
 
-Click **Install** to submit the background task and follow its log under **Tasks > Panel Tasks**.
+点击 **安装** 提交后台任务，并在 **任务 > 面板任务** 中查看日志。
 
 ## 管理应用
 
@@ -44,18 +44,18 @@ Click **Install** to submit the background task and follow its log under **Tasks
 
 管理页面首先显示应用的运行状态：
 
-The following operations are provided:
+页面提供以下操作：
 
-- **Start**: Start a stopped service
-- **Stop**: Stop a running service
-- **Restart**: Restart the service (will interrupt connections)
-- **Reload**: Reload configuration (without interrupting connections, recommended; only available for applications that support it)
+- **启动**：启动已停止的服务
+- **停止**：停止正在运行的服务
+- **重启**：重启服务（会中断现有连接）
+- **重载**：重新加载配置而不中断连接（推荐；仅支持该操作的应用会显示）
 
-The **Autostart** switch in the top-right corner controls whether the service starts automatically on system boot.
+右上角的 **开机自启** 开关控制服务是否随系统启动。
 
-### Modify Configuration
+### 修改配置
 
-Click the **Modify Configuration** tab to directly edit the application's configuration file:
+点击 **修改配置** 选项卡，可以直接编辑应用配置文件：
 
 :::warning 注意
 修改配置文件前请确保了解每个参数的含义， 错误的配置可能导致服务无法启动。

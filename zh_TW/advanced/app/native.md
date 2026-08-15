@@ -4,11 +4,11 @@
 
 原生應用程式是直接安裝在系統上的軟體，相較於容器化部署具有更好的效能和更低的資源佔用。
 
-## 應用程式清單
+## 應用列表
 
-Go to the **Apps** page and switch to the **Native App** tab to view the native application list. 可以透過頂部的分類標籤篩選不同類型的應用程式，或使用右側的搜尋框依名稱或描述進行搜尋。
+進入 **應用** 頁面並切換到 **原生應用** 選項卡，即可檢視原生應用列表。 可以透過頂部的分類標籤篩選不同類型的應用程式，或使用右側的搜尋框依名稱或描述進行搜尋。
 
-清單中會顯示以下資訊：
+列表中顯示以下資訊：
 
 - **應用程式名稱**：軟體名稱
 - **描述**：軟體的簡要說明
@@ -16,27 +16,27 @@ Go to the **Apps** page and switch to the **Native App** tab to view the native 
 - **首頁顯示**：是否在面板首頁的快捷應用程式區域顯示
 - **操作**：安裝、更新、管理或解除安裝
 
-## 安裝應用程式
+## 安裝應用
 
 點選應用程式右側的 **安裝** 按鈕，會跳出安裝對話方塊：
 
-### 選擇通道
+### 選擇渠道
 
 部分應用程式提供多個版本通道， 點選下拉式選單選擇需要的版本系列：
 
 ### 選擇版本
 
-選擇通道後，系統會自動填入該通道的最新版本號：
+選擇渠道後，系統會自動填入該渠道的最新版本號：
 
 如果所選通道提供了發行說明，版本欄位下方會出現 **更新日誌** 區域，顯示該通道的更新內容。 版本欄位本身是唯讀的，會始終反映所選通道的最新可用版本。
 
-Some applications also provide **Pre-execution Script** and **Custom Compile Parameters** fields. The pre-execution script runs before the installer and is intended for repository, dependency, or environment preparation. Custom compile parameters are passed to applications that support source-build customization.
+部分應用還提供 **預執行指令碼** 和 **自定義編譯引數** 欄位。 預執行指令碼會在安裝程式執行前執行，可用於準備軟體源、依賴或環境； 自定義編譯引數會傳遞給支援原始碼編譯定製的應用。
 
-Review both fields before submitting: they execute with installation privileges and a mistake can change the system outside the application directory. Leave them empty for a normal installation.
+提交前請仔細檢查這兩個欄位：它們會以安裝許可權執行，錯誤內容可能修改應用目錄之外的系統檔案。 普通安裝請留空。
 
-Click **Install** to submit the background task and follow its log under **Tasks > Panel Tasks**.
+點選 **安裝** 提交後臺任務，並在 **任務 > 面板任務** 中檢視日誌。
 
-## 管理應用程式
+## 管理應用
 
 已安裝的應用程式會顯示 **管理** 按鈕， 點選即可進入應用程式管理頁面。
 
@@ -44,18 +44,18 @@ Click **Install** to submit the background task and follow its log under **Tasks
 
 管理頁面會先顯示應用程式的執行狀態：
 
-The following operations are provided:
+頁面提供以下操作：
 
-- **Start**: Start a stopped service
-- **Stop**: Stop a running service
-- **Restart**: Restart the service (will interrupt connections)
-- **Reload**: Reload configuration (without interrupting connections, recommended; only available for applications that support it)
+- **啟動**：啟動已停止的服務
+- **停止**：停止正在執行的服務
+- **重啟**：重啟服務（會中斷現有連線）
+- **過載**：重新載入配置而不中斷連線（推薦；僅支援該操作的應用會顯示）
 
-The **Autostart** switch in the top-right corner controls whether the service starts automatically on system boot.
+右上角的 **開機自啟** 開關控制服務是否隨系統啟動。
 
-### Modify Configuration
+### 修改配置
 
-Click the **Modify Configuration** tab to directly edit the application's configuration file:
+點選 **修改配置** 選項卡，可以直接編輯應用配置檔案：
 
 :::warning 注意
 修改設定檔前請確保了解每個參數的含義， 錯誤的設定可能導致服務無法啟動。
@@ -74,7 +74,7 @@ Click the **Modify Configuration** tab to directly edit the application's config
 點選 **解除安裝** 按鈕即可解除安裝應用程式。 會跳出一個帶有 5 秒倒數計時的確認對話方塊。 解除安裝前請確保：
 
 1. 沒有網站或專案相依於該應用程式
-2. 已備份重要的設定檔與資料
+2. 已備份重要的配置檔案和資料
 
 :::danger 警告
 解除安裝資料庫類應用程式（如 MySQL、PostgreSQL）會刪除所有資料庫資料， 請務必事先備份！
@@ -84,6 +84,6 @@ Click the **Modify Configuration** tab to directly edit the application's config
 解除安裝 Web 伺服器類應用程式（如 Nginx/OpenResty）會重設所有網站的設定。 確認對話方塊會針對這種情況顯示專門的警告。 重新安裝或切換到其他 Web 伺服器時，同樣會觸發該重設。
 :::
 
-## 首頁捷徑
+## 主頁快捷方式
 
 啟用 **首頁顯示** 開關後，應用程式會出現在面板首頁的 **快捷應用程式** 區域，方便快速進入管理頁面。

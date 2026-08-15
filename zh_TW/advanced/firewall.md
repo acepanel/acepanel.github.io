@@ -1,8 +1,8 @@
-# Security and Firewall
+# 安全與防火牆
 
 ![Firewall rules](/images/security/firewall.png)
 
-Open **Security** to manage the system firewall, scan awareness, and [tamper protection](./firewall/tamper). The firewall pages automatically detect `firewalld` or `ufw` and provide port rules, IP rules, and port forwarding.
+進入 **安全**管理系統防火牆、掃描感知和[防篡改](./firewall/tamper)。 防火牆頁面會自動檢測 `firewalld` 或 `ufw`，並提供埠規則、IP 規則和埠轉發。
 
 :::tip 支援的防火牆
 面板會自動偵測已安裝的防火牆。 它優先使用 `firewalld`，在 `firewalld` 無法使用時退回到 `ufw`。 這裡描述的所有操作都會在背後轉換為對應的 `firewalld` 或 `ufw` 指令。
@@ -12,14 +12,14 @@ Open **Security** to manage the system firewall, scan awareness, and [tamper pro
 
 防火牆頁面以分頁方式組織：
 
-| 分頁                | 說明                                                |
-| ----------------- | ------------------------------------------------- |
-| 連接埠規則             | 管理開放或限制特定連接埠／連接埠範圍的規則                             |
-| IP 規則             | 管理以 IP 為基礎的允許/拒絕規則（黑名單／白名單）                       |
-| 連接埠轉發             | 管理連接埠轉發（連接埠對應）規則                                  |
-| 掃描感知              | 網路掃描偵測與統計                                         |
-| Tamper Protection | Protect selected files and record blocked changes |
-| 設定                | 開啟/關閉防火牆、允許/拒絕 ping，以及掃描設定                        |
+| 分頁    | 說明                          |
+| ----- | --------------------------- |
+| 連接埠規則 | 管理開放或限制特定連接埠／連接埠範圍的規則       |
+| IP 規則 | 管理以 IP 為基礎的允許/拒絕規則（黑名單／白名單） |
+| 連接埠轉發 | 管理連接埠轉發（連接埠對應）規則            |
+| 掃描感知  | 網路掃描偵測與統計                   |
+| 防竄改   | 保護指定檔案並記錄遭攔截的修改             |
+| 設定    | 開啟/關閉防火牆、允許/拒絕 ping，以及掃描設定  |
 
 ## 設定
 
@@ -80,7 +80,7 @@ Open **Security** to manage the system firewall, scan awareness, and [tamper pro
 | Drop   | 靜默丟棄該流量，不做任何回應   |
 | Reject | 丟棄該流量並向傳送方回傳拒絕回應 |
 
-Use the strategy control in a rule row to switch directly between **Accept**, **Drop**, and **Reject**. The new policy is applied immediately; confirm that the panel and SSH ports remain reachable before changing a remote-management rule.
+可以在規則行中直接切換 **接受**、**丟棄**和**拒絕**策略。 新策略立即生效；修改遠端管理相關規則前，先確認面板和 SSH 埠仍可訪問。
 
 :::tip
 要開放某個連接埠供公網存取，請建立一條 **Inbound** 方向、**Accept** 策略的規則，並將 **目標** 留空。
@@ -91,9 +91,9 @@ Use the strategy control in a rule row to switch directly between **Accept**, **
 - **單條刪除**：點選規則所在列的 **刪除** 並確認。
 - **批次刪除**：使用核取方塊選擇一列或多列，點選頂部的 **刪除** 按鈕並確認。 所選規則會被一併移除。
 
-### Import and Export
+### 匯入與匯出
 
-Use **Export** to download the rules as an XLSX workbook. **Import** validates an XLSX file and shows the rows to be added. Review address family, direction, protocol, port ranges, targets, and strategies before confirming; an imported blocking rule can disconnect the current session.
+使用 **匯出**將規則下載為 XLSX 工作簿。**匯入**會驗證 XLSX 檔案並顯示待新增行。確認前檢查地址族、方向、協議、埠範圍、目標和策略；匯入的攔截規則可能中斷當前會話。
 
 ## IP 規則
 

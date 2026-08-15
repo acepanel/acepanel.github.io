@@ -6,7 +6,7 @@
 
 ## 資料庫清單
 
-前往 **資料庫** 頁面。 A database-type tab is shown only when at least one server of that type exists. **User** and **Server** remain available for managing credentials and server connections.
+前往 **資料庫** 頁面。 僅當至少存在一台相應類型的伺服器時，才顯示該資料庫類型分頁。 **使用者** 和 **伺服器** 分頁始終可用於管理憑證和伺服器連線。
 
 對於關聯式與文件型資料庫分頁（MySQL/PostgreSQL/ClickHouse/MongoDB/SQLite），清單會顯示以下資訊：
 
@@ -14,18 +14,18 @@
 - **伺服器**：所屬的資料庫伺服器
 - **編碼**：字元編碼（僅 MySQL/PostgreSQL）
 - **註解**：備註（僅 PostgreSQL）。 此欄位支援行內編輯——輸入值後點選其他位置（失去焦點）即可立即儲存
-- **Actions**: Open phpMyAdmin or pgAdmin when available, and delete
+- **操作**：在可用時開啟 phpMyAdmin 或 pgAdmin，以及刪除資料庫
 
 **建立資料庫** 按鈕僅在 MySQL、PostgreSQL、ClickHouse 與 MongoDB 分頁中可用。 SQLite 資料表在此處以唯讀方式列出，Elasticsearch/Redis 則透過各自的資料檢視進行管理。
 
 **使用者** 與 **伺服器** 分頁透過各自的頁面進行管理；詳情請參閱 [資料庫使用者](./user.md) 與 [資料庫伺服器](./server.md)。
 
-For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, install and configure [pgAdmin](./pgadmin) first. The management tool uses the panel language.
+MySQL 需要先選擇目標伺服器再開啟 phpMyAdmin； PostgreSQL 需要先安裝並配置 [pgAdmin](./pgadmin)。 管理工具使用面板語言。
 
 ## 建立資料庫
 
 1. 點選 **建立資料庫** 按鈕
-2. 填寫設定：
+2. 填寫配置：
    - **伺服器**：選擇資料庫伺服器
    - **資料庫名稱**：只能使用字母、數字、底線與連字號，且不能以數字開頭
    - **建立使用者**：開啟後會在建立資料庫的同時一併建立一個新使用者。 關閉時，您可以選擇性地輸入一個現有的 **授權使用者**，為其授予新資料庫的權限
@@ -46,7 +46,7 @@ For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, i
 - 只能使用字母、數字、底線與連字號
 - 不能以數字開頭
 - 避免使用資料庫保留字
-- 建議使用有意義的名稱，例如 `wordpress`、`myapp_production`
+- 建議使用有意義的名稱，如 `wordpress`、`myapp_production`
 
 ## 常見問題
 
@@ -58,7 +58,7 @@ For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, i
 
 ### 資料庫編碼問題
 
-如果出現亂碼，請檢查：
+如果出現亂碼，檢查：
 
 1. 資料庫編碼是否正確
 2. 連線時是否指定了正確的編碼

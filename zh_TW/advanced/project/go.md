@@ -4,9 +4,9 @@
 
 Go 專案用於部署使用 Go 語言開發的後端應用程式，例如 Gin、Echo、Fiber 等框架。
 
-## 前置需求
+## 前置要求
 
-1. Install Go runtime environment: **Apps** > **Runtime Environment** > **Go**
+1. 安裝 Go 執行環境：**應用** > **執行環境** > **Go**
 2. 編譯好的 Go 執行檔或原始碼
 
 ## 部署方式
@@ -21,11 +21,11 @@ GOOS=linux GOARCH=amd64 go build -o myapp
 ```
 
 2. 將二進位檔案上傳到伺服器
-3. 建立專案，啟動指令填入：`./myapp`
+3. 建立專案，啟動命令填寫：`./myapp`
 
 ### 方式二：在伺服器上編譯
 
-1. 將原始碼上傳到伺服器
+1. 上傳原始碼到伺服器
 2. 在終端機中編譯：
 
 ```bash
@@ -33,7 +33,7 @@ cd /opt/ace/projects/myapp
 go build -o myapp
 ```
 
-3. 建立專案，啟動指令填入：`./myapp`
+3. 建立專案，啟動命令填寫：`./myapp`
 
 ## 建立 Go 專案
 
@@ -80,7 +80,7 @@ go build -o myapp
 # 執行編譯好的二進位檔案
 ./myapp
 
-# 使用指定版本的 Go 執行
+# 以指定版本的 Go 執行
 go1.24 run main.go
 
 # 帶參數執行
@@ -108,7 +108,7 @@ func main() {
 }
 ```
 
-啟動指令：`GIN_MODE=release ./myapp`
+啟動命令：`GIN_MODE=release ./myapp`
 
 ### Echo
 

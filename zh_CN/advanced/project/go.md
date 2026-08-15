@@ -6,7 +6,7 @@ Go 项目用于部署使用 Go 语言开发的后端应用，如 Gin、Echo、Fi
 
 ## 前置要求
 
-1. Install Go runtime environment: **Apps** > **Runtime Environment** > **Go**
+1. 安装 Go 运行环境：**应用** > **运行环境** > **Go**
 2. 编译好的 Go 可执行文件或源代码
 
 ## 部署方式

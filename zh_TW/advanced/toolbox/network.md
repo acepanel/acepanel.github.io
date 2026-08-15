@@ -1,62 +1,62 @@
 # 網路
 
-![Network management](/images/toolbox/network.png)
+![網路管理](/images/toolbox/network.png)
 
-The Network tool combines a read-only connection inspector with guarded network-interface configuration. Open **Toolbox > Network**.
+網路工具包含只讀的連線檢視器和帶安全保護的網絡卡配置。 進入 **工具箱 > 網路**。
 
-## Network Connections
+## 網路連線
 
-The connection list shows current TCP, TCP6, UDP, and UDP6 sockets with local address, remote address, state, PID, and process. Search by PID, partial process name, or local/remote port, combine state filters, sort supported columns, refresh the snapshot, and change the page size.
+連線列表顯示當前 TCP、TCP6、UDP 和 UDP6 套接字，包括本地地址、遠端地址、狀態、PID 和程序。 可以按 PID、部分程序名、本地或遠端埠搜尋，組合狀態篩選，排序受支援的列，重新整理當前快照並調整每頁數量。
 
-Common states include `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, `CLOSE_WAIT`, `SYN_SENT`, `SYN_RECV`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, `CLOSING`, and `NONE`. UDP commonly has no connection state. Process ownership can be empty if the process exited between sampling or the operating system did not expose it.
+常見狀態包括 `LISTEN`、`ESTABLISHED`、`TIME_WAIT`、`CLOSE_WAIT`、`SYN_SENT`、`SYN_RECV`、`FIN_WAIT1`、`FIN_WAIT2`、`LAST_ACK`、`CLOSING` 和 `NONE`。 UDP 通常沒有連線狀態。 程序在取樣期間退出，或作業系統沒有提供所有者資訊時，PID 和程序可能為空。
 
-The connection list does not terminate sockets. Open [Processes](./process) when you need process details or signal operations.
+連線列表不會終止套接字。 需要檢視程序詳情或傳送訊號時，開啟[程序](./process)工具。
 
-## Network Interface Configuration
+## 網絡卡配置
 
-The interface section shows the detected configuration manager, interface type, MAC address, MTU, and current IPv4 and IPv6 addresses.
+網絡卡區域顯示檢測到的配置管理器、網絡卡型別、MAC 地址、MTU 以及當前 IPv4、IPv6 地址。
 
-AcePanel can safely edit supported configurations managed by:
+AcePanel 可以安全編輯以下方式管理且滿足要求的配置：
 
-- NetworkManager;
-- netplan;
-- ifupdown configurations that pass AcePanel's safety parser.
+- NetworkManager；
+- netplan；
+- 通過 AcePanel 安全解析檢查的 ifupdown 配置。
 
-For IPv4 and IPv6 independently, choose automatic or manual addressing and configure CIDR addresses, the default gateway, DNS servers, and whether automatically assigned DNS is accepted. ifupdown does not expose automatic-DNS fields that it cannot represent.
+IPv4 和 IPv6 分開設定。每種地址族都可以選擇自動或手動獲取，並配置 CIDR 地址、預設閘道器、DNS 伺服器以及是否接受自動分配的 DNS。 ifupdown 無法表達的自動 DNS 欄位不會顯示。
 
-### Unsupported Configurations
+### 不支援的配置
 
-AcePanel displays **Unsupported** instead of attempting an unsafe rewrite when it cannot reliably round-trip the active configuration. Examples include multiple files defining the same interface, inherited or `mapping`-based ifupdown definitions, and a NetworkManager interface without an editable active connection profile.
+AcePanel 無法可靠讀取並按原樣寫回活動配置時，會顯示 **不支援**，而不會嘗試進行不安全的改寫。 例如：多個檔案定義同一網路介面、使用繼承或基於 `mapping` 的 ifupdown 定義，以及 NetworkManager 網路介面沒有可編輯的作用中連線設定檔。
 
-Manage an unsupported interface with its native operating-system tools or simplify the configuration first. Do not overwrite it with a guessed panel form.
+此時應使用作業系統原生工具管理網絡卡，或先簡化配置。 不要使用猜測出的面板表單覆蓋現有配置。
 
-## Safe Apply and Automatic Rollback
+## 安全應用和自動回滾
 
-Changing the primary address, gateway, route source, or automatic-address setting can immediately disconnect the panel and SSH. Keep a console or provider recovery channel available.
+修改主 IP、閘道器、路由來源或自動地址設定，可能立即中斷面板和 SSH。 操作前必須準備控制台或雲廠商恢復通道。
 
-When a change is applied, AcePanel starts a 30-second confirmation window:
+應用修改後，AcePanel 會啟動 30 秒確認倒計時：
 
-1. Verify that the panel, SSH, gateway, DNS, and required services remain reachable.
-2. Click **Keep change** within 30 seconds to retain the new configuration.
-3. Click **Roll back now** to restore the previous configuration immediately.
-4. If no confirmation arrives before the countdown ends, AcePanel automatically rolls back.
+1. 檢查面板、SSH、閘道器、DNS 和所需服務是否仍可訪問。
+2. 在 30 秒內點選 **保留修改**，儲存新配置。
+3. 點選 **立即回滾**，馬上恢復舊配置。
+4. 倒計時結束前沒有確認時，AcePanel 自動回滾。
 
-Automatic rollback reduces risk but cannot guarantee recovery from every driver, routing, provider, or operating-system failure. Test remotely managed servers during a maintenance window.
+自動回滾可以降低風險，但不能保證從所有驅動、路由、雲廠商或作業系統故障中恢復。 遠端伺服器應在維護視窗內測試。
 
-## Validation
+## 驗證
 
-After keeping a change, verify:
+保留修改後，逐項檢查：
 
-- the expected IPv4 and IPv6 addresses and MTU;
-- the default gateway and route table;
-- DNS resolution using every configured resolver;
-- panel and SSH access from a fresh connection;
-- inbound services through both the system firewall and cloud security group;
-- outbound access required by package managers, backups, mail, and monitoring.
+- IPv4、IPv6 地址和 MTU 是否符合預期；
+- 預設閘道器和路由表；
+- 使用每個已配置 DNS 伺服器進行解析；
+- 從新連線訪問面板和 SSH；
+- 通過系統防火牆和雲安全組訪問入站服務；
+- 軟體包管理器、備份、郵件和監控所需的出站連線。
 
-## Troubleshooting
+## 故障排查
 
-- **Unsupported:** inspect the named manager's source files and remove ambiguous multi-file, inheritance, or mapping constructs only if you understand their effect.
-- **Change rolled back:** determine which address, gateway, DNS, or DHCP condition broke connectivity before trying again.
-- **Panel reachable but a service is not:** check its bind address and [Security](../firewall) rules for both address families.
-- **An old address remains:** refresh the interface list and inspect the native manager; temporary kernel addresses and persistent configuration are different states.
+- **顯示不支援：** 檢查頁面指出的配置管理器原始檔；只有理解影響時，才移除多檔案、繼承或 mapping 等歧義結構。
+- **修改被回滾：** 找出導致連線中斷的地址、閘道器、DNS 或 DHCP 條件後再重試。
+- **面板可訪問但服務不可用：** 檢查服務繫結地址，並核對兩種地址族的[安全](../firewall)規則。
+- **舊地址仍然存在：** 重新整理網絡卡列表並檢查原生網路管理器；核心臨時地址和持久配置是不同狀態。

@@ -1,8 +1,8 @@
-# Security and Firewall
+# 安全与防火墙
 
 ![Firewall rules](/images/security/firewall.png)
 
-Open **Security** to manage the system firewall, scan awareness, and [tamper protection](./firewall/tamper). The firewall pages automatically detect `firewalld` or `ufw` and provide port rules, IP rules, and port forwarding.
+进入 **安全**管理系统防火墙、扫描感知和[防篡改](./firewall/tamper)。 防火墙页面会自动检测 `firewalld` 或 `ufw`，并提供端口规则、IP 规则和端口转发。
 
 :::tip 支持的防火墙
 面板会自动检测已安装的防火墙。 它优先使用 `firewalld`，如果 `firewalld` 不可用则回退到 `ufw`。 这里描述的所有操作都会在后台转换为对应的 `firewalld` 或 `ufw` 命令。
@@ -12,14 +12,14 @@ Open **Security** to manage the system firewall, scan awareness, and [tamper pro
 
 防火墙页面按选项卡进行组织：
 
-| 选项卡               | 说明                                                |
-| ----------------- | ------------------------------------------------- |
-| 端口规则              | 管理开放或限制特定端口/端口范围的规则                               |
-| IP 规则             | 管理基于 IP 的允许/拒绝规则（黑名单/白名单）                         |
-| 端口转发              | 管理端口转发（端口映射）规则                                    |
-| 扫描感知              | 网络扫描检测与统计                                         |
-| Tamper Protection | Protect selected files and record blocked changes |
-| 设置                | 开关防火墙、允许/拒绝 ping，以及扫描设置                           |
+| 选项卡   | 说明                        |
+| ----- | ------------------------- |
+| 端口规则  | 管理开放或限制特定端口/端口范围的规则       |
+| IP 规则 | 管理基于 IP 的允许/拒绝规则（黑名单/白名单） |
+| 端口转发  | 管理端口转发（端口映射）规则            |
+| 扫描感知  | 网络扫描检测与统计                 |
+| 防篡改   | 保护指定文件并记录被拦截的修改           |
+| 设置    | 开关防火墙、允许/拒绝 ping，以及扫描设置   |
 
 ## 设置
 
@@ -80,7 +80,7 @@ Open **Security** to manage the system firewall, scan awareness, and [tamper pro
 | Drop   | 静默丢弃该流量，不做任何响应     |
 | Reject | 丢弃该流量并向发送方返回一个拒绝响应 |
 
-Use the strategy control in a rule row to switch directly between **Accept**, **Drop**, and **Reject**. The new policy is applied immediately; confirm that the panel and SSH ports remain reachable before changing a remote-management rule.
+可以在规则行中直接切换 **接受**、**丢弃**和**拒绝**策略。 新策略立即生效；修改远程管理相关规则前，先确认面板和 SSH 端口仍可访问。
 
 :::tip
 要为公开访问开放一个端口，请创建一条采用 **Accept** 策略的**入站**规则，并将**目标**留空。
@@ -91,9 +91,9 @@ Use the strategy control in a rule row to switch directly between **Accept**, **
 - **单条删除**：点击某条规则所在行的**删除**并确认。
 - **批量删除**：使用复选框选中一行或多行，点击顶部的**删除**按钮并确认。 所选规则会被一并移除。
 
-### Import and Export
+### 导入与导出
 
-Use **Export** to download the rules as an XLSX workbook. **Import** validates an XLSX file and shows the rows to be added. Review address family, direction, protocol, port ranges, targets, and strategies before confirming; an imported blocking rule can disconnect the current session.
+使用 **导出**将规则下载为 XLSX 工作簿。**导入**会验证 XLSX 文件并显示待添加行。确认前检查地址族、方向、协议、端口范围、目标和策略；导入的拦截规则可能中断当前会话。
 
 ## IP 规则
 

@@ -6,7 +6,7 @@
 
 ## 先決條件
 
-1. Install the .NET runtime environment: **Apps** > **Runtime Environment** > **.NET**
+1. 安裝 .NET 執行環境：**應用** > **執行環境** > **.NET**
 2. 你的 .NET 專案的發布產物或原始碼
 
 :::tip
@@ -81,7 +81,7 @@ ASPNETCORE_ENVIRONMENT=Production dotnet8.0.100 myapp.dll
 
 ## 設定預設 CLI 版本
 
-If you need the `dotnet` command available directly in the terminal, go to **Apps** > **Runtime Environment** > **.NET**, open the installed version, and click **Set as CLI Default Version**. 這會將該版本的 `dotnet` 二進位檔案連結到系統路徑中，使命令列中的 `dotnet` 解析到它。
+如需在終端中直接使用 `dotnet` 指令，請進入 **應用** > **執行環境** > **.NET**，開啟已安裝版本並點選 **設為 CLI 預設版本**。 這會將該版本的 `dotnet` 二進位檔案連結到系統路徑中，使命令列中的 `dotnet` 解析到它。
 
 ## 注意事項
 

@@ -86,7 +86,7 @@ ClouDNS 也支持子账户 Auth ID。 使用时，在 Auth ID 字段中填入带
 
 ## DNS 别名（CNAME 委托）
 
-::: tip Version
+::: tip 版本
 :::
 
 DNS 别名允许你将 `_acme-challenge` TXT 记录写入到**另一个**（委托的）域名上来完成某个域名的 DNS-01 验证，而不必写入到正在申请证书的域名上。 它适用于以下场景：

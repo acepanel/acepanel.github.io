@@ -1,47 +1,47 @@
-# Rsync Manager
+# Rsync 管理器
 
-![Rsync manager](/images/app/rsync.png)
+![Rsync 管理器](/images/app/rsync.png)
 
-The Rsync manager publishes selected server directories as authenticated rsync modules. Use it for controlled file synchronization, mirrors, and backup feeds when rsync is an explicit requirement.
+Rsync 管理器可以把指定服务器目录发布为需要认证的 rsync 模块， 适用于明确需要 rsync 协议的文件同步、镜像和备份数据源。
 
-Go to **Apps > Installed > Rsync > Manage**.
+进入 **应用 > 已安装 > Rsync > 管理**。
 
-## Prerequisites
+## 前置条件
 
-- Install the Rsync native application.
-- Permit the configured daemon port only from the hosts that need it.
-- Create a dedicated low-privilege operating-system user for sensitive directories when possible.
+- 安装 Rsync 原生应用。
+- 守护进程端口只向确有需要的来源主机开放。
+- 对敏感目录，尽量使用专用的低权限系统用户。
 
-## Manager Tabs
+## 管理器标签页
 
-| Tab                | Purpose                                                                             |
-| ------------------ | ----------------------------------------------------------------------------------- |
-| Status             | Start, stop, restart, and inspect the daemon.                       |
-| Modules            | Create and maintain exported directory modules.                     |
-| Main Configuration | Edit daemon-wide settings not represented by a module.              |
-| Run Log            | Inspect startup, authentication, connection, and transfer failures. |
+| 管理器标签页 | 用途                  |
+| ------ | ------------------- |
+| 状态     | 启动、停止、重启并查看守护进程状态。  |
+| 模块     | 创建和管理对外提供的目录模块。     |
+| 主配置    | 编辑不属于单个模块的守护进程全局设置。 |
+| 运行日志   | 排查启动、认证、连接和传输失败。    |
 
-## Create a Module
+## 创建模块
 
-Each module has a name, directory, username, password, allowed hosts, read-only mode, and optional remark.
+每个模块包含名称、目录、用户名、密码、允许主机、只读模式和可选备注。
 
-- The module name is the public rsync path component and should not expose a secret.
-- The directory must exist and be accessible to the rsync daemon user.
-- Allowed hosts should be a narrow IP or network allowlist.
-- Enable **Read Only** for downloads and mirrors that must never modify the source.
-- Store module credentials as secrets and do not embed them in public scripts or screenshots.
+- 模块名称会成为公开 rsync 路径的一部分，不应把它当作秘密。
+- 目录必须存在，且 rsync 守护进程用户具有所需权限。
+- 允许主机应配置为范围尽可能小的 IP 或网段白名单。
+- 仅用于下载或镜像且禁止修改源文件时，启用 **只读**。
+- 模块凭据必须按密钥保存，不要写入公开脚本或截图。
 
-Example client form:
+客户端命令示例：
 
 ```bash
 rsync -av rsync://backup-user@example.com/module-name/ ./destination/
 ```
 
-Supply the password through an appropriately protected password file or an interactive prompt rather than a command-line argument.
+密码应通过权限受控的密码文件或交互提示提供，不要直接写在命令行参数中。
 
-## Safety and Troubleshooting
+## 安全与故障排查
 
-- A writable module can delete or replace files when the client uses destructive synchronization flags. Test against disposable data first.
-- The system firewall and cloud security group must both permit the daemon port.
-- An authentication error usually indicates a module username/password mismatch; a permission error usually indicates filesystem ownership or daemon-user access.
-- After editing raw configuration, restart the daemon and immediately check **Run Log**.
+- 可写模块在客户端使用破坏性同步参数时，可能删除或覆盖文件， 应先用临时数据测试。
+- 系统防火墙和云安全组必须同时放行守护进程端口。
+- 认证失败通常表示模块用户名或密码不匹配；权限错误通常表示文件所有权或守护进程用户权限不足。
+- 修改原始配置后重启守护进程，并立即检查 **运行日志**。

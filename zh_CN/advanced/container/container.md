@@ -17,13 +17,13 @@
 - **运行状态**：详细的运行状态信息
 - **操作**：终端、日志、重命名等
 
-## Inspect and Edit a Container
+## 查看和编辑容器
 
-Click a container name or **Details** to open its information dialog. It shows the effective image, command, state, restart policy, ports, mounts, environment variables, labels, networks, resource settings, and the raw Docker/Podman `inspect` result. Use the raw view when the summarized fields are not enough for troubleshooting.
+点击容器名称或 **详情** 打开信息对话框。 这里会显示实际使用的镜像、命令、状态、重启策略、端口、挂载、环境变量、标签、网络、资源设置，以及原始的 Docker/Podman `inspect` 结果。 汇总字段不足以排查问题时，可切换到原始视图。
 
-Use **Edit** to change a supported setting on an existing container. Review mounts, ports, and environment variables before saving because recreating a container can interrupt the service. Data stored only in the writable container layer can be lost when a container is replaced; keep persistent data in a volume or host mount.
+点击 **编辑** 可以修改现有容器支持的设置。 保存前请检查挂载、端口和环境变量，因为重新创建容器会中断服务。 仅存放在容器可写层中的数据可能在替换容器时丢失，持久数据应保存到卷或主机挂载目录。
 
-Continuous adjacent port mappings are combined in the list to make ranges easier to read. Open the details dialog to inspect the exact underlying mappings.
+列表会合并连续的相邻端口映射，便于查看端口范围。 需要确认精确映射时，请打开详情对话框。
 
 ## 创建容器
 
@@ -80,12 +80,12 @@ Continuous adjacent port mappings are combined in the list to make ranges easier
 - **启动命令**：覆盖镜像默认的 **命令** (CMD) 和 **入口点** (ENTRYPOINT)
 - **容器标签**：附加到容器上的自定义标签，格式为 `KEY=VALUE`
 
-Before submitting, choose how the operation runs:
+提交前请选择操作方式：
 
-- **Foreground** keeps the dialog open and streams image-pull and container-creation output.
-- **Background** creates a panel task. You may leave the page and follow the result under **Tasks > Panel Tasks**.
+- **前台**：保持对话框打开，实时显示镜像拉取和容器创建输出。
+- **后台**：创建面板任务。 离开页面不会中断操作，可在 **任务 > 面板任务** 中查看结果。
 
-These modes are not interchangeable: foreground output belongs to the current browser operation, while a background operation is owned by the task queue.
+两种方式的运行边界不同：前台输出属于当前浏览器操作，后台操作则由任务队列管理。
 
 ## 容器操作
 
@@ -108,7 +108,7 @@ These modes are not interchangeable: foreground output belongs to the current br
 - **重命名**：修改容器名称
 - **更多**：包含启动、停止、重启、强制停止、暂停、恢复和删除操作的下拉菜单
 
-The real-time log viewer shows its connection state and can load older lines, search the loaded text, jump between matches, toggle wrapping, copy all loaded output, and enter full screen. Search covers only the history already loaded in the dialog. See [Logs](../log) for the shared viewer behavior.
+实时日志查看器会显示连接状态，并支持加载更早日志、搜索已加载文本、在匹配项之间跳转、切换自动换行、复制全部已加载内容和全屏显示。 搜索范围仅包含对话框中已经加载的历史记录。 通用日志查看器的操作说明请参阅[日志](../log)。
 
 ## 清理容器
 

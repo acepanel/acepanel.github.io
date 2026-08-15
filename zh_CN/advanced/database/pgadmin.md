@@ -1,44 +1,44 @@
 # pgAdmin
 
-![pgAdmin settings](/images/database/pgadmin.png)
+![pgAdmin 设置](/images/database/pgadmin.png)
 
-pgAdmin is the Web administration tool integrated with PostgreSQL in AcePanel. Install it as a native application, then open it from a PostgreSQL database row or manage its access settings from the application manager.
+pgAdmin 是 AcePanel 集成的 PostgreSQL Web 管理工具。 安装原生应用后，可以从 PostgreSQL 数据库列表一键进入，也可以在应用管理器中配置访问参数。
 
-## Prerequisites
+## 前置条件
 
-- Install at least one PostgreSQL server in **Apps** and register it under **Databases > Servers**.
-- Install the pgAdmin native application.
-- Restrict its listening port with the system firewall, cloud security group, or a trusted reverse proxy.
+- 在 **应用**中安装至少一个 PostgreSQL 服务器，并在 **数据库 > 服务器**中完成登记。
+- 安装 pgAdmin 原生应用。
+- 使用系统防火墙、云安全组或受信任的反向代理限制 pgAdmin 监听端口的访问来源。
 
-## Open pgAdmin
+## 打开 pgAdmin
 
-Go to **Databases**, select a PostgreSQL server tab, and use the pgAdmin action for a database. AcePanel opens pgAdmin and supplies the configured server information for one-click access.
+进入 **数据库**，选择 PostgreSQL 标签页，在数据库行中点击 pgAdmin。 AcePanel 会打开 pgAdmin，并提供已配置服务器的一键访问信息。
 
-The database-type tabs are dynamic: a MySQL, PostgreSQL, ClickHouse, Redis, Valkey, or other type is shown only when at least one corresponding database server exists. The management tool follows the panel language.
+数据库类型标签会动态显示：只有存在对应数据库服务器时，MySQL、PostgreSQL、ClickHouse、Redis、Valkey 等类型的标签才会出现。 管理工具的界面语言跟随面板语言。
 
-## Access Settings
+## 访问设置
 
-Go to **Apps > Installed > pgAdmin > Manage** to view or change:
+进入 **应用 > 已安装 > pgAdmin > 管理**，可以查看或修改：
 
-- access URL and port;
-- administrator email;
-- administrator password;
-- the pgAdmin account used by AcePanel.
+- 访问地址和端口；
+- 管理员邮箱；
+- 管理员密码；
+- AcePanel 使用的 pgAdmin 账号。
 
-Changing the administrator email migrates the PostgreSQL server definitions that AcePanel has synchronized to pgAdmin. Confirm that all expected servers still appear after the change.
+修改管理员邮箱时，AcePanel 会迁移已经同步到 pgAdmin 的 PostgreSQL 服务器配置。 修改后应确认所有预期服务器仍然存在。
 
-## Security
+## 安全建议
 
-- Treat the pgAdmin administrator password as a privileged database credential.
-- Do not expose pgAdmin directly to the public internet. Use an allowlist, VPN, or authenticated reverse proxy.
-- A changed port also requires firewall and upstream-security-group changes.
-- Use TLS when the connection leaves a trusted network.
+- pgAdmin 管理员密码属于高权限数据库凭据，应妥善保管。
+- 不要把 pgAdmin 直接暴露到公网， 应使用访问白名单、VPN 或带认证的反向代理。
+- 修改端口后，还需要同步调整防火墙和上游安全组。
+- 连接经过不受信任的网络时应使用 TLS。
 
-## Troubleshooting
+## 故障排查
 
-- **The pgAdmin action is missing:** confirm pgAdmin is installed and the current database tab is PostgreSQL.
-- **A server is not listed:** verify it under **Databases > Servers**, then reopen or resynchronize pgAdmin.
-- **The page does not open:** check the pgAdmin service, listening port, firewall, and application log.
-- **Login fails after an email change:** use the current email, reset the password from the manager, and verify the synchronized account.
+- **没有 pgAdmin 操作：** 确认 pgAdmin 已安装，且当前打开的是 PostgreSQL 标签页。
+- **服务器未显示：** 先在 **数据库 > 服务器**中核对，再重新打开或同步 pgAdmin。
+- **页面无法打开：** 检查 pgAdmin 服务、监听端口、防火墙和应用日志。
+- **修改邮箱后无法登录：** 使用当前邮箱，通过管理器重置密码，并核对同步账号。
 
-For MySQL, AcePanel provides the corresponding phpMyAdmin entry and lets you select the target MySQL server.
+MySQL 对应提供 phpMyAdmin 入口，并可选择目标 MySQL 服务器。

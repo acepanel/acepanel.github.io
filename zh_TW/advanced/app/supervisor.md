@@ -1,46 +1,46 @@
-# Supervisor Manager
+# Supervisor 管理器
 
-![Supervisor manager](/images/app/supervisor.png)
+![Supervisor 管理器](/images/app/supervisor.png)
 
-Supervisor keeps long-running commands alive and restarts them according to a process policy. The AcePanel manager controls the Supervisor daemon and its programs after the native application is installed.
+Supervisor 用於保持長期執行的命令持續工作，並按程序策略自動重啟。 安裝 Supervisor 原生應用後，可以在 AcePanel 中管理守護程序和各個程式。
 
-Go to **Apps > Installed > Supervisor > Manage**.
+進入 **應用 > 已安裝 > Supervisor > 管理**。
 
-## Manager Tabs
+## 管理器標籤頁
 
-| Tab                | Purpose                                                                  |
-| ------------------ | ------------------------------------------------------------------------ |
-| Status             | Start, stop, restart, and inspect Supervisor.            |
-| Processes          | Create, start, stop, restart, edit, and delete programs. |
-| Main Configuration | Edit daemon-wide Supervisor configuration.               |
-| Run Log            | View panel-managed service output.                       |
-| Daemon Log         | View Supervisor's own diagnostic log.                    |
+| 管理器標籤頁 | 用途                         |
+| ------ | -------------------------- |
+| 狀態     | 啟動、停止、重啟並檢視 Supervisor 狀態。 |
+| 程序     | 建立、啟動、停止、重啟、編輯和刪除程式。       |
+| 主配置    | 編輯 Supervisor 守護程序的全域性配置。  |
+| 執行日誌   | 檢視面板管理的服務輸出。               |
+| 守護程序日誌 | 檢視 Supervisor 自身的診斷日誌。     |
 
-## Create a Process
+## 建立程序
 
-Configure the executable command, working directory, run user, number of processes, automatic start and restart, start-success time, retry count, stop behavior, priority, process group behavior, log files and rotation, and environment variables. Advanced users can inspect or edit the generated raw configuration.
+可配置執行命令、工作目錄、執行使用者、程序數量、自動啟動和自動重啟、啟動成功等待時間、重試次數、停止行為、優先順序、程序組行為、日誌檔案與輪轉以及環境變數。 高階使用者還可以檢視或編輯生成的原始配置。
 
-Use an absolute executable path and a dedicated unprivileged user. Put secrets in a protected environment file or secret store rather than in a command that can appear in the process list.
+執行檔案應使用絕對路徑，並儘量使用專用的非特權使用者。 金鑰應存放在許可權受控的環境檔案或金鑰管理工具中，不要寫進會出現在程序列表中的命令。
 
-## Common Workflow
+## 常用流程
 
-1. Run the command manually as the intended user and confirm it starts.
-2. Create a Supervisor process with its exact working directory and environment.
-3. Start the process and wait through `startsecs` so Supervisor can classify it as running.
-4. Review the process log and daemon log.
-5. Test one controlled restart and verify the expected number of workers.
+1. 先以目標執行使用者手工執行命令，確認可以正常啟動。
+2. 使用準確的工作目錄和環境變數建立 Supervisor 程序。
+3. 啟動程序並等待超過 `startsecs`，讓 Supervisor 正確判斷其已進入執行狀態。
+4. 檢查程序日誌和守護程序日誌。
+5. 執行一次可控重啟，確認程序數量符合預期。
 
-## Important Options
+## 重要選項
 
-- **Automatic start** starts the process when Supervisor starts.
-- **Automatic restart** restarts the process according to its exit status and policy.
-- **Retry count** controls repeated startup attempts; it does not make an unhealthy application healthy.
-- **Priority** controls Supervisor's start and stop order.
-- **Stop as group / kill as group** is important for commands that spawn child processes.
-- **Log rotation** prevents stdout and stderr logs from growing without limit.
+- **自動啟動：** Supervisor 啟動時一併啟動該程序。
+- **自動重啟：** 根據退出狀態和策略決定是否重啟程序。
+- **重試次數：** 控制啟動失敗後的重複嘗試次數，不能修復應用本身的故障。
+- **優先順序：** 控制 Supervisor 啟動和停止程序的順序。
+- **停止程序組 / 終止程序組：** 對會建立子程序的命令尤其重要。
+- **日誌輪轉：** 防止標準輸出和錯誤日誌無限增長。
 
-## Deletion and Troubleshooting
+## 刪除與故障排查
 
-Deleting a process removes its Supervisor configuration. It does not delete the application directory, but it can interrupt a production service immediately. Stop traffic or provide another instance before deleting.
+刪除程序會移除對應的 Supervisor 配置，不會刪除應用目錄，但可能立即中斷生產服務。 刪除前應先停止流量或準備其他可用例項。
 
-If a process cycles between starting and exited, check the command, user permissions, working directory, environment, port conflicts, and application log. Use **Daemon Log** when Supervisor rejects or fails to load the configuration.
+程序在啟動中和已退出狀態之間反覆切換時，檢查命令、使用者許可權、工作目錄、環境變數、埠衝突和應用日誌。 Supervisor 拒絕或無法載入配置時，檢視 **守護程序日誌**。

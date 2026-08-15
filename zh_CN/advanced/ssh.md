@@ -77,29 +77,29 @@
 2. 填写远程服务器信息
 3. 保存后，点击主机卡片即可连接
 
-### Keepalive
+### 保活
 
-Enable keepalive for hosts or sessions that pass through idle connection timeouts. It sends periodic SSH traffic to keep an otherwise healthy connection open; it does not recover a server, network, or authentication failure.
+经过空闲连接超时的主机或会话可以启用保活。 它会定期发送 SSH 流量以维持正常连接，但不能恢复服务器、网络或认证故障。
 
-## SFTP File Transfer
+## SFTP 文件传输
 
-Open the transfer view to work with two file panes. Each pane can represent the AcePanel server or any configured remote SSH host, so you can transfer between local and remote storage or between two remote hosts without downloading files through your desktop.
+传输视图提供左右两个文件窗格。 每个窗格都可以选择 AcePanel 服务器或任意已配置的远程 SSH 主机，因此可以在本机与远程主机之间，或两台远程主机之间传输，无需先下载到桌面。
 
-1. Select the host for the left and right panes.
-2. Browse each pane to the source and destination directory.
-3. Select one or more files or directories and start the transfer in the required direction.
-4. Follow the queue, current file, transferred size, speed, and progress.
-5. Cancel a queued or running item when necessary. Both panes refresh after completion.
+1. 分别选择左右窗格的主机。
+2. 在两个窗格中打开来源目录和目标目录。
+3. 选择一个或多个文件、目录，并按所需方向开始传输。
+4. 查看队列、当前文件、已传输大小、速度和进度。
+5. 必要时取消等待中或运行中的项目； 完成后两个窗格都会刷新。
 
-Directories are copied recursively. The transfer view always uses a dark theme so filenames, status, and progress remain readable beside terminal sessions.
+目录会递归复制。 传输视图固定使用深色主题，便于在终端会话旁查看文件名、状态和进度。
 
-:::warning Transfer boundaries
-A cancelled transfer can leave a partial file or directory at the destination. Verify its size or checksum before retrying or using it. Moving large trees between two remote hosts still passes through the panel's transfer process and consumes network, CPU, and disk resources.
+:::warning 传输边界
+取消传输后，目标位置可能留下不完整的文件或目录。 重试或使用前应核对大小或校验和。 在两台远程主机之间传输大型目录树时，数据仍会经过面板传输进程，并占用网络、CPU 和磁盘资源。
 :::
 
-## Terminal and SSH Settings
+## 终端与 SSH 设置
 
-This page manages interactive terminal sessions, saved remote hosts, and SFTP. To change the server's SSH daemon port, authentication methods, root-login policy, password, or host keys, use [Toolbox > SSH](./toolbox/ssh).
+本页管理交互终端、已保存远程主机和 SFTP。 修改服务器 SSH 守护进程端口、认证方式、Root 登录策略、密码或主机密钥时，请使用[工具箱 > SSH](./toolbox/ssh)。
 
 ## 安全建议
 

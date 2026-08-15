@@ -6,11 +6,11 @@
 
 ## 建立靜態網站
 
-1. 前往 **網站** 頁面
+1. 進入 **網站** 頁面
 2. 點選 **純靜態** 分頁
 3. 點選 **建立網站**
 
-### 設定項目
+### 配置項
 
 - **名稱**：網站識別碼，必須唯一，僅支援英文字母、數字、連字號與底線，例如 `docs`
 - **網域**：繫結的網域，例如 `docs.example.com`
@@ -22,7 +22,7 @@
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
-You can change this website to reverse proxy or PHP from its basic settings. Domains, listeners, files, and other shared fields are kept, while static-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site before converting.
+可以在基本設定中將網站切換為反向代理或 PHP。域名、監聽、檔案等通用欄位會保留；靜態網站專屬 Web 配置會刪除，並生成所選型別的配置。 切換前先備份網站。
 
 ### 網域與監聽
 
@@ -72,15 +72,15 @@ You can change this website to reverse proxy or PHP from its basic settings. Dom
 
 點選 **新增自訂設定** 按鈕來新增設定：
 
-- **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
-- **Scope**: Configuration scope, can choose "This Website" or "Global"
-- **Content**: Nginx configuration content, such as `location` blocks
+- **名稱**：配置名稱，支援字母、數字、下劃線和連字元。
+- **範圍**：可以選擇“當前網站”或“全域性”。
+- **內容**：Nginx 配置內容，例如 `location` 塊。
 
-## Use Cases
+## 使用場景
 
-### Frontend Projects
+### 前端專案
 
-Build outputs from Vue, React, Angular, and other frontend frameworks:
+Vue、React、Angular 等前端框架的構建產物：
 
 ```bash
 # Vue project
@@ -92,9 +92,9 @@ npm run build
 # Upload build directory contents to website directory
 ```
 
-### Documentation Sites
+### 文件站
 
-Static site generators like VitePress, Docusaurus, Hugo:
+VitePress、Docusaurus、Hugo 等靜態站點生成器：
 
 ```bash
 # VitePress
@@ -102,9 +102,9 @@ npm run docs:build
 # Upload .vitepress/dist directory contents to website directory
 ```
 
-### Single Page Application (SPA)
+### 單頁應用（SPA）
 
-Pure-static websites include SPA fallback by default, so a route that does not match a file is served by `index.html`. If the site must return a real 404 for unknown paths, remove or replace the generated fallback in **Custom Configs**. The equivalent Nginx rule is:
+純靜態網站預設啟用 SPA 回退，未匹配到檔案的路由會返回 `index.html`。 如果未知路徑必須返回真實 404，請在 **自定義配置**中刪除或替換生成的回退。 對應 Nginx 規則為：
 
 ```nginx
 location / {
@@ -139,7 +139,7 @@ location / {
 
 - 檢查資源路徑是否正確
 - 檢查是否使用了絕對路徑
-- 檢查 CORS 設定
+- 檢查 CORS 配置
 
 ### 中文檔名亂碼
 

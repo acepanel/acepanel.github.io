@@ -76,7 +76,7 @@ function nav(): DefaultTheme.NavItem[] {
     text: "支持",
     link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
   }, {
-    text: "🔥憑證",
+    text: "🔥證書",
     link: locale == 'zh_CN' ? '/cert' : `/${locale}/cert`
   }, {
     text: "關於",
@@ -119,25 +119,25 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "Home",
+    text: "首頁",
     link: '/home'
   }, {
-    text: "Apps",
+    text: "應用",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/app'
     }, {
-      text: "Native Apps",
+      text: "原生應用",
       link: '/app/native'
     }, {
-      text: "Runtimes",
+      text: "執行環境",
       link: '/app/environment'
     }, {
-      text: "Container Templates",
+      text: "容器模板",
       link: '/app/template'
     }, {
-      text: "Managers",
+      text: "管理器",
       collapsed: true,
       items: [{
         text: "FRP",
@@ -154,51 +154,51 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       }]
     }]
   }, {
-    text: "Containers",
+    text: "容器",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/container'
     }, {
-      text: "Containers",
+      text: "容器",
       link: '/container/container'
     }, {
       text: "Compose",
       link: '/container/compose'
     }, {
-      text: "Images",
+      text: "映象",
       link: '/container/image'
     }, {
-      text: "Networks",
+      text: "網路",
       link: '/container/network'
     }, {
-      text: "Volumes",
+      text: "儲存卷",
       link: '/container/volume'
     }]
   }, {
-    text: "Websites",
+    text: "網站",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/website'
     }, {
-      text: "Reverse Proxy",
+      text: "反向代理",
       link: '/website/proxy'
     }, {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "Static",
+      text: "靜態網站",
       link: '/website/static'
     }, {
-      text: "Statistics",
+      text: "統計",
       link: '/website/stat'
     }, {
-      text: "Settings",
+      text: "設定",
       link: '/website/setting'
     }]
   }, {
-    text: "Projects",
+    text: "專案",
     collapsed: true,
     items: [{
       text: "概述",
@@ -222,23 +222,23 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: ".NET",
       link: '/project/dotnet'
     }, {
-      text: "General",
+      text: "通用專案",
       link: '/project/general'
     }]
   }, {
-    text: "Databases",
+    text: "資料庫",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/database'
     }, {
-      text: "Databases",
+      text: "資料庫",
       link: '/database/database'
     }, {
-      text: "Users",
+      text: "使用者",
       link: '/database/user'
     }, {
-      text: "Servers",
+      text: "伺服器",
       link: '/database/server'
     }, {
       text: "pgAdmin",
@@ -251,124 +251,124 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/database/elasticsearch'
     }]
   }, {
-    text: "Certificates",
+    text: "證書",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/cert'
     }, {
-      text: "Certificates",
+      text: "證書",
       link: '/cert/cert'
     }, {
-      text: "Accounts",
+      text: "賬號",
       link: '/cert/account'
     }, {
       text: "DNS",
       link: '/cert/dns'
     }]
   }, {
-    text: "Monitoring",
+    text: "監控",
     collapsed: true,
     items: [{
-      text: "System Monitoring",
+      text: "系統監控",
       link: '/monitor'
     }, {
-      text: "Alerts",
+      text: "告警",
       link: '/monitor/alert'
     }, {
-      text: "Settings & Notifications",
+      text: "設定與通知",
       link: '/monitor/setting'
     }]
   }, {
-    text: "Logs",
+    text: "日誌",
     link: '/log'
   }, {
-    text: "Security",
+    text: "安全",
     collapsed: true,
     items: [{
-      text: "Firewall",
+      text: "防火牆",
       link: '/firewall'
     }, {
-      text: "Scan Awareness",
+      text: "掃描感知",
       link: '/firewall/scan'
     }, {
-      text: "Tamper Protection",
+      text: "防篡改",
       link: '/firewall/tamper'
     }]
   }, {
-    text: "Files",
+    text: "檔案",
     link: '/file'
   }, {
-    text: "Backup",
+    text: "備份",
     link: '/backup'
   }, {
-    text: "Terminal",
+    text: "終端",
     link: '/ssh'
   }, {
-    text: "Tasks",
+    text: "任務",
     collapsed: true,
     items: [{
-      text: "Scheduled Tasks",
+      text: "計劃任務",
       link: '/task/schedule'
     }, {
-      text: "Panel Tasks",
+      text: "面板任務",
       link: '/task/panel'
     }]
   }, {
-    text: "Toolbox",
+    text: "工具箱",
     collapsed: true,
     items: [{
-      text: "Overview",
+      text: "概述",
       link: '/toolbox'
     }, {
-      text: "Processes",
+      text: "程序",
       link: '/toolbox/process'
     }, {
-      text: "Network",
+      text: "網路",
       link: '/toolbox/network'
     }, {
-      text: "System",
+      text: "系統",
       link: '/toolbox/system'
     }, {
       text: "SSH",
       link: '/toolbox/ssh'
     }, {
-      text: "Disk",
+      text: "磁碟",
       link: '/toolbox/disk'
     }, {
-      text: "Log Cleanup",
+      text: "日誌清理",
       link: '/toolbox/log'
     }, {
-      text: "Webhooks",
+      text: "WebHook",
       link: '/toolbox/webhook'
     }, {
-      text: "Benchmark",
+      text: "跑分",
       link: '/toolbox/benchmark'
     }, {
-      text: "Migration",
+      text: "遷移",
       link: '/toolbox/migration'
     }, {
-      text: "Panel",
+      text: "面板",
       link: '/toolbox/panel'
     }]
   }, {
-    text: "Settings",
+    text: "設定",
     collapsed: true,
     items: [{
-      text: "Basic Settings",
+      text: "基本設定",
       link: '/setting/basic'
     }, {
-      text: "Security Settings",
+      text: "安全設定",
       link: '/setting/safe'
     }, {
-      text: "User Management",
+      text: "使用者管理",
       link: '/setting/user'
     }]
   }, {
-    text: 'Panel API',
+    text: "面板 API",
     link: '/api'
   }, {
-    text: 'Security Recommendations',
+    text: "安全建議",
     link: '/security'
   }];
 }

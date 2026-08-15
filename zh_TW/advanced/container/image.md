@@ -8,7 +8,7 @@
 
 進入 **容器** > **映像檔** 標籤頁檢視本機映像檔清單。
 
-清單會顯示以下資訊：
+列表顯示以下資訊：
 
 - **ID**：映像檔 ID
 - **容器數量**：使用此映像檔的容器數量
@@ -22,9 +22,9 @@
 1. 點選 **拉取映像檔** 按鈕
 2. 輸入映像檔名稱，例如 `docker.io/php:8.3-fpm`、`mysql:8.4`
 3. （選用）啟用 **身分驗證** 並填寫 **使用者名稱** 與 **密碼**，以便從需要登入的私有倉庫拉取
-4. Choose **Foreground** or **Background**, then submit
+4. 選擇 **前臺** 或 **後臺**，然後提交
 
-In foreground mode, the dialog streams every image layer and overall progress and provides a cancel action for the active pull. In background mode, AcePanel submits a task that continues after you leave the page; open **Tasks > Panel Tasks** for its status and log.
+前臺模式會在對話方塊中即時顯示每個映象層和總體進度，並允許取消當前拉取。 後臺模式會提交一個離開頁面後仍繼續執行的任務；請在 **任務 > 面板任務** 中檢視狀態和日誌。
 
 映像檔名稱格式：`[倉庫位址/]映像檔名稱[:標籤]`
 

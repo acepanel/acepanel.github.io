@@ -111,9 +111,9 @@
 | `.tar.zst` | Zstandard 压缩的 tar |
 | `.7z`      | 7-Zip 压缩包         |
 
-`.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
+`.gz`、`.xz`、`.bz2` 和 `.zst` 也支持作为单文件压缩格式。 这些格式只压缩一个文件，不会创建多文件归档；选择多个条目或目录时，请使用 `tar.*`、ZIP 或 7-Zip 格式。
 
-Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+压缩和解压会作为后台任务提交。 可以离开文件页面，在 **任务 > 面板任务**中查看进度和失败原因； 任务完成后刷新目录。
 
 ## 工具栏
 
@@ -133,13 +133,13 @@ Compression and extraction are submitted as background tasks. You can leave the 
 - 点击选择文件上传
 - **拖拽上传**：直接将文件拖拽到页面即可上传
 
-Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
+传输数据前，AcePanel 会检查目标位置的同名冲突。 可以逐项或一次性对剩余冲突选择 **跳过**、**重命名**或**覆盖**。 目录冲突应谨慎处理：覆盖可能替换现有内容，重命名则以不同名称保留两者。
 
-### Share
+### 分享
 
-Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
+对文件使用 **分享**可以创建公开下载链接。 有效期可选 1 小时、1 天、7 天或 30 天，并可限制下载次数。 可以复制当前分享地址，不再需要时取消分享。
 
-Anyone with the URL can download the file until it expires, reaches its limit, or is cancelled. Do not share backups, private keys, database dumps, configuration files, or logs containing credentials. Cancelling a share prevents future downloads but cannot recall existing copies.
+任何获得链接的人都能在到期、达到次数限制或取消前下载文件。 不要分享备份、私钥、数据库转储、配置文件或含凭据的日志。 取消分享只能阻止后续下载，无法收回已经下载的副本。
 
 ### 远程下载
 
@@ -181,14 +181,14 @@ AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Cod
 
 ### 编辑器快捷键
 
-| 快捷键            | 功能                                                |
-| -------------- | ------------------------------------------------- |
-| `Ctrl+S`       | 保存当前文件                                            |
-| `Ctrl+Shift+S` | 保存所有文件                                            |
-| `Ctrl+F`       | 搜索                                                |
-| `Ctrl+H`       | 替换                                                |
-| `Ctrl+G`       | 转到指定行                                             |
-| `Ctrl+/`       | Toggle a comment in supported configuration files |
+| 快捷键            | 功能            |
+| -------------- | ------------- |
+| `Ctrl+S`       | 保存当前文件        |
+| `Ctrl+Shift+S` | 保存所有文件        |
+| `Ctrl+F`       | 搜索            |
+| `Ctrl+H`       | 替换            |
+| `Ctrl+G`       | 转到指定行         |
+| `Ctrl+/`       | 在支持的配置文件中切换注释 |
 
 ### 编辑器工具栏
 
@@ -266,11 +266,11 @@ AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Cod
 - 缩进设置（空格/Tab）
 - 文件语言类型
 
-## Tamper Protection
+## 防篡改
 
-When [Tamper Protection](./firewall/tamper) covers a file or directory, Files shows a lock and its protected or immutable state. Use the inline or context-menu action to add or remove protection.
+[防篡改](./firewall/tamper)覆盖文件或目录时，文件列表会显示锁图标及受保护或 immutable 状态。 可以通过行内或右键菜单添加、移除保护。
 
-For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion does not silently unlock protected files and warns that immutable entries cannot be deleted. Review the interception log when an edit, upload, rename, extraction, or deployment is denied.
+执行支持的单项操作时，AcePanel 可以临时解除 immutable 属性，完成操作后恢复保护。 批量删除不会静默解锁受保护文件，而会提示 immutable 条目无法删除。 编辑、上传、重命名、解压或部署被拒绝时，应查看拦截日志。
 
 ## 权限说明
 

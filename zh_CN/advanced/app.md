@@ -1,53 +1,53 @@
 # 应用
 
-![Installed applications and runtimes](/images/app/app.png)
+![已安装应用和运行环境](/images/app/app.png)
 
 应用模块是 AcePanel 的核心功能之一，用于管理服务器上的各类软件。 通过应用模块，你可以方便地安装、配置和管理 Web 服务器、数据库、运行环境等常用软件。
 
 ## 功能分类
 
-The **Apps** page has four tabs:
+**应用**页面包含四个标签页：
 
-- **Installed**: Native applications and runtimes already installed on the server, with their current status and management actions.
+- **已安装：** 显示服务器上已经安装的原生应用和运行环境，以及当前状态和管理操作。
 - **原生应用**：直接安装在系统上的软件，如 Nginx、MySQL、Redis 等
 - **运行环境**：各类编程语言的运行环境，如 PHP、Node.js、Python、Go、Java 和 .NET
 - **容器模板**：基于 Docker 的一键部署模板，可快速部署各类应用
 
-## Native Application vs Container Template
+## 原生应用与容器模板
 
-| Feature               | Native Application                             | Container Template                          |
-| --------------------- | ---------------------------------------------- | ------------------------------------------- |
-| Performance           | Higher                                         | Slight overhead                             |
-| Isolation             | Shared system environment                      | Fully isolated                              |
-| Deployment Difficulty | Requires configuration                         | One-click deployment                        |
-| Resource Usage        | Lower                                          | Higher                                      |
-| Use Cases             | Production environment, high performance needs | Quick testing, multiple version coexistence |
+| 功能分类 | 原生应用       | 容器模板       |
+| ---- | ---------- | ---------- |
+| 性能   | 较高         | 有少量容器开销    |
+| 隔离   | 共用系统环境     | 独立隔离       |
+| 部署难度 | 需要配置       | 一键部署       |
+| 资源占用 | 较低         | 较高         |
+| 常见用途 | 生产环境、高性能需求 | 快速测试、多版本共存 |
 
-## Application Categories
+## 应用分类
 
-Native applications are preset with multiple categories by function, including but not limited to:
+原生应用按功能预设了多个分类，包括：
 
-- **Web Servers**: Nginx, OpenResty, Apache
-- **Databases**: MySQL, MariaDB, PostgreSQL, Percona, MongoDB, ClickHouse
-- **Search Engines**: Elasticsearch, OpenSearch
-- **Containers**: Docker, Podman
-- **Middleware**: Redis, Valkey, Memcached, Kafka, RocketMQ
-- **Monitoring**: Prometheus, Grafana
-- **Storage**: MinIO, S3fs
-- **Tools**: phpMyAdmin, Pure-FTPd, Supervisor, Rsync, Frp, Fail2ban, Gitea, Code Server
+- **Web 服务器：** Nginx、OpenResty、Apache。
+- **数据库：** MySQL、MariaDB、PostgreSQL、Percona、MongoDB、ClickHouse。
+- **搜索引擎：** Elasticsearch、OpenSearch。
+- **容器：** Docker、Podman。
+- **中间件：** Redis、Valkey、Memcached、Kafka、RocketMQ。
+- **监控：** Prometheus、Grafana。
+- **存储：** MinIO、S3fs。
+- **工具：** phpMyAdmin、Pure-FTPd、Supervisor、Rsync、Frp、Fail2ban、Gitea、Code Server。
 
-## Update Cache
+## 更新缓存
 
-The category, native application, runtime environment, and container template lists are fetched from the AcePanel app store and cached locally. When you switch to the **Native App**, **Operating Environment**, or **Container Template** tab, an **Update Cache** button appears at the top of the page. Clicking it refreshes all four cached lists at once (categories, applications, runtime environments, and templates), which is useful when a list is incomplete or you want to pull the latest available software.
+分类、原生应用、运行环境和容器模板列表从 AcePanel 应用商店获取并缓存在本地。 切换到 **原生应用**、**运行环境**或**容器模板**标签页后，页面顶部会显示 **更新缓存**。 点击一次会同时刷新分类、应用、运行环境和模板列表，适用于列表不完整或需要获取最新可用软件的情况。
 
-The button is hidden on the **Installed** tab, and the operation is unavailable when [Offline Mode](./setting/safe) is enabled.
+**已安装**标签页不显示该按钮；启用[离线模式](./setting/safe)后也无法更新缓存。
 
-## Next Steps
+## 后续阅读
 
-- [Native Applications](./app/native) - Learn how to install and manage native applications
-- [Runtime Environments](./app/environment) - Learn how to install programming language runtime environments
-- [Container Templates](./app/template) - Learn how to use container templates to quickly deploy applications
-- [FRP Manager](./app/frp) - Configure Frps, Frpc, proxies, and Visitors
-- [Fail2ban Manager](./app/fail2ban) - Manage jails, bans, and allowlists
-- [Rsync Manager](./app/rsync) - Publish authenticated rsync modules
-- [Supervisor Manager](./app/supervisor) - Manage long-running processes
+- [原生应用](./app/native)：安装和管理原生应用。
+- [运行环境](./app/environment)：安装编程语言运行环境。
+- [容器模板](./app/template)：通过模板快速部署应用。
+- [FRP 管理器](./app/frp)：配置 Frps、Frpc、代理和 Visitor。
+- [Fail2ban 管理器](./app/fail2ban)：管理规则、封禁和白名单。
+- [Rsync 管理器](./app/rsync)：发布带认证的 rsync 模块。
+- [Supervisor 管理器](./app/supervisor)：管理长期运行进程。

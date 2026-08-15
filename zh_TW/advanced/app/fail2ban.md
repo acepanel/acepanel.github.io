@@ -1,49 +1,49 @@
-# Fail2ban Manager
+# Fail2ban 管理器
 
-![Fail2ban manager](/images/app/fail2ban.png)
+![Fail2ban 管理器](/images/app/fail2ban.png)
 
-Fail2ban watches service logs and temporarily blocks addresses that repeatedly fail authentication or trigger a configured pattern. AcePanel provides a visual manager after the Fail2ban native application is installed.
+Fail2ban 通過分析服務日誌，對重複認證失敗或命中指定規則的來源地址進行臨時封禁。 安裝 Fail2ban 原生應用後，可在 AcePanel 中進行視覺化管理。
 
-Go to **Apps > Installed > Fail2ban > Manage**.
+進入 **應用 > 已安裝 > Fail2ban > 管理**。
 
-## Prerequisites
+## 前置條件
 
-- Linux with Fail2ban installed through AcePanel.
-- A supported system firewall and readable service or website logs.
-- Correct server time, because detection windows and ban expiration depend on it.
+- 在 Linux 上通過 AcePanel 安裝 Fail2ban。
+- 系統使用受支援的防火牆，並確保 Fail2ban 能讀取對應服務或網站日誌。
+- 保持伺服器時間準確，檢測視窗和封禁到期時間均依賴系統時間。
 
-## Dashboard and Lists
+## 狀態和列表
 
-The manager shows the service status, total bans, current bans, the whitelist, the ban list, configured rules, and runtime logs. A current ban can be removed with **Unban**; doing so does not disable the rule and the address can be banned again.
+管理器會顯示服務狀態、累計封禁次數、當前封禁數量、白名單、封禁列表、已配置規則和執行日誌。 可以通過 **解封**移除當前封禁，但這不會停用規則，同一地址之後仍可能再次被封禁。
 
-Whitelist only trusted, stable source addresses. Whitelisting a large CIDR range or a dynamic client network can remove meaningful protection.
+白名單僅應新增可信且地址穩定的來源。 將大段 CIDR 或動態客戶端網路加入白名單會明顯削弱防護效果。
 
-## Create a Rule
+## 建立規則
 
-Rules can be created for a managed website or a service. Configure:
+規則可以針對已管理的網站或服務建立， 主要欄位如下：
 
-| Field            | Meaning                                                                          |
-| ---------------- | -------------------------------------------------------------------------------- |
-| Target           | The website or service whose log and filter are monitored.       |
-| Maximum retries  | Number of matching failures allowed inside the detection window. |
-| Detection window | Time in which the retry count is accumulated.                    |
-| Ban time         | How long the source address remains blocked.                     |
+| 欄位     | 說明                 |
+| ------ | ------------------ |
+| 目標     | 需要監控日誌和過濾規則的網站或服務。 |
+| 最大重試次數 | 在檢測視窗內允許命中的失敗次數。   |
+| 檢測視窗   | 統計重試次數的時間範圍。       |
+| 封禁時間   | 來源地址保持封禁的時長。       |
 
-Start with a threshold that matches the application's normal behavior. Very low retry limits can block legitimate users, health checks, or shared office addresses.
+初始閾值應符合應用的正常使用情況。 重試次數設定過低，可能誤封正常使用者、健康檢查或共用出口地址的辦公網路。
 
-## Common Workflow
+## 常用流程
 
-1. Start Fail2ban and verify that the selected service writes the expected log.
-2. Create a rule for one website or service.
-3. Generate a harmless failed login from a test address.
-4. Confirm that the rule counter changes and that the address appears in the ban list only after the threshold.
-5. Use **Unban** after the test and review the run log.
+1. 啟動 Fail2ban，確認目標服務會寫入預期日誌。
+2. 為一個網站或服務建立規則。
+3. 從測試地址製造一次無害的登入失敗。
+4. 確認規則計數發生變化，並且只有達到閾值後地址才出現在封禁列表中。
+5. 測試完成後執行 **解封**，並檢查執行日誌。
 
-## Troubleshooting
+## 故障排查
 
-- **No bans appear:** confirm the log path, filter, service time, and firewall backend.
-- **A legitimate address is banned:** unban it, adjust the retry/window values, and add a narrow whitelist entry if appropriate.
-- **Fail2ban is running but traffic is unaffected:** check whether its firewall action matches the active firewall manager and address family.
-- **A rule fails to start:** open its details and the runtime log; invalid filters and missing log files are common causes.
+- **沒有產生封禁：** 檢查日誌路徑、過濾器、服務時間和防火牆後端。
+- **正常地址被封禁：** 先解封，再調整重試次數和檢測視窗；確有需要時新增範圍儘可能小的白名單。
+- **Fail2ban 正在執行但流量未被攔截：** 檢查封禁動作是否與當前防火牆管理器及 IP 地址族匹配。
+- **規則啟動失敗：** 檢視規則詳情和執行日誌，常見原因是過濾器無效或日誌檔案不存在。
 
-Fail2ban complements, but does not replace, [firewall rules](../firewall), SSH hardening, application authentication, and alerting.
+Fail2ban 不能替代[防火牆規則](../firewall)、SSH 加固、應用自身認證和告警功能，應配合使用。

@@ -8,16 +8,16 @@
 
 ### 磁碟資訊
 
-頁面上方會顯示每顆磁碟的基本資訊：
+頁面頂部顯示每個磁碟的基本資訊：
 
-- **磁碟名稱**：例如 vda、sda
+- **磁碟名**：如 vda、sda
 - **磁碟類型**：SSD，或以大寫顯示的磁碟型號
-- **容量**：磁碟總容量
+- **大小**：磁碟總容量
 - **分割區數**：分割區數量
 
 承載根（`/`）分割區的磁碟會標示 **系統磁碟** 標籤，無法初始化或卸載其分割區。
 
-The system-disk guard prevents common mistakes but does not make every other disk disposable. Identify a device by model, serial number, capacity, partitions, and mount use before a destructive action.
+系統盤保護可以避免常見誤操作，但不代表其他磁碟可以隨意處置。 執行破壞性操作前，請根據型號、序列號、容量、分割槽和掛載用途確認目標裝置。
 
 ### 分割區清單
 
@@ -63,7 +63,7 @@ The system-disk guard prevents common mistakes but does not make every other dis
 - **磁碟**：選擇要初始化的磁碟
 - **檔案系統類型**：ext4、ext3、xfs 或 btrfs
 
-After formatting or initialization, verify the partition table, filesystem type, mount point, ownership, free space, and a reboot with the intended `fstab` entry.
+格式化或初始化後，請檢查分割槽表、檔案系統型別、掛載點、所有權和可用空間，並通過重啟驗證預期的 `fstab` 條目能夠正常掛載。
 
 ### 自動掛載設定（fstab）
 
@@ -83,7 +83,7 @@ LVM（邏輯磁碟區管理員）提供彈性的磁碟空間管理，並支援�
 
 實體磁碟區是 LVM 的基礎，通常是一個磁碟分割區或整顆磁碟。
 
-Create in dependency order: **PV → VG → LV → filesystem → mount**. Delete in reverse order. A PV in a VG, a VG containing an LV, or an LV that is mounted or in use must be detached from its dependent layer first.
+請按照 **PV → VG → LV → 檔案系統 → 掛載** 的依賴順序建立， 並按相反順序刪除。 已經加入 VG 的 PV、包含 LV 的 VG，或已掛載、正在使用的 LV，都必須先與依賴層解除關係。
 
 **建立實體磁碟區**：
 
@@ -124,10 +124,10 @@ Create in dependency order: **PV → VG → LV → filesystem → mount**. Delet
 LVM 的優勢在於邏輯磁碟區可以線上擴充，無需卸載分割區或重新啟動系統。
 :::
 
-**Auto Resize File System** grows a supported filesystem after the LV is extended. If it is disabled or the filesystem is unsupported, the LV can be larger while the mounted filesystem still reports its old size. Verify both the LVM size and `df` output after expansion.
+啟用 **自動擴容檔案系統** 後，系統會在擴充套件 LV 後同步擴充套件受支援的檔案系統。 如果關閉該選項或檔案系統不受支援，LV 容量可能已經增加，但已掛載檔案系統仍顯示舊容量。 擴容後請同時檢查 LVM 容量和 `df` 輸出。
 
-:::danger Destructive disk operations
-Formatting, disk initialization, PV/VG/LV removal, and some RAID actions can permanently destroy data. Keep a tested backup and an out-of-band console. A successful dialog only confirms that the command ran; verify the filesystem, mount, data, and boot behavior afterward.
+:::danger 破壞性磁碟操作
+格式化、磁碟初始化、刪除 PV/VG/LV 以及部分 RAID 操作可能永久銷毀資料。 請保留經過驗證的備份和帶外控制台。 對話方塊顯示成功只表示指令已經執行；之後仍需檢查檔案系統、掛載、資料和啟動行為。
 :::
 
 ## SMART

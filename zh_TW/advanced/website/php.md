@@ -1,6 +1,6 @@
 # PHP 網站
 
-![PHP website settings](/images/website/php.png)
+![PHP 網站設定](/images/website/php.png)
 
 PHP 網站用於執行 PHP 程式，例如 WordPress、Laravel、ThinkPHP 等。
 
@@ -9,7 +9,7 @@ PHP 網站用於執行 PHP 程式，例如 WordPress、Laravel、ThinkPHP 等。
 在建立 PHP 網站之前，您需要安裝：
 
 1. **Web 伺服器**：Nginx、OpenResty 或 Apache
-2. **PHP Runtime Environment**: Install the required PHP version in **Apps** > **Runtime Environments**
+2. **PHP 執行環境**：在 **應用** > **執行環境**中安裝所需 PHP 版本
 
 ## 建立 PHP 網站
 
@@ -31,7 +31,7 @@ PHP 網站用於執行 PHP 程式，例如 WordPress、Laravel、ThinkPHP 等。
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
-You can change this website to reverse proxy or pure static from its basic settings. Domains, listeners, files, and other shared fields are kept, while the PHP runtime, rewrite, and other PHP-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site and record its PHP settings before converting.
+可以在基本設定中切換為反向代理或純靜態網站。 域名、監聽、檔案等通用內容會保留；PHP 執行環境、Rewrite 等 PHP 專屬 Web 配置會刪除，並重新生成所選型別的配置。 切換前必須備份網站並記錄 PHP 設定。
 
 ### 網域與監聽
 
@@ -53,156 +53,156 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 
 點選預設下拉選單以選擇常見程式的重寫規則：
 
-The panel ships the following 27 built-in presets:
+面板內建以下 27 個預設：
 
-`crmeb`, `dabr`, `dbshop`, `dedecms`, `discuz`, `discuzq`, `discuzx`, `drupal`, `ecshop`, `edusoho`, `emlog`, `empirecms`, `laravel`, `maccms`, `niushop`, `pbootcms`, `phpcms`, `phpwind`, `sablog`, `seacms`, `shopex`, `shopwind`, `thinkphp`, `typecho`, `wordpress`, `wordpress-multisite`, `zblog`
+`crmeb`、`dabr`、`dbshop`、`dedecms`、`discuz`、`discuzq`、`discuzx`、`drupal`、`ecshop`、`edusoho`、`emlog`、`empirecms`、`laravel`、`maccms`、`niushop`、`pbootcms`、`phpcms`、`phpwind`、`sablog`、`seacms`、`shopex`、`shopwind`、`thinkphp`、`typecho`、`wordpress`、`wordpress-multisite`、`zblog`。
 
-After selecting a preset, its rules are written into the editor below, where you can fine-tune them before saving.
+選擇預設後，規則會寫入下方編輯器，可以繼續調整再儲存。
 
-:::tip Note
-The preset dropdown is only shown when the web server is Nginx (presets are provided for Nginx/OpenResty only). On Apache, write rewrite rules directly in the editor.
+:::tip 注意
+只有使用 Nginx 時才顯示預設下拉式選單（預設僅適用於 Nginx/OpenResty）。 使用 Apache 時，請直接在編輯器中編寫 Rewrite 規則。
 :::
 
 ### HTTPS
 
-Enable and configure HTTPS for the website.
+為網站啟用並設定 HTTPS。
 
-- **Main Switch**: Enable or disable HTTPS. When enabled, the panel automatically adds a `443` listen (and `quic` for Nginx)
-- **Use Existing Certificate**: Pick a certificate from Certificate Management to fill in the certificate and private key automatically
-- **HSTS**: Force browsers to access the site over HTTPS only
-- **HTTP Redirect**: Automatically redirect HTTP requests to HTTPS
-- **OCSP Stapling**: Enable OCSP Stapling
-- **TLS Version**: Choose the allowed protocols among TLS 1.0 / 1.1 / 1.2 / 1.3
-- **Certificate** / **Private Key**: Paste the PEM certificate and KEY private key content directly
+- **總開關**：啟用或關閉 HTTPS。 啟用後，面板會自動增加 `443` 監聽，Nginx 還會增加 `quic`
+- **使用已有證書：** 從證書管理中選擇證書，自動填充證書和私鑰。
+- **HSTS：** 強制瀏覽器僅使用 HTTPS。
+- **HTTP 重定向：** 自動將 HTTP 請求跳轉到 HTTPS。
+- **OCSP Stapling：** 啟用 OCSP 裝訂。
+- **TLS 版本：** 可選 TLS 1.0、1.1、1.2 和 1.3。
+- **憑證** / **私密金鑰**：直接貼上 PEM 憑證和 KEY 私密金鑰內容
 
-When the website has a domain bound, the **One-click Certificate Issuance** button at the bottom requests a free certificate via ACME. If the domain is a wildcard (e.g. `*.example.com`), you will be asked to choose a DNS provider for DNS verification (add it in Certificate Management first).
+網站已繫結域名時，底部 **一鍵簽發證書**可以通過 ACME 申請免費證書。 存在 `*.example.com` 等萬用字元域名時，需要選擇已經在證書管理中新增的 DNS 提供商進行 DNS 驗證。
 
-### Redirects
+### 重定向
 
-Configure redirect rules. Each rule supports:
+設定重新導向規則。 每條規則支援：
 
-- **Redirect Type**: URL Redirect, Host Redirect, or 404 Redirect
-- **Status Code**: 301 (Moved Permanently), 302 (Found), 307 (Temporary Redirect), or 308 (Permanent Redirect)
-- **Source** / **Target**: The matched path/host and the destination
-- **Keep URI**: Keep the original request path and query parameters when redirecting
+- **型別：** URL 重定向、Host 重定向或 404 重定向。
+- **狀態碼：** 301、302、307 或 308。
+- **來源** / **目標**：要比對的路徑或主機以及目標位址
+- **保留 URI：** 跳轉時保留原請求路徑和查詢引數。
 
-### Advanced Settings
+### 進階設定
 
-- **Access Statistics** (Nginx only): Toggle access statistics collection for this website
-- **Log Settings**: Set the **Access Log** and **Error Log** paths, or set them to **Disabled**
-- **Rate Limiting**: Limit **Concurrent Limit** (max concurrent connections for the site), **Per IP Limit** (max concurrent connections per IP), and **Rate Limit** (per-request rate in KB)
-- **Real IP**: Configure trusted proxy IP sources (one per line) so the real visitor IP is recognized behind a CDN or Frp; choose the IP header (X-Real-IP, X-Forwarded-For, CF-Connecting-IP, etc.) and optionally enable recursive lookup
-- **Basic Authentication**: Add username/password pairs to require HTTP basic auth before visitors can access the site
+- **訪問統計：** 僅 Nginx 支援，用於採集該網站訪問統計。
+- **日誌設定**：設定 **存取日誌**和 **錯誤日誌**路徑，或將其設為 **關閉**
+- **流量限制**：設定 **並行限制**、**單一 IP 限制**和 **速率限制**
+- **真實 IP：** 網站位於 CDN 或 Frp 後方時，配置每行一個的可信代理 IP、真實 IP 請求頭和遞迴查詢。
+- **基本認證：** 新增使用者名稱和密碼，訪問網站前必須通過 HTTP Basic Authentication。
 
-### Custom Configs
+### 自定義配置
 
-Append custom web server configuration snippets. Each snippet has a **Name**, a **Scope** (**This Website** or **Global**), and a **Content** block edited with Nginx or Apache syntax highlighting depending on the installed web server.
+可以追加 Web 伺服器配置片段。 每個片段包含 **名稱**、**作用範圍**（**目前網站**或**全域**）和 **內容**；編輯器會依已安裝的 Web 伺服器提供 Nginx 或 Apache 語法醒目提示。
 
-### Access Log / Error Log
+### 訪問日誌和錯誤日誌
 
-When the corresponding log path is enabled, the **Access Log** and **Error Log** tabs stream the log file in real time. Use **Clear Logs** at the bottom to truncate the currently viewed log.
+啟用對應日誌路徑後，**存取日誌**和 **錯誤日誌**分頁會即時顯示日誌檔案。 底部 **清空日誌**會截斷當前檢視的日誌檔案。
 
-:::tip Note
-Click **Reset Configuration** at the bottom of the edit dialog to regenerate the website's web server configuration from the panel template, discarding manual changes made to the generated config file.
+:::tip 注意
+點選編輯對話方塊底部的 **重設設定**，會根據面板範本重新產生網站的 Web 伺服器設定，並捨棄對產生設定檔所做的手動修改。
 :::
 
-## Website Directory Structure
+## 網站目錄結構
 
-After creating a website, the default directory structure:
+預設目錄結構：
 
 ```
 /opt/ace/sites/website-name/public
-├── index.php          # Entry file
-├── .user.ini          # PHP configuration
+├── index.php          # 入口檔案
+├── .user.ini          # PHP 配置
 └── ...
 ```
 
-## PHP Version Switching
+## 切換 PHP 版本
 
-You can switch PHP versions in the **Basic Settings** of the website edit page:
+可以在網站編輯頁的 **基本設定** 中切換 PHP 版本：
 
-1. Enter the website edit page
-2. Click the **Basic Settings** tab
-3. Select a new version in the **PHP Version** dropdown
-4. Click **Save**
+1. 開啟網站編輯頁。
+2. 進入 **基本設定**。
+3. 在 **PHP 版本**中選擇新版本。
+4. 點選 **儲存**。
 
-:::warning Note
-Switching PHP versions may cause program incompatibility. Please verify in a test environment first.
+:::warning 注意
+切換 PHP 版本可能導致程式不相容， 應先在測試環境驗證。
 :::
 
-## PHP Management Page
+## PHP 管理頁面
 
-Go to **Apps** > **Operating Environment**, click **Manage** on the installed PHP version to open the PHP management page. It provides the following tabs:
+進入 **應用** > **執行環境**，點選已安裝 PHP 版本的 **管理**，開啟 PHP 管理頁。 頁面包含：
 
-- **Running Status**: Shows the running state of the `php-fpm-<version>` service with start/stop/restart/reload controls. Two extra actions are available here:
-  - **Set as CLI Default Version**: Make this PHP version the default `php` command in the system CLI
-  - **View PHPInfo**: Open a popup with the full `phpinfo()` output for this version
-- **Module Management**: Install or uninstall PHP extensions (see below)
-- **Parameter Tuning**: Adjust common parameters through forms (see [Parameter Tuning](#parameter-tuning))
-- **Main Configuration**: Edit the raw `php.ini` file
-- **FPM Configuration**: Edit the raw PHP-FPM configuration file
-- **Load Status**: View the current PHP-FPM load metrics
-- **Runtime Logs**: Stream the `php-fpm-<version>` service runtime log in real time
-- **Error Logs**: Stream the PHP error log; the **Clear Log** button truncates it
-- **Slow Logs**: Stream the PHP-FPM slow log; the **Clear Slow Log** button truncates it
+- **執行狀態：** 檢視 `php-fpm-<version>` 服務狀態，提供啟動、停止、重啟和過載； 此處還提供兩項操作：
+  - **設為 CLI 預設版本**：將此 PHP 版本設為系統 CLI 中預設的 `php` 指令
+  - **檢視 PHPInfo**：開啟彈出視窗檢視該版本完整的 `phpinfo()` 輸出
+- **模組管理：** 安裝或解除安裝 PHP 擴充套件。
+- **參數調校**：透過表單調整常用參數（參閱[參數調校](#parameter-tuning)）
+- **主配置：** 編輯原始 `php.ini`。
+- **FPM 配置：** 編輯 PHP-FPM 配置檔案。
+- **負載狀態：** 檢視 PHP-FPM 當前負載。
+- **執行日誌**：即時檢視 `php-fpm-<version>` 服務的執行日誌
+- **錯誤日誌**：即時檢視 PHP 錯誤日誌；點選 **清空日誌**可截斷檔案
+- **慢速日誌**：即時檢視 PHP-FPM 慢速日誌；點選 **清空慢速日誌**可截斷檔案
 
-### Module Management
+### 模組管理
 
-The **Module Management** tab lists the supported extensions for the selected version. Each row shows the module name and description, with an **Install** or **Delete** action. Installation runs as a background task, so check progress in the background task list. Both install and uninstall require a confirmation.
+**模組管理**分頁列出所選版本支援的擴充套件。 **安裝**或**刪除**操作。 安裝會建立後臺任務， 安裝和解除安裝都需要確認。
 
-Available extensions include `fileinfo`, **OPcache**, `igbinary`, **Redis** (requires `igbinary`), **Memcached**, **APCu**, **ImageMagick**, `exif`, `pgsql` / `pdo_pgsql`, `sqlsrv` / `pdo_sqlsrv`, `imap`, `zip`, `bz2`, `ssh2`, `event`, `readline`, `snmp`, `ldap`, `enchant`, `pspell`, `calendar`, `gmp`, `xlswriter`, `xsl`, `intl`, `gettext`, `grpc`, `protobuf`, `rdkafka`, `xhprof`, **Xdebug**, `yaml`, `zstd`, `sysvmsg` / `sysvsem` / `sysvshm`, **ionCube** (install after OPcache), **Swoole**, and **Swow**.
+可用擴充套件包括 `fileinfo`、**OPcache**、`igbinary`、**Redis**（依賴 `igbinary`）、**Memcached**、**APCu**、**ImageMagick**、`exif`、`pgsql` / `pdo_pgsql`、`sqlsrv` / `pdo_sqlsrv`、`imap`、`zip`、`bz2`、`ssh2`、`event`、`readline`、`snmp`、`ldap`、`enchant`、`pspell`、`calendar`、`gmp`、`xlswriter`、`xsl`、`intl`、`gettext`、`grpc`、`protobuf`、`rdkafka`、`xhprof`、**Xdebug**、`yaml`、`zstd`、`sysvmsg` / `sysvsem` / `sysvshm`、**ionCube**、**Swoole** 和 **Swow**。
 
-:::tip Version differences
-The available list adapts to the PHP version: **Swow** is only offered on PHP 8.0 and above; `pspell` and `imap` are removed on PHP 8.4 and above; **OPcache** is no longer offered as an installable extension on PHP 8.5 and above because it is built in.
+:::tip 版本差異
+可用擴充套件會隨 PHP 版本變化：**Swow** 僅支援 PHP 8.0 及以上版本；PHP 8.4 及以上不再提供 `pspell` 和 `imap`；PHP 8.5 及以上已內建 **OPcache**，不再將其作為可安裝擴充套件。
 :::
 
-### Parameter Tuning
+### 參數調校
 
-The **Parameter Tuning** tab groups common settings into sub-tabs so you can adjust them without editing files by hand:
+**參數調校** 分頁將常用設定分組為多個子分頁，無需手動編輯檔案即可調整：
 
-- **General**: `short_open_tag`, `date.timezone`, `display_errors`, `error_reporting`
-- **Disabled Functions**: Edit the `disable_functions` list (see [Disabled Functions](#disabled-functions))
-- **Upload Limits**: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, `memory_limit`
-- **Timeout Limits**: `max_execution_time`, `max_input_time`, `max_input_vars`
-- **Performance Tuning**: PHP-FPM process manager settings written to `php-fpm.conf` — `pm`, `pm.max_children`, and (for `dynamic` mode) `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`
-- **Session**: `session.save_handler` (`files`, `redis`, or `memcached`), the save path (host/port/password for redis and memcached), `session.gc_maxlifetime`, and `session.cookie_lifetime`. The **Clean Session Files** button (with confirmation) deletes all session files for this version
+- **常規：** `short_open_tag`、`date.timezone`、`display_errors`、`error_reporting`。
+- **停用函式**：編輯 `disable_functions` 清單（參閱[停用函式](#disabled-functions)）
+- **上傳限制：** `upload_max_filesize`、`post_max_size`、`max_file_uploads`、`memory_limit`。
+- **超時限制：** `max_execution_time`、`max_input_time`、`max_input_vars`。
+- **效能調校**：寫入 `php-fpm.conf` 的 PHP-FPM 程序管理器設定，包括 `pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers` 和 `pm.max_spare_servers`
+- **工作階段**：設定 `session.save_handler`（`files`、`redis` 或 `memcached`）、儲存路徑、`session.gc_maxlifetime` 及 `session.cookie_lifetime`。 **清理會話檔案**會刪除該版本全部會話檔案。
 
-## PHP Configuration
+## PHP 配置
 
-### php.ini Configuration
+### php.ini 設定
 
-You can edit the raw `php.ini` in the **Main Configuration** tab of the PHP management page.
+可以在 PHP 管理頁的 **主配置**中編輯 `php.ini`。常用專案也可通過引數調優修改：
 
-For common items, the **Parameter Tuning** tab provides a form to adjust them without editing the file by hand:
+對於常用項目，**參數調校** 分頁提供表單，無需手動編輯檔案即可調整：
 
 ```ini
-upload_max_filesize = 50M    # Maximum upload file size
-post_max_size = 50M          # Maximum POST data size
-max_execution_time = 300     # Maximum execution time
-memory_limit = 256M          # Memory limit
+upload_max_filesize = 50M
+post_max_size = 50M
+max_execution_time = 300
+memory_limit = 256M
 ```
 
-### Disabled Functions
+### 停用函式
 
-PHP disables some dangerous functions by default, such as `exec`, `system`, `passthru`, etc. To enable them, edit the `disable_functions` value in php.ini, or adjust it from the **Disabled Functions** field in the **Parameter Tuning** tab of the PHP management page.
+PHP 預設停用 `exec`、`system`、`passthru` 等危險函式。 如需啟用，請編輯 php.ini 中的 `disable_functions` 值，或在 PHP 管理頁的 **參數調校** 分頁中修改 **停用函式** 欄位。
 
-:::danger Warning
-Enabling dangerous functions may pose security risks. Please proceed with caution.
+:::danger 警告
+啟用危險函式會增加安全風險， 必須確認程式確實需要並採取額外隔離措施。
 :::
 
-## FAQ
+## 常見問題
 
 ### 502 Bad Gateway
 
-- Check if PHP-FPM is running normally
-- Check if the PHP version is correctly configured
+- 檢查 PHP-FPM 是否正常執行。
+- 檢查網站選擇的 PHP 版本是否正確。
 
-### File Upload Failed
+### 檔案上傳失敗
 
-- Check `upload_max_filesize` and `post_max_size` configuration
-- Check directory permissions
+- 檢查 `upload_max_filesize` 和 `post_max_size`。
+- 檢查目錄許可權。
 
-### Blank Page
+### 頁面空白
 
-- Enable PHP error display
-- Check PHP error logs
+- 臨時啟用 PHP 錯誤顯示。
+- 檢查 PHP 錯誤日誌。

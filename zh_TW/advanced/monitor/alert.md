@@ -1,48 +1,48 @@
-# Alerts
+# 告警
 
-![Alert rules](/images/monitor/alert.png)
+![告警規則](/images/monitor/alert.png)
 
-Alerts evaluate server and managed-resource metrics every minute and create a record when a rule remains true for the configured number of consecutive checks. Open **Monitoring > Alerts** and switch between **Rules** and **Records**.
+警示每分鐘檢查伺服器和已管理資源的指標；規則連續滿足設定次數後會產生記錄。 進入 **監控 > 警示**，可在 **規則**和 **記錄**之間切換。
 
-## Rule Fields
+## 規則欄位
 
-| Field                  | Meaning                                                                                                                                                             |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                   | Human-readable purpose of the rule.                                                                                                                 |
-| Metric                 | The value or resource state to evaluate.                                                                                                            |
-| Target                 | Resource selected by metrics that apply to a specific disk, network interface, website, service, project, container, app, database, or certificate. |
-| Operator and threshold | Comparison and value that must be true. Units depend on the metric.                                                                 |
-| Consecutive checks     | From 1 to 60 one-minute evaluations. It prevents a single sample from triggering a noisy alert.                                     |
-| Silence period         | From 0 to 1440 minutes. Matching events are still recorded, but repeated notifications are suppressed.                              |
-| Notification channels  | Zero or more enabled SMTP channels. A rule with no channel records alerts without sending a message.                                |
-| Enabled                | Whether the rule is evaluated.                                                                                                                      |
+| 規則欄位   | 說明                                          |
+| ------ | ------------------------------------------- |
+| 名稱     | 便於識別規則用途的名稱。                                |
+| 指標     | 需要判斷的數值或資源狀態。                               |
+| 目標     | 當指標對應具體磁碟、網絡卡、網站、服務、專案、容器、應用、資料庫或證書時選擇目標資源。 |
+| 運算子和閾值 | 觸發比較方式和數值， 單位隨指標變化。                         |
+| 連續檢查次數 | 連續 1 到 60 次的一分鐘檢查， 用於避免單次波動產生噪聲告警。          |
+| 靜默期    | 0 到 1440 分鐘。 命中事件仍會記錄，但靜默期內不會重複傳送通知。        |
+| 通知渠道   | 選擇零個或多個已啟用的 SMTP 渠道。 不選擇渠道時只記錄告警，不傳送訊息。     |
+| 啟用     | 是否執行該規則。                                    |
 
-## Supported Metrics
+## 支援的指標
 
-AcePanel provides 21 alert categories:
+AcePanel 提供 21 類告警指標：
 
-| Category          | Metrics and typical unit                                                                                                                                                                         |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Compute           | CPU usage (%), memory usage (%), Swap usage (%), load 1/5/15 (load value).                           |
-| Disk              | Disk space (%), inode usage (%), disk read and write throughput (bytes/s). Select a disk when required. |
-| Network           | Inbound and outbound throughput (bytes/s). Select an interface when required.                                                                 |
-| Website           | HTTP 5xx count/rate, website error state, and website days remaining.                                                                                                            |
-| Managed resources | Service, project, container, application, and database state. Select the concrete target.                                                                        |
-| Certificate       | Certificate days remaining.                                                                                                                                                      |
+| 分類    | 指標和常用單位                                         |
+| ----- | ----------------------------------------------- |
+| 計算資源  | CPU 使用率（%）、記憶體使用率（%）、Swap 使用率（%）、1/5/15 分鐘負載。   |
+| 磁碟    | 磁碟空間（%）、inode 使用率（%）、磁碟讀寫吞吐量（位元組/秒）， 需要時選擇具體磁碟。 |
+| 網路    | 流入和流出吞吐量（位元組/秒）， 需要時選擇具體網絡卡。                    |
+| 網站    | HTTP 5xx 數量或比例、網站錯誤狀態、網站剩餘天數。                   |
+| 已管理資源 | 服務、專案、容器、應用和資料庫狀態， 需要選擇具體目標。                    |
+| 證書    | 證書剩餘天數。                                         |
 
-The form shows the target selector and unit appropriate to the selected metric. Do not copy a numeric threshold from a percentage rule into a throughput, load, or remaining-days rule without reviewing the unit.
+表單會根據所選指標顯示相應的目標選擇器和單位。 百分比規則的數值不能直接照搬到吞吐量、負載或剩餘天數規則中。
 
-## Common Workflow
+## 常用流程
 
-1. Configure and test an SMTP channel in [Monitoring Settings](./setting).
-2. Create one rule with a descriptive name and the narrowest correct target.
-3. Set a threshold and consecutive-check count that represent a real incident.
-4. Choose a silence period that avoids duplicate messages without hiding a long outage.
-5. Save the rule and confirm it appears as enabled.
-6. Review **Records** after a controlled threshold test.
+1. 在[監控設定](./setting)中配置並測試 SMTP 渠道。
+2. 建立一條名稱清晰、目標範圍準確的規則。
+3. 設定能夠代表真實故障的閾值和連續檢查次數。
+4. 設定合理靜默期，避免重複訊息，同時不要掩蓋持續故障。
+5. 儲存規則並確認已啟用。
+6. 通過可控的閾值測試後檢查 **記錄**。
 
-## Records and Notification Semantics
+## 記錄和通知語義
 
-Alert records are the audit trail of rule evaluations that triggered. A silence period suppresses additional notifications for the same rule; it does not discard records. Selecting no channel is useful when you want a record but no outbound message.
+告警記錄用於追溯命中規則的檢查結果。 靜默期只抑制同一規則的重複通知，不會丟棄記錄。 不選擇通知渠道適合僅需記錄、無需外發訊息的場景。
 
-If an alert never arrives, check the rule status, target, unit, consecutive-check count, silence period, channel enablement, and SMTP test result. For application failures, also open the corresponding service or task log.
+沒有收到告警時，檢查規則啟用狀態、目標、單位、連續檢查次數、靜默期、渠道啟用狀態和 SMTP 測試結果。 應用執行異常時，還應檢視對應服務或任務日誌。

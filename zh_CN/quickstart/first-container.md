@@ -6,7 +6,7 @@
 
 ## 安装 Docker
 
-Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安装进度可在「任务」->「面板任务」中查看。
+进入“应用”页面，在“原生应用”选项卡中找到并安装 Docker。 安装进度可在「任务」->「面板任务」中查看。
 
 :::tip 国内服务器
 国内服务器拉取镜像较慢， 建议配置 [毫秒镜像](https://1ms.run/) 提供的付费加速源。
@@ -14,7 +14,7 @@ Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安�
 
 ## 部署容器
 
-Go to "Apps" -> "Container Template", find pgAdmin 4, and click "Deploy". 部署是一个四步向导：部署模式、配置、预览与编辑、确认。
+进入“应用 > 容器模板”，找到 pgAdmin 4 并点击“部署”。 部署是一个四步向导：部署模式、配置、预览与编辑、确认。
 
 在模板列表中，你可以通过顶部的分类标签或右侧的搜索框来缩小选择范围。 每个模板卡片都会显示其图标、名称和描述；「本地」标签标记存储在本服务器上的模板（而非从远程模板仓库获取的），定义了主页的模板会显示一个外链按钮，点击即可打开项目网站。
 

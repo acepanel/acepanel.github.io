@@ -22,9 +22,9 @@
 1. 点击 **拉取镜像** 按钮
 2. 输入镜像名称，例如 `docker.io/php:8.3-fpm`、`mysql:8.4`
 3. （可选）启用 **身份验证** 并填写 **用户名** 和 **密码**，以便从需要登录的私有仓库拉取
-4. Choose **Foreground** or **Background**, then submit
+4. 选择 **前台** 或 **后台**，然后提交
 
-In foreground mode, the dialog streams every image layer and overall progress and provides a cancel action for the active pull. In background mode, AcePanel submits a task that continues after you leave the page; open **Tasks > Panel Tasks** for its status and log.
+前台模式会在对话框中实时显示每个镜像层和总体进度，并允许取消当前拉取。 后台模式会提交一个离开页面后仍继续执行的任务；请在 **任务 > 面板任务** 中查看状态和日志。
 
 镜像名称格式：`[仓库地址/]镜像名[:标签]`
 

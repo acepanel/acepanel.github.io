@@ -22,7 +22,7 @@
 
 点击网站列表中的 **编辑** 按钮进入编辑页面。
 
-You can change this website to reverse proxy or PHP from its basic settings. Domains, listeners, files, and other shared fields are kept, while static-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site before converting.
+可以在基本设置中将网站切换为反向代理或 PHP。域名、监听、文件等通用字段会保留；静态网站专属 Web 配置会删除，并生成所选类型的配置。 切换前先备份网站。
 
 ### 域名与监听
 
@@ -72,15 +72,15 @@ You can change this website to reverse proxy or PHP from its basic settings. Dom
 
 点击 **添加自定义配置** 按钮添加配置：
 
-- **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
-- **Scope**: Configuration scope, can choose "This Website" or "Global"
-- **Content**: Nginx configuration content, such as `location` blocks
+- **名称**：配置名称，支持字母、数字、下划线和连字符。
+- **范围**：可以选择“当前网站”或“全局”。
+- **内容**：Nginx 配置内容，例如 `location` 块。
 
-## Use Cases
+## 使用场景
 
-### Frontend Projects
+### 前端项目
 
-Build outputs from Vue, React, Angular, and other frontend frameworks:
+Vue、React、Angular 等前端框架的构建产物：
 
 ```bash
 # Vue project
@@ -92,9 +92,9 @@ npm run build
 # Upload build directory contents to website directory
 ```
 
-### Documentation Sites
+### 文档站
 
-Static site generators like VitePress, Docusaurus, Hugo:
+VitePress、Docusaurus、Hugo 等静态站点生成器：
 
 ```bash
 # VitePress
@@ -102,9 +102,9 @@ npm run docs:build
 # Upload .vitepress/dist directory contents to website directory
 ```
 
-### Single Page Application (SPA)
+### 单页应用（SPA）
 
-Pure-static websites include SPA fallback by default, so a route that does not match a file is served by `index.html`. If the site must return a real 404 for unknown paths, remove or replace the generated fallback in **Custom Configs**. The equivalent Nginx rule is:
+纯静态网站默认启用 SPA 回退，未匹配到文件的路由会返回 `index.html`。 如果未知路径必须返回真实 404，请在 **自定义配置**中删除或替换生成的回退。 对应 Nginx 规则为：
 
 ```nginx
 location / {

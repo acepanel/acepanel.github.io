@@ -4,23 +4,23 @@
 
 資料庫模組用於管理關聯式資料庫（MySQL、MariaDB、PostgreSQL 等）、NoSQL 與分析型資料庫（MongoDB、ClickHouse）、搜尋引擎（Elasticsearch）、鍵值儲存（Redis）以及嵌入式資料庫（SQLite）。 它支援建立資料庫、管理使用者、瀏覽資料以及設定資料庫伺服器。
 
-## 前置需求
+## 前置要求
 
 在使用資料庫功能之前，需要先安裝對應的資料庫軟體：
 
-1. Go to **Apps** > **Native Applications**
+1. 進入 **應用** > **原生應用**
 2. 安裝你需要的資料庫，例如 Percona、MySQL、MariaDB、PostgreSQL、MongoDB、ClickHouse、Elasticsearch、OpenSearch、Redis 或 Valkey
 
-## 功能總覽
+## 功能概覽
 
-The database module adds a type tab only when at least one server of that type exists. The available type tabs are followed by **User** and **Server**:
+只有至少存在一臺對應型別的伺服器時，資料庫模組才會顯示該型別標籤； 型別標籤後方是 **使用者**和**伺服器**：
 
-| 功能                            | 說明                                                   |
-| ----------------------------- | ---------------------------------------------------- |
-| [資料庫](./database/database)    | 為所選類型建立與管理資料庫                                        |
-| [使用者](./database/user)        | 管理資料庫使用者與權限                                          |
-| [伺服器](./database/server)      | 管理資料庫伺服器連線                                           |
-| [pgAdmin](./database/pgadmin) | Open and maintain the PostgreSQL Web management tool |
+| 功能                            | 說明                        |
+| ----------------------------- | ------------------------- |
+| [資料庫](./database/database)    | 為所選類型建立與管理資料庫             |
+| [使用者](./database/user)        | 管理資料庫使用者與權限               |
+| [伺服器](./database/server)      | 管理資料庫伺服器連線                |
+| [pgAdmin](./database/pgadmin) | 開啟並管理 PostgreSQL Web 管理工具 |
 
 Elasticsearch 與 Redis 標籤頁提供線上資料瀏覽器，可直接管理索引/文件與鍵值資料，而非建立資料庫的流程。
 
@@ -65,7 +65,7 @@ MariaDB 與 Percona 在 **MySQL** 標籤頁下管理，因為它們與 MySQL 協
 
 ## 連線資料庫
 
-The MySQL database list can open phpMyAdmin and lets you choose the MySQL server to connect to. The PostgreSQL list opens pgAdmin after it is installed. Both tools follow the panel language. Keep their ports private or restricted with an allowlist.
+MySQL 資料庫列表可以開啟 phpMyAdmin，並選擇要連線的 MySQL 伺服器； 安裝 pgAdmin 後， PostgreSQL 列表可以直接開啟它。 兩個工具的介面語言均跟隨面板，其埠應保持私有或使用白名單限制。
 
 ### 本機連線
 

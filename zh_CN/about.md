@@ -11,7 +11,7 @@ const members = [
   {
     avatar: 'https://weavatar.com/avatar/18e77debb1bc0000c0b50757b8f1bebb2c3e4df3d494124f776c15dbc1ebe8a5',
     name: 'HaoZi',
-    desc: 'Founder & CEO',
+    desc: '创始人兼 CEO',
     links: [
       { icon: 'github', link: 'https://github.com/devhaozi' },
       { icon: 'bilibili', link: 'https://space.bilibili.com/8067' }
@@ -20,7 +20,7 @@ const members = [
   {
     avatar: 'https://weavatar.com/avatar/f6b23deadaa481f0b3ea75ad94f246881ed2326117efebad6f2799ea165779b9',
     name: 'Liang Zai',
-    desc: 'Technical Director'
+    desc: '技术总监'
   },
 ]
 </script>

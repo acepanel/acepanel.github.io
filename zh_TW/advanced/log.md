@@ -1,44 +1,44 @@
-# Logs
+# 日誌
 
-![Logs](/images/log/log.png)
+![日誌](/images/log/log.png)
 
-The top-level **Logs** module provides a single place for panel audit data and live system logs. Its tabs are **Operation Logs**, **Database Logs**, **HTTP Logs**, and **SSH Logs**.
+頂層 **日誌**模組集中展示面板審計資料和即時系統日誌，包含 **操作日誌**、**資料庫日誌**、**HTTP 日誌**和 **SSH 日誌**。
 
-## Log Types
+## 日誌型別
 
-| Tab            | Content                                                                                                                                                                |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Operation Logs | Administrative actions performed through AcePanel. Use it to identify who changed a resource and when.                                 |
-| Database Logs  | Database-related operations recorded by the panel. This is not a replacement for an engine's complete slow-query, error, or audit log. |
-| HTTP Logs      | Panel HTTP request activity and response information available to the audit logger.                                                                    |
-| SSH Logs       | Incrementally loaded SSH service events such as logins and authentication failures.                                                                    |
+| 標籤頁     | 內容                                     |
+| ------- | -------------------------------------- |
+| 操作日誌    | 通過 AcePanel 執行的管理操作， 可用於確認誰在什麼時間修改了資源。 |
+| 資料庫日誌   | 面板記錄的資料庫相關操作， 不能替代資料庫引擎完整的慢查詢、錯誤或審計日誌。 |
+| HTTP 日誌 | 面板審計記錄器可用的 HTTP 請求活動和響應資訊。             |
+| SSH 日誌  | 增量載入 SSH 服務的登入、認證失敗等事件。                |
 
-Application, website, container, project, task, and systemd logs are opened from their corresponding resource pages, but use the same real-time viewer behavior described below.
+應用、網站、容器、專案、任務和 systemd 日誌從對應資源頁面開啟，但使用相同的即時檢視器。
 
-## Real-Time Log Viewer
+## 即時日誌檢視器
 
-The viewer shows its connection state and loads new lines incrementally. Its controls include:
+檢視器會顯示連線狀態並增量載入新日誌， 支援：
 
-- load older history;
-- search the lines that are currently loaded;
-- jump to the previous or next match;
-- toggle line wrapping;
-- copy all loaded text;
-- download when the log source permits it;
-- clear when the selected log supports clearing;
-- enter or leave full screen.
+- 載入更早的歷史記錄；
+- 在當前已載入內容中搜索；
+- 跳轉到上一個或下一個匹配項；
+- 切換自動換行；
+- 複製全部已載入文本；
+- 在日誌源支援時下載；
+- 在所選日誌支援時清空；
+- 進入或退出全屏。
 
-Search does not query the entire file on disk. Load the required history first, then search. Very large histories should be downloaded and processed with command-line tools instead of repeatedly loading them into the browser.
+搜尋不會查詢磁碟上的整個日誌檔案。 應先載入需要的歷史記錄，再執行搜尋。 歷史日誌很大時，下載後使用命令列工具處理，不要在瀏覽器中反覆載入。
 
-## Clearing and Retention
+## 清空與保留
 
-Clearing a log is destructive and may remove evidence needed for incident investigation. Download it first when an audit, failure, or security event is under review. Some systemd and SSH sources are incremental views backed by system logs; their retention is controlled by the underlying service or journal configuration.
+清空日誌是破壞性操作，可能刪除故障排查或安全事件調查所需證據。 正在進行審計或事故分析時，應先下載日誌。 部分 systemd 和 SSH 日誌屬於系統日誌的增量檢視，其保留時間由底層服務或 journal 配置決定。
 
-Use [Log Cleanup](./toolbox/log) for an inventory of reclaimable panel, website, database, container, and system logs. Log cleanup does not delete normal website files, database tables, or container volumes.
+使用[日誌清理](./toolbox/log)掃描可釋放空間的面板、網站、資料庫、容器和系統日誌。 日誌清理不會刪除普通網站檔案、資料庫表或容器卷。
 
-## Troubleshooting
+## 故障排查
 
-- **Disconnected:** keep the dialog open while it reconnects, then check the resource and panel service if no new data appears.
-- **Search misses an old entry:** load more history or download the log.
-- **Garbled output:** confirm the producing process writes UTF-8 text.
-- **No operation entry:** verify that the action completed through the panel rather than directly on the server.
+- **連線斷開：** 保持對話方塊開啟等待重連；仍沒有新資料時，檢查對應資源和麵板服務。
+- **搜尋不到舊記錄：** 載入更多歷史或下載日誌。
+- **內容亂碼：** 確認產生日誌的程序使用 UTF-8 編碼。
+- **沒有操作記錄：** 確認該操作確實通過面板完成，而不是直接在伺服器上執行。
