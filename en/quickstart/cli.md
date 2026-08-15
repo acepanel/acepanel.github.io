@@ -1,159 +1,169 @@
 # Command Line Tool
 
-AcePanel provides the command line tool `acepanel` for panel management when the Web interface is inaccessible.
+`acepanel` is the root-only recovery and administration CLI installed with AcePanel. Run `acepanel <command> --help` on the server before an irreversible operation.
 
-## Service Management
+## Output and Safety
 
-::: warning Note
-Do not stop or restart the panel while background tasks are running, as this may cause task interruption or data loss.
-:::
+Add the global `--json` flag to list commands when machine-readable output is required:
 
-```shell
-acepanel start    # Start
-acepanel stop     # Stop
-acepanel restart  # Restart
-acepanel status   # View status
+```bash
+acepanel --json website list
+acepanel --json database list-server
 ```
 
-## User Management
+The flag applies to supported list output, not every interactive or mutating command. Do not stop or restart the panel while a background task or [migration](../advanced/toolbox/migration) is running.
 
-```shell
-acepanel user list                              # List all users
-acepanel user username <old_username> <new_username>      # Change username
-acepanel user password <username> <new_password>          # Change password
-acepanel user 2fa <username>                       # Toggle two-factor authentication
-acepanel user passkey <username>                   # Clear all passkeys for a user
+## Service and Maintenance
+
+```bash
+acepanel status
+acepanel start
+acepanel stop
+acepanel restart
+acepanel update
+acepanel fix
+acepanel sync
+acepanel sync-time
 ```
 
-## Security Settings
+`acepanel info` displays the current access information and no longer resets the password every time by default:
 
-```shell
-acepanel https on|off       # Toggle HTTPS
-acepanel https generate     # Generate certificate (self-signed or Let's Encrypt)
-acepanel entrance on|off    # Toggle security entrance
-acepanel port <port_number>       # Change listening port
-acepanel bind-domain off    # Unbind domain
-acepanel bind-ip off        # Unbind IP
-acepanel bind-ua off        # Unbind UA
+```bash
+acepanel info
+acepanel info --username <user>
+acepanel info --username <user> --force
 ```
 
-## Website Management
+Use `--force` (`-f`) only when a password reset is intended. `--username` (`-u`) selects the account; otherwise the first panel user is used.
 
-```shell
-# Create a website
-acepanel website create -n <name> -d <domain> -l <listen> [--path <path>] [--php <version>]
+## Panel Access Controls
 
-# Remove a website (keeps the website directory and database)
-acepanel website remove -n <name>
-
-# Delete a website (also removes the website directory and the database with the same name)
-acepanel website delete -n <name>
+```bash
+acepanel port <port>
+acepanel https on|off
+acepanel https generate
+acepanel entrance on|off
+acepanel bind-domain on <domain> [domain...]
+acepanel bind-domain off
+acepanel bind-ip on <ip> [ip...]
+acepanel bind-ip off
+acepanel bind-ua on <user-agent> [user-agent...]
+acepanel bind-ua off
 ```
 
-| Flag | Alias | Required | Description |
-| --- | --- | --- | --- |
-| `--name` | `-n` | Yes | Website name |
-| `--domains` | `-d` | Yes (`create`) | Domains bound to the website; repeat the flag for multiple domains |
-| `--listens` | `-l` | Yes (`create`) | Listening addresses bound to the website; repeat the flag for multiple addresses |
-| `--path` | | No | Directory where the website is hosted; the default path is used when omitted |
-| `--php` | | No | PHP version used by the website; PHP is not used when omitted |
+Before changing the port or any binding, permit the new access path in the system firewall and cloud security group and keep an SSH session open.
 
-::: warning Note
-`website delete` removes the website directory and the database with the same name simultaneously. This operation is irreversible, so proceed with caution.
-:::
+## Users and Password Input
 
-## Database Management
-
-```shell
-# Add a database server
-acepanel database add-server --type <type> --name <name> --host <host> --port <port> [--username <username>] [--password <password>] [--remark <remark>]
-
-# Delete a database server
-acepanel database delete-server -n <name>
+```bash
+acepanel user list
+acepanel user create <username> [password] [--email <address>]
+acepanel user delete <username>
+acepanel user username <old-username> <new-username>
+acepanel user password <username> [password]
+acepanel user 2fa <username>
+acepanel user passkey <username>
 ```
 
-| Flag | Alias | Required | Description |
-| --- | --- | --- | --- |
-| `--type` | | Yes (`add-server`) | Server type, one of `mysql`, `postgresql`, `redis`, `clickhouse`, `mongodb`, `sqlite`, `elasticsearch` |
-| `--name` | `-n` (`delete-server` only) | Yes | Server name |
-| `--host` | | Yes (`add-server`) | Server address |
-| `--port` | | Yes (`add-server`) | Server port |
-| `--username` | | No | Server username |
-| `--password` | | No | Server password |
-| `--remark` | | No | Server remark |
+For `user create` and `user password`, password precedence is:
 
-## Backup Management
+1. the command argument;
+2. `ACEPANEL_PASSWORD`;
+3. a no-echo interactive prompt.
 
-```shell
-# Back up a website
-acepanel backup website -n <name> [-s <storage_id>]
+Avoid a literal password argument on a shared system because it can be exposed through shell history or process inspection. The environment variable is useful for short-lived automation but must not be logged or persisted in an insecure service file.
 
-# Back up a database
-acepanel backup database -t <type> -n <name> [-s <storage_id>]
+## Firewall
 
-# Back up a directory
-acepanel backup path -p <path> [-s <storage_id>]
+```bash
+acepanel firewall status
+acepanel firewall on
+acepanel firewall off
+acepanel firewall list
+acepanel firewall port 443
+acepanel firewall port 8000-9000 --protocol tcp
+acepanel firewall port 443 --remove
+```
 
-# Back up the panel
+`firewall port` accepts a single port or range. `--protocol` (`-p`) accepts `tcp`, `udp`, or `tcp/udp` and defaults to `tcp/udp`; `--remove` deletes the matching rule. Do not disable the firewall remotely unless another verified control remains in place.
+
+## Websites and Certificates
+
+```bash
+acepanel website list
+acepanel website create --type static --name <name> --domains <domain> --listens 80
+acepanel website remove --name <name>
+acepanel website delete --name <name>
+acepanel website cert --name <name> --cert <fullchain-path> --key <private-key-path>
+acepanel cert list
+acepanel cert renew --id <id>
+acepanel cert renew --all
+```
+
+Website creation accepts `proxy`, `static`, or `php` through `--type` (`-t`), repeated `--domains` (`-d`) and `--listens` (`-l`), and optional `--path` (`-p`), `--proxy`, `--php`, `--db`, `--db-name`, `--db-user`, `--db-password`, and `--remark`.
+
+`website remove` keeps the site directory and same-named database. `website delete` also removes them and automatically releases certificate associations; it is irreversible. `website cert` reads the certificate and private key from server-side files—protect both paths and never paste a private key into shell history.
+
+## Database Servers
+
+```bash
+acepanel database list-server
+acepanel database add-server --type <type> --name <name> --host <host> --port <port> [--username <user>] [--password <password>] [--remark <text>]
+acepanel database delete-server --name <name>
+```
+
+`add-server` accepts `mysql`, `postgresql`, `mongodb`, `clickhouse`, `redis`, and `elasticsearch`. Deleting a server registration can make its databases unavailable to panel operations; it does not replace a data-retention plan.
+
+## Backup and Restore
+
+```bash
+acepanel backup list --type <type>
+acepanel backup website --name <name> [--storage <id>]
+acepanel backup database --type <type> --name <name> [--storage <id>]
+acepanel backup path --path <directory> [--storage <id>]
 acepanel backup panel
+acepanel backup clear --type <type> --file <prefix> --keep <count> [--storage <id>]
 
-# Clear expired backups
-acepanel backup clear -t <type> -f <file> -k <keep> [-s <storage_id>]
+acepanel restore website --name <name> --file <backup>
+acepanel restore database --type <type> --name <name> --file <backup>
+acepanel restore panel --file <backup>
 ```
 
-| Flag | Alias | Description |
-| --- | --- | --- |
-| `--name` | `-n` | Website or database name |
-| `--type` | `-t` | Database type (`mysql`, `postgresql`, `redis`) for `backup database`; backup type for `backup clear` |
-| `--path` | `-p` | Directory path to back up |
-| `--file` | `-f` | Backup file name to match when clearing |
-| `--keep` | `-k` | Number of backups to keep |
-| `--storage` | `-s` | Storage ID; local storage is used when omitted |
+Backup listing supports `website`, `path`, `panel`, `mysql`, `postgresql`, `clickhouse`, `redis`, and `valkey`. Database backup and restore support MySQL, PostgreSQL, ClickHouse, Redis, and Valkey. A backup filename can be absolute or relative to the default backup directory as described by the command. Restoring the panel restarts it automatically.
+
+## Scheduled Tasks
+
+```bash
+acepanel cron list
+acepanel cron run --id <id>
+acepanel cron status --id <id>
+acepanel cron status --id <id> --off
+```
+
+`cron run` executes the selected task immediately. `cron status` enables it; add `--off` to disable it.
+
+## Applications
+
+```bash
+acepanel app list
+acepanel app install <slug> [channel]
+acepanel app update <slug>
+acepanel app uninstall <slug>
+```
+
+Installation, update, and uninstallation may create a panel background task. Follow it under **Tasks > Panel Tasks**.
 
 ## Log Rotation
 
-```shell
-# Rotate website logs
-acepanel cutoff website -n <name> [-s <storage_id>]
-
-# Rotate container logs
-acepanel cutoff container -n <name> [-s <storage_id>]
-
-# Clear rotated logs
-acepanel cutoff clear -t <type> -n <name> -k <keep> [-s <storage_id>]
+```bash
+acepanel cutoff website --name <name> [--storage <id>]
+acepanel cutoff container --name <name> [--storage <id>]
+acepanel cutoff clear --type website|container --name <name> --keep <count> [--storage <id>]
 ```
 
-| Flag | Alias | Description |
-| --- | --- | --- |
-| `--name` | `-n` | Website or container name |
-| `--type` | `-t` | Rotation type for `cutoff clear`, one of `website` or `container` |
-| `--keep` | `-k` | Number of rotated logs to keep |
-| `--storage` | `-s` | Storage ID; local storage is used when omitted |
+## Troubleshooting
 
-## Application Management
-
-```shell
-acepanel app install <slug> <channel>   # Install an application
-acepanel app uninstall <slug>           # Uninstall an application
-acepanel app update <slug>              # Update an application
-```
-
-## Maintenance Commands
-
-```shell
-acepanel update      # Update panel
-acepanel fix         # Fix update issues
-acepanel sync        # Sync cache data
-acepanel sync-time   # Sync server time
-acepanel clear-task  # Clear stuck tasks in the task queue (use only under guidance)
-acepanel info        # View panel info and reset password
-acepanel help        # Help
-```
-
-## Example
-
-Change the password of user `admin` to `newpassword`:
-
-```shell
-acepanel user password admin newpassword
-```
+- Use `acepanel status` before restarting a service that appears unavailable.
+- Use `acepanel fix` when Home reports a panel-database or update-health problem.
+- Prefer the documented public commands. Hidden `init`, `setting`, task-clear, application-marker, cron-wrapper, and database-write commands are internal recovery hooks and should be used only under project guidance.
+- If JSON automation fails, confirm the command is a supported list command and inspect its exit status and stderr separately.

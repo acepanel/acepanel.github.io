@@ -1,5 +1,7 @@
 # Python Project
 
+![Create a Python project](/images/project/python.png)
+
 Python projects are used to deploy Django, Flask, FastAPI, and other Python web applications.
 
 ## Prerequisites

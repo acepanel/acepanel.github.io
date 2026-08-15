@@ -1,12 +1,12 @@
 # DNS Configuration
 
+![DNS accounts](/images/cert/dns.png)
+
 The DNS configuration page is used to manage DNS APIs for applying certificates through DNS verification.
 
 ## DNS List
 
 Go to **Certificate** > **DNS** tab to view the DNS configuration list.
-
-![DNS List](/images/cert/cert-dns.png)
 
 The list displays the following information:
 
@@ -87,7 +87,6 @@ It is recommended to create a sub-account and only grant DNS management permissi
 ## DNS Alias (CNAME Delegation)
 
 ::: tip Version
-Available since v3.2.0.
 :::
 
 DNS Alias lets you complete DNS-01 validation for a domain by writing the `_acme-challenge` TXT record on a **different** (delegated) domain, instead of on the domain being certified. This is useful when:

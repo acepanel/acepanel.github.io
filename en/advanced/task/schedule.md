@@ -1,12 +1,12 @@
 # Scheduled Tasks
 
+![Scheduled tasks](/images/task/schedule.png)
+
 Scheduled tasks are used to set up tasks that execute at specified times, such as scheduled backups, scheduled script execution, etc.
 
 ## Task List
 
 Go to the **Tasks** page, which displays the scheduled task list by default.
-
-![Scheduled Tasks](/images/task/task-schedule.png)
 
 The list displays the following information:
 
@@ -27,7 +27,7 @@ Click the **Create Task** button to create a new scheduled task.
 | Type         | Description                                                                                          |
 |--------------|------------------------------------------------------------------------------------------------------|
 | Run Script   | Execute a Shell script                                                                                |
-| Backup Data  | Scheduled backup of a website, MySQL database, PostgreSQL database, or directory to the chosen storage |
+| Backup Data  | Scheduled backup of a website, directory, MySQL, PostgreSQL, ClickHouse, Redis, or Valkey data to the chosen storage |
 | Log Rotation | Scheduled rotation of website or container logs                                                      |
 | Access URL   | Send an HTTP request (GET/POST/PUT/DELETE/PATCH/HEAD) to a URL, with optional headers, body, timeout, retries, and ignore certificate |
 | Sync Time    | Synchronize the server time                                                                          |

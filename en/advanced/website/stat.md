@@ -1,6 +1,8 @@
 # Statistics
 
-The Statistics module (added in v3.1.0) provides traffic analytics for your websites: overview metrics, real-time traffic, and aggregated rankings by site, spider, client, IP, location, URI, slow URI, and status code.
+![Website statistics](/images/website/stat.png)
+
+The Statistics module provides traffic analytics for your websites: overview metrics, real-time traffic, and aggregated rankings by site, spider, client, IP, location, URI, slow URI, and status code.
 
 ::: tip
 Statistics relies on the Nginx access log being streamed to the panel over a local socket. The **Statistics** feature and its settings are therefore only available when the web server is **Nginx** (or OpenResty). If you are running Apache, the statistics page and settings will not be shown.

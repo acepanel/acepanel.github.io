@@ -1,5 +1,7 @@
 # First Project: Deploy Node.js Application
 
+![Create a project](/images/quickstart/project.png)
+
 This article uses a simple Node.js HTTP service as an example to demonstrate how to deploy and manage projects through AcePanel.
 
 ## Prepare Code
@@ -22,8 +24,6 @@ server.listen(3000, () => {
 ## Create Project
 
 Go to the "Projects" page, switch to the "Node.js" tab, and click "Create Project".
-
-![Create Project](/images/quickstart/project-create.png)
 
 Fill in the configuration:
 
@@ -61,8 +61,6 @@ You can also use git clone in the terminal to pull the code.
 
 Click "Edit" in the project list to adjust more settings. The editor has five tabs: Basic Settings, Runtime Settings, Dependencies, Resource Limits, and Security Settings.
 
-![Project Edit](/images/quickstart/project-edit-run.png)
-
 **Runtime Settings**:
 
 - **Pre-start Command**: Execute before starting, e.g., `npm install`
@@ -89,8 +87,6 @@ Click "Edit" in the project list to adjust more settings. The editor has five ta
 ## Start Project
 
 Return to the project list, click the "Start" button.
-
-![Project List](/images/quickstart/project-list.png)
 
 After starting, "Restart" and "Reload" buttons appear for the running project. Click "Logs" to view output and confirm the service is running normally.
 

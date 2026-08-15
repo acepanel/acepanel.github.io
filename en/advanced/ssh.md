@@ -1,10 +1,10 @@
 # Terminal
 
+![Terminal and SFTP](/images/ssh/terminal.png)
+
 The terminal module provides a Web-based SSH terminal, allowing you to connect to servers and execute commands directly in the browser.
 
 ## Terminal Page
-
-![Terminal Page](/images/ssh/ssh.png)
 
 ## Create Host
 
@@ -76,6 +76,30 @@ You can add multiple remote hosts for convenient management of multiple servers:
 1. Open the **Hosts** drawer and click **Create Host**
 2. Fill in the remote server information
 3. After saving, click the host card to connect
+
+### Keepalive
+
+Enable keepalive for hosts or sessions that pass through idle connection timeouts. It sends periodic SSH traffic to keep an otherwise healthy connection open; it does not recover a server, network, or authentication failure.
+
+## SFTP File Transfer
+
+Open the transfer view to work with two file panes. Each pane can represent the AcePanel server or any configured remote SSH host, so you can transfer between local and remote storage or between two remote hosts without downloading files through your desktop.
+
+1. Select the host for the left and right panes.
+2. Browse each pane to the source and destination directory.
+3. Select one or more files or directories and start the transfer in the required direction.
+4. Follow the queue, current file, transferred size, speed, and progress.
+5. Cancel a queued or running item when necessary. Both panes refresh after completion.
+
+Directories are copied recursively. The transfer view always uses a dark theme so filenames, status, and progress remain readable beside terminal sessions.
+
+::: warning Transfer boundaries
+A cancelled transfer can leave a partial file or directory at the destination. Verify its size or checksum before retrying or using it. Moving large trees between two remote hosts still passes through the panel's transfer process and consumes network, CPU, and disk resources.
+:::
+
+## Terminal and SSH Settings
+
+This page manages interactive terminal sessions, saved remote hosts, and SFTP. To change the server's SSH daemon port, authentication methods, root-login policy, password, or host keys, use [Toolbox > SSH](./toolbox/ssh).
 
 ## Security Recommendations
 

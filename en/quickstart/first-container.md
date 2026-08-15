@@ -1,10 +1,12 @@
 # First Container: Deploy pgAdmin 4
 
+![Create a container](/images/quickstart/container.png)
+
 This article uses pgAdmin 4 as an example to demonstrate how to quickly deploy Docker containers through AcePanel.
 
 ## Install Docker
 
-Go to the "Applications" page, find Docker on the "Native App" tab and install it. Installation progress can be viewed under "Task" -> "Panel Tasks".
+Go to the "Apps" page, find Docker on the "Native App" tab and install it. Installation progress can be viewed under "Task" -> "Panel Tasks".
 
 ::: tip Servers in China
 Pulling images is slow on servers in China. It is recommended to configure the paid acceleration source provided by [Millisecond Mirror](https://1ms.run/).
@@ -12,19 +14,13 @@ Pulling images is slow on servers in China. It is recommended to configure the p
 
 ## Deploy Container
 
-Go to "Applications" -> "Container Template", find pgAdmin 4, and click "Deploy". The deployment is a four-step wizard: Deploy Mode, Configuration, Preview & Edit, and Confirm.
-
-![Container Template List](/images/quickstart/container-template.png)
+Go to "Apps" -> "Container Template", find pgAdmin 4, and click "Deploy". The deployment is a four-step wizard: Deploy Mode, Configuration, Preview & Edit, and Confirm.
 
 On the template list you can narrow down the choices using the category tags at the top or the search box on the right. Each template card shows its icon, name, and description; a "Local" tag marks templates stored on this server (rather than fetched from the remote template repository), and templates that define a homepage show an external-link button you can click to open the project website.
 
 In the "Deploy Mode" step, choose "Create New Compose" (the other option, "Update Existing Compose", applies the template to an existing compose instead).
 
-![Deploy Step 1](/images/quickstart/container-deploy-step1.png)
-
 In the "Configuration" step, fill in the configuration:
-
-![Deploy Step 2](/images/quickstart/container-deploy-step2.png)
 
 - **Compose Name**: Give the compose a name, e.g., `pg4admin`
 - **Auto Start**: When checked, automatically pull images and start after creation
@@ -64,13 +60,9 @@ In the first step you can instead choose "Update Existing Compose" to apply the 
 
 If "Auto Start" is checked, a terminal popup opens after creation and runs `docker compose ... up -d`, streaming the image pull and startup progress live:
 
-![Startup Progress](/images/container/compose-starting.png)
-
 If you left "Auto Start" unchecked, no images are pulled yet. Go to the "Containers" -> "Compose" page and start the compose there.
 
 You can also manually manage in "Containers" -> "Compose" page:
-
-![Compose List](/images/container/compose-list.png)
 
 ## Access Service
 

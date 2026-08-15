@@ -1,87 +1,62 @@
 # Network
 
-The network page lists the current network connections on the server, helping you inspect which processes are listening on or have established connections, along with their local and remote addresses.
+![Network management](/images/toolbox/network.png)
 
-To open it, go to the **Toolbox** page and switch to the **Network** tab.
+The Network tool combines a read-only connection inspector with guarded network-interface configuration. Open **Toolbox > Network**.
 
-::: tip Tip
-This page is read-only. It is intended for viewing and troubleshooting connections; it does not provide actions to close connections or terminate processes. To manage processes, use the **Process** tab in the Toolbox.
-:::
+## Network Connections
 
-## Connection List
+The connection list shows current TCP, TCP6, UDP, and UDP6 sockets with local address, remote address, state, PID, and process. Search by PID, partial process name, or local/remote port, combine state filters, sort supported columns, refresh the snapshot, and change the page size.
 
-The page shows all detected TCP and UDP connections (both IPv4 and IPv6) in a table. Each row represents a single connection.
+Common states include `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, `CLOSE_WAIT`, `SYN_SENT`, `SYN_RECV`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, `CLOSING`, and `NONE`. UDP commonly has no connection state. Process ownership can be empty if the process exited between sampling or the operating system did not expose it.
 
-### Columns
+The connection list does not terminate sockets. Open [Processes](./process) when you need process details or signal operations.
 
-| Column         | Description                                                                 |
-|----------------|-----------------------------------------------------------------------------|
-| Type           | Connection type: `tcp`, `tcp6`, `udp`, or `udp6`                            |
-| PID            | The process ID that owns the connection                                     |
-| Process        | The name of the process that owns the connection                            |
-| Local Address  | The local address and port, in the form `IP:Port`                          |
-| Remote Address | The remote address and port, in the form `IP:Port`                         |
-| Status         | The connection state, such as `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, etc.   |
+## Network Interface Configuration
 
-The **Status** column is displayed as a colored tag to make states easy to distinguish at a glance:
+The interface section shows the detected configuration manager, interface type, MAC address, MTU, and current IPv4 and IPv6 addresses.
 
-- `LISTEN` is shown in green
-- `ESTABLISHED` is shown in blue
-- Transitional states such as `TIME_WAIT`, `CLOSE_WAIT`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, and `CLOSING` are shown in orange
-- `NONE` and other states are shown in a neutral color
+AcePanel can safely edit supported configurations managed by:
 
-::: tip Tip
-For UDP connections, which are connectionless, the status is typically `NONE`. The `PID` and `Process` columns may be empty when the panel cannot determine the owner of a connection (for example, due to insufficient permissions or because the process has already exited).
-:::
+- NetworkManager;
+- netplan;
+- ifupdown configurations that pass AcePanel's safety parser.
 
-## Filtering and Searching
+For IPv4 and IPv6 independently, choose automatic or manual addressing and configure CIDR addresses, the default gateway, DNS servers, and whether automatically assigned DNS is accepted. ifupdown does not expose automatic-DNS fields that it cannot represent.
 
-A toolbar above the table lets you narrow down the displayed connections. Filters can be combined, and the list refreshes automatically as you change them.
+### Unsupported Configurations
 
-### Filter by Status
+AcePanel displays **Unsupported** instead of attempting an unsafe rewrite when it cannot reliably round-trip the active configuration. Examples include multiple files defining the same interface, inherited or `mapping`-based ifupdown definitions, and a NetworkManager interface without an editable active connection profile.
 
-A multi-select dropdown that filters connections by one or more states. Available options:
+Manage an unsupported interface with its native operating-system tools or simplify the configuration first. Do not overwrite it with a guessed panel form.
 
-- `LISTEN`
-- `ESTABLISHED`
-- `TIME_WAIT`
-- `CLOSE_WAIT`
-- `SYN_SENT`
-- `SYN_RECV`
-- `FIN_WAIT1`
-- `FIN_WAIT2`
-- `LAST_ACK`
-- `CLOSING`
-- `NONE`
+## Safe Apply and Automatic Rollback
 
-Selecting multiple states shows connections that match any of them. Clear the selection to show all states.
+Changing the primary address, gateway, route source, or automatic-address setting can immediately disconnect the panel and SSH. Keep a console or provider recovery channel available.
 
-### Search PID
+When a change is applied, AcePanel starts a 30-second confirmation window:
 
-Filters connections by process ID. The match is a substring match, so entering `12` matches PIDs such as `12`, `123`, and `4128`.
+1. Verify that the panel, SSH, gateway, DNS, and required services remain reachable.
+2. Click **Keep change** within 30 seconds to retain the new configuration.
+3. Click **Roll back now** to restore the previous configuration immediately.
+4. If no confirmation arrives before the countdown ends, AcePanel automatically rolls back.
 
-### Search Process
+Automatic rollback reduces risk but cannot guarantee recovery from every driver, routing, provider, or operating-system failure. Test remotely managed servers during a maintenance window.
 
-Filters connections by process name. The match is case-insensitive and partial, so entering `ngin` matches a process named `nginx`.
+## Validation
 
-### Search Port
+After keeping a change, verify:
 
-Filters connections by port number. The match is applied to **both** the local port and the remote port, and is a substring match, so entering `80` matches ports such as `80`, `8080`, and `8000`.
+- the expected IPv4 and IPv6 addresses and MTU;
+- the default gateway and route table;
+- DNS resolution using every configured resolver;
+- panel and SSH access from a fresh connection;
+- inbound services through both the system firewall and cloud security group;
+- outbound access required by package managers, backups, mail, and monitoring.
 
-## Sorting
+## Troubleshooting
 
-Click a column header to sort the table. Sorting is supported on the following columns:
-
-- **Type**
-- **PID**
-- **Process**
-
-Each click toggles between ascending and descending order. By default, connections are sorted by **PID** in ascending order. The **Local Address**, **Remote Address**, and **Status** columns are not sortable.
-
-## Pagination
-
-The list is paginated, with **50** items per page by default. You can change the page size using the size picker; the available options are **50**, **100**, **200**, and **500** items per page. A quick jumper is also available to jump directly to a specific page.
-
-## Refresh
-
-Click the **Refresh** button to reload the connection list and fetch the latest data from the server. The list reflects the connection state at the moment it is loaded, so refresh to capture changes such as new connections or closed sessions.
+- **Unsupported:** inspect the named manager's source files and remove ambiguous multi-file, inheritance, or mapping constructs only if you understand their effect.
+- **Change rolled back:** determine which address, gateway, DNS, or DHCP condition broke connectivity before trying again.
+- **Panel reachable but a service is not:** check its bind address and [Security](../firewall) rules for both address families.
+- **An old address remains:** refresh the interface list and inspect the native manager; temporary kernel addresses and persistent configuration are different states.

@@ -1,5 +1,7 @@
 # Static Website
 
+![Static website settings](/images/website/static.png)
+
 Static websites are used to host HTML, CSS, JavaScript, and other static files, suitable for deploying frontend project build outputs, documentation sites, etc.
 
 ## Create Static Website
@@ -20,17 +22,15 @@ Static websites are used to host HTML, CSS, JavaScript, and other static files, 
 
 Click the **Edit** button in the website list to enter the edit page.
 
+You can change this website to reverse proxy or PHP from its basic settings. Domains, listeners, files, and other shared fields are kept, while static-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site before converting.
+
 ### Domain & Listening
 
 Configure the website's domain and listening address. Each listening address can individually enable HTTPS and QUIC (HTTP/3).
 
-![Domain and Listen Configuration](/images/website/website-static-edit.png)
-
 ### Basic Settings
 
 Configure the website directory and default document.
-
-![Advanced Settings](/images/website/website-static-edit-advanced.png)
 
 - **Website Directory**: Absolute path where static files are stored
 - **Running Directory**: Absolute path to the running directory (rarely needed for static sites)
@@ -70,11 +70,7 @@ In the **Advanced Settings** tab you can configure access statistics, log settin
 
 In the **Custom Configs** tab, you can add custom Nginx configuration for URL rewriting and other functions.
 
-![Custom Configuration](/images/website/website-static-edit-custom.png)
-
 Click the **Add Custom Config** button to add a configuration:
-
-![Add Custom Configuration](/images/website/website-static-edit-custom-add.png)
 
 - **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
 - **Scope**: Configuration scope, can choose "This Website" or "Global"
@@ -108,7 +104,7 @@ npm run docs:build
 
 ### Single Page Application (SPA)
 
-Single page applications need to configure rewrite rules to point all routes to index.html. Add in **Custom Configs**:
+Pure-static websites include SPA fallback by default, so a route that does not match a file is served by `index.html`. If the site must return a real 404 for unknown paths, remove or replace the generated fallback in **Custom Configs**. The equivalent Nginx rule is:
 
 ```nginx
 location / {

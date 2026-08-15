@@ -1,17 +1,15 @@
 # Webhook
 
-Webhooks allow you to trigger script execution on the server through HTTP requests, enabling automated deployment, CI/CD integration, and other features.
+![WebHook management](/images/toolbox/webhook.png)
 
-![Webhook](/images/toolbox/toolbox-webhook.png)
+Webhooks allow you to trigger script execution on the server through HTTP requests, enabling automated deployment, CI/CD integration, and other features.
 
 ## Create Webhook
 
 Click the **Create Webhook** button and fill in the following information:
 
-![Create Webhook](/images/toolbox/toolbox-webhook-create.png)
-
 - **Name**: The name of the webhook, used to identify its purpose
-- **User**: The system user that executes the script, default is root
+- **User**: The system user that executes the script. Use a dedicated low-privilege deployment user instead of root whenever possible
 - **Raw Output**: When enabled, returns the raw output of the script; when disabled, returns JSON format
 - **Script**: The Shell script content to execute. The form is pre-filled with a `#!/bin/bash` template by default
 
@@ -96,6 +94,7 @@ curl -X POST https://panel.example.com/webhook/your-key
 ## Notes
 
 1. The Key is sensitive information, do not disclose it to untrusted people
-2. Scripts are executed as the specified user, pay attention to permission control
-3. It is recommended to add necessary error handling in scripts
-4. You can temporarily disable a webhook using the disable switch
+2. **Raw Output** returns stdout directly. When disabled, AcePanel wraps the result as JSON.
+3. When a call fails, check the script permission, run user, paths, environment variables, timeout, exit code, and stderr. An interactive shell may use a different `PATH` and profile.
+4. Validate any request data before using it in a command, and add explicit error handling to the script.
+5. Delete and recreate the WebHook if its URL is exposed in a repository, CI log, chat, or analytics system.

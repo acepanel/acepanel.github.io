@@ -1,5 +1,7 @@
 # Reverse Proxy
 
+![Reverse proxy website settings](/images/website/proxy.png)
+
 Reverse proxy websites are used to forward external requests to backend services, commonly used for deploying Node.js, Go, Java, Python, and other applications.
 
 ## How It Works
@@ -37,11 +39,11 @@ https://backend.internal    # Internal HTTPS service
 
 Click the **Edit** button in the website list to enter the edit page.
 
+You can change this website to PHP or pure static from its basic settings. Domains, listeners, files, and other shared fields are kept, while proxy upstreams and proxy rules are deleted and the selected type's configuration is generated. Back up and record the proxy configuration before converting.
+
 ### Domain and Listen
 
 Configure the website's domain and listening port, supporting multiple domains and ports.
-
-![Domain and Listen Configuration](/images/website/website-proxy-edit.png)
 
 - **Domain**: Multiple domains can be added
 - **Listen Address**: Multiple ports can be configured, supporting HTTPS and QUIC(HTTP3)
@@ -50,8 +52,6 @@ Configure the website's domain and listening port, supporting multiple domains a
 
 Upstream defines backend server addresses, supporting multiple backends for load balancing.
 
-![Upstream Configuration](/images/website/website-proxy-upstream.png)
-
 - **Upstream Name**: Identifier name for the upstream
 - **Load Balancing Algorithm**: For Nginx, supports Round Robin (default), `least_conn`, `ip_hash`, `hash`, and `random`; for Apache, supports Round Robin (default), Least Busy, and By Traffic
 - **Keepalive Connections**: Number of persistent connections to maintain with the backend
@@ -59,16 +59,12 @@ Upstream defines backend server addresses, supporting multiple backends for load
 
 Click the **Add Server** button to add backend servers:
 
-![Add Server](/images/website/website-proxy-upstream-add.png)
-
 - **Server Address**: Backend server address, e.g., `127.0.0.1:8080`
 - **Options**: Optional parameters, e.g., `weight=5` (weight), `backup` (backup server), etc.
 
 ### Proxy Configuration
 
 Configure proxy behavior and request header forwarding. Each proxy rule maps a location to a backend.
-
-![Proxy Configuration](/images/website/website-proxy-proxy.png)
 
 - **Match Type**: Location match type, such as Exact Match (`=`), Priority Prefix Match (`^~`), Prefix Match, Case-sensitive Regex (`~`), and Case-insensitive Regex (`~*`)
 - **Match Expression**: URL expression to match

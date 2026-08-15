@@ -1,12 +1,14 @@
-# Monitor
+# System Monitoring
 
-The monitor module is used to record and view server performance data, including CPU, memory, disk I/O, and network traffic.
+![System monitoring](/images/monitor/system.png)
+
+System Monitoring records and displays CPU, memory, disk I/O, and network traffic over time. Open **Monitoring > System**. Use [Alerts](./monitor/alert) to define thresholds and [Settings & Notifications](./monitor/setting) to configure collection, retention, SMTP, and event delivery.
 
 ## Monitor Page
 
-![Monitor Page](/images/monitor/monitor.png)
+## Data Collection Settings
 
-## Monitor Settings
+Collection controls are under **Monitoring > Settings**.
 
 ### Enable Monitoring
 

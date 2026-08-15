@@ -1,12 +1,12 @@
 # Image
 
+![Container images](/images/container/image.png)
+
 Images are templates for containers, containing all files and configurations needed to run applications. Through the image management page, you can pull, view, and delete local images.
 
 ## Image List
 
 Go to **Container** > **Image** tab to view the local image list.
-
-![Image List](/images/container/container-image.png)
 
 The list displays the following information:
 
@@ -22,9 +22,9 @@ The list displays the following information:
 1. Click the **Pull Image** button
 2. Enter the image name, e.g., `docker.io/php:8.3-fpm`, `mysql:8.4`
 3. (Optional) Enable **Authentication** and fill in the **Username** and **Password** to pull from a private registry that requires login
-4. Click **Submit** to start pulling
+4. Choose **Foreground** or **Background**, then submit
 
-After submission, the pull progress is streamed in real time, displaying each image layer's download status and overall progress. You can click **Cancel** to abort the pull at any time.
+In foreground mode, the dialog streams every image layer and overall progress and provides a cancel action for the active pull. In background mode, AcePanel submits a task that continues after you leave the page; open **Tasks > Panel Tasks** for its status and log.
 
 Image name format: `[registry_address/]image_name[:tag]`
 

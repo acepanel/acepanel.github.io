@@ -1,12 +1,14 @@
 # General Project
 
+![Create a general project](/images/project/general.png)
+
 General projects are used to deploy any type of executable program, not limited to specific programming languages.
 
 ## Project Types
 
 The **Projects** page is organized into tabs by type: **General**, **Go**, **Java**, **Node.js**, **PHP**, **Python** and **.NET**. They all produce the same kind of `systemd`-managed service; the difference is only in the create dialog.
 
-For the language-specific tabs, the create dialog adds a runtime **Version** selector (populated from the runtimes installed under **Applications** > **Runtime Environment**) and, where applicable, a **Framework** preset (for example Spring Boot, Express, Laravel Octane, Django, ASP.NET Core). Selecting a version and framework auto-fills the **Start Command** with a version-pinned binary (such as `go1.24 run main.go` or `php8.3 artisan octane:start`), which you can still edit before creating. See the dedicated pages for [Go](./go.md), [Java](./java.md), [Node.js](./nodejs.md), [PHP](./php.md), [Python](./python.md) and [.NET](./dotnet.md) projects.
+For the language-specific tabs, the create dialog adds a runtime **Version** selector (populated from the runtimes installed under **Apps** > **Runtime Environment**) and, where applicable, a **Framework** preset (for example Spring Boot, Express, Laravel Octane, Django, ASP.NET Core). Selecting a version and framework auto-fills the **Start Command** with a version-pinned binary (such as `go1.24 run main.go` or `php8.3 artisan octane:start`), which you can still edit before creating. See the dedicated pages for [Go](./go.md), [Java](./java.md), [Node.js](./nodejs.md), [PHP](./php.md), [Python](./python.md) and [.NET](./dotnet.md) projects.
 
 The **General** type has no version or framework helpers: you type the **Start Command** yourself, which is why it can run any executable.
 
@@ -89,7 +91,7 @@ Startup command: `/bin/bash start.sh`
 
 The start command is executed directly by `systemd`, not through a shell, so inline prefixes like `ENV=production ./myapp` do **not** work.
 
-To set environment variables, edit the project and add them in **Runtime Settings** → **Environment Variables**, one key/value pair per entry. Each entry is written to the unit file as an `Environment=KEY=VALUE` directive.
+To set environment variables, edit the project and add them in **Runtime Settings** → **Environment Variables**, one key/value pair per entry. AcePanel quotes the value when writing the systemd unit, so spaces and supported special characters are preserved. Do not add your own shell quoting around the value unless it is part of the value itself.
 
 ## Working Directory
 

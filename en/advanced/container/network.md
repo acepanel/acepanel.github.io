@@ -1,12 +1,12 @@
 # Network
 
+![Container networks](/images/container/network.png)
+
 Docker networks are used for communication between containers. Through the network management page, you can create, view, and delete networks.
 
 ## Network List
 
 Go to **Container** > **Network** tab to view the network list.
-
-![Network List](/images/container/container-network.png)
 
 Each row begins with a selection checkbox, used to pick networks for bulk deletion (see [Delete Network](#delete-network)).
 

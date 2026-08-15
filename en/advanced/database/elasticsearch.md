@@ -1,10 +1,8 @@
 # Elasticsearch Data Management
 
-The Elasticsearch data management page lets you manage Elasticsearch (or OpenSearch) data online: list indices, create and delete indices, browse documents page by page, run search queries, and view, create, update, and delete documents.
+![Elasticsearch data management](/images/database/elasticsearch.png)
 
-::: tip
-This feature was added in v3.2.0.
-:::
+The Elasticsearch data management page lets you manage Elasticsearch (or OpenSearch) data online: list indices, create and delete indices, browse documents page by page, run search queries, and view, create, update, and delete documents.
 
 ## Prerequisites
 

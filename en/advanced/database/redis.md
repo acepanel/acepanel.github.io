@@ -1,9 +1,10 @@
 # Redis Data Management
 
+![Redis data management](/images/database/redis.png)
+
 The Redis data management page lets you browse and edit Redis keys online: select a database, list and search keys, view/create/update/delete keys, set a key's TTL, and clear the whole database.
 
 ::: tip
-This feature was added in v3.1.0.
 :::
 
 ## Prerequisites

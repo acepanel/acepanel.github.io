@@ -1,6 +1,8 @@
-# Firewall
+# Security and Firewall
 
-The firewall module provides a unified interface for managing your server's firewall. It automatically detects and works with the system firewall (`firewalld` or `ufw`), letting you toggle the firewall, manage port rules, control IP access through allow/deny lists, and configure port forwarding.
+![Firewall rules](/images/security/firewall.png)
+
+Open **Security** to manage the system firewall, scan awareness, and [tamper protection](./firewall/tamper). The firewall pages automatically detect `firewalld` or `ufw` and provide port rules, IP rules, and port forwarding.
 
 ::: tip Supported Firewalls
 The panel auto-detects the installed firewall. It prefers `firewalld`, and falls back to `ufw` if `firewalld` is not available. All operations described here are translated into the corresponding `firewalld` or `ufw` commands behind the scenes.
@@ -16,6 +18,7 @@ The firewall page is organized into tabs:
 | IP Rules         | Manage IP-based allow/deny rules (blacklist / whitelist)           |
 | Port Forwarding  | Manage port forwarding (port mapping) rules                        |
 | Scan Awareness   | Network scan detection and statistics                              |
+| Tamper Protection | Protect selected files and record blocked changes                 |
 | Settings         | Turn the firewall on/off, allow/deny ping, and scan settings       |
 
 ## Settings
@@ -77,6 +80,8 @@ Click the **Create Rule** button and fill in the form:
 | Drop     | Silently discard the traffic with no response                       |
 | Reject   | Discard the traffic and return a rejection response to the sender   |
 
+Use the strategy control in a rule row to switch directly between **Accept**, **Drop**, and **Reject**. The new policy is applied immediately; confirm that the panel and SSH ports remain reachable before changing a remote-management rule.
+
 ::: tip
 To open a port for public access, create an **Inbound** rule with the **Accept** strategy and leave the **Target** empty.
 :::
@@ -85,6 +90,10 @@ To open a port for public access, create an **Inbound** rule with the **Accept**
 
 - **Single delete**: Click **Delete** on a rule's row and confirm.
 - **Batch delete**: Select one or more rows using the checkboxes, click the **Delete** button at the top, and confirm. The selected rules are removed together.
+
+### Import and Export
+
+Use **Export** to download the rules as an XLSX workbook. **Import** validates an XLSX file and shows the rows to be added. Review address family, direction, protocol, port ranges, targets, and strategies before confirming; an imported blocking rule can disconnect the current session.
 
 ## IP Rules
 

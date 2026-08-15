@@ -1,8 +1,8 @@
 # Basic Settings
 
-The basic settings page is used to configure the panel's basic parameters.
+![Basic settings](/images/setting/basic.png)
 
-![Basic Settings](/images/setting/setting-basic.png)
+The basic settings page is used to configure the panel's basic parameters.
 
 ## Panel Name
 

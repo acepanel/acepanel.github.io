@@ -1,12 +1,12 @@
 # Native Applications
 
+![Native applications](/images/app/native.png)
+
 Native applications are software installed directly on the system, offering better performance and lower resource usage compared to containerized deployment.
 
 ## Application List
 
-Go to the **Applications** page and switch to the **Native App** tab to view the native application list. You can filter different types of applications through the category tags at the top, or use the search box on the right to search by name or description.
-
-![Native Application List](/images/app/app-list.png)
+Go to the **Apps** page and switch to the **Native App** tab to view the native application list. You can filter different types of applications through the category tags at the top, or use the search box on the right to search by name or description.
 
 The list displays the following information:
 
@@ -20,23 +20,21 @@ The list displays the following information:
 
 Click the **Install** button on the right side of the application, and an installation dialog will pop up:
 
-![Installation Dialog](/images/app/app-install-dialog.png)
-
 ### Select Channel
 
 Some applications provide multiple version channels. Click the dropdown to select the desired version series:
-
-![Select Channel](/images/app/app-install-channel.png)
 
 ### Select Version
 
 After selecting a channel, the system will automatically fill in the latest version number for that channel:
 
-![Select Version](/images/app/app-install-version.png)
-
 If the selected channel provides release notes, a **Release Log** section will appear below the version field, showing the changelog for that channel. The version field itself is read-only and always reflects the latest available version of the chosen channel.
 
-Click the **Install** button to start installation. During installation, you can view detailed logs on the **Tasks** page.
+Some applications also provide **Pre-execution Script** and **Custom Compile Parameters** fields. The pre-execution script runs before the installer and is intended for repository, dependency, or environment preparation. Custom compile parameters are passed to applications that support source-build customization.
+
+Review both fields before submitting: they execute with installation privileges and a mistake can change the system outside the application directory. Leave them empty for a normal installation.
+
+Click **Install** to submit the background task and follow its log under **Tasks > Panel Tasks**.
 
 ## Manage Application
 
@@ -45,8 +43,6 @@ Installed applications will display a **Manage** button. Click to enter the appl
 ### Running Status
 
 The management page first displays the application's running status:
-
-![Application Management](/images/app/app-manage.png)
 
 The following operations are provided:
 
@@ -60,8 +56,6 @@ The **Autostart** switch in the top-right corner controls whether the service st
 ### Modify Configuration
 
 Click the **Modify Configuration** tab to directly edit the application's configuration file:
-
-![Modify Configuration](/images/app/app-manage-config.png)
 
 ::: warning Note
 Please ensure you understand the meaning of each parameter before modifying configuration files. Incorrect configuration may prevent the service from starting.

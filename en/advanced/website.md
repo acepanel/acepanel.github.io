@@ -1,12 +1,14 @@
 # Website
 
+![Website overview](/images/website/overview.png)
+
 The website module is used to manage site configurations on the Web server. AcePanel supports three types of websites: reverse proxy, PHP, and static.
 
 ## Prerequisites
 
 Before using the website feature, you need to install a Web server first:
 
-1. Go to **Applications** > **Native Applications**
+1. Go to **Apps** > **Native Applications**
 2. Install Nginx, OpenResty, or Apache
 
 ## Website Types
@@ -19,7 +21,7 @@ Before using the website feature, you need to install a Web server first:
 
 ## Website List
 
-In addition to the type tabs (All/Reverse Proxy/PHP/Pure Static), the website page also provides **Stats** and **Settings** tabs.
+In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the page provides **Stats** and [**Settings**](./website/setting) tabs.
 
 The website list displays the following information:
 
@@ -68,16 +70,23 @@ Click the **Edit** button of a website to enter the management page, which is or
 - **Custom Configs**: add custom configuration snippets (site-scoped or shared)
 - **Access Log** / **Error Log**: view the site's logs in real time
 
+### Change the Website Type
+
+An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
+
+Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+
 ## Batch Creation
 
 Click **Bulk Create Website** to create multiple websites at once, suitable for scenarios requiring rapid deployment of multiple sites.
 
 ## Delete Website
 
-When deleting a website, a 5-second confirmation countdown is required. You can choose whether to also **delete the website directory** and **delete the local database with the same name**. Bulk deletion (from the list selection) removes the website directory but keeps the same-name database.
+When deleting a website, a 5-second confirmation countdown is required. You can choose whether to also **delete the website directory** and **delete the local database with the same name**. Bulk deletion removes the website directory but keeps the same-name database. AcePanel also removes the website from certificates associated with it and deletes a matching tamper-protection rule.
 
 ## Next Steps
 
 - [Reverse Proxy](./website/proxy) - Learn how to create reverse proxy websites
 - [PHP Website](./website/php) - Learn how to create PHP websites
 - [Static Website](./website/static) - Learn how to create static websites
+- [Website Settings](./website/setting) - Configure default site, IPv6 listening, error pages, and statistics

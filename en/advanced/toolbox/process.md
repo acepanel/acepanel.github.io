@@ -1,10 +1,10 @@
 # Process Management
 
+![Process management](/images/toolbox/process.png)
+
 The process management page is used to view and manage processes running on the system.
 
 ## Process List
-
-![Process Management](/images/toolbox/toolbox-process.png)
 
 The page displays all running processes in a table format.
 
@@ -57,6 +57,8 @@ Left-click (or right-click) on a process to open the operation menu:
 - **User Signal 1 (SIGUSR1)**: Send the SIGUSR1 user-defined signal
 - **User Signal 2 (SIGUSR2)**: Send the SIGUSR2 user-defined signal
 
+Use `SIGTERM` first so the process can close listeners and flush data. `SIGKILL` cannot be handled and can leave partial writes, stale locks, or an unclean database. `SIGSTOP`, `SIGHUP`, `SIGUSR1`, and `SIGUSR2` have application-specific effects; send them only when the service documents the expected behavior.
+
 You can also double-click a process to open its details directly.
 
 Sending any signal (including Terminate and Kill) first pops up a confirmation dialog showing the signal name and the target PID. The signal is only sent after you confirm.
@@ -77,8 +79,8 @@ The details dialog shows the following basic information:
 | Memory (RSS)      | Resident set size (physical memory in use)   |
 | Virtual Memory    | Virtual memory size                          |
 | Swap              | Amount of memory swapped out                 |
-| Disk Read         | Total bytes read from disk                   |
-| Disk Write        | Total bytes written to disk                  |
+| Disk Read         | Bytes physically read from storage for the process |
+| Disk Write        | Bytes physically written to storage for the process |
 | Start Time        | Process start time                           |
 | Executable Path   | Path to the executable file                  |
 | Working Directory | Current working directory                    |

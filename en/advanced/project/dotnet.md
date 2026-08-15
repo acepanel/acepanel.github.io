@@ -1,10 +1,12 @@
 # .NET Project
 
+![Create a .NET project](/images/project/dotnet.png)
+
 .NET projects are used to deploy applications built with the .NET runtime, such as ASP.NET Core Web/API, Blazor Server, gRPC, and Worker Service applications. .NET is treated as a first-class project type, so the panel manages your application as a `systemd` service and can optionally create a reverse proxy website for it in one step.
 
 ## Prerequisites
 
-1. Install the .NET runtime environment: **Applications** > **Runtime Environment** > **.NET**
+1. Install the .NET runtime environment: **Apps** > **Runtime Environment** > **.NET**
 2. The published output or source code of your .NET project
 
 ::: tip
@@ -79,7 +81,7 @@ The **Edit** dialog exposes the underlying `systemd` service configuration, incl
 
 ## Setting the Default CLI Version
 
-If you need the `dotnet` command available directly in the terminal, go to **Applications** > **Runtime Environment** > **.NET**, open the installed version, and click **Set as CLI Default Version**. This links that version's `dotnet` binary into the system path so `dotnet` resolves to it on the command line.
+If you need the `dotnet` command available directly in the terminal, go to **Apps** > **Runtime Environment** > **.NET**, open the installed version, and click **Set as CLI Default Version**. This links that version's `dotnet` binary into the system path so `dotnet` resolves to it on the command line.
 
 ## Notes
 

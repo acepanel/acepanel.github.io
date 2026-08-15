@@ -1,10 +1,12 @@
 # Go Project
 
+![Create a Go project](/images/project/go.png)
+
 Go projects are used to deploy backend applications developed with Go language, such as Gin, Echo, Fiber frameworks.
 
 ## Prerequisites
 
-1. Install Go runtime environment: **Applications** > **Runtime Environment** > **Go**
+1. Install Go runtime environment: **Apps** > **Runtime Environment** > **Go**
 2. Compiled Go executable file or source code
 
 ## Deployment Methods

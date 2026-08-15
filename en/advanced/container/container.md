@@ -1,12 +1,12 @@
 # Container Management
 
+![Container details](/images/container/container.png)
+
 Containers are the core concept of Docker, being running instances of images. Through the container management page, you can create, start, stop, and manage containers.
 
 ## Container List
 
 Go to the **Container** page, which displays the container list by default.
-
-![Container List](/images/container/container-list.png)
 
 The list displays the following information:
 
@@ -17,11 +17,17 @@ The list displays the following information:
 - **Running Status**: Detailed running status information
 - **Actions**: Terminal, logs, rename, etc.
 
+## Inspect and Edit a Container
+
+Click a container name or **Details** to open its information dialog. It shows the effective image, command, state, restart policy, ports, mounts, environment variables, labels, networks, resource settings, and the raw Docker/Podman `inspect` result. Use the raw view when the summarized fields are not enough for troubleshooting.
+
+Use **Edit** to change a supported setting on an existing container. Review mounts, ports, and environment variables before saving because recreating a container can interrupt the service. Data stored only in the writable container layer can be lost when a container is replaced; keep persistent data in a volume or host mount.
+
+Continuous adjacent port mappings are combined in the list to make ranges easier to read. Open the details dialog to inspect the exact underlying mappings.
+
 ## Create Container
 
 Click the **Create Container** button to open the creation dialog.
-
-![Create Container](/images/container/container-create.png)
 
 ### Basic Settings
 
@@ -47,8 +53,6 @@ The **Port Mode** offers two options:
 
 - **Map Ports**: Manually map container ports to host ports
 - **Expose All**: Automatically map all exposed ports in the image to random host ports
-
-![Port Mapping](/images/container/container-create-port.png)
 
 In **Map Ports** mode, each rule contains an optional bind IP, a host port range (start/end), a container port range (start/end), and a protocol (TCP or UDP). To map a single port, set the start and end values to the same number.
 
@@ -76,6 +80,13 @@ In the **Environment** tab you can set the following:
 - **Startup Commands**: Override the image's default **Command** (CMD) and **Entrypoint** (ENTRYPOINT)
 - **Container Labels**: Custom labels attached to the container in `KEY=VALUE` form
 
+Before submitting, choose how the operation runs:
+
+- **Foreground** keeps the dialog open and streams image-pull and container-creation output.
+- **Background** creates a panel task. You may leave the page and follow the result under **Tasks > Panel Tasks**.
+
+These modes are not interchangeable: foreground output belongs to the current browser operation, while a background operation is owned by the task queue.
+
 ## Container Operations
 
 ### Batch Operations
@@ -96,6 +107,8 @@ After selecting multiple containers, you can perform batch operations:
 - **Logs**: View container runtime logs
 - **Rename**: Modify container name
 - **More**: A dropdown with Start, Stop, Restart, Force Stop, Pause, Resume, and Delete actions
+
+The real-time log viewer shows its connection state and can load older lines, search the loaded text, jump between matches, toggle wrapping, copy all loaded output, and enter full screen. Search covers only the history already loaded in the dialog. See [Logs](../log) for the shared viewer behavior.
 
 ## Cleanup Containers
 

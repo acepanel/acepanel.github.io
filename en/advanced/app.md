@@ -1,18 +1,17 @@
 # Application
 
+![Installed applications and runtimes](/images/app/app.png)
+
 The application module is one of the core features of AcePanel, used to manage various software on the server. Through the application module, you can conveniently install, configure, and manage common software such as Web servers, databases, runtime environments, etc.
 
 ## Feature Categories
 
-The application module is divided into three parts:
+The **Apps** page has four tabs:
 
+- **Installed**: Native applications and runtimes already installed on the server, with their current status and management actions.
 - **Native Applications**: Software installed directly on the system, such as Nginx, MySQL, Redis, etc.
 - **Runtime Environments**: Runtime environments for various programming languages, such as PHP, Node.js, Python, Go, Java, and .NET
 - **Container Templates**: One-click deployment templates based on Docker, for quickly deploying various applications
-
-In addition, the application page provides an **Installed** tab, which lists all installed native applications and runtime environments together with their running status, making it easy to manage, update, or uninstall them in one place.
-
-![Application List](/images/app/app-list.png)
 
 ## Native Application vs Container Template
 
@@ -48,3 +47,7 @@ The button is hidden on the **Installed** tab, and the operation is unavailable 
 - [Native Applications](./app/native) - Learn how to install and manage native applications
 - [Runtime Environments](./app/environment) - Learn how to install programming language runtime environments
 - [Container Templates](./app/template) - Learn how to use container templates to quickly deploy applications
+- [FRP Manager](./app/frp) - Configure Frps, Frpc, proxies, and Visitors
+- [Fail2ban Manager](./app/fail2ban) - Manage jails, bans, and allowlists
+- [Rsync Manager](./app/rsync) - Publish authenticated rsync modules
+- [Supervisor Manager](./app/supervisor) - Manage long-running processes

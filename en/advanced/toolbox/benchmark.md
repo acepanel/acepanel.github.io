@@ -1,8 +1,8 @@
 # Benchmark Test
 
-The benchmark feature is used to test the CPU, memory, and disk performance of the server, helping you understand the actual performance of your server.
+![Benchmark](/images/toolbox/benchmark.png)
 
-![Benchmark Test](/images/toolbox/toolbox-benchmark.png)
+The benchmark feature is used to test the CPU, memory, and disk performance of the server, helping you understand the actual performance of your server.
 
 ## Test Items
 
@@ -39,6 +39,8 @@ Benchmark results are for reference only. Due to system resource scheduling, cac
 :::
 
 ## Testing Recommendations
+
+CPU, memory, and especially disk benchmarks create temporary load and can compete with websites, databases, containers, and backups. Run them during a maintenance window, one test at a time, with enough free disk space. Do not benchmark a production database volume during peak traffic.
 
 1. Close unnecessary services and processes before testing
 2. Avoid testing during peak business hours

@@ -1,5 +1,7 @@
 # Certificate Management
 
+![Create a certificate](/images/cert/cert.png)
+
 The certificate management page is used to apply for, upload, and manage SSL/TLS certificates.
 
 The **Certificate** page is divided into three tabs:
@@ -11,8 +13,6 @@ The **Certificate** page is divided into three tabs:
 ## Certificate List
 
 Go to the **Certificate** page, which displays the certificate list by default.
-
-![Certificate List](/images/cert/cert-list.png)
 
 The list displays the following information:
 
@@ -33,12 +33,12 @@ Click the **Create Certificate** button to create a new certificate record. Crea
 
 - **Domain**: Domains to apply certificate for, supports multiple domains
 - **Key Type**: EC 256, EC 384, RSA 2048, or RSA 4096 (defaults to EC 256)
-- **Website**: Website associated with this certificate (used for automatic deployment and HTTP verification)
+- **Websites**: One or more websites associated with this certificate for HTTP verification and deployment. Use the domain-match action to select websites whose domains are covered by the certificate
 - **Account**: ACME account associated with this certificate
 - **DNS**: DNS account associated with this certificate (selecting a DNS account uses DNS verification)
 - **DNS Alias**: Only shown when a DNS account is selected. Maps an original domain to an alias record for DNS-01 CNAME delegation, allowing the ACME challenge to be validated against a different (delegated) zone
 
-You can either select a **Website** or **DNS** for automatic issuance and deployment, or manually enter domain names and set up DNS resolution yourself before issuing.
+You can associate several websites with one certificate. AcePanel issues the certificate for its complete domain list and deploys the result to every selected website. The domain used to access the panel can also be included in an ACME certificate when its validation requirements are satisfied.
 
 ### Domain Format
 
@@ -76,7 +76,7 @@ After a certificate has been issued or uploaded, there are two ways to apply it 
 
 Click the **Deploy** button in the certificate list:
 
-1. Select one or more **Websites** to deploy the certificate to
+1. Select one or more **Websites**, or use domain matching to select covered sites
 2. Toggle **Enable HTTPS** if you want HTTPS enabled on the selected websites
 3. Submit
 
@@ -116,6 +116,8 @@ Click the **Modify** button to edit the certificate's domains, key type, associa
 ### Delete Certificate
 
 Click the **Delete** button to delete the certificate. A confirmation is required.
+
+Deleting a website automatically removes that website from the certificate association; it does not delete a certificate still used by another website. When HTTPS is enabled, the IPv6 `443` listener follows the default configured under [Website Settings](../website/setting).
 
 ## ACME Accounts
 

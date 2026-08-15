@@ -151,13 +151,27 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     return [
         {
+            text: "Home",
+            link: '/home'
+        },
+        {
             text: "Apps",
             collapsed: true,
             items: [
                 { text: "Overview", link: '/app' },
                 { text: "Native Apps", link: '/app/native' },
                 { text: "Runtimes", link: '/app/environment' },
-                { text: "Container Templates", link: '/app/template' }
+                { text: "Container Templates", link: '/app/template' },
+                {
+                    text: "Managers",
+                    collapsed: true,
+                    items: [
+                        { text: "FRP", link: '/app/frp' },
+                        { text: "Fail2ban", link: '/app/fail2ban' },
+                        { text: "Rsync", link: '/app/rsync' },
+                        { text: "Supervisor", link: '/app/supervisor' }
+                    ]
+                }
             ]
         },
         {
@@ -180,7 +194,8 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Reverse Proxy", link: '/website/proxy' },
                 { text: "PHP", link: '/website/php' },
                 { text: "Static", link: '/website/static' },
-                { text: "Statistics", link: '/website/stat' }
+                { text: "Statistics", link: '/website/stat' },
+                { text: "Settings", link: '/website/setting' }
             ]
         }, {
             text: "Projects",
@@ -203,6 +218,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "Databases", link: '/database/database' },
                 { text: "Users", link: '/database/user' },
                 { text: "Servers", link: '/database/server' },
+                { text: "pgAdmin", link: '/database/pgadmin' },
                 { text: "Redis", link: '/database/redis' },
                 { text: "Elasticsearch", link: '/database/elasticsearch' }
             ]
@@ -216,8 +232,24 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
                 { text: "DNS", link: '/cert/dns' }
             ]
         }, {
-            text: "Monitor",
-            link: '/monitor'
+            text: "Monitoring",
+            collapsed: true,
+            items: [
+                { text: "System Monitoring", link: '/monitor' },
+                { text: "Alerts", link: '/monitor/alert' },
+                { text: "Settings & Notifications", link: '/monitor/setting' }
+            ]
+        }, {
+            text: "Logs",
+            link: '/log'
+        }, {
+            text: "Security",
+            collapsed: true,
+            items: [
+                { text: "Firewall", link: '/firewall' },
+                { text: "Scan Awareness", link: '/firewall/scan' },
+                { text: "Tamper Protection", link: '/firewall/tamper' }
+            ]
         }, {
             text: "Files",
             link: '/file'
@@ -227,13 +259,6 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
         }, {
             text: "Terminal",
             link: '/ssh'
-        }, {
-            text: "Firewall",
-            collapsed: true,
-            items: [
-                { text: "Overview", link: '/firewall' },
-                { text: "Scan Awareness", link: '/firewall/scan' }
-            ]
         }, {
             text: "Tasks",
             collapsed: true,
@@ -247,13 +272,13 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
             items: [
                 { text: "Overview", link: '/toolbox' },
                 { text: "Processes", link: '/toolbox/process' },
+                { text: "Network", link: '/toolbox/network' },
                 { text: "System", link: '/toolbox/system' },
                 { text: "SSH", link: '/toolbox/ssh' },
                 { text: "Disk", link: '/toolbox/disk' },
                 { text: "Log Cleanup", link: '/toolbox/log' },
                 { text: "Webhooks", link: '/toolbox/webhook' },
                 { text: "Benchmark", link: '/toolbox/benchmark' },
-                { text: "Network", link: '/toolbox/network' },
                 { text: "Migration", link: '/toolbox/migration' },
                 { text: "Panel", link: '/toolbox/panel' }
             ]

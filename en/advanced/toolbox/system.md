@@ -1,37 +1,12 @@
 # System
 
-The system page provides management features for basic server configuration, including DNS, SWAP, hostname, and time settings.
+![System settings](/images/toolbox/system.png)
 
-## DNS
-
-Configure the system's DNS servers.
-
-![DNS Settings](/images/toolbox/toolbox-system-dns.png)
-
-The page shows the current DNS manager detected on the system. If the manager is `resolv.conf`, the panel warns that DNS modifications will revert to default after a system restart.
-
-### Configuration Items
-
-- **DNS1**: Primary DNS server address
-- **DNS2**: Secondary DNS server address
-
-Both DNS1 and DNS2 are required when saving.
-
-### Common DNS Servers
-
-| Provider      | DNS1            | DNS2            |
-|---------------|-----------------|-----------------|
-| Alibaba Cloud | 223.5.5.5       | 223.6.6.6       |
-| Tencent Cloud | 119.29.29.29    | 119.28.28.28    |
-| 114 DNS       | 114.114.114.114 | 114.114.115.115 |
-| Google        | 8.8.8.8         | 8.8.4.4         |
-| Cloudflare    | 1.1.1.1         | 1.0.0.1         |
+The System page manages Swap, hostname, Hosts entries, timezone, manual time, and NTP. Network-interface addresses, gateways, and DNS are configured under [Network](./network).
 
 ## SWAP
 
 Manage the system's SWAP space.
-
-![SWAP Settings](/images/toolbox/toolbox-system-swap.png)
 
 The page displays current SWAP usage:
 
@@ -54,8 +29,6 @@ SWAP can provide additional virtual memory when physical memory is insufficient,
 
 Configure system hostname and Hosts file.
 
-![Host Settings](/images/toolbox/toolbox-system-host.png)
-
 ### System Hostname
 
 Modify the server's hostname, such as `myserver`, `web-01`, etc.
@@ -73,8 +46,6 @@ Common uses:
 ## Time
 
 Configure system timezone and time synchronization.
-
-![Time Settings](/images/toolbox/toolbox-system-time.png)
 
 ### Select Timezone
 

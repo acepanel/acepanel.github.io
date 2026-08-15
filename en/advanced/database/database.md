@@ -1,12 +1,12 @@
 # Database Management
 
+![Create a database](/images/database/database.png)
+
 The database management page is used to create, view, and delete databases.
 
 ## Database List
 
-Go to the **Database** page. Databases are organized into tabs by type: **MySQL**, **PostgreSQL**, **ClickHouse**, **MongoDB**, **SQLite**, **Elasticsearch**, **Redis**, as well as **User** (database users) and **Server** (database servers). The MySQL tab is shown by default.
-
-![Database List](/images/database/database-list.png)
+Go to the **Database** page. A database-type tab is shown only when at least one server of that type exists. **User** and **Server** remain available for managing credentials and server connections.
 
 For the relational and document database tabs (MySQL/PostgreSQL/ClickHouse/MongoDB/SQLite), the list displays the following information:
 
@@ -14,11 +14,13 @@ For the relational and document database tabs (MySQL/PostgreSQL/ClickHouse/Mongo
 - **Server**: The database server it belongs to
 - **Encoding**: Character encoding (MySQL/PostgreSQL only)
 - **Comment**: Remarks (PostgreSQL only). This field is editable inline — type a value and click away (on blur) to save it immediately
-- **Actions**: Delete
+- **Actions**: Open phpMyAdmin or pgAdmin when available, and delete
 
 The **Create Database** button is only available for the MySQL, PostgreSQL, ClickHouse, and MongoDB tabs. SQLite tables are listed read-only here, and Elasticsearch/Redis are managed through their own data views.
 
 The **User** and **Server** tabs are managed through their own pages; see [Database Users](./user.md) and [Database Servers](./server.md) for details.
+
+For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, install and configure [pgAdmin](./pgadmin) first. The management tool uses the panel language.
 
 ## Create Database
 

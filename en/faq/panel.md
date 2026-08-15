@@ -45,10 +45,16 @@ journalctl -u acepanel -n 100
 acepanel info
 ```
 
-This command regenerates **both a new username and a new password**, then prints the new username, the new password, the listening port, the security entrance, and the local/public IPv4 and IPv6 access addresses. Use one of the printed addresses to log back in.
+This command prints the current username, listening port, security entrance, and local/public IPv4 and IPv6 access addresses. After its first run, the password is masked and the account is not changed.
 
-::: warning Note
-Because `acepanel info` resets the username and password every time it runs, the previous credentials become invalid after running it.
+To reset a forgotten password, select the account and request the reset explicitly:
+
+```shell
+acepanel info --username <username> --force
+```
+
+::: warning Password Reset
+`--force` changes the selected account's username and password immediately. Existing credentials become invalid. Omit `--username` only when resetting the first panel user is intended.
 :::
 
 For the full list of command line tool commands (service management, user management, security settings, maintenance, etc.), see [Command Line Tool](../quickstart/cli).

@@ -1,5 +1,7 @@
 # Node.js Project
 
+![Create a Node.js project](/images/project/nodejs.png)
+
 Node.js projects are used to deploy Express, Koa, NestJS, Next.js, and other Node.js applications.
 
 ## Prerequisites

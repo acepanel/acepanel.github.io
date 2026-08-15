@@ -20,10 +20,7 @@ const members = [
   {
     avatar: 'https://weavatar.com/avatar/f6b23deadaa481f0b3ea75ad94f246881ed2326117efebad6f2799ea165779b9',
     name: 'Liang Zai',
-    desc: 'Technical Director',
-    links: [
-      { icon: 'github', link: 'https://github.com/205125' }
-    ]
+    desc: 'Technical Director'
   },
 ]
 </script>

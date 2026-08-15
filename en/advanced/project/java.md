@@ -1,10 +1,12 @@
 # Java Project
 
+![Create a Java project](/images/project/java.png)
+
 Java projects are used to deploy Spring Boot, Tomcat, and other Java applications.
 
 ## Prerequisites
 
-1. Install Java runtime environment: **Applications** > **Runtime Environment** > **Java** (Amazon Corretto, a production-ready OpenJDK distribution)
+1. Install Java runtime environment: **Apps** > **Runtime Environment** > **Java** (Amazon Corretto, a production-ready OpenJDK distribution)
 2. Packaged JAR file or WAR file
 
 ## Deploy Spring Boot Application
@@ -115,7 +117,9 @@ The **Edit** dialog organizes the systemd unit settings into tabs:
 - **Resource Limits**: memory limit (MB, `0` for unlimited) and CPU quota (e.g. `50%`, `200%`)
 - **Security Settings**: `NoNewPrivileges`, `ProtectHome`, `ProtectSystem`, `/tmp` protection, and read-write / read-only path lists
 
-Saving regenerates the underlying systemd unit at `/etc/systemd/system/<project name>.service` and reloads it.
+Saving updates the underlying systemd unit at `/etc/systemd/system/<project name>.service` and reloads it. Java projects include `SuccessExitStatus=143`, so a normal SIGTERM shutdown is not reported as an application failure.
+
+When the project is updated, AcePanel keeps the custom systemd settings configured in the editor. Review the effective unit after moving a project from another server, because AcePanel rewrites the project directory and runtime command for the destination.
 
 ## Process Management
 

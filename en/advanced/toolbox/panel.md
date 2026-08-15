@@ -1,5 +1,9 @@
 # Panel
 
+![Panel runtime diagnostics](/images/toolbox/panel.png)
+
+This page shows runtime diagnostics for the AcePanel Go process, including memory allocation, heap and stack use, garbage collection, and goroutines. These values describe the panel process, not the whole server. Use [System Monitoring](../monitor) and [Processes](./process) for host-wide analysis.
+
 The Panel page exposes the AcePanel process's own Go runtime statistics and live goroutine stack traces. It is mainly useful for diagnosing the panel itself, for example when investigating memory growth, garbage collection behavior, or stuck goroutines.
 
 You can open it from the **Toolbox**, then select the **Panel** tab. The page is split into two sub-tabs: **Runtime** and **Goroutines**. The **Runtime** sub-tab is shown by default.

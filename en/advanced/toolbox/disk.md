@@ -1,10 +1,10 @@
 # Disk
 
+![Disk management](/images/toolbox/disk.png)
+
 The disk page provides disk partition management, LVM logical volume management, SMART disk health, and RAID array status features.
 
 ## Disk Management
-
-![Disk Management](/images/toolbox/toolbox-disk.png)
 
 ### Disk Information
 
@@ -16,6 +16,8 @@ The top of the page displays basic information for each disk:
 - **Partitions**: Number of partitions
 
 The disk that holds the root (`/`) partition is marked with a **System Disk** tag and cannot be initialized or have its partitions unmounted.
+
+The system-disk guard prevents common mistakes but does not make every other disk disposable. Identify a device by model, serial number, capacity, partitions, and mount use before a destructive action.
 
 ### Partition List
 
@@ -61,6 +63,8 @@ Initialize the entire disk as a single partition:
 - **Disk**: Select the disk to initialize
 - **File System Type**: ext4, ext3, xfs, or btrfs
 
+After formatting or initialization, verify the partition table, filesystem type, mount point, ownership, free space, and a reboot with the intended `fstab` entry.
+
 ### Auto Mount Configuration (fstab)
 
 Display mount configurations in `/etc/fstab`:
@@ -73,13 +77,13 @@ Display mount configurations in `/etc/fstab`:
 
 ## LVM Management
 
-![LVM Management](/images/toolbox/toolbox-disk-lvm.png)
-
 LVM (Logical Volume Manager) provides flexible disk space management with support for dynamic partition resizing.
 
 ### Physical Volume (PV)
 
 Physical volumes are the foundation of LVM, typically a disk partition or an entire disk.
+
+Create in dependency order: **PV → VG → LV → filesystem → mount**. Delete in reverse order. A PV in a VG, a VG containing an LV, or an LV that is mounted or in use must be detached from its dependent layer first.
 
 **Create Physical Volume**:
 
@@ -118,6 +122,12 @@ Dynamically extend the size of a logical volume:
 
 ::: tip Tip
 The advantage of LVM is that logical volumes can be extended online without unmounting partitions or restarting the system.
+:::
+
+**Auto Resize File System** grows a supported filesystem after the LV is extended. If it is disabled or the filesystem is unsupported, the LV can be larger while the mounted filesystem still reports its old size. Verify both the LVM size and `df` output after expansion.
+
+::: danger Destructive disk operations
+Formatting, disk initialization, PV/VG/LV removal, and some RAID actions can permanently destroy data. Keep a tested backup and an out-of-band console. A successful dialog only confirms that the command ran; verify the filesystem, mount, data, and boot behavior afterward.
 :::
 
 ## SMART

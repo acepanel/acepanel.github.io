@@ -1,12 +1,12 @@
 # Server Management
 
+![Database servers](/images/database/server.png)
+
 The server management page is used to manage database server connections, supporting both local and remote database servers. Supported database types are MySQL, PostgreSQL, ClickHouse, MongoDB, SQLite, Elasticsearch, and Redis.
 
 ## Server List
 
 Go to **Database** > **Server** tab to view the server list.
-
-![Server List](/images/database/database-server.png)
 
 The list displays the following information:
 

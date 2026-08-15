@@ -1,8 +1,10 @@
 # SSH
 
+![SSH service settings](/images/toolbox/ssh.png)
+
 The SSH page is used to manage the server's SSH service configuration, including service status, authentication methods, and Root account settings.
 
-![SSH Settings](/images/toolbox/toolbox-ssh.png)
+This page changes the SSH daemon. It is different from the top-level [Terminal](../ssh), which opens local or remote terminal tabs and transfers files through SFTP.
 
 The page is laid out as a service status card at the top, followed by two tabs on the left:
 
@@ -30,7 +32,7 @@ After stopping the SSH service, you will not be able to remotely connect to the 
 
 Modify the port that the SSH service listens on, default is `22`. The port accepts any value between `1` and `65535`. You can click the refresh icon to generate a random port (in the `10000`–`65535` range), then click the **Save** button to apply it. Saving will automatically restart the SSH service.
 
-After modifying the port:
+Before modifying the port, allow the new TCP port in **Security > Port Rules** and in the provider security group. Then:
 
 1. Click the **Save** button
 2. Ensure the firewall has allowed the new port
@@ -44,6 +46,8 @@ Before modifying the port, please ensure the new port is allowed in the firewall
 ### Password Login
 
 Control whether password authentication is allowed for SSH (`PasswordAuthentication`).
+
+Before disabling it, add a tested key for the account you will use and keep the current session open until a fresh key-authenticated session succeeds.
 
 - **Enabled**: Allow password login
 - **Disabled**: Prohibit password login, only key authentication allowed
@@ -69,6 +73,8 @@ Control how the Root user can log in via SSH (maps to the `PermitRootLogin` dire
 - **Disable SSH login** (`no`): Root cannot log in via SSH
 - **Only allow key login** (`prohibit-password`): Root can only log in using keys
 - **Only allow key login with predefined commands** (`forced-commands-only`): Root can only run commands authorized via `authorized_keys`
+
+Changing the root policy or both authentication methods can lock every administrator out. Keep a provider console or another verified sudo-capable account available.
 
 ### Reset Root Password
 

@@ -1,5 +1,7 @@
 # Toolbox
 
+![Toolbox overview](/images/toolbox/overview.png)
+
 The toolbox provides a series of system management tools, including process management, network connections, system information, SSH configuration, disk management, log cleanup, and more.
 
 ## Feature List
@@ -19,13 +21,26 @@ The toolbox is organized into the following tabs:
 | [Migration](./toolbox/migration) | Migrate data to another AcePanel          |
 | [Panel](./toolbox/panel)         | View the panel's runtime information       |
 
-The [Network](./toolbox/network) tab lists all system TCP and UDP connections (including IPv6), showing the protocol type, PID, process name, local and remote addresses, and connection status, with filtering by status, PID, process name, or port.
+## Choose the Right Tool
 
-The [Migration](./toolbox/migration) tab lets you migrate websites, databases, database users, and projects from this server to another AcePanel instance. Connect to the target panel with its address and an API token, run the pre-check, select the items to migrate, and follow the live progress.
+| Need | Open |
+|---|---|
+| Find a high-CPU process, open file, connection, or physical disk I/O source | [Process](./toolbox/process) |
+| Inspect sockets or safely change an interface address, gateway, or DNS | [Network](./toolbox/network) |
+| Manage Swap, host name, Hosts, timezone, time, or NTP | [System](./toolbox/system) |
+| Change the SSH daemon port, authentication, root policy, password, or key | [SSH](./toolbox/ssh) |
+| Partition, format, mount, configure LVM, or inspect SMART and RAID | [Disk](./toolbox/disk) |
+| Estimate and reclaim space used by logs | [Log Cleanup](./toolbox/log) |
+| Expose a controlled script endpoint to Git or CI/CD | [WebHook](./toolbox/webhook) |
+| Measure CPU, memory, or disk performance during a maintenance window | [Benchmark](./toolbox/benchmark) |
+| Move supported resources from AcePanel, BaoTa, or 1Panel | [Migration](./toolbox/migration) |
+| Diagnose AcePanel's Go memory, garbage collection, or goroutines | [Panel](./toolbox/panel) |
+
+The [Network](./toolbox/network) tab lists TCP and UDP connections and safely edits supported NetworkManager, netplan, and ifupdown interface configurations.
+
+The [Migration](./toolbox/migration) tab moves supported websites, databases, users, and projects from AcePanel, BaoTa, or 1Panel.
 
 The [Panel](./toolbox/panel) tab shows the panel's own runtime information, including uptime, Go version, memory and heap statistics, GC metrics, and goroutines, which is useful for diagnostics.
-
-![Toolbox](/images/toolbox/toolbox-process.png)
 
 ## Next Steps
 

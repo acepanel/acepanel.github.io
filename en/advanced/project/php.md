@@ -1,5 +1,7 @@
 # PHP Project
 
+![Create a PHP project](/images/project/php.png)
+
 PHP projects are used to deploy PHP applications that require long-running processes, such as Laravel Octane, Swoole, Workerman, etc.
 
 ::: tip Tip

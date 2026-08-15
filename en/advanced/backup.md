@@ -1,10 +1,10 @@
 # Backup
 
+![Backup management](/images/backup/backup.png)
+
 The backup module is used to backup and restore website files and databases, supporting local backup and remote storage.
 
 ## Backup Page
-
-![Backup Page](/images/backup/backup.png)
 
 ## Backup Types
 
@@ -15,12 +15,15 @@ The backup module supports the following types of backups:
 | Website    | Backup website files                   |
 | MySQL      | Backup Percona/MySQL/MariaDB databases |
 | PostgreSQL | Backup PostgreSQL databases            |
+| ClickHouse | Backup ClickHouse databases            |
+| Redis      | Backup Redis data                      |
+| Valkey     | Backup Valkey data                     |
 
-The MySQL and PostgreSQL tabs only appear when the corresponding database engine is installed.
+Database tabs are shown when a corresponding server is available.
 
 ## Create Backup
 
-1. Select the backup type tab (Website/MySQL/PostgreSQL)
+1. Select the backup type tab (Website/MySQL/PostgreSQL/ClickHouse/Redis/Valkey)
 2. Click **Create Backup**
 3. Select the website (for the Website type) or enter the database name (for database types) to back up
 4. Select the backup storage
@@ -40,16 +43,19 @@ The backup list displays the following information:
 - **Filename**: Backup file name
 - **Size**: Backup file size
 - **Update Date**: Backup time
-- **Actions**: Restore, delete
+- **Actions**: Download, restore, delete
 
 ## Restore Backup
 
 1. Find the backup to restore in the backup list
-2. Click the **Restore** button
-3. In the dialog, select the target website (for the Website type) or enter the target database name (for database types), then click Submit
+2. Click **Restore**
+3. Select the target website or database and submit the task
+4. Follow the restore under **Tasks > Panel Tasks** and review its log before using the restored resource
+
+Website restore recognizes compatible archive layouts created by other server panels. Always review the destination path and site content after importing an external archive.
 
 ::: danger Warning
-The restore operation will overwrite existing data. Please ensure you have backed up current data!
+Restore runs in the background and can overwrite existing data. Back up the current target first. Closing the dialog does not stop the task.
 :::
 
 ## Upload Backup
@@ -59,8 +65,6 @@ Click the **Upload Backup** button to upload local backup files for data restora
 ## Storage Management
 
 Switch to the **Storage** tab to manage backup storage locations.
-
-![Storage Management](/images/backup/backup-storage.png)
 
 ### Local Storage
 
@@ -220,7 +224,7 @@ In addition to the Web interface, backups can be triggered from the [command lin
 # Backup a website by name
 acepanel backup website -n <website_name> [-s <storage_id>]
 
-# Backup a database (type is mysql or postgresql)
+# Backup a database (mysql, postgresql, clickhouse, redis, or valkey)
 acepanel backup database -t <type> -n <database_name> [-s <storage_id>]
 
 # Backup an arbitrary directory

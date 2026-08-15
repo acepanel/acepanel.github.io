@@ -1,12 +1,12 @@
 # User Management
 
+![Database users](/images/database/user.png)
+
 The user management page is used to create and manage database users and set user permissions.
 
 ## User List
 
 Go to **Database** > **User** tab to view the user list. The User tab shows a single list covering all servers (MySQL, PostgreSQL and ClickHouse), regardless of the currently selected database type.
-
-![User List](/images/database/database-user.png)
 
 The list displays the following information:
 

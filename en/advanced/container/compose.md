@@ -1,12 +1,12 @@
 # Compose
 
+![Compose management](/images/container/compose.png)
+
 The compose feature is based on Docker Compose, used to define and run multi-container applications. Describe the application's services, networks, and volumes through a YAML file, then start the entire application with one click.
 
 ## Compose List
 
 Go to **Container** > **Compose** tab to view the compose list.
-
-![Compose List](/images/container/compose-list.png)
 
 The list displays the following information:
 
@@ -23,8 +23,6 @@ The list displays the following information:
 3. Write or paste docker-compose.yml content
 4. Configure environment variables (optional)
 5. Click **Submit**
-
-![Create Compose](/images/container/compose-create.png)
 
 ### docker-compose.yml Example
 
@@ -59,13 +57,9 @@ volumes:
 
 Click the **Start** button and a confirmation dialog will pop up:
 
-![Start Compose](/images/container/compose-start.png)
-
 - **Force Pull Images**: When checked, will pull the latest images before starting
 
 After clicking confirm, a terminal window opens and displays the real-time output of the startup command:
-
-![Startup Progress](/images/container/compose-starting.png)
 
 Starting compose will create and start all defined service containers.
 
@@ -86,8 +80,6 @@ Deleting compose will not delete data volumes. To delete data volumes, please ma
 ### Edit Compose
 
 Click the **Edit** button in the compose list to modify the docker-compose.yml file content and environment variables.
-
-![Edit Compose](/images/container/compose-edit.png)
 
 After modification, you need to restart the compose for changes to take effect.
 

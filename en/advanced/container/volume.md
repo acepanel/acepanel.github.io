@@ -1,12 +1,12 @@
 # Volume
 
+![Container volumes](/images/container/volume.png)
+
 Volumes are Docker-managed data storage used to persist container data. Compared to directly mounting host directories, volumes are managed by Docker, making them more secure and portable.
 
 ## Volume List
 
 Go to **Container** > **Volume** tab to view the volume list.
-
-![Volume List](/images/container/container-volume.png)
 
 The list displays the following information:
 

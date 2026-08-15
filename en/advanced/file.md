@@ -1,10 +1,10 @@
 # File
 
+![File manager](/images/file/file.png)
+
 The file module provides a powerful graphical file manager. The design philosophy is to restore the Windows Explorer operation experience as much as possible, supporting right-click menus, drag-and-drop upload, keyboard shortcuts, and other features.
 
 ## File Manager
-
-![File Manager](/images/file/file-list.png)
 
 ## Core Features
 
@@ -74,8 +74,6 @@ The file list displays the following information:
 
 ### Select Files
 
-![Select Files](/images/file/file-select.png)
-
 After selecting files, batch operation buttons appear at the top:
 
 - **Copy**: Copy selected files
@@ -87,8 +85,6 @@ After selecting files, batch operation buttons appear at the top:
 ### More Actions
 
 Click the **More** button on the file row to display more action options:
-
-![More Actions](/images/file/file-context-menu.png)
 
 - **Copy**: Copy file to another directory
 - **Move**: Move file to another directory
@@ -115,6 +111,10 @@ When you compress one or more entries, the dialog lets you edit the target archi
 | `.tar.zst` | Zstandard-compressed tar     |
 | `.7z`      | 7-Zip archive                |
 
+`.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
+
+Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+
 ## Toolbar
 
 ### New
@@ -132,6 +132,14 @@ Supported upload methods:
 
 - Click to select files for upload
 - **Drag-and-drop Upload**: Directly drag files to the page to upload
+
+Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
+
+### Share
+
+Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
+
+Anyone with the URL can download the file until it expires, reaches its limit, or is cancelled. Do not share backups, private keys, database dumps, configuration files, or logs containing credentials. Cancelling a share prevents future downloads but cannot recall existing copies.
 
 ### Remote Download
 
@@ -162,8 +170,6 @@ Click the **Sort** button to sort the file list by different fields.
 
 AcePanel has a built-in powerful code editor based on Monaco Editor (the same editor core as VS Code).
 
-![File Editor](/images/file/file-editor.png)
-
 ### Editor Features
 
 - **Syntax Highlighting**: Supports syntax highlighting for various programming languages
@@ -182,6 +188,7 @@ AcePanel has a built-in powerful code editor based on Monaco Editor (the same ed
 | `Ctrl+F`       | Search            |
 | `Ctrl+H`       | Replace           |
 | `Ctrl+G`       | Go to line        |
+| `Ctrl+/`       | Toggle a comment in supported configuration files |
 
 ### Editor Toolbar
 
@@ -240,8 +247,6 @@ Clicking **Settings** opens a dialog where the editor behavior can be fine-tuned
 
 Click the **Maximize** button for fullscreen editing to get more editing space:
 
-![Fullscreen Editor](/images/file/file-editor-fullscreen.png)
-
 ### Sidebar File Tree
 
 The left side of the editor displays the file tree of the current directory, allowing you to:
@@ -260,6 +265,12 @@ The editor bottom status bar displays:
 - Cursor position (line, column)
 - Indentation settings (spaces/Tab)
 - File language type
+
+## Tamper Protection
+
+When [Tamper Protection](./firewall/tamper) covers a file or directory, Files shows a lock and its protected or immutable state. Use the inline or context-menu action to add or remove protection.
+
+For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion does not silently unlock protected files and warns that immutable entries cannot be deleted. Review the interception log when an edit, upload, rename, extraction, or deployment is denied.
 
 ## Permission Explanation
 

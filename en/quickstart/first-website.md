@@ -1,5 +1,7 @@
 # First Website: Deploy WordPress
 
+![Create a website](/images/quickstart/website.png)
+
 This article uses WordPress as an example to demonstrate how to quickly set up a PHP website through AcePanel.
 
 ## Install Environment
@@ -14,8 +16,6 @@ Installation progress can be viewed on the "Task" page under the "Panel Tasks" t
 ## Create Website
 
 Go to "Website" -> "PHP", click "Create Website".
-
-![Create Website](/images/quickstart/website-create.png)
 
 ::: tip Website Type
 Entering from the "PHP" tab as above pre-selects the PHP type and hides the type selector. If you instead start from the top-level "All" tab, the form shows an extra **Website Type** selector with three options: **Reverse Proxy**, **PHP**, and **Pure Static**. Choose **PHP** there to get the same fields described below.
@@ -39,8 +39,6 @@ Click the path in the "Directory" column of the website list to enter file manag
 ## Configure Rewrite Rules
 
 Return to the website list, click "Edit", switch to the "Rewrite" tab, select the preset `wordpress` rule and save.
-
-![Rewrite Configuration](/images/quickstart/website-rewrite.png)
 
 ::: tip WordPress Multisite
 If you are running a WordPress multisite network instead of a single site, select the `wordpress-multisite` preset from the same dropdown.

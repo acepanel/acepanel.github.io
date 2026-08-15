@@ -1,12 +1,12 @@
 # Account Management
 
+![ACME accounts](/images/cert/account.png)
+
 The account management page is used to manage ACME accounts. ACME accounts are used to apply for certificates from certificate authorities.
 
 ## Account List
 
 Go to **Certificate** > **Account** tab to view the account list.
-
-![Account List](/images/cert/cert-account.png)
 
 The list displays the following information:
 

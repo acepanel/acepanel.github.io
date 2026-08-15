@@ -1,8 +1,8 @@
 # Security Settings
 
-The security settings page is used to configure panel security-related options to protect the panel from unauthorized access.
+![Security settings](/images/setting/safe.png)
 
-![Security Settings](/images/setting/setting-safe.png)
+The security settings page is used to configure panel security-related options to protect the panel from unauthorized access.
 
 ## Login Timeout
 
@@ -101,6 +101,8 @@ When **Custom Certificate** is selected, two additional text fields appear:
 Both fields are validated when you save; an invalid certificate or private key is rejected and the settings are not applied.
 
 When **ACME (Auto)** or **Self-Signed** is selected, a **Refresh Certificate** / **Regenerate Certificate** button appears next to the Save button, allowing you to manually re-issue the certificate. After re-issuing, the page reloads automatically after a few seconds.
+
+When the panel is bound to a domain, that domain can be used for ACME issuance. Confirm that DNS and the required validation path reach this server before requesting the certificate.
 
 ::: tip Note
 The **Refresh Certificate** / **Regenerate Certificate** button stays disabled while there are unsaved changes to the HTTPS mode or Panel Public IP. Save your changes first, then click the button to re-issue the certificate.

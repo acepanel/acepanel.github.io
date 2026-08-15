@@ -1,5 +1,7 @@
 # Runtime Environment
 
+![Runtime environments](/images/app/environment.png)
+
 Runtime environments are used to install runtimes for various programming languages, providing execution environments for websites and projects.
 
 ## Supported Languages
@@ -17,20 +19,18 @@ AcePanel supports runtime environments for the following programming languages:
 
 ## Runtime Environment List
 
-Go to the **Applications** page, click the **Runtime Environment** tab to view available runtime environments:
-
-![Runtime Environment](/images/app/app-runtime.png)
+Go to the **Apps** page, click the **Runtime Environment** tab to view available runtime environments:
 
 Click the language category at the top to filter versions for a specific language, or use the search box on the right to search by name or description:
 
-![PHP Runtime Environment](/images/app/app-runtime-php.png)
-
 ## Install Runtime Environment
 
-1. Go to the **Applications** page
+1. Go to the **Apps** page
 2. Click the **Runtime Environment** tab
 3. Select the desired language category (or view all)
 4. Click the **Install** button for the corresponding version
+
+When the runtime offers them, the install dialog also accepts a **Pre-execution Script** and **Custom Compile Parameters**. Leave them empty unless the build needs a known dependency, mirror, patch, or compiler option. The script runs with installation privileges, so review it before submitting the task.
 
 ::: tip Version Selection Recommendations
 
@@ -43,8 +43,6 @@ Click the language category at the top to filter versions for a specific languag
 
 Installed runtime environments will display a **Manage** button. Click to enter the management page:
 
-![Runtime Environment Management](/images/app/app-runtime-manage.png)
-
 ### Running Status
 
 Displays the current status of the runtime environment, providing operations such as start, stop, restart, and reload.
@@ -53,9 +51,7 @@ Displays the current status of the runtime environment, providing operations suc
 
 PHP runtime environment provides module management functionality, allowing installation or uninstallation of various PHP modules:
 
-![PHP Module Management](/images/app/app-runtime-modules.png)
-
-The Module Management tab lists every available module with its name, description, and an **Install** / **Delete** action. Installing or uninstalling a module is submitted as a background task; check the result in **Background Tasks**.
+The Module Management tab lists every available module with its name, description, and an **Install** / **Delete** action. Installing or uninstalling a module is submitted as a background task; check the result in **Tasks > Panel Tasks**.
 
 A wide catalog of modules is available, including (but not limited to):
 

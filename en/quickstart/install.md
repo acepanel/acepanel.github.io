@@ -70,8 +70,14 @@ Check the cloud server security group and firewall settings to ensure the panel 
 
 **Forgot username/password/address**
 
-Use the command line tool to reset:
+Display the current access information:
 
 ```shell
 acepanel info
+```
+
+If the password is unknown, reset the selected account explicitly:
+
+```shell
+acepanel info --username <username> --force
 ```

@@ -1,6 +1,8 @@
 # Panel Tasks
 
-Panel tasks display background tasks executed by AcePanel, such as application installation, environment installation, etc.
+![Panel tasks](/images/task/panel.png)
+
+Panel Tasks contains long-running work submitted to AcePanel's queue, including application and runtime changes, backups and restores, file compression and extraction, and background container operations.
 
 The **Tasks** page has two tabs: **Scheduled Tasks** (shown by default) and **Panel Tasks**. This page only covers **Panel Tasks**. For time-based jobs such as scheduled backups or scripts, see [Scheduled Tasks](./schedule.md).
 
@@ -8,15 +10,13 @@ The **Tasks** page has two tabs: **Scheduled Tasks** (shown by default) and **Pa
 
 Go to **Tasks** > **Panel Tasks** tab to view the panel task list.
 
-![Panel Tasks](/images/task/task-panel.png)
-
 The list displays the following information:
 
 - **Task Name**: Task description
 - **Status**: Waiting/Running/Completed/Failed
 - **Creation Time**: Task creation time
 - **Completion Time**: Task end time
-- **Actions**: View logs, delete
+- **Actions**: View logs, cancel, delete
 
 ## Task Status
 
@@ -26,6 +26,7 @@ The list displays the following information:
 | Running   | Task is being executed               |
 | Completed | Task executed successfully           |
 | Failed    | Task execution failed                |
+| Canceled  | A waiting or running task was cancelled |
 
 ## Common Task Types
 
@@ -66,7 +67,13 @@ Click the **Logs** button to view detailed execution logs of the task, including
 - Command output
 - Error messages
 
-Logs are streamed in real time, so you can follow the progress of a running task. You can also clear the current log from within the log window. The **Logs** button is unavailable while a task is still in the **Waiting** state.
+Logs are streamed in real time. The viewer can load history, search loaded text, jump between matches, toggle wrapping, copy, and enter full screen. The **Logs** button is unavailable while a task is still waiting. See [Logs](../log) for the shared viewer behavior.
+
+## Cancel Task
+
+Waiting and running tasks provide **Cancel**. Cancelling a waiting task removes it from execution. Cancelling a running task asks the worker to stop and runs the task's cleanup action when one is defined.
+
+Cancellation is not a rollback. A pull, restore, extraction, or installer may already have written files or changed a service. Read the log and inspect the affected resource before retrying.
 
 Logs are very useful for troubleshooting task failure causes.
 
@@ -76,7 +83,7 @@ If logs fail to load, disable any ad blockers in your browser.
 
 ## Delete Task
 
-Only completed or failed tasks can be deleted. Waiting and running tasks cannot be deleted.
+Only finished, failed, or canceled tasks can be deleted. Cancel a waiting or running task first.
 
 ::: tip Tip
 Deleting a task only removes the record from the list, it does not affect installed applications or environments.

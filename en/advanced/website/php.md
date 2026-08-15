@@ -1,5 +1,7 @@
 # PHP Website
 
+![PHP website settings](/images/website/php.png)
+
 PHP websites are used to run PHP programs, such as WordPress, Laravel, ThinkPHP, etc.
 
 ## Prerequisites
@@ -7,7 +9,7 @@ PHP websites are used to run PHP programs, such as WordPress, Laravel, ThinkPHP,
 Before creating a PHP website, you need to install:
 
 1. **Web Server**: Nginx, OpenResty, or Apache
-2. **PHP Runtime Environment**: Install the required PHP version in **Applications** > **Runtime Environments**
+2. **PHP Runtime Environment**: Install the required PHP version in **Apps** > **Runtime Environments**
 
 ## Create PHP Website
 
@@ -29,17 +31,15 @@ Before creating a PHP website, you need to install:
 
 Click the **Edit** button in the website list to enter the edit page.
 
+You can change this website to reverse proxy or pure static from its basic settings. Domains, listeners, files, and other shared fields are kept, while the PHP runtime, rewrite, and other PHP-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site and record its PHP settings before converting.
+
 ### Domain and Listen
 
 Configure the website's domain and listening port.
 
-![Domain and Listen Configuration](/images/website/website-php-edit.png)
-
 ### Basic Settings
 
 Configure basic information such as website directory and PHP version.
-
-![Basic Settings](/images/website/website-php-basic.png)
 
 - **Website Directory**: Absolute path where website files are stored
 - **Running Directory**: Frameworks like Laravel need to set the running directory
@@ -51,11 +51,7 @@ Configure basic information such as website directory and PHP version.
 
 Rewrite is used for URL rewriting, supporting preset rules for common PHP programs.
 
-![Rewrite Configuration](/images/website/website-php-rewrite.png)
-
 Click the preset dropdown to select rewrite rules for common programs:
-
-![Rewrite Presets](/images/website/website-php-rewrite-preset.png)
 
 The panel ships the following 27 built-in presets:
 
@@ -136,7 +132,7 @@ Switching PHP versions may cause program incompatibility. Please verify in a tes
 
 ## PHP Management Page
 
-Go to **Applications** > **Operating Environment**, click **Manage** on the installed PHP version to open the PHP management page. It provides the following tabs:
+Go to **Apps** > **Operating Environment**, click **Manage** on the installed PHP version to open the PHP management page. It provides the following tabs:
 
 - **Running Status**: Shows the running state of the `php-fpm-<version>` service with start/stop/restart/reload controls. Two extra actions are available here:
     - **Set as CLI Default Version**: Make this PHP version the default `php` command in the system CLI

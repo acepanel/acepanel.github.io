@@ -1,5 +1,7 @@
 # Container
 
+![Container overview](/images/container/overview.png)
+
 The container module provides complete Docker container management functionality, including management of containers, compose, images, networks, and volumes.
 
 ## Prerequisites
@@ -20,8 +22,6 @@ The container module is divided into five parts:
 | [Image](./container/image)         | Manage local images                                      |
 | [Network](./container/network)     | Manage Docker networks                                   |
 | [Volume](./container/volume)       | Manage data volumes                                      |
-
-![Container List](/images/container/container-list.png)
 
 ## Quick Start
 

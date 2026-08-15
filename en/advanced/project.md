@@ -1,5 +1,7 @@
 # Project
 
+![Project overview](/images/project/overview.png)
+
 The project module is used to manage backend applications, supporting multiple languages including Go, Java, Node.js, PHP, Python, .NET, etc. Projects run as system services, supporting automatic restart, auto-start on boot, and other features.
 
 ## Project Types
@@ -13,8 +15,6 @@ The project module is used to manage backend applications, supporting multiple l
 | [Python](./project/python)   | Python projects         | Django, Flask, FastAPI, etc. |
 | [.NET](./project/dotnet)     | .NET projects           | ASP.NET Core, Blazor, gRPC   |
 | [General](./project/general) | Other types of projects | Any executable program       |
-
-![Project List](/images/project/project-list.png)
 
 ## Project vs Website
 
@@ -30,8 +30,6 @@ The project module is used to manage backend applications, supporting multiple l
 1. Go to the **Project** page
 2. Click **Create Project**
 
-![Create Project](/images/project/project-create.png)
-
 ### Configuration Items
 
 - **Project Name**: Project identifier, used as service name (letters, numbers, underscores, and hyphens only)
@@ -44,7 +42,7 @@ The project module is used to manage backend applications, supporting multiple l
 
 When you open the create dialog from a language-specific tab (Go, Java, Node.js, PHP, Python, or .NET), additional helper fields appear to assist you in composing the **Start Command**:
 
-- **Version selection**: Pick an installed runtime version for the chosen language. Only versions actually installed under **Applications** > **Runtime Environment** are listed.
+- **Version selection**: Pick an installed runtime version for the chosen language. Only versions actually installed under **Apps** > **Runtime Environment** are listed.
 - **Framework**: Select a framework preset. Choosing a preset (anything other than **Custom**) auto-fills the **Start Command** in the form `<runtime><version> <preset command>` (for example `python3.12 -m flask run --host=0.0.0.0`). The generated command remains fully editable.
 - **Go Run Mode** (Go only): Choose between **Source Code** and **Binary**.
     - **Source Code**: Select a **Go Version** and an **Entry File** (e.g. `main.go`, `cmd/server/main.go`); the start command becomes `go<version> run <entry file>`.
@@ -92,8 +90,6 @@ Click the **Edit** button in the project list to modify project configuration. T
 
 Configure basic project information:
 
-![Basic Settings](/images/project/project-edit-basic.png)
-
 - **Project Name**: Project identifier, used as service name
 - **Description**: Project description information
 - **Project Directory**: Directory where project files are located
@@ -103,8 +99,6 @@ Configure basic project information:
 ### Run Settings
 
 Configure project runtime parameters:
-
-![Run Settings](/images/project/project-edit-run.png)
 
 - **Start Command**: Command to start the project
 - **Pre-start Command**: Command to run before starting (optional)
@@ -124,8 +118,6 @@ Configure project runtime parameters:
 
 Configure service dependencies to control startup order:
 
-![Dependencies](/images/project/project-edit-deps.png)
-
 - **Requires**: Strong dependencies, if these services are unavailable, the project will fail
 - **Wants**: Weak dependencies, if these services fail, the project will still start
 - **After**: Start this project after the specified services
@@ -137,16 +129,12 @@ Common services: `network.target`, `mysqld.service`, `postgresql.service`, `redi
 
 Set resource limits to prevent services from consuming too many system resources:
 
-![Resource Limits](/images/project/project-edit-resource.png)
-
 - **Memory Limit**: Limit the maximum memory used by the project, 0 means unlimited
 - **CPU Quota**: Limit CPU usage, 100% = 1 CPU core
 
 ### Security Settings
 
 Security options to enhance service isolation:
-
-![Security Settings](/images/project/project-edit-security.png)
 
 - **No New Privileges**: Prevent the process from gaining new privileges
 - **Protect /tmp**: Create a private /tmp directory for the service

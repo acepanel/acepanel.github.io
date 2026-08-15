@@ -1,27 +1,28 @@
 # Database
 
+![Database overview](/images/database/overview.png)
+
 The database module is used to manage relational databases (MySQL, MariaDB, PostgreSQL, etc.), NoSQL and analytical databases (MongoDB, ClickHouse), search engines (Elasticsearch), key-value stores (Redis), and embedded databases (SQLite). It supports creating databases, managing users, browsing data, and configuring database servers.
 
 ## Prerequisites
 
 Before using the database feature, you need to install the corresponding database software first:
 
-1. Go to **Applications** > **Native Applications**
+1. Go to **Apps** > **Native Applications**
 2. Install the database you need, such as Percona, MySQL, MariaDB, PostgreSQL, MongoDB, ClickHouse, Elasticsearch, OpenSearch, Redis, or Valkey
 
 ## Feature Overview
 
-The database module is organized into one tab per database type (MySQL, PostgreSQL, ClickHouse, MongoDB, SQLite, Elasticsearch, Redis), followed by two management tabs:
+The database module adds a type tab only when at least one server of that type exists. The available type tabs are followed by **User** and **Server**:
 
 | Feature                         | Description                                        |
 |---------------------------------|----------------------------------------------------|
 | [Database](./database/database) | Create and manage databases for the selected type  |
 | [User](./database/user)         | Manage database users and permissions              |
 | [Server](./database/server)     | Manage database server connections                 |
+| [pgAdmin](./database/pgadmin)   | Open and maintain the PostgreSQL Web management tool |
 
 The Elasticsearch and Redis tabs provide an online data browser for managing indices/documents and key-value data directly, rather than the create-database workflow.
-
-![Database List](/images/database/database-list.png)
 
 ## Supported Databases
 
@@ -63,6 +64,8 @@ User management is only available for MySQL, PostgreSQL, and ClickHouse. Other d
 :::
 
 ## Connect to Database
+
+The MySQL database list can open phpMyAdmin and lets you choose the MySQL server to connect to. The PostgreSQL list opens pgAdmin after it is installed. Both tools follow the panel language. Keep their ports private or restricted with an allowlist.
 
 ### Local Connection
 

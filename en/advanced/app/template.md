@@ -1,20 +1,20 @@
 # Container Templates
 
+![Container templates](/images/app/template.png)
+
 Container templates provide Docker-based one-click deployment solutions for quickly deploying various common applications without manual configuration.
 
 ## Prerequisites
 
 Before using container templates, you need to install Docker first:
 
-1. Go to **Applications** > **Native App**
+1. Go to **Apps** > **Native App**
 2. Find Docker, click **Install**
 3. Wait for installation to complete
 
 ## Template List
 
-Go to the **Applications** page, click the **Container Template** tab to view available templates:
-
-![Container Template List](/images/app/app-template.png)
+Go to the **Apps** page, click the **Container Template** tab to view available templates:
 
 You can filter templates by category tags or search by name, description, or website. Templates loaded from the local `panel/storage/templates` directory are shown with a **Local** tag. If a local template and a remote template share the same slug, the local one takes precedence.
 
@@ -24,16 +24,12 @@ Click the **Deploy** button on the template card to start the deployment wizard.
 
 ### Step 1: Select Deployment Mode
 
-![Select Deployment Mode](/images/app/app-template-deploy-step1.png)
-
 - **Create New Compose**: Create a new Docker Compose from the template
 - **Update Existing Compose**: Use the template to update an existing compose configuration
 
 ### Step 2: Configure Parameters
 
 Fill in configuration information according to application requirements:
-
-![Configure Parameters](/images/app/app-template-deploy-step2.png)
 
 Common configuration items:
 
@@ -59,8 +55,6 @@ In update mode, after you select an existing compose its current `.env` values a
 
 Preview the generated Docker Compose configuration file:
 
-![Preview Configuration](/images/app/app-template-deploy-step3.png)
-
 Here you can:
 
 - View and edit the **Compose File** (docker-compose.yml). In update mode this is a diff editor: the left side shows the original compose and the right side shows the new compose, which you can edit.
@@ -71,8 +65,6 @@ Here you can:
 This step shows a summary of your choices: the deploy mode, compose name, whether Auto Start is enabled, whether Auto Firewall is enabled (create mode only), and the number of environment variables. You can expand **Compose Content** to review the final, read-only compose one more time.
 
 After confirming all configurations are correct, click **Create** (or **Update** in update mode) to complete deployment:
-
-![Confirm Deployment](/images/app/app-template-deploy-step4.png)
 
 In create mode the panel writes the deployment to `<root>/compose/<name>/`, generating both a `docker-compose.yml` and a `.env` file built from your environment variables. You can later edit either file from the **Containers** > **Compose** page.
 

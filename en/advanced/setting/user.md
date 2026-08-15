@@ -1,8 +1,8 @@
 # User Management
 
-The **User** tab on the panel settings page is used to manage panel login users.
+![User settings](/images/setting/user.png)
 
-![User Management](/images/setting/setting-user.png)
+The **User** tab on the panel settings page is used to manage panel login users.
 
 ## User List
 
@@ -19,8 +19,6 @@ The list displays information for all panel users:
 
 Click the **Create User** button to add a new user:
 
-![Create User](/images/setting/setting-user-create.png)
-
 Fill in the following information:
 
 - **Username**: Login username. It must be unique and may only contain letters, numbers, underscores (`_`), and hyphens (`-`).
@@ -32,6 +30,8 @@ Fill in the following information:
 ### Access Tokens
 
 Manage API access tokens used to call the panel API on behalf of the user.
+
+Access tokens are also used when this server is the destination of an [AcePanel-to-AcePanel migration](../toolbox/migration). For a custom integration, follow the [Panel API](../api) signing rules.
 
 Click **Access Tokens** to open the token manager, where you can create, modify, and delete tokens. The token list shows the token **ID**, **Creation Time**, and **Expiration Time**.
 
@@ -45,6 +45,8 @@ Use the **Modify** action on an existing token to update its IP white list and e
 ::: warning Note
 The token value is only displayed once when it is created, please save it before closing the dialog.
 :::
+
+For migration, add the source server's outbound IP address—not the address of the administrator's browser—to the allowlist. Delete temporary tokens after the migration completes.
 
 ### Passkeys
 

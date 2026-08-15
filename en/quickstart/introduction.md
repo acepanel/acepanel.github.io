@@ -1,5 +1,7 @@
 # Product Introduction
 
+![AcePanel home dashboard](/images/home/home.png)
+
 AcePanel is an open-source server operation and maintenance management panel.
 
 ## Features
@@ -25,7 +27,15 @@ Windows Explorer-like operation experience, supports shortcuts, batch operations
 
 **Backup and Recovery**
 
-One-click backup and recovery for websites and databases, supports scheduled backups and remote storage.
+Backup and recovery for websites, MySQL, PostgreSQL, ClickHouse, Redis, and Valkey, with scheduled tasks and local, S3, SFTP, or WebDAV storage.
+
+**Monitoring and Security**
+
+Historical system monitoring, configurable alerts, SMTP and event notifications, firewall rules, scan awareness, and Linux tamper protection.
+
+**Containers and Projects**
+
+Docker or Podman containers, Compose, images, networks, volumes, and systemd-managed Go, Java, Node.js, PHP, Python, .NET, and general projects.
 
 ## Comparison
 

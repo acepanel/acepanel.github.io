@@ -1,5 +1,7 @@
 # Certificate
 
+![Certificate overview](/images/cert/overview.png)
+
 The certificate module is used to manage SSL/TLS certificates, supporting automatic free certificate application through the ACME protocol, as well as uploading your own certificates.
 
 ## Feature Overview
@@ -11,8 +13,6 @@ The certificate module is divided into three parts:
 | [Certificate](./cert/cert) | Manage SSL certificates      |
 | [Account](./cert/account)  | Manage ACME accounts         |
 | [DNS](./cert/dns)          | Manage DNS API configuration |
-
-![Certificate List](/images/cert/cert-list.png)
 
 ## Certificate Types
 

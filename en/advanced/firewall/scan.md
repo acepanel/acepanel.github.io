@@ -1,6 +1,8 @@
 # Scan Awareness
 
-Scan Awareness uses eBPF to passively detect inbound port scans against your server, record them, and optionally block offending IP addresses automatically. It helps you understand who is probing your server, which ports they target, and where they come from.
+![Scan awareness](/images/security/scan.png)
+
+Scan Awareness uses eBPF to passively detect inbound port scans against your server, record them, and optionally block offending IP addresses automatically. Open **Security > Scan Awareness**.
 
 ::: warning
 Scan Awareness relies on the Linux eBPF subsystem (TC ingress). It is only available on Linux servers with a recent enough kernel. On unsupported platforms the detector will simply not start, and no scan data will be collected.
@@ -10,6 +12,8 @@ Scan Awareness relies on the Linux eBPF subsystem (TC ingress). It is only avail
 
 When enabled, the panel attaches a lightweight eBPF program to your network interfaces and inspects inbound packets directly in the kernel:
 
+The program attaches at TC ingress, before the system firewall's normal drop decision. A packet can therefore appear in Scan Awareness even when `firewalld` or `ufw` successfully blocks it later. A scan record is evidence that the packet reached the network interface, not evidence that the firewall allowed it to reach a service.
+
 - For **TCP**, only SYN packets (new connection attempts) are treated as potential scans.
 - For **UDP**, response traffic from well-known service source ports (such as DNS `53`/`853`, NTP `123`, DHCP `67`/`68`/`546`/`547`, HTTPS/QUIC `443`, mDNS `5353`, and IKE/IPsec `500`/`4500`) is ignored, since it is almost always a reply to your own outbound requests.
 - Connection attempts to ports where a service is **actually listening** are skipped. The detector keeps an up-to-date list of your listening ports and only records attempts to closed or unused ports as scans.
@@ -18,9 +22,9 @@ Detected events are aggregated in memory and periodically written to a dedicated
 
 ## Opening the Page
 
-Scan Awareness lives inside the **Firewall** module:
+Scan Awareness lives inside the **Security** module:
 
-1. Go to **Firewall** in the main navigation.
+1. Go to **Security** in the main navigation.
 2. Open the **Scan Awareness** tab to view the dashboard and events.
 3. Open the **Settings** tab to configure the feature.
 
@@ -28,7 +32,7 @@ If Scan Awareness has not been enabled yet, the Scan Awareness tab shows a notic
 
 ## Scan Settings
 
-All options below are configured under **Firewall** -> **Settings**, in the Scan Awareness section. Click **Save** to apply your changes.
+All options below are configured under **Security > Settings**, in the Scan Awareness section. Click **Save** to apply your changes.
 
 ### Scan Awareness
 
