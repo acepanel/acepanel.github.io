@@ -1,12 +1,12 @@
 # 容器管理
 
+![Container details](/images/container/container.png)
+
 容器是 Docker 的核心概念，是镜像的运行实例。 通过容器管理页面，你可以创建、启动、停止和管理容器。
 
 ## 容器列表
 
 进入 **容器** 页面，默认显示容器列表。
-
-![容器列表](/images/container/container-list.png)
 
 列表显示以下信息：
 
@@ -17,11 +17,17 @@
 - **运行状态**：详细的运行状态信息
 - **操作**：终端、日志、重命名等
 
+## Inspect and Edit a Container
+
+Click a container name or **Details** to open its information dialog. It shows the effective image, command, state, restart policy, ports, mounts, environment variables, labels, networks, resource settings, and the raw Docker/Podman `inspect` result. Use the raw view when the summarized fields are not enough for troubleshooting.
+
+Use **Edit** to change a supported setting on an existing container. Review mounts, ports, and environment variables before saving because recreating a container can interrupt the service. Data stored only in the writable container layer can be lost when a container is replaced; keep persistent data in a volume or host mount.
+
+Continuous adjacent port mappings are combined in the list to make ranges easier to read. Open the details dialog to inspect the exact underlying mappings.
+
 ## 创建容器
 
 点击 **创建容器** 按钮打开创建对话框。
-
-![创建容器](/images/container/container-create.png)
 
 ### 基本设置
 
@@ -47,8 +53,6 @@
 
 - **映射端口**：手动将容器端口映射到主机端口
 - **暴露全部**：自动将镜像中所有暴露的端口映射到随机主机端口
-
-![端口映射](/images/container/container-create-port.png)
 
 在 **映射端口** 模式下，每条规则包含一个可选的绑定 IP、一个主机端口范围（起始/结束）、一个容器端口范围（起始/结束）以及协议（TCP 或 UDP）。 若要映射单个端口，将起始值和结束值设为相同的数字即可。
 
@@ -76,6 +80,13 @@
 - **启动命令**：覆盖镜像默认的 **命令** (CMD) 和 **入口点** (ENTRYPOINT)
 - **容器标签**：附加到容器上的自定义标签，格式为 `KEY=VALUE`
 
+Before submitting, choose how the operation runs:
+
+- **Foreground** keeps the dialog open and streams image-pull and container-creation output.
+- **Background** creates a panel task. You may leave the page and follow the result under **Tasks > Panel Tasks**.
+
+These modes are not interchangeable: foreground output belongs to the current browser operation, while a background operation is owned by the task queue.
+
 ## 容器操作
 
 ### 批量操作
@@ -96,6 +107,8 @@
 - **日志**：查看容器运行日志
 - **重命名**：修改容器名称
 - **更多**：包含启动、停止、重启、强制停止、暂停、恢复和删除操作的下拉菜单
+
+The real-time log viewer shows its connection state and can load older lines, search the loaded text, jump between matches, toggle wrapping, copy all loaded output, and enter full screen. Search covers only the history already loaded in the dialog. See [Logs](../log) for the shared viewer behavior.
 
 ## 清理容器
 

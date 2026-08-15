@@ -1,12 +1,12 @@
 # 資料庫管理
 
+![Create a database](/images/database/database.png)
+
 資料庫管理頁面用於建立、檢視與刪除資料庫。
 
 ## 資料庫清單
 
-前往 **資料庫** 頁面。 資料庫會依類型組織成不同分頁：**MySQL**、**PostgreSQL**、**ClickHouse**、**MongoDB**、**SQLite**、**Elasticsearch**、**Redis**，以及 **使用者**（資料庫使用者）與 **伺服器**（資料庫伺服器）。 預設顯示 MySQL 分頁。
-
-![資料庫清單](/images/database/database-list.png)
+前往 **資料庫** 頁面。 A database-type tab is shown only when at least one server of that type exists. **User** and **Server** remain available for managing credentials and server connections.
 
 對於關聯式與文件型資料庫分頁（MySQL/PostgreSQL/ClickHouse/MongoDB/SQLite），清單會顯示以下資訊：
 
@@ -14,11 +14,13 @@
 - **伺服器**：所屬的資料庫伺服器
 - **編碼**：字元編碼（僅 MySQL/PostgreSQL）
 - **註解**：備註（僅 PostgreSQL）。 此欄位支援行內編輯——輸入值後點選其他位置（失去焦點）即可立即儲存
-- **操作**：刪除
+- **Actions**: Open phpMyAdmin or pgAdmin when available, and delete
 
 **建立資料庫** 按鈕僅在 MySQL、PostgreSQL、ClickHouse 與 MongoDB 分頁中可用。 SQLite 資料表在此處以唯讀方式列出，Elasticsearch/Redis 則透過各自的資料檢視進行管理。
 
 **使用者** 與 **伺服器** 分頁透過各自的頁面進行管理；詳情請參閱 [資料庫使用者](./user.md) 與 [資料庫伺服器](./server.md)。
+
+For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, install and configure [pgAdmin](./pgadmin) first. The management tool uses the panel language.
 
 ## 建立資料庫
 

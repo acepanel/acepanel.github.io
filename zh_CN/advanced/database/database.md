@@ -1,12 +1,12 @@
 # 数据库管理
 
+![Create a database](/images/database/database.png)
+
 数据库管理页面用于创建、查看和删除数据库。
 
 ## 数据库列表
 
-进入 **数据库** 页面。 数据库按类型组织成不同选项卡：**MySQL**、**PostgreSQL**、**ClickHouse**、**MongoDB**、**SQLite**、**Elasticsearch**、**Redis**，以及 **用户**（数据库用户）和 **服务器**（数据库服务器）。 默认显示 MySQL 选项卡。
-
-![数据库列表](/images/database/database-list.png)
+进入 **数据库** 页面。 A database-type tab is shown only when at least one server of that type exists. **User** and **Server** remain available for managing credentials and server connections.
 
 对于关系型和文档型数据库选项卡（MySQL/PostgreSQL/ClickHouse/MongoDB/SQLite），列表会显示以下信息：
 
@@ -14,11 +14,13 @@
 - **服务器**：所属的数据库服务器
 - **编码**：字符编码（仅 MySQL/PostgreSQL）
 - **注释**：备注（仅 PostgreSQL）。 该字段支持行内编辑——输入值后点击其他位置（失焦）即可立即保存
-- **操作**：删除
+- **Actions**: Open phpMyAdmin or pgAdmin when available, and delete
 
 **创建数据库** 按钮仅在 MySQL、PostgreSQL、ClickHouse 和 MongoDB 选项卡中可用。 SQLite 表在此处以只读方式列出，Elasticsearch/Redis 则通过各自的数据视图进行管理。
 
 **用户** 和 **服务器** 选项卡通过各自的页面进行管理；详见 [数据库用户](./user.md) 和 [数据库服务器](./server.md)。
+
+For MySQL, choose the target server before opening phpMyAdmin. For PostgreSQL, install and configure [pgAdmin](./pgadmin) first. The management tool uses the panel language.
 
 ## 创建数据库
 

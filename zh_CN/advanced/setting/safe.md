@@ -1,8 +1,8 @@
 # 安全设置
 
-安全设置页面用于配置面板的安全相关选项，保护面板免受未授权访问。
+![Security settings](/images/setting/safe.png)
 
-![安全设置](/images/setting/setting-safe.png)
+安全设置页面用于配置面板的安全相关选项，保护面板免受未授权访问。
 
 ## 登录超时
 
@@ -101,6 +101,8 @@
 保存时会对两个字段进行校验；无效的证书或私钥会被拒绝，设置不会生效。
 
 选择 **ACME（自动）** 或 **自签名** 时，保存按钮旁会出现 **刷新证书** / **重新生成证书** 按钮，可手动重新签发证书。 重新签发后，页面会在几秒后自动刷新。
+
+When the panel is bound to a domain, that domain can be used for ACME issuance. Confirm that DNS and the required validation path reach this server before requesting the certificate.
 
 :::tip 注意
 当 HTTPS 模式或面板公网 IP 存在未保存的更改时，**刷新证书** / **重新生成证书** 按钮会保持禁用状态。 请先保存更改，然后再点击该按钮重新签发证书。

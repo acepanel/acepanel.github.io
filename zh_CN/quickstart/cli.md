@@ -1,159 +1,169 @@
 # 命令行工具
 
-AcePanel 提供命令行工具 `acepanel`，用于在无法访问 Web 界面时进行面板管理。
+`acepanel` is the root-only recovery and administration CLI installed with AcePanel. Run `acepanel <command> --help` on the server before an irreversible operation.
 
-## 服务管理
+## Output and Safety
 
-:::warning 注意
-后台任务运行时请勿停止或重启面板，可能导致任务中断或数据丢失。
-:::
+Add the global `--json` flag to list commands when machine-readable output is required:
 
-```shell
-acepanel start    # 启动
-acepanel stop     # 停止
-acepanel restart  # 重启
-acepanel status   # 查看状态
+```bash
+acepanel --json website list
+acepanel --json database list-server
 ```
 
-## 用户管理
+The flag applies to supported list output, not every interactive or mutating command. Do not stop or restart the panel while a background task or [migration](../advanced/toolbox/migration) is running.
 
-```shell
-acepanel user list                              # 列出所有用户
-acepanel user username <旧用户名> <新用户名>      # 修改用户名
-acepanel user password <用户名> <新密码>          # 修改密码
-acepanel user 2fa <用户名>                       # 开关两步验证
-acepanel user passkey <用户名>                   # 清除用户的所有通行密钥
+## Service and Maintenance
+
+```bash
+acepanel status
+acepanel start
+acepanel stop
+acepanel restart
+acepanel update
+acepanel fix
+acepanel sync
+acepanel sync-time
 ```
 
-## 安全设置
+`acepanel info` displays the current access information and no longer resets the password every time by default:
 
-```shell
-acepanel https on|off       # 开关 HTTPS
-acepanel https generate     # 生成证书（自签名或 Let's Encrypt）
-acepanel entrance on|off    # 开关安全入口
-acepanel port <端口号>       # 修改监听端口
-acepanel bind-domain off    # 解除域名绑定
-acepanel bind-ip off        # 解除 IP 绑定
-acepanel bind-ua off        # 解除 UA 绑定
+```bash
+acepanel info
+acepanel info --username <user>
+acepanel info --username <user> --force
 ```
 
-## 网站管理
+Use `--force` (`-f`) only when a password reset is intended. `--username` (`-u`) selects the account; otherwise the first panel user is used.
 
-```shell
-# 创建网站
-acepanel website create -n <名称> -d <域名> -l <监听> [--path <路径>] [--php <版本>]
+## Panel Access Controls
 
-# 移除网站（保留网站目录和数据库）
-acepanel website remove -n <名称>
-
-# 删除网站（同时删除网站目录和同名数据库）
-acepanel website delete -n <名称>
+```bash
+acepanel port <port>
+acepanel https on|off
+acepanel https generate
+acepanel entrance on|off
+acepanel bind-domain on <domain> [domain...]
+acepanel bind-domain off
+acepanel bind-ip on <ip> [ip...]
+acepanel bind-ip off
+acepanel bind-ua on <user-agent> [user-agent...]
+acepanel bind-ua off
 ```
 
-| 标志          | 别名   | 必填          | 说明                      |
-| ----------- | ---- | ----------- | ----------------------- |
-| `--name`    | `-n` | 是           | 网站名称                    |
-| `--domains` | `-d` | 是（`create`） | 绑定到网站的域名；多个域名时重复使用该标志   |
-| `--listens` | `-l` | 是（`create`） | 绑定到网站的监听地址；多个地址时重复使用该标志 |
-| `--path`    |      | 否           | 网站托管的目录；省略时使用默认路径       |
-| `--php`     |      | 否           | 网站使用的 PHP 版本；省略时不使用 PHP |
+Before changing the port or any binding, permit the new access path in the system firewall and cloud security group and keep an SSH session open.
 
-:::warning 注意
-`website delete` 会同时删除网站目录和同名数据库。 此操作不可逆，请谨慎执行。
-:::
+## Users and Password Input
 
-## 数据库管理
-
-```shell
-# 添加数据库服务器
-acepanel database add-server --type <类型> --name <名称> --host <主机> --port <端口> [--username <用户名>] [--password <密码>] [--remark <备注>]
-
-# 删除数据库服务器
-acepanel database delete-server -n <名称>
+```bash
+acepanel user list
+acepanel user create <username> [password] [--email <address>]
+acepanel user delete <username>
+acepanel user username <old-username> <new-username>
+acepanel user password <username> [password]
+acepanel user 2fa <username>
+acepanel user passkey <username>
 ```
 
-| 标志           | 别名                      | 必填              | 说明                                                                                       |
-| ------------ | ----------------------- | --------------- | ---------------------------------------------------------------------------------------- |
-| `--type`     |                         | 是（`add-server`） | 服务器类型，可选 `mysql`、`postgresql`、`redis`、`clickhouse`、`mongodb`、`sqlite`、`elasticsearch` 之一 |
-| `--name`     | `-n`（仅 `delete-server`） | 是               | 服务器名称                                                                                    |
-| `--host`     |                         | 是（`add-server`） | 服务器地址                                                                                    |
-| `--port`     |                         | 是（`add-server`） | 服务器端口                                                                                    |
-| `--username` |                         | 否               | 服务器用户名                                                                                   |
-| `--password` |                         | 否               | 服务器密码                                                                                    |
-| `--remark`   |                         | 否               | 服务器备注                                                                                    |
+For `user create` and `user password`, password precedence is:
 
-## 备份管理
+1. the command argument;
+2. `ACEPANEL_PASSWORD`;
+3. a no-echo interactive prompt.
 
-```shell
-# 备份网站
-acepanel backup website -n <名称> [-s <存储 ID>]
+Avoid a literal password argument on a shared system because it can be exposed through shell history or process inspection. The environment variable is useful for short-lived automation but must not be logged or persisted in an insecure service file.
 
-# 备份数据库
-acepanel backup database -t <类型> -n <名称> [-s <存储 ID>]
+## Firewall
 
-# 备份目录
-acepanel backup path -p <路径> [-s <存储 ID>]
+```bash
+acepanel firewall status
+acepanel firewall on
+acepanel firewall off
+acepanel firewall list
+acepanel firewall port 443
+acepanel firewall port 8000-9000 --protocol tcp
+acepanel firewall port 443 --remove
+```
 
-# 备份面板
+`firewall port` accepts a single port or range. `--protocol` (`-p`) accepts `tcp`, `udp`, or `tcp/udp` and defaults to `tcp/udp`; `--remove` deletes the matching rule. Do not disable the firewall remotely unless another verified control remains in place.
+
+## Websites and Certificates
+
+```bash
+acepanel website list
+acepanel website create --type static --name <name> --domains <domain> --listens 80
+acepanel website remove --name <name>
+acepanel website delete --name <name>
+acepanel website cert --name <name> --cert <fullchain-path> --key <private-key-path>
+acepanel cert list
+acepanel cert renew --id <id>
+acepanel cert renew --all
+```
+
+Website creation accepts `proxy`, `static`, or `php` through `--type` (`-t`), repeated `--domains` (`-d`) and `--listens` (`-l`), and optional `--path` (`-p`), `--proxy`, `--php`, `--db`, `--db-name`, `--db-user`, `--db-password`, and `--remark`.
+
+`website remove` keeps the site directory and same-named database. `website delete` also removes them and automatically releases certificate associations; it is irreversible. `website cert` reads the certificate and private key from server-side files—protect both paths and never paste a private key into shell history.
+
+## Database Servers
+
+```bash
+acepanel database list-server
+acepanel database add-server --type <type> --name <name> --host <host> --port <port> [--username <user>] [--password <password>] [--remark <text>]
+acepanel database delete-server --name <name>
+```
+
+`add-server` accepts `mysql`, `postgresql`, `mongodb`, `clickhouse`, `redis`, and `elasticsearch`. Deleting a server registration can make its databases unavailable to panel operations; it does not replace a data-retention plan.
+
+## Backup and Restore
+
+```bash
+acepanel backup list --type <type>
+acepanel backup website --name <name> [--storage <id>]
+acepanel backup database --type <type> --name <name> [--storage <id>]
+acepanel backup path --path <directory> [--storage <id>]
 acepanel backup panel
+acepanel backup clear --type <type> --file <prefix> --keep <count> [--storage <id>]
 
-# 清理过期备份
-acepanel backup clear -t <类型> -f <文件> -k <保留数量> [-s <存储 ID>]
+acepanel restore website --name <name> --file <backup>
+acepanel restore database --type <type> --name <name> --file <backup>
+acepanel restore panel --file <backup>
 ```
 
-| 标志          | 别名   | 说明                                                                          |
-| ----------- | ---- | --------------------------------------------------------------------------- |
-| `--name`    | `-n` | 网站或数据库名称                                                                    |
-| `--type`    | `-t` | `backup database` 的数据库类型（`mysql`、`postgresql`、`redis`）；`backup clear` 的备份类型 |
-| `--path`    | `-p` | 要备份的目录路径                                                                    |
-| `--file`    | `-f` | 清理时匹配的备份文件名                                                                 |
-| `--keep`    | `-k` | 保留的备份数量                                                                     |
-| `--storage` | `-s` | 存储 ID；省略时使用本地存储                                                             |
+Backup listing supports `website`, `path`, `panel`, `mysql`, `postgresql`, `clickhouse`, `redis`, and `valkey`. Database backup and restore support MySQL, PostgreSQL, ClickHouse, Redis, and Valkey. A backup filename can be absolute or relative to the default backup directory as described by the command. Restoring the panel restarts it automatically.
+
+## Scheduled Tasks
+
+```bash
+acepanel cron list
+acepanel cron run --id <id>
+acepanel cron status --id <id>
+acepanel cron status --id <id> --off
+```
+
+`cron run` executes the selected task immediately. `cron status` enables it; add `--off` to disable it.
+
+## Applications
+
+```bash
+acepanel app list
+acepanel app install <slug> [channel]
+acepanel app update <slug>
+acepanel app uninstall <slug>
+```
+
+Installation, update, and uninstallation may create a panel background task. Follow it under **Tasks > Panel Tasks**.
 
 ## 日志切割
 
-```shell
-# 切割网站日志
-acepanel cutoff website -n <名称> [-s <存储 ID>]
-
-# 切割容器日志
-acepanel cutoff container -n <名称> [-s <存储 ID>]
-
-# 清理已切割的日志
-acepanel cutoff clear -t <类型> -n <名称> -k <保留数量> [-s <存储 ID>]
+```bash
+acepanel cutoff website --name <name> [--storage <id>]
+acepanel cutoff container --name <name> [--storage <id>]
+acepanel cutoff clear --type website|container --name <name> --keep <count> [--storage <id>]
 ```
 
-| 标志          | 别名   | 说明                                              |
-| ----------- | ---- | ----------------------------------------------- |
-| `--name`    | `-n` | 网站或容器名称                                         |
-| `--type`    | `-t` | `cutoff clear` 的切割类型，可选 `website` 或 `container` |
-| `--keep`    | `-k` | 保留的已切割日志数量                                      |
-| `--storage` | `-s` | 存储 ID；省略时使用本地存储                                 |
+## Troubleshooting
 
-## 应用管理
-
-```shell
-acepanel app install <slug> <channel>   # 安装应用
-acepanel app uninstall <slug>           # 卸载应用
-acepanel app update <slug>              # 更新应用
-```
-
-## 维护命令
-
-```shell
-acepanel update      # 更新面板
-acepanel fix         # 修复更新问题
-acepanel sync        # 同步缓存数据
-acepanel sync-time   # 同步服务器时间
-acepanel clear-task  # 清理任务队列中卡住的任务（仅在指导下使用）
-acepanel info        # 查看面板信息并重置密码
-acepanel help        # 帮助
-```
-
-## 示例
-
-修改用户 `admin` 的密码为 `newpassword`：
-
-```shell
-acepanel user password admin newpassword
-```
+- Use `acepanel status` before restarting a service that appears unavailable.
+- Use `acepanel fix` when Home reports a panel-database or update-health problem.
+- Prefer the documented public commands. Hidden `init`, `setting`, task-clear, application-marker, cron-wrapper, and database-write commands are internal recovery hooks and should be used only under project guidance.
+- If JSON automation fails, confirm the command is a supported list command and inspect its exit status and stderr separately.

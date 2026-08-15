@@ -1,12 +1,12 @@
 # 原生应用
 
+![Native applications](/images/app/native.png)
+
 原生应用是直接安装在系统上的软件，相比容器化部署具有更好的性能和更低的资源占用。
 
 ## 应用列表
 
-进入 **应用** 页面，切换到 **原生应用** 标签页即可查看原生应用列表。 可以通过顶部的分类标签筛选不同类型的应用，或使用右侧的搜索框按名称或描述进行搜索。
-
-![原生应用列表](/images/app/app-list.png)
+Go to the **Apps** page and switch to the **Native App** tab to view the native application list. 可以通过顶部的分类标签筛选不同类型的应用，或使用右侧的搜索框按名称或描述进行搜索。
 
 列表中显示以下信息：
 
@@ -20,23 +20,21 @@
 
 点击应用右侧的 **安装** 按钮，会弹出安装对话框：
 
-![安装对话框](/images/app/app-install-dialog.png)
-
 ### 选择渠道
 
 部分应用提供多个版本渠道， 点击下拉框选择需要的版本系列：
-
-![选择渠道](/images/app/app-install-channel.png)
 
 ### 选择版本
 
 选择渠道后，系统会自动填入该渠道的最新版本号：
 
-![选择版本](/images/app/app-install-version.png)
-
 如果所选渠道提供了发布说明，版本字段下方会出现 **更新日志** 区域，展示该渠道的更新内容。 版本字段本身是只读的，始终反映所选渠道的最新可用版本。
 
-点击 **安装** 按钮开始安装。 安装过程中可以在 **任务** 页面查看详细日志。
+Some applications also provide **Pre-execution Script** and **Custom Compile Parameters** fields. The pre-execution script runs before the installer and is intended for repository, dependency, or environment preparation. Custom compile parameters are passed to applications that support source-build customization.
+
+Review both fields before submitting: they execute with installation privileges and a mistake can change the system outside the application directory. Leave them empty for a normal installation.
+
+Click **Install** to submit the background task and follow its log under **Tasks > Panel Tasks**.
 
 ## 管理应用
 
@@ -46,22 +44,18 @@
 
 管理页面首先显示应用的运行状态：
 
-![应用管理](/images/app/app-manage.png)
+The following operations are provided:
 
-提供以下操作：
+- **Start**: Start a stopped service
+- **Stop**: Stop a running service
+- **Restart**: Restart the service (will interrupt connections)
+- **Reload**: Reload configuration (without interrupting connections, recommended; only available for applications that support it)
 
-- **启动**：启动已停止的服务
-- **停止**：停止正在运行的服务
-- **重启**：重启服务（会中断连接）
-- **重载**：重新加载配置（不会中断连接，推荐使用；仅支持该功能的应用可用）
+The **Autostart** switch in the top-right corner controls whether the service starts automatically on system boot.
 
-右上角的 **开机自启** 开关控制服务是否在系统启动时自动运行。
+### Modify Configuration
 
-### 修改配置
-
-点击 **修改配置** 标签，可以直接编辑应用的配置文件：
-
-![修改配置](/images/app/app-manage-config.png)
+Click the **Modify Configuration** tab to directly edit the application's configuration file:
 
 :::warning 注意
 修改配置文件前请确保了解每个参数的含义， 错误的配置可能导致服务无法启动。

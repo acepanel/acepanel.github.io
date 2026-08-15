@@ -1,8 +1,8 @@
 # 使用者管理
 
-面板設定頁的 **使用者** 分頁用於管理面板登入使用者。
+![User settings](/images/setting/user.png)
 
-![使用者管理](/images/setting/setting-user.png)
+面板設定頁的 **使用者** 分頁用於管理面板登入使用者。
 
 ## 使用者清單
 
@@ -19,8 +19,6 @@
 
 點選 **建立使用者** 按鈕以新增使用者：
 
-![建立使用者](/images/setting/setting-user-create.png)
-
 填寫以下資訊：
 
 - **使用者名稱**：登入使用者名稱。 必須是唯一的，且只能包含字母、數字、底線（`_`）與連字號（`-`）。
@@ -32,6 +30,8 @@
 ### 存取權杖
 
 管理用於代表該使用者呼叫面板 API 的 API 存取權杖。
+
+Access tokens are also used when this server is the destination of an [AcePanel-to-AcePanel migration](../toolbox/migration). For a custom integration, follow the [Panel API](../api) signing rules.
 
 點選 **存取權杖** 開啟權杖管理員，你可以在其中建立、修改與刪除權杖。 權杖清單會顯示權杖的 **ID**、**建立時間** 與 **到期時間**。
 
@@ -45,6 +45,8 @@
 :::warning 注意
 權杖值僅在建立時顯示一次，請在關閉對話方塊前妥善儲存。
 :::
+
+For migration, add the source server's outbound IP address—not the address of the administrator's browser—to the allowlist. Delete temporary tokens after the migration completes.
 
 ### 通行金鑰
 

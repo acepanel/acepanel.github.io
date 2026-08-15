@@ -1,6 +1,8 @@
 # 統計
 
-統計模組（v3.1.0 新增）為你的網站提供流量分析：總覽指標、即時流量，以及按站台、蜘蛛、用戶端、IP、地理位置、URI、慢速 URI 和狀態碼彙整的排行。
+![Website statistics](/images/website/stat.png)
+
+The Statistics module provides traffic analytics for your websites: overview metrics, real-time traffic, and aggregated rankings by site, spider, client, IP, location, URI, slow URI, and status code.
 
 :::tip
 統計功能依賴 Nginx 存取日誌透過本地 socket 串流傳輸到面板。 因此，**統計**功能及其設定僅在 Web 伺服器為 **Nginx**（或 OpenResty）時可用。 如果你執行的是 Apache，則不會顯示統計頁面和設定。

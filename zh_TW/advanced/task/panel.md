@@ -1,6 +1,8 @@
 # 面板任務
 
-面板任務顯示 AcePanel 執行的背景任務，例如應用程式安裝、環境安裝等。
+![Panel tasks](/images/task/panel.png)
+
+Panel Tasks contains long-running work submitted to AcePanel's queue, including application and runtime changes, backups and restores, file compression and extraction, and background container operations.
 
 **任務** 頁面有兩個分頁：**排程任務**（預設顯示）與 **面板任務**。 本頁僅介紹 **面板任務**。 若是以時間為基準的工作（例如定時備份或腳本），請參閱 [排程任務](./schedule.md)。
 
@@ -8,24 +10,23 @@
 
 前往 **任務** > **面板任務** 分頁即可檢視面板任務清單。
 
-![面板任務](/images/task/task-panel.png)
-
 清單會顯示以下資訊：
 
 - **任務名稱**：任務描述
 - **狀態**：等待中/執行中/已完成/失敗
 - **建立時間**：任務建立時間
 - **完成時間**：任務結束時間
-- **操作**：檢視記錄、刪除
+- **Actions**: View logs, cancel, delete
 
 ## 任務狀態
 
-| 狀態  | 說明           |
-| --- | ------------ |
-| 等待中 | 任務已排入佇列，尚未開始 |
-| 執行中 | 任務正在執行       |
-| 已完成 | 任務執行成功       |
-| 失敗  | 任務執行失敗       |
+| 狀態       | 說明                                      |
+| -------- | --------------------------------------- |
+| 等待中      | 任務已排入佇列，尚未開始                            |
+| 執行中      | 任務正在執行                                  |
+| 已完成      | 任務執行成功                                  |
+| 失敗       | 任務執行失敗                                  |
+| Canceled | A waiting or running task was cancelled |
 
 ## 常見任務類型
 
@@ -66,7 +67,13 @@
 - 命令輸出
 - 錯誤訊息
 
-記錄會即時串流，因此你可以追蹤執行中任務的進度。 你也可以在記錄視窗內清除目前的記錄。 當任務仍處於 **等待中** 狀態時，**記錄** 按鈕無法使用。
+Logs are streamed in real time. The viewer can load history, search loaded text, jump between matches, toggle wrapping, copy, and enter full screen. The **Logs** button is unavailable while a task is still waiting. See [Logs](../log) for the shared viewer behavior.
+
+## Cancel Task
+
+Waiting and running tasks provide **Cancel**. Cancelling a waiting task removes it from execution. Cancelling a running task asks the worker to stop and runs the task's cleanup action when one is defined.
+
+Cancellation is not a rollback. A pull, restore, extraction, or installer may already have written files or changed a service. Read the log and inspect the affected resource before retrying.
 
 記錄對於排查任務失敗的原因非常有用。
 
@@ -76,7 +83,7 @@
 
 ## 刪除任務
 
-只有已完成或失敗的任務才能刪除。 等待中與執行中的任務無法刪除。
+Only finished, failed, or canceled tasks can be deleted. Cancel a waiting or running task first.
 
 :::tip 提示
 刪除任務只會從清單中移除記錄，並不會影響已安裝的應用程式或環境。

@@ -1,12 +1,12 @@
 # DNS 配置
 
+![DNS accounts](/images/cert/dns.png)
+
 DNS 配置页面用于管理 DNS API，用于通过 DNS 验证方式申请证书。
 
 ## DNS 列表
 
 进入 **证书** > **DNS** 标签页查看 DNS 配置列表。
-
-![DNS 列表](/images/cert/cert-dns.png)
 
 列表显示以下信息：
 
@@ -86,8 +86,7 @@ ClouDNS 也支持子账户 Auth ID。 使用时，在 Auth ID 字段中填入带
 
 ## DNS 别名（CNAME 委托）
 
-:::tip 版本
-在 v3.2.0 及以上版本可用
+::: tip Version
 :::
 
 DNS 别名允许你将 `_acme-challenge` TXT 记录写入到**另一个**（委托的）域名上来完成某个域名的 DNS-01 验证，而不必写入到正在申请证书的域名上。 它适用于以下场景：

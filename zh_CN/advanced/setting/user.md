@@ -1,8 +1,8 @@
 # 用户管理
 
-面板设置页的 **用户** 选项卡用于管理面板登录用户。
+![User settings](/images/setting/user.png)
 
-![用户管理](/images/setting/setting-user.png)
+面板设置页的 **用户** 选项卡用于管理面板登录用户。
 
 ## 用户列表
 
@@ -19,8 +19,6 @@
 
 点击 **创建用户** 按钮添加新用户：
 
-![创建用户](/images/setting/setting-user-create.png)
-
 填写以下信息：
 
 - **用户名**：登录用户名。 必须唯一，且只能包含字母、数字、下划线（`_`）和连字符（`-`）。
@@ -32,6 +30,8 @@
 ### 访问令牌
 
 管理用于代表该用户调用面板 API 的 API 访问令牌。
+
+Access tokens are also used when this server is the destination of an [AcePanel-to-AcePanel migration](../toolbox/migration). For a custom integration, follow the [Panel API](../api) signing rules.
 
 点击 **访问令牌** 打开令牌管理器，你可以在其中创建、修改和删除令牌。 令牌列表会显示令牌的 **ID**、**创建时间** 和 **过期时间**。
 
@@ -45,6 +45,8 @@
 :::warning 注意
 令牌值仅在创建时显示一次，请在关闭对话框前妥善保存。
 :::
+
+For migration, add the source server's outbound IP address—not the address of the administrator's browser—to the allowlist. Delete temporary tokens after the migration completes.
 
 ### 通行密钥
 

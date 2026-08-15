@@ -1,12 +1,12 @@
 # 服务器管理
 
+![Database servers](/images/database/server.png)
+
 服务器管理页面用于管理数据库服务器连接，同时支持本地和远程数据库服务器。 支持的数据库类型有 MySQL、PostgreSQL、ClickHouse、MongoDB、SQLite、Elasticsearch 和 Redis。
 
 ## 服务器列表
 
 进入 **数据库** > **服务器** 标签页查看服务器列表。
-
-![服务器列表](/images/database/database-server.png)
 
 列表显示以下信息：
 

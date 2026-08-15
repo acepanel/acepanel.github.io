@@ -1,8 +1,8 @@
 # 跑分測試
 
-跑分功能用於測試伺服器的 CPU、記憶體和磁碟效能，協助你了解伺服器的實際效能表現。
+![Benchmark](/images/toolbox/benchmark.png)
 
-![跑分測試](/images/toolbox/toolbox-benchmark.png)
+跑分功能用於測試伺服器的 CPU、記憶體和磁碟效能，協助你了解伺服器的實際效能表現。
 
 ## 測試項目
 
@@ -39,6 +39,8 @@
 :::
 
 ## 測試建議
+
+CPU, memory, and especially disk benchmarks create temporary load and can compete with websites, databases, containers, and backups. Run them during a maintenance window, one test at a time, with enough free disk space. Do not benchmark a production database volume during peak traffic.
 
 1. 測試前關閉不必要的服務與行程
 2. 避免在業務尖峰時段進行測試

@@ -119,64 +119,86 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "應用",
+    text: "Home",
+    link: '/home'
+  }, {
+    text: "Apps",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/app'
     }, {
-      text: "原生應用",
+      text: "Native Apps",
       link: '/app/native'
     }, {
-      text: "執行環境",
+      text: "Runtimes",
       link: '/app/environment'
     }, {
-      text: "容器模版",
+      text: "Container Templates",
       link: '/app/template'
+    }, {
+      text: "Managers",
+      collapsed: true,
+      items: [{
+        text: "FRP",
+        link: '/app/frp'
+      }, {
+        text: "Fail2ban",
+        link: '/app/fail2ban'
+      }, {
+        text: "Rsync",
+        link: '/app/rsync'
+      }, {
+        text: "Supervisor",
+        link: '/app/supervisor'
+      }]
     }]
   }, {
-    text: "容器",
+    text: "Containers",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/container'
     }, {
-      text: "容器",
+      text: "Containers",
       link: '/container/container'
     }, {
-      text: "編排",
+      text: "Compose",
       link: '/container/compose'
     }, {
-      text: "映像檔",
+      text: "Images",
       link: '/container/image'
     }, {
-      text: "網路",
+      text: "Networks",
       link: '/container/network'
     }, {
-      text: "卷",
+      text: "Volumes",
       link: '/container/volume'
     }]
   }, {
-    text: "網站",
+    text: "Websites",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/website'
     }, {
-      text: "反向代理",
+      text: "Reverse Proxy",
       link: '/website/proxy'
     }, {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "純靜態",
+      text: "Static",
       link: '/website/static'
     }, {
-      text: "統計",
+      text: "Statistics",
       link: '/website/stat'
+    }, {
+      text: "Settings",
+      link: '/website/setting'
     }]
   }, {
-    text: "專案",
+    text: "Projects",
     collapsed: true,
     items: [{
       text: "概述",
@@ -200,24 +222,27 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: ".NET",
       link: '/project/dotnet'
     }, {
-      text: "通用",
+      text: "General",
       link: '/project/general'
     }]
   }, {
-    text: "資料庫",
+    text: "Databases",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/database'
     }, {
-      text: "資料庫",
+      text: "Databases",
       link: '/database/database'
     }, {
-      text: "使用者",
+      text: "Users",
       link: '/database/user'
     }, {
-      text: "伺服器",
+      text: "Servers",
       link: '/database/server'
+    }, {
+      text: "pgAdmin",
+      link: '/database/pgadmin'
     }, {
       text: "Redis",
       link: '/database/redis'
@@ -226,108 +251,124 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/database/elasticsearch'
     }]
   }, {
-    text: "憑證",
+    text: "Certificates",
     collapsed: true,
     items: [{
-      text: "概述",
+      text: "Overview",
       link: '/cert'
     }, {
-      text: "憑證",
+      text: "Certificates",
       link: '/cert/cert'
     }, {
-      text: "帳號",
+      text: "Accounts",
       link: '/cert/account'
     }, {
       text: "DNS",
       link: '/cert/dns'
     }]
   }, {
-    text: "監控",
-    link: '/monitor'
-  }, {
-    text: "檔案",
-    link: '/file'
-  }, {
-    text: "備份",
-    link: '/backup'
-  }, {
-    text: "終端機",
-    link: '/ssh'
-  }, {
-    text: "防火牆",
+    text: "Monitoring",
     collapsed: true,
     items: [{
-      text: "概述",
-      link: '/firewall'
+      text: "System Monitoring",
+      link: '/monitor'
     }, {
-      text: "掃描感知",
-      link: '/firewall/scan'
+      text: "Alerts",
+      link: '/monitor/alert'
+    }, {
+      text: "Settings & Notifications",
+      link: '/monitor/setting'
     }]
   }, {
-    text: "任務",
+    text: "Logs",
+    link: '/log'
+  }, {
+    text: "Security",
     collapsed: true,
     items: [{
-      text: "排程任務",
+      text: "Firewall",
+      link: '/firewall'
+    }, {
+      text: "Scan Awareness",
+      link: '/firewall/scan'
+    }, {
+      text: "Tamper Protection",
+      link: '/firewall/tamper'
+    }]
+  }, {
+    text: "Files",
+    link: '/file'
+  }, {
+    text: "Backup",
+    link: '/backup'
+  }, {
+    text: "Terminal",
+    link: '/ssh'
+  }, {
+    text: "Tasks",
+    collapsed: true,
+    items: [{
+      text: "Scheduled Tasks",
       link: '/task/schedule'
     }, {
-      text: "面板任務",
+      text: "Panel Tasks",
       link: '/task/panel'
     }]
   }, {
-    text: "工具箱",
+    text: "Toolbox",
     collapsed: true,
     items: [{
-      text: "概述",
+      text: "Overview",
       link: '/toolbox'
     }, {
-      text: "行程",
+      text: "Processes",
       link: '/toolbox/process'
     }, {
-      text: "系統",
+      text: "Network",
+      link: '/toolbox/network'
+    }, {
+      text: "System",
       link: '/toolbox/system'
     }, {
       text: "SSH",
       link: '/toolbox/ssh'
     }, {
-      text: "磁碟",
+      text: "Disk",
       link: '/toolbox/disk'
     }, {
-      text: "日誌清理",
+      text: "Log Cleanup",
       link: '/toolbox/log'
     }, {
-      text: "Webhook",
+      text: "Webhooks",
       link: '/toolbox/webhook'
     }, {
-      text: "效能測試",
+      text: "Benchmark",
       link: '/toolbox/benchmark'
     }, {
-      text: "網路",
-      link: '/toolbox/network'
-    }, {
-      text: "遷移",
+      text: "Migration",
       link: '/toolbox/migration'
     }, {
-      text: "面板",
+      text: "Panel",
       link: '/toolbox/panel'
     }]
   }, {
-    text: "設定",
+    text: "Settings",
     collapsed: true,
     items: [{
-      text: "基本設定",
+      text: "Basic Settings",
       link: '/setting/basic'
     }, {
-      text: "安全設定",
+      text: "Security Settings",
       link: '/setting/safe'
     }, {
-      text: "使用者管理",
+      text: "User Management",
       link: '/setting/user'
     }]
   }, {
-    text: "面板 API",
+    text: 'Panel API',
     link: '/api'
   }, {
-    text: "安全建議",
+    text: 'Security Recommendations',
     link: '/security'
   }];
 }

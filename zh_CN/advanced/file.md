@@ -1,10 +1,10 @@
 # 文件
 
+![File manager](/images/file/file.png)
+
 文件模块提供了功能强大的图形化文件管理器， 设计理念是尽可能还原 Windows 资源管理器的操作体验，支持右键菜单、拖拽上传、快捷键等特性。
 
 ## 文件管理器
-
-![文件管理器](/images/file/file-list.png)
 
 ## 核心特性
 
@@ -74,8 +74,6 @@
 
 ### 选择文件
 
-![选择文件](/images/file/file-select.png)
-
 选择文件后，顶部会显示批量操作按钮：
 
 - **复制**：复制选中的文件
@@ -87,8 +85,6 @@
 ### 更多操作
 
 点击文件行的 **更多** 按钮，显示更多操作选项：
-
-![更多操作](/images/file/file-context-menu.png)
 
 - **复制**：复制文件到其他目录
 - **移动**：移动文件到其他目录
@@ -115,6 +111,10 @@
 | `.tar.zst` | Zstandard 压缩的 tar |
 | `.7z`      | 7-Zip 压缩包         |
 
+`.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
+
+Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+
 ## 工具栏
 
 ### 新建
@@ -132,6 +132,14 @@
 
 - 点击选择文件上传
 - **拖拽上传**：直接将文件拖拽到页面即可上传
+
+Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
+
+### Share
+
+Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
+
+Anyone with the URL can download the file until it expires, reaches its limit, or is cancelled. Do not share backups, private keys, database dumps, configuration files, or logs containing credentials. Cancelling a share prevents future downloads but cannot recall existing copies.
 
 ### 远程下载
 
@@ -162,8 +170,6 @@
 
 AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Code 同款编辑器内核）。
 
-![文件编辑器](/images/file/file-editor.png)
-
 ### 编辑器特性
 
 - **语法高亮**：支持各种编程语言的语法高亮
@@ -175,13 +181,14 @@ AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Cod
 
 ### 编辑器快捷键
 
-| 快捷键            | 功能     |
-| -------------- | ------ |
-| `Ctrl+S`       | 保存当前文件 |
-| `Ctrl+Shift+S` | 保存所有文件 |
-| `Ctrl+F`       | 搜索     |
-| `Ctrl+H`       | 替换     |
-| `Ctrl+G`       | 转到指定行  |
+| 快捷键            | 功能                                                |
+| -------------- | ------------------------------------------------- |
+| `Ctrl+S`       | 保存当前文件                                            |
+| `Ctrl+Shift+S` | 保存所有文件                                            |
+| `Ctrl+F`       | 搜索                                                |
+| `Ctrl+H`       | 替换                                                |
+| `Ctrl+G`       | 转到指定行                                             |
+| `Ctrl+/`       | Toggle a comment in supported configuration files |
 
 ### 编辑器工具栏
 
@@ -240,8 +247,6 @@ AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Cod
 
 点击 **最大化** 按钮可以全屏编辑，获得更大的编辑空间：
 
-![全屏编辑器](/images/file/file-editor-fullscreen.png)
-
 ### 侧边栏文件树
 
 编辑器左侧显示当前目录的文件树，可以：
@@ -260,6 +265,12 @@ AcePanel 内置了功能强大的代码编辑器，基于 Monaco Editor（VS Cod
 - 光标位置（行、列）
 - 缩进设置（空格/Tab）
 - 文件语言类型
+
+## Tamper Protection
+
+When [Tamper Protection](./firewall/tamper) covers a file or directory, Files shows a lock and its protected or immutable state. Use the inline or context-menu action to add or remove protection.
+
+For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion does not silently unlock protected files and warns that immutable entries cannot be deleted. Review the interception log when an edit, upload, rename, extraction, or deployment is denied.
 
 ## 权限说明
 

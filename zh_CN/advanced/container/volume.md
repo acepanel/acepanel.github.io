@@ -1,12 +1,12 @@
 # 卷
 
+![Container volumes](/images/container/volume.png)
+
 卷（Volume）是 Docker 管理的数据存储，用于持久化容器数据。 与直接挂载主机目录相比，卷由 Docker 管理，更加安全和便携。
 
 ## 卷列表
 
 进入 **容器** > **卷** 标签页查看卷列表。
-
-![卷列表](/images/container/container-volume.png)
 
 列表显示以下信息：
 

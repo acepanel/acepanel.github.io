@@ -1,5 +1,7 @@
 # 憑證管理
 
+![Create a certificate](/images/cert/cert.png)
+
 憑證管理頁面用於申請、上傳與管理 SSL/TLS 憑證。
 
 **憑證** 頁面分為三個分頁：
@@ -11,8 +13,6 @@
 ## 憑證清單
 
 進入 **憑證** 頁面，預設會顯示憑證清單。
-
-![憑證清單](/images/cert/cert-list.png)
 
 清單會顯示以下資訊：
 
@@ -33,12 +33,12 @@
 
 - **網域**：要申請憑證的網域，支援多個網域
 - **金鑰類型**：EC 256、EC 384、RSA 2048 或 RSA 4096（預設為 EC 256）
-- **網站**：與此憑證關聯的網站（用於自動部署與 HTTP 驗證）
+- **Websites**: One or more websites associated with this certificate for HTTP verification and deployment. Use the domain-match action to select websites whose domains are covered by the certificate
 - **帳戶**：與此憑證關聯的 ACME 帳戶
 - **DNS**：與此憑證關聯的 DNS 帳戶（選擇 DNS 帳戶後即會使用 DNS 驗證）
 - **DNS 別名**：僅在選擇了 DNS 帳戶時顯示。 將原始網域對應到一筆別名記錄，用於 DNS-01 CNAME 委派，使得 ACME 質詢可在另一個（受委派的）區域中進行驗證
 
-你可以選擇一個 **網站** 或 **DNS** 來進行自動簽發與部署，也可以手動輸入網域並自行設定 DNS 解析後再進行簽發。
+You can associate several websites with one certificate. AcePanel issues the certificate for its complete domain list and deploys the result to every selected website. The domain used to access the panel can also be included in an ACME certificate when its validation requirements are satisfied.
 
 ### 網域格式
 
@@ -76,7 +76,7 @@ www.example.com       # 子網域
 
 在憑證清單中點選 **部署** 按鈕：
 
-1. 選擇一個或多個 **網站** 以將憑證部署到其中
+1. Select one or more **Websites**, or use domain matching to select covered sites
 2. 若你希望在所選網站上啟用 HTTPS，請開啟 **啟用 HTTPS** 開關
 3. 提交
 
@@ -116,6 +116,8 @@ ACME 憑證支援自動續簽：
 ### 刪除憑證
 
 點選 **刪除** 按鈕即可刪除憑證。 需要進行確認。
+
+Deleting a website automatically removes that website from the certificate association; it does not delete a certificate still used by another website. When HTTPS is enabled, the IPv6 `443` listener follows the default configured under [Website Settings](../website/setting).
 
 ## ACME 帳戶
 

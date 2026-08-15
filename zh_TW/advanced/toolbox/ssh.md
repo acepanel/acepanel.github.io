@@ -1,8 +1,10 @@
 # SSH
 
+![SSH service settings](/images/toolbox/ssh.png)
+
 SSH 頁面用於管理伺服器的 SSH 服務設定，包括服務狀態、驗證方式以及 Root 帳戶設定。
 
-![SSH 設定](/images/toolbox/toolbox-ssh.png)
+This page changes the SSH daemon. It is different from the top-level [Terminal](../ssh), which opens local or remote terminal tabs and transfers files through SFTP.
 
 頁面版面配置為頂部的服務狀態卡片，下方左側有兩個分頁：
 
@@ -30,7 +32,7 @@ SSH 頁面用於管理伺服器的 SSH 服務設定，包括服務狀態、驗�
 
 修改 SSH 服務監聽的連接埠，預設為 `22`。 連接埠可填入 `1` 到 `65535` 之間的任意值。 您可以點選重新整理圖示產生一個隨機連接埠（範圍為 `10000`–`65535`），然後點選 **儲存** 按鈕套用。 儲存時會自動重新啟動 SSH 服務。
 
-修改連接埠後：
+Before modifying the port, allow the new TCP port in **Security > Port Rules** and in the provider security group. Then:
 
 1. 點選 **儲存** 按鈕
 2. 確保防火牆已放行新的連接埠
@@ -44,6 +46,8 @@ SSH 頁面用於管理伺服器的 SSH 服務設定，包括服務狀態、驗�
 ### 密碼登入
 
 控制是否允許 SSH 密碼驗證（`PasswordAuthentication`）。
+
+Before disabling it, add a tested key for the account you will use and keep the current session open until a fresh key-authenticated session succeeds.
 
 - **啟用**：允許密碼登入
 - **停用**：禁止密碼登入，僅允許金鑰驗證
@@ -69,6 +73,8 @@ SSH 頁面用於管理伺服器的 SSH 服務設定，包括服務狀態、驗�
 - **禁止 SSH 登入**（`no`）：Root 無法透過 SSH 登入
 - **僅允許金鑰登入**（`prohibit-password`）：Root 只能使用金鑰登入
 - **僅允許使用預先定義命令的金鑰登入**（`forced-commands-only`）：Root 只能執行透過 `authorized_keys` 授權的命令
+
+Changing the root policy or both authentication methods can lock every administrator out. Keep a provider console or another verified sudo-capable account available.
 
 ### 重設 Root 密碼
 

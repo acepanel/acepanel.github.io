@@ -1,10 +1,12 @@
 # 第一个容器：部署 pgAdmin 4
 
+![Create a container](/images/quickstart/container.png)
+
 本文以 pgAdmin 4 为例，演示如何通过 AcePanel 快速部署 Docker 容器。
 
 ## 安装 Docker
 
-前往「应用」页面，在「原生应用」标签页中找到 Docker 并安装。 安装进度可在「任务」->「面板任务」中查看。
+Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安装进度可在「任务」->「面板任务」中查看。
 
 :::tip 国内服务器
 国内服务器拉取镜像较慢， 建议配置 [毫秒镜像](https://1ms.run/) 提供的付费加速源。
@@ -12,19 +14,13 @@
 
 ## 部署容器
 
-前往「应用」->「容器模板」，找到 pgAdmin 4，点击「部署」。 部署是一个四步向导：部署模式、配置、预览与编辑、确认。
-
-![容器模板列表](/images/quickstart/container-template.png)
+Go to "Apps" -> "Container Template", find pgAdmin 4, and click "Deploy". 部署是一个四步向导：部署模式、配置、预览与编辑、确认。
 
 在模板列表中，你可以通过顶部的分类标签或右侧的搜索框来缩小选择范围。 每个模板卡片都会显示其图标、名称和描述；「本地」标签标记存储在本服务器上的模板（而非从远程模板仓库获取的），定义了主页的模板会显示一个外链按钮，点击即可打开项目网站。
 
 在「部署模式」步骤中，选择「创建新编排」（另一个选项「更新现有编排」则是将模板应用到已有的编排上）。
 
-![部署1](/images/quickstart/container-deploy-step1.png)
-
 在「配置」步骤中，填写配置：
-
-![部署2](/images/quickstart/container-deploy-step2.png)
 
 - **编排名称**：给编排起个名字，如 `pg4admin`
 - **自动启动**：勾选后创建完成自动拉取镜像并启动
@@ -64,13 +60,9 @@
 
 若勾选了「自动启动」，创建完成后会弹出一个终端窗口并运行 `docker compose ... up -d`，实时输出镜像拉取和启动进度：
 
-![启动进度](/images/container/compose-starting.png)
-
 若未勾选「自动启动」，则尚未拉取任何镜像。 前往「容器」->「编排」页面，在那里启动编排。
 
 也可以在「容器」->「编排」页面手动管理：
-
-![编排列表](/images/container/compose-list.png)
 
 ## 访问服务
 

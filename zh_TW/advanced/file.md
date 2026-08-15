@@ -1,10 +1,10 @@
 # 檔案
 
+![File manager](/images/file/file.png)
+
 檔案模組提供了功能強大的圖形化檔案管理器。 設計理念是盡可能還原 Windows 檔案總管的操作體驗，支援右鍵選單、拖放上傳、鍵盤快捷鍵等功能。
 
 ## 檔案管理器
-
-![檔案管理器](/images/file/file-list.png)
 
 ## 核心功能
 
@@ -74,8 +74,6 @@
 
 ### 選取檔案
 
-![選取檔案](/images/file/file-select.png)
-
 選取檔案後，頂部會出現批次操作按鈕：
 
 - **複製**：複製選取的檔案
@@ -87,8 +85,6 @@
 ### 更多操作
 
 點選檔案列的 **更多** 按鈕可顯示更多操作選項：
-
-![更多操作](/images/file/file-context-menu.png)
 
 - **複製**：將檔案複製到其他目錄
 - **移動**：將檔案移動到其他目錄
@@ -115,6 +111,10 @@
 | `.tar.zst` | Zstandard 壓縮的 tar |
 | `.7z`      | 7-Zip 封存檔         |
 
+`.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
+
+Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+
 ## 工具列
 
 ### 新增
@@ -132,6 +132,14 @@
 
 - 點選選取檔案上傳
 - **拖放上傳**：直接將檔案拖曳至頁面即可上傳
+
+Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
+
+### Share
+
+Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
+
+Anyone with the URL can download the file until it expires, reaches its limit, or is cancelled. Do not share backups, private keys, database dumps, configuration files, or logs containing credentials. Cancelling a share prevents future downloads but cannot recall existing copies.
 
 ### 遠端下載
 
@@ -162,8 +170,6 @@
 
 AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與 VS Code 相同的編輯器核心）。
 
-![檔案編輯器](/images/file/file-editor.png)
-
 ### 編輯器功能
 
 - **語法突顯**：支援多種程式語言的語法突顯
@@ -175,13 +181,14 @@ AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與
 
 ### 編輯器快捷鍵
 
-| 快捷鍵            | 功能     |
-| -------------- | ------ |
-| `Ctrl+S`       | 儲存目前檔案 |
-| `Ctrl+Shift+S` | 儲存所有檔案 |
-| `Ctrl+F`       | 搜尋     |
-| `Ctrl+H`       | 取代     |
-| `Ctrl+G`       | 跳至指定行  |
+| 快捷鍵            | 功能                                                |
+| -------------- | ------------------------------------------------- |
+| `Ctrl+S`       | 儲存目前檔案                                            |
+| `Ctrl+Shift+S` | 儲存所有檔案                                            |
+| `Ctrl+F`       | 搜尋                                                |
+| `Ctrl+H`       | 取代                                                |
+| `Ctrl+G`       | 跳至指定行                                             |
+| `Ctrl+/`       | Toggle a comment in supported configuration files |
 
 ### 編輯器工具列
 
@@ -240,8 +247,6 @@ AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與
 
 點選 **最大化** 按鈕可進入全螢幕編輯，獲得更多編輯空間：
 
-![全螢幕編輯器](/images/file/file-editor-fullscreen.png)
-
 ### 側邊欄檔案樹
 
 編輯器左側顯示目前目錄的檔案樹，可以：
@@ -260,6 +265,12 @@ AcePanel 內建了功能強大的程式碼編輯器，基於 Monaco Editor（與
 - 游標位置（行、列）
 - 縮排設定（空格/Tab）
 - 檔案語言類型
+
+## Tamper Protection
+
+When [Tamper Protection](./firewall/tamper) covers a file or directory, Files shows a lock and its protected or immutable state. Use the inline or context-menu action to add or remove protection.
+
+For a supported single-item operation, AcePanel can temporarily remove the immutable attribute, perform the operation, and restore protection. Batch deletion does not silently unlock protected files and warns that immutable entries cannot be deleted. Review the interception log when an edit, upload, rename, extraction, or deployment is denied.
 
 ## 權限說明
 

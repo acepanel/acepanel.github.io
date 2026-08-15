@@ -1,5 +1,7 @@
 # 容器
 
+![Container overview](/images/container/overview.png)
+
 容器模組提供完整的 Docker 容器管理功能，包括容器、compose、映像檔、網路與儲存卷的管理。
 
 ## 先決條件
@@ -20,8 +22,6 @@
 | [映像檔](./container/image)       | 管理本機映像檔                     |
 | [網路](./container/network)      | 管理 Docker 網路                |
 | [儲存卷](./container/volume)      | 管理資料卷                       |
-
-![容器清單](/images/container/container-list.png)
 
 ## 快速開始
 

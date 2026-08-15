@@ -1,5 +1,7 @@
 # 靜態網站
 
+![Static website settings](/images/website/static.png)
+
 靜態網站用於託管 HTML、CSS、JavaScript 等靜態檔案，適合用來部署前端專案的建置產物、文件網站等。
 
 ## 建立靜態網站
@@ -20,17 +22,15 @@
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
+You can change this website to reverse proxy or PHP from its basic settings. Domains, listeners, files, and other shared fields are kept, while static-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site before converting.
+
 ### 網域與監聽
 
 設定網站的網域與監聽位址。 每個監聽位址都可以個別啟用 HTTPS 與 QUIC（HTTP/3）。
 
-![網域與監聽設定](/images/website/website-static-edit.png)
-
 ### 基本設定
 
 設定網站目錄與預設文件。
-
-![進階設定](/images/website/website-static-edit-advanced.png)
 
 - **網站目錄**：存放靜態檔案的絕對路徑
 - **執行目錄**：執行目錄的絕對路徑（靜態網站通常不需要設定）
@@ -70,21 +70,17 @@
 
 在 **自訂設定** 分頁中，你可以新增自訂的 Nginx 設定，用於 URL 重寫等功能。
 
-![自訂設定](/images/website/website-static-edit-custom.png)
-
 點選 **新增自訂設定** 按鈕來新增設定：
 
-![新增自訂設定](/images/website/website-static-edit-custom-add.png)
+- **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
+- **Scope**: Configuration scope, can choose "This Website" or "Global"
+- **Content**: Nginx configuration content, such as `location` blocks
 
-- **名稱**：設定名稱，支援英文字母、數字、底線與連字號
-- **範圍**：設定的套用範圍，可選擇「本網站」或「全域」
-- **內容**：Nginx 設定內容，例如 `location` 區塊
+## Use Cases
 
-## 使用情境
+### Frontend Projects
 
-### 前端專案
-
-Vue、React、Angular 等前端框架的建置產物：
+Build outputs from Vue, React, Angular, and other frontend frameworks:
 
 ```bash
 # Vue project
@@ -96,9 +92,9 @@ npm run build
 # Upload build directory contents to website directory
 ```
 
-### 文件網站
+### Documentation Sites
 
-VitePress、Docusaurus、Hugo 等靜態網站產生器：
+Static site generators like VitePress, Docusaurus, Hugo:
 
 ```bash
 # VitePress
@@ -106,9 +102,9 @@ npm run docs:build
 # Upload .vitepress/dist directory contents to website directory
 ```
 
-### 單頁應用程式（SPA）
+### Single Page Application (SPA)
 
-單頁應用程式需要設定重寫規則，將所有路由都指向 index.html。 在 **自訂設定** 中新增：
+Pure-static websites include SPA fallback by default, so a route that does not match a file is served by `index.html`. If the site must return a real 404 for unknown paths, remove or replace the generated fallback in **Custom Configs**. The equivalent Nginx rule is:
 
 ```nginx
 location / {

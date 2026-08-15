@@ -1,5 +1,7 @@
 # PHP 项目
 
+![Create a PHP project](/images/project/php.png)
+
 PHP 项目用于部署需要常驻进程的 PHP 应用，例如 Laravel Octane、Swoole、Workerman 等。
 
 :::tip 提示

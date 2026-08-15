@@ -1,12 +1,12 @@
 # 编排
 
+![Compose management](/images/container/compose.png)
+
 编排功能基于 Docker Compose，用于定义和运行多容器应用。 通过一个 YAML 文件描述应用的服务、网络和卷，然后一键启动整个应用。
 
 ## 编排列表
 
 进入 **容器** > **编排** 标签页查看编排列表。
-
-![编排列表](/images/container/compose-list.png)
 
 列表显示以下信息：
 
@@ -23,8 +23,6 @@
 3. 编写或粘贴 docker-compose.yml 内容
 4. 配置环境变量（可选）
 5. 点击 **提交**
-
-![创建编排](/images/container/compose-create.png)
 
 ### docker-compose.yml 示例
 
@@ -59,13 +57,9 @@ volumes:
 
 点击 **启动** 按钮会弹出确认对话框：
 
-![启动编排](/images/container/compose-start.png)
-
 - **强制拉取镜像**：勾选后会在启动前拉取最新镜像
 
 点击确认后，会打开一个终端窗口并显示启动命令的实时输出：
-
-![启动进度](/images/container/compose-starting.png)
 
 启动编排会创建并启动所有定义的服务容器。
 
@@ -86,8 +80,6 @@ volumes:
 ### 编辑编排
 
 点击编排列表中的 **编辑** 按钮，可以修改 docker-compose.yml 文件内容和环境变量。
-
-![编辑编排](/images/container/compose-edit.png)
 
 修改后需要重新启动编排才能生效。
 

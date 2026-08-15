@@ -1,8 +1,8 @@
 # 基本設定
 
-基本設定頁面用於設定面板的基礎參數。
+![Basic settings](/images/setting/basic.png)
 
-![基本設定](/images/setting/setting-basic.png)
+基本設定頁面用於設定面板的基礎參數。
 
 ## 面板名稱
 

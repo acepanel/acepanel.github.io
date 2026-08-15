@@ -1,12 +1,12 @@
 # Compose
 
+![Compose management](/images/container/compose.png)
+
 Compose 功能基於 Docker Compose，用於定義及執行多容器應用程式。 透過 YAML 檔案描述應用程式的服務、網路與儲存卷，即可一鍵啟動整個應用程式。
 
 ## Compose 清單
 
 前往 **容器** > **Compose** 分頁即可檢視 Compose 清單。
-
-![Compose 清單](/images/container/compose-list.png)
 
 清單會顯示下列資訊：
 
@@ -23,8 +23,6 @@ Compose 功能基於 Docker Compose，用於定義及執行多容器應用程式
 3. 撰寫或貼上 docker-compose.yml 內容
 4. 設定環境變數（選填）
 5. 點選 **送出**
-
-![建立 Compose](/images/container/compose-create.png)
 
 ### docker-compose.yml 範例
 
@@ -59,13 +57,9 @@ volumes:
 
 點選 **啟動** 按鈕後，會跳出確認對話方塊：
 
-![啟動 Compose](/images/container/compose-start.png)
-
 - **強制拉取映像檔**：勾選後，會在啟動前拉取最新的映像檔
 
 點選確認後，會開啟一個終端機視窗並顯示啟動指令的即時輸出：
-
-![啟動進度](/images/container/compose-starting.png)
 
 啟動 Compose 會建立並啟動所有已定義的服務容器。
 
@@ -86,8 +80,6 @@ volumes:
 ### 編輯 Compose
 
 點選 Compose 清單中的 **編輯** 按鈕，即可修改 docker-compose.yml 檔案內容與環境變數。
-
-![編輯 Compose](/images/container/compose-edit.png)
 
 修改後，需要重新啟動 Compose 才會生效。
 

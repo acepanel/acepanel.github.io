@@ -1,5 +1,7 @@
 # 纯静态网站
 
+![Static website settings](/images/website/static.png)
+
 纯静态网站用于托管 HTML、CSS、JavaScript 等静态文件，适合部署前端项目构建产物、文档站点等。
 
 ## 创建静态网站
@@ -20,17 +22,15 @@
 
 点击网站列表中的 **编辑** 按钮进入编辑页面。
 
+You can change this website to reverse proxy or PHP from its basic settings. Domains, listeners, files, and other shared fields are kept, while static-specific Web-server settings are removed and the selected type's configuration is generated. Back up the site before converting.
+
 ### 域名与监听
 
 配置网站的域名和监听地址。 每个监听地址都可以单独启用 HTTPS 和 QUIC（HTTP/3）。
 
-![域名和监听配置](/images/website/website-static-edit.png)
-
 ### 基本设置
 
 配置网站目录和默认文档。
-
-![高级设置](/images/website/website-static-edit-advanced.png)
 
 - **网站目录**：静态文件存放的绝对路径
 - **运行目录**：运行目录的绝对路径（静态网站通常无需设置）
@@ -70,45 +70,41 @@
 
 在 **自定义配置** 选项卡中，你可以添加自定义 Nginx 配置，用于 URL 重写等功能。
 
-![自定义配置](/images/website/website-static-edit-custom.png)
-
 点击 **添加自定义配置** 按钮添加配置：
 
-![添加自定义配置](/images/website/website-static-edit-custom-add.png)
+- **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
+- **Scope**: Configuration scope, can choose "This Website" or "Global"
+- **Content**: Nginx configuration content, such as `location` blocks
 
-- **名称**：配置名称，支持字母、数字、下划线和连字符
-- **范围**：配置生效范围，可选择「此网站」或「全局」
-- **内容**：Nginx 配置内容，如 `location` 块
+## Use Cases
 
-## 适用场景
+### Frontend Projects
 
-### 前端项目
-
-Vue、React、Angular 等前端框架的构建产物：
+Build outputs from Vue, React, Angular, and other frontend frameworks:
 
 ```bash
-# Vue 项目
+# Vue project
 npm run build
-# 将 dist 目录内容上传到网站目录
+# Upload dist directory contents to website directory
 
-# React 项目
+# React project
 npm run build
-# 将 build 目录内容上传到网站目录
+# Upload build directory contents to website directory
 ```
 
-### 文档站点
+### Documentation Sites
 
-VitePress、Docusaurus、Hugo 等静态站点生成器：
+Static site generators like VitePress, Docusaurus, Hugo:
 
 ```bash
 # VitePress
 npm run docs:build
-# 将 .vitepress/dist 目录内容上传到网站目录
+# Upload .vitepress/dist directory contents to website directory
 ```
 
-### 单页应用（SPA）
+### Single Page Application (SPA)
 
-单页应用需要配置伪静态规则，将所有路由指向 index.html。 在 **自定义配置** 中添加：
+Pure-static websites include SPA fallback by default, so a route that does not match a file is served by `index.html`. If the site must return a real 404 for unknown paths, remove or replace the generated fallback in **Custom Configs**. The equivalent Nginx rule is:
 
 ```nginx
 location / {

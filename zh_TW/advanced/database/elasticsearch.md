@@ -1,10 +1,8 @@
 # Elasticsearch 資料管理
 
-Elasticsearch 資料管理頁面可讓你線上管理 Elasticsearch（或 OpenSearch）資料：列出索引、建立與刪除索引、逐頁瀏覽文件、執行搜尋查詢，以及檢視、建立、更新與刪除文件。
+![Elasticsearch data management](/images/database/elasticsearch.png)
 
-:::tip
-此功能在 v3.2.0 新增。
-:::
+Elasticsearch 資料管理頁面可讓你線上管理 Elasticsearch（或 OpenSearch）資料：列出索引、建立與刪除索引、逐頁瀏覽文件、執行搜尋查詢，以及檢視、建立、更新與刪除文件。
 
 ## 先決條件
 

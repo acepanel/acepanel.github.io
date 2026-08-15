@@ -1,10 +1,10 @@
 # 磁碟
 
+![Disk management](/images/toolbox/disk.png)
+
 磁碟頁面提供磁碟分割管理、LVM 邏輯磁碟區管理、SMART 磁碟健康狀態以及 RAID 陣列狀態等功能。
 
 ## 磁碟管理
-
-![磁碟管理](/images/toolbox/toolbox-disk.png)
 
 ### 磁碟資訊
 
@@ -16,6 +16,8 @@
 - **分割區數**：分割區數量
 
 承載根（`/`）分割區的磁碟會標示 **系統磁碟** 標籤，無法初始化或卸載其分割區。
+
+The system-disk guard prevents common mistakes but does not make every other disk disposable. Identify a device by model, serial number, capacity, partitions, and mount use before a destructive action.
 
 ### 分割區清單
 
@@ -61,6 +63,8 @@
 - **磁碟**：選擇要初始化的磁碟
 - **檔案系統類型**：ext4、ext3、xfs 或 btrfs
 
+After formatting or initialization, verify the partition table, filesystem type, mount point, ownership, free space, and a reboot with the intended `fstab` entry.
+
 ### 自動掛載設定（fstab）
 
 顯示 `/etc/fstab` 中的掛載設定：
@@ -73,13 +77,13 @@
 
 ## LVM 管理
 
-![LVM 管理](/images/toolbox/toolbox-disk-lvm.png)
-
 LVM（邏輯磁碟區管理員）提供彈性的磁碟空間管理，並支援動態調整分割區大小。
 
 ### 實體磁碟區（PV）
 
 實體磁碟區是 LVM 的基礎，通常是一個磁碟分割區或整顆磁碟。
+
+Create in dependency order: **PV → VG → LV → filesystem → mount**. Delete in reverse order. A PV in a VG, a VG containing an LV, or an LV that is mounted or in use must be detached from its dependent layer first.
 
 **建立實體磁碟區**：
 
@@ -118,6 +122,12 @@ LVM（邏輯磁碟區管理員）提供彈性的磁碟空間管理，並支援�
 
 :::tip 提示
 LVM 的優勢在於邏輯磁碟區可以線上擴充，無需卸載分割區或重新啟動系統。
+:::
+
+**Auto Resize File System** grows a supported filesystem after the LV is extended. If it is disabled or the filesystem is unsupported, the LV can be larger while the mounted filesystem still reports its old size. Verify both the LVM size and `df` output after expansion.
+
+:::danger Destructive disk operations
+Formatting, disk initialization, PV/VG/LV removal, and some RAID actions can permanently destroy data. Keep a tested backup and an out-of-band console. A successful dialog only confirms that the command ran; verify the filesystem, mount, data, and boot behavior afterward.
 :::
 
 ## SMART

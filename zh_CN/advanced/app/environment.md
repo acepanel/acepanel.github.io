@@ -1,5 +1,7 @@
 # 运行环境
 
+![Runtime environments](/images/app/environment.png)
+
 运行环境用于安装各类编程语言的运行时，为网站和项目提供执行环境。
 
 ## 支持的语言
@@ -17,20 +19,18 @@ AcePanel 支持以下编程语言的运行环境：
 
 ## 运行环境列表
 
-进入 **应用** 页面，点击 **运行环境** 标签查看可用的运行环境：
-
-![运行环境](/images/app/app-runtime.png)
+Go to the **Apps** page, click the **Runtime Environment** tab to view available runtime environments:
 
 点击顶部的语言分类可筛选特定语言的版本，或使用右侧的搜索框按名称或描述搜索：
 
-![PHP 运行环境](/images/app/app-runtime-php.png)
-
 ## 安装运行环境
 
-1. 进入 **应用** 页面
+1. Go to the **Apps** page
 2. 点击 **运行环境** 标签
 3. 选择需要的语言分类（或查看全部）
 4. 点击对应版本的 **安装** 按钮
+
+When the runtime offers them, the install dialog also accepts a **Pre-execution Script** and **Custom Compile Parameters**. Leave them empty unless the build needs a known dependency, mirror, patch, or compiler option. The script runs with installation privileges, so review it before submitting the task.
 
 :::tip 版本选择建议
 
@@ -43,8 +43,6 @@ AcePanel 支持以下编程语言的运行环境：
 
 已安装的运行环境会显示 **管理** 按钮。 点击进入管理页面：
 
-![运行环境管理](/images/app/app-runtime-manage.png)
-
 ### 运行状态
 
 显示运行环境的当前状态，提供启动、停止、重启、重载等操作。
@@ -53,85 +51,83 @@ AcePanel 支持以下编程语言的运行环境：
 
 PHP 运行环境提供模块管理功能，可以安装或卸载各种 PHP 模块：
 
-![PHP 模块管理](/images/app/app-runtime-modules.png)
+The Module Management tab lists every available module with its name, description, and an **Install** / **Delete** action. Installing or uninstalling a module is submitted as a background task; check the result in **Tasks > Panel Tasks**.
 
-模块管理选项卡列出了每个可用模块的名称、描述以及 **安装** / **删除** 操作。 安装或卸载模块会以后台任务的形式提交，请在 **后台任务** 中查看结果。
+A wide catalog of modules is available, including (but not limited to):
 
-可安装的模块种类丰富，包括（但不限于）：
+- **Caching / Serialization**: OPcache (bytecode cache), APCu (user-level in-memory key-value cache), igbinary, Redis (requires igbinary), Memcached
+- **Imaging / Files**: ImageMagick, exif, fileinfo, zip, bz2, zstd, xlswriter (Excel)
+- **Databases**: pgsql and pdo_pgsql (PostgreSQL), sqlsrv and pdo_sqlsrv (SQL Server)
+- **Networking / Protocols**: ssh2, snmp, ldap, imap, event, grpc, protobuf, rdkafka (Kafka)
+- **Internationalization / Text**: intl, gettext, enchant, pspell, readline, yaml, xsl
+- **System V IPC**: sysvmsg, sysvsem, sysvshm
+- **Math**: gmp, calendar
+- **Profiling / Debugging**: xhprof, xdebug
+- **High-performance / Encryption**: Swoole, Swow, ionCube (must be installed after OPcache)
 
-- **缓存 / 序列化**：OPcache（字节码缓存）、APCu（用户级内存键值缓存）、igbinary、Redis（需要 igbinary）、Memcached
-- **图像 / 文件**：ImageMagick、exif、fileinfo、zip、bz2、zstd、xlswriter（Excel）
-- **数据库**：pgsql 和 pdo_pgsql（PostgreSQL）、sqlsrv 和 pdo_sqlsrv（SQL Server）
-- **网络 / 协议**：ssh2、snmp、ldap、imap、event、grpc、protobuf、rdkafka（Kafka）
-- **国际化 / 文本**：intl、gettext、enchant、pspell、readline、yaml、xsl
-- **System V IPC**：sysvmsg、sysvsem、sysvshm
-- **数学**：gmp、calendar
-- **性能分析 / 调试**：xhprof、xdebug
-- **高性能 / 加密**：Swoole、Swow、ionCube（必须在 OPcache 之后安装）
+:::tip Version-Aware Availability
+The module catalog adapts to the selected PHP version:
 
-:::tip 版本感知的可用性
-模块目录会根据所选的 PHP 版本进行适配：
-
-- **Swow** 仅在 PHP 8.0 及以上版本可用
-- **pspell** 和 **imap** 在 PHP 8.4 及以上版本已移除（不再推荐使用）
-- **OPcache** 在 PHP 8.5 及以上版本不再作为可安装模块提供，因为它已原生内置
+- **Swow** is only available on PHP 8.0 and later
+- **pspell** and **imap** are removed on PHP 8.4 and later (no longer recommended)
+- **OPcache** is no longer offered as an installable module on PHP 8.5 and later, since it is built in natively
   :::
 
-### 配置文件（PHP）
+### Configuration Files (PHP)
 
-您可以通过 **主配置** 选项卡使用内置编辑器编辑 PHP 的主配置文件（php.ini），并通过 **FPM 配置** 选项卡编辑 FPM 配置文件。 运行状态页面上的 **查看 PHPInfo** 按钮会显示完整的 `phpinfo()` 输出。
+You can edit PHP's main configuration file (php.ini) via the **Main Configuration** tab and the FPM configuration file via the **FPM Configuration** tab using a built-in editor. The **View PHPInfo** button on the running status page shows the full `phpinfo()` output.
 
-### 参数调优（PHP）
+### Parameter Tuning (PHP)
 
-**参数调优** 选项卡提供以表单方式调整常用设置，无需直接编辑原始配置。 它分为以下几个部分：
+The **Parameter Tuning** tab provides a form-based way to adjust common settings without editing the raw configuration. It is organized into the following sections:
 
-- **通用**：`short_open_tag`、`date.timezone`、`display_errors` 和 `error_reporting`
-- **禁用函数**：以逗号分隔的待禁用 PHP 函数列表（例如 `exec`、`shell_exec`、`system`、`passthru`）
-- **上传限制**：`upload_max_filesize`、`post_max_size`、`max_file_uploads` 和 `memory_limit`
-- **超时限制**：`max_execution_time`、`max_input_time` 和 `max_input_vars`
-- **性能调优**：PHP-FPM 进程管理器设置（`pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers`、`pm.max_spare_servers`）
-- **会话**：`session.save_handler`（files、redis 或 memcached）、对应的连接信息或保存路径、`session.gc_maxlifetime` 和 `session.cookie_lifetime`。 **清理会话文件** 按钮会删除所有会话文件；仅在保存处理器设置为 `files` 时生效
+- **General**: `short_open_tag`, `date.timezone`, `display_errors`, and `error_reporting`
+- **Disabled Functions**: a comma-separated list of PHP functions to disable (e.g. `exec`, `shell_exec`, `system`, `passthru`)
+- **Upload Limits**: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, and `memory_limit`
+- **Timeout Limits**: `max_execution_time`, `max_input_time`, and `max_input_vars`
+- **Performance Tuning**: PHP-FPM process manager settings (`pm`, `pm.max_children`, and, for `dynamic` mode, `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`)
+- **Session**: `session.save_handler` (files, redis, or memcached), the matching connection details or save path, `session.gc_maxlifetime`, and `session.cookie_lifetime`. A **Clean Session Files** button deletes all session files; it only takes effect when the save handler is set to `files`
 
-### 日志（PHP）
+### Logs (PHP)
 
-PHP 运行环境提供独立的 **负载状态** 选项卡（FPM 进程池负载），以及 **运行日志**、**错误日志** 和 **慢日志** 选项卡，用于监控和故障排查。
+The PHP runtime environment provides a separate **Load Status** tab (FPM pool load), along with **Runtime Logs**, **Error Logs**, and **Slow Logs** tabs for monitoring and troubleshooting.
 
-### 语言专属设置
+### Language-Specific Settings
 
-部分运行环境在其管理页面提供专属设置：
+Some runtime environments provide dedicated settings on their management page:
 
-- **Go**：配置模块代理（`GOPROXY`），内置官方代理以及 goproxy.cn、阿里、腾讯等镜像的预设项
-- **Node.js**：配置 npm 镜像源（registry），内置官方源以及 npmmirror、腾讯、华为等镜像的预设项
-- **Python**：配置 pip 镜像，内置官方源以及阿里、腾讯、清华、中科大等镜像的预设项
+- **Go**: Configure the module proxy (`GOPROXY`), with presets for the official proxy and mirrors such as goproxy.cn, Alibaba, and Tencent
+- **Node.js**: Configure the npm registry, with presets for the official registry and mirrors such as npmmirror, Tencent, and Huawei
+- **Python**: Configure the pip mirror, with presets for the official source and mirrors such as Alibaba, Tencent, Tsinghua, and USTC
 
-### 设置为 CLI 默认版本
+### Set as CLI Default Version
 
-点击 **设为 CLI 默认版本** 按钮，可将当前版本设为命令行使用的默认版本。 所有运行环境（Go、Java、Node.js、PHP、Python 和 .NET）均支持此功能。
+Click the **Set as CLI Default Version** button to set the current version as the default version used by the command line. This is available for all runtime environments (Go, Java, Node.js, PHP, Python, and .NET).
 
-## 多版本共存
+## Multiple Version Coexistence
 
-AcePanel 支持同一语言的多个版本共存。 例如，你可以同时安装 PHP 7.4 和 PHP 8.3，不同的网站可以使用不同的 PHP 版本。
+AcePanel supports multiple versions of the same language coexisting. For example, you can install both PHP 7.4 and PHP 8.3 simultaneously, and different websites can use different PHP versions.
 
-安装路径规则：
+Installation path rules:
 
-- **Go**：`/opt/ace/server/go/版本号`
-- **Java**：`/opt/ace/server/java/版本号`
-- **Node.js**：`/opt/ace/server/nodejs/版本号`
-- **PHP**：`/opt/ace/server/php/版本号`
-- **Python**：`/opt/ace/server/python/版本号`
-- **.NET**：`/opt/ace/server/dotnet/version`
+- **Go**: `/opt/ace/server/go/version`
+- **Java**: `/opt/ace/server/java/version`
+- **Node.js**: `/opt/ace/server/nodejs/version`
+- **PHP**: `/opt/ace/server/php/version`
+- **Python**: `/opt/ace/server/python/version`
+- **.NET**: `/opt/ace/server/dotnet/version`
 
-## 在项目中使用
+## Using in Projects
 
-创建项目时，可以在项目设置中选择使用的运行环境版本。 详见 [项目管理](../project) 文档。
+When creating a project, you can select the runtime environment version to use in the project settings. See [Project Management](../project) documentation for details.
 
-## 更新运行环境
+## Update Runtime Environment
 
-当有新版本可用时，列表中会显示最新版本号。 你可以：
+When a new version is available, the latest version number will be displayed in the list. You can:
 
-1. 卸载旧版本，安装新版本
-2. 保留旧版本，同时安装新版本（推荐）
+1. Uninstall the old version and install the new version
+2. Keep the old version and install the new version simultaneously (recommended)
 
-:::warning 注意
-更新运行环境版本可能导致依赖该版本的项目出现兼容性问题， 请在测试环境验证后再更新生产环境。
+:::warning Note
+Updating runtime environment versions may cause compatibility issues with projects that depend on that version. Please verify in a test environment before updating the production environment.
 :::

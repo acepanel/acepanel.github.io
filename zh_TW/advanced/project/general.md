@@ -1,12 +1,14 @@
 # 通用專案
 
+![Create a general project](/images/project/general.png)
+
 通用專案用於部署任意類型的可執行程式，不限於特定程式語言。
 
 ## 專案類型
 
 **專案** 頁面依類型分為多個分頁：**通用**、**Go**、**Java**、**Node.js**、**PHP**、**Python** 與 **.NET**。 它們產生的都是同一種由 `systemd` 管理的服務，差異僅在於建立對話框。
 
-對於特定語言的分頁，建立對話框會增加一個執行環境 **版本** 選擇器（其內容來自 **應用程式** > **執行環境** 中已安裝的執行環境），並在適用時提供 **框架** 預設（例如 Spring Boot、Express、Laravel Octane、Django、ASP.NET Core）。 選擇版本與框架後，會自動以鎖定版本的可執行檔案填入 **啟動指令**（例如 `go1.24 run main.go` 或 `php8.3 artisan octane:start`），你仍可在建立前進行修改。 請參閱 [Go](./go.md)、[Java](./java.md)、[Node.js](./nodejs.md)、[PHP](./php.md)、[Python](./python.md) 與 [.NET](./dotnet.md) 專案的專屬頁面。
+For the language-specific tabs, the create dialog adds a runtime **Version** selector (populated from the runtimes installed under **Apps** > **Runtime Environment**) and, where applicable, a **Framework** preset (for example Spring Boot, Express, Laravel Octane, Django, ASP.NET Core). 選擇版本與框架後，會自動以鎖定版本的可執行檔案填入 **啟動指令**（例如 `go1.24 run main.go` 或 `php8.3 artisan octane:start`），你仍可在建立前進行修改。 請參閱 [Go](./go.md)、[Java](./java.md)、[Node.js](./nodejs.md)、[PHP](./php.md)、[Python](./python.md) 與 [.NET](./dotnet.md) 專案的專屬頁面。
 
 **通用** 類型沒有版本或框架輔助：你需要自行輸入 **啟動指令**，因此它可以執行任意可執行程式。
 
@@ -89,7 +91,7 @@ export ENV=production
 
 啟動指令由 `systemd` 直接執行，而非透過 shell，因此像 `ENV=production ./myapp` 這類行內前綴 **不** 會生效。
 
-若要設定環境變數，請編輯專案並於 **執行設定** → **環境變數** 中新增，每筆一組鍵/值。 每一筆都會以 `Environment=KEY=VALUE` 指示詞的形式寫入單元檔案。
+若要設定環境變數，請編輯專案並於 **執行設定** → **環境變數** 中新增，每筆一組鍵/值。 AcePanel quotes the value when writing the systemd unit, so spaces and supported special characters are preserved. Do not add your own shell quoting around the value unless it is part of the value itself.
 
 ## 工作目錄
 

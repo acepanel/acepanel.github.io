@@ -1,87 +1,62 @@
 # 网络
 
-网络页面列出服务器上当前的网络连接，帮助你查看哪些进程正在监听端口或已建立连接，以及它们的本地和远程地址。
+![Network management](/images/toolbox/network.png)
 
-要打开它，请进入 **工具箱** 页面并切换到 **网络** 标签页。
+The Network tool combines a read-only connection inspector with guarded network-interface configuration. Open **Toolbox > Network**.
 
-:::tip 提示
-此页面为只读。 它用于查看和排查连接问题，不提供关闭连接或终止进程的操作。 要管理进程，请使用工具箱中的 **进程** 标签页。
-:::
+## Network Connections
 
-## 连接列表
+The connection list shows current TCP, TCP6, UDP, and UDP6 sockets with local address, remote address, state, PID, and process. Search by PID, partial process name, or local/remote port, combine state filters, sort supported columns, refresh the snapshot, and change the page size.
 
-该页面在表格中显示所有检测到的 TCP 和 UDP 连接（同时包含 IPv4 和 IPv6）。 每一行代表一个连接。
+Common states include `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, `CLOSE_WAIT`, `SYN_SENT`, `SYN_RECV`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, `CLOSING`, and `NONE`. UDP commonly has no connection state. Process ownership can be empty if the process exited between sampling or the operating system did not expose it.
 
-### 列
+The connection list does not terminate sockets. Open [Processes](./process) when you need process details or signal operations.
 
-| 列    | 说明                                            |
-| ---- | --------------------------------------------- |
-| 类型   | 连接类型：`tcp`、`tcp6`、`udp` 或 `udp6`              |
-| PID  | 拥有该连接的进程 ID                                   |
-| 进程   | 拥有该连接的进程名称                                    |
-| 本地地址 | 本地地址和端口，格式为 `IP:Port`                         |
-| 远程地址 | 远程地址和端口，格式为 `IP:Port`                         |
-| 状态   | 连接状态，例如 `LISTEN`、`ESTABLISHED`、`TIME_WAIT` 等。 |
+## Network Interface Configuration
 
-**状态** 列以彩色标签显示，便于一眼区分不同状态：
+The interface section shows the detected configuration manager, interface type, MAC address, MTU, and current IPv4 and IPv6 addresses.
 
-- `LISTEN` 显示为绿色
-- `ESTABLISHED` 显示为蓝色
-- 过渡状态如 `TIME_WAIT`、`CLOSE_WAIT`、`FIN_WAIT1`、`FIN_WAIT2`、`LAST_ACK` 和 `CLOSING` 显示为橙色
-- `NONE` 和其他状态显示为中性色
+AcePanel can safely edit supported configurations managed by:
 
-:::tip 提示
-对于无连接的 UDP 连接，状态通常为 `NONE`。 当面板无法确定连接的所有者时（例如由于权限不足或进程已退出），`PID` 和 `Process` 列可能为空。
-:::
+- NetworkManager;
+- netplan;
+- ifupdown configurations that pass AcePanel's safety parser.
 
-## 过滤和搜索
+For IPv4 and IPv6 independently, choose automatic or manual addressing and configure CIDR addresses, the default gateway, DNS servers, and whether automatically assigned DNS is accepted. ifupdown does not expose automatic-DNS fields that it cannot represent.
 
-表格上方的工具栏可让你缩小显示的连接范围。 过滤条件可以组合使用，并且列表会在你更改时自动刷新。
+### Unsupported Configurations
 
-### 按状态过滤
+AcePanel displays **Unsupported** instead of attempting an unsafe rewrite when it cannot reliably round-trip the active configuration. Examples include multiple files defining the same interface, inherited or `mapping`-based ifupdown definitions, and a NetworkManager interface without an editable active connection profile.
 
-一个多选下拉框，可按一个或多个状态过滤连接。 可用选项：
+Manage an unsupported interface with its native operating-system tools or simplify the configuration first. Do not overwrite it with a guessed panel form.
 
-- `LISTEN`
-- `ESTABLISHED`
-- `TIME_WAIT`
-- `CLOSE_WAIT`
-- `SYN_SENT`
-- `SYN_RECV`
-- `FIN_WAIT1`
-- `FIN_WAIT2`
-- `LAST_ACK`
-- `CLOSING`
-- `NONE`
+## Safe Apply and Automatic Rollback
 
-选择多个状态时，会显示匹配其中任意一个的连接。 清除选择即可显示所有状态。
+Changing the primary address, gateway, route source, or automatic-address setting can immediately disconnect the panel and SSH. Keep a console or provider recovery channel available.
 
-### 搜索 PID
+When a change is applied, AcePanel starts a 30-second confirmation window:
 
-按进程 ID 过滤连接。 该匹配为子串匹配，因此输入 `12` 会匹配 `12`、`123` 和 `4128` 等 PID。
+1. Verify that the panel, SSH, gateway, DNS, and required services remain reachable.
+2. Click **Keep change** within 30 seconds to retain the new configuration.
+3. Click **Roll back now** to restore the previous configuration immediately.
+4. If no confirmation arrives before the countdown ends, AcePanel automatically rolls back.
 
-### 搜索进程
+Automatic rollback reduces risk but cannot guarantee recovery from every driver, routing, provider, or operating-system failure. Test remotely managed servers during a maintenance window.
 
-按进程名称过滤连接。 该匹配不区分大小写且为部分匹配，因此输入 `ngin` 会匹配名为 `nginx` 的进程。
+## Validation
 
-### 搜索端口
+After keeping a change, verify:
 
-按端口号过滤连接。 该匹配会同时应用于 **本地端口和远程端口**，且为子串匹配，因此输入 `80` 会匹配 `80`、`8080` 和 `8000` 等端口。
+- the expected IPv4 and IPv6 addresses and MTU;
+- the default gateway and route table;
+- DNS resolution using every configured resolver;
+- panel and SSH access from a fresh connection;
+- inbound services through both the system firewall and cloud security group;
+- outbound access required by package managers, backups, mail, and monitoring.
 
-## 排序
+## Troubleshooting
 
-点击列标题即可对表格排序。 以下列支持排序：
-
-- **类型**
-- **PID**
-- **进程**
-
-每次点击会在升序和降序之间切换。 默认情况下，连接按 **PID** 升序排序。 **本地地址**、**远程地址** 和 **状态** 列不支持排序。
-
-## 分页
-
-列表分页显示，默认每页 **50** 条。 你可以使用页面大小选择器更改每页显示的数量；可用选项为每页 **50**、**100**、**200** 和 **500** 条。 还提供快速跳转功能，可直接跳转到指定页。
-
-## 刷新
-
-点击 **刷新** 按钮可重新加载连接列表并从服务器获取最新数据。 列表反映的是加载那一刻的连接状态，因此请刷新以捕获新建连接或已关闭会话等变化。
+- **Unsupported:** inspect the named manager's source files and remove ambiguous multi-file, inheritance, or mapping constructs only if you understand their effect.
+- **Change rolled back:** determine which address, gateway, DNS, or DHCP condition broke connectivity before trying again.
+- **Panel reachable but a service is not:** check its bind address and [Security](../firewall) rules for both address families.
+- **An old address remains:** refresh the interface list and inspect the native manager; temporary kernel addresses and persistent configuration are different states.

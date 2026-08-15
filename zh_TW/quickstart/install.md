@@ -70,8 +70,14 @@ Entry: /xxxxxx
 
 **忘記使用者名稱／密碼／位址**
 
-使用命令列工具重設：
+Display the current access information:
 
 ```shell
 acepanel info
+```
+
+If the password is unknown, reset the selected account explicitly:
+
+```shell
+acepanel info --username <username> --force
 ```

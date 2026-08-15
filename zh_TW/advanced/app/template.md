@@ -1,20 +1,20 @@
 # 容器範本
 
+![Container templates](/images/app/template.png)
+
 容器範本提供以 Docker 為基礎的一鍵部署方案，可快速部署各種常見的應用程式，無需手動設定。
 
 ## 事前準備
 
 使用容器範本前，您需要先安裝 Docker：
 
-1. 前往 **應用程式** > **原生應用程式**
+1. Go to **Apps** > **Native App**
 2. 找到 Docker，點選 **安裝**
 3. 等待安裝完成
 
 ## 範本清單
 
-前往 **應用程式** 頁面，點選 **容器範本** 分頁以檢視可用的範本：
-
-![容器範本清單](/images/app/app-template.png)
+Go to the **Apps** page, click the **Container Template** tab to view available templates:
 
 您可以依分類標籤篩選範本，或依名稱、描述、網址進行搜尋。 從本機 `panel/storage/templates` 目錄載入的範本會顯示 **本機** 標籤。 若本機範本與遠端範本的 slug 相同，則以本機範本為準。
 
@@ -24,16 +24,12 @@
 
 ### 步驟 1：選擇部署模式
 
-![選擇部署模式](/images/app/app-template-deploy-step1.png)
-
 - **建立新的 Compose**：以範本建立一個新的 Docker Compose
 - **更新現有 Compose**：使用範本更新現有的 compose 設定
 
 ### 步驟 2：設定參數
 
 依應用程式需求填寫設定資訊：
-
-![設定參數](/images/app/app-template-deploy-step2.png)
 
 常見的設定項目：
 
@@ -59,8 +55,6 @@
 
 預覽產生的 Docker Compose 設定檔：
 
-![預覽設定](/images/app/app-template-deploy-step3.png)
-
 在這裡您可以：
 
 - 檢視並編輯 **Compose 檔案**（docker-compose.yml）。 在更新模式下這是一個差異編輯器：左側顯示原始的 compose，右側顯示新的 compose，您可以對其進行編輯。
@@ -71,8 +65,6 @@
 此步驟會顯示您所做選擇的摘要：部署模式、compose 名稱、是否啟用自動啟動、是否啟用自動放行防火牆（僅限建立模式），以及環境變數的數量。 您可以展開 **Compose 內容**，再次檢視最終的唯讀 compose。
 
 確認所有設定無誤後，點選 **建立**（更新模式下為 **更新**）以完成部署：
-
-![確認部署](/images/app/app-template-deploy-step4.png)
 
 在建立模式下，面板會將部署寫入 `<root>/compose/<name>/`，並同時產生一個 `docker-compose.yml` 以及一個依您的環境變數建立的 `.env` 檔案。 之後您可以在 **容器** > **Compose** 頁面編輯這兩個檔案中的任一個。
 

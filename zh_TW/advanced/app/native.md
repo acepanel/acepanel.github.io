@@ -1,12 +1,12 @@
 # 原生應用程式
 
+![Native applications](/images/app/native.png)
+
 原生應用程式是直接安裝在系統上的軟體，相較於容器化部署具有更好的效能和更低的資源佔用。
 
 ## 應用程式清單
 
-進入 **應用程式** 頁面，切換到 **原生應用程式** 分頁即可檢視原生應用程式清單。 可以透過頂部的分類標籤篩選不同類型的應用程式，或使用右側的搜尋框依名稱或描述進行搜尋。
-
-![原生應用程式清單](/images/app/app-list.png)
+Go to the **Apps** page and switch to the **Native App** tab to view the native application list. 可以透過頂部的分類標籤篩選不同類型的應用程式，或使用右側的搜尋框依名稱或描述進行搜尋。
 
 清單中會顯示以下資訊：
 
@@ -20,23 +20,21 @@
 
 點選應用程式右側的 **安裝** 按鈕，會跳出安裝對話方塊：
 
-![安裝對話方塊](/images/app/app-install-dialog.png)
-
 ### 選擇通道
 
 部分應用程式提供多個版本通道， 點選下拉式選單選擇需要的版本系列：
-
-![選擇通道](/images/app/app-install-channel.png)
 
 ### 選擇版本
 
 選擇通道後，系統會自動填入該通道的最新版本號：
 
-![選擇版本](/images/app/app-install-version.png)
-
 如果所選通道提供了發行說明，版本欄位下方會出現 **更新日誌** 區域，顯示該通道的更新內容。 版本欄位本身是唯讀的，會始終反映所選通道的最新可用版本。
 
-點選 **安裝** 按鈕開始安裝。 安裝過程中可以在 **任務** 頁面檢視詳細日誌。
+Some applications also provide **Pre-execution Script** and **Custom Compile Parameters** fields. The pre-execution script runs before the installer and is intended for repository, dependency, or environment preparation. Custom compile parameters are passed to applications that support source-build customization.
+
+Review both fields before submitting: they execute with installation privileges and a mistake can change the system outside the application directory. Leave them empty for a normal installation.
+
+Click **Install** to submit the background task and follow its log under **Tasks > Panel Tasks**.
 
 ## 管理應用程式
 
@@ -46,22 +44,18 @@
 
 管理頁面會先顯示應用程式的執行狀態：
 
-![應用程式管理](/images/app/app-manage.png)
+The following operations are provided:
 
-提供以下操作：
+- **Start**: Start a stopped service
+- **Stop**: Stop a running service
+- **Restart**: Restart the service (will interrupt connections)
+- **Reload**: Reload configuration (without interrupting connections, recommended; only available for applications that support it)
 
-- **啟動**：啟動已停止的服務
-- **停止**：停止正在執行的服務
-- **重新啟動**：重新啟動服務（會中斷連線）
-- **重新載入**：重新載入設定（不會中斷連線，建議使用；僅支援此功能的應用程式可用）
+The **Autostart** switch in the top-right corner controls whether the service starts automatically on system boot.
 
-右上角的 **開機自動啟動** 開關控制服務是否在系統啟動時自動執行。
+### Modify Configuration
 
-### 修改設定
-
-點選 **修改設定** 分頁，可以直接編輯應用程式的設定檔：
-
-![修改設定](/images/app/app-manage-config.png)
+Click the **Modify Configuration** tab to directly edit the application's configuration file:
 
 :::warning 注意
 修改設定檔前請確保了解每個參數的含義， 錯誤的設定可能導致服務無法啟動。

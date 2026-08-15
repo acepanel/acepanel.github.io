@@ -119,64 +119,86 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
-    text: "应用",
+    text: "Home",
+    link: '/home'
+  }, {
+    text: "Apps",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/app'
     }, {
-      text: "原生应用",
+      text: "Native Apps",
       link: '/app/native'
     }, {
-      text: "运行环境",
+      text: "Runtimes",
       link: '/app/environment'
     }, {
-      text: "容器模版",
+      text: "Container Templates",
       link: '/app/template'
+    }, {
+      text: "Managers",
+      collapsed: true,
+      items: [{
+        text: "FRP",
+        link: '/app/frp'
+      }, {
+        text: "Fail2ban",
+        link: '/app/fail2ban'
+      }, {
+        text: "Rsync",
+        link: '/app/rsync'
+      }, {
+        text: "Supervisor",
+        link: '/app/supervisor'
+      }]
     }]
   }, {
-    text: "容器",
+    text: "Containers",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/container'
     }, {
-      text: "容器",
+      text: "Containers",
       link: '/container/container'
     }, {
-      text: "编排",
+      text: "Compose",
       link: '/container/compose'
     }, {
-      text: "镜像",
+      text: "Images",
       link: '/container/image'
     }, {
-      text: "网络",
+      text: "Networks",
       link: '/container/network'
     }, {
-      text: "卷",
+      text: "Volumes",
       link: '/container/volume'
     }]
   }, {
-    text: "网站",
+    text: "Websites",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/website'
     }, {
-      text: "反向代理",
+      text: "Reverse Proxy",
       link: '/website/proxy'
     }, {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "纯静态",
+      text: "Static",
       link: '/website/static'
     }, {
-      text: "统计",
+      text: "Statistics",
       link: '/website/stat'
+    }, {
+      text: "Settings",
+      link: '/website/setting'
     }]
   }, {
-    text: "项目",
+    text: "Projects",
     collapsed: true,
     items: [{
       text: "概述",
@@ -200,24 +222,27 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: ".NET",
       link: '/project/dotnet'
     }, {
-      text: "通用",
+      text: "General",
       link: '/project/general'
     }]
   }, {
-    text: "数据库",
+    text: "Databases",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/database'
     }, {
-      text: "数据库",
+      text: "Databases",
       link: '/database/database'
     }, {
-      text: "用户",
+      text: "Users",
       link: '/database/user'
     }, {
-      text: "服务器",
+      text: "Servers",
       link: '/database/server'
+    }, {
+      text: "pgAdmin",
+      link: '/database/pgadmin'
     }, {
       text: "Redis",
       link: '/database/redis'
@@ -226,108 +251,124 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/database/elasticsearch'
     }]
   }, {
-    text: "证书",
+    text: "Certificates",
     collapsed: true,
     items: [{
-      text: "概述",
+      text: "Overview",
       link: '/cert'
     }, {
-      text: "证书",
+      text: "Certificates",
       link: '/cert/cert'
     }, {
-      text: "账号",
+      text: "Accounts",
       link: '/cert/account'
     }, {
       text: "DNS",
       link: '/cert/dns'
     }]
   }, {
-    text: "监控",
-    link: '/monitor'
-  }, {
-    text: "文件",
-    link: '/file'
-  }, {
-    text: "备份",
-    link: '/backup'
-  }, {
-    text: "终端",
-    link: '/ssh'
-  }, {
-    text: "防火墙",
+    text: "Monitoring",
     collapsed: true,
     items: [{
-      text: "概述",
-      link: '/firewall'
+      text: "System Monitoring",
+      link: '/monitor'
     }, {
-      text: "扫描感知",
-      link: '/firewall/scan'
+      text: "Alerts",
+      link: '/monitor/alert'
+    }, {
+      text: "Settings & Notifications",
+      link: '/monitor/setting'
     }]
   }, {
-    text: "任务",
+    text: "Logs",
+    link: '/log'
+  }, {
+    text: "Security",
     collapsed: true,
     items: [{
-      text: "计划任务",
+      text: "Firewall",
+      link: '/firewall'
+    }, {
+      text: "Scan Awareness",
+      link: '/firewall/scan'
+    }, {
+      text: "Tamper Protection",
+      link: '/firewall/tamper'
+    }]
+  }, {
+    text: "Files",
+    link: '/file'
+  }, {
+    text: "Backup",
+    link: '/backup'
+  }, {
+    text: "Terminal",
+    link: '/ssh'
+  }, {
+    text: "Tasks",
+    collapsed: true,
+    items: [{
+      text: "Scheduled Tasks",
       link: '/task/schedule'
     }, {
-      text: "面板任务",
+      text: "Panel Tasks",
       link: '/task/panel'
     }]
   }, {
-    text: "工具箱",
+    text: "Toolbox",
     collapsed: true,
     items: [{
-      text: "概述",
+      text: "Overview",
       link: '/toolbox'
     }, {
-      text: "进程",
+      text: "Processes",
       link: '/toolbox/process'
     }, {
-      text: "系统",
+      text: "Network",
+      link: '/toolbox/network'
+    }, {
+      text: "System",
       link: '/toolbox/system'
     }, {
       text: "SSH",
       link: '/toolbox/ssh'
     }, {
-      text: "磁盘",
+      text: "Disk",
       link: '/toolbox/disk'
     }, {
-      text: "日志清理",
+      text: "Log Cleanup",
       link: '/toolbox/log'
     }, {
-      text: "Webhook",
+      text: "Webhooks",
       link: '/toolbox/webhook'
     }, {
-      text: "性能测试",
+      text: "Benchmark",
       link: '/toolbox/benchmark'
     }, {
-      text: "网络",
-      link: '/toolbox/network'
-    }, {
-      text: "迁移",
+      text: "Migration",
       link: '/toolbox/migration'
     }, {
-      text: "面板",
+      text: "Panel",
       link: '/toolbox/panel'
     }]
   }, {
-    text: "设置",
+    text: "Settings",
     collapsed: true,
     items: [{
-      text: "基本设置",
+      text: "Basic Settings",
       link: '/setting/basic'
     }, {
-      text: "安全设置",
+      text: "Security Settings",
       link: '/setting/safe'
     }, {
-      text: "用户管理",
+      text: "User Management",
       link: '/setting/user'
     }]
   }, {
-    text: "面板 API",
+    text: 'Panel API',
     link: '/api'
   }, {
-    text: "安全建议",
+    text: 'Security Recommendations',
     link: '/security'
   }];
 }

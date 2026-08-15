@@ -1,12 +1,12 @@
 # 網路
 
+![Container networks](/images/container/network.png)
+
 Docker 網路用於容器之間的通訊。 透過網路管理頁面，你可以建立、檢視和刪除網路。
 
 ## 網路清單
 
 進入 **容器** > **網路** 分頁檢視網路清單。
-
-![網路清單](/images/container/container-network.png)
 
 每一列開頭都有一個選取核取方塊，用於勾選要批次刪除的網路（請參閱 [刪除網路](#delete-network)）。
 

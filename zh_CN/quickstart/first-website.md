@@ -1,5 +1,7 @@
 # 第一个网站：部署 WordPress
 
+![Create a website](/images/quickstart/website.png)
+
 本文以 WordPress 为例，演示如何通过 AcePanel 快速搭建 PHP 网站。
 
 ## 安装环境
@@ -14,8 +16,6 @@
 ## 创建网站
 
 进入「网站」->「PHP」，点击「创建网站」。
-
-![创建网站](/images/quickstart/website-create.png)
 
 :::tip 网站类型
 像上面那样从「PHP」标签页进入会预选 PHP 类型并隐藏类型选择器。 如果改从顶部的「全部」标签页开始，表单会多出一个 **网站类型** 选择器，包含三个选项：**反向代理**、**PHP** 和 **纯静态**。 在那里选择 **PHP** 即可得到下面描述的相同字段。
@@ -39,8 +39,6 @@
 ## 配置伪静态
 
 回到网站列表，点击「编辑」，切换到「伪静态」标签页，选择预设的 `wordpress` 规则并保存。
-
-![伪静态配置](/images/quickstart/website-rewrite.png)
 
 :::tip WordPress 多站点
 如果你运行的是 WordPress 多站点网络而非单站点，请从同一下拉菜单中选择 `wordpress-multisite` 预设。

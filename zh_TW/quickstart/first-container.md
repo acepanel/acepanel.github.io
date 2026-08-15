@@ -1,10 +1,12 @@
 # 第一個容器：部署 pgAdmin 4
 
+![Create a container](/images/quickstart/container.png)
+
 本文以 pgAdmin 4 為例，示範如何透過 AcePanel 快速部署 Docker 容器。
 
 ## 安裝 Docker
 
-前往「應用程式」頁面，在「原生應用程式」分頁中找到 Docker 並安裝。 安裝進度可在「任務」->「面板任務」中檢視。
+Go to the "Apps" page, find Docker on the "Native App" tab and install it. 安裝進度可在「任務」->「面板任務」中檢視。
 
 :::tip 中國大陸的伺服器
 在中國大陸的伺服器上拉取映像檔速度緩慢。 建議設定 [Millisecond Mirror](https://1ms.run/) 提供的付費加速來源。
@@ -12,19 +14,13 @@
 
 ## 部署容器
 
-前往「應用程式」->「容器範本」，找到 pgAdmin 4，然後點選「部署」。 部署是一個四步驟精靈：部署模式、設定、預覽與編輯、確認。
-
-![容器範本清單](/images/quickstart/container-template.png)
+Go to "Apps" -> "Container Template", find pgAdmin 4, and click "Deploy". 部署是一個四步驟精靈：部署模式、設定、預覽與編輯、確認。
 
 在範本清單中，您可以透過頂部的分類標籤或右側的搜尋框來縮小選擇範圍。 每個範本卡片都會顯示其圖示、名稱與說明；「本機」標籤用於標示儲存在本伺服器上的範本（而非從遠端範本儲存庫取得），而有定義首頁的範本會顯示一個外部連結按鈕，點選即可開啟專案網站。
 
 在「部署模式」步驟中，選擇「建立新 Compose」（另一個選項「更新現有 Compose」則是將範本套用至既有的 Compose）。
 
-![部署步驟 1](/images/quickstart/container-deploy-step1.png)
-
 在「設定」步驟中，填寫設定：
-
-![部署步驟 2](/images/quickstart/container-deploy-step2.png)
 
 - **Compose 名稱**：為 compose 取一個名稱，例如 `pg4admin`
 - **自動啟動**：勾選後，於建立完成後自動拉取映像檔並啟動
@@ -64,13 +60,9 @@
 
 若勾選「自動啟動」，建立完成後會彈出一個終端機視窗並執行 `docker compose ... up -d`，即時串流映像檔拉取與啟動進度：
 
-![啟動進度](/images/container/compose-starting.png)
-
 若您未勾選「自動啟動」，則尚未拉取任何映像檔。 前往「容器」->「Compose」頁面，並在該處啟動 compose。
 
 您也可以在「容器」->「Compose」頁面手動管理：
-
-![Compose 清單](/images/container/compose-list.png)
 
 ## 存取服務
 

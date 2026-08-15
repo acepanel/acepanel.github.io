@@ -1,10 +1,12 @@
 # Go 專案
 
+![Create a Go project](/images/project/go.png)
+
 Go 專案用於部署使用 Go 語言開發的後端應用程式，例如 Gin、Echo、Fiber 等框架。
 
 ## 前置需求
 
-1. 安裝 Go 執行環境：**應用程式** > **執行環境** > **Go**
+1. Install Go runtime environment: **Apps** > **Runtime Environment** > **Go**
 2. 編譯好的 Go 執行檔或原始碼
 
 ## 部署方式

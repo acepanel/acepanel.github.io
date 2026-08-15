@@ -1,10 +1,10 @@
 # 磁盘
 
+![Disk management](/images/toolbox/disk.png)
+
 磁盘页面提供磁盘分区管理、LVM 逻辑卷管理、SMART 磁盘健康状态以及 RAID 阵列状态等功能。
 
 ## 磁盘管理
-
-![磁盘管理](/images/toolbox/toolbox-disk.png)
 
 ### 磁盘信息
 
@@ -16,6 +16,8 @@
 - **分区数**：分区数量
 
 承载根（`/`）分区的磁盘会标记 **系统盘** 标签，无法初始化或卸载其分区。
+
+The system-disk guard prevents common mistakes but does not make every other disk disposable. Identify a device by model, serial number, capacity, partitions, and mount use before a destructive action.
 
 ### 分区列表
 
@@ -61,6 +63,8 @@
 - **磁盘**：选择要初始化的磁盘
 - **文件系统类型**：ext4、ext3、xfs 或 btrfs
 
+After formatting or initialization, verify the partition table, filesystem type, mount point, ownership, free space, and a reboot with the intended `fstab` entry.
+
 ### 开机自动挂载配置（fstab）
 
 显示 `/etc/fstab` 中的挂载配置：
@@ -73,13 +77,13 @@
 
 ## LVM 管理
 
-![LVM 管理](/images/toolbox/toolbox-disk-lvm.png)
-
 LVM（逻辑卷管理器）提供灵活的磁盘空间管理，支持动态调整分区大小。
 
 ### 物理卷（PV）
 
 物理卷是 LVM 的基础，通常是一个磁盘分区或整块磁盘。
+
+Create in dependency order: **PV → VG → LV → filesystem → mount**. Delete in reverse order. A PV in a VG, a VG containing an LV, or an LV that is mounted or in use must be detached from its dependent layer first.
 
 **创建物理卷**：
 
@@ -118,6 +122,12 @@ LVM（逻辑卷管理器）提供灵活的磁盘空间管理，支持动态调�
 
 :::tip 提示
 LVM 的优势在于逻辑卷可以在线扩展，无需卸载分区或重启系统。
+:::
+
+**Auto Resize File System** grows a supported filesystem after the LV is extended. If it is disabled or the filesystem is unsupported, the LV can be larger while the mounted filesystem still reports its old size. Verify both the LVM size and `df` output after expansion.
+
+:::danger Destructive disk operations
+Formatting, disk initialization, PV/VG/LV removal, and some RAID actions can permanently destroy data. Keep a tested backup and an out-of-band console. A successful dialog only confirms that the command ran; verify the filesystem, mount, data, and boot behavior afterward.
 :::
 
 ## SMART

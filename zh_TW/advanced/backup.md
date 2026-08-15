@@ -1,10 +1,10 @@
 # 備份
 
+![Backup management](/images/backup/backup.png)
+
 備份模組用於備份和還原網站檔案及資料庫，支援本機備份和遠端儲存。
 
 ## 備份頁面
-
-![備份頁面](/images/backup/backup.png)
 
 ## 備份類型
 
@@ -15,12 +15,15 @@
 | 網站         | 備份網站檔案                       |
 | MySQL      | 備份 Percona/MySQL/MariaDB 資料庫 |
 | PostgreSQL | 備份 PostgreSQL 資料庫            |
+| ClickHouse | Backup ClickHouse databases  |
+| Redis      | Backup Redis data            |
+| Valkey     | Backup Valkey data           |
 
-MySQL 和 PostgreSQL 分頁僅在安裝了對應的資料庫引擎時才會出現。
+Database tabs are shown when a corresponding server is available.
 
 ## 建立備份
 
-1. 選擇備份類型分頁（網站/MySQL/PostgreSQL）
+1. Select the backup type tab (Website/MySQL/PostgreSQL/ClickHouse/Redis/Valkey)
 2. 點選 **建立備份**
 3. 選擇要備份的網站（網站類型）或輸入資料庫名稱（資料庫類型）
 4. 選擇備份儲存
@@ -40,16 +43,19 @@ MySQL 和 PostgreSQL 分頁僅在安裝了對應的資料庫引擎時才會出�
 - **檔案名稱**：備份檔案名稱
 - **大小**：備份檔案大小
 - **更新日期**：備份時間
-- **操作**：還原、刪除
+- **Actions**: Download, restore, delete
 
 ## 還原備份
 
 1. 在備份清單中找到要還原的備份
-2. 點選 **還原** 按鈕
-3. 在對話方塊中選擇目標網站（網站類型）或輸入目標資料庫名稱（資料庫類型），然後點選提交
+2. Click **Restore**
+3. Select the target website or database and submit the task
+4. Follow the restore under **Tasks > Panel Tasks** and review its log before using the restored resource
+
+Website restore recognizes compatible archive layouts created by other server panels. Always review the destination path and site content after importing an external archive.
 
 :::danger 警告
-還原操作會覆寫現有資料。 請確保已備份目前的資料！
+Restore runs in the background and can overwrite existing data. Back up the current target first. Closing the dialog does not stop the task.
 :::
 
 ## 上傳備份
@@ -59,8 +65,6 @@ MySQL 和 PostgreSQL 分頁僅在安裝了對應的資料庫引擎時才會出�
 ## 儲存管理
 
 切換至 **儲存** 分頁來管理備份儲存位置。
-
-![儲存管理](/images/backup/backup-storage.png)
 
 ### 本機儲存
 
@@ -217,20 +221,20 @@ Path: (選填)
 除了 Web 介面，還可以透過[命令列工具](../quickstart/cli)觸發備份。 這對於自訂 shell 腳本以及排程任務執行的命令非常有用。 大多數命令接受一個選填的 `-s, --storage` 參數來指定儲存 ID（`panel` 命令除外）；省略時備份會儲存到本機儲存。
 
 ```shell
-# 依名稱備份網站
+# Backup a website by name
 acepanel backup website -n <website_name> [-s <storage_id>]
 
-# 備份資料庫（type 為 mysql 或 postgresql）
+# Backup a database (mysql, postgresql, clickhouse, redis, or valkey)
 acepanel backup database -t <type> -n <database_name> [-s <storage_id>]
 
-# 備份任意目錄
+# Backup an arbitrary directory
 acepanel backup path -p <directory_path> [-s <storage_id>]
 
-# 備份面板本身
+# Backup the panel itself
 acepanel backup panel
 
-# 清理舊備份，保留最近的 <keep> 份
-# <file> 是用於比對同一目標備份的檔案名稱前綴
+# Clean up old backups, keeping the most recent <keep> copies
+# <file> is the file name prefix used to match backups of the same target
 acepanel backup clear -t <type> -f <file> -k <keep> [-s <storage_id>]
 ```
 

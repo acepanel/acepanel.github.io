@@ -1,12 +1,14 @@
-# 監控
+# System Monitoring
 
-監控模組用於記錄與檢視伺服器的效能資料，包括 CPU、記憶體、磁碟 I/O 及網路流量。
+![System monitoring](/images/monitor/system.png)
+
+System Monitoring records and displays CPU, memory, disk I/O, and network traffic over time. Open **Monitoring > System**. Use [Alerts](./monitor/alert) to define thresholds and [Settings & Notifications](./monitor/setting) to configure collection, retention, SMTP, and event delivery.
 
 ## 監控頁面
 
-![監控頁面](/images/monitor/monitor.png)
+## Data Collection Settings
 
-## 監控設定
+Collection controls are under **Monitoring > Settings**.
 
 ### 啟用監控
 

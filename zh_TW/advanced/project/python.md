@@ -1,5 +1,7 @@
 # Python 專案
 
+![Create a Python project](/images/project/python.png)
+
 Python 專案用於部署 Django、Flask、FastAPI 等 Python Web 應用程式。
 
 ## 前置需求

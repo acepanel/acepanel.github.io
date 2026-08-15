@@ -1,12 +1,14 @@
 # 網站
 
+![Website overview](/images/website/overview.png)
+
 網站模組用於管理 Web 伺服器上的站台設定。 AcePanel 支援三種類型的網站：反向代理、PHP 與靜態。
 
 ## 事前準備
 
 在使用網站功能之前，您需要先安裝 Web 伺服器：
 
-1. 前往 **應用程式** > **原生應用程式**
+1. Go to **Apps** > **Native Applications**
 2. 安裝 Nginx、OpenResty 或 Apache
 
 ## 網站類型
@@ -19,7 +21,7 @@
 
 ## 網站清單
 
-除了類型分頁（全部／反向代理／PHP／純靜態）之外，網站頁面還提供 **統計** 與 **設定** 分頁。
+In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the page provides **Stats** and [**Settings**](./website/setting) tabs.
 
 網站清單會顯示以下資訊：
 
@@ -68,16 +70,23 @@
 - **自訂設定**：新增自訂設定片段（站台範圍或共用）
 - **存取記錄檔** / **錯誤記錄檔**：即時檢視站台的記錄檔
 
+### Change the Website Type
+
+An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
+
+Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+
 ## 批次建立
 
 點選 **批次建立網站** 即可一次建立多個網站，適用於需要快速部署多個站台的情境。
 
 ## 刪除網站
 
-刪除網站時，需要進行 5 秒的確認倒數。 您可以選擇是否一併 **刪除網站目錄** 以及 **刪除同名的本機資料庫**。 批次刪除（從清單中選取）會移除網站目錄，但會保留同名資料庫。
+刪除網站時，需要進行 5 秒的確認倒數。 您可以選擇是否一併 **刪除網站目錄** 以及 **刪除同名的本機資料庫**。 Bulk deletion removes the website directory but keeps the same-name database. AcePanel also removes the website from certificates associated with it and deletes a matching tamper-protection rule.
 
 ## 後續步驟
 
 - [反向代理](./website/proxy) - 瞭解如何建立反向代理網站
 - [PHP 網站](./website/php) - 瞭解如何建立 PHP 網站
 - [靜態網站](./website/static) - 瞭解如何建立靜態網站
+- [Website Settings](./website/setting) - Configure default site, IPv6 listening, error pages, and statistics

@@ -1,37 +1,12 @@
 # 系统
 
-系统页面提供服务器基础配置的管理功能，包括 DNS、SWAP、主机名和时间设置。
+![System settings](/images/toolbox/system.png)
 
-## DNS
-
-配置系统的 DNS 服务器。
-
-![DNS 设置](/images/toolbox/toolbox-system-dns.png)
-
-页面会显示系统当前检测到的 DNS 管理器。 如果管理器是 `resolv.conf`，面板会警告 DNS 修改在系统重启后将恢复为默认值。
-
-### 配置项
-
-- **DNS1**：主 DNS 服务器地址
-- **DNS2**：辅 DNS 服务器地址
-
-保存时 DNS1 和 DNS2 均为必填项。
-
-### 常用 DNS 服务器
-
-| 服务商        | DNS1                                                            | DNS2                                                            |
-| ---------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| 阿里云        | 223.5.5.5       | 223.6.6.6       |
-| 腾讯云        | 119.29.29.29    | 119.28.28.28    |
-| 114 DNS    | 114.114.114.114 | 114.114.115.115 |
-| Google     | 8.8.8.8         | 8.8.4.4         |
-| Cloudflare | 1.1.1.1         | 1.0.0.1         |
+The System page manages Swap, hostname, Hosts entries, timezone, manual time, and NTP. Network-interface addresses, gateways, and DNS are configured under [Network](./network).
 
 ## SWAP
 
 管理系统的 SWAP 交换空间。
-
-![SWAP 设置](/images/toolbox/toolbox-system-swap.png)
 
 页面显示当前 SWAP 使用情况：
 
@@ -54,8 +29,6 @@ SWAP 可以在物理内存不足时提供额外的虚拟内存，但性能低于
 
 配置系统主机名和 Hosts 文件。
 
-![主机设置](/images/toolbox/toolbox-system-host.png)
-
 ### 系统主机名
 
 修改服务器的主机名，例如 `myserver`、`web-01` 等。
@@ -73,8 +46,6 @@ SWAP 可以在物理内存不足时提供额外的虚拟内存，但性能低于
 ## 时间
 
 配置系统时区和时间同步。
-
-![时间设置](/images/toolbox/toolbox-system-time.png)
 
 ### 选择时区
 

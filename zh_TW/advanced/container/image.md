@@ -1,12 +1,12 @@
 # 映像檔
 
+![Container images](/images/container/image.png)
+
 映像檔是容器的範本，包含了執行應用程式所需的所有檔案與設定。 透過映像檔管理頁面，你可以拉取、檢視及刪除本機映像檔。
 
 ## 映像檔清單
 
 進入 **容器** > **映像檔** 標籤頁檢視本機映像檔清單。
-
-![映像檔清單](/images/container/container-image.png)
 
 清單會顯示以下資訊：
 
@@ -22,9 +22,9 @@
 1. 點選 **拉取映像檔** 按鈕
 2. 輸入映像檔名稱，例如 `docker.io/php:8.3-fpm`、`mysql:8.4`
 3. （選用）啟用 **身分驗證** 並填寫 **使用者名稱** 與 **密碼**，以便從需要登入的私有倉庫拉取
-4. 點選 **提交** 開始拉取
+4. Choose **Foreground** or **Background**, then submit
 
-提交後會即時顯示拉取進度，呈現每個映像檔層的下載狀態與整體進度。 你可以隨時點選 **取消** 來中止拉取。
+In foreground mode, the dialog streams every image layer and overall progress and provides a cancel action for the active pull. In background mode, AcePanel submits a task that continues after you leave the page; open **Tasks > Panel Tasks** for its status and log.
 
 映像檔名稱格式：`[倉庫位址/]映像檔名稱[:標籤]`
 

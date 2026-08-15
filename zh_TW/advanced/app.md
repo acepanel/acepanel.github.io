@@ -1,50 +1,53 @@
 # 應用程式
 
+![Installed applications and runtimes](/images/app/app.png)
+
 應用程式模組是 AcePanel 的核心功能之一，用於管理伺服器上的各類軟體。 透過應用程式模組，你可以方便地安裝、設定和管理 Web 伺服器、資料庫、執行環境等常用軟體。
 
 ## 功能分類
 
-應用程式模組分為三個部分：
+The **Apps** page has four tabs:
 
+- **Installed**: Native applications and runtimes already installed on the server, with their current status and management actions.
 - **原生應用程式**：直接安裝在系統上的軟體，如 Nginx、MySQL、Redis 等
 - **執行環境**：各類程式語言的執行環境，如 PHP、Node.js、Python、Go、Java 與 .NET
 - **容器範本**：基於 Docker 的一鍵部署範本，可快速部署各類應用程式
 
-此外，應用程式頁面還提供了**已安裝**分頁，集中列出所有已安裝的原生應用程式與執行環境及其執行狀態，方便在同一處統一管理、更新或解除安裝。
+## Native Application vs Container Template
 
-![應用程式清單](/images/app/app-list.png)
+| Feature               | Native Application                             | Container Template                          |
+| --------------------- | ---------------------------------------------- | ------------------------------------------- |
+| Performance           | Higher                                         | Slight overhead                             |
+| Isolation             | Shared system environment                      | Fully isolated                              |
+| Deployment Difficulty | Requires configuration                         | One-click deployment                        |
+| Resource Usage        | Lower                                          | Higher                                      |
+| Use Cases             | Production environment, high performance needs | Quick testing, multiple version coexistence |
 
-## 原生應用程式 vs 容器範本
+## Application Categories
 
-| 功能   | 原生應用程式     | 容器範本       |
-| ---- | ---------- | ---------- |
-| 效能   | 較高         | 略有耗損       |
-| 隔離性  | 共用系統環境     | 完全隔離       |
-| 部署難度 | 需要設定       | 一鍵部署       |
-| 資源佔用 | 較低         | 較高         |
-| 適用情境 | 生產環境、高效能需求 | 快速測試、多版本並存 |
+Native applications are preset with multiple categories by function, including but not limited to:
 
-## 應用程式分類
+- **Web Servers**: Nginx, OpenResty, Apache
+- **Databases**: MySQL, MariaDB, PostgreSQL, Percona, MongoDB, ClickHouse
+- **Search Engines**: Elasticsearch, OpenSearch
+- **Containers**: Docker, Podman
+- **Middleware**: Redis, Valkey, Memcached, Kafka, RocketMQ
+- **Monitoring**: Prometheus, Grafana
+- **Storage**: MinIO, S3fs
+- **Tools**: phpMyAdmin, Pure-FTPd, Supervisor, Rsync, Frp, Fail2ban, Gitea, Code Server
 
-原生應用程式依功能預設了多個分類，包含但不限於：
+## Update Cache
 
-- **Web 伺服器**：Nginx、OpenResty、Apache
-- **資料庫**：MySQL、MariaDB、PostgreSQL、Percona、MongoDB、ClickHouse
-- **搜尋引擎**：Elasticsearch、OpenSearch
-- **容器**：Docker、Podman
-- **中介軟體**：Redis、Valkey、Memcached、Kafka、RocketMQ
-- **監控**：Prometheus、Grafana
-- **儲存**：MinIO、S3fs
-- **工具**：phpMyAdmin、Pure-FTPd、Supervisor、Rsync、Frp、Fail2ban、Gitea、Code Server
+The category, native application, runtime environment, and container template lists are fetched from the AcePanel app store and cached locally. When you switch to the **Native App**, **Operating Environment**, or **Container Template** tab, an **Update Cache** button appears at the top of the page. Clicking it refreshes all four cached lists at once (categories, applications, runtime environments, and templates), which is useful when a list is incomplete or you want to pull the latest available software.
 
-## 更新快取
+The button is hidden on the **Installed** tab, and the operation is unavailable when [Offline Mode](./setting/safe) is enabled.
 
-分類、原生應用程式、執行環境與容器範本清單均從 AcePanel 應用程式商店取得並快取至本機。 當你切換到**原生應用程式**、**執行環境**或**容器範本**分頁時，頁面頂部會出現**更新快取**按鈕。 點選它可一次重新整理全部四個快取清單（分類、應用程式、執行環境與範本），當某個清單不完整或你想取得最新可用軟體時非常有用。
+## Next Steps
 
-此按鈕在**已安裝**分頁中會隱藏，且在啟用[離線模式](./setting/safe)時無法使用此操作。
-
-## 下一步
-
-- [原生應用程式](./app/native) - 了解如何安裝與管理原生應用程式
-- [執行環境](./app/environment) - 了解如何安裝程式語言執行環境
-- [容器範本](./app/template) - 了解如何使用容器範本快速部署應用程式
+- [Native Applications](./app/native) - Learn how to install and manage native applications
+- [Runtime Environments](./app/environment) - Learn how to install programming language runtime environments
+- [Container Templates](./app/template) - Learn how to use container templates to quickly deploy applications
+- [FRP Manager](./app/frp) - Configure Frps, Frpc, proxies, and Visitors
+- [Fail2ban Manager](./app/fail2ban) - Manage jails, bans, and allowlists
+- [Rsync Manager](./app/rsync) - Publish authenticated rsync modules
+- [Supervisor Manager](./app/supervisor) - Manage long-running processes

@@ -1,10 +1,12 @@
 # Java 项目
 
+![Create a Java project](/images/project/java.png)
+
 Java 项目用于部署 Spring Boot、Tomcat 等 Java 应用。
 
 ## 前置要求
 
-1. 安装 Java 运行环境：**应用商店** > **运行环境** > **Java**（Amazon Corretto，生产可用的 OpenJDK 发行版）
+1. Install Java runtime environment: **Apps** > **Runtime Environment** > **Java** (Amazon Corretto, a production-ready OpenJDK distribution)
 2. 打包好的 JAR 文件或 WAR 文件
 
 ## 部署 Spring Boot 应用
@@ -115,7 +117,9 @@ AcePanel 支持并行安装多个 JDK 版本，二进制文件位于 `/opt/ace/s
 - **资源限制**：内存限制（MB，`0` 表示不限制）和 CPU 配额（例如 `50%`、`200%`）
 - **安全设置**：`NoNewPrivileges`、`ProtectHome`、`ProtectSystem`、`/tmp` 保护以及读写 / 只读路径列表
 
-保存后会在 `/etc/systemd/system/<项目名称>.service` 重新生成底层 systemd 单元并重载它。
+Saving updates the underlying systemd unit at `/etc/systemd/system/<project name>.service` and reloads it. Java projects include `SuccessExitStatus=143`, so a normal SIGTERM shutdown is not reported as an application failure.
+
+When the project is updated, AcePanel keeps the custom systemd settings configured in the editor. Review the effective unit after moving a project from another server, because AcePanel rewrites the project directory and runtime command for the destination.
 
 ## 进程管理
 

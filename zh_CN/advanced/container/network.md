@@ -1,12 +1,12 @@
 # 网络
 
+![Container networks](/images/container/network.png)
+
 Docker 网络用于容器之间的通信。 通过网络管理页面，你可以创建、查看和删除网络。
 
 ## 网络列表
 
 进入 **容器** > **网络** 标签页查看网络列表。
-
-![网络列表](/images/container/container-network.png)
 
 每行以一个选择复选框开头，用于勾选要批量删除的网络（参见 [删除网络](#delete-network)）。
 

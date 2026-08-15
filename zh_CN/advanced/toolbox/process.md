@@ -1,10 +1,10 @@
 # 进程管理
 
+![Process management](/images/toolbox/process.png)
+
 进程管理页面用于查看和管理系统中运行的进程。
 
 ## 进程列表
-
-![进程管理](/images/toolbox/toolbox-process.png)
 
 页面以表格形式展示所有运行中的进程。
 
@@ -57,6 +57,8 @@ PID、名称、父 PID、线程数、CPU、内存和启动时间这几列可点�
 - **用户信号 1 (SIGUSR1)**：发送 SIGUSR1 用户自定义信号
 - **用户信号 2 (SIGUSR2)**：发送 SIGUSR2 用户自定义信号
 
+Use `SIGTERM` first so the process can close listeners and flush data. `SIGKILL` cannot be handled and can leave partial writes, stale locks, or an unclean database. `SIGSTOP`, `SIGHUP`, `SIGUSR1`, and `SIGUSR2` have application-specific effects; send them only when the service documents the expected behavior.
+
 你也可以双击进程直接打开其详情。
 
 发送任何信号（包括终止和强制终止）都会先弹出确认对话框，显示信号名称和目标 PID。 只有在你确认后才会发送信号。
@@ -65,24 +67,24 @@ PID、名称、父 PID、线程数、CPU、内存和启动时间这几列可点�
 
 详情对话框显示以下基本信息：
 
-| 字段                          | 说明                 |
-| --------------------------- | ------------------ |
-| PID                         | 进程 ID              |
-| 父 PID                       | 父进程的 PID           |
-| 名称                          | 进程名称               |
-| 用户                          | 运行该进程的用户           |
-| 状态                          | 进程状态               |
-| 线程数                         | 线程数量               |
-| CPU                         | CPU 使用率            |
-| 内存 (RSS) | 常驻内存集大小（正在使用的物理内存） |
-| 虚拟内存                        | 虚拟内存大小             |
-| 交换内存                        | 换出的内存量             |
-| 磁盘读取                        | 从磁盘读取的总字节数         |
-| 磁盘写入                        | 写入磁盘的总字节数          |
-| 启动时间                        | 进程启动时间             |
-| 可执行文件路径                     | 可执行文件的路径           |
-| 工作目录                        | 当前工作目录             |
-| 命令行                         | 启动进程所使用的完整命令行      |
+| 字段                          | 说明                                                  |
+| --------------------------- | --------------------------------------------------- |
+| PID                         | 进程 ID                                               |
+| 父 PID                       | 父进程的 PID                                            |
+| 名称                          | 进程名称                                                |
+| 用户                          | 运行该进程的用户                                            |
+| 状态                          | 进程状态                                                |
+| 线程数                         | 线程数量                                                |
+| CPU                         | CPU 使用率                                             |
+| 内存 (RSS) | 常驻内存集大小（正在使用的物理内存）                                  |
+| 虚拟内存                        | 虚拟内存大小                                              |
+| 交换内存                        | 换出的内存量                                              |
+| 磁盘读取                        | Bytes physically read from storage for the process  |
+| 磁盘写入                        | Bytes physically written to storage for the process |
+| 启动时间                        | 进程启动时间                                              |
+| 可执行文件路径                     | 可执行文件的路径                                            |
+| 工作目录                        | 当前工作目录                                              |
+| 命令行                         | 启动进程所使用的完整命令行                                       |
 
 在基本信息下方，提供以下可折叠面板（每个面板仅在进程有相应数据时才显示）：
 

@@ -1,10 +1,10 @@
 # 終端機
 
+![Terminal and SFTP](/images/ssh/terminal.png)
+
 終端機模組提供了基於 Web 的 SSH 終端機，可以直接在瀏覽器中連線伺服器執行命令。
 
 ## 終端機頁面
-
-![終端機頁面](/images/ssh/ssh.png)
 
 ## 建立主機
 
@@ -76,6 +76,30 @@
 1. 開啟 **主機** 抽屜並點選 **建立主機**
 2. 填寫遠端伺服器資訊
 3. 儲存後，點選主機卡片即可連線
+
+### Keepalive
+
+Enable keepalive for hosts or sessions that pass through idle connection timeouts. It sends periodic SSH traffic to keep an otherwise healthy connection open; it does not recover a server, network, or authentication failure.
+
+## SFTP File Transfer
+
+Open the transfer view to work with two file panes. Each pane can represent the AcePanel server or any configured remote SSH host, so you can transfer between local and remote storage or between two remote hosts without downloading files through your desktop.
+
+1. Select the host for the left and right panes.
+2. Browse each pane to the source and destination directory.
+3. Select one or more files or directories and start the transfer in the required direction.
+4. Follow the queue, current file, transferred size, speed, and progress.
+5. Cancel a queued or running item when necessary. Both panes refresh after completion.
+
+Directories are copied recursively. The transfer view always uses a dark theme so filenames, status, and progress remain readable beside terminal sessions.
+
+:::warning Transfer boundaries
+A cancelled transfer can leave a partial file or directory at the destination. Verify its size or checksum before retrying or using it. Moving large trees between two remote hosts still passes through the panel's transfer process and consumes network, CPU, and disk resources.
+:::
+
+## Terminal and SSH Settings
+
+This page manages interactive terminal sessions, saved remote hosts, and SFTP. To change the server's SSH daemon port, authentication methods, root-login policy, password, or host keys, use [Toolbox > SSH](./toolbox/ssh).
 
 ## 安全性建議
 

@@ -1,5 +1,7 @@
 # PHP 專案
 
+![Create a PHP project](/images/project/php.png)
+
 PHP 專案用於部署需要常駐行程的 PHP 應用程式，例如 Laravel Octane、Swoole、Workerman 等。
 
 :::tip 提示

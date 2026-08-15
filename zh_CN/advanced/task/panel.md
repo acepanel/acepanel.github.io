@@ -1,6 +1,8 @@
 # 面板任务
 
-面板任务显示 AcePanel 执行的后台任务，如应用安装、环境安装等。
+![Panel tasks](/images/task/panel.png)
+
+Panel Tasks contains long-running work submitted to AcePanel's queue, including application and runtime changes, backups and restores, file compression and extraction, and background container operations.
 
 **任务** 页面有两个标签页：**计划任务**（默认显示）和 **面板任务**。 本页仅介绍 **面板任务**。 对于基于时间的任务（如定时备份或脚本），请参阅 [计划任务](./schedule.md)。
 
@@ -8,24 +10,23 @@
 
 进入 **任务** > **面板任务** 标签页查看面板任务列表。
 
-![面板任务](/images/task/task-panel.png)
-
 列表显示以下信息：
 
 - **任务名称**：任务描述
 - **状态**：等待中/运行中/已完成/失败
 - **创建时间**：任务创建时间
 - **完成时间**：任务结束时间
-- **操作**：查看日志、删除
+- **Actions**: View logs, cancel, delete
 
 ## 任务状态
 
-| 状态  | 说明         |
-| --- | ---------- |
-| 等待中 | 任务已排队，尚未开始 |
-| 运行中 | 任务正在执行     |
-| 已完成 | 任务执行成功     |
-| 失败  | 任务执行失败     |
+| 状态       | 说明                                      |
+| -------- | --------------------------------------- |
+| 等待中      | 任务已排队，尚未开始                              |
+| 运行中      | 任务正在执行                                  |
+| 已完成      | 任务执行成功                                  |
+| 失败       | 任务执行失败                                  |
+| Canceled | A waiting or running task was cancelled |
 
 ## 常见任务类型
 
@@ -66,7 +67,13 @@
 - 命令输出
 - 错误信息
 
-日志以实时流式传输，因此你可以跟踪正在运行任务的进度。 你也可以在日志窗口内清空当前日志。 当任务仍处于 **等待中** 状态时，**日志** 按钮不可用。
+Logs are streamed in real time. The viewer can load history, search loaded text, jump between matches, toggle wrapping, copy, and enter full screen. The **Logs** button is unavailable while a task is still waiting. See [Logs](../log) for the shared viewer behavior.
+
+## Cancel Task
+
+Waiting and running tasks provide **Cancel**. Cancelling a waiting task removes it from execution. Cancelling a running task asks the worker to stop and runs the task's cleanup action when one is defined.
+
+Cancellation is not a rollback. A pull, restore, extraction, or installer may already have written files or changed a service. Read the log and inspect the affected resource before retrying.
 
 日志对于排查任务失败原因非常有用。
 
@@ -76,7 +83,7 @@
 
 ## 删除任务
 
-只有已完成或失败的任务才能删除。 等待中和运行中的任务无法删除。
+Only finished, failed, or canceled tasks can be deleted. Cancel a waiting or running task first.
 
 :::tip 提示
 删除任务只是从列表中移除记录，不会影响已安装的应用或环境。

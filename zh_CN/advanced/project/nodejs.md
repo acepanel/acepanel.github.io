@@ -1,5 +1,7 @@
 # Node.js 项目
 
+![Create a Node.js project](/images/project/nodejs.png)
+
 Node.js 项目用于部署 Express、Koa、NestJS、Next.js 等 Node.js 应用。
 
 ## 前置要求

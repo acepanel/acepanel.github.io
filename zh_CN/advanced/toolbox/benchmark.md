@@ -1,8 +1,8 @@
 # 跑分测试
 
-跑分功能用于测试服务器的 CPU、内存和磁盘性能，帮助你了解服务器的实际性能表现。
+![Benchmark](/images/toolbox/benchmark.png)
 
-![跑分测试](/images/toolbox/toolbox-benchmark.png)
+跑分功能用于测试服务器的 CPU、内存和磁盘性能，帮助你了解服务器的实际性能表现。
 
 ## 测试项目
 
@@ -39,6 +39,8 @@
 :::
 
 ## 测试建议
+
+CPU, memory, and especially disk benchmarks create temporary load and can compete with websites, databases, containers, and backups. Run them during a maintenance window, one test at a time, with enough free disk space. Do not benchmark a production database volume during peak traffic.
 
 1. 测试前关闭不必要的服务和进程
 2. 避免在业务高峰期进行测试

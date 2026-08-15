@@ -1,5 +1,7 @@
 # 專案
 
+![Project overview](/images/project/overview.png)
+
 專案模組用於管理後端應用程式，支援 Go、Java、Node.js、PHP、Python、.NET 等多種語言。 專案以系統服務的形式執行，支援自動重啟、開機自動啟動等功能。
 
 ## 專案類型
@@ -13,8 +15,6 @@
 | [Python](./project/python)                  | Python 專案                  | Django、Flask、FastAPI 等。                  |
 | [.NET](./project/dotnet)    | .NET 專案    | ASP.NET Core、Blazor、gRPC |
 | [General](./project/general)                | 其他類型的專案                    | 任何可執行的程式                                 |
-
-![專案清單](/images/project/project-list.png)
 
 ## 專案與網站的差異
 
@@ -30,8 +30,6 @@
 1. 前往**專案**頁面
 2. 點選**建立專案**
 
-![建立專案](/images/project/project-create.png)
-
 ### 設定項目
 
 - **專案名稱**：專案識別碼，用作服務名稱（僅支援字母、數字、底線與連字號）
@@ -44,7 +42,7 @@
 
 當你從特定語言分頁（Go、Java、Node.js、PHP、Python 或 .NET）開啟建立對話框時，會出現額外的輔助欄位，協助你編寫**啟動命令**：
 
-- **版本選擇**：為所選語言挑選一個已安裝的執行環境版本。 僅會列出在**應用程式** > **執行環境**中實際安裝的版本。
+- **版本選擇**：為所選語言挑選一個已安裝的執行環境版本。 Only versions actually installed under **Apps** > **Runtime Environment** are listed.
 - **框架**：選擇一個框架預設。 選擇預設（除**自訂**以外的任意項）會自動以 `<執行環境><版本> <預設命令>` 的形式填入**啟動命令**（例如 `python3.12 -m flask run --host=0.0.0.0`）。 產生的命令仍可完全編輯。
 - **Go 執行模式**（僅 Go）：在**原始碼**與**二進位檔**之間選擇。
   - **原始碼**：選擇一個 **Go 版本**與一個**進入點檔案**（例如 `main.go`、`cmd/server/main.go`）；啟動命令將變為 `go<版本> run <進入點檔案>`。
@@ -92,8 +90,6 @@
 
 設定專案的基本資訊：
 
-![基本設定](/images/project/project-edit-basic.png)
-
 - **專案名稱**：專案識別碼，用作服務名稱
 - **說明**：專案的說明資訊
 - **專案目錄**：專案檔案所在的目錄
@@ -103,8 +99,6 @@
 ### 執行設定
 
 設定專案的執行參數：
-
-![執行設定](/images/project/project-edit-run.png)
 
 - **啟動命令**：啟動專案的命令
 - **啟動前命令**：啟動前要執行的命令（選填）
@@ -124,8 +118,6 @@
 
 設定服務相依性以控制啟動順序：
 
-![相依性](/images/project/project-edit-deps.png)
-
 - **Requires**：強相依性，若這些服務無法使用，專案將會失敗
 - **Wants**：弱相依性，若這些服務失敗，專案仍會啟動
 - **After**：在指定的服務之後啟動此專案
@@ -137,16 +129,12 @@
 
 設定資源限制以避免服務佔用過多系統資源：
 
-![資源限制](/images/project/project-edit-resource.png)
-
 - **記憶體限制**：限制專案使用的最大記憶體，0 表示不限制
 - **CPU 配額**：限制 CPU 使用率，100% = 1 個 CPU 核心
 
 ### 安全設定
 
 增強服務隔離的安全選項：
-
-![安全設定](/images/project/project-edit-security.png)
 
 - **No New Privileges**：防止行程取得新的權限
 - **保護 /tmp**：為服務建立一個私有的 /tmp 目錄

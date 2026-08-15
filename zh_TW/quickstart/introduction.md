@@ -1,5 +1,7 @@
 # 產品介紹
 
+![AcePanel home dashboard](/images/home/home.png)
+
 AcePanel 是一款開源的伺服器維運管理面板。
 
 ## 特色
@@ -25,7 +27,15 @@ AcePanel 是一款開源的伺服器維運管理面板。
 
 **備份還原**
 
-網站與資料庫一鍵備份還原，支援排程備份與遠端儲存。
+Backup and recovery for websites, MySQL, PostgreSQL, ClickHouse, Redis, and Valkey, with scheduled tasks and local, S3, SFTP, or WebDAV storage.
+
+**Monitoring and Security**
+
+Historical system monitoring, configurable alerts, SMTP and event notifications, firewall rules, scan awareness, and Linux tamper protection.
+
+**Containers and Projects**
+
+Docker or Podman containers, Compose, images, networks, volumes, and systemd-managed Go, Java, Node.js, PHP, Python, .NET, and general projects.
 
 ## 比較
 

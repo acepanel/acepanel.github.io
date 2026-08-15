@@ -1,10 +1,12 @@
 # .NET 项目
 
+![Create a .NET project](/images/project/dotnet.png)
+
 .NET 项目用于部署基于 .NET 运行环境构建的应用，例如 ASP.NET Core Web/API、Blazor Server、gRPC 和 Worker Service 应用。 .NET 被视为一等公民项目类型，因此面板会将你的应用作为 `systemd` 服务进行管理，并可选择一步为其创建反向代理网站。
 
 ## 前置条件
 
-1. 安装 .NET 运行环境：**应用** > **运行环境** > **.NET**
+1. Install the .NET runtime environment: **Apps** > **Runtime Environment** > **.NET**
 2. 你的 .NET 项目的发布产物或源代码
 
 :::tip
@@ -79,7 +81,7 @@ ASPNETCORE_ENVIRONMENT=Production dotnet8.0.100 myapp.dll
 
 ## 设置默认 CLI 版本
 
-如果你需要在终端中直接使用 `dotnet` 命令，请进入 **应用** > **运行环境** > **.NET**，打开已安装的版本，然后点击 **设为 CLI 默认版本**。 这会将该版本的 `dotnet` 二进制文件链接到系统路径中，使命令行中的 `dotnet` 解析到它。
+If you need the `dotnet` command available directly in the terminal, go to **Apps** > **Runtime Environment** > **.NET**, open the installed version, and click **Set as CLI Default Version**. 这会将该版本的 `dotnet` 二进制文件链接到系统路径中，使命令行中的 `dotnet` 解析到它。
 
 ## 注意事项
 

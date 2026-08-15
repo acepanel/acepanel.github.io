@@ -1,37 +1,12 @@
 # 系統
 
-系統頁面提供伺服器基本設定的管理功能，包括 DNS、SWAP、主機名稱與時間設定。
+![System settings](/images/toolbox/system.png)
 
-## DNS
-
-設定系統的 DNS 伺服器。
-
-![DNS 設定](/images/toolbox/toolbox-system-dns.png)
-
-頁面會顯示系統目前偵測到的 DNS 管理器。 如果管理器是 `resolv.conf`，面板會警告 DNS 的修改在系統重新啟動後將還原為預設值。
-
-### 設定項目
-
-- **DNS1**：主要 DNS 伺服器位址
-- **DNS2**：次要 DNS 伺服器位址
-
-儲存時 DNS1 與 DNS2 皆為必填項目。
-
-### 常用 DNS 伺服器
-
-| 供應商        | DNS1                                                            | DNS2                                                            |
-| ---------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| 阿里雲        | 223.5.5.5       | 223.6.6.6       |
-| 騰訊雲        | 119.29.29.29    | 119.28.28.28    |
-| 114 DNS    | 114.114.114.114 | 114.114.115.115 |
-| Google     | 8.8.8.8         | 8.8.4.4         |
-| Cloudflare | 1.1.1.1         | 1.0.0.1         |
+The System page manages Swap, hostname, Hosts entries, timezone, manual time, and NTP. Network-interface addresses, gateways, and DNS are configured under [Network](./network).
 
 ## SWAP
 
 管理系統的 SWAP 空間。
-
-![SWAP 設定](/images/toolbox/toolbox-system-swap.png)
 
 頁面會顯示目前的 SWAP 使用情況：
 
@@ -54,8 +29,6 @@
 
 設定系統主機名稱與 Hosts 檔案。
 
-![主機設定](/images/toolbox/toolbox-system-host.png)
-
 ### 系統主機名稱
 
 修改伺服器的主機名稱，例如 `myserver`、`web-01` 等。
@@ -73,8 +46,6 @@
 ## 時間
 
 設定系統時區與時間同步。
-
-![時間設定](/images/toolbox/toolbox-system-time.png)
 
 ### 選擇時區
 

@@ -1,12 +1,12 @@
 # 使用者管理
 
+![Database users](/images/database/user.png)
+
 使用者管理頁面用於建立及管理資料庫使用者，並設定使用者權限。
 
 ## 使用者清單
 
 進入 **資料庫** > **使用者** 分頁查看使用者清單。 無論目前選擇的是哪一種資料庫類型，使用者分頁都會顯示一個涵蓋所有伺服器（MySQL、PostgreSQL 與 ClickHouse）的統一清單。
-
-![使用者清單](/images/database/database-user.png)
 
 清單會顯示以下資訊：
 

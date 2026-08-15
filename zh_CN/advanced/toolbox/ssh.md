@@ -1,8 +1,10 @@
 # SSH
 
+![SSH service settings](/images/toolbox/ssh.png)
+
 SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认证方式和 Root 账户设置。
 
-![SSH 设置](/images/toolbox/toolbox-ssh.png)
+This page changes the SSH daemon. It is different from the top-level [Terminal](../ssh), which opens local or remote terminal tabs and transfers files through SFTP.
 
 页面布局为顶部的服务状态卡片，下方左侧有两个标签页：
 
@@ -30,7 +32,7 @@ SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认�
 
 修改 SSH 服务监听的端口，默认为 `22`。 端口可填写 `1` 到 `65535` 之间的任意值。 你可以点击刷新图标生成一个随机端口（范围为 `10000`–`65535`），然后点击 **保存** 按钮应用。 保存时会自动重启 SSH 服务。
 
-修改端口后：
+Before modifying the port, allow the new TCP port in **Security > Port Rules** and in the provider security group. Then:
 
 1. 点击 **保存** 按钮
 2. 确保防火墙已放行新端口
@@ -44,6 +46,8 @@ SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认�
 ### 密码登录
 
 控制是否允许 SSH 密码认证（`PasswordAuthentication`）。
+
+Before disabling it, add a tested key for the account you will use and keep the current session open until a fresh key-authenticated session succeeds.
 
 - **开启**：允许使用密码登录
 - **关闭**：禁止密码登录，只能使用密钥
@@ -69,6 +73,8 @@ SSH 页面用于管理服务器的 SSH 服务配置，包括服务状态、认�
 - **禁止 SSH 登录**（`no`）：Root 不能通过 SSH 登录
 - **仅允许密钥登录**（`prohibit-password`）：Root 只能使用密钥登录
 - **仅允许使用预定义命令的密钥登录**（`forced-commands-only`）：Root 只能运行通过 `authorized_keys` 授权的命令
+
+Changing the root policy or both authentication methods can lock every administrator out. Keep a provider console or another verified sudo-capable account available.
 
 ### 重置 Root 密码
 

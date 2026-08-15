@@ -1,6 +1,8 @@
-# 防火墙
+# Security and Firewall
 
-防火墙模块提供了一个统一的界面来管理服务器的防火墙。 它会自动检测并适配系统防火墙（`firewalld` 或 `ufw`），让你可以开关防火墙、管理端口规则、通过允许/拒绝列表控制 IP 访问，以及配置端口转发。
+![Firewall rules](/images/security/firewall.png)
+
+Open **Security** to manage the system firewall, scan awareness, and [tamper protection](./firewall/tamper). The firewall pages automatically detect `firewalld` or `ufw` and provide port rules, IP rules, and port forwarding.
 
 :::tip 支持的防火墙
 面板会自动检测已安装的防火墙。 它优先使用 `firewalld`，如果 `firewalld` 不可用则回退到 `ufw`。 这里描述的所有操作都会在后台转换为对应的 `firewalld` 或 `ufw` 命令。
@@ -10,13 +12,14 @@
 
 防火墙页面按选项卡进行组织：
 
-| 选项卡   | 说明                        |
-| ----- | ------------------------- |
-| 端口规则  | 管理开放或限制特定端口/端口范围的规则       |
-| IP 规则 | 管理基于 IP 的允许/拒绝规则（黑名单/白名单） |
-| 端口转发  | 管理端口转发（端口映射）规则            |
-| 扫描感知  | 网络扫描检测与统计                 |
-| 设置    | 开关防火墙、允许/拒绝 ping，以及扫描设置   |
+| 选项卡               | 说明                                                |
+| ----------------- | ------------------------------------------------- |
+| 端口规则              | 管理开放或限制特定端口/端口范围的规则                               |
+| IP 规则             | 管理基于 IP 的允许/拒绝规则（黑名单/白名单）                         |
+| 端口转发              | 管理端口转发（端口映射）规则                                    |
+| 扫描感知              | 网络扫描检测与统计                                         |
+| Tamper Protection | Protect selected files and record blocked changes |
+| 设置                | 开关防火墙、允许/拒绝 ping，以及扫描设置                           |
 
 ## 设置
 
@@ -77,6 +80,8 @@
 | Drop   | 静默丢弃该流量，不做任何响应     |
 | Reject | 丢弃该流量并向发送方返回一个拒绝响应 |
 
+Use the strategy control in a rule row to switch directly between **Accept**, **Drop**, and **Reject**. The new policy is applied immediately; confirm that the panel and SSH ports remain reachable before changing a remote-management rule.
+
 :::tip
 要为公开访问开放一个端口，请创建一条采用 **Accept** 策略的**入站**规则，并将**目标**留空。
 :::
@@ -85,6 +90,10 @@
 
 - **单条删除**：点击某条规则所在行的**删除**并确认。
 - **批量删除**：使用复选框选中一行或多行，点击顶部的**删除**按钮并确认。 所选规则会被一并移除。
+
+### Import and Export
+
+Use **Export** to download the rules as an XLSX workbook. **Import** validates an XLSX file and shows the rows to be added. Review address family, direction, protocol, port ranges, targets, and strategies before confirming; an imported blocking rule can disconnect the current session.
 
 ## IP 规则
 

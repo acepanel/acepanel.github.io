@@ -1,8 +1,8 @@
 # 日誌清理
 
-日誌清理功能用於掃描並清理系統及應用程式產生的日誌檔案，以釋放磁碟空間。 在面板中它位於工具箱下的 **日誌清理** 中。
+![Log cleanup](/images/toolbox/log.png)
 
-![日誌清理](/images/toolbox/toolbox-log.png)
+日誌清理功能用於掃描並清理系統及應用程式產生的日誌檔案，以釋放磁碟空間。 在面板中它位於工具箱下的 **日誌清理** 中。
 
 ## 功能概覽
 
@@ -10,6 +10,8 @@
 
 - **全部掃描**：掃描所有類型的日誌
 - **全部清理**：清理所有已掃描的日誌
+
+Scanning is read-only: it reports the matching items, count, and estimated reclaimable space. Cleaning removes or vacuums the items found by the scan and reports the actual result. Scan again if new logs were written after the previous result.
 
 ## 日誌類型
 
@@ -83,5 +85,7 @@ systemd journal 不會被完全刪除。 清理時會執行 `journalctl --vacuum
 ## 注意事項
 
 1. 清理操作無法復原，請確認日誌不再需要
-2. 重要日誌建議先備份
-3. 生產環境建議保留最近的日誌以利問題排查
+2. Log cleanup targets panel logs, website logs, MySQL slow-query and binary logs, Docker container logs and unused images, and system log or journal data. It does not delete website content, database tables, active container volumes, or normal business files.
+3. Download logs first when they may be needed for an incident, audit, failed backup, or security investigation.
+4. 重要日誌建議先備份
+5. 生產環境建議保留最近的日誌以利問題排查

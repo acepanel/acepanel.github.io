@@ -1,8 +1,8 @@
 # 安全設定
 
-安全設定頁面用於設定面板安全性相關選項，以保護面板免於未經授權的存取。
+![Security settings](/images/setting/safe.png)
 
-![安全設定](/images/setting/setting-safe.png)
+安全設定頁面用於設定面板安全性相關選項，以保護面板免於未經授權的存取。
 
 ## 登入逾時
 
@@ -101,6 +101,8 @@
 儲存時會驗證這兩個欄位；無效的憑證或私密金鑰會被拒絕，設定不會套用。
 
 選擇 **ACME（自動）** 或 **自我簽署** 時，儲存按鈕旁會出現 **重新整理憑證** / **重新產生憑證** 按鈕，可讓您手動重新簽發憑證。 重新簽發後，頁面會在幾秒後自動重新整理。
+
+When the panel is bound to a domain, that domain can be used for ACME issuance. Confirm that DNS and the required validation path reach this server before requesting the certificate.
 
 :::tip 注意
 當 HTTPS 模式或面板公網 IP 有未儲存的變更時，**重新整理憑證** / **重新產生憑證** 按鈕會保持停用狀態。 請先儲存您的變更，再點選該按鈕重新簽發憑證。

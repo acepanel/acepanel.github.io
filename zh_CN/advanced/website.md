@@ -1,12 +1,14 @@
 # 网站
 
+![Website overview](/images/website/overview.png)
+
 网站模块用于管理 Web 服务器上的站点配置。 AcePanel 支持三种类型的网站：反向代理、PHP 和纯静态。
 
 ## 前置要求
 
 使用网站功能前，需要先安装 Web 服务器：
 
-1. 进入 **应用** > **原生应用**
+1. Go to **Apps** > **Native Applications**
 2. 安装 Nginx、OpenResty 或 Apache
 
 ## 网站类型
@@ -19,7 +21,7 @@
 
 ## 网站列表
 
-除类型标签页（全部/反向代理/PHP/纯静态）外，网站页面还提供 **统计** 和 **设置** 标签页。
+In addition to **All**, **Reverse Proxy**, **PHP**, and **Pure Static**, the page provides **Stats** and [**Settings**](./website/setting) tabs.
 
 网站列表显示以下信息：
 
@@ -68,16 +70,23 @@
 - **自定义配置**：添加自定义配置片段（站点级或共享）
 - **访问日志** / **错误日志**：实时查看网站的日志
 
+### Change the Website Type
+
+An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
+
+Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+
 ## 批量创建
 
 点击 **批量创建网站** 可一次性创建多个网站，适用于需要快速部署多个站点的场景。
 
 ## 删除网站
 
-删除网站时，需要进行 5 秒的确认倒计时。 你可以选择是否同时 **删除网站目录** 以及 **删除同名的本地数据库**。 批量删除（从列表中选择）会移除网站目录，但保留同名数据库。
+删除网站时，需要进行 5 秒的确认倒计时。 你可以选择是否同时 **删除网站目录** 以及 **删除同名的本地数据库**。 Bulk deletion removes the website directory but keeps the same-name database. AcePanel also removes the website from certificates associated with it and deletes a matching tamper-protection rule.
 
 ## 下一步
 
 - [反向代理](./website/proxy) - 了解如何创建反向代理网站
 - [PHP 网站](./website/php) - 了解如何创建 PHP 网站
 - [纯静态网站](./website/static) - 了解如何创建静态网站
+- [Website Settings](./website/setting) - Configure default site, IPv6 listening, error pages, and statistics

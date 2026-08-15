@@ -1,10 +1,10 @@
 # 终端
 
+![Terminal and SFTP](/images/ssh/terminal.png)
+
 终端模块提供了基于 Web 的 SSH 终端，可以直接在浏览器中连接服务器执行命令。
 
 ## 终端页面
-
-![终端页面](/images/ssh/ssh.png)
 
 ## 创建主机
 
@@ -76,6 +76,30 @@
 1. 打开 **主机** 抽屉并点击 **创建主机**
 2. 填写远程服务器信息
 3. 保存后，点击主机卡片即可连接
+
+### Keepalive
+
+Enable keepalive for hosts or sessions that pass through idle connection timeouts. It sends periodic SSH traffic to keep an otherwise healthy connection open; it does not recover a server, network, or authentication failure.
+
+## SFTP File Transfer
+
+Open the transfer view to work with two file panes. Each pane can represent the AcePanel server or any configured remote SSH host, so you can transfer between local and remote storage or between two remote hosts without downloading files through your desktop.
+
+1. Select the host for the left and right panes.
+2. Browse each pane to the source and destination directory.
+3. Select one or more files or directories and start the transfer in the required direction.
+4. Follow the queue, current file, transferred size, speed, and progress.
+5. Cancel a queued or running item when necessary. Both panes refresh after completion.
+
+Directories are copied recursively. The transfer view always uses a dark theme so filenames, status, and progress remain readable beside terminal sessions.
+
+:::warning Transfer boundaries
+A cancelled transfer can leave a partial file or directory at the destination. Verify its size or checksum before retrying or using it. Moving large trees between two remote hosts still passes through the panel's transfer process and consumes network, CPU, and disk resources.
+:::
+
+## Terminal and SSH Settings
+
+This page manages interactive terminal sessions, saved remote hosts, and SFTP. To change the server's SSH daemon port, authentication methods, root-login policy, password, or host keys, use [Toolbox > SSH](./toolbox/ssh).
 
 ## 安全建议
 

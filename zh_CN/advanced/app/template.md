@@ -1,20 +1,20 @@
 # 容器模板
 
+![Container templates](/images/app/template.png)
+
 容器模板提供了基于 Docker 的一键部署方案，可以快速部署各类常用应用，无需手动配置。
 
 ## 前置要求
 
 使用容器模板前，需要先安装 Docker：
 
-1. 进入 **应用** > **原生应用**
+1. Go to **Apps** > **Native App**
 2. 找到 Docker，点击 **安装**
 3. 等待安装完成
 
 ## 模板列表
 
-进入 **应用** 页面，点击 **容器模板** 标签页查看可用模板：
-
-![容器模板列表](/images/app/app-template.png)
+Go to the **Apps** page, click the **Container Template** tab to view available templates:
 
 你可以按分类标签筛选模板，或按名称、描述、网址进行搜索。 从本地 `panel/storage/templates` 目录加载的模板会显示 **本地** 标签。 如果本地模板与远程模板的 slug 相同，则以本地模板为准。
 
@@ -24,16 +24,12 @@
 
 ### 第一步：选择部署模式
 
-![选择部署模式](/images/app/app-template-deploy-step1.png)
-
 - **创建新 Compose**：从模板创建一个新的 Docker Compose
 - **更新现有 Compose**：使用模板更新已有的 compose 配置
 
 ### 第二步：配置参数
 
 根据应用需求填写配置信息：
-
-![配置参数](/images/app/app-template-deploy-step2.png)
 
 常见配置项：
 
@@ -59,8 +55,6 @@
 
 预览生成的 Docker Compose 配置文件：
 
-![预览配置](/images/app/app-template-deploy-step3.png)
-
 你可以在这里：
 
 - 查看并编辑 **Compose 文件**（docker-compose.yml）。 在更新模式下这是一个差异编辑器：左侧显示原始 compose，右侧显示新的 compose，你可以对其进行编辑。
@@ -71,8 +65,6 @@
 此步骤会显示你所做选择的摘要：部署模式、compose 名称、是否启用自动启动、是否启用自动放行防火墙（仅创建模式），以及环境变量的数量。 你可以展开 **Compose 内容** 再次查看最终的只读 compose。
 
 确认所有配置无误后，点击 **创建**（更新模式下为 **更新**）完成部署：
-
-![确认部署](/images/app/app-template-deploy-step4.png)
 
 在创建模式下，面板会将部署写入 `<root>/compose/<name>/`，同时生成一个 `docker-compose.yml` 和一个根据你的环境变量构建的 `.env` 文件。 之后你可以在 **容器** > **Compose** 页面编辑这两个文件中的任意一个。
 

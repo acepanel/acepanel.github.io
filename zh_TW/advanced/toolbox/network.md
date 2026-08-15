@@ -1,87 +1,62 @@
 # 網路
 
-網路頁面會列出伺服器上目前的網路連線，協助你檢視哪些行程正在監聽連接埠或已建立連線，以及它們的本機與遠端位址。
+![Network management](/images/toolbox/network.png)
 
-若要開啟它，請進入 **工具箱** 頁面並切換到 **網路** 分頁。
+The Network tool combines a read-only connection inspector with guarded network-interface configuration. Open **Toolbox > Network**.
 
-:::tip 提示
-此頁面為唯讀。 它用於檢視與排查連線問題，不提供關閉連線或終止行程的操作。 若要管理行程，請使用工具箱中的 **行程** 分頁。
-:::
+## Network Connections
 
-## 連線清單
+The connection list shows current TCP, TCP6, UDP, and UDP6 sockets with local address, remote address, state, PID, and process. Search by PID, partial process name, or local/remote port, combine state filters, sort supported columns, refresh the snapshot, and change the page size.
 
-此頁面會在表格中顯示所有偵測到的 TCP 與 UDP 連線（同時包含 IPv4 與 IPv6）。 每一列代表一個連線。
+Common states include `LISTEN`, `ESTABLISHED`, `TIME_WAIT`, `CLOSE_WAIT`, `SYN_SENT`, `SYN_RECV`, `FIN_WAIT1`, `FIN_WAIT2`, `LAST_ACK`, `CLOSING`, and `NONE`. UDP commonly has no connection state. Process ownership can be empty if the process exited between sampling or the operating system did not expose it.
 
-### 欄位
+The connection list does not terminate sockets. Open [Processes](./process) when you need process details or signal operations.
 
-| 欄位   | 說明                                            |
-| ---- | --------------------------------------------- |
-| 類型   | 連線類型：`tcp`、`tcp6`、`udp` 或 `udp6`              |
-| PID  | 擁有該連線的行程 ID                                   |
-| 行程   | 擁有該連線的行程名稱                                    |
-| 本機位址 | 本機位址與連接埠，格式為 `IP:Port`                        |
-| 遠端位址 | 遠端位址與連接埠，格式為 `IP:Port`                        |
-| 狀態   | 連線狀態，例如 `LISTEN`、`ESTABLISHED`、`TIME_WAIT` 等。 |
+## Network Interface Configuration
 
-**狀態** 欄會以彩色標籤顯示，方便一眼區分不同狀態：
+The interface section shows the detected configuration manager, interface type, MAC address, MTU, and current IPv4 and IPv6 addresses.
 
-- `LISTEN` 顯示為綠色
-- `ESTABLISHED` 顯示為藍色
-- 過渡狀態如 `TIME_WAIT`、`CLOSE_WAIT`、`FIN_WAIT1`、`FIN_WAIT2`、`LAST_ACK` 與 `CLOSING` 顯示為橙色
-- `NONE` 與其他狀態顯示為中性色
+AcePanel can safely edit supported configurations managed by:
 
-:::tip 提示
-對於無連線的 UDP 連線，狀態通常為 `NONE`。 當面板無法判斷連線的擁有者時（例如因為權限不足或行程已結束），`PID` 與 `Process` 欄可能為空。
-:::
+- NetworkManager;
+- netplan;
+- ifupdown configurations that pass AcePanel's safety parser.
 
-## 篩選與搜尋
+For IPv4 and IPv6 independently, choose automatic or manual addressing and configure CIDR addresses, the default gateway, DNS servers, and whether automatically assigned DNS is accepted. ifupdown does not expose automatic-DNS fields that it cannot represent.
 
-表格上方的工具列可讓你縮小顯示的連線範圍。 篩選條件可以組合使用，而且清單會在你變更時自動重新整理。
+### Unsupported Configurations
 
-### 依狀態篩選
+AcePanel displays **Unsupported** instead of attempting an unsafe rewrite when it cannot reliably round-trip the active configuration. Examples include multiple files defining the same interface, inherited or `mapping`-based ifupdown definitions, and a NetworkManager interface without an editable active connection profile.
 
-一個多選下拉選單，可依一個或多個狀態篩選連線。 可用選項：
+Manage an unsupported interface with its native operating-system tools or simplify the configuration first. Do not overwrite it with a guessed panel form.
 
-- `LISTEN`
-- `ESTABLISHED`
-- `TIME_WAIT`
-- `CLOSE_WAIT`
-- `SYN_SENT`
-- `SYN_RECV`
-- `FIN_WAIT1`
-- `FIN_WAIT2`
-- `LAST_ACK`
-- `CLOSING`
-- `NONE`
+## Safe Apply and Automatic Rollback
 
-選擇多個狀態時，會顯示符合其中任一個的連線。 清除選擇即可顯示所有狀態。
+Changing the primary address, gateway, route source, or automatic-address setting can immediately disconnect the panel and SSH. Keep a console or provider recovery channel available.
 
-### 搜尋 PID
+When a change is applied, AcePanel starts a 30-second confirmation window:
 
-依行程 ID 篩選連線。 此比對為子字串比對，因此輸入 `12` 會比對到 `12`、`123` 與 `4128` 等 PID。
+1. Verify that the panel, SSH, gateway, DNS, and required services remain reachable.
+2. Click **Keep change** within 30 seconds to retain the new configuration.
+3. Click **Roll back now** to restore the previous configuration immediately.
+4. If no confirmation arrives before the countdown ends, AcePanel automatically rolls back.
 
-### 搜尋行程
+Automatic rollback reduces risk but cannot guarantee recovery from every driver, routing, provider, or operating-system failure. Test remotely managed servers during a maintenance window.
 
-依行程名稱篩選連線。 此比對不分大小寫且為部分比對，因此輸入 `ngin` 會比對到名為 `nginx` 的行程。
+## Validation
 
-### 搜尋連接埠
+After keeping a change, verify:
 
-依連接埠號碼篩選連線。 此比對會同時套用於 **本機連接埠與遠端連接埠**，且為子字串比對，因此輸入 `80` 會比對到 `80`、`8080` 與 `8000` 等連接埠。
+- the expected IPv4 and IPv6 addresses and MTU;
+- the default gateway and route table;
+- DNS resolution using every configured resolver;
+- panel and SSH access from a fresh connection;
+- inbound services through both the system firewall and cloud security group;
+- outbound access required by package managers, backups, mail, and monitoring.
 
-## 排序
+## Troubleshooting
 
-點選欄位標題即可對表格排序。 以下欄位支援排序：
-
-- **類型**
-- **PID**
-- **行程**
-
-每次點選會在遞增與遞減順序之間切換。 預設情況下，連線會依 **PID** 遞增排序。 **本機位址**、**遠端位址** 與 **狀態** 欄不支援排序。
-
-## 分頁
-
-清單會分頁顯示，預設每頁 **50** 筆。 你可以使用每頁筆數選擇器變更每頁顯示的數量；可用選項為每頁 **50**、**100**、**200** 與 **500** 筆。 另外也提供快速跳頁功能，可直接跳到指定頁面。
-
-## 重新整理
-
-點選 **重新整理** 按鈕可重新載入連線清單並從伺服器取得最新資料。 清單反映的是載入當下的連線狀態，因此請重新整理以擷取新建連線或已關閉工作階段等變化。
+- **Unsupported:** inspect the named manager's source files and remove ambiguous multi-file, inheritance, or mapping constructs only if you understand their effect.
+- **Change rolled back:** determine which address, gateway, DNS, or DHCP condition broke connectivity before trying again.
+- **Panel reachable but a service is not:** check its bind address and [Security](../firewall) rules for both address families.
+- **An old address remains:** refresh the interface list and inspect the native manager; temporary kernel addresses and persistent configuration are different states.

@@ -1,12 +1,14 @@
-# 监控
+# System Monitoring
 
-监控模块用于记录和查看服务器的性能数据，包括 CPU、内存、磁盘 I/O 和网络流量。
+![System monitoring](/images/monitor/system.png)
+
+System Monitoring records and displays CPU, memory, disk I/O, and network traffic over time. Open **Monitoring > System**. Use [Alerts](./monitor/alert) to define thresholds and [Settings & Notifications](./monitor/setting) to configure collection, retention, SMTP, and event delivery.
 
 ## 监控页面
 
-![监控页面](/images/monitor/monitor.png)
+## Data Collection Settings
 
-## 监控设置
+Collection controls are under **Monitoring > Settings**.
 
 ### 启用监控
 

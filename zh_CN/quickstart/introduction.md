@@ -1,5 +1,7 @@
 # 产品介绍
 
+![AcePanel home dashboard](/images/home/home.png)
+
 AcePanel 是一款开源的服务器运维管理面板。
 
 ## 特性
@@ -25,7 +27,15 @@ AcePanel 是一款开源的服务器运维管理面板。
 
 **备份恢复**
 
-网站、数据库一键备份与恢复，支持定时备份和远程存储。
+Backup and recovery for websites, MySQL, PostgreSQL, ClickHouse, Redis, and Valkey, with scheduled tasks and local, S3, SFTP, or WebDAV storage.
+
+**Monitoring and Security**
+
+Historical system monitoring, configurable alerts, SMTP and event notifications, firewall rules, scan awareness, and Linux tamper protection.
+
+**Containers and Projects**
+
+Docker or Podman containers, Compose, images, networks, volumes, and systemd-managed Go, Java, Node.js, PHP, Python, .NET, and general projects.
 
 ## 对比
 
