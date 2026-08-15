@@ -76,7 +76,7 @@ function nav(): DefaultTheme.NavItem[] {
     text: "支持",
     link: locale == 'zh_CN' ? '/support' : `/${locale}/support`
   }, {
-    text: "🔥憑證",
+    text: "🔥證書",
     link: locale == 'zh_CN' ? '/cert' : `/${locale}/cert`
   }, {
     text: "關於",
@@ -119,6 +119,9 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
+    text: "首頁",
+    link: '/home'
+  }, {
     text: "應用",
     collapsed: true,
     items: [{
@@ -131,8 +134,24 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "執行環境",
       link: '/app/environment'
     }, {
-      text: "容器模版",
+      text: "容器模板",
       link: '/app/template'
+    }, {
+      text: "管理器",
+      collapsed: true,
+      items: [{
+        text: "FRP",
+        link: '/app/frp'
+      }, {
+        text: "Fail2ban",
+        link: '/app/fail2ban'
+      }, {
+        text: "Rsync",
+        link: '/app/rsync'
+      }, {
+        text: "Supervisor",
+        link: '/app/supervisor'
+      }]
     }]
   }, {
     text: "容器",
@@ -144,16 +163,16 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "容器",
       link: '/container/container'
     }, {
-      text: "編排",
+      text: "Compose",
       link: '/container/compose'
     }, {
-      text: "映像檔",
+      text: "映象",
       link: '/container/image'
     }, {
       text: "網路",
       link: '/container/network'
     }, {
-      text: "卷",
+      text: "儲存卷",
       link: '/container/volume'
     }]
   }, {
@@ -169,11 +188,14 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "純靜態",
+      text: "靜態網站",
       link: '/website/static'
     }, {
       text: "統計",
       link: '/website/stat'
+    }, {
+      text: "設定",
+      link: '/website/setting'
     }]
   }, {
     text: "專案",
@@ -200,7 +222,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: ".NET",
       link: '/project/dotnet'
     }, {
-      text: "通用",
+      text: "通用專案",
       link: '/project/general'
     }]
   }, {
@@ -219,6 +241,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "伺服器",
       link: '/database/server'
     }, {
+      text: "pgAdmin",
+      link: '/database/pgadmin'
+    }, {
       text: "Redis",
       link: '/database/redis'
     }, {
@@ -226,16 +251,16 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       link: '/database/elasticsearch'
     }]
   }, {
-    text: "憑證",
+    text: "證書",
     collapsed: true,
     items: [{
       text: "概述",
       link: '/cert'
     }, {
-      text: "憑證",
+      text: "證書",
       link: '/cert/cert'
     }, {
-      text: "帳號",
+      text: "賬號",
       link: '/cert/account'
     }, {
       text: "DNS",
@@ -243,7 +268,33 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }]
   }, {
     text: "監控",
-    link: '/monitor'
+    collapsed: true,
+    items: [{
+      text: "系統監控",
+      link: '/monitor'
+    }, {
+      text: "告警",
+      link: '/monitor/alert'
+    }, {
+      text: "設定與通知",
+      link: '/monitor/setting'
+    }]
+  }, {
+    text: "日誌",
+    link: '/log'
+  }, {
+    text: "安全",
+    collapsed: true,
+    items: [{
+      text: "防火牆",
+      link: '/firewall'
+    }, {
+      text: "掃描感知",
+      link: '/firewall/scan'
+    }, {
+      text: "防篡改",
+      link: '/firewall/tamper'
+    }]
   }, {
     text: "檔案",
     link: '/file'
@@ -251,23 +302,13 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     text: "備份",
     link: '/backup'
   }, {
-    text: "終端機",
+    text: "終端",
     link: '/ssh'
-  }, {
-    text: "防火牆",
-    collapsed: true,
-    items: [{
-      text: "概述",
-      link: '/firewall'
-    }, {
-      text: "掃描感知",
-      link: '/firewall/scan'
-    }]
   }, {
     text: "任務",
     collapsed: true,
     items: [{
-      text: "排程任務",
+      text: "計劃任務",
       link: '/task/schedule'
     }, {
       text: "面板任務",
@@ -280,8 +321,11 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "概述",
       link: '/toolbox'
     }, {
-      text: "行程",
+      text: "程序",
       link: '/toolbox/process'
+    }, {
+      text: "網路",
+      link: '/toolbox/network'
     }, {
       text: "系統",
       link: '/toolbox/system'
@@ -295,14 +339,11 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "日誌清理",
       link: '/toolbox/log'
     }, {
-      text: "Webhook",
+      text: "WebHook",
       link: '/toolbox/webhook'
     }, {
-      text: "效能測試",
+      text: "跑分",
       link: '/toolbox/benchmark'
-    }, {
-      text: "網路",
-      link: '/toolbox/network'
     }, {
       text: "遷移",
       link: '/toolbox/migration'

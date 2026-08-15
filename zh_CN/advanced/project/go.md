@@ -1,5 +1,7 @@
 # Go 项目
 
+![Create a Go project](/images/project/go.png)
+
 Go 项目用于部署使用 Go 语言开发的后端应用，如 Gin、Echo、Fiber 等框架。
 
 ## 前置要求

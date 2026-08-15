@@ -119,6 +119,9 @@ function sidebarQuickstart(): DefaultTheme.SidebarItem[] {
 }
 function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   return [{
+    text: "首页",
+    link: '/home'
+  }, {
     text: "应用",
     collapsed: true,
     items: [{
@@ -131,8 +134,24 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "运行环境",
       link: '/app/environment'
     }, {
-      text: "容器模版",
+      text: "容器模板",
       link: '/app/template'
+    }, {
+      text: "管理器",
+      collapsed: true,
+      items: [{
+        text: "FRP",
+        link: '/app/frp'
+      }, {
+        text: "Fail2ban",
+        link: '/app/fail2ban'
+      }, {
+        text: "Rsync",
+        link: '/app/rsync'
+      }, {
+        text: "Supervisor",
+        link: '/app/supervisor'
+      }]
     }]
   }, {
     text: "容器",
@@ -144,7 +163,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "容器",
       link: '/container/container'
     }, {
-      text: "编排",
+      text: "Compose",
       link: '/container/compose'
     }, {
       text: "镜像",
@@ -153,7 +172,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "网络",
       link: '/container/network'
     }, {
-      text: "卷",
+      text: "存储卷",
       link: '/container/volume'
     }]
   }, {
@@ -169,11 +188,14 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "PHP",
       link: '/website/php'
     }, {
-      text: "纯静态",
+      text: "静态网站",
       link: '/website/static'
     }, {
       text: "统计",
       link: '/website/stat'
+    }, {
+      text: "设置",
+      link: '/website/setting'
     }]
   }, {
     text: "项目",
@@ -200,7 +222,7 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: ".NET",
       link: '/project/dotnet'
     }, {
-      text: "通用",
+      text: "通用项目",
       link: '/project/general'
     }]
   }, {
@@ -218,6 +240,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }, {
       text: "服务器",
       link: '/database/server'
+    }, {
+      text: "pgAdmin",
+      link: '/database/pgadmin'
     }, {
       text: "Redis",
       link: '/database/redis'
@@ -243,7 +268,33 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
     }]
   }, {
     text: "监控",
-    link: '/monitor'
+    collapsed: true,
+    items: [{
+      text: "系统监控",
+      link: '/monitor'
+    }, {
+      text: "告警",
+      link: '/monitor/alert'
+    }, {
+      text: "设置与通知",
+      link: '/monitor/setting'
+    }]
+  }, {
+    text: "日志",
+    link: '/log'
+  }, {
+    text: "安全",
+    collapsed: true,
+    items: [{
+      text: "防火墙",
+      link: '/firewall'
+    }, {
+      text: "扫描感知",
+      link: '/firewall/scan'
+    }, {
+      text: "防篡改",
+      link: '/firewall/tamper'
+    }]
   }, {
     text: "文件",
     link: '/file'
@@ -253,16 +304,6 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
   }, {
     text: "终端",
     link: '/ssh'
-  }, {
-    text: "防火墙",
-    collapsed: true,
-    items: [{
-      text: "概述",
-      link: '/firewall'
-    }, {
-      text: "扫描感知",
-      link: '/firewall/scan'
-    }]
   }, {
     text: "任务",
     collapsed: true,
@@ -283,6 +324,9 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "进程",
       link: '/toolbox/process'
     }, {
+      text: "网络",
+      link: '/toolbox/network'
+    }, {
       text: "系统",
       link: '/toolbox/system'
     }, {
@@ -295,14 +339,11 @@ function sidebarAdvanced(): DefaultTheme.SidebarItem[] {
       text: "日志清理",
       link: '/toolbox/log'
     }, {
-      text: "Webhook",
+      text: "WebHook",
       link: '/toolbox/webhook'
     }, {
-      text: "性能测试",
+      text: "跑分",
       link: '/toolbox/benchmark'
-    }, {
-      text: "网络",
-      link: '/toolbox/network'
     }, {
       text: "迁移",
       link: '/toolbox/migration'

@@ -1,12 +1,12 @@
 # 帳號管理
 
+![ACME accounts](/images/cert/account.png)
+
 帳號管理頁面用於管理 ACME 帳號。 ACME 帳號用於向憑證授權機構申請憑證。
 
 ## 帳號清單
 
 前往 **憑證** > **帳號** 標籤頁即可檢視帳號清單。
-
-![帳號清單](/images/cert/cert-account.png)
 
 清單會顯示下列資訊：
 

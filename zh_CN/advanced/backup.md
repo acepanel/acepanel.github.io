@@ -1,10 +1,10 @@
 # 备份
 
+![备份管理](/images/backup/backup.png)
+
 备份模块用于备份和恢复网站文件和数据库，支持本地备份和远程存储。
 
 ## 备份页面
-
-![备份页面](/images/backup/backup.png)
 
 ## 备份类型
 
@@ -15,12 +15,15 @@
 | 网站         | 备份网站文件                       |
 | MySQL      | 备份 Percona/MySQL/MariaDB 数据库 |
 | PostgreSQL | 备份 PostgreSQL 数据库            |
+| ClickHouse | 备份 ClickHouse 数据库            |
+| Redis      | 备份 Redis 数据                  |
+| Valkey     | 备份 Valkey 数据                 |
 
-MySQL 和 PostgreSQL 选项卡仅在安装了相应的数据库引擎时才会出现。
+只有存在对应数据库服务器时，相关数据库标签页才会显示。
 
 ## 创建备份
 
-1. 选择备份类型标签（网站/MySQL/PostgreSQL）
+1. 选择备份类型标签页（网站、MySQL、PostgreSQL、ClickHouse、Redis 或 Valkey）
 2. 点击 **创建备份**
 3. 选择要备份的网站（网站类型）或输入数据库名称（数据库类型）
 4. 选择备份存储
@@ -40,16 +43,19 @@ MySQL 和 PostgreSQL 选项卡仅在安装了相应的数据库引擎时才会�
 - **文件名**：备份文件名称
 - **大小**：备份文件大小
 - **更新日期**：备份时间
-- **操作**：恢复、删除
+- **操作**：下载、恢复、删除
 
 ## 恢复备份
 
 1. 在备份列表中找到要恢复的备份
-2. 点击 **恢复** 按钮
-3. 在对话框中选择目标网站（网站类型）或输入目标数据库名称（数据库类型），然后点击提交
+2. 点击 **恢复**
+3. 选择目标网站或数据库并提交任务
+4. 在 **任务 > 面板任务**中跟踪恢复进度，使用恢复后的资源前先检查日志
+
+网站恢复可以识别其他服务器面板生成的兼容归档结构。 导入外部归档后，必须检查目标路径和网站内容。
 
 :::danger 警告
-恢复操作会覆盖现有数据， 请确保已备份当前数据！
+恢复会在后台执行，并可能覆盖现有数据。 先备份当前目标； 关闭对话框不会停止任务。
 :::
 
 ## 上传备份
@@ -59,8 +65,6 @@ MySQL 和 PostgreSQL 选项卡仅在安装了相应的数据库引擎时才会�
 ## 存储管理
 
 切换到 **存储** 标签页管理备份存储位置。
-
-![存储管理](/images/backup/backup-storage.png)
 
 ### 本地存储
 
@@ -217,20 +221,20 @@ Path: (可选)
 除了 Web 界面，还可以通过[命令行工具](../quickstart/cli)触发备份。 这对于自定义 shell 脚本以及计划任务运行的命令非常有用。 大多数命令接受一个可选的 `-s, --storage` 参数来指定存储 ID（`panel` 命令除外）；省略时备份将保存到本地存储。
 
 ```shell
-# 按名称备份网站
+# Backup a website by name
 acepanel backup website -n <website_name> [-s <storage_id>]
 
-# 备份数据库（type 为 mysql 或 postgresql）
+# Backup a database (mysql, postgresql, clickhouse, redis, or valkey)
 acepanel backup database -t <type> -n <database_name> [-s <storage_id>]
 
-# 备份任意目录
+# Backup an arbitrary directory
 acepanel backup path -p <directory_path> [-s <storage_id>]
 
-# 备份面板自身
+# Backup the panel itself
 acepanel backup panel
 
-# 清理旧备份，保留最近的 <keep> 份
-# <file> 是用于匹配同一目标备份的文件名前缀
+# Clean up old backups, keeping the most recent <keep> copies
+# <file> is the file name prefix used to match backups of the same target
 acepanel backup clear -t <type> -f <file> -k <keep> [-s <storage_id>]
 ```
 

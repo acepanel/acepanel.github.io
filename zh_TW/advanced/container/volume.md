@@ -1,12 +1,12 @@
 # 磁碟區
 
+![Container volumes](/images/container/volume.png)
+
 磁碟區（Volume）是 Docker 管理的資料儲存，用於持久保存容器資料。 與直接掛載主機目錄相比，磁碟區由 Docker 管理，更加安全且易於移植。
 
 ## 磁碟區清單
 
 前往 **容器** > **磁碟區** 分頁檢視磁碟區清單。
-
-![磁碟區清單](/images/container/container-volume.png)
 
 清單顯示以下資訊：
 

@@ -1,12 +1,12 @@
 # 伺服器管理
 
+![Database servers](/images/database/server.png)
+
 伺服器管理頁面用於管理資料庫伺服器連線，同時支援本機與遠端資料庫伺服器。 支援的資料庫類型有 MySQL、PostgreSQL、ClickHouse、MongoDB、SQLite、Elasticsearch 與 Redis。
 
 ## 伺服器清單
 
 前往 **資料庫** > **伺服器** 分頁即可檢視伺服器清單。
-
-![伺服器清單](/images/database/database-server.png)
 
 清單會顯示以下資訊：
 

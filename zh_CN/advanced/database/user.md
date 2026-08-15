@@ -1,12 +1,12 @@
 # 用户管理
 
+![Database users](/images/database/user.png)
+
 用户管理页面用于创建和管理数据库用户，设置用户权限。
 
 ## 用户列表
 
 进入 **数据库** > **用户** 选项卡查看用户列表。 无论当前选择的是哪种数据库类型，用户选项卡都会显示一个涵盖所有服务器（MySQL、PostgreSQL 和 ClickHouse）的统一列表。
-
-![用户列表](/images/database/database-user.png)
 
 列表显示以下信息：
 

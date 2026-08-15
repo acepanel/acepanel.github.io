@@ -1,6 +1,6 @@
 # 安裝
 
-## 系統需求
+## 系統要求
 
 - 架構：`amd64` / `arm64`
 - 記憶體：≥ 512MB（建議 1GB 以上）
@@ -24,17 +24,17 @@
 | CentOS Stream    | 10 | 不推薦 |
 | CentOS Stream    | 9  | 不推薦 |
 
-未列出的系統可自行嘗試，但不提供技術支援。
+未列出的系統可自行嘗試安裝，但不提供技術支援。
 
 ## 安裝前準備
 
-- 使用乾淨的系統進行安裝，以免與既有環境發生衝突
+- 使用純淨系統安裝，避免與已有環境衝突
 - 若需掛載資料磁碟，請於安裝前完成；安裝後不支援目錄遷移
 - 確保伺服器可正常存取網際網路
 
 ## 開始安裝
 
-:::tip AcePanel 推薦
+:::tip AcePanel 推薦使用
 [LF Cloud 高效能 AMD EPYC 伺服器](https://www.dkdun.cn/aff/MQZZNVHQ) 進行安裝
 :::
 
@@ -44,7 +44,7 @@
 bash <(curl -sSLm 10 https://dl.acepanel.net/helper.sh)
 ```
 
-安裝過程中請勿關閉終端機。
+安裝過程中請勿關閉終端。
 
 ## 安裝完成
 
@@ -70,8 +70,14 @@ Entry: /xxxxxx
 
 **忘記使用者名稱／密碼／位址**
 
-使用命令列工具重設：
+顯示當前訪問資訊：
 
 ```shell
 acepanel info
+```
+
+密碼未知時，明確重置所選賬號：
+
+```shell
+acepanel info --username <username> --force
 ```

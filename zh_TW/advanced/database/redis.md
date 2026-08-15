@@ -1,9 +1,11 @@
 # Redis 資料管理
 
+![Redis data management](/images/database/redis.png)
+
 Redis 資料管理頁面讓你線上瀏覽和編輯 Redis 鍵：選擇資料庫、列出並搜尋鍵、檢視/建立/更新/刪除鍵、設定鍵的 TTL，以及清空整個資料庫。
 
 :::tip
-此功能在 v3.1.0 新增。
+:::tip
 :::
 
 ## 前置條件

@@ -1,5 +1,9 @@
 # Panel
 
+![Panel runtime diagnostics](/images/toolbox/panel.png)
+
+本页显示 AcePanel Go 进程的运行时诊断信息，包括内存分配、堆和栈使用、垃圾回收及 goroutine。 这些数值只描述面板进程，不代表整台服务器； 需要分析主机整体状态时，请使用[系统监控](../monitor)和[进程](./process)。
+
 Panel 页面会展示 AcePanel 进程自身的 Go 运行时统计信息和实时的 goroutine 堆栈跟踪。 它主要用于诊断面板自身，例如排查内存增长、垃圾回收行为或卡住的 goroutine。
 
 你可以从 **工具箱** 中打开它，然后选择 **Panel** 标签页。 该页面分为两个子标签页：**Runtime** 和 **Goroutines**。 默认显示 **Runtime** 子标签页。

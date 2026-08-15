@@ -1,5 +1,7 @@
 # 第一個專案：部署 Node.js 應用程式
 
+![Create a project](/images/quickstart/project.png)
+
 本文以一個簡單的 Node.js HTTP 服務為例，示範如何透過 AcePanel 部署與管理專案。
 
 ## 準備程式碼
@@ -22,8 +24,6 @@ server.listen(3000, () => {
 ## 建立專案
 
 前往「專案」頁面，切換到「Node.js」分頁，然後點選「建立專案」。
-
-![建立專案](/images/quickstart/project-create.png)
 
 填寫設定：
 
@@ -61,8 +61,6 @@ server.listen(3000, () => {
 
 在專案清單中點選「編輯」即可調整更多設定。 編輯器共有五個分頁：基本設定、執行環境設定、相依套件、資源限制與安全設定。
 
-![專案編輯](/images/quickstart/project-edit-run.png)
-
 **執行環境設定**：
 
 - **啟動前指令**：在啟動前執行，例如 `npm install`
@@ -89,8 +87,6 @@ server.listen(3000, () => {
 ## 啟動專案
 
 回到專案清單，點選「啟動」按鈕。
-
-![專案清單](/images/quickstart/project-list.png)
 
 啟動後，執行中的專案會出現「重啟」與「重新載入」按鈕。 點選「記錄檔」可檢視輸出，確認服務正常執行。
 

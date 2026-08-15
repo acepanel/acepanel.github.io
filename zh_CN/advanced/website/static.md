@@ -1,5 +1,7 @@
 # 纯静态网站
 
+![Static website settings](/images/website/static.png)
+
 纯静态网站用于托管 HTML、CSS、JavaScript 等静态文件，适合部署前端项目构建产物、文档站点等。
 
 ## 创建静态网站
@@ -20,17 +22,15 @@
 
 点击网站列表中的 **编辑** 按钮进入编辑页面。
 
+可以在基本设置中将网站切换为反向代理或 PHP。域名、监听、文件等通用字段会保留；静态网站专属 Web 配置会删除，并生成所选类型的配置。 切换前先备份网站。
+
 ### 域名与监听
 
 配置网站的域名和监听地址。 每个监听地址都可以单独启用 HTTPS 和 QUIC（HTTP/3）。
 
-![域名和监听配置](/images/website/website-static-edit.png)
-
 ### 基本设置
 
 配置网站目录和默认文档。
-
-![高级设置](/images/website/website-static-edit-advanced.png)
 
 - **网站目录**：静态文件存放的绝对路径
 - **运行目录**：运行目录的绝对路径（静态网站通常无需设置）
@@ -70,45 +70,41 @@
 
 在 **自定义配置** 选项卡中，你可以添加自定义 Nginx 配置，用于 URL 重写等功能。
 
-![自定义配置](/images/website/website-static-edit-custom.png)
-
 点击 **添加自定义配置** 按钮添加配置：
 
-![添加自定义配置](/images/website/website-static-edit-custom-add.png)
+- **名称**：配置名称，支持字母、数字、下划线和连字符。
+- **范围**：可以选择“当前网站”或“全局”。
+- **内容**：Nginx 配置内容，例如 `location` 块。
 
-- **名称**：配置名称，支持字母、数字、下划线和连字符
-- **范围**：配置生效范围，可选择「此网站」或「全局」
-- **内容**：Nginx 配置内容，如 `location` 块
-
-## 适用场景
+## 使用场景
 
 ### 前端项目
 
 Vue、React、Angular 等前端框架的构建产物：
 
 ```bash
-# Vue 项目
+# Vue project
 npm run build
-# 将 dist 目录内容上传到网站目录
+# Upload dist directory contents to website directory
 
-# React 项目
+# React project
 npm run build
-# 将 build 目录内容上传到网站目录
+# Upload build directory contents to website directory
 ```
 
-### 文档站点
+### 文档站
 
 VitePress、Docusaurus、Hugo 等静态站点生成器：
 
 ```bash
 # VitePress
 npm run docs:build
-# 将 .vitepress/dist 目录内容上传到网站目录
+# Upload .vitepress/dist directory contents to website directory
 ```
 
 ### 单页应用（SPA）
 
-单页应用需要配置伪静态规则，将所有路由指向 index.html。 在 **自定义配置** 中添加：
+纯静态网站默认启用 SPA 回退，未匹配到文件的路由会返回 `index.html`。 如果未知路径必须返回真实 404，请在 **自定义配置**中删除或替换生成的回退。 对应 Nginx 规则为：
 
 ```nginx
 location / {

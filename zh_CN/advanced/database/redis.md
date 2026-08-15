@@ -1,9 +1,11 @@
 # Redis 数据管理
 
+![Redis data management](/images/database/redis.png)
+
 Redis 数据管理页面让你在线浏览和编辑 Redis 键：选择数据库、列出并搜索键、查看/创建/更新/删除键、设置键的 TTL，以及清空整个数据库。
 
 :::tip
-此功能在 v3.1.0 新增。
+:::tip
 :::
 
 ## 前置条件

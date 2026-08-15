@@ -1,12 +1,14 @@
-# 监控
+# 系统监控
 
-监控模块用于记录和查看服务器的性能数据，包括 CPU、内存、磁盘 I/O 和网络流量。
+![System monitoring](/images/monitor/system.png)
+
+系统监控按时间记录并展示 CPU、内存、磁盘 I/O 和网络流量。 进入 **监控 > 系统**。 使用[告警](./monitor/alert)设置阈值，通过[设置与通知](./monitor/setting)配置采集、保留、SMTP 和事件发送。
 
 ## 监控页面
 
-![监控页面](/images/monitor/monitor.png)
+## 数据采集设置
 
-## 监控设置
+数据采集控制位于 **监控 > 设置**。
 
 ### 启用监控
 

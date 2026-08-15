@@ -1,14 +1,16 @@
 # 靜態網站
 
+![Static website settings](/images/website/static.png)
+
 靜態網站用於託管 HTML、CSS、JavaScript 等靜態檔案，適合用來部署前端專案的建置產物、文件網站等。
 
 ## 建立靜態網站
 
-1. 前往 **網站** 頁面
+1. 進入 **網站** 頁面
 2. 點選 **純靜態** 分頁
 3. 點選 **建立網站**
 
-### 設定項目
+### 配置項
 
 - **名稱**：網站識別碼，必須唯一，僅支援英文字母、數字、連字號與底線，例如 `docs`
 - **網域**：繫結的網域，例如 `docs.example.com`
@@ -20,17 +22,15 @@
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
+可以在基本設定中將網站切換為反向代理或 PHP。域名、監聽、檔案等通用欄位會保留；靜態網站專屬 Web 配置會刪除，並生成所選型別的配置。 切換前先備份網站。
+
 ### 網域與監聽
 
 設定網站的網域與監聽位址。 每個監聽位址都可以個別啟用 HTTPS 與 QUIC（HTTP/3）。
 
-![網域與監聽設定](/images/website/website-static-edit.png)
-
 ### 基本設定
 
 設定網站目錄與預設文件。
-
-![進階設定](/images/website/website-static-edit-advanced.png)
 
 - **網站目錄**：存放靜態檔案的絕對路徑
 - **執行目錄**：執行目錄的絕對路徑（靜態網站通常不需要設定）
@@ -70,21 +70,17 @@
 
 在 **自訂設定** 分頁中，你可以新增自訂的 Nginx 設定，用於 URL 重寫等功能。
 
-![自訂設定](/images/website/website-static-edit-custom.png)
-
 點選 **新增自訂設定** 按鈕來新增設定：
 
-![新增自訂設定](/images/website/website-static-edit-custom-add.png)
+- **名稱**：配置名稱，支援字母、數字、下劃線和連字元。
+- **範圍**：可以選擇“當前網站”或“全域性”。
+- **內容**：Nginx 配置內容，例如 `location` 塊。
 
-- **名稱**：設定名稱，支援英文字母、數字、底線與連字號
-- **範圍**：設定的套用範圍，可選擇「本網站」或「全域」
-- **內容**：Nginx 設定內容，例如 `location` 區塊
-
-## 使用情境
+## 使用場景
 
 ### 前端專案
 
-Vue、React、Angular 等前端框架的建置產物：
+Vue、React、Angular 等前端框架的構建產物：
 
 ```bash
 # Vue project
@@ -96,9 +92,9 @@ npm run build
 # Upload build directory contents to website directory
 ```
 
-### 文件網站
+### 文件站
 
-VitePress、Docusaurus、Hugo 等靜態網站產生器：
+VitePress、Docusaurus、Hugo 等靜態站點生成器：
 
 ```bash
 # VitePress
@@ -106,9 +102,9 @@ npm run docs:build
 # Upload .vitepress/dist directory contents to website directory
 ```
 
-### 單頁應用程式（SPA）
+### 單頁應用（SPA）
 
-單頁應用程式需要設定重寫規則，將所有路由都指向 index.html。 在 **自訂設定** 中新增：
+純靜態網站預設啟用 SPA 回退，未匹配到檔案的路由會返回 `index.html`。 如果未知路徑必須返回真實 404，請在 **自定義配置**中刪除或替換生成的回退。 對應 Nginx 規則為：
 
 ```nginx
 location / {
@@ -143,7 +139,7 @@ location / {
 
 - 檢查資源路徑是否正確
 - 檢查是否使用了絕對路徑
-- 檢查 CORS 設定
+- 檢查 CORS 配置
 
 ### 中文檔名亂碼
 

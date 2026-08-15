@@ -1,5 +1,7 @@
 # 容器
 
+![Container overview](/images/container/overview.png)
+
 容器模块提供了完整的 Docker 容器管理功能，包括容器、编排、镜像、网络和卷的管理。
 
 ## 前置要求
@@ -20,8 +22,6 @@
 | [镜像](./container/image)     | 管理本地镜像                    |
 | [网络](./container/network)   | 管理 Docker 网络              |
 | [卷](./container/volume)     | 管理数据卷                     |
-
-![容器列表](/images/container/container-list.png)
 
 ## 快速开始
 

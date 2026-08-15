@@ -1,12 +1,12 @@
 # 账户管理
 
+![ACME accounts](/images/cert/account.png)
+
 账户管理页面用于管理 ACME 账户。 ACME 账户用于向证书颁发机构申请证书。
 
 ## 账户列表
 
 进入 **证书** > **账户** 标签页查看账户列表。
-
-![账户列表](/images/cert/cert-account.png)
 
 列表显示以下信息：
 

@@ -1,5 +1,7 @@
 # 憑證
 
+![Certificate overview](/images/cert/overview.png)
+
 憑證模組用於管理 SSL/TLS 憑證，支援透過 ACME 協定自動申請免費憑證，也支援上傳自有憑證。
 
 ## 功能概覽
@@ -11,8 +13,6 @@
 | [憑證](./cert/cert)    | 管理 SSL 憑證     |
 | [帳戶](./cert/account) | 管理 ACME 帳戶    |
 | [DNS](./cert/dns)    | 管理 DNS API 設定 |
-
-![憑證清單](/images/cert/cert-list.png)
 
 ## 憑證類型
 

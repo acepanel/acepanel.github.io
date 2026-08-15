@@ -70,8 +70,14 @@ AcePanel 安装完成
 
 **忘记用户/密码/地址**
 
-使用命令行工具一键重置：
+显示当前访问信息：
 
 ```shell
 acepanel info
+```
+
+密码未知时，明确重置所选账号：
+
+```shell
+acepanel info --username <username> --force
 ```

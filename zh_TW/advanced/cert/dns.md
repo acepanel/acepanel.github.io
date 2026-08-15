@@ -1,12 +1,12 @@
 # DNS 設定
 
+![DNS accounts](/images/cert/dns.png)
+
 DNS 設定頁面用於管理透過 DNS 驗證申請憑證所需的 DNS API。
 
 ## DNS 清單
 
 前往 **憑證** > **DNS** 分頁即可檢視 DNS 設定清單。
-
-![DNS 清單](/images/cert/cert-dns.png)
 
 清單會顯示以下資訊：
 
@@ -86,8 +86,7 @@ ClouDNS 也支援子帳號 Auth ID。 使用時，在 Auth ID 欄位中填入帶
 
 ## DNS 別名（CNAME 委派）
 
-:::tip 版本
-在 v3.2.0 及以上版本可用
+::: tip 版本
 :::
 
 DNS 別名可讓你將 `_acme-challenge` TXT 記錄寫入到**另一個**（委派的）網域上，以完成某個網域的 DNS-01 驗證，而不必寫入到正在申請憑證的網域上。 適用於下列情況：

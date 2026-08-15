@@ -1,5 +1,7 @@
 # 執行環境
 
+![執行環境](/images/app/environment.png)
+
 執行環境用於安裝各種程式語言的執行階段，為網站與專案提供執行環境。
 
 ## 支援的語言
@@ -9,7 +11,7 @@ AcePanel 支援下列程式語言的執行環境：
 | 語言                      | 可用版本                                        | 說明                     |
 | ----------------------- | ------------------------------------------- | ---------------------- |
 | Go                      | 1.20 - 1.25 | 適合用來建置高效能的後端服務         |
-| Java                    | JDK 8、11、17、21、25                           | 採用 Amazon Corretto 發行版 |
+| Java                    | JDK 8、11、17、21、25                           | 使用 Amazon Corretto 發行版 |
 | Node.js | 20、22、24                                    | 適合前端建置與 Node 應用程式      |
 | PHP                     | 7.4 - 8.5   | 適合 Web 開發              |
 | Python                  | 3.10 - 3.14 | 適合腳本與 Web 應用程式         |
@@ -17,20 +19,18 @@ AcePanel 支援下列程式語言的執行環境：
 
 ## 執行環境清單
 
-前往 **應用程式** 頁面，點選 **執行環境** 頁籤即可檢視可用的執行環境：
-
-![執行環境](/images/app/app-runtime.png)
+進入 **應用** 頁面，點選 **執行環境** 分頁檢視可用執行環境：
 
 點選頂端的語言分類可篩選特定語言的版本，或使用右側的搜尋框依名稱或說明搜尋：
 
-![PHP 執行環境](/images/app/app-runtime-php.png)
-
 ## 安裝執行環境
 
-1. 前往 **應用程式** 頁面
+1. 進入 **應用** 頁面
 2. 點選 **執行環境** 頁籤
 3. 選取所需的語言分類（或檢視全部）
 4. 點選對應版本的 **安裝** 按鈕
+
+執行環境支援時，安裝對話方塊還會顯示 **預執行指令碼**和**自定義編譯引數**。 只有構建確實需要特定依賴、映象、補丁或編譯選項時才填寫。 指令碼以安裝許可權執行，提交任務前必須檢查內容。
 
 :::tip 版本選擇建議
 
@@ -43,8 +43,6 @@ AcePanel 支援下列程式語言的執行環境：
 
 已安裝的執行環境會顯示 **管理** 按鈕。 點選即可進入管理頁面：
 
-![執行環境管理](/images/app/app-runtime-manage.png)
-
 ### 執行狀態
 
 顯示執行環境目前的狀態，並提供啟動、停止、重新啟動與重新載入等操作。
@@ -53,64 +51,62 @@ AcePanel 支援下列程式語言的執行環境：
 
 PHP 執行環境提供模組管理功能，可安裝或解除安裝各種 PHP 模組：
 
-![PHP 模組管理](/images/app/app-runtime-modules.png)
+模組管理分頁列出所有可用模組的名稱、說明以及 **安裝** / **刪除** 操作。 安裝或解除安裝模組會提交後臺任務；請在 **任務 > 面板任務** 中檢視結果。
 
-模組管理頁籤會列出每個可用模組的名稱、說明，以及 **安裝** / **刪除** 操作。 安裝或解除安裝模組會以背景任務的形式提交，請在 **背景任務** 中檢視結果。
+常用模組包括：
 
-可安裝的模組種類豐富，包括（但不限於）：
+- **快取和序列化：** OPcache、APCu、igbinary、Redis（依賴 igbinary）、Memcached。
+- **影像和檔案：** ImageMagick、exif、fileinfo、zip、bz2、zstd、xlswriter。
+- **資料庫：** pgsql、pdo_pgsql、sqlsrv、pdo_sqlsrv。
+- **網路和協議：** ssh2、snmp、ldap、imap、event、grpc、protobuf、rdkafka。
+- **國際化和文本：** intl、gettext、enchant、pspell、readline、yaml、xsl。
+- **System V IPC：** sysvmsg、sysvsem、sysvshm。
+- **數學：** gmp、calendar。
+- **分析和除錯：** xhprof、xdebug。
+- **高效能和加密：** Swoole、Swow、ionCube，其中 ionCube 必須在 OPcache 之後安裝。
 
-- **快取 / 序列化**：OPcache（位元組碼快取）、APCu（使用者層級記憶體鍵值快取）、igbinary、Redis（需要 igbinary）、Memcached
-- **影像 / 檔案**：ImageMagick、exif、fileinfo、zip、bz2、zstd、xlswriter（Excel）
-- **資料庫**：pgsql 與 pdo_pgsql（PostgreSQL）、sqlsrv 與 pdo_sqlsrv（SQL Server）
-- **網路 / 通訊協定**：ssh2、snmp、ldap、imap、event、grpc、protobuf、rdkafka（Kafka）
-- **國際化 / 文字**：intl、gettext、enchant、pspell、readline、yaml、xsl
-- **System V IPC**：sysvmsg、sysvsem、sysvshm
-- **數學**：gmp、calendar
-- **效能分析 / 偵錯**：xhprof、xdebug
-- **高效能 / 加密**：Swoole、Swow、ionCube（必須在 OPcache 之後安裝）
+:::tip 依 PHP 版本顯示
+模組列表會隨所選 PHP 版本變化：
 
-:::tip 版本感知的可用性
-模組目錄會依所選的 PHP 版本進行調整：
-
-- **Swow** 僅在 PHP 8.0 及以上版本可用
-- **pspell** 與 **imap** 在 PHP 8.4 及以上版本已移除（不再建議使用）
-- **OPcache** 在 PHP 8.5 及以上版本不再以可安裝模組形式提供，因為它已原生內建
+- **Swow** 僅支援 PHP 8.0 及以上版本
+- PHP 8.4 及以上不再提供 **pspell** 和 **imap**（不再建議）
+- PHP 8.5 及以上已原生內建 **OPcache**，不再將其作為可安裝模組
   :::
 
-### 設定檔（PHP）
+### 配置檔案（PHP）
 
-您可以透過 **主設定** 頁籤使用內建編輯器編輯 PHP 的主設定檔（php.ini），並透過 **FPM 設定** 頁籤編輯 FPM 設定檔。 執行狀態頁面上的 **檢視 PHPInfo** 按鈕會顯示完整的 `phpinfo()` 輸出。
+可以使用內建編輯器，在 **主要設定** 分頁中編輯 PHP 主要設定檔 php.ini，並在 **FPM 設定** 分頁中編輯 FPM 設定檔。 執行狀態頁的 **檢視 PHPInfo**會顯示完整 `phpinfo()` 資訊。
 
-### 參數調校（PHP）
+### 引數調優（PHP）
 
-**參數調校** 頁籤提供以表單方式調整常用設定，無需直接編輯原始設定。 其分為下列幾個部分：
+**參數調校** 分頁透過表單調整常用設定，無需編輯原始設定。 其中包含以下分組：
 
-- **一般**：`short_open_tag`、`date.timezone`、`display_errors` 與 `error_reporting`
-- **停用函式**：以逗號分隔的待停用 PHP 函式清單（例如 `exec`、`shell_exec`、`system`、`passthru`）
-- **上傳限制**：`upload_max_filesize`、`post_max_size`、`max_file_uploads` 與 `memory_limit`
-- **逾時限制**：`max_execution_time`、`max_input_time` 與 `max_input_vars`
-- **效能調校**：PHP-FPM 行程管理器設定（`pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers`、`pm.max_spare_servers`）
-- **工作階段**：`session.save_handler`（files、redis 或 memcached）、對應的連線資訊或儲存路徑、`session.gc_maxlifetime` 與 `session.cookie_lifetime`。 **清理工作階段檔案** 按鈕會刪除所有工作階段檔案；僅在儲存處理器設定為 `files` 時生效
+- **常規：** `short_open_tag`、`date.timezone`、`display_errors`、`error_reporting`。
+- **停用函式：** 以逗號分隔需要停用的函式，例如 `exec`、`shell_exec`、`system`、`passthru`。
+- **上傳限制：** `upload_max_filesize`、`post_max_size`、`max_file_uploads`、`memory_limit`。
+- **超時限制：** `max_execution_time`、`max_input_time`、`max_input_vars`。
+- **效能調校**：PHP-FPM 程序管理器設定（`pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers` 和 `pm.max_spare_servers`）
+- **工作階段**：`session.save_handler`（files、redis 或 memcached）、對應的連線資訊或儲存路徑、`session.gc_maxlifetime` 及 `session.cookie_lifetime`。 **清理工作階段檔案** 按鈕會刪除全部工作階段檔案；僅當儲存處理器設為 `files` 時生效
 
-### 記錄檔（PHP）
+### 日誌（PHP）
 
-PHP 執行環境提供獨立的 **負載狀態** 頁籤（FPM 行程集區負載），以及 **執行記錄**、**錯誤記錄** 與 **慢速記錄** 頁籤，用於監控與疑難排解。
+PHP 還提供獨立的 **負載狀態**（FPM 程序池負載）、**執行日誌**、**錯誤日誌**和**慢日誌**標籤頁。
 
 ### 語言專屬設定
 
-部分執行環境會在其管理頁面提供專屬設定：
+部分執行環境的管理頁面還提供專用設定：
 
-- **Go**：設定模組代理（`GOPROXY`），內建官方代理以及 goproxy.cn、阿里、騰訊等映像站的預設項
-- **Node.js**：設定 npm 套件來源（registry），內建官方來源以及 npmmirror、騰訊、華為等映像站的預設項
-- **Python**：設定 pip 映像，內建官方來源以及阿里、騰訊、清華、中科大等映像站的預設項
+- **Go：** 配置 `GOPROXY`，可選擇官方地址、goproxy.cn、阿里雲和騰訊雲等預設。
+- **Node.js：** 配置 npm 映象，可選擇官方地址、npmmirror、騰訊雲和華為雲等預設。
+- **Python：** 配置 pip 映象，可選擇官方地址、阿里雲、騰訊雲、清華大學和中國科學技術大學等預設。
 
-### 設為 CLI 預設版本
+### 設定為 CLI 預設版本
 
-點選 **設為 CLI 預設版本** 按鈕，可將目前版本設為命令列使用的預設版本。 所有執行環境（Go、Java、Node.js、PHP、Python 與 .NET）均支援此功能。
+點選 **設定為 CLI 預設版本**，可把當前版本設為命令列預設版本。 Go、Java、Node.js、PHP、Python 和 .NET 均支援該操作。
 
 ## 多版本共存
 
-AcePanel 支援同一語言的多個版本共存。 例如，您可以同時安裝 PHP 7.4 與 PHP 8.3，不同網站可使用不同的 PHP 版本。
+同一語言可以安裝多個版本。 例如同時安裝 PHP 7.4 和 PHP 8.3，讓不同網站分別使用不同版本。
 
 安裝路徑規則：
 
@@ -123,15 +119,15 @@ AcePanel 支援同一語言的多個版本共存。 例如，您可以同時安�
 
 ## 在專案中使用
 
-建立專案時，您可以在專案設定中選擇要在專案內使用的執行環境版本。 詳情請參閱 [專案管理](../project) 文件。
+建立專案時，可以在專案設定中選擇執行環境版本。 詳見[專案管理](../project)。
 
 ## 更新執行環境
 
-當有新版本可用時，清單中會顯示最新的版本號。 您可以：
+有新版本時，列表會顯示最新版本號。 可以解除安裝舊版本後安裝新版本，也可以保留舊版本並同時安裝新版本，後者更適合逐步驗證。
 
-1. 解除安裝舊版本並安裝新版本
-2. 保留舊版本並同時安裝新版本（建議）
+1. 解除安裝舊版本後安裝新版本
+2. 保留舊版本，同時安裝新版本（建議）
 
 :::warning 注意
-更新執行環境版本可能導致相依該版本的專案發生相容性問題。 請先在測試環境中驗證，再更新正式環境。
+更新執行環境版本可能導致依賴該版本的專案出現相容性問題。 更新正式環境前，請先在測試環境中驗證。
 :::

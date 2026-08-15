@@ -1,5 +1,7 @@
 # 证书
 
+![Certificate overview](/images/cert/overview.png)
+
 证书模块用于管理 SSL/TLS 证书，支持通过 ACME 协议自动申请免费证书，也支持上传自有证书。
 
 ## 功能概览
@@ -11,8 +13,6 @@
 | [证书](./cert/cert)    | 管理 SSL 证书     |
 | [账户](./cert/account) | 管理 ACME 账户    |
 | [DNS](./cert/dns)    | 管理 DNS API 配置 |
-
-![证书列表](/images/cert/cert-list.png)
 
 ## 证书类型
 
