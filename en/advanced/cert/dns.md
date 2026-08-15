@@ -86,9 +86,6 @@ It is recommended to create a sub-account and only grant DNS management permissi
 
 ## DNS Alias (CNAME Delegation)
 
-::: tip Version
-:::
-
 DNS Alias lets you complete DNS-01 validation for a domain by writing the `_acme-challenge` TXT record on a **different** (delegated) domain, instead of on the domain being certified. This is useful when:
 
 - The domain you want a certificate for is hosted on a DNS provider that AcePanel does not support, but you control another domain that is supported.

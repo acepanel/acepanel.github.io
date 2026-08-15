@@ -4,9 +4,6 @@
 
 The Redis data management page lets you browse and edit Redis keys online: select a database, list and search keys, view/create/update/delete keys, set a key's TTL, and clear the whole database.
 
-::: tip
-:::
-
 ## Prerequisites
 
 Redis data management works against a database server of type **Redis**. Before using it, make sure a Redis server is available on the **Database** > **Server** tab:
