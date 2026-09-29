@@ -10,11 +10,11 @@ The page contains the default page, stopped-site page, 404 page, default site, d
 
 ### Default Site
 
-On Nginx, a default site receives requests that do not match another configured domain. Select only a site designed for this purpose. A default site does not replace DNS, TLS certificate matching, or explicit domain configuration.
+On Nginx, OpenResty, or Caddy, a default site receives requests that do not match another configured domain. Select only a site designed for this purpose. A default site does not replace DNS, TLS certificate matching, or explicit domain configuration.
 
 ### Default IPv6 Listening
 
-The default IPv6 option controls how AcePanel creates or extends listen addresses:
+On Nginx, OpenResty, and OpenLiteSpeed, the default IPv6 option controls how AcePanel creates or extends listen addresses:
 
 - New websites receive the corresponding IPv6 listeners for all configured ports.
 - When HTTPS is enabled on an existing website, AcePanel adds the IPv6 `443` listener according to this default.

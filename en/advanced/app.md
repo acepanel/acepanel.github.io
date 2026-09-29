@@ -27,7 +27,7 @@ The **Apps** page has four tabs:
 
 Native applications are preset with multiple categories by function, including but not limited to:
 
-- **Web Servers**: Nginx, OpenResty, Apache
+- **Web Servers**: Nginx, OpenResty, Apache, OpenLiteSpeed, Caddy
 - **Databases**: MySQL, MariaDB, PostgreSQL, Percona, MongoDB, ClickHouse
 - **Search Engines**: Elasticsearch, OpenSearch
 - **Containers**: Docker, Podman

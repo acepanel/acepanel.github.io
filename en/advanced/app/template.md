@@ -35,7 +35,6 @@ Common configuration items:
 
 - **Compose Name**: Used to identify this deployment (create mode only; in update mode you select an existing compose instead)
 - **Auto Start**: Whether to automatically start containers after creation
-- **Auto Firewall**: Whether to automatically allow the ports defined in the compose file (create mode only). The panel scans the `ports:` entries of the compose (formats such as `"8080:80"`, `"8080:80/tcp"`, or `"80/udp"`) and opens each host-side port for inbound traffic over the matching protocol (TCP by default, UDP when `/udp` is specified). Only ports in the range 1–65535 are processed.
 - **Environment Variables**: Each template defines its own variables (such as database username, password, and listening port). Variables without a default value are required.
 
 Each environment variable is rendered as an input control according to its declared type:
@@ -62,7 +61,7 @@ Here you can:
 
 ### Step 4: Confirm Deployment
 
-This step shows a summary of your choices: the deploy mode, compose name, whether Auto Start is enabled, whether Auto Firewall is enabled (create mode only), and the number of environment variables. You can expand **Compose Content** to review the final, read-only compose one more time.
+This step shows a summary of your choices: the deploy mode, compose name, whether Auto Start is enabled, and the number of environment variables. You can expand **Compose Content** to review the final, read-only compose one more time.
 
 After confirming all configurations are correct, click **Create** (or **Update** in update mode) to complete deployment:
 
@@ -71,6 +70,8 @@ In create mode the panel writes the deployment to `<root>/compose/<name>/`, gene
 If **Auto Start** is enabled, a terminal window opens and runs `docker compose -f <dir>/docker-compose.yml up -d` to start the containers; you can watch the startup output in real time.
 
 After deployment, the application will appear in the **Containers** > **Compose** page for management.
+
+Template deployment no longer offers an automatic firewall option. Review published ports and configure any required system-firewall and cloud-security-group rules separately.
 
 ## Template vs Manual Deployment
 

@@ -6,6 +6,12 @@ Panel Tasks contains long-running work submitted to AcePanel's queue, including 
 
 The **Tasks** page has two tabs: **Scheduled Tasks** (shown by default) and **Panel Tasks**. This page only covers **Panel Tasks**. For time-based jobs such as scheduled backups or scripts, see [Scheduled Tasks](./schedule.md).
 
+## Task Window
+
+The task icon in the top-right header refreshes its running status automatically. Click it to open the panel-task window without leaving the current page. The window shows active tasks, live logs, and cancellation controls; an empty state appears when no tasks are running.
+
+File compression, extraction, and remote downloads also open task-queue windows. Minimize or close a window to continue working; use **Cancel** to stop a waiting or running task. Closing the window does not cancel the operation. Finished task records remain available on the **Panel Tasks** page.
+
 ## Task List
 
 Go to **Tasks** > **Panel Tasks** tab to view the panel task list.
@@ -13,7 +19,7 @@ Go to **Tasks** > **Panel Tasks** tab to view the panel task list.
 The list displays the following information:
 
 - **Task Name**: Task description
-- **Status**: Waiting/Running/Completed/Failed
+- **Status**: Waiting/Running/Completed/Failed/Canceled
 - **Creation Time**: Task creation time
 - **Completion Time**: Task end time
 - **Actions**: View logs, cancel, delete
@@ -104,9 +110,9 @@ Common failure causes:
 - Missing dependencies
 - Port already in use
 
-### Tasks Marked Failed After a Restart
+### Interrupted Tasks After a Restart
 
-When the panel restarts (for example, after an update or a server reboot), any task left in the **Running** state is automatically marked as **Failed**. This prevents tasks from getting permanently stuck in **Running** when the process that was executing them is interrupted. If you find a task marked **Failed** right after a restart, simply re-run the original operation.
+Tasks interrupted during a graceful panel shutdown can be marked **Canceled**. On startup, any task still recorded as **Running** is marked **Failed**, covering work interrupted before its status could be saved. Check the log and the affected resource before retrying an interrupted operation.
 
 ### Clearing Stuck Tasks
 

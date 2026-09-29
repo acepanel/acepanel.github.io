@@ -9,7 +9,34 @@ The website module is used to manage site configurations on the Web server. AceP
 Before using the website feature, you need to install a Web server first:
 
 1. Go to **Apps** > **Native Applications**
-2. Install Nginx, OpenResty, or Apache
+2. Install Nginx, OpenResty, Apache, OpenLiteSpeed, or Caddy
+
+## Web Server Features
+
+Website types are available across the supported Web servers, but some settings depend on the active server:
+
+| Panel feature | Nginx / OpenResty | Apache | OpenLiteSpeed | Caddy |
+|---|---|---|---|---|
+| Access statistics | Supported | Not exposed | Not exposed | Supported |
+| Default site selection | Supported | Not exposed | Not exposed | Supported |
+| Explicit IPv6 listen controls | Supported | Not exposed | Supported | Not exposed |
+| LSCache settings | Not exposed | Not exposed | Supported | Not exposed |
+
+This table describes AcePanel's controls, not every feature the underlying server supports. The editor shows settings appropriate to the active server. PHP sites use LSAPI under OpenLiteSpeed; see [PHP runtime management](./app/environment#php-under-openlitespeed).
+
+On OpenLiteSpeed, **Advanced Settings > LSCache** controls caching for an individual site. Configure OpenLiteSpeed's real-IP handling on its application management page. Website and running-directory fields provide a directory picker, including directory creation.
+
+## Switch Web Servers
+
+Back up site configurations before switching the active Web server. After the new server is selected, the CLI can rebuild all website configurations for it:
+
+```bash
+acepanel website rebuild
+```
+
+The rebuild reads the previous server's configuration and migrates shared settings such as domains, directories, HTTPS, PHP version, upstreams, proxies, redirects, and basic authentication where supported. **Rewrite rules, custom configs, rate limits, and real-IP settings are not migrated.** The old configuration directory is removed after a successful rebuild, so keep your own backup and reapply these settings using the new server's syntax. Unsupported explicit IPv6 listeners are also removed.
+
+Review the command's output and verify each site afterward. Opening a website's editor does not automatically rebuild it for a different server.
 
 ## Website Types
 
@@ -34,6 +61,12 @@ The website list displays the following information:
 - **Expiration**: Site expiration time; the site is automatically stopped when it expires
 - **Remark**: Custom remarks
 - **Actions**: Edit, delete, etc.
+
+### Search and Sort
+
+Use the list's keyword search to find websites. Columns with a sorting control can be sorted by clicking their headers; the same pattern is available in other resource lists.
+
+Domain names must be unique across websites. Remove a domain from its existing website before binding it to another one.
 
 ## Create Website
 
@@ -74,7 +107,7 @@ Click the **Edit** button of a website to enter the management page, which is or
 
 An existing reverse-proxy, PHP, or pure-static website can be converted to either of the other two types. AcePanel keeps its name, domains, listen addresses, directory, files, HTTPS association, expiration, and other shared fields. It removes the old type-specific Web-server configuration and generates a new configuration for the selected type.
 
-Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the concrete Nginx, OpenResty, or Apache error when validation fails.
+Back up the site before converting it. Upstreams and proxy rules, PHP runtime and rewrite settings, and static-only behavior must be reviewed or configured again after the change. AcePanel tests the generated Web-server configuration before applying it and displays the active Web server's concrete error when validation fails.
 
 ## Batch Creation
 

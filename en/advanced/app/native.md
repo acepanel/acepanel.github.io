@@ -61,6 +61,14 @@ Click the **Modify Configuration** tab to directly edit the application's config
 Please ensure you understand the meaning of each parameter before modifying configuration files. Incorrect configuration may prevent the service from starting.
 :::
 
+### Parameter Tuning
+
+Applications that provide a **Parameter Tuning** tab let you edit common options without changing the raw configuration file. Apache includes connection and timeout settings, KeepAlive, and MPM worker settings.
+
+Where **Generate Recommended Configuration** is available, enter the memory allocated to the service, CPU count, disk type, and any application-specific scenario or connection limit. The dialog initializes hardware values from the server and fills recommended values into the form. Review them and click **Save** manually; generating a recommendation does not apply it. Reserve resources for other services running on the same host.
+
+Database applications also provide dedicated [performance and maintenance tools](../database#performance-and-maintenance).
+
 ### View Logs
 
 Click the **Run Log** or **Error Log** tab to view application logs, which is helpful for troubleshooting.
@@ -81,7 +89,7 @@ Uninstalling database applications (such as MySQL, PostgreSQL) will delete all d
 :::
 
 ::: danger Warning
-Uninstalling a web server application (such as Nginx/OpenResty) will reset the configuration of all websites. The confirmation dialog will display a dedicated warning for this case. The same reset also applies when reinstalling or switching to a different web server.
+Back up website configurations before uninstalling, reinstalling, or switching Web servers. When switching servers, AcePanel can rebuild shared website settings for the selected server, but server-specific rewrite rules, custom configs, rate limits, and real-IP settings are not migrated. See [Switch Web Servers](../website#switch-web-servers).
 :::
 
 ## Homepage Shortcut

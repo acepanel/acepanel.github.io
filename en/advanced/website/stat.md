@@ -5,7 +5,7 @@
 The Statistics module provides traffic analytics for your websites: overview metrics, real-time traffic, and aggregated rankings by site, spider, client, IP, location, URI, slow URI, and status code.
 
 ::: tip
-Statistics relies on the Nginx access log being streamed to the panel over a local socket. The **Statistics** feature and its settings are therefore only available when the web server is **Nginx** (or OpenResty). If you are running Apache, the statistics page and settings will not be shown.
+Statistics uses access logs sent by the active Web server to the panel. The **Statistics** feature and its settings are available with **Nginx**, **OpenResty**, and **Caddy**. They are not shown for Apache or OpenLiteSpeed.
 :::
 
 ## Statistics Page
@@ -173,7 +173,7 @@ Click the **Clear Data** button in the toolbar and confirm to permanently delete
 
 ## Statistics Settings
 
-Statistics settings live under the website **Settings** tab, in the **Statistics** sub-tab (only shown when the web server is Nginx).
+Statistics settings live under the website **Settings** tab, in the **Statistics** sub-tab (shown with Nginx, OpenResty, or Caddy).
 
 1. Go to the **Website** page
 2. Click the **Settings** tab
@@ -198,7 +198,7 @@ The key-limit settings cap memory usage on very high-traffic sites. Raising them
 
 ## Notes
 
-- Statistics require the web server to be Nginx (or OpenResty); the feature is hidden for other web servers.
+- Statistics require Nginx, OpenResty, or Caddy; the feature is hidden for other Web servers.
 - Geographic and ISP data depend on a configured GeoIP database.
 - Statistics data occupies disk space; the longer the retention period, the more space is used. Adjust the retention days to suit your needs.
 - Today's figures include both saved data and live counters, so they continue to change throughout the day.

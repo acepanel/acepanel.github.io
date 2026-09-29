@@ -18,7 +18,7 @@ features:
     details: Developed in Go language, small installation package, low occupancy, single file operation, will not affect system performance
   - icon: 🛠
     title: Low destructiveness
-    details: Designed to minimize additional modifications to the system, we make the fewest modifications to the system among similar products
+    details: Designed to minimize additional system modifications and maintain forward and backward compatibility
   - icon: 📅
     title: Follow the times
     details: The overall design is at the forefront of the times, with good compatibility with new systems, leading in the same type of products
@@ -35,8 +35,8 @@ features:
     title: Fully open source
     details: Few fully open source panels, you can freely modify and develop the panel on the premise of complying with the open source agreement
   - icon: 🆓
-    title: Permanently free
-    details: Commit to the panel body will not introduce any charging/authorization functions in the future, and will be permanently free to use
+    title: Free to use
+    details: Commit to the panel body will not introduce any charging/authorization functions in the future, and will be free to use
 ---
 
 ## Partners

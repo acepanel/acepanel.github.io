@@ -8,7 +8,7 @@ PHP websites are used to run PHP programs, such as WordPress, Laravel, ThinkPHP,
 
 Before creating a PHP website, you need to install:
 
-1. **Web Server**: Nginx, OpenResty, or Apache
+1. **Web Server**: Nginx, OpenResty, Apache, OpenLiteSpeed, or Caddy
 2. **PHP Runtime Environment**: Install the required PHP version in **Apps** > **Runtime Environments**
 
 ## Create PHP Website
@@ -60,7 +60,7 @@ The panel ships the following 27 built-in presets:
 After selecting a preset, its rules are written into the editor below, where you can fine-tune them before saving.
 
 ::: tip Note
-The preset dropdown is only shown when the web server is Nginx (presets are provided for Nginx/OpenResty only). On Apache, write rewrite rules directly in the editor.
+The preset dropdown is only shown when the web server is Nginx (presets are provided for Nginx/OpenResty only). For other Web servers, write rules in the active server's syntax. OpenLiteSpeed uses site-level `.htaccess` loading for rewrite rules.
 :::
 
 ### HTTPS
@@ -77,6 +77,8 @@ Enable and configure HTTPS for the website.
 
 When the website has a domain bound, the **One-click Certificate Issuance** button at the bottom requests a free certificate via ACME. If the domain is a wildcard (e.g. `*.example.com`), you will be asked to choose a DNS provider for DNS verification (add it in Certificate Management first).
 
+After a successful **One-click Certificate Issuance**, AcePanel enables HTTPS for the website automatically. Review the resulting certificate and listeners in the HTTPS tab.
+
 ### Redirects
 
 Configure redirect rules. Each rule supports:
@@ -88,15 +90,15 @@ Configure redirect rules. Each rule supports:
 
 ### Advanced Settings
 
-- **Access Statistics** (Nginx only): Toggle access statistics collection for this website
+- **Access Statistics** (Nginx, OpenResty, or Caddy): Toggle access statistics collection for this website
 - **Log Settings**: Set the **Access Log** and **Error Log** paths, or set them to **Disabled**
 - **Rate Limiting**: Limit **Concurrent Limit** (max concurrent connections for the site), **Per IP Limit** (max concurrent connections per IP), and **Rate Limit** (per-request rate in KB)
 - **Real IP**: Configure trusted proxy IP sources (one per line) so the real visitor IP is recognized behind a CDN or Frp; choose the IP header (X-Real-IP, X-Forwarded-For, CF-Connecting-IP, etc.) and optionally enable recursive lookup
-- **Basic Authentication**: Add username/password pairs to require HTTP basic auth before visitors can access the site
+- **Basic Authentication**: Add a rule for the whole site or a specific URL directory, then add username/password pairs. Directory rules require a path such as `/admin/`; more specific paths take precedence
 
 ### Custom Configs
 
-Append custom web server configuration snippets. Each snippet has a **Name**, a **Scope** (**This Website** or **Global**), and a **Content** block edited with Nginx or Apache syntax highlighting depending on the installed web server.
+Append custom web server configuration snippets. Each snippet has a **Name**, a **Scope** (**This Website** or **Global**), and a **Content** block written in the syntax of the active Web server.
 
 ### Access Log / Error Log
 
@@ -141,10 +143,14 @@ Go to **Apps** > **Operating Environment**, click **Manage** on the installed PH
 - **Parameter Tuning**: Adjust common parameters through forms (see [Parameter Tuning](#parameter-tuning))
 - **Main Configuration**: Edit the raw `php.ini` file
 - **FPM Configuration**: Edit the raw PHP-FPM configuration file
-- **Load Status**: View the current PHP-FPM load metrics
+- **Load Status**: View PHP-FPM load and worker metrics when FPM is in use
+- **OPcache**: View cache usage and cached scripts, or reset the cache
+- **Composer**: Install or update Composer and configure its package mirror
 - **Runtime Logs**: Stream the `php-fpm-<version>` service runtime log in real time
 - **Error Logs**: Stream the PHP error log; the **Clear Log** button truncates it
 - **Slow Logs**: Stream the PHP-FPM slow log; the **Clear Slow Log** button truncates it
+
+When OpenLiteSpeed handles PHP through LSAPI, a stopped PHP-FPM service is expected. FPM controls and metrics do not manage LSAPI workers. See [PHP Under OpenLiteSpeed](../app/environment#php-under-openlitespeed) for runtime behavior.
 
 ### Module Management
 
@@ -165,6 +171,7 @@ The **Parameter Tuning** tab groups common settings into sub-tabs so you can adj
 - **Upload Limits**: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, `memory_limit`
 - **Timeout Limits**: `max_execution_time`, `max_input_time`, `max_input_vars`
 - **Performance Tuning**: PHP-FPM process manager settings written to `php-fpm.conf` — `pm`, `pm.max_children`, and (for `dynamic` mode) `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`
+- **OPcache**: Bytecode-cache and JIT settings
 - **Session**: `session.save_handler` (`files`, `redis`, or `memcached`), the save path (host/port/password for redis and memcached), `session.gc_maxlifetime`, and `session.cookie_lifetime`. The **Clean Session Files** button (with confirmation) deletes all session files for this version
 
 ## PHP Configuration

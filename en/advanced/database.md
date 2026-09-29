@@ -106,6 +106,44 @@ To enable remote access for a MySQL user, choose **All (%)** (or **Specific** an
 It is not recommended to expose database ports to the public network. For remote management, it is recommended to use SSH tunnels or VPN.
 :::
 
+## Performance and Maintenance
+
+These tools are on the installed database application's **Manage** page under **Apps**, rather than the database/user list or a remote server registration. Open the corresponding native application to manage its local instance.
+
+### MySQL, MariaDB, and Percona
+
+The **Performance** tab includes:
+
+- **Processes**: inspect connections, users, databases, running statements, and duration; terminate a selected connection when necessary.
+- **Transactions & Locks**: inspect active transactions and lock waits, identify the blocking connection, and terminate the blocker after reviewing its query.
+- **Top SQL**: compare statement calls, total and mean execution time, and rows sent or examined; reset accumulated statistics when starting a new observation period. It requires `performance_schema`. The enable action changes configuration and requires a service restart; it also increases memory usage.
+
+The **Maintenance** tab includes:
+
+- **Table Maintenance**: filter by database, inspect table size and fragmentation, and run maintenance on one table or multiple selected tables. Available operations include `OPTIMIZE` and `ANALYZE`.
+- **Binlog**: view binary-log files and sizes. **Purge to Here** removes logs before the selected file; confirm they are no longer needed for replication or recovery.
+- **Replication**: inspect the source host, replication delay, IO/SQL thread state, and the last error on a replica.
+
+Table-maintenance operations run as panel tasks. Inspect the task log for their results.
+
+### PostgreSQL
+
+The **Extensions** tab lists extension availability and installed versions. Install or reinstall extension packages through panel tasks, then use **Enable** to select the database where `CREATE EXTENSION` will run. Enabling an extension in `template1` makes newly created databases inherit it. Some extensions also require a PostgreSQL restart.
+
+The **Performance** tab provides **Sessions** and **Top SQL**. Sessions show wait events, blockers, transaction duration, and query duration and can be terminated. Top SQL uses `pg_stat_statements`; enabling it adds the module to `shared_preload_libraries` and requires restarting PostgreSQL.
+
+Under **Maintenance > Table Bloat**, select a database to inspect table size, live/dead tuples, and the last vacuum/analyze time. Run `VACUUM`, `VACUUM FULL`, `ANALYZE`, or `pg_repack` on a table or selection. `pg_repack` requires its extension to be installed. These operations run as panel tasks. **VACUUM FULL rewrites the table and holds an exclusive lock, blocking reads and writes until it finishes.**
+
+The **WAL** tab shows WAL size, archive success/failure counts, replication slots and retained WAL, and replication status. Delete a replication slot only when its consumer no longer needs it.
+
+### Redis and Valkey
+
+Open **Performance** to inspect **Slow Log**, **Clients**, and **Memory**. You can reset the slow log, terminate a client, inspect memory diagnostics, and submit **Scan Big Keys** as a panel task. Follow the task log for scan output. Review service load before scanning a large dataset.
+
+### Recommended Configuration
+
+On application pages with **Parameter Tuning**, use **Generate Recommended Configuration** where available to fill recommended values from the memory budget, CPU count, disk type, and application scenario. Review the generated values and save manually. Recommendations are a starting point and do not measure the application's actual workload.
+
 ## Next Steps
 
 - [Database Management](./database/database) - Learn how to create and manage databases

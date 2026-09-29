@@ -72,6 +72,8 @@ During automatic issuance and renewal, the panel shows real-time progress in a t
 
 After a certificate has been issued or uploaded, there are two ways to apply it to a website.
 
+When a certificate has both associated websites and a **Deployment Script**, issuance and renewal deploy it to those websites first, then run the script. The script can distribute the same certificate to services outside the panel.
+
 ### Deploy from the certificate list
 
 Click the **Deploy** button in the certificate list:

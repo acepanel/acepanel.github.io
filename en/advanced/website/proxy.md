@@ -7,10 +7,10 @@ Reverse proxy websites are used to forward external requests to backend services
 ## How It Works
 
 ```
-User Request -> Nginx (Reverse Proxy) -> Backend Application (e.g., localhost:3000)
+User Request -> Web Server (Reverse Proxy) -> Backend Application (e.g., localhost:3000)
 ```
 
-Nginx receives HTTP/HTTPS requests from users and forwards them to the specified backend address.
+The selected Web server receives HTTP/HTTPS requests from users and forwards them to the specified backend address.
 
 ## Create Reverse Proxy Website
 
@@ -53,7 +53,7 @@ Configure the website's domain and listening port, supporting multiple domains a
 Upstream defines backend server addresses, supporting multiple backends for load balancing.
 
 - **Upstream Name**: Identifier name for the upstream
-- **Load Balancing Algorithm**: For Nginx, supports Round Robin (default), `least_conn`, `ip_hash`, `hash`, and `random`; for Apache, supports Round Robin (default), Least Busy, and By Traffic
+- **Load Balancing Algorithm**: For Nginx, supports Round Robin (default), `least_conn`, `ip_hash`, `hash`, and `random`; other Web servers show their supported algorithms in the dropdown
 - **Keepalive Connections**: Number of persistent connections to maintain with the backend
 - **DNS Resolver**: Custom DNS resolver and resolver timeout (Nginx only)
 
@@ -118,13 +118,15 @@ The **HTTPS** tab manages TLS for the website. When a certificate is already bou
 
 When the website has at least one domain, the **One-click Certificate Issuance** button in the footer requests a free certificate for the bound domains. If any domain is a wildcard (e.g., `*.example.com`), a dialog prompts you to select a DNS provider (configured in Certificate Management) so the certificate can be issued via DNS verification.
 
+After a successful **One-click Certificate Issuance**, AcePanel enables HTTPS for the website automatically. Review the resulting certificate and listeners in the HTTPS tab.
+
 ### Advanced Settings (Site-wide)
 
 The **Advanced Settings** tab groups several site-wide options into collapsible panels.
 
 #### Access Statistics
 
-Available for Nginx only. Toggle **Enable Statistics** to collect access statistics for this website (viewable on the website statistics page).
+Available for Nginx, OpenResty, and Caddy. Toggle **Enable Statistics** to collect access statistics for this website (viewable on the website statistics page).
 
 #### Log Settings
 
@@ -152,7 +154,7 @@ Identifies the real visitor IP when AcePanel itself sits behind a CDN or Frp (th
 
 #### Basic Authentication
 
-Add username/password pairs under **User Credentials** to require HTTP Basic Authentication before visitors can access the website. Leaving the list empty disables authentication.
+Add a rule for **Entire Website** or **Specific Directory**, then add username/password pairs under **User Credentials**. A directory rule requires a URL path such as `/admin/`. More specific directory paths take precedence over broader rules; a site-wide rule covers remaining paths. Remove the rules to disable authentication.
 
 ## Use Cases
 

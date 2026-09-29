@@ -33,7 +33,6 @@ Click the **Create Container** button to open the creation dialog.
 
 - **Container Name**: Optional, auto-generated if left empty
 - **Image**: Docker image name, e.g., `nginx`, `mysql:8.4`, `your_username/your_image:tag`
-- **Network**: Select the network for the container to use
 - **Restart Policy**: Restart behavior after container exits
     - None: Do not auto restart
     - Always: Always restart
@@ -46,6 +45,15 @@ The **Container Options** section at the bottom of this tab provides the followi
 - **STDIN (-i)**: Keep STDIN open
 - **Auto Remove**: Automatically delete container when stopped
 - **Privileged**: Grant container full system privileges (use with caution)
+
+- **Init Process**: Run an init process in the container to handle signals and reap child processes
+- **Read-Only**: Mount the container root filesystem read-only
+
+### Network
+
+The **Network** tab includes the network, static IP, hostname, network aliases, DNS servers, and extra host entries. A static IP requires a custom network with a subnet; aliases apply to custom networks. The hostname can contain up to 64 characters and is generated automatically when left empty.
+
+Use an extra-host entry such as `example.com:192.168.1.10` to add a container-side host mapping. Review the selected network mode before configuring ports or addresses.
 
 ### Port Mapping
 
@@ -64,6 +72,8 @@ Mount host directories or data volumes to the container. Each mount consists of 
 
 For example, mounting the host's `/opt/ace/data` directory to the container's `/data` directory.
 
+The **Volumes** tab also supports tmpfs mounts with a container path and mount options.
+
 ### Resource Limits
 
 Limit the resources the container can use. Set a value to `0` for no limit:
@@ -72,13 +82,22 @@ Limit the resources the container can use. Set a value to `0` for no limit:
 - **CPU Cores**: Number of CPU cores the container can use (e.g., `0.5` means half a core)
 - **CPU Shares**: Relative CPU weight (default `1024`); higher values get more CPU time when competing
 
+Additional controls include **Shm Size (MB)** for `/dev/shm` and **Ulimits** with soft and hard limits. A shared-memory size of `0` uses the container engine's default.
+
 ### Environment
 
 In the **Environment** tab you can set the following:
 
 - **Environment Variables**: Container environment variables in `KEY=VALUE` form
-- **Startup Commands**: Override the image's default **Command** (CMD) and **Entrypoint** (ENTRYPOINT)
+- **Startup Commands**: Override the image's default **Command** (CMD) and **Entrypoint** (ENTRYPOINT), with each argument entered separately
+- **Working Directory** and **User**: Override the image defaults; leave empty to keep them
 - **Container Labels**: Custom labels attached to the container in `KEY=VALUE` form
+
+### Advanced Settings
+
+Set the stop signal and timeout, a health-check command with interval/timeout/start period/retry count, added or dropped capabilities, security options, device mappings, and kernel parameters. Device mappings include the host path, container path, and permissions.
+
+### Submit the Operation
 
 Before submitting, choose how the operation runs:
 

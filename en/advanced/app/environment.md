@@ -86,7 +86,22 @@ The **Parameter Tuning** tab provides a form-based way to adjust common settings
 - **Upload Limits**: `upload_max_filesize`, `post_max_size`, `max_file_uploads`, and `memory_limit`
 - **Timeout Limits**: `max_execution_time`, `max_input_time`, and `max_input_vars`
 - **Performance Tuning**: PHP-FPM process manager settings (`pm`, `pm.max_children`, and, for `dynamic` mode, `pm.start_servers`, `pm.min_spare_servers`, `pm.max_spare_servers`)
+- **OPcache**: bytecode-cache options and JIT mode/buffer settings
 - **Session**: `session.save_handler` (files, redis, or memcached), the matching connection details or save path, `session.gc_maxlifetime`, and `session.cookie_lifetime`. A **Clean Session Files** button deletes all session files; it only takes effect when the save handler is set to `files`
+
+### PHP Under OpenLiteSpeed
+
+OpenLiteSpeed handles PHP through **LSAPI** and manages `lsphp` processes itself. When LSAPI takes over, AcePanel stops and disables the corresponding PHP-FPM service. A stopped PHP-FPM status is expected in this mode and does not mean the website is down.
+
+FPM process-manager settings and FPM load metrics do not control LSAPI workers. Use the OpenLiteSpeed application page for live server status. Saving PHP configuration in LSAPI mode restarts the relevant PHP workers; reloading OpenLiteSpeed also restarts its PHP child processes.
+
+### FPM Processes, OPcache, and Composer
+
+- **Load Status** includes FPM worker details when PHP-FPM is in use. Under LSAPI, the page explains that FPM metrics do not apply.
+- **OPcache** shows cache usage, hit statistics, and cached scripts, and provides **Reset OPcache**. Status is also available under LSAPI. The extension must be enabled, and the PHP runtime must be available to query it.
+- **Composer** shows the installed version, supports installation or update through a background task, and lets you choose the package mirror for that PHP version.
+
+The **Parameter Tuning > OPcache** section exposes OPcache and JIT settings, including cache memory and JIT buffer configuration. Review the settings for the selected PHP version and save to apply them. Where available, **Generate Recommended Configuration** fills the form from a server profile for review before saving.
 
 ### Logs (PHP)
 

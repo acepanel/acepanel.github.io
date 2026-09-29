@@ -50,6 +50,8 @@ In the **HTTPS** tab you can enable TLS for the site and manage its certificate:
 
 When at least one domain is set, the footer also provides a **One-click Certificate Issuance** button to request a free certificate. If a domain is a wildcard (e.g., `*.example.com`), you will be prompted to select a DNS provider configured in Certificate Management for DNS verification.
 
+After a successful **One-click Certificate Issuance**, AcePanel enables HTTPS for the website automatically. Review the resulting certificate and listeners in the HTTPS tab.
+
 ### Redirects
 
 In the **Redirects** tab you can add redirect rules. Click **Add Redirect Rule** to create a rule:
@@ -68,13 +70,13 @@ In the **Advanced Settings** tab you can configure access statistics, log settin
 
 ### Custom Configs
 
-In the **Custom Configs** tab, you can add custom Nginx configuration for URL rewriting and other functions.
+In the **Custom Configs** tab, you can add custom Web-server configuration for URL rewriting and other functions.
 
 Click the **Add Custom Config** button to add a configuration:
 
 - **Name**: Configuration name, supports letters, numbers, underscores, and hyphens
 - **Scope**: Configuration scope, can choose "This Website" or "Global"
-- **Content**: Nginx configuration content, such as `location` blocks
+- **Content**: Configuration content in the active Web server's syntax, such as `location` blocks for Nginx
 
 ## Use Cases
 

@@ -64,7 +64,7 @@ Replace the version number with the actual installed version. You can check the 
 
 Applications with dependencies need to uninstall dependent applications first.
 
-For example, phpMyAdmin depends on Nginx, so phpMyAdmin needs to be uninstalled first.
+For example, phpMyAdmin depends on a supported Web server. Follow the dependency message for the active server before uninstalling it.
 
 ## Multiple PHP Versions Coexistence
 

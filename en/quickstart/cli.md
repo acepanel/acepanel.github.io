@@ -2,6 +2,10 @@
 
 `acepanel` is the root-only recovery and administration CLI installed with AcePanel. Run `acepanel <command> --help` on the server before an irreversible operation.
 
+## Interactive Mode
+
+Run `acepanel` without arguments in an interactive terminal to open the command menu. Select a command and fill in the prompted arguments or options. Press `Esc` to return to the previous step or `Ctrl+C` to exit. When standard input or output is not a terminal, use explicit commands for scripts and automation.
+
 ## Output and Safety
 
 Add the global `--json` flag to list commands when machine-readable output is required:
@@ -42,7 +46,8 @@ Use `--force` (`-f`) only when a password reset is intended. `--username` (`-u`)
 acepanel port <port>
 acepanel https on|off
 acepanel https generate
-acepanel entrance on|off
+acepanel entrance on [entrance]
+acepanel entrance off
 acepanel bind-domain on <domain> [domain...]
 acepanel bind-domain off
 acepanel bind-ip on <ip> [ip...]
@@ -50,6 +55,8 @@ acepanel bind-ip off
 acepanel bind-ua on <user-agent> [user-agent...]
 acepanel bind-ua off
 ```
+
+For example, `acepanel entrance on /mypanel` sets a custom entrance path. Omitting the path generates a random entrance.
 
 Before changing the port or any binding, permit the new access path in the system firewall and cloud security group and keep an SSH session open.
 
@@ -103,6 +110,8 @@ acepanel cert renew --all
 Website creation accepts `proxy`, `static`, or `php` through `--type` (`-t`), repeated `--domains` (`-d`) and `--listens` (`-l`), and optional `--path` (`-p`), `--proxy`, `--php`, `--db`, `--db-name`, `--db-user`, `--db-password`, and `--remark`.
 
 `website remove` keeps the site directory and same-named database. `website delete` also removes them and automatically releases certificate associations; it is irreversible. `website cert` reads the certificate and private key from server-side files—protect both paths and never paste a private key into shell history.
+
+After changing the active Web server, use `acepanel website rebuild` to rebuild website configurations for it. Server-specific settings require manual migration; see [Switch Web Servers](../advanced/website#switch-web-servers).
 
 ## Database Servers
 

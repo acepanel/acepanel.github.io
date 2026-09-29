@@ -93,7 +93,7 @@ Enable HTTPS encrypted access for the panel:
 - **Self-Signed**: Automatically generate a self-signed certificate (browsers will show a warning), renewed automatically before expiry
 - **Custom Certificate**: Use your own SSL certificate
 
-When **Custom Certificate** is selected, two additional text fields appear:
+When **Custom Certificate** is selected, use **Use Existing Certificate** to copy a certificate and its private key from Certificate Management, or fill in the two text fields manually:
 
 - **Certificate**: Paste the full certificate chain (PEM format)
 - **Private Key**: Paste the matching private key (PEM format)

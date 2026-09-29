@@ -38,18 +38,15 @@ Backup file formats (`<format>` is the configured compression format):
 
 ## Backup List
 
-The backup list displays the following information:
+Backups are grouped by website or database, with the available time points under the same item. Expand a group to inspect individual backup files; a single backup is shown directly. The list displays the name, size, time, and download/restore/delete actions.
 
-- **Filename**: Backup file name
-- **Size**: Backup file size
-- **Update Date**: Backup time
-- **Actions**: Download, restore, delete
+Use the row checkboxes and **Delete** to remove multiple backups after confirmation. Selecting a group includes its backup files. Deleting backups does not delete the live website or database.
 
 ## Restore Backup
 
 1. Find the backup to restore in the backup list
 2. Click **Restore**
-3. Select the target website or database and submit the task
+3. Select the backup time point and the target website or database, then submit the task
 4. Follow the restore under **Tasks > Panel Tasks** and review its log before using the restored resource
 
 Website restore recognizes compatible archive layouts created by other server panels. Always review the destination path and site content after importing an external archive.

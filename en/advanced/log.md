@@ -30,7 +30,11 @@ The viewer shows its connection state and loads new lines incrementally. Its con
 
 Search does not query the entire file on disk. Load the required history first, then search. Very large histories should be downloaded and processed with command-line tools instead of repeatedly loading them into the browser.
 
+The viewer uses virtual scrolling for long output and interprets carriage returns, control sequences, and ANSI colors so command progress and colored output display correctly.
+
 ## Clearing and Retention
+
+In **Operation Logs**, **Database Logs**, and **HTTP Logs**, click **Clean** and choose a date to delete entries **on and before that date**. SSH logs use their underlying system-log retention instead.
 
 Clearing a log is destructive and may remove evidence needed for incident investigation. Download it first when an audit, failure, or security event is under review. Some systemd and SSH sources are incremental views backed by system logs; their retention is controlled by the underlying service or journal configuration.
 

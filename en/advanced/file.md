@@ -41,7 +41,7 @@ The file module provides a powerful graphical file manager. The design philosoph
 
 ### Path Navigation
 
-The top displays breadcrumb navigation of the current path. Click to quickly jump to any parent directory.
+The address bar shows the full current path so it can be selected and copied. Enter a path to navigate directly; use the parent-directory control to move up.
 
 ### Quick Buttons
 
@@ -113,7 +113,7 @@ When you compress one or more entries, the dialog lets you edit the target archi
 
 `.gz`, `.xz`, `.bz2`, and `.zst` are also supported as single-file compression formats. They compress one file rather than creating a multi-file archive; use a `tar.*`, ZIP, or 7-Zip format when the selection contains several entries or a directory.
 
-Compression and extraction are submitted as background tasks. You can leave the Files page and follow progress and failures under **Tasks > Panel Tasks**. Refresh the directory after the task completes.
+Compression and extraction open a task-queue window with live status and logs. The compression dialog shows the selected items as removable tags. You can minimize or close the window and follow the same tasks under **Tasks > Panel Tasks**; closing the window does not cancel them. The file list refreshes after tasks finish.
 
 ## Toolbar
 
@@ -135,6 +135,8 @@ Supported upload methods:
 
 Before transferring data, AcePanel checks the destination for name conflicts. For each conflicting item—or for all remaining conflicts at once—choose **Skip**, **Rename**, or **Overwrite**. Review directory conflicts carefully: overwrite can replace existing content, while rename keeps both entries under different names.
 
+Uploads are managed in a queue with per-file progress and controls to pause, resume, retry, cancel, or remove entries. You can add files or folders and adjust queued items to high, normal, or low priority. Large files use chunked uploads and can reuse completed chunks when resumed while the local file remains available. Leaving the Files page keeps the queue available within the current panel session; closing or reloading the browser does not preserve the local files needed to continue uploading.
+
 ### Share
 
 Use **Share** on a file to create a public download link. Choose an expiry of 1 hour, 1 day, 7 days, or 30 days and optionally limit the number of downloads. Copy the URL from the active share or cancel it when it is no longer needed.
@@ -143,7 +145,7 @@ Anyone with the URL can download the file until it expires, reaches its limit, o
 
 ### Remote Download
 
-Click the **Remote Download** button, enter a URL address to download remote files to the current directory.
+Click **Remote Download** and enter the URL to submit a download task for the current directory. Its task-queue window shows live logs and lets you cancel waiting or running work. You can also follow it under **Tasks > Panel Tasks**.
 
 Use cases:
 
@@ -178,6 +180,17 @@ AcePanel has a built-in powerful code editor based on Monaco Editor (the same ed
 - **Minimap**: Displays code thumbnail on the right side
 - **Word Wrap**: Can toggle word wrap mode
 - **Multi-file Editing**: Supports opening multiple files simultaneously with tab switching
+
+### File Encoding
+
+Click the encoding indicator in the status bar to choose:
+
+- **Reopen with Encoding**: read the file again from disk using the selected encoding. Confirming this action discards unsaved changes.
+- **Convert to Encoding**: set the encoding used when you next save the edited file.
+
+Supported choices include UTF-8, UTF-8 BOM, UTF-16 LE/BE, GB18030, GBK, Big5, Japanese and Korean encodings, and Windows-1251/1252. For garbled text, first reopen using the file's original encoding; convert only after the text displays correctly.
+
+Minimizing the editor preserves its open tabs and unsaved content. Refreshing the sidebar tree preserves expanded and selected entries.
 
 ### Editor Shortcuts
 
@@ -261,6 +274,7 @@ The left side of the editor displays the file tree of the current directory, all
 The editor bottom status bar displays:
 
 - Full file path
+- File encoding (click to reopen or convert)
 - Line ending type (LF/CRLF)
 - Cursor position (line, column)
 - Indentation settings (spaces/Tab)

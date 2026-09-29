@@ -4,8 +4,8 @@
 
 1. Check if the domain is resolved to the server IP
 2. Check if the firewall has allowed ports 80/443
-3. Check if Nginx is running: **Apps** -> **Nginx** -> **Manage**
-4. View Nginx error logs
+3. Check if the active Web server is running: **Apps** -> the installed Web server -> **Manage**
+4. View the active Web server's error logs
 
 ## 403 Forbidden
 
@@ -30,7 +30,7 @@ For reverse proxy websites with 502, check if the backend service is running.
 ## Rewrite Rules Not Working
 
 1. Confirm the correct preset is selected or rules are filled in the **Rewrite** tab
-2. Nginx will automatically reload after clicking **Save**
+2. AcePanel applies the configuration to the active Web server after clicking **Save**
 3. Clear browser cache and test
 
 ## Configure QUIC (HTTP/3)

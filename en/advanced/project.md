@@ -116,7 +116,7 @@ Configure project runtime parameters:
 
 ### Dependencies
 
-Configure service dependencies to control startup order:
+Select systemd units from the dependency selectors to control startup order:
 
 - **Requires**: Strong dependencies, if these services are unavailable, the project will fail
 - **Wants**: Weak dependencies, if these services fail, the project will still start
@@ -145,6 +145,8 @@ Security options to enhance service isolation:
     - `strict`: Entire filesystem is read-only
 - **Read-Write Paths**: Paths the service can read and write
 - **Read-Only Paths**: Paths the service can only read
+
+Use the path selectors for read-write and read-only paths instead of entering path lists manually.
 
 ::: warning Note
 Security settings may affect certain features. Please test thoroughly before enabling.

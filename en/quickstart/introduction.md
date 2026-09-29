@@ -7,13 +7,13 @@ AcePanel is an open-source server operation and maintenance management panel.
 ## Features
 
 - **Extremely Low Footprint**: Developed in Go language, single file operation, extremely low resource usage
-- **Low Destructiveness**: Minimizes modifications to the system, the least among similar products
+- **Low Destructiveness**: Designed to minimize additional system modifications and maintain forward and backward compatibility
 - **Following the Times**: Good compatibility with new systems, technology stack stays updated
 - **Efficient Operation**: Complete features, strong customization capabilities, suitable for simple to complex deployment scenarios
 - **Offline Operation**: Supports offline mode, stopping the panel does not affect deployed services
 - **Safe and Stable**: Multiple security mechanisms, long-term stable operation in production environments
 - **Fully Open Source**: All code is open source, free to modify and develop
-- **Permanently Free**: The panel itself will not introduce any paid features
+- **Free to Use**: The panel itself will not introduce any paid features
 
 ## Functions
 
@@ -45,4 +45,4 @@ Docker or Podman containers, Compose, images, networks, volumes, and systemd-man
 | Open Source    | Fully open source                     | Only non-pro version         | Partially open source, incomplete commit history |
 | Resource Usage | Extremely low, single file            | core + agent dual process    | Higher                                           |
 | App Center     | Native apps + container orchestration | Container orchestration only | Outdated apps, slow updates                      |
-| Tech Stack     | Go 1.26 + Vue 3                       | Go 1.24 + Vue 3              | Python 3.7 + Vue 3 + jQuery                      |
+| Tech Stack     | Go  + Vue 3                           | Go + Vue 3                   | Python + Vue 3 + jQuery                          |
