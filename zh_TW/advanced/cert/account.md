@@ -27,7 +27,7 @@
 3. 點選 **提交**
 
 :::tip 注意
-LiteSSL、Google 與 SSL.com 需要先從其官方網站取得 EAB（KID 與 HMAC）。 僅當選擇上述其中一個 CA 時，才會顯示 KID 與 HMAC 欄位。 Google 在中國大陸無法存取，其他 CA 則視網路狀況而定，因此建議使用 Let's Encrypt 或 LiteSSL。
+LiteSSL、Google 與 SSL.com 需要先從其官方網站取得 EAB（KID 與 HMAC）。僅當選擇上述其中一個 CA 時，才會顯示 KID 與 HMAC 欄位。 Google 在中國大陸無法存取，其他 CA 則視網路狀況而定，因此建議使用 Let's Encrypt 或 LiteSSL。
 :::
 
 ### 憑證授權機構（CA）
@@ -56,7 +56,7 @@ LiteSSL、Google 與 SSL.com 需要先從其官方網站取得 EAB（KID 與 HMA
 
 ## 修改帳號
 
-點選帳號右側的 **修改** 按鈕，即可修改 CA、金鑰類型、電子郵件、KID 與 HMAC。 儲存後會使用新設定向 CA 重新註冊帳號。
+點選帳號右側的 **修改** 按鈕，即可修改 CA、金鑰類型、電子郵件、KID 與 HMAC。儲存後會使用新設定向 CA 重新註冊帳號。
 
 :::warning 注意
 修改電子郵件後，憑證相關通知將會寄送至新的電子郵件。
@@ -67,7 +67,7 @@ LiteSSL、Google 與 SSL.com 需要先從其官方網站取得 EAB（KID 與 HMA
 點選帳號右側的 **刪除** 按鈕即可刪除該帳號。
 
 :::warning 注意
-刪除帳號後，使用該帳號申請的憑證將無法續約。 請先將憑證遷移至其他帳號，或先刪除相關憑證。
+刪除帳號後，使用該帳號申請的憑證將無法續約。請先將憑證遷移至其他帳號，或先刪除相關憑證。
 :::
 
 ## 帳號用途

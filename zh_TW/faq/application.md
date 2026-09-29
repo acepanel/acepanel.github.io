@@ -4,18 +4,18 @@
 
 **應用程式** -> **執行環境** -> **PHP** -> **管理** -> **模組管理**，安裝所需的模組。
 
-部分模組需要編譯安裝，耗時較長。 可在**任務**頁面查看進度。
+部分模組需要編譯安裝，耗時較長。可在**任務**頁面查看進度。
 
 ## PHP 函式被停用
 
-預設停用了部分高風險函式。 若要啟用：
+預設停用了部分高風險函式。若要啟用：
 
 **應用程式** -> **執行環境** -> **PHP** -> **管理** -> **參數調整** -> **停用函式**
 
-從清單中移除要啟用的函式名稱，然後儲存。 也可以在**主設定**索引標籤中直接編輯 `disable_functions`。
+從清單中移除要啟用的函式名稱，然後儲存。也可以在**主設定**索引標籤中直接編輯 `disable_functions`。
 
 :::warning 安全性警告
-`exec`、`shell_exec`、`system`、`passthru`、`proc_open`、`popen` 等函式有安全性風險。 啟用前請先確認必要性。
+`exec`、`shell_exec`、`system`、`passthru`、`proc_open`、`popen` 等函式有安全性風險。啟用前請先確認必要性。
 :::
 
 ## Nginx 設定錯誤
@@ -52,7 +52,7 @@ chown -R www:www /opt/ace/projects/project-name
 environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/bin"
 ```
 
-請將版本號替換為實際安裝的版本。 可透過 `whereis node` 查看路徑。
+請將版本號替換為實際安裝的版本。可透過 `whereis node` 查看路徑。
 
 ## 應用程式安裝失敗
 
@@ -64,10 +64,10 @@ environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/
 
 有相依關係的應用程式需要先解除安裝相依於它的應用程式。
 
-例如 phpMyAdmin 相依於 Nginx，因此需先解除安裝 phpMyAdmin。
+例如，phpMyAdmin 相依於受支援的 Web 伺服器。解除安裝前，請依目前伺服器的相依性提示處理。
 
 ## 多版本 PHP 共存
 
-可同時安裝多個 PHP 版本。 在建立網站時選擇對應的版本。
+可同時安裝多個 PHP 版本。在建立網站時選擇對應的版本。
 
 若要為現有網站切換版本：**編輯** -> **基本設定** -> **PHP 版本**。

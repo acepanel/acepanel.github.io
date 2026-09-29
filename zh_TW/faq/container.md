@@ -54,7 +54,7 @@ docker network ls
 docker network inspect bridge
 ```
 
-透過面板建立容器時，網路選擇器預設使用內建的 `acepanel-network`（你也可以選擇其他網路）。 Compose 編排不會被強制接入此網路——除非 compose 檔案另有指定，否則 Docker Compose 會為每個專案建立獨立的網路。 檢視網路詳細資訊：
+透過面板建立容器時，網路選擇器預設使用內建的 `acepanel-network`（你也可以選擇其他網路）。 Compose 編排不會被強制接入此網路——除非 compose 檔案另有指定，否則 Docker Compose 會為每個專案建立獨立的網路。檢視網路詳細資訊：
 
 ```shell
 docker network inspect acepanel-network
@@ -64,7 +64,7 @@ docker network inspect acepanel-network
 
 ## 資料持久化
 
-刪除容器後資料將會遺失。 使用磁碟區掛載來持久化資料：
+刪除容器後資料將會遺失。使用磁碟區掛載來持久化資料：
 
 在 compose 設定中加入磁碟區：
 

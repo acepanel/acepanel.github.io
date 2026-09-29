@@ -1,6 +1,10 @@
 # 命令行工具
 
-`acepanel` 是随 AcePanel 安装、仅允许 root 使用的恢复和管理命令行工具。 执行不可逆操作前，先在服务器上运行 `acepanel <command> --help` 核对参数。
+`acepanel` 是随 AcePanel 安装、仅允许 root 使用的恢复和管理命令行工具。执行不可逆操作前，先在服务器上运行 `acepanel <command> --help` 核对参数。
+
+## 交互模式
+
+在交互式终端中不带参数运行 `acepanel`，即可打开命令菜单。选择命令，并按提示填写参数或选项。按 `Esc` 返回上一步，按 `Ctrl+C` 退出。当标准输入或输出不是终端时，请在脚本和自动化中使用明确的子命令。
 
 ## 输出与安全
 
@@ -11,7 +15,7 @@ acepanel --json website list
 acepanel --json database list-server
 ```
 
-该参数只适用于受支持的列表输出，并非所有交互或修改命令都支持。 后台任务或[迁移](../advanced/toolbox/migration)正在运行时，不要停止或重启面板。
+该参数只适用于受支持的列表输出，并非所有交互或修改命令都支持。后台任务或[迁移](../advanced/toolbox/migration)正在运行时，不要停止或重启面板。
 
 ## 服务与维护
 
@@ -42,7 +46,8 @@ acepanel info --username <user> --force
 acepanel port <port>
 acepanel https on|off
 acepanel https generate
-acepanel entrance on|off
+acepanel entrance on [entrance]
+acepanel entrance off
 acepanel bind-domain on <domain> [domain...]
 acepanel bind-domain off
 acepanel bind-ip on <ip> [ip...]
@@ -50,6 +55,8 @@ acepanel bind-ip off
 acepanel bind-ua on <user-agent> [user-agent...]
 acepanel bind-ua off
 ```
+
+例如，`acepanel entrance on /mypanel` 可设置自定义入口路径。省略路径时会生成随机入口。
 
 修改端口或任何绑定前，先在系统防火墙和云安全组中放行新的访问方式，并保留一个 SSH 会话。
 
@@ -71,7 +78,7 @@ acepanel user passkey <username>
 2. `ACEPANEL_PASSWORD` 环境变量；
 3. 不回显的交互输入。
 
-在多人使用的系统上，明文密码参数可能通过 Shell 历史或进程信息泄露，应避免使用。 环境变量适合短期自动化，但不能写入日志或保存在权限不安全的服务文件中。
+在多人使用的系统上，明文密码参数可能通过 Shell 历史或进程信息泄露，应避免使用。环境变量适合短期自动化，但不能写入日志或保存在权限不安全的服务文件中。
 
 ## 防火墙
 
@@ -85,7 +92,7 @@ acepanel firewall port 8000-9000 --protocol tcp
 acepanel firewall port 443 --remove
 ```
 
-`firewall port` 支持单个端口或端口范围。 `--protocol`（`-p`）可设为 `tcp`、`udp` 或 `tcp/udp`，默认是 `tcp/udp`；`--remove` 用于删除匹配规则。 远程管理时，除非已经验证其他访问控制有效，否则不要关闭防火墙。
+`firewall port` 支持单个端口或端口范围。 `--protocol`（`-p`）可设为 `tcp`、`udp` 或 `tcp/udp`，默认是 `tcp/udp`；`--remove` 用于删除匹配规则。远程管理时，除非已经验证其他访问控制有效，否则不要关闭防火墙。
 
 ## 网站和证书
 
@@ -104,6 +111,8 @@ acepanel cert renew --all
 
 `website remove` 会保留网站目录和同名数据库； `website delete` 会同时删除这些数据并自动解除证书关联，且不可恢复。 `website cert` 从服务器文件读取证书和私钥，应保护两个文件路径，绝不能把私钥粘贴到 Shell 历史中。
 
+更换当前 Web 服务器后，使用 `acepanel website rebuild` 为其重建网站配置。服务器专属设置需要手动迁移；参见[切换 Web 服务器](../advanced/website#切换-web-服务器)。
+
 ## 数据库服务器
 
 ```bash
@@ -112,7 +121,7 @@ acepanel database add-server --type <type> --name <name> --host <host> --port <p
 acepanel database delete-server --name <name>
 ```
 
-`add-server` 支持 `mysql`、`postgresql`、`mongodb`、`clickhouse`、`redis` 和 `elasticsearch`。 删除服务器登记后，其数据库可能无法继续通过面板操作；该操作不能替代数据保留方案。
+`add-server` 支持 `mysql`、`postgresql`、`mongodb`、`clickhouse`、`redis` 和 `elasticsearch`。删除服务器登记后，其数据库可能无法继续通过面板操作；该操作不能替代数据保留方案。
 
 ## 备份和恢复
 
@@ -129,7 +138,7 @@ acepanel restore database --type <type> --name <name> --file <backup>
 acepanel restore panel --file <backup>
 ```
 
-备份列表支持 `website`、`path`、`panel`、`mysql`、`postgresql`、`clickhouse`、`redis` 和 `valkey`。 数据库备份和恢复支持 MySQL、PostgreSQL、ClickHouse、Redis 和 Valkey。 备份文件名可以是绝对路径，也可以是相对于命令所述默认备份目录的路径。 恢复面板后会自动重启面板服务。
+备份列表支持 `website`、`path`、`panel`、`mysql`、`postgresql`、`clickhouse`、`redis` 和 `valkey`。数据库备份和恢复支持 MySQL、PostgreSQL、ClickHouse、Redis 和 Valkey。备份文件名可以是绝对路径，也可以是相对于命令所述默认备份目录的路径。恢复面板后会自动重启面板服务。
 
 ## 计划任务
 
@@ -151,7 +160,7 @@ acepanel app update <slug>
 acepanel app uninstall <slug>
 ```
 
-安装、更新或卸载可能创建面板后台任务，可在 **任务 > 面板任务**中查看进度。
+安装、更新或卸载可能创建面板后台任务，可在**任务 > 面板任务**中查看进度。
 
 ## 日志切割
 
@@ -165,5 +174,5 @@ acepanel cutoff clear --type website|container --name <name> --keep <count> [--s
 
 - 服务看起来不可用时，先运行 `acepanel status`，再决定是否重启。
 - 首页报告面板数据库或更新健康问题时，按提示使用 `acepanel fix`。
-- 优先使用文档列出的公开命令。 隐藏的 `init`、`setting`、任务清理、应用标记、计划任务包装和数据库写入命令属于内部恢复接口，仅应在项目方指导下使用。
+- 优先使用文档列出的公开命令。隐藏的 `init`、`setting`、任务清理、应用标记、计划任务包装和数据库写入命令属于内部恢复接口，仅应在项目方指导下使用。
 - JSON 自动化失败时，确认该命令属于支持的列表命令，并分别检查退出状态和标准错误输出。

@@ -1,6 +1,10 @@
 # 命令列工具
 
-`acepanel` 是隨 AcePanel 安裝、僅允許 root 使用的復原和管理命令列工具。 執行不可逆操作前，先在伺服器上執行 `acepanel <command> --help` 核對引數。
+`acepanel` 是隨 AcePanel 安裝、僅允許 root 使用的復原和管理命令列工具。執行不可逆操作前，先在伺服器上執行 `acepanel <command> --help` 核對引數。
+
+## 互動模式
+
+在互動式終端機中不帶參數執行 `acepanel`，即可開啟命令選單。選擇命令，並依提示填寫參數或選項。按 `Esc` 返回上一步，按 `Ctrl+C` 結束。當標準輸入或輸出不是終端機時，請在指令碼與自動化中使用明確的子命令。
 
 ## 輸出與安全
 
@@ -11,7 +15,7 @@ acepanel --json website list
 acepanel --json database list-server
 ```
 
-該引數只適用於受支援的列表輸出，並非所有互動或修改命令都支援。 後臺任務或[遷移](../advanced/toolbox/migration)正在執行時，不要停止或重啟面板。
+該引數只適用於受支援的列表輸出，並非所有互動或修改命令都支援。後臺任務或[遷移](../advanced/toolbox/migration)正在執行時，不要停止或重啟面板。
 
 ## 服務與維護
 
@@ -42,7 +46,8 @@ acepanel info --username <user> --force
 acepanel port <port>
 acepanel https on|off
 acepanel https generate
-acepanel entrance on|off
+acepanel entrance on [entrance]
+acepanel entrance off
 acepanel bind-domain on <domain> [domain...]
 acepanel bind-domain off
 acepanel bind-ip on <ip> [ip...]
@@ -50,6 +55,8 @@ acepanel bind-ip off
 acepanel bind-ua on <user-agent> [user-agent...]
 acepanel bind-ua off
 ```
+
+例如，`acepanel entrance on /mypanel` 可設定自訂入口路徑。省略路徑時會產生隨機入口。
 
 修改埠或任何繫結前，先在系統防火牆和雲安全組中放行新的訪問方式，並保留一個 SSH 會話。
 
@@ -71,7 +78,7 @@ acepanel user passkey <username>
 2. `ACEPANEL_PASSWORD` 環境變數；
 3. 不回顯的互動輸入。
 
-在多人使用的系統上，明文密碼引數可能通過 Shell 歷史或程序資訊洩露，應避免使用。 環境變數適合短期自動化，但不能寫入日誌或儲存在許可權不安全的服務檔案中。
+在多人使用的系統上，明文密碼引數可能通過 Shell 歷史或程序資訊洩露，應避免使用。環境變數適合短期自動化，但不能寫入日誌或儲存在許可權不安全的服務檔案中。
 
 ## 防火牆
 
@@ -85,7 +92,7 @@ acepanel firewall port 8000-9000 --protocol tcp
 acepanel firewall port 443 --remove
 ```
 
-`firewall port` 支援單一連接埠或連接埠範圍。 `--protocol`（`-p`）可設為 `tcp`、`udp` 或 `tcp/udp`，預設是 `tcp/udp`；`--remove` 用於刪除符合的規則。 遠端管理時，除非已經驗證其他存取控制有效，否則不要關閉防火牆。
+`firewall port` 支援單一連接埠或連接埠範圍。 `--protocol`（`-p`）可設為 `tcp`、`udp` 或 `tcp/udp`，預設是 `tcp/udp`；`--remove` 用於刪除符合的規則。遠端管理時，除非已經驗證其他存取控制有效，否則不要關閉防火牆。
 
 ## 網站和證書
 
@@ -104,6 +111,8 @@ acepanel cert renew --all
 
 `website remove` 會保留網站目錄和同名資料庫； `website delete` 會同時刪除這些資料並自動解除證書關聯，且不可恢復。 `website cert` 從伺服器檔案讀取證書和私鑰，應保護兩個檔案路徑，絕不能把私鑰貼上到 Shell 歷史中。
 
+更換目前 Web 伺服器後，使用 `acepanel website rebuild` 為其重建網站設定。伺服器專屬設定需要手動遷移；參見[切換 Web 伺服器](../advanced/website#切換-web-伺服器)。
+
 ## 資料庫伺服器
 
 ```bash
@@ -112,7 +121,7 @@ acepanel database add-server --type <type> --name <name> --host <host> --port <p
 acepanel database delete-server --name <name>
 ```
 
-`add-server` 支援 `mysql`、`postgresql`、`mongodb`、`clickhouse`、`redis` 和 `elasticsearch`。 刪除伺服器登記後，其資料庫可能無法繼續透過面板操作；該操作不能取代資料保留方案。
+`add-server` 支援 `mysql`、`postgresql`、`mongodb`、`clickhouse`、`redis` 和 `elasticsearch`。刪除伺服器登記後，其資料庫可能無法繼續透過面板操作；該操作不能取代資料保留方案。
 
 ## 備份和恢復
 
@@ -129,7 +138,7 @@ acepanel restore database --type <type> --name <name> --file <backup>
 acepanel restore panel --file <backup>
 ```
 
-備份列表支援 `website`、`path`、`panel`、`mysql`、`postgresql`、`clickhouse`、`redis` 和 `valkey`。 資料庫備份和恢復支援 MySQL、PostgreSQL、ClickHouse、Redis 和 Valkey。 備份檔名可以是絕對路徑，也可以是相對於命令所述預設備份目錄的路徑。 恢復面板後會自動重啟面板服務。
+備份列表支援 `website`、`path`、`panel`、`mysql`、`postgresql`、`clickhouse`、`redis` 和 `valkey`。資料庫備份和恢復支援 MySQL、PostgreSQL、ClickHouse、Redis 和 Valkey。備份檔名可以是絕對路徑，也可以是相對於命令所述預設備份目錄的路徑。恢復面板後會自動重啟面板服務。
 
 ## 計劃任務
 
@@ -151,7 +160,7 @@ acepanel app update <slug>
 acepanel app uninstall <slug>
 ```
 
-安裝、更新或解除安裝可能建立面板後臺任務，可在 **任務 > 面板任務**中檢視進度。
+安裝、更新或解除安裝可能建立面板後臺任務，可在**任務 > 面板任務**中檢視進度。
 
 ## 日誌切割
 
@@ -165,5 +174,5 @@ acepanel cutoff clear --type website|container --name <name> --keep <count> [--s
 
 - 服務看起來不可用時，先執行 `acepanel status`，再決定是否重啟。
 - 首頁報告面板資料庫或更新健康問題時，按提示使用 `acepanel fix`。
-- 優先使用文件列出的公開命令。 隱藏的 `init`、`setting`、任務清理、應用標記、計劃任務包裝和資料庫寫入命令屬於內部恢復介面，僅應在專案方指導下使用。
+- 優先使用文件列出的公開命令。隱藏的 `init`、`setting`、任務清理、應用標記、計劃任務包裝和資料庫寫入命令屬於內部恢復介面，僅應在專案方指導下使用。
 - JSON 自動化失敗時，確認該命令屬於支援的列表命令，並分別檢查退出狀態和標準錯誤輸出。

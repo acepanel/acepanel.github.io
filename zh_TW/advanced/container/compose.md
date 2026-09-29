@@ -2,7 +2,7 @@
 
 ![Compose management](/images/container/compose.png)
 
-Compose 功能基於 Docker Compose，用於定義及執行多容器應用程式。 透過 YAML 檔案描述應用程式的服務、網路與儲存卷，即可一鍵啟動整個應用程式。
+Compose 功能基於 Docker Compose，用於定義及執行多容器應用程式。透過 YAML 檔案描述應用程式的服務、網路與儲存卷，即可一鍵啟動整個應用程式。
 
 ## Compose 清單
 
@@ -74,7 +74,7 @@ volumes:
 你也可以在清單中選取多個 Compose，點選頂端的 **刪除** 按鈕進行批次刪除。
 
 :::warning 注意
-刪除 Compose 不會刪除資料卷。 若要刪除資料卷，請於 **儲存卷** 頁面手動刪除。
+刪除 Compose 不會刪除資料卷。若要刪除資料卷，請於 **儲存卷** 頁面手動刪除。
 :::
 
 ### 編輯 Compose

@@ -46,7 +46,7 @@ DNS 設定頁面用於管理透過 DNS 驗證申請憑證所需的 DNS API。
 | ClouDNS    | Auth ID, Auth Password |
 
 :::tip ClouDNS 子帳號 Auth ID
-ClouDNS 也支援子帳號 Auth ID。 使用時，在 Auth ID 欄位中填入帶有 `sub-` 前綴的值（例如 `sub-12345`）。
+ClouDNS 也支援子帳號 Auth ID。使用時，在 Auth ID 欄位中填入帶有 `sub-` 前綴的值（例如 `sub-12345`）。
 :::
 
 ## 取得 API 憑證
@@ -59,7 +59,7 @@ ClouDNS 也支援子帳號 Auth ID。 使用時，在 Auth ID 欄位中填入帶
 4. 記錄 AccessKey ID 與 AccessKey Secret
 
 :::warning 安全提醒
-建議建立子帳號，並僅授予 DNS 管理權限。 避免使用主帳號的 AccessKey。
+建議建立子帳號，並僅授予 DNS 管理權限。避免使用主帳號的 AccessKey。
 :::
 
 ### 騰訊雲
@@ -86,12 +86,12 @@ ClouDNS 也支援子帳號 Auth ID。 使用時，在 Auth ID 欄位中填入帶
 
 ## DNS 別名（CNAME 委派）
 
-DNS 別名可讓你將 `_acme-challenge` TXT 記錄寫入到**另一個**（委派的）網域上，以完成某個網域的 DNS-01 驗證，而不必寫入到正在申請憑證的網域上。 適用於下列情況：
+DNS 別名可讓你將 `_acme-challenge` TXT 記錄寫入到**另一個**（委派的）網域上，以完成某個網域的 DNS-01 驗證，而不必寫入到正在申請憑證的網域上。適用於下列情況：
 
 - 你想申請憑證的網域代管在 AcePanel 不支援的 DNS 供應商上，但你掌控著另一個受支援的網域。
 - 基於安全考量，你希望將 ACME 自動化憑證限定在單一專用區域內。
 
-使用時，請先在你的 DNS 供應商處新增一筆永久的 `CNAME` 記錄，將原始網域的驗證名稱指向委派記錄。 例如，要委派 `example.com` 的驗證：
+使用時，請先在你的 DNS 供應商處新增一筆永久的 `CNAME` 記錄，將原始網域的驗證名稱指向委派記錄。例如，要委派 `example.com` 的驗證：
 
 ```
 _acme-challenge.example.com.  CNAME  _acme-challenge.delegated.com.
@@ -102,7 +102,7 @@ _acme-challenge.example.com.  CNAME  _acme-challenge.delegated.com.
 - **原始網域**：正在申請憑證的網域，例如 `example.com` 或 `*.example.com`
 - **別名記錄**：TXT 值將寫入的完整委派記錄名稱，例如 `_acme-challenge.delegated.com`
 
-之後 AcePanel 會將驗證 TXT 記錄寫入委派區域中的別名記錄，CA 則會沿著 `CNAME` 進行驗證。 比對對應時，AcePanel 會先查詢你輸入的精確網域；對於萬用字元項目，它還會回退到裸網域（去除 `*.` 前綴），因此單筆 `example.com` 對應也可以涵蓋 `*.example.com`。
+之後 AcePanel 會將驗證 TXT 記錄寫入委派區域中的別名記錄，CA 則會沿著 `CNAME` 進行驗證。比對對應時，AcePanel 會先查詢你輸入的精確網域；對於萬用字元項目，它還會回退到裸網域（去除 `*.` 前綴），因此單筆 `example.com` 對應也可以涵蓋 `*.example.com`。
 
 ## 適用場景
 
@@ -124,4 +124,4 @@ DNS 驗證適用於：
 
 ### DNS 傳播延遲
 
-DNS 記錄新增後需要一些時間才能傳播，通常從數分鐘到數小時不等。 AcePanel 會每隔數秒輪詢一次所設定的 **DNS 伺服器**，最長約 10 分鐘，等待記錄出現後再通知 CA。 如果你的記錄傳播緩慢，或伺服器位於無法公開解析的內網中，請啟用 **略過 DNS 驗證**，如此 AcePanel 會固定等待 60 秒而非輪詢。 如果驗證仍然失敗，你可以稍後重試。
+DNS 記錄新增後需要一些時間才能傳播，通常從數分鐘到數小時不等。 AcePanel 會每隔數秒輪詢一次所設定的 **DNS 伺服器**，最長約 10 分鐘，等待記錄出現後再通知 CA。如果你的記錄傳播緩慢，或伺服器位於無法公開解析的內網中，請啟用 **略過 DNS 驗證**，如此 AcePanel 會固定等待 60 秒而非輪詢。如果驗證仍然失敗，你可以稍後重試。

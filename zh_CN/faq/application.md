@@ -4,18 +4,18 @@
 
 **应用** -> **运行环境** -> **PHP** -> **管理** -> **模块管理**，安装所需的模块。
 
-部分模块需要编译安装，耗时较长， 可在**任务**页面查看进度。
+部分模块需要编译安装，耗时较长，可在**任务**页面查看进度。
 
 ## PHP 函数被禁用
 
-默认禁用了部分高危函数。 如需启用：
+默认禁用了部分高危函数。如需启用：
 
 **应用** -> **运行环境** -> **PHP** -> **管理** -> **参数调整** -> **禁用函数**
 
-从列表中移除要启用的函数名，然后保存。 也可以在**主配置**标签页中直接编辑 `disable_functions`。
+从列表中移除要启用的函数名，然后保存。也可以在**主配置**标签页中直接编辑 `disable_functions`。
 
 :::warning 安全提示
-`exec`、`shell_exec`、`system`、`passthru`、`proc_open`、`popen` 等函数存在安全风险。 启用前需确认必要性。
+`exec`、`shell_exec`、`system`、`passthru`、`proc_open`、`popen` 等函数存在安全风险。启用前需确认必要性。
 :::
 
 ## Nginx 配置错误
@@ -52,7 +52,7 @@ chown -R www:www /opt/ace/projects/project-name
 environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/bin"
 ```
 
-版本号替换为实际安装的版本， 可通过 `whereis node` 查看路径。
+版本号替换为实际安装的版本，可通过 `whereis node` 查看路径。
 
 ## 应用安装失败
 
@@ -64,10 +64,10 @@ environment=PATH="/root/.nvm/versions/node/v24.0.0/bin:/usr/local/bin:/usr/bin:/
 
 有依赖关系的应用需要先卸载依赖它的应用。
 
-如 phpMyAdmin 依赖 Nginx，需先卸载 phpMyAdmin。
+例如，phpMyAdmin 依赖受支持的 Web 服务器。卸载前，请按当前服务器的依赖提示处理。
 
 ## 多版本 PHP 共存
 
-可同时安装多个 PHP 版本， 在创建网站时选择对应版本。
+可同时安装多个 PHP 版本，在创建网站时选择对应版本。
 
 已有网站切换版本：「编辑」->「基本设置」->「PHP 版本」。

@@ -168,7 +168,7 @@ npm24 run build
 
 ### 依赖
 
-控制相对于其他 systemd 单元的启动顺序。 常见服务包括 `network.target`、`mysqld.service`、`postgresql.service`、`redis.service`。
+控制相对于其他 systemd 单元的启动顺序。常见服务包括 `network.target`、`mysqld.service`、`postgresql.service`、`redis.service`。
 
 - **Requires**：强依赖；如果这些不可用，服务将失败
 - **Wants**：弱依赖；即使这些失败，服务仍会启动
@@ -182,7 +182,7 @@ npm24 run build
 
 ### 安全设置
 
-增强服务隔离的加固选项。 启用前请充分测试，因为它们可能影响功能。
+增强服务隔离的加固选项。启用前请充分测试，因为它们可能影响功能。
 
 - **禁止新权限**：阻止服务获取新权限（`NoNewPrivileges`）
 - **保护 /tmp**：为服务提供私有的 `/tmp`（`ProtectTmp`）

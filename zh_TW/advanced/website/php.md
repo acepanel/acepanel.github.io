@@ -8,7 +8,7 @@ PHP 網站用於執行 PHP 程式，例如 WordPress、Laravel、ThinkPHP 等。
 
 在建立 PHP 網站之前，您需要安裝：
 
-1. **Web 伺服器**：Nginx、OpenResty 或 Apache
+1. **Web 伺服器**：Nginx、OpenResty、Apache、OpenLiteSpeed 或 Caddy
 2. **PHP 執行環境**：在 **應用** > **執行環境**中安裝所需 PHP 版本
 
 ## 建立 PHP 網站
@@ -19,19 +19,19 @@ PHP 網站用於執行 PHP 程式，例如 WordPress、Laravel、ThinkPHP 等。
 
 ### 設定項目
 
-- **名稱**：網站識別碼，例如 `wordpress`。 僅允許使用字母、數字、連字號與底線
+- **名稱**：網站識別碼，例如 `wordpress`。僅允許使用字母、數字、連字號與底線
 - **網域**：綁定的網域，例如 `blog.example.com`
 - **連接埠**：監聽連接埠，預設為 80
 - **PHP 版本**：選擇已安裝的 PHP 版本
 - **資料庫**：可選擇已安裝的資料庫類型，在建立網站的同時一併建立資料庫、使用者與密碼
-- **目錄**：存放網站檔案的路徑。 若留空，則預設為網站目錄加上 `<name>/public`
+- **目錄**：存放網站檔案的路徑。若留空，則預設為網站目錄加上 `<name>/public`
 - **備註**：選填的備註
 
 ## 編輯 PHP 網站
 
 點選網站清單中的 **編輯** 按鈕進入編輯頁面。
 
-可以在基本設定中切換為反向代理或純靜態網站。 域名、監聽、檔案等通用內容會保留；PHP 執行環境、Rewrite 等 PHP 專屬 Web 配置會刪除，並重新生成所選型別的配置。 切換前必須備份網站並記錄 PHP 設定。
+可以在基本設定中切換為反向代理或純靜態網站。域名、監聽、檔案等通用內容會保留；PHP 執行環境、Rewrite 等 PHP 專屬 Web 配置會刪除，並重新生成所選型別的配置。切換前必須備份網站並記錄 PHP 設定。
 
 ### 網域與監聽
 
@@ -60,14 +60,14 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 選擇預設後，規則會寫入下方編輯器，可以繼續調整再儲存。
 
 :::tip 注意
-只有使用 Nginx 時才顯示預設下拉式選單（預設僅適用於 Nginx/OpenResty）。 使用 Apache 時，請直接在編輯器中編寫 Rewrite 規則。
+只有使用 Nginx 時才顯示預設下拉式選單（預設僅適用於 Nginx/OpenResty）。對於其他 Web 伺服器，請使用目前伺服器的語法撰寫規則。 OpenLiteSpeed 透過網站層級的 `.htaccess` 載入重寫規則。
 :::
 
 ### HTTPS
 
 為網站啟用並設定 HTTPS。
 
-- **總開關**：啟用或關閉 HTTPS。 啟用後，面板會自動增加 `443` 監聽，Nginx 還會增加 `quic`
+- **總開關**：啟用或關閉 HTTPS。啟用後，面板會自動增加 `443` 監聽，Nginx 還會增加 `quic`
 - **使用已有證書：** 從證書管理中選擇證書，自動填充證書和私鑰。
 - **HSTS：** 強制瀏覽器僅使用 HTTPS。
 - **HTTP 重定向：** 自動將 HTTP 請求跳轉到 HTTPS。
@@ -75,11 +75,13 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 - **TLS 版本：** 可選 TLS 1.0、1.1、1.2 和 1.3。
 - **憑證** / **私密金鑰**：直接貼上 PEM 憑證和 KEY 私密金鑰內容
 
-網站已繫結域名時，底部 **一鍵簽發證書**可以通過 ACME 申請免費證書。 存在 `*.example.com` 等萬用字元域名時，需要選擇已經在證書管理中新增的 DNS 提供商進行 DNS 驗證。
+網站已繫結域名時，底部 **一鍵簽發證書**可以通過 ACME 申請免費證書。存在 `*.example.com` 等萬用字元域名時，需要選擇已經在證書管理中新增的 DNS 提供商進行 DNS 驗證。
+
+**一鍵簽發憑證**成功後，AcePanel 會自動為網站啟用 HTTPS。請在 HTTPS 標籤頁中檢查產生的憑證與監聽設定。
 
 ### 重定向
 
-設定重新導向規則。 每條規則支援：
+設定重新導向規則。每條規則支援：
 
 - **型別：** URL 重定向、Host 重定向或 404 重定向。
 - **狀態碼：** 301、302、307 或 308。
@@ -88,19 +90,19 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 
 ### 進階設定
 
-- **訪問統計：** 僅 Nginx 支援，用於採集該網站訪問統計。
+- **存取統計**（Nginx、OpenResty 或 Caddy）：啟用或停用此網站的存取統計收集
 - **日誌設定**：設定 **存取日誌**和 **錯誤日誌**路徑，或將其設為 **關閉**
 - **流量限制**：設定 **並行限制**、**單一 IP 限制**和 **速率限制**
 - **真實 IP：** 網站位於 CDN 或 Frp 後方時，配置每行一個的可信代理 IP、真實 IP 請求頭和遞迴查詢。
-- **基本認證：** 新增使用者名稱和密碼，訪問網站前必須通過 HTTP Basic Authentication。
+- **基本驗證**：新增適用於整個網站或指定 URL 目錄的規則，然後新增使用者名稱與密碼。目錄規則需填寫 `/admin/` 這類路徑；更具體的路徑優先比對
 
 ### 自定義配置
 
-可以追加 Web 伺服器配置片段。 每個片段包含 **名稱**、**作用範圍**（**目前網站**或**全域**）和 **內容**；編輯器會依已安裝的 Web 伺服器提供 Nginx 或 Apache 語法醒目提示。
+可以追加 Web 伺服器配置片段。每個片段都有**名稱**、**範圍**（**此網站**或**全域**），以及使用目前 Web 伺服器語法撰寫的**內容**區塊。
 
 ### 訪問日誌和錯誤日誌
 
-啟用對應日誌路徑後，**存取日誌**和 **錯誤日誌**分頁會即時顯示日誌檔案。 底部 **清空日誌**會截斷當前檢視的日誌檔案。
+啟用對應日誌路徑後，**存取日誌**和 **錯誤日誌**分頁會即時顯示日誌檔案。底部 **清空日誌**會截斷當前檢視的日誌檔案。
 
 :::tip 注意
 點選編輯對話方塊底部的 **重設設定**，會根據面板範本重新產生網站的 Web 伺服器設定，並捨棄對產生設定檔所做的手動修改。
@@ -127,28 +129,32 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 4. 點選 **儲存**。
 
 :::warning 注意
-切換 PHP 版本可能導致程式不相容， 應先在測試環境驗證。
+切換 PHP 版本可能導致程式不相容，應先在測試環境驗證。
 :::
 
 ## PHP 管理頁面
 
-進入 **應用** > **執行環境**，點選已安裝 PHP 版本的 **管理**，開啟 PHP 管理頁。 頁面包含：
+進入 **應用** > **執行環境**，點選已安裝 PHP 版本的 **管理**，開啟 PHP 管理頁。頁面包含：
 
-- **執行狀態：** 檢視 `php-fpm-<version>` 服務狀態，提供啟動、停止、重啟和過載； 此處還提供兩項操作：
+- **執行狀態：** 檢視 `php-fpm-<version>` 服務狀態，提供啟動、停止、重啟和過載；此處還提供兩項操作：
   - **設為 CLI 預設版本**：將此 PHP 版本設為系統 CLI 中預設的 `php` 指令
   - **檢視 PHPInfo**：開啟彈出視窗檢視該版本完整的 `phpinfo()` 輸出
 - **模組管理：** 安裝或解除安裝 PHP 擴充套件。
 - **參數調校**：透過表單調整常用參數（參閱[參數調校](#parameter-tuning)）
 - **主配置：** 編輯原始 `php.ini`。
 - **FPM 配置：** 編輯 PHP-FPM 配置檔案。
-- **負載狀態：** 檢視 PHP-FPM 當前負載。
+- **負載狀態**：使用 FPM 時查看 PHP-FPM 負載與工作程序指標
+- **OPcache**：查看快取用量及已快取指令碼，或重設快取
+- **Composer**：安裝或更新 Composer，並設定其套件鏡像來源
 - **執行日誌**：即時檢視 `php-fpm-<version>` 服務的執行日誌
 - **錯誤日誌**：即時檢視 PHP 錯誤日誌；點選 **清空日誌**可截斷檔案
 - **慢速日誌**：即時檢視 PHP-FPM 慢速日誌；點選 **清空慢速日誌**可截斷檔案
 
+OpenLiteSpeed 透過 LSAPI 處理 PHP 時，PHP-FPM 服務停止屬於正常情況。 FPM 控制項與指標不適用於管理 LSAPI 工作程序。有關執行行為，請參見 [OpenLiteSpeed 下的 PHP](../app/environment#openlitespeed-下的-php)。
+
 ### 模組管理
 
-**模組管理**分頁列出所選版本支援的擴充套件。 **安裝**或**刪除**操作。 安裝會建立後臺任務， 安裝和解除安裝都需要確認。
+**模組管理**分頁列出所選版本支援的擴充套件。**安裝**或**刪除**操作。安裝會建立後臺任務，安裝和解除安裝都需要確認。
 
 可用擴充套件包括 `fileinfo`、**OPcache**、`igbinary`、**Redis**（依賴 `igbinary`）、**Memcached**、**APCu**、**ImageMagick**、`exif`、`pgsql` / `pdo_pgsql`、`sqlsrv` / `pdo_sqlsrv`、`imap`、`zip`、`bz2`、`ssh2`、`event`、`readline`、`snmp`、`ldap`、`enchant`、`pspell`、`calendar`、`gmp`、`xlswriter`、`xsl`、`intl`、`gettext`、`grpc`、`protobuf`、`rdkafka`、`xhprof`、**Xdebug**、`yaml`、`zstd`、`sysvmsg` / `sysvsem` / `sysvshm`、**ionCube**、**Swoole** 和 **Swow**。
 
@@ -165,7 +171,8 @@ Rewrite 用於 URL 重寫，支援常見 PHP 程式的預設規則。
 - **上傳限制：** `upload_max_filesize`、`post_max_size`、`max_file_uploads`、`memory_limit`。
 - **超時限制：** `max_execution_time`、`max_input_time`、`max_input_vars`。
 - **效能調校**：寫入 `php-fpm.conf` 的 PHP-FPM 程序管理器設定，包括 `pm`、`pm.max_children`，以及 `dynamic` 模式下的 `pm.start_servers`、`pm.min_spare_servers` 和 `pm.max_spare_servers`
-- **工作階段**：設定 `session.save_handler`（`files`、`redis` 或 `memcached`）、儲存路徑、`session.gc_maxlifetime` 及 `session.cookie_lifetime`。 **清理會話檔案**會刪除該版本全部會話檔案。
+- **OPcache**：位元組碼快取與 JIT 設定
+- **工作階段**：設定 `session.save_handler`（`files`、`redis` 或 `memcached`）、儲存路徑、`session.gc_maxlifetime` 及 `session.cookie_lifetime`。**清理會話檔案**會刪除該版本全部會話檔案。
 
 ## PHP 配置
 
@@ -184,10 +191,10 @@ memory_limit = 256M
 
 ### 停用函式
 
-PHP 預設停用 `exec`、`system`、`passthru` 等危險函式。 如需啟用，請編輯 php.ini 中的 `disable_functions` 值，或在 PHP 管理頁的 **參數調校** 分頁中修改 **停用函式** 欄位。
+PHP 預設停用 `exec`、`system`、`passthru` 等危險函式。如需啟用，請編輯 php.ini 中的 `disable_functions` 值，或在 PHP 管理頁的 **參數調校** 分頁中修改 **停用函式** 欄位。
 
 :::danger 警告
-啟用危險函式會增加安全風險， 必須確認程式確實需要並採取額外隔離措施。
+啟用危險函式會增加安全風險，必須確認程式確實需要並採取額外隔離措施。
 :::
 
 ## 常見問題

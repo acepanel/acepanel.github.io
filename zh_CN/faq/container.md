@@ -54,7 +54,7 @@ docker network ls
 docker network inspect bridge
 ```
 
-通过面板创建容器时，网络选择器默认使用内置的 `acepanel-network`（你也可以选择其他网络）。 Compose 编排不会被强制接入此网络——除非 compose 文件另有指定，否则 Docker Compose 会为每个项目创建独立的网络。 查看网络详情：
+通过面板创建容器时，网络选择器默认使用内置的 `acepanel-network`（你也可以选择其他网络）。 Compose 编排不会被强制接入此网络——除非 compose 文件另有指定，否则 Docker Compose 会为每个项目创建独立的网络。查看网络详情：
 
 ```shell
 docker network inspect acepanel-network
@@ -64,7 +64,7 @@ docker network inspect acepanel-network
 
 ## 数据持久化
 
-容器删除后数据会丢失。 使用卷挂载持久化数据：
+容器删除后数据会丢失。使用卷挂载持久化数据：
 
 在编排配置中添加 volumes：
 
