@@ -2,7 +2,7 @@
 
 ![pgAdmin 設定](/images/database/pgadmin.png)
 
-pgAdmin 是 AcePanel 整合的 PostgreSQL Web 管理工具。 安裝原生應用後，可以從 PostgreSQL 資料庫列表一鍵進入，也可以在應用管理器中配置訪問引數。
+pgAdmin 是 AcePanel 整合的 PostgreSQL Web 管理工具。安裝原生應用後，可以從 PostgreSQL 資料庫列表一鍵進入，也可以在應用管理器中配置訪問引數。
 
 ## 前置條件
 
@@ -14,7 +14,7 @@ pgAdmin 是 AcePanel 整合的 PostgreSQL Web 管理工具。 安裝原生應用
 
 進入 **資料庫**，選擇 PostgreSQL 標籤頁，在資料庫行中點選 pgAdmin。 AcePanel 會開啟 pgAdmin，並提供已配置伺服器的一鍵訪問資訊。
 
-資料庫型別標籤會動態顯示：只有存在對應資料庫伺服器時，MySQL、PostgreSQL、ClickHouse、Redis、Valkey 等型別的標籤才會出現。 管理工具的介面語言跟隨面板語言。
+資料庫型別標籤會動態顯示：只有存在對應資料庫伺服器時，MySQL、PostgreSQL、ClickHouse、Redis、Valkey 等型別的標籤才會出現。管理工具的介面語言跟隨面板語言。
 
 ## 訪問設定
 
@@ -25,12 +25,12 @@ pgAdmin 是 AcePanel 整合的 PostgreSQL Web 管理工具。 安裝原生應用
 - 管理員密碼；
 - AcePanel 使用的 pgAdmin 賬號。
 
-修改管理員郵箱時，AcePanel 會遷移已經同步到 pgAdmin 的 PostgreSQL 伺服器配置。 修改後應確認所有預期伺服器仍然存在。
+修改管理員郵箱時，AcePanel 會遷移已經同步到 pgAdmin 的 PostgreSQL 伺服器配置。修改後應確認所有預期伺服器仍然存在。
 
 ## 安全建議
 
 - pgAdmin 管理員密碼屬於高許可權資料庫憑據，應妥善保管。
-- 不要把 pgAdmin 直接暴露到公網， 應使用訪問白名單、VPN 或帶認證的反向代理。
+- 不要把 pgAdmin 直接暴露到公網，應使用訪問白名單、VPN 或帶認證的反向代理。
 - 修改埠後，還需要同步調整防火牆和上游安全組。
 - 連線經過不受信任的網路時應使用 TLS。
 

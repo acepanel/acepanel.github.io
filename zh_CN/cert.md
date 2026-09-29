@@ -272,7 +272,7 @@ next: false
 
 <div class="cert-hero">
   <h1>SSL 证书服务</h1>
-  <p>免费证书有效期仅 3 个月且需要频繁续签， 付费证书有效期一年，省心省力</p>
+  <p>免费证书有效期仅 3 个月且需要频繁续签，付费证书有效期一年，省心省力</p>
 </div>
 
 <div class="cert-cards">

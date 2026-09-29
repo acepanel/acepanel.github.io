@@ -36,7 +36,7 @@ mvn clean package -DskipTests
 
 ### 框架預設範本
 
-選擇 **框架** 會將 `java<version>` 與該範本的參數組合，自動填入 **啟動指令**。 選擇 **自訂** 則會留空指令，讓你自行撰寫。 可用的預設範本如下：
+選擇 **框架** 會將 `java<version>` 與該範本的參數組合，自動填入 **啟動指令**。選擇 **自訂** 則會留空指令，讓你自行撰寫。可用的預設範本如下：
 
 | 框架                                   | 產生的指令（以 `java21` 為例）          |
 | ------------------------------------ | ----------------------------- |
@@ -48,7 +48,7 @@ mvn clean package -DskipTests
 | Vert.x               | `java21 -jar app.jar`         |
 | Dropwizard                           | `java21 server config.yml`    |
 
-產生的指令僅為起點。 請將產物重新命名以符合你的建置輸出（例如 `myapp-1.0.0.jar`），並在儲存前附加所需的 JVM 參數或應用程式引數。
+產生的指令僅為起點。請將產物重新命名以符合你的建置輸出（例如 `myapp-1.0.0.jar`），並在儲存前附加所需的 JVM 參數或應用程式引數。
 
 ## 啟動指令範例
 
@@ -89,13 +89,13 @@ java21 \
 
 ## 多版本 JDK
 
-AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ace/server/java/{version}/bin/`。 每個已安裝的版本都會提供一個 `java{version}` 指令（例如 `java21`），讓你能將專案固定使用特定的 JDK。
+AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ace/server/java/{version}/bin/`。每個已安裝的版本都會提供一個 `java{version}` 指令（例如 `java21`），讓你能將專案固定使用特定的 JDK。
 
 在某個 Java 執行環境的管理頁面，點選 **設為 CLI 預設版本**，即可將該版本的 `java`、`javac`、`jar` 與 `jshell` 執行檔以符號連結方式建立至 `/usr/local/bin`，使其成為預設的無版本指令。
 
 ## 管理專案
 
-建立後，每個專案都會以一列的形式顯示在 **專案** 頁面（以 **Java** 分頁篩選），顯示其名稱、類型、執行狀態（執行中／已停止／失敗）、開機自啟狀態與目錄。 每一列可使用以下操作：
+建立後，每個專案都會以一列的形式顯示在 **專案** 頁面（以 **Java** 分頁篩選），顯示其名稱、類型、執行狀態（執行中／已停止／失敗）、開機自啟狀態與目錄。每一列可使用以下操作：
 
 - **啟動** / **停止**：立即啟動或停止服務
 - **重新啟動**：重新啟動執行中的服務（僅在執行中時顯示）
@@ -119,7 +119,7 @@ AcePanel 支援同時並存安裝多個 JDK 版本，其執行檔位於 `/opt/ac
 
 儲存後會更新 `/etc/systemd/system/<project name>.service` 下的 systemd 單元並重新載入。 Java 專案包含 `SuccessExitStatus=143`，因此由 SIGTERM 觸發的正常停止不會被報告為應用故障。
 
-更新專案時，AcePanel 會保留在編輯器中配置的自定義 systemd 設定。 從其他伺服器遷移專案後，請檢查最終生效的單元配置，因為 AcePanel 會按照目標伺服器重寫專案目錄和執行時命令。
+更新專案時，AcePanel 會保留在編輯器中配置的自定義 systemd 設定。從其他伺服器遷移專案後，請檢查最終生效的單元配置，因為 AcePanel 會按照目標伺服器重寫專案目錄和執行時命令。
 
 ## 行程管理
 
@@ -170,4 +170,4 @@ java21 -jar app.jar --server.port=8081
 java21 -XX:TieredStopAtLevel=1 -jar app.jar
 ```
 
-> 請避免使用過時的 `-noverify` 旗標。 它已被棄用，並會在 AcePanel 所安裝的新版 Corretto 建置（例如 Corretto 21）上印出警告。 如果你需要更快的冷啟動，建議使用應用程式類別資料共用（`-XX:+AutoCreateSharedArchive -XX:SharedArchiveFile=app.jsa`）。
+> 請避免使用過時的 `-noverify` 旗標。它已被棄用，並會在 AcePanel 所安裝的新版 Corretto 建置（例如 Corretto 21）上印出警告。如果你需要更快的冷啟動，建議使用應用程式類別資料共用（`-XX:+AutoCreateSharedArchive -XX:SharedArchiveFile=app.jsa`）。

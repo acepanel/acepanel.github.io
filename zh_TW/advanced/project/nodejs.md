@@ -168,7 +168,7 @@ npm24 run build
 
 ### 相依性
 
-控制相對於其他 systemd 單元的啟動順序。 常見服務包括 `network.target`、`mysqld.service`、`postgresql.service`、`redis.service`。
+控制相對於其他 systemd 單元的啟動順序。常見服務包括 `network.target`、`mysqld.service`、`postgresql.service`、`redis.service`。
 
 - **Requires**：強相依性；若這些服務無法使用，本服務將會失敗
 - **Wants**：弱相依性；即使這些服務失敗，本服務仍會啟動
@@ -182,7 +182,7 @@ npm24 run build
 
 ### 安全性設定
 
-可強化服務隔離的加固選項。 啟用前請充分測試，因為這些選項可能影響功能。
+可強化服務隔離的加固選項。啟用前請充分測試，因為這些選項可能影響功能。
 
 - **不允許新增權限**：防止服務取得新權限（`NoNewPrivileges`）
 - **保護 /tmp**：為服務提供私有的 `/tmp`（`ProtectTmp`）

@@ -27,7 +27,7 @@
 3. 点击 **提交**
 
 :::tip 注意
-LiteSSL、Google 和 SSL.com 需要先从其官网获取 EAB（KID 和 HMAC）。 仅当选择上述 CA 之一时，才会显示 KID 和 HMAC 字段。 Google 在中国大陆无法访问，其他 CA 取决于网络状况，因此推荐使用 Let's Encrypt 或 LiteSSL。
+LiteSSL、Google 和 SSL.com 需要先从其官网获取 EAB（KID 和 HMAC）。仅当选择上述 CA 之一时，才会显示 KID 和 HMAC 字段。 Google 在中国大陆无法访问，其他 CA 取决于网络状况，因此推荐使用 Let's Encrypt 或 LiteSSL。
 :::
 
 ### 证书颁发机构（CA）
@@ -56,7 +56,7 @@ LiteSSL、Google 和 SSL.com 需要先从其官网获取 EAB（KID 和 HMAC）�
 
 ## 修改账户
 
-点击账户右侧的 **修改** 按钮，可修改 CA、密钥类型、邮箱、KID 和 HMAC。 保存后会使用新设置向 CA 重新注册账户。
+点击账户右侧的 **修改** 按钮，可修改 CA、密钥类型、邮箱、KID 和 HMAC。保存后会使用新设置向 CA 重新注册账户。
 
 :::warning 注意
 修改邮箱后，证书相关通知将发送到新邮箱。
@@ -67,7 +67,7 @@ LiteSSL、Google 和 SSL.com 需要先从其官网获取 EAB（KID 和 HMAC）�
 点击账户右侧的 **删除** 按钮删除账户。
 
 :::warning 注意
-删除账户后，使用该账户申请的证书将无法续签。 请先将证书迁移到其他账户或删除相关证书。
+删除账户后，使用该账户申请的证书将无法续签。请先将证书迁移到其他账户或删除相关证书。
 :::
 
 ## 账户用途

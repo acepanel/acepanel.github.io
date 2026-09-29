@@ -4,8 +4,8 @@
 
 1. 检查域名是否解析到服务器 IP
 2. 检查防火墙是否放行 80/443 端口
-3. 检查 Nginx 是否运行：**应用** -> **Nginx** -> **管理**
-4. 查看 Nginx 错误日志
+3. 检查当前 Web 服务器是否运行：**应用** -> 已安装的 Web 服务器 -> **管理**
+4. 查看当前 Web 服务器的错误日志
 
 ## 403 Forbidden
 
@@ -30,12 +30,12 @@ PHP 网站出现 502，检查 PHP 是否运行：
 ## 伪静态不生效
 
 1. 确认在 **伪静态** 标签页选择了正确的预设或填写了规则
-2. 点击 **保存** 后 Nginx 会自动重载
+2. 点击**保存**后，AcePanel 会将配置应用到当前 Web 服务器
 3. 清除浏览器缓存后测试
 
 ## 配置 QUIC (HTTP/3)
 
-在网站编辑器中，打开 **域名与监听** 标签页，并在 HTTPS 监听地址上启用 **QUIC(HTTP3)** 开关。 启用 QUIC 后，面板会自动为你添加 `Alt-Svc` 宣告头，因此无需额外配置：
+在网站编辑器中，打开 **域名与监听** 标签页，并在 HTTPS 监听地址上启用 **QUIC(HTTP3)** 开关。启用 QUIC 后，面板会自动为你添加 `Alt-Svc` 宣告头，因此无需额外配置：
 
 ```nginx
 add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
@@ -47,7 +47,7 @@ add_header Alt-Svc 'h3=":$server_port"; ma=2592000';
 
 在网站编辑器中，打开 **HTTPS** 标签页，并在 **TLS 版本** 选择器中添加 **TLS 1.0** 和/或 **TLS 1.1**（默认仅启用 TLS 1.2 和 TLS 1.3）。
 
-OpenSSL 3.x 还会降低安全等级，因此这些旧协议所用的加密套件会被拒绝。 如果连接仍然失败，请通过 **自定义配置** 标签页追加一个以 `@SECLEVEL=0` 结尾的加密套件：
+OpenSSL 3.x 还会降低安全等级，因此这些旧协议所用的加密套件会被拒绝。如果连接仍然失败，请通过 **自定义配置** 标签页追加一个以 `@SECLEVEL=0` 结尾的加密套件：
 
 ```nginx
 ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:AES128-SHA:AES256-SHA:DES-CBC3-SHA:@SECLEVEL=0;
@@ -67,7 +67,7 @@ ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDS
 
 ## 上传文件大小限制
 
-默认限制 100MB。 修改 PHP 配置：
+默认限制 100MB。修改 PHP 配置：
 
 1. **应用** -> **运行环境** -> **PHP** -> **管理** -> **主配置**
 2. 修改 `upload_max_filesize` 和 `post_max_size`

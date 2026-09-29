@@ -271,7 +271,7 @@ next: false
 
 <div class="cert-hero">
   <h1>SSL 憑證服務</h1>
-  <p>免費憑證有效期僅 3 個月且需要頻繁續約， 付費憑證有效期一年，省時又省力</p>
+  <p>免費憑證有效期僅 3 個月且需要頻繁續約，付費憑證有效期一年，省時又省力</p>
 </div>
 
 <div class="cert-cards">

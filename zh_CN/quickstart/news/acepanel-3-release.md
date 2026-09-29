@@ -1,6 +1,6 @@
 # AcePanel 3.0 正式发布
 
-好久不见， 经过几次跳票延期，AcePanel 3.0 终于在 2026 年初完成开发， 经过了约 3 个星期的内测，现在是时候发布了。
+好久不见，经过几次跳票延期，AcePanel 3.0 终于在 2026 年初完成开发，经过了约 3 个星期的内测，现在是时候发布了。
 
 ## 升级全新品牌名称 AcePanel
 
@@ -40,9 +40,9 @@ AcePanel 正式上线期待已久的容器编排模版功能，支持一键部�
 
 ![AcePanel 编排模版](https://wmimg.com/i/1424/2026/01/6975d8a59c3b9.png)
 
-（缺少你想要的程序？ 欢迎向 AcePanel 模版库提交 PR，方式可见文末）
+（缺少你想要的程序？欢迎向 AcePanel 模版库提交 PR，方式可见文末）
 
-AcePanel 在原有 OpenResty 与 Percona 的基础上新增 Nginx 与 MySQL、MariaDB，同时还优化了许多应用的安装流程以提高安装速度， 特别对 Percona/MySQL/MariaDB 为常用系统使用预制安装包以极大提高安装速度和成功率。
+AcePanel 在原有 OpenResty 与 Percona 的基础上新增 Nginx 与 MySQL、MariaDB，同时还优化了许多应用的安装流程以提高安装速度，特别对 Percona/MySQL/MariaDB 为常用系统使用预制安装包以极大提高安装速度和成功率。
 
 （实测 MySQL 通常可以在 2 分钟内完成安装）
 
@@ -50,13 +50,13 @@ AcePanel 在原有 OpenResty 与 Percona 的基础上新增 Nginx 与 MySQL、Ma
 
 AcePanel 优化了备份功能，新增备份存储设置，支持添加 S3、SFTP 等常用远程存储。
 
-（你可能会问为什么没有 OSS、COS？ 这是因为 OSS、COS 等均提供 S3 兼容接口，可直接使用 S3 配置，因此没必要单独为它们引入依赖以及额外开发。）
+（你可能会问为什么没有 OSS、COS？这是因为 OSS、COS 等均提供 S3 兼容接口，可直接使用 S3 配置，因此没必要单独为它们引入依赖以及额外开发。）
 
 ![AcePanel 添加备份存储](https://wmimg.com/i/1424/2026/01/6975d8a5c18e5.png)
 
 ## 全新的面板助手
 
-AcePanel 使用 Go 语言重写了原来基于 shell 脚本的安装器， 新的面板助手全面支持交互式安装及多语言，提供更好、更现代的用户体验。
+AcePanel 使用 Go 语言重写了原来基于 shell 脚本的安装器，新的面板助手全面支持交互式安装及多语言，提供更好、更现代的用户体验。
 
 ![AcePanel 安装器](https://wmimg.com/i/1424/2026/01/6975d8a5d98b9.png)
 
@@ -72,7 +72,7 @@ AcePanel 全面优化了文件管理，还原类似 Windows 资源管理器的�
 
 ![AcePanel 文件编辑](https://wmimg.com/i/1424/2026/01/6975d95a50149.png)
 
-工具箱能力全面提升， 进程管理支持右键操作，同时新增 SSH 服务管理，磁盘管理，日志清理以及 Web 钩子等功能。
+工具箱能力全面提升，进程管理支持右键操作，同时新增 SSH 服务管理，磁盘管理，日志清理以及 Web 钩子等功能。
 
 ![AcePanel 进程管理](https://wmimg.com/i/1424/2026/01/6975d95ab38b2.png)
 
@@ -124,17 +124,17 @@ AcePanel 全面优化了文件管理，还原类似 Windows 资源管理器的�
 
 ## 兼容性变化
 
-鉴于 openEuler 及 Alibaba Cloud Linux 4 和 Anolis 23 等新版信创系统把软件源改的面目全非，适配极其困难，因此 AcePanel 3.0 决定放弃对这三个发行版的支持。 建议切换到 AlmaLinux / Rocky Linux 使用， 如必须使用信创系统可考虑 OpenCloudOS 9 或 TencentOS Server 4。
+鉴于 openEuler 及 Alibaba Cloud Linux 4 和 Anolis 23 等新版信创系统把软件源改的面目全非，适配极其困难，因此 AcePanel 3.0 决定放弃对这三个发行版的支持。建议切换到 AlmaLinux / Rocky Linux 使用，如必须使用信创系统可考虑 OpenCloudOS 9 或 TencentOS Server 4。
 
-同时 AcePanel 3.0 版本起，不再支持基于 4.x 内核的 RHEL 8-based 系统（AlmaLinux 8/Rocky Linux 8）， 请升级至 9.x/10.x 使用。
+同时 AcePanel 3.0 版本起，不再支持基于 4.x 内核的 RHEL 8-based 系统（AlmaLinux 8/Rocky Linux 8），请升级至 9.x/10.x 使用。
 
 其次为支持预制安装包以解决饱受诟病的 MySQL 编译慢问题，AcePanel 修改了默认安装目录为 `/opt/ace` 且不再允许自定义（预计影响不大，仍可在安装前挂载数据盘）。
 
 ## 关于旧版本升级及维护
 
-计划在 AcePanel 3.0 稳定一段时间之后推出旧版耗子面板 2.x 升级至 AcePanel 3.0 的脚本， 鉴于改动较大，预计无法实现完美升级，请留意。
+计划在 AcePanel 3.0 稳定一段时间之后推出旧版耗子面板 2.x 升级至 AcePanel 3.0 的脚本，鉴于改动较大，预计无法实现完美升级，请留意。
 
-旧版耗子面板 2.x 仍将继续维护一段时间的安全更新（预计到 2026 年底）， 您可在此期间自行安排时间点进行升级。
+旧版耗子面板 2.x 仍将继续维护一段时间的安全更新（预计到 2026 年底），您可在此期间自行安排时间点进行升级。
 
 ## 开源协议变化
 
@@ -148,17 +148,17 @@ AcePanel 全面优化了文件管理，还原类似 Windows 资源管理器的�
 - [AcePanel 文档](https://github.com/acepanel/acepanel.github.io)
 - [AcePanel 翻译](https://zh.crowdin.com/project/acepanel)
 
-不会代码？ 没关系，欢迎发表使用 AcePanel 搭建各种服务、发掘不同玩法的文章，帮助推广 AcePanel。
+不会代码？没关系，欢迎发表使用 AcePanel 搭建各种服务、发掘不同玩法的文章，帮助推广 AcePanel。
 
 ## 结束语
 
-写这篇文章的时候是夜里 4 点多， 转眼这个项目已经在上个月度过其 3 岁生日， 当年写下第一行代码时我还对 Go 一窍不通，如今已经成长为有些人口中的大佬。
+写这篇文章的时候是夜里 4 点多，转眼这个项目已经在上个月度过其 3 岁生日，当年写下第一行代码时我还对 Go 一窍不通，如今已经成长为有些人口中的大佬。
 
-AcePanel 是我的青春， 我希望将其写到极致而不留遗憾，因此来回重构了数次， 如果因此影响了您的使用，我在此说声道歉。 现在自己年纪也慢慢大了，加上工作与生活的琐事繁多，未来再想重构也不一定折腾得动了。
+AcePanel 是我的青春，我希望将其写到极致而不留遗憾，因此来回重构了数次，如果因此影响了您的使用，我在此说声道歉。现在自己年纪也慢慢大了，加上工作与生活的琐事繁多，未来再想重构也不一定折腾得动了。
 
-2026 年的 AI 已经非常强大， AcePanel 新版本中有大量复杂的交互逻辑均使用 Claude Opus 4.5 辅助开发， 我承认以我的水平难以写出这样完善的交互。 也许继续发展下去未来或将不再需要面板，而是直接对 AI 说：帮我安装 Nginx；帮我创建 xxx 项目。 谁知道呢？
+2026 年的 AI 已经非常强大， AcePanel 新版本中有大量复杂的交互逻辑均使用 Claude Opus 4.5 辅助开发，我承认以我的水平难以写出这样完善的交互。也许继续发展下去未来或将不再需要面板，而是直接对 AI 说：帮我安装 Nginx；帮我创建 xxx 项目。谁知道呢？
 
-最后，感谢赞助商微晓朵和林枫云以及参与 AcePanel 内测的所有用户， 没有你们的帮助 AcePanel 将难以如期发布。
+最后，感谢赞助商微晓朵和林枫云以及参与 AcePanel 内测的所有用户，没有你们的帮助 AcePanel 将难以如期发布。
 
 附上 AcePanel 新版本的安装命令，欢迎测试体验：
 
