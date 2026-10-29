@@ -19,7 +19,7 @@
     "@nolebase/vitepress-plugin-enhanced-mark": "^2.15.1",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "^2.15.1",
     "@shikijs/vitepress-twoslash": "^4.0.0",
-    "@types/node": "^24.0.0",
+    "@types/node": "^26.0.0",
     "vitepress": "2.0.0-alpha.8"
   }
 }
