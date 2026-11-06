@@ -17,7 +17,6 @@ export const shared = defineConfig({
 
     lastUpdated: true,
     cleanUrls: true,
-    metaChunk: true,
 
     markdown: {
         codeTransformers: [
