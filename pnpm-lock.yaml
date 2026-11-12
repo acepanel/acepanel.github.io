@@ -13,7 +13,7 @@ importers:
         version: 1.2.2
       vitepress-plugin-group-icons:
         specifier: ^1.3.8
-        version: 1.8.1(vite@8.3.6(@types/node@26.6.6)(less@4.9.1))
+        version: 1.8.2(vite@8.3.6(@types/node@26.6.6)(less@4.9.1))
       vue:
         specifier: ^3.5.13
         version: 3.5.45(typescript@6.0.3)
@@ -988,8 +988,8 @@ packages:
   vitepress-markdown-timeline@1.2.2:
     resolution: {integrity: sha512-eDFcvudmTW33pI7XdT+ZeUPvpc4CPXI0LZbsZZ54j36G56AN6qYEBiwZpDHl77E4QvqAIJMc8phXXvm7P/Lc+Q==}
 
-  vitepress-plugin-group-icons@1.8.1:
-    resolution: {integrity: sha512-9TY8xunZDX+a+k4GZu+2rJftBsZXCEMsFXLj3p2JTM/NCTRGvIemx+iBhvauyCbOFcIEYTsRVswWF1TeMS89Ew==}
+  vitepress-plugin-group-icons@1.8.2:
+    resolution: {integrity: sha512-xyydao7FXp0Av4N0X0+DA+Roumxp+HoYWR+UaCS5O1L/Ym85C9NByQvvPahtIgSOGDqxbhMQCT+QSURvKUR62g==}
     peerDependencies:
       vite: '>=3'
     peerDependenciesMeta:
@@ -2075,7 +2075,7 @@ snapshots:
     dependencies:
       dayjs: 1.11.23
 
-  vitepress-plugin-group-icons@1.8.1(vite@8.3.6(@types/node@26.6.6)(less@4.9.1)):
+  vitepress-plugin-group-icons@1.8.2(vite@8.3.6(@types/node@26.6.6)(less@4.9.1)):
     dependencies:
       '@iconify-json/logos': 1.2.19
       '@iconify-json/vscode-icons': 1.2.96
